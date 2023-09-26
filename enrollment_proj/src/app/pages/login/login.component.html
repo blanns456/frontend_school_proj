@@ -1,1 +1,40 @@
-<p>login works!</p>
+
+<div class="container-fluid p-0 mw-100 vh-100 d-flex justify-content-center align-items-center" id="login">
+  <div class="w-50 bg-light mx-auto container-fluid p-2 bg-opacity-75 rounded-3">
+    <div class="asclogo position-absolute top-25 start-50 translate-middle">
+      <img src="../../../assets/misc/ascb_logo.png" alt="" class="img-responsive w-100">
+    </div>
+    <div class="row g-1">
+      <div class="col-6 p-3">
+        <img src="../../../assets/misc/container_image_1.png" alt="" class="img-responsive w-100 h-100">
+      </div>
+      <div class="col-6">
+        <div class="img-responsive w-100 text-center">
+          <img src="../../../assets/misc/70th_ascb_logo.png" alt="">
+        </div>
+        <form action="">
+          <div class="mb-2">
+            <label for="username" class="form-label"></label>
+            <input type="text"
+              class="form-control fw-bold shadow-lg" name="username" id="username"  placeholder="USERNAME">
+          </div>
+          <div class="mb-2">
+            <label for="password" class="form-label"></label>
+            <input type="text"
+              class="form-control fw-bold shadow-lg" name="password" id="password"  placeholder="PASSWORD">
+          </div>
+          <div class="mt-3 text-center">
+            <button type="submit" class="btn btn-primary fw-bold p-2 w-50">LOGIN</button>
+          </div>
+        </form>
+        <p class="text-center mt-3">
+          <a routerLink="../forgot-password" class="fw-normal text-primary">Forgot Password</a>
+        </p>
+        <p class="text-center">
+          <a  class="fw-normal text-primary">Open a Support Ticket</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
