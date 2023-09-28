@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+/*additional padding not in range of bootstrap*/
+.px-6{
+  padding-right: 4rem !important;
+  padding-left: 4rem !important;
+}
+.px-7{
+  padding-right: 5rem !important;
+  padding-left: 5rem !important;
+}
+.px-8{
+  padding-right: 6rem !important;
+  padding-left: 6rem !important;
+}
+.px-9{
+  padding-right: 7rem !important;
+  padding-left: 7rem !important;
+}
+
+/*primary color of the site*/
+
+.btn-primary{
+  background-color: #09abcb !important;
+  color:white;
+}
+.bg-primary{
+  background-color: #09abcb !important;
+}
+
