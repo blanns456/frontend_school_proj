@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { HomeComponent } from './pages/home/home.component';
+import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
+import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.component';
 // import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -19,7 +21,9 @@ import { HomeComponent } from './pages/home/home.component';
     RegisterComponent,
     NotFoundComponent,
     ForgotPasswordComponent,
-    HomeComponent
+    HomeComponent,
+    EnrollTesdaComponent,
+    HeadnavagationComponent
   ],
   imports: [
     BrowserModule,
