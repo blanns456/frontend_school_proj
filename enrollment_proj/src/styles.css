@@ -75,3 +75,7 @@ body::-webkit-scrollbar {
   /* margin-bottom: 2rem; */
   margin:auto;
 }
+
+.form-control{
+  border:1px solid black;
+}
