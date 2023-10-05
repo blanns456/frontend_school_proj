@@ -12,7 +12,10 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { HomeComponent } from './pages/home/home.component';
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
 import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.component';
-// import { HashLocationStrategy,LocationStrategy } from '@angular/common';
+import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
+import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
+
+
 
 @NgModule({
   declarations: [
@@ -23,13 +26,16 @@ import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.c
     ForgotPasswordComponent,
     HomeComponent,
     EnrollTesdaComponent,
-    HeadnavagationComponent
+    HeadnavagationComponent,
+    EnrollSignaturePadComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AngularSignaturePadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
