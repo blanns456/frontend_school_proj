@@ -1,5 +1,20 @@
-#login{
+#login {
   background-image: url("../../../assets/misc/logo_background.jpg");
   background-repeat: no-repeat;
+  background-position: bottom;
   background-size: cover;
+}
+
+input {
+  width: 80%;
+  border: none;
+  box-shadow: 0px 5px 10px #00000073;
+}
+
+.login-button {
+  border: none;
+}
+
+a {
+  text-decoration: none;
 }
