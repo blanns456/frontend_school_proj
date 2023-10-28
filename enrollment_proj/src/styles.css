@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 /*additional padding not in range of bootstrap*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+font-family: 'Poppins', sans-serif;
+}
+
 body {
   overflow-x: hidden; /* Hide horizontal scrollbar */
   -ms-overflow-style: none; /* IE and Edge */
@@ -67,9 +72,9 @@ body::-webkit-scrollbar {
 /*line divider*/
 .divider {
   border-bottom: 1px solid #dee2e6;
-  width: 95%;
+  width: 80%;
   /* margin-bottom: 2rem; */
-  margin: auto;
+  /* margin: auto; */
 }
 
 .form-control {
