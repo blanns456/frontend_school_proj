@@ -42,7 +42,7 @@ import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll
     FontAwesomeModule,
     AngularSignaturePadModule
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, FontAwesomeModule],
+
   providers: [],
   bootstrap: [AppComponent],
 })
