@@ -12,6 +12,8 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { HomeComponent } from './pages/home/home.component';
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
 import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.component';
+import { StudentResetPasswordComponent } from './pages/student-reset-password/student-reset-password.component';
+import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/employee-reset-password.component';
 // import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -23,15 +25,12 @@ import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.c
     ForgotPasswordComponent,
     HomeComponent,
     EnrollTesdaComponent,
-    HeadnavagationComponent
+    HeadnavagationComponent,
+    StudentResetPasswordComponent,
+    EmployeeResetPasswordComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FontAwesomeModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, NgbModule, FontAwesomeModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
