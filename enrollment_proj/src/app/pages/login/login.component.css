@@ -1,5 +1,19 @@
-#login{
+#login {
   background-image: url("../../../assets/misc/logo_background.jpg");
   background-repeat: no-repeat;
+  background-position: bottom;
   background-size: cover;
+}
+
+input {
+  width: 80%;
+  border: none;
+}
+
+.login-button {
+  border: none;
+}
+
+a {
+  text-decoration: none;
 }
