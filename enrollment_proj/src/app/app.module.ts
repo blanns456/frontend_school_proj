@@ -15,6 +15,10 @@ import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.c
 import { StudentResetPasswordComponent } from './pages/student-reset-password/student-reset-password.component';
 import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/employee-reset-password.component';
 // import { HashLocationStrategy,LocationStrategy } from '@angular/common';
+import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
+import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
+
+
 
 @NgModule({
   declarations: [
@@ -28,6 +32,15 @@ import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/
     HeadnavagationComponent,
     StudentResetPasswordComponent,
     EmployeeResetPasswordComponent,
+    EnrollSignaturePadComponent,
+
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    FontAwesomeModule,
+    AngularSignaturePadModule
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FontAwesomeModule],
   providers: [],
