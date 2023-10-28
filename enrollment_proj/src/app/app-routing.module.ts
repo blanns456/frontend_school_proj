@@ -6,19 +6,26 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
+import { StudentResetPasswordComponent } from './pages/student-reset-password/student-reset-password.component';
+import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/employee-reset-password.component';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'enroll-tesda', component: EnrollTesdaComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: '**', component: NotFoundComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'enroll-tesda', component: EnrollTesdaComponent },
+  { path: 'student-reset-password', component: StudentResetPasswordComponent },
+  {
+    path: 'employee-reset-password',
+    component: EmployeeResetPasswordComponent,
+  },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

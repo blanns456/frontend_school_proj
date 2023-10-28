@@ -12,6 +12,9 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { HomeComponent } from './pages/home/home.component';
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
 import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.component';
+import { StudentResetPasswordComponent } from './pages/student-reset-password/student-reset-password.component';
+import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/employee-reset-password.component';
+// import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
 
@@ -27,6 +30,8 @@ import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll
     HomeComponent,
     EnrollTesdaComponent,
     HeadnavagationComponent,
+    StudentResetPasswordComponent,
+    EmployeeResetPasswordComponent,
     EnrollSignaturePadComponent,
 
   ],
@@ -37,7 +42,8 @@ import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll
     FontAwesomeModule,
     AngularSignaturePadModule
   ],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
