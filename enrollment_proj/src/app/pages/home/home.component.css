@@ -3,7 +3,7 @@
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
-  filter: contrast(90%);
+  /* filter: contrast(90%); */
 }
 
 .side-content{
@@ -12,4 +12,5 @@
 
 a{
   width: 80%;
+  border: none;
 }
