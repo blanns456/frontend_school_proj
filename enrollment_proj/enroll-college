@@ -1,0 +1,5 @@
+CREATE src/app/src/app/pages/pages.component.html (20 bytes)
+CREATE src/app/src/app/pages/pages.component.spec.ts (552 bytes)
+CREATE src/app/src/app/pages/pages.component.ts (198 bytes)
+CREATE src/app/src/app/pages/pages.component.css (0 bytes)
+UPDATE src/app/app.module.ts (1747 bytes)

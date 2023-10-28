@@ -14,6 +14,12 @@ import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.componen
 import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.component';
 import { StudentResetPasswordComponent } from './pages/student-reset-password/student-reset-password.component';
 import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/employee-reset-password.component';
+import { EnrollCollegeComponent } from './pages/enroll-college/enroll-college.component';
+import { FooternavigationComponent } from './pages/footernavigation/footernavigation.component';
+import { PaginationComponent } from './pages/pagination/pagination.component';
+import { EnrollCollege2Component } from './pages/enroll-college2/enroll-college2.component';
+import { EnrollCollege3Component } from './pages/enroll-college3/enroll-college3.component';
+import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4.component';
 // import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
@@ -34,6 +40,12 @@ import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll
     EmployeeResetPasswordComponent,
     EnrollSignaturePadComponent,
 
+    EnrollCollegeComponent,
+    FooternavigationComponent,
+    PaginationComponent,
+    EnrollCollege2Component,
+    EnrollCollege3Component,
+    EnrollCollege4Component,
   ],
   imports: [
     BrowserModule,
