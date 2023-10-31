@@ -23,6 +23,15 @@ import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4
 // import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
+import { StudentDashboardHomeComponent } from './pages/student-dashboard-home/student-dashboard-home.component';
+import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
+import { EnrollShsComponent } from './pages/enroll-shs/enroll-shs.component';
+import { EnrollShs2Component } from './pages/enroll-shs2/enroll-shs2.component';
+import { EnrollShs3Component } from './pages/enroll-shs3/enroll-shs3.component';
+import { EnrollMaedComponent } from './pages/enroll-maed/enroll-maed.component';
+import { EnrollMaed2Component } from './pages/enroll-maed2/enroll-maed2.component';
+import { EnrollMaed3Component } from './pages/enroll-maed3/enroll-maed3.component';
+import { PaginationMaedComponent } from './pages/pagination-maed/pagination-maed.component';
 
 
 
@@ -46,6 +55,16 @@ import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll
     EnrollCollege2Component,
     EnrollCollege3Component,
     EnrollCollege4Component,
+    EnrollCollege4Component,
+    StudentDashboardHomeComponent,
+    PaginationShsComponent,
+    EnrollShsComponent,
+    EnrollShs2Component,
+    EnrollShs3Component,
+    PaginationMaedComponent,
+    EnrollMaedComponent,
+    EnrollMaed2Component,
+    EnrollMaed3Component
   ],
   imports: [
     BrowserModule,
