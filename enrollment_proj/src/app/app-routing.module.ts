@@ -12,6 +12,12 @@ import { EnrollCollegeComponent } from './pages/enroll-college/enroll-college.co
 import { EnrollCollege2Component } from './pages/enroll-college2/enroll-college2.component';
 import { EnrollCollege3Component } from './pages/enroll-college3/enroll-college3.component';
 import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4.component';
+import { EnrollShsComponent } from './pages/enroll-shs/enroll-shs.component';
+import { EnrollShs2Component } from './pages/enroll-shs2/enroll-shs2.component';
+import { EnrollShs3Component } from './pages/enroll-shs3/enroll-shs3.component';
+import { EnrollMaedComponent } from './pages/enroll-maed/enroll-maed.component';
+import { EnrollMaed2Component } from './pages/enroll-maed2/enroll-maed2.component';
+import { EnrollMaed3Component } from './pages/enroll-maed3/enroll-maed3.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,6 +28,12 @@ const routes: Routes = [
   { path: 'enroll-college', component: EnrollCollegeComponent },
   { path: 'enroll-college-student-information', component: EnrollCollege2Component },
   { path: 'enroll-college-education-record', component: EnrollCollege3Component },
+  { path: 'enroll-shs', component: EnrollShsComponent },
+  { path: 'enroll-shs-student-information', component: EnrollShs2Component },
+  { path: 'enroll-shs-education-record', component: EnrollShs3Component },
+  { path: 'enroll-maed', component: EnrollMaedComponent},
+  { path: 'enroll-maed-student-information', component: EnrollMaed2Component },
+  { path: 'enroll-maed-education-record', component: EnrollMaed3Component },
   { path: 'enroll-college-signature', component: EnrollCollege4Component },
   { path: 'student-reset-password', component: StudentResetPasswordComponent },
   {
