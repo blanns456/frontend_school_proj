@@ -6,7 +6,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
-import { StudentResetPasswordComponent } from './pages/student-reset-password/student-reset-password.component';
+import { StudentResetPasswordComponent } from './pages/students-pov/student-reset-password/student-reset-password.component';
 import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/employee-reset-password.component';
 import { EnrollCollegeComponent } from './pages/enroll-college/enroll-college.component';
 import { EnrollCollege2Component } from './pages/enroll-college2/enroll-college2.component';
@@ -18,7 +18,7 @@ import { EnrollShs3Component } from './pages/enroll-shs3/enroll-shs3.component';
 import { EnrollMaedComponent } from './pages/enroll-maed/enroll-maed.component';
 import { EnrollMaed2Component } from './pages/enroll-maed2/enroll-maed2.component';
 import { EnrollMaed3Component } from './pages/enroll-maed3/enroll-maed3.component';
-import { StudentDashboardHomeComponent } from './pages/student-dashboard-home/student-dashboard-home.component';
+import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
