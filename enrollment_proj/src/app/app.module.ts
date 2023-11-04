@@ -23,6 +23,7 @@ import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4
 // import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -52,7 +53,9 @@ import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    AngularSignaturePadModule
+    AngularSignaturePadModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 
   providers: [],

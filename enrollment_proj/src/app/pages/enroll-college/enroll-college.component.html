@@ -7,7 +7,7 @@
       class="img-responsive mt-3 mw-100"
       alt="ascb_logo">
     <div class="my-auto mx-4">
-      <h2 class="h3 fw-bold">ASCB TESDA</h2>
+      <h2 class="h3 fw-bold">ASCB College</h2>
       <h2 class="h3 fw-bold">Enrollment Form</h2>
     </div>
   </div>
@@ -18,8 +18,8 @@
     class="w-80"
     id="enroll">
     <form
-      action="#"
-      enctype="multipart/form-data"
+
+      enctype="multipart/form-data" method="post"
       class="row">
 
       <!-- academic year -->
@@ -34,7 +34,8 @@
           <select
             name="Academic Year"
             id="academic_year"
-            class="form-control form-select">
+            class="form-control form-select" (change)="onChange($event)" [value]="selectedacademic_year">
+
             <option
               value
               disabled
@@ -58,12 +59,12 @@
           <select
             name="Academic Year"
             id="year_level"
-            class="form-control form-select">
-            <option
+            class="form-control form-select" (change)="onyearlvl($event)" [value]="selectedyearlvl">
+             <option
               value
               disabled
               selected>
-              Please select year level
+              Please select academic year
             </option>
             <option value="first_year">1st Year</option>
             <option value="second_year">2nd Year</option>
@@ -84,7 +85,7 @@
           <select
             name="Academic Year"
             id="semester"
-            class="form-control form-select">
+            class="form-control form-select" (change)="semester($event)" [value]="selectedsemester">
             <option
               value
               disabled
@@ -109,7 +110,7 @@
           <select
             name="Academic Year"
             id="semester"
-            class="form-control form-select">
+            class="form-control form-select" (change)="course($event)" [value]="selectedcourse">
             <option
               value
               disabled
@@ -138,14 +139,14 @@
           <select
             name="Academic Year"
             id="student_status"
-            class="form-control form-select">
+            class="form-control form-select" (change)="status($event)"  [value]="selectedstatus">
             <option
               value
               disabled
               selected>
               Please select Status
             </option>
-            <option value="new">Freshmen</option>
+            <option value="new" >Freshmen</option>
             <option value="old">Old Student</option>
           </select>
         </div>
@@ -157,3 +158,5 @@
   <app-pagination></app-pagination>
   <app-footernavigation></app-footernavigation>
 </div>
+
+
