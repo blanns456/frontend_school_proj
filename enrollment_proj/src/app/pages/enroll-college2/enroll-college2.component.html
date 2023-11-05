@@ -272,7 +272,7 @@
 
   </div>
 
-  <app-pagination></app-pagination>
-
+  <!-- <app-pagination></app-pagination> -->
+  <app-mat-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChanged)="onPageChanged($event)"></app-mat-pagination>
   <app-footernavigation></app-footernavigation>
 </div>
