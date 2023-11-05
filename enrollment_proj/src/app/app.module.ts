@@ -24,6 +24,7 @@ import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
+import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
 
 
 
@@ -47,6 +48,7 @@ import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
     EnrollCollege2Component,
     EnrollCollege3Component,
     EnrollCollege4Component,
+    MatPaginationComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,7 +18,7 @@ export class EnrollCollegeComponent implements OnInit{
 
 
 
-  constructor(private college_enrollment: CollegeEnrollmentController) { }
+  constructor(private college_enrollment: CollegeEnrollmentController,private router: Router) { }
 
   ngOnInit(): void {
     this.selectedyearlvl = this.college_enrollment.collegeinfo.year_level;
@@ -59,6 +60,22 @@ export class EnrollCollegeComponent implements OnInit{
 
   }
 
+  currentPage: number = 1; // Initialize with a default page
+  totalPages: number = 4; // Replace with your actual total page count
+
+  onPageChanged(page: number) {
+    // Update your data or perform any actions when the page changes
+    page;
+    // alert(this.currentPage);
+    if (page === 2) {
+      this.router.navigate(['/enroll-college-student-information']);
+    }
+    if (page === 3) {
+      this.router.navigate(['/enroll-college-education-record']);
+    }
+
+    // Fetch data for the new page or update your data as needed
+  }
 
 
 
