@@ -19,6 +19,7 @@ import { EnrollMaedComponent } from './pages/enroll-maed/enroll-maed.component';
 import { EnrollMaed2Component } from './pages/enroll-maed2/enroll-maed2.component';
 import { EnrollMaed3Component } from './pages/enroll-maed3/enroll-maed3.component';
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
+import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: 'enroll-college-signature', component: EnrollCollege4Component },
   { path: 'student-reset-password', component: StudentResetPasswordComponent },
   { path: 'student-dashboard-home', component: StudentDashboardHomeComponent },
+  { path: 'student-dashboard-information', component: StudentDashboardInformationComponent },
   {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
