@@ -14,7 +14,21 @@ export class CollegeEnrollmentController{
     "semester": "",
     "student_status": "",
     "year_level": "",
-    "course":""
+    "course": "",
+    "lastname":"",
+    "firstname":"",
+    "middlename": "",
+    "suffix": "",
+    "birthdate":"",
+    "religion":"",
+    "email_address":"",
+    "birth_place":"",
+    "citizenship":"",
+    "contactnumber":"",
+    "gender":"",
+    "civilstatus":"",
+    "permanentaddress":"",
+    "homeaddress":"",
    }
 
   readonly Root_URL = 'http://127.0.0.1:8000/api/';
