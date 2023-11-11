@@ -12,7 +12,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { HomeComponent } from './pages/home/home.component';
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
 import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.component';
-import { StudentResetPasswordComponent } from './pages/student-reset-password/student-reset-password.component';
+import { StudentResetPasswordComponent } from './pages/students-pov/student-reset-password/student-reset-password.component';
 import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/employee-reset-password.component';
 import { EnrollCollegeComponent } from './pages/enroll-college/enroll-college.component';
 import { FooternavigationComponent } from './pages/footernavigation/footernavigation.component';
@@ -23,7 +23,7 @@ import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4
 // import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
-import { StudentDashboardHomeComponent } from './pages/student-dashboard-home/student-dashboard-home.component';
+import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
 import { EnrollShsComponent } from './pages/enroll-shs/enroll-shs.component';
 import { EnrollShs2Component } from './pages/enroll-shs2/enroll-shs2.component';
@@ -32,8 +32,8 @@ import { EnrollMaedComponent } from './pages/enroll-maed/enroll-maed.component';
 import { EnrollMaed2Component } from './pages/enroll-maed2/enroll-maed2.component';
 import { EnrollMaed3Component } from './pages/enroll-maed3/enroll-maed3.component';
 import { PaginationMaedComponent } from './pages/pagination-maed/pagination-maed.component';
-
-
+import { StudentSidebarComponent } from './pages/students-pov/student-sidebar/student-sidebar.component';
+import { StudentNavbarComponent } from './pages/students-pov/student-navbar/student-navbar.component';
 
 @NgModule({
   declarations: [
@@ -64,14 +64,16 @@ import { PaginationMaedComponent } from './pages/pagination-maed/pagination-maed
     PaginationMaedComponent,
     EnrollMaedComponent,
     EnrollMaed2Component,
-    EnrollMaed3Component
+    EnrollMaed3Component,
+    StudentSidebarComponent,
+    StudentNavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    AngularSignaturePadModule
+    AngularSignaturePadModule,
   ],
 
   providers: [],
