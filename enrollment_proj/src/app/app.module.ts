@@ -35,6 +35,7 @@ import { PaginationMaedComponent } from './pages/pagination-maed/pagination-maed
 import { StudentSidebarComponent } from './pages/students-pov/student-sidebar/student-sidebar.component';
 import { StudentNavbarComponent } from './pages/students-pov/student-navbar/student-navbar.component';
 import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
+import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { StudentDashboardInformationComponent } from './pages/students-pov/stude
     StudentSidebarComponent,
     StudentNavbarComponent,
     StudentDashboardInformationComponent,
+    StudentDashboardParentComponent,
   ],
   imports: [
     BrowserModule,
