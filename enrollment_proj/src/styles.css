@@ -65,9 +65,20 @@ body::-webkit-scrollbar {
   background-color: #0840a1 !important;
   color: white;
 }
+
 .bg-primary {
   background-color: #0840a1 !important;
 }
+
+.bg-secondary {
+  background-color: #03A6D7 !important;
+}
+
+.btn-secondary{
+  background-color: #03A6D7 !important;
+  border: none;
+}
+
 
 /*line divider*/
 .divider {

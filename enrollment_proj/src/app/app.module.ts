@@ -34,6 +34,7 @@ import { EnrollMaed3Component } from './pages/enroll-maed3/enroll-maed3.componen
 import { PaginationMaedComponent } from './pages/pagination-maed/pagination-maed.component';
 import { StudentSidebarComponent } from './pages/students-pov/student-sidebar/student-sidebar.component';
 import { StudentNavbarComponent } from './pages/students-pov/student-navbar/student-navbar.component';
+import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { StudentNavbarComponent } from './pages/students-pov/student-navbar/stud
     EnrollMaed3Component,
     StudentSidebarComponent,
     StudentNavbarComponent,
+    StudentDashboardInformationComponent,
   ],
   imports: [
     BrowserModule,
