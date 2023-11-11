@@ -20,6 +20,7 @@ import { EnrollMaed2Component } from './pages/enroll-maed2/enroll-maed2.componen
 import { EnrollMaed3Component } from './pages/enroll-maed3/enroll-maed3.component';
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
+import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'student-reset-password', component: StudentResetPasswordComponent },
   { path: 'student-dashboard-home', component: StudentDashboardHomeComponent },
   { path: 'student-dashboard-information', component: StudentDashboardInformationComponent },
+  { path: 'student-dashboard-parent', component: StudentDashboardParentComponent },
   {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
