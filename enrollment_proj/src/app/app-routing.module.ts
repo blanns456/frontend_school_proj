@@ -21,6 +21,8 @@ import { EnrollMaed3Component } from './pages/enroll-maed3/enroll-maed3.componen
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
 import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
+import { StudentDashboardAcademicComponent } from './pages/students-pov/student-dashboard-academic/student-dashboard-academic.component';
+import { StudentDashboardFinancialComponent } from './pages/students-pov/student-dashboard-financial/student-dashboard-financial.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -48,6 +50,8 @@ const routes: Routes = [
   { path: 'student-dashboard-home', component: StudentDashboardHomeComponent },
   { path: 'student-dashboard-information', component: StudentDashboardInformationComponent },
   { path: 'student-dashboard-parent', component: StudentDashboardParentComponent },
+  { path: 'student-dashboard-academic', component: StudentDashboardAcademicComponent },
+  { path: 'student-dashboard-financial', component: StudentDashboardFinancialComponent },
   {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
