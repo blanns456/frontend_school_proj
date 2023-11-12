@@ -36,6 +36,8 @@ import { StudentSidebarComponent } from './pages/students-pov/student-sidebar/st
 import { StudentNavbarComponent } from './pages/students-pov/student-navbar/student-navbar.component';
 import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
 import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
+import { StudentDashboardAcademicComponent } from './pages/students-pov/student-dashboard-academic/student-dashboard-academic.component';
+import { StudentDashboardFinancialComponent } from './pages/students-pov/student-dashboard-financial/student-dashboard-financial.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,8 @@ import { StudentDashboardParentComponent } from './pages/students-pov/student-da
     StudentNavbarComponent,
     StudentDashboardInformationComponent,
     StudentDashboardParentComponent,
+    StudentDashboardAcademicComponent,
+    StudentDashboardFinancialComponent,
   ],
   imports: [
     BrowserModule,
