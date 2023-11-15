@@ -23,6 +23,9 @@ import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4
 // import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
+
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
 import { EnrollShsComponent } from './pages/enroll-shs/enroll-shs.component';
@@ -59,6 +62,7 @@ import { StudentDashboardFinancialComponent } from './pages/students-pov/student
     EnrollCollege2Component,
     EnrollCollege3Component,
     EnrollCollege4Component,
+    MatPaginationComponent,
     EnrollCollege4Component,
     StudentDashboardHomeComponent,
     PaginationShsComponent,
@@ -82,6 +86,8 @@ import { StudentDashboardFinancialComponent } from './pages/students-pov/student
     NgbModule,
     FontAwesomeModule,
     AngularSignaturePadModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 
   providers: [],
