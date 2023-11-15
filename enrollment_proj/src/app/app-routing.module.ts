@@ -27,7 +27,8 @@ import { StudentDashboardEnrollmentComponent } from './pages/students-pov/studen
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
@@ -59,7 +60,6 @@ const routes: Routes = [
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 
