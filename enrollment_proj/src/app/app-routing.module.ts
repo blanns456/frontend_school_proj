@@ -23,6 +23,7 @@ import { StudentDashboardInformationComponent } from './pages/students-pov/stude
 import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
 import { StudentDashboardAcademicComponent } from './pages/students-pov/student-dashboard-academic/student-dashboard-academic.component';
 import { StudentDashboardFinancialComponent } from './pages/students-pov/student-dashboard-financial/student-dashboard-financial.component';
+import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -58,6 +59,7 @@ const routes: Routes = [
     component: EmployeeResetPasswordComponent,
   },
   { path: '**', component: NotFoundComponent },
+  { path: 'accounting-dashboard-home', component: AccountingDashboardHomeComponent },
 ];
 
 @NgModule({
