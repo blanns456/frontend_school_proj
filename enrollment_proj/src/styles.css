@@ -59,6 +59,10 @@ body::-webkit-scrollbar {
   padding-bottom: 7rem !important;
 }
 
+.invalid{
+  border: 1px solid red;
+}
+
 /*primary color of the site*/
 
 .btn-primary {

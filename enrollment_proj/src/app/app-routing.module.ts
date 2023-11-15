@@ -26,7 +26,8 @@ import { StudentDashboardFinancialComponent } from './pages/students-pov/student
 import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
@@ -57,7 +58,6 @@ const routes: Routes = [
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
   { path: 'accounting-dashboard-home', component: AccountingDashboardHomeComponent },
 ];

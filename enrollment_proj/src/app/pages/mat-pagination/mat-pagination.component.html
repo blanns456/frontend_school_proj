@@ -1,0 +1,20 @@
+<div class="position-absolute bottom-25 end-0 mx-5">
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+
+    <li class="page-item" [ngClass]="{ 'disabled': currentPage === 1 }">
+      <a class="page-link" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+        <span aria-hidden="true">Previous</span>
+      </a>
+    </li>
+    <li *ngFor="let page of pages" class="page-item" [ngClass]="{ 'active': page === currentPage }">
+      <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+    </li>
+    <li class="page-item" [ngClass]="{ 'disabled': currentPage === totalPages }">
+      <a class="page-link" (click)="goToPage(currentPage + 1)" aria-label="Next">
+        <span aria-hidden="true">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div>
