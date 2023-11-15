@@ -31,17 +31,14 @@
       </div>
       <div class="col-3">
         <div class="mb-3">
-          <label
-            for="first_name"
-            class="form-label"
-            [class.is-invalid]="firstnamevalisEmpty"
-          >
+          <label for="first_name" class="form-label">
             First Name
             <span class="text-danger">*</span>
           </label>
           <input
             type="text"
             class="form-control"
+            [class.is-invalid]="firstnamevalisEmpty"
             name="first_name"
             id="first_name"
             required

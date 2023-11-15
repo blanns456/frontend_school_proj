@@ -47,6 +47,16 @@ export class EnrollCollege2Component implements OnInit {
     this.permanentaddressval =
       this.college_enrollment.collegeinfo.permanentaddress;
     this.homeaddressval = this.college_enrollment.collegeinfo.homeaddress;
+
+    if (
+      this.college_enrollment.collegeinfo.year_level.length === 0 ||
+      this.college_enrollment.collegeinfo.academic_year.length === 0 ||
+      this.college_enrollment.collegeinfo.course.length === 0 ||
+      this.college_enrollment.collegeinfo.semester.length === 0 ||
+      this.college_enrollment.collegeinfo.student_status.length === 0
+    ) {
+      this.router.navigate(['/enroll-college']);
+    }
   }
 
   onPageChanged(page: number) {
