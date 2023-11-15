@@ -5,50 +5,49 @@ import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enroll
 @Component({
   selector: 'app-enroll-college2',
   templateUrl: './enroll-college2.component.html',
-  styleUrls: ['./enroll-college2.component.css']
+  styleUrls: ['./enroll-college2.component.css'],
 })
-export class EnrollCollege2Component implements OnInit{
-
-  constructor(private college_enrollment:CollegeEnrollmentController,private router: Router) { }
+export class EnrollCollege2Component implements OnInit {
+  constructor(
+    private college_enrollment: CollegeEnrollmentController,
+    private router: Router
+  ) {}
   currentPage: number = 2; // Initialize with a default page
   totalPages: number = 4; // Replace with your actual total page count
-  lastnameval: string = "";
+  lastnameval: string = '';
   lastnameisEmpty = false;
-  firstnameval: string ="";
-  middlenameval: string ="";
-  suffixval: string ="";
-  birthdateval: string ="";
-  religionval: string ="";
-  email_addressval: string ="";
-  birth_placeval: string ="";
-  citizenshipval: string ="";
-  contactnumberval: string ="";
-  genderval: string ="";
-  civilstatusval: string ="";
-  permanentaddressval: string ="";
-  homeaddressval: string = "";
-
-
+  firstnameval: string = '';
+  firstnamevalisEmpty = false;
+  middlenameval: string = '';
+  suffixval: string = '';
+  birthdateval: string = '';
+  religionval: string = '';
+  email_addressval: string = '';
+  birth_placeval: string = '';
+  citizenshipval: string = '';
+  contactnumberval: string = '';
+  genderval: string = '';
+  civilstatusval: string = '';
+  permanentaddressval: string = '';
+  homeaddressval: string = '';
 
   ngOnInit(): void {
-         this.lastnameval = this.college_enrollment.collegeinfo.lastname;
-         this.firstnameval = this.college_enrollment.collegeinfo.firstname;
-         this.middlenameval = this.college_enrollment.collegeinfo.middlename;
-         this.suffixval = this.college_enrollment.collegeinfo.suffix;
-         this.birthdateval = this.college_enrollment.collegeinfo.birthdate;
-         this.religionval = this.college_enrollment.collegeinfo.religion;
-         this.email_addressval = this.college_enrollment.collegeinfo.email_address;
-         this.birth_placeval = this.college_enrollment.collegeinfo.birth_place;
-         this.citizenshipval = this.college_enrollment.collegeinfo.citizenship;
-         this.contactnumberval = this.college_enrollment.collegeinfo.contactnumber;
-         this.genderval = this.college_enrollment.collegeinfo.gender;
-         this.civilstatusval = this.college_enrollment.collegeinfo.civilstatus;
-         this.permanentaddressval = this.college_enrollment.collegeinfo.permanentaddress;
-         this.homeaddressval = this.college_enrollment.collegeinfo.homeaddress;
-
-
+    this.lastnameval = this.college_enrollment.collegeinfo.lastname;
+    this.firstnameval = this.college_enrollment.collegeinfo.firstname;
+    this.middlenameval = this.college_enrollment.collegeinfo.middlename;
+    this.suffixval = this.college_enrollment.collegeinfo.suffix;
+    this.birthdateval = this.college_enrollment.collegeinfo.birthdate;
+    this.religionval = this.college_enrollment.collegeinfo.religion;
+    this.email_addressval = this.college_enrollment.collegeinfo.email_address;
+    this.birth_placeval = this.college_enrollment.collegeinfo.birth_place;
+    this.citizenshipval = this.college_enrollment.collegeinfo.citizenship;
+    this.contactnumberval = this.college_enrollment.collegeinfo.contactnumber;
+    this.genderval = this.college_enrollment.collegeinfo.gender;
+    this.civilstatusval = this.college_enrollment.collegeinfo.civilstatus;
+    this.permanentaddressval =
+      this.college_enrollment.collegeinfo.permanentaddress;
+    this.homeaddressval = this.college_enrollment.collegeinfo.homeaddress;
   }
-
 
   onPageChanged(page: number) {
     // Update your data or perform any actions when the page changes
@@ -76,6 +75,7 @@ export class EnrollCollege2Component implements OnInit{
   firstname(event: Event) {
     // Your change event handler logic here
     const firstnameval = (event.target as HTMLSelectElement).value;
+    this.firstnamevalisEmpty = firstnameval === '';
     this.college_enrollment.collegeinfo.firstname = firstnameval;
     // alert(lastnameval);
   }
@@ -163,6 +163,4 @@ export class EnrollCollege2Component implements OnInit{
     this.college_enrollment.collegeinfo.homeaddress = homeaddressval;
     // alert(lastnameval);
   }
-
-
 }

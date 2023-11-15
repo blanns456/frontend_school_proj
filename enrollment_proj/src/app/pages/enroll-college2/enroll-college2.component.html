@@ -1,4 +1,6 @@
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column">
+<div
+  class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
+>
   <app-headnavagation></app-headnavagation>
 
   <div class="w-75 p-0">
@@ -11,9 +13,7 @@
     <div class="row">
       <div class="col-3">
         <div class="mb-3">
-          <label
-            for="last_name"
-            class="form-label">
+          <label for="last_name" class="form-label">
             Last Name
             <span class="text-danger">*</span>
           </label>
@@ -23,14 +23,19 @@
             [class.is-invalid]="lastnameisEmpty"
             name="last_name"
             id="last_name"
-            required [value]="lastnameval" (change)="lastname($event)" >
+            required
+            [value]="lastnameval"
+            (change)="lastname($event)"
+          />
         </div>
       </div>
       <div class="col-3">
         <div class="mb-3">
           <label
             for="first_name"
-            class="form-label">
+            class="form-label"
+            [class.is-invalid]="firstnamevalisEmpty"
+          >
             First Name
             <span class="text-danger">*</span>
           </label>
@@ -39,14 +44,15 @@
             class="form-control"
             name="first_name"
             id="first_name"
-            required [value]="firstnameval" (change)="firstname($event)">
+            required
+            [value]="firstnameval"
+            (change)="firstname($event)"
+          />
         </div>
       </div>
       <div class="col-3">
         <div class="mb-3">
-          <label
-            for="middle_name"
-            class="form-label">
+          <label for="middle_name" class="form-label">
             Middle Name
             <span class="text-danger">*</span>
           </label>
@@ -55,24 +61,24 @@
             class="form-control"
             name="middle_name"
             id="middle_name"
-            required [value]="middlenameval" (change)="middlename($event)">
+            required
+            [value]="middlenameval"
+            (change)="middlename($event)"
+          />
         </div>
       </div>
       <div class="col-3">
         <div class="mb-3">
-          <label
-            for="suffix"
-            class="form-label">
-            Suffix
-          </label>
+          <label for="suffix" class="form-label"> Suffix </label>
           <select
             name="suffix"
             id="suffix"
-            class="form-control form-select w-50" required [value]="suffixval" (change)="suffix($event)">
-            <option
-              value
-              selected
-              disabled></option>
+            class="form-control form-select w-50"
+            required
+            [value]="suffixval"
+            (change)="suffix($event)"
+          >
+            <option value selected disabled></option>
             <option value="jr.">Jr.</option>
             <option value="sr.">Sr.</option>
             <option value="II">II</option>
@@ -86,9 +92,7 @@
     <div class="row">
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="birth_date"
-            class="form-label">
+          <label for="birth_date" class="form-label">
             Birth Date
             <span class="text-danger">*</span>
           </label>
@@ -97,14 +101,15 @@
             class="form-control"
             name="birth_date"
             id="birth_date"
-            required [value]="birthdateval" (change)="birthdate($event)">
+            required
+            [value]="birthdateval"
+            (change)="birthdate($event)"
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="religion"
-            class="form-label">
+          <label for="religion" class="form-label">
             Religion
             <span class="text-danger">*</span>
           </label>
@@ -113,14 +118,15 @@
             class="form-control"
             name="religion"
             id="religion"
-            required [value]="religionval" (change)="religion($event)">
+            required
+            [value]="religionval"
+            (change)="religion($event)"
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="email"
-            class="form-label">
+          <label for="email" class="form-label">
             Email Address
             <span class="text-danger">*</span>
           </label>
@@ -129,7 +135,10 @@
             class="form-control"
             name="email"
             id="email"
-            required [value]="email_addressval" (change)="email_address($event)">
+            required
+            [value]="email_addressval"
+            (change)="email_address($event)"
+          />
         </div>
       </div>
     </div>
@@ -137,9 +146,7 @@
     <div class="row">
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="birth_place"
-            class="form-label">
+          <label for="birth_place" class="form-label">
             Birth Place
             <span class="text-danger">*</span>
           </label>
@@ -148,14 +155,15 @@
             class="form-control"
             name="birth_place"
             id="birth_place"
-            required [value]="birth_placeval" (change)="birth_place($event)">
+            required
+            [value]="birth_placeval"
+            (change)="birth_place($event)"
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="citizenship"
-            class="form-label">
+          <label for="citizenship" class="form-label">
             Citizenship
             <span class="text-danger">*</span>
           </label>
@@ -164,14 +172,15 @@
             class="form-control"
             name="citizenship"
             id="citizenship"
-            required [value]="citizenshipval" (change)="citizenship($event)">
+            required
+            [value]="citizenshipval"
+            (change)="citizenship($event)"
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="contact_number"
-            class="form-label">
+          <label for="contact_number" class="form-label">
             Student Contact Number
             <span class="text-danger">*</span>
           </label>
@@ -181,7 +190,10 @@
             class="form-control"
             name="contact_number"
             id="contact_number"
-            required [value]="contactnumberval" (change)="contactnumber($event)">
+            required
+            [value]="contactnumberval"
+            (change)="contactnumber($event)"
+          />
         </div>
       </div>
     </div>
@@ -189,22 +201,18 @@
     <div class="row">
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="gender"
-            class="form-label">
+          <label for="gender" class="form-label">
             Gender
             <span class="text-danger">*</span>
           </label>
           <select
             name="gender"
             id="gender"
-            class="form-control form-select"  [value]="genderval" (change)="gender($event)">
-            <option
-              value
-              selected
-              disabled>
-              Please Select Gender
-            </option>
+            class="form-control form-select"
+            [value]="genderval"
+            (change)="gender($event)"
+          >
+            <option value selected disabled>Please Select Gender</option>
             <option value="male">Male</option>
             <option value="Female">Female</option>
           </select>
@@ -212,22 +220,18 @@
       </div>
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="civil_status"
-            class="form-label">
+          <label for="civil_status" class="form-label">
             Civil Status
             <span class="text-danger">*</span>
           </label>
           <select
             name="civil_status"
             id="civil_status"
-            class="form-control form-select"  [value]="civilstatusval" (change)="civilstatus($event)">
-            <option
-              value
-              selected
-              disabled>
-              Please Select Civil Status
-            </option>
+            class="form-control form-select"
+            [value]="civilstatusval"
+            (change)="civilstatus($event)"
+          >
+            <option value selected disabled>Please Select Civil Status</option>
             <option value="single">Single</option>
             <option value="married">Married</option>
             <option value="widowed">Widowed</option>
@@ -239,9 +243,7 @@
     <div class="row">
       <div class="col-6">
         <div class="mb-3">
-          <label
-            for="permanent_address"
-            class="form-label">
+          <label for="permanent_address" class="form-label">
             Permanent Address
             <span class="text-danger">*</span>
           </label>
@@ -250,14 +252,15 @@
             class="form-control"
             name="permanent_address"
             id="permanent_address"
-            required [value]="permanentaddressval" (change)="permanentaddress($event)">
+            required
+            [value]="permanentaddressval"
+            (change)="permanentaddress($event)"
+          />
         </div>
       </div>
       <div class="col-6">
         <div class="mb-3">
-          <label
-            for="home_address"
-            class="form-label">
+          <label for="home_address" class="form-label">
             Home Address
             <span class="text-danger">*</span>
           </label>
@@ -266,14 +269,20 @@
             class="form-control"
             name="home_address"
             id="home_address"
-            required [value]="homeaddressval" (change)="homeaddress($event)">
+            required
+            [value]="homeaddressval"
+            (change)="homeaddress($event)"
+          />
         </div>
       </div>
     </div>
-
   </div>
 
   <!-- <app-pagination></app-pagination> -->
-  <app-mat-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChanged)="onPageChanged($event)"></app-mat-pagination>
+  <app-mat-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChanged)="onPageChanged($event)"
+  ></app-mat-pagination>
   <app-footernavigation></app-footernavigation>
 </div>
