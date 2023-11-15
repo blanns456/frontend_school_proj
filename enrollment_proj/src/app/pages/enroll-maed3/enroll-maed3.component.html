@@ -1,0 +1,211 @@
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column">
+  <app-headnavagation></app-headnavagation>
+
+  <div class="w-75 p-0">
+    <h2 class="fw-bold text-start p-0">Records of Education</h2>
+  </div>
+
+  <div class="divider my-1"></div>
+
+  <div class="w-75">
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <h2 class="h4">Elementary</h2>
+          <label
+            for="elementary"
+            class="form-label">
+            School Name
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="elementary"
+            id="elementary"
+            required>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <h2 class="h4">Junior High School</h2>
+          <label
+            for="jhs"
+            class="form-label">
+            School Name
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="jhs"
+            id="jhs"
+            required>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <h2 class="h4">Senior High School</h2>
+          <label
+            for="shs"
+            class="form-label">
+            School Name
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="shs"
+            id="shs"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="elem_year"
+            class="form-label">
+            Year Graduated
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="elem_year"
+            id="elem_year"
+            required>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="jhs_year"
+            class="form-label">
+            Year Graduated
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="jhs_year"
+            id="jhs_year"
+            required>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="shs_year"
+            class="form-label">
+            Year Graduated
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="shs_year"
+            class="form-control"
+            name="shs_year"
+            id="shs_year"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="parent_name"
+            class="form-label">
+            Parent/Guardian
+            <span>'</span>
+            s Name
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="parent_name"
+            id="parent_name"
+            required>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="occupation"
+            class="form-label">
+            Occupation
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="occupation"
+            id="occupation"
+            required>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="parent_number"
+            class="form-label">
+            Parent/Guardian
+            <span>'</span>
+            s Contact Number
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            pattern="[0-9]{11}"
+            class="form-control"
+            name="parent_number"
+            id="parent_number"
+            required>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="last_school"
+            class="form-label">
+            Last School Attended
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="last_school"
+            id="last_school"
+            required>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="last_year_school"
+            class="form-label">
+            Last School Year Attended
+            <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="last_year_school"
+            id="last_year_school"
+            required>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <app-pagination-maed></app-pagination-maed>
+  <app-footernavigation></app-footernavigation>
+</div>

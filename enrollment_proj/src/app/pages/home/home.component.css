@@ -1,0 +1,16 @@
+#home {
+  background-image: url("../../../assets/misc/logo_background.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  /* filter: contrast(90%); */
+}
+
+.side-content{
+  background: rgb(201,202,208,86%);
+}
+
+a{
+  width: 80%;
+  border: none;
+}

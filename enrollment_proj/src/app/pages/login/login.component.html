@@ -1,0 +1,78 @@
+<div
+  class="container-fluid p-0 mw-100 vh-100 d-flex justify-content-center align-items-center"
+  id="login">
+  <div class="w-50 bg-light mx-auto container-fluid p-2 bg-opacity-75 rounded-4 login-bg">
+    <div class="asclogo position-absolute top-25 start-50 translate-middle">
+      <img
+        src="../../../assets/misc/ascb_logo.png"
+        alt
+        class="img-responsive w-100">
+    </div>
+    <div class="row g-1">
+      <div class="col-6 px-3 d-flex align-items-center justify-content-center my-0">
+        <img
+          src="../../../assets/misc/container_image_1.png"
+          alt="logo"
+          class="img-responsive mw-100">
+      </div>
+      <div class="col-6">
+        <div class="img-responsive w-100 text-center">
+          <img
+            src="../../../assets/misc/70th_ascb_logo.png"
+            alt="70th logo">
+        </div>
+        <form action>
+          <div>
+            <label
+              for="username"
+              class="form-label"></label>
+            <input
+              type="text"
+              class="form-control fw-bold mx-auto py-2 shadow-xl"
+              name="username"
+              id="username"
+              placeholder="USERNAME">
+          </div>
+          <div class="mt-2">
+            <label
+              for="password"
+              class="form-label"></label>
+            <input
+              type="password"
+              class="form-control fw-bold mx-auto py-2 shadow-xl"
+              name="password"
+              id="password"
+              placeholder="PASSWORD">
+          </div>
+          <div class="mt-4 text-center">
+            <button
+              type="submit"
+              class="btn btn-primary fw-bold p-2 w-50 login-button">
+              LOGIN
+            </button>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col-6">
+            <p class="text-start mt-3 mx-5">
+              <a
+                routerLink="/home"
+                class="fw-normal text-primary">
+                Back
+              </a>
+            </p>
+          </div>
+          <div class="col-6">
+            <p class="text-start mt-3">
+              <a
+                routerLink="/forgot-password"
+                class="fw-normal text-primary">
+                Forgot Password?
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
