@@ -19,7 +19,8 @@
           </label>
           <input
             type="text"
-            class="form-control is-invalid"
+            class="form-control in-valid"
+            [class.is-invalid]="lastnameisEmpty"
             name="last_name"
             id="last_name"
             required [value]="lastnameval" (change)="lastname($event)" >

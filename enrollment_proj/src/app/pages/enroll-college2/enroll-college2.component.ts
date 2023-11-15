@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
 
@@ -8,10 +8,12 @@ import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enroll
   styleUrls: ['./enroll-college2.component.css']
 })
 export class EnrollCollege2Component implements OnInit{
+
   constructor(private college_enrollment:CollegeEnrollmentController,private router: Router) { }
   currentPage: number = 2; // Initialize with a default page
   totalPages: number = 4; // Replace with your actual total page count
-  lastnameval: string ="";
+  lastnameval: string = "";
+  lastnameisEmpty = false;
   firstnameval: string ="";
   middlenameval: string ="";
   suffixval: string ="";
@@ -24,7 +26,8 @@ export class EnrollCollege2Component implements OnInit{
   genderval: string ="";
   civilstatusval: string ="";
   permanentaddressval: string ="";
-  homeaddressval: string ="";
+  homeaddressval: string = "";
+
 
 
   ngOnInit(): void {
@@ -42,16 +45,7 @@ export class EnrollCollege2Component implements OnInit{
          this.civilstatusval = this.college_enrollment.collegeinfo.civilstatus;
          this.permanentaddressval = this.college_enrollment.collegeinfo.permanentaddress;
          this.homeaddressval = this.college_enrollment.collegeinfo.homeaddress;
-    if (
-      this.college_enrollment.collegeinfo.year_level.length === 0 ||
-      this.college_enrollment.collegeinfo.academic_year.length === 0 ||
-      this.college_enrollment.collegeinfo.course.length === 0 ||
-      this.college_enrollment.collegeinfo.semester.length === 0 ||
-      this.college_enrollment.collegeinfo.student_status.length === 0
-    ) {
-      this.onPageChanged(1);
-      alert("all input must be required");
-    }
+
 
   }
 
@@ -70,9 +64,11 @@ export class EnrollCollege2Component implements OnInit{
     // Fetch data for the new page or update your data as needed
   }
 
-   lastname(event: Event) {
+  lastname(event: Event) {
     // Your change event handler logic here
     const lastnameval = (event.target as HTMLSelectElement).value;
+    this.lastnameisEmpty = lastnameval === '';
+    // this.lastnameisEmpty = true;
     this.college_enrollment.collegeinfo.lastname = lastnameval;
     // alert(lastnameval);
   }

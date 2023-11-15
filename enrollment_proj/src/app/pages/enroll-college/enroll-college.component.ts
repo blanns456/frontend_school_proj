@@ -65,14 +65,27 @@ export class EnrollCollegeComponent implements OnInit{
 
   onPageChanged(page: number) {
     // Update your data or perform any actions when the page changes
-    page;
+     if (
+      this.college_enrollment.collegeinfo.year_level.length === 0 ||
+      this.college_enrollment.collegeinfo.academic_year.length === 0 ||
+      this.college_enrollment.collegeinfo.course.length === 0 ||
+      this.college_enrollment.collegeinfo.semester.length === 0 ||
+      this.college_enrollment.collegeinfo.student_status.length === 0
+    ) {
+
+
+      alert("all input must be required");
+     } else {
+       page;
     // alert(this.currentPage);
-    if (page === 2) {
-      this.router.navigate(['/enroll-college-student-information']);
+      if (page === 2) {
+        this.router.navigate(['/enroll-college-student-information']);
+      }
+      if (page === 3) {
+        this.router.navigate(['/enroll-college-education-record']);
+      }
     }
-    if (page === 3) {
-      this.router.navigate(['/enroll-college-education-record']);
-    }
+
 
     // Fetch data for the new page or update your data as needed
   }
