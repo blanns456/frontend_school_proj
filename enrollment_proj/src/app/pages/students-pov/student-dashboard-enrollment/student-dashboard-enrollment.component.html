@@ -1,0 +1,611 @@
+<div class="container-dashboard">
+  <app-student-sidebar></app-student-sidebar>
+  <div class="main-content">
+    <div class="fixed-background"></div>
+    <app-student-navbar></app-student-navbar>
+    <div class="container-fluid content mb-5">
+      <h2 class="text-white h3 mb-3">
+      Enrollment
+      </h2>
+
+      <div class="container-fluid bg-white rounded">
+        <div class="row bg-secondary py-2 info-links">
+          <div class="col-6 mx-auto text-center">
+            <h2 class="h3 text-white my-0">Enrollment Form</h2>
+          </div>
+        </div>
+        <form
+          action
+          method>
+          <div class="row mt-3">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="academic_year"
+                  class="form-label">
+                  Academic Year
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  name="Academic Year"
+                  id="academic_year"
+                  class="form-control form-select"
+                  required>
+                  <option
+                    value
+                    disabled
+                    selected>
+                    Please select academic year
+                  </option>
+                  <option value="2023-2024">2023-2024</option>
+                  <option value="2022-2023">2022-2023</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="year_level"
+                  class="form-label">
+                  Year Level
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  name="Academic Year"
+                  id="year_level"
+                  class="form-control form-select"
+                  required>
+                  <option
+                    value
+                    disabled
+                    selected>
+                    Please select year level
+                  </option>
+                  <option value="first_year">1st Year</option>
+                  <option value="second_year">2nd Year</option>
+                  <option value="third_year">3rd Year</option>
+                  <option value="fourth_year">4th Year</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="semester"
+                  class="form-label">
+                  Semester
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  name="Academic Year"
+                  id="semester"
+                  class="form-control form-select"
+                  required>
+                  <option
+                    value
+                    disabled
+                    selected>
+                    Please select Semester
+                  </option>
+                  <option value="1st_trimester">1st Trimester</option>
+                  <option value="2nd_trimester">2nd Trimester</option>
+                  <option value="3rd_trimester">3rd Trimester</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="semester"
+                  class="form-label">
+                  Course
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  name="Academic Year"
+                  id="semester"
+                  class="form-control form-select">
+                  <option
+                    value
+                    disabled
+                    selected>
+                    Please select Course
+                  </option>
+                  <option value="CBA">
+                    College of Business Accountancy Education
+                  </option>
+                  <option value="CBE">College of Business Education</option>
+                  <option value="CCE">College of Computer Education</option>
+                  <option value="CCJE">College of Criminal Justice Education</option>
+                  <option value="CTE">College of Teacher Education</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="student_status"
+                  class="form-label">
+                  Student Status
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  name="Academic Year"
+                  id="student_status"
+                  class="form-control form-select">
+                  <option value="new">Freshmen</option>
+                  <option
+                    value="old"
+                    selected>
+                    Continuing
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <h3 class="my-2 mx-3">Student's Information</h3>
+          <div class="divider mx-auto w-100"></div>
+          <div class="row my-3">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="last_name"
+                  class="form-label">
+                  Last Name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="last_name"
+                  id="last_name"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="first_name"
+                  class="form-label">
+                  First Name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="first_name"
+                  id="first_name"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="middle_name"
+                  class="form-label">
+                  Middle Name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="middle_name"
+                  id="middle_name"
+                  required>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="suffix"
+                  class="form-label">
+                  Suffix
+                </label>
+                <select
+                  name="suffix"
+                  id="suffix"
+                  class="form-control form-select">
+                  <option
+                    value
+                    selected
+                    disabled></option>
+                  <option value="jr.">Jr.</option>
+                  <option value="sr.">Sr.</option>
+                  <option value="II">II</option>
+                  <option value="III">III</option>
+                  <option value="IV">IV</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="birth_date"
+                  class="form-label">
+                  Birth Date
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="date"
+                  class="form-control"
+                  name="birth_date"
+                  id="birth_date"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="religion"
+                  class="form-label">
+                  Religion
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="religion"
+                  id="religion"
+                  required>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="email"
+                  class="form-label">
+                  Email Address
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="birth_place"
+                  class="form-label">
+                  Birth Place
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="birth_place"
+                  id="birth_place"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="citizenship"
+                  class="form-label">
+                  Citizenship
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="citizenship"
+                  id="citizenship"
+                  required>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="contact_number"
+                  class="form-label">
+                  Student Contact Number
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  pattern="[0-9]{11}"
+                  class="form-control"
+                  name="contact_number"
+                  id="contact_number"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="gender"
+                  class="form-label">
+                  Gender
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  name="gender"
+                  id="gender"
+                  class="form-control form-select">
+                  <option
+                    value
+                    selected
+                    disabled>
+                    Please Select Gender
+                  </option>
+                  <option value="male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="civil_status"
+                  class="form-label">
+                  Civil Status
+                  <span class="text-danger">*</span>
+                </label>
+                <select
+                  name="civil_status"
+                  id="civil_status"
+                  class="form-control form-select">
+                  <option
+                    value
+                    selected
+                    disabled>
+                    Please Select Civil Status
+                  </option>
+                  <option value="single">Single</option>
+                  <option value="married">Married</option>
+                  <option value="widowed">Widowed</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label
+                  for="permanent_address"
+                  class="form-label">
+                  Permanent Address
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="permanent_address"
+                  id="permanent_address"
+                  required>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="mb-3">
+                <label
+                  for="home_address"
+                  class="form-label">
+                  Home Address
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="home_address"
+                  id="home_address"
+                  required>
+              </div>
+            </div>
+          </div>
+          <h3 class="my-2 mx-3">Records of Education</h3>
+          <div class="divider mx-auto w-100"></div>
+          <div class="row my-3">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <h2 class="h5">Elementary</h2>
+                <label
+                  for="elementary"
+                  class="form-label">
+                  School Name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="elementary"
+                  id="elementary"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <h2 class="h5">Junior High School</h2>
+                <label
+                  for="jhs"
+                  class="form-label">
+                  School Name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="jhs"
+                  id="jhs"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <h2 class="h5">Senior High School</h2>
+                <label
+                  for="shs"
+                  class="form-label">
+                  School Name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="shs"
+                  id="shs"
+                  required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="elem_year"
+                  class="form-label">
+                  Year Graduated
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="elem_year"
+                  id="elem_year"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="jhs_year"
+                  class="form-label">
+                  Year Graduated
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="jhs_year"
+                  id="jhs_year"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="shs_year"
+                  class="form-label">
+                  Year Graduated
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="shs_year"
+                  class="form-control"
+                  name="shs_year"
+                  id="shs_year"
+                  required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="parent_name"
+                  class="form-label">
+                  Parent/Guardian
+                  <span>'</span>
+                  s Name
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="parent_name"
+                  id="parent_name"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="occupation"
+                  class="form-label">
+                  Occupation
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="occupation"
+                  id="occupation"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="parent_number"
+                  class="form-label">
+                  Parent's Contact Number
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  pattern="[0-9]{11}"
+                  class="form-control"
+                  name="parent_number"
+                  id="parent_number"
+                  required>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="last_school"
+                  class="form-label">
+                  Last School Attended
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="last_school"
+                  id="last_school"
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="last_year_school"
+                  class="form-label">
+                  Last School Year Attended
+                  <span class="text-danger">*</span>
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="last_year_school"
+                  id="last_year_school"
+                  required>
+              </div>
+            </div>
+          </div>
+          <div class="text-end">
+            <button class="btn btn-success text-end mx-3 my-3">Enroll Now!</button>
+          </div>
+        </form>
+      </div>
+      <p class="opacity-0">Footer-spacer</p>
+    </div>
+  </div>
+</div>

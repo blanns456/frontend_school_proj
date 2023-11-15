@@ -38,6 +38,7 @@ import { StudentDashboardInformationComponent } from './pages/students-pov/stude
 import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
 import { StudentDashboardAcademicComponent } from './pages/students-pov/student-dashboard-academic/student-dashboard-academic.component';
 import { StudentDashboardFinancialComponent } from './pages/students-pov/student-dashboard-financial/student-dashboard-financial.component';
+import { StudentDashboardEnrollmentComponent } from './pages/students-pov/student-dashboard-enrollment/student-dashboard-enrollment.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { StudentDashboardFinancialComponent } from './pages/students-pov/student
     StudentDashboardParentComponent,
     StudentDashboardAcademicComponent,
     StudentDashboardFinancialComponent,
+    StudentDashboardEnrollmentComponent,
   ],
   imports: [
     BrowserModule,
