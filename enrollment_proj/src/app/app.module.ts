@@ -42,6 +42,9 @@ import { StudentDashboardParentComponent } from './pages/students-pov/student-da
 import { StudentDashboardAcademicComponent } from './pages/students-pov/student-dashboard-academic/student-dashboard-academic.component';
 import { StudentDashboardFinancialComponent } from './pages/students-pov/student-dashboard-financial/student-dashboard-financial.component';
 import { StudentDashboardEnrollmentComponent } from './pages/students-pov/student-dashboard-enrollment/student-dashboard-enrollment.component';
+import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
+import { AccountingSidebarComponent } from './pages/accounting-pov/accounting-sidebar/accounting-sidebar.component';
+import { AccountingNavbarComponent } from './pages/accounting-pov/accounting-navbar/accounting-navbar.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +84,9 @@ import { StudentDashboardEnrollmentComponent } from './pages/students-pov/studen
     StudentDashboardAcademicComponent,
     StudentDashboardFinancialComponent,
     StudentDashboardEnrollmentComponent,
+    AccountingDashboardHomeComponent,
+    AccountingSidebarComponent,
+    AccountingNavbarComponent,
   ],
   imports: [
     BrowserModule,
