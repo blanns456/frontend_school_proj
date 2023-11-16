@@ -1,0 +1,187 @@
+<div class="container-dashboard">
+  <app-student-sidebar></app-student-sidebar>
+  <div class="main-content">
+    <div class="fixed-background"></div>
+    <app-student-navbar></app-student-navbar>
+    <div class="container-fluid content mb-5">
+      <h2 class="text-white h3 mb-3">
+      Account Information
+      </h2>
+
+      <div class="container-fluid bg-white rounded">
+        <div class="row bg-secondary py-2 info-links">
+          <div class="col-6 mx-auto text-center">
+            <h2 class="h3 text-white my-0">Settings</h2>
+          </div>
+        </div>
+        <form
+          action
+          method>
+          <div class="row mt-3">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="first_name"
+                  class="form-label">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="first_name"
+                  id="first_name"
+                  value
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="middle_name"
+                  class="form-label">
+                  Middle Name
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="middle_name"
+                  id="middle_name"
+                  value
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="birth_date"
+                  class="form-label">
+                  Birthdate
+                </label>
+                <input
+                  type="date"
+                  class="form-control"
+                  name="birth_date"
+                  id="birth_date"
+                  value
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="id_number"
+                  class="form-label">
+                  ID Number
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="id_number"
+                  id="id_number"
+                  value="ex.123456789"
+                  readonly>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="username"
+                  class="form-label">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="username"
+                  id="username"
+                  value
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="email"
+                  class="form-label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  value
+                  required>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="old_password"
+                  class="form-label">
+                  Old Password
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="old_password"
+                  id="old_password"
+                  value
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="new_password"
+                  class="form-label">
+                  New Password
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="new_password"
+                  id="new_password"
+                  value
+                  required>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="mb-3 input-holder">
+                <label
+                  for="confirm_password"
+                  class="form-label">
+                  Confirm Password
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="confirm_password"
+                  id="confirm_password"
+                  value
+                  required>
+              </div>
+            </div>
+            <div class="col-6 my-3 text-center">
+              <button
+                type="button"
+                class="btn btn-secondary w-50 mx-auto">
+                Edit
+              </button>
+            </div>
+            <div class="col-6 my-2 text-center">
+              <button
+                type="submit"
+                class="btn btn-success w-50 mx-auto">
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <p class="opacity-0">Footer-spacer</p>
+    </div>
+  </div>
+</div>

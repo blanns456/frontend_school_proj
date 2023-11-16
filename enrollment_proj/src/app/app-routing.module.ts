@@ -26,6 +26,8 @@ import { StudentDashboardFinancialComponent } from './pages/students-pov/student
 import { StudentDashboardEnrollmentComponent } from './pages/students-pov/student-dashboard-enrollment/student-dashboard-enrollment.component';
 
 import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
+import { StudentDashboardSettingsComponent } from './pages/students-pov/student-dashboard-settings/student-dashboard-settings.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -57,6 +59,7 @@ const routes: Routes = [
   { path: 'student-dashboard-academic', component: StudentDashboardAcademicComponent },
   { path: 'student-dashboard-financial', component: StudentDashboardFinancialComponent },
   { path: 'student-dashboard-enrollment', component: StudentDashboardEnrollmentComponent },
+  { path: 'student-dashboard-settings', component: StudentDashboardSettingsComponent },
   {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
