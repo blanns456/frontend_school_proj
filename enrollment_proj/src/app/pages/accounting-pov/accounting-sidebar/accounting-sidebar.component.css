@@ -7,14 +7,27 @@
   background-position: center;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0840a1; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E3050; 
+}
+
 #profile {
   border-radius: 50%;
 }
 
 .sidebar {
   width: 20%;
-  min-height: 100%;
-  background: white;
+  height: 100vh;
+  background: white;  
+  overflow-y: scroll;
 }
 
 .list-group a {

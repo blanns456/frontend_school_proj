@@ -67,7 +67,7 @@ const routes: Routes = [
   },
   {
     path: 'accounting-dashboard-home',
-    component: AccountingDashboardHomeComponent,
+    component: AccountingDashboardHomeComponent, title: 'Accounting | Home'
   },
   {
     path: 'employee-reset-password',
