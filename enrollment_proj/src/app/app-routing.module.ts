@@ -23,6 +23,8 @@ import { StudentDashboardInformationComponent } from './pages/students-pov/stude
 import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
 import { StudentDashboardAcademicComponent } from './pages/students-pov/student-dashboard-academic/student-dashboard-academic.component';
 import { StudentDashboardFinancialComponent } from './pages/students-pov/student-dashboard-financial/student-dashboard-financial.component';
+import { StudentDashboardEnrollmentComponent } from './pages/students-pov/student-dashboard-enrollment/student-dashboard-enrollment.component';
+
 import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
 
 const routes: Routes = [
@@ -54,6 +56,7 @@ const routes: Routes = [
   { path: 'student-dashboard-parent', component: StudentDashboardParentComponent },
   { path: 'student-dashboard-academic', component: StudentDashboardAcademicComponent },
   { path: 'student-dashboard-financial', component: StudentDashboardFinancialComponent },
+  { path: 'student-dashboard-enrollment', component: StudentDashboardEnrollmentComponent },
   {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
