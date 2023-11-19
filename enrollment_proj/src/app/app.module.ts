@@ -44,6 +44,9 @@ import { AccountingSidebarComponent } from './pages/accounting-pov/accounting-si
 import { AccountingNavbarComponent } from './pages/accounting-pov/accounting-navbar/accounting-navbar.component';
 import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
 import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
+import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
+import { EnrollTesda2Component } from './pages/enroll-tesda2/enroll-tesda2.component';
+import { EnrollTesda3Component } from './pages/enroll-tesda3/enroll-tesda3.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +88,9 @@ import { StudentDashboardParentComponent } from './pages/students-pov/student-da
     AccountingNavbarComponent,
     StudentDashboardInformationComponent,
     StudentDashboardParentComponent,
+    EnrollTesdaComponent,
+    EnrollTesda2Component,
+    EnrollTesda3Component,
   ],
   imports: [
     BrowserModule,
