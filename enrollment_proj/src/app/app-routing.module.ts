@@ -50,16 +50,31 @@ const routes: Routes = [
   { path: 'enroll-college-signature', component: EnrollCollege4Component },
   { path: 'student-reset-password', component: StudentResetPasswordComponent },
   { path: 'student-dashboard-home', component: StudentDashboardHomeComponent },
-  { path: 'student-dashboard-information', component: StudentDashboardInformationComponent },
-  { path: 'student-dashboard-parent', component: StudentDashboardParentComponent },
-  { path: 'student-dashboard-academic', component: StudentDashboardAcademicComponent },
-  { path: 'student-dashboard-financial', component: StudentDashboardFinancialComponent },
+  {
+    path: 'student-dashboard-information',
+    component: StudentDashboardInformationComponent,
+  },
+  {
+    path: 'student-dashboard-parent',
+    component: StudentDashboardParentComponent,
+  },
+  {
+    path: 'student-dashboard-academic',
+    component: StudentDashboardAcademicComponent,
+  },
+  {
+    path: 'student-dashboard-financial',
+    component: StudentDashboardFinancialComponent,
+  },
+  {
+    path: 'accounting-dashboard-home',
+    component: AccountingDashboardHomeComponent, title: 'Accounting | Home'
+  },
   {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
   },
   { path: '**', component: NotFoundComponent },
-  { path: 'accounting-dashboard-home', component: AccountingDashboardHomeComponent },
 ];
 
 @NgModule({
