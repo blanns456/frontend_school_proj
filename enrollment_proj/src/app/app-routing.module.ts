@@ -28,6 +28,10 @@ import { StudentDashboardParentComponent } from './pages/students-pov/student-da
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
 import { EnrollTesda2Component } from './pages/enroll-tesda2/enroll-tesda2.component';
 import { EnrollTesda3Component } from './pages/enroll-tesda3/enroll-tesda3.component';
+import { StudentDashboardSettingsComponent } from './pages/students-pov/student-dashboard-settings/student-dashboard-settings.component';
+import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar/registrar-navbar.component';
+import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
+import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/registrar-home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -68,7 +72,32 @@ const routes: Routes = [
   },
   {
     path: 'accounting-dashboard-home',
-    component: AccountingDashboardHomeComponent, title: 'Accounting | Home'
+    component: AccountingDashboardHomeComponent,
+    title: 'Accounting | Home',
+  },
+  {
+    path: 'student-dashboard-information',
+    component: StudentDashboardInformationComponent,
+  },
+  {
+    path: 'student-dashboard-parent',
+    component: StudentDashboardParentComponent,
+  },
+  {
+    path: 'student-dashboard-academic',
+    component: StudentDashboardAcademicComponent,
+  },
+  {
+    path: 'student-dashboard-financial',
+    component: StudentDashboardFinancialComponent,
+  },
+  {
+    path: 'student-dashboard-enrollment',
+    component: StudentDashboardEnrollmentComponent,
+  },
+  {
+    path: 'student-dashboard-settings',
+    component: StudentDashboardSettingsComponent,
   },
   { path: 'student-dashboard-academic', component: StudentDashboardAcademicComponent },
   { path: 'student-dashboard-financial', component: StudentDashboardFinancialComponent },
@@ -77,11 +106,23 @@ const routes: Routes = [
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
   },
+  {
+    path: 'registrar-sidebar',
+    component: RegistrarSidebarComponent,
+  },
+  {
+    path: 'registrar-navbar',
+    component: RegistrarNavbarComponent,
+  },
+  {
+    path: 'registrar-home',
+    component: RegistrarHomeComponent,
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

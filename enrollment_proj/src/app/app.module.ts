@@ -38,6 +38,7 @@ import { StudentSidebarComponent } from './pages/students-pov/student-sidebar/st
 import { StudentNavbarComponent } from './pages/students-pov/student-navbar/student-navbar.component';
 import { StudentDashboardAcademicComponent } from './pages/students-pov/student-dashboard-academic/student-dashboard-academic.component';
 import { StudentDashboardFinancialComponent } from './pages/students-pov/student-dashboard-financial/student-dashboard-financial.component';
+import { StudentDashboardSettingsComponent } from './pages/students-pov/student-dashboard-settings/student-dashboard-settings.component';
 import { StudentDashboardEnrollmentComponent } from './pages/students-pov/student-dashboard-enrollment/student-dashboard-enrollment.component';
 import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
 import { AccountingSidebarComponent } from './pages/accounting-pov/accounting-sidebar/accounting-sidebar.component';
@@ -47,6 +48,10 @@ import { StudentDashboardParentComponent } from './pages/students-pov/student-da
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
 import { EnrollTesda2Component } from './pages/enroll-tesda2/enroll-tesda2.component';
 import { EnrollTesda3Component } from './pages/enroll-tesda3/enroll-tesda3.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar/registrar-navbar.component';
+import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
+import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/registrar-home.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +87,7 @@ import { EnrollTesda3Component } from './pages/enroll-tesda3/enroll-tesda3.compo
     StudentNavbarComponent,
     StudentDashboardAcademicComponent,
     StudentDashboardFinancialComponent,
+    StudentDashboardSettingsComponent,
     StudentDashboardEnrollmentComponent,
     AccountingDashboardHomeComponent,
     AccountingSidebarComponent,
@@ -91,6 +97,9 @@ import { EnrollTesda3Component } from './pages/enroll-tesda3/enroll-tesda3.compo
     EnrollTesdaComponent,
     EnrollTesda2Component,
     EnrollTesda3Component,
+    RegistrarNavbarComponent,
+    RegistrarSidebarComponent,
+    RegistrarHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +111,7 @@ import { EnrollTesda3Component } from './pages/enroll-tesda3/enroll-tesda3.compo
     ReactiveFormsModule,
   ],
 
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
