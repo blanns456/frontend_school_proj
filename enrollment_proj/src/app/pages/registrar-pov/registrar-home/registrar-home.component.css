@@ -1,0 +1,51 @@
+.content {
+  padding-top: 8%;
+  width: 85%;
+  margin: auto;
+}
+
+.divider {
+  width: 100%;
+}
+
+div a{
+  height: 100px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+.count1::before, .count2::before, .count3::before, .count4::before, .count5::before, .count6::before{
+  display: block;
+  font-size: .50em;
+}
+
+.count1::before{
+  
+  content: "Applicants";
+}
+
+.count2::before{
+  content: "Grade's Approval";
+}
+
+.count3::before{
+  content: "Enrollment Ledger";
+}
+
+.count4::before{
+  content: "Officially Enrolled";
+}
+
+.count5::before{
+  content: "View Grades";
+}
+
+.count6::before{
+  content: "Class List";
+}
+
+#divChart{
+    display: block;
+    width: 400px;
+    height: 400px;
+}

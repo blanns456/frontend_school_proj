@@ -10,7 +10,7 @@
   border-radius: 50%;
 }
 
-.active{
+.active {
   background: #0840a1 !important;
   color: white;
 }
@@ -33,4 +33,3 @@
   background-position: left;
   color: white;
 }
-
