@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./accounting-sidebar.component.css']
 })
 export class AccountingSidebarComponent {
-
 }

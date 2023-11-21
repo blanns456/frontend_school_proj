@@ -10,7 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { HomeComponent } from './pages/home/home.component';
-import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
 import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.component';
 import { StudentResetPasswordComponent } from './pages/students-pov/student-reset-password/student-reset-password.component';
 import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/employee-reset-password.component';
@@ -37,8 +36,6 @@ import { EnrollMaed3Component } from './pages/enroll-maed3/enroll-maed3.componen
 import { PaginationMaedComponent } from './pages/pagination-maed/pagination-maed.component';
 import { StudentSidebarComponent } from './pages/students-pov/student-sidebar/student-sidebar.component';
 import { StudentNavbarComponent } from './pages/students-pov/student-navbar/student-navbar.component';
-import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
-import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
 import { StudentDashboardAcademicComponent } from './pages/students-pov/student-dashboard-academic/student-dashboard-academic.component';
 import { StudentDashboardFinancialComponent } from './pages/students-pov/student-dashboard-financial/student-dashboard-financial.component';
 import { StudentDashboardSettingsComponent } from './pages/students-pov/student-dashboard-settings/student-dashboard-settings.component';
@@ -46,6 +43,11 @@ import { StudentDashboardEnrollmentComponent } from './pages/students-pov/studen
 import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
 import { AccountingSidebarComponent } from './pages/accounting-pov/accounting-sidebar/accounting-sidebar.component';
 import { AccountingNavbarComponent } from './pages/accounting-pov/accounting-navbar/accounting-navbar.component';
+import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
+import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
+import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
+import { EnrollTesda2Component } from './pages/enroll-tesda2/enroll-tesda2.component';
+import { EnrollTesda3Component } from './pages/enroll-tesda3/enroll-tesda3.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar/registrar-navbar.component';
 import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
@@ -59,7 +61,6 @@ import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/reg
     NotFoundComponent,
     ForgotPasswordComponent,
     HomeComponent,
-    EnrollTesdaComponent,
     HeadnavagationComponent,
     StudentResetPasswordComponent,
     EmployeeResetPasswordComponent,
@@ -84,8 +85,6 @@ import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/reg
     EnrollMaed3Component,
     StudentSidebarComponent,
     StudentNavbarComponent,
-    StudentDashboardInformationComponent,
-    StudentDashboardParentComponent,
     StudentDashboardAcademicComponent,
     StudentDashboardFinancialComponent,
     StudentDashboardSettingsComponent,
@@ -93,6 +92,11 @@ import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/reg
     AccountingDashboardHomeComponent,
     AccountingSidebarComponent,
     AccountingNavbarComponent,
+    StudentDashboardInformationComponent,
+    StudentDashboardParentComponent,
+    EnrollTesdaComponent,
+    EnrollTesda2Component,
+    EnrollTesda3Component,
     RegistrarNavbarComponent,
     RegistrarSidebarComponent,
     RegistrarHomeComponent

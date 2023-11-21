@@ -1,648 +1,87 @@
-<div class="container-fluid p-0">
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column">
   <app-headnavagation></app-headnavagation>
-  <h2 class="text-center pt-5 pb-6">ASCB TESDA Enrollment Form</h2>
-  <div class="mw-100 text-center mb-5">
+
+  <div class="mw-100 text-center d-flex flex-row">
     <img
       src="../../../assets/misc/ascb_logo.png"
-      class="img-responsive"
+      class="img-responsive mt-3 mw-100"
       alt="ascb_logo">
+    <div class="my-auto mx-4">
+      <h2 class="h3 fw-bold">ASCB Tesda</h2>
+      <h2 class="h3 fw-bold">Enrollment Form</h2>
+    </div>
   </div>
-  <div class="row px-7 pb-5 mx-auto">
-    <div class="col-6">
-      <div class="mb-3">
-        <label
-          for="sy"
-          class="form-label fw-semibold">
-          School Year
-        </label>
-        <input
-          type="text"
-          class="form-control fw-bold"
-          name="sy"
-          id="sy"
-          aria-describedby="helpId"
-          value="AY 2022-2023"
-          placeholder
-          disabled>
-      </div>
-    </div>
-    <div class="col-6">
-      <label
-        for="year_level"
-        class="form-label fw-semibold">
-        Year Level
-      </label>
-      <input
-        type="text"
-        class="form-control"
-        name="year_level"
-        id="year_level"
-        aria-describedby="helpId"
-        placeholder>
-    </div>
-    <div class="col-6">
-      <label
-        for="semester"
-        class="form-label fw-semibold">
-        Semester
-      </label>
-      <input
-        type="text"
-        class="form-control"
-        name="semester"
-        id="semester"
-        aria-describedby="helpId"
-        placeholder>
-    </div>
-    <div class="col-6">
-      <label
-        for="program"
-        class="form-label fw-semibold">
-        Program
-      </label>
-      <input
-        type="text"
-        class="form-control"
-        name="program"
-        id="program"
-        aria-describedby="helpId"
-        placeholder>
-    </div>
-    <div class="col-6">
-      <label
-        for="status"
-        class="form-label fw-semibold">
-        Status
-      </label>
-      <input
-        type="text"
-        class="form-control"
-        name="status"
-        id="status"
-        aria-describedby="helpId"
-        placeholder>
-    </div>
-    <div class="col-6">
-      <label
-        for="area_of_concentration"
-        class="form-label fw-semibold">
-        Area of Concentration
-      </label>
-      <input
-        type="text"
-        class="form-control"
-        name="area_of_concentration"
-        id="area_of_concentration"
-        aria-describedby="helpId"
-        placeholder>
-    </div>
 
-  </div>
-  <div class="divider"></div>
-  <div class="row py-4 px-3 mx-auto">
-    <div class="col-3">
-      <div class="mb-3">
-        <label
-          for="lastname"
-          class="form-label fw-semibold">
-          Last Name
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="lastname"
-          id="lastname"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="mb-3">
-        <label
-          for="firstname"
-          class="form-label fw-semibold">
-          First Name
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="firstname"
-          id="firstname"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="mb-3">
-        <label
-          for="middlename"
-          class="form-label fw-semibold">
-          Middle Name
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="middlename"
-          id="middlename"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="mb-3">
-        <label
-          for="suffix"
-          class="form-label fw-semibold">
-          Suffix
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="suffix"
-          id="suffix"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <div class="row py-4 px-3 mx-auto">
-    <div class="col-4">
-      <div class="mb-3">
-        <label
-          for="bdate"
-          class="form-label fw-semibold">
-          Birthdate
-        </label>
-        <input
-          type="date"
-          class="form-control"
-          name="bdate"
-          id="bdate"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="mb-3">
-        <label
-          for="religion"
-          class="form-label fw-semibold">
-          Religion
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="religion"
-          id="religion"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="mb-3">
-        <label
-          for="email"
-          class="form-label fw-semibold">
-          Email Address
-        </label>
-        <input
-          type="mail"
-          class="form-control"
-          name="email"
-          id="email"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="mb-3">
-        <label
-          for="birthplace"
-          class="form-label fw-semibold">
-          Place of Birth
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="birthplace"
-          id="birthplace"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="mb-3">
-        <label
-          for="citizen"
-          class="form-label fw-semibold">
-          Citizen
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="citizen"
-          id="citizen"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="mb-3">
-        <label
-          for="contact_num"
-          class="form-label fw-semibold">
-          Student Contact Number
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="contact_num"
-          id="contact_num"
-          aria-describedby="helpId"
-          placeholder>
-        <small
-          id="helpId"
-          class="fw-semibold">
-          Please input active mobile number. Unable to send notification message for DITO users
-        </small>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="mb-3">
-        <label
-          for="gender"
-          class="form-label">
-          Gender
-        </label>
-        <select
-          class="form-select form-select"
-          name="gender"
-          id="gender">
-          <option selected>Select one</option>
-          <option value="M">Male</option>
-          <option value="F">Female</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="mb-3">
-        <label
-          for="civil_status"
-          class="form-label fw-semibold">
-          Civil Status
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="civil_status"
-          id="civil_status"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
+  <div class="divider my-3"></div>
 
+  <div
+    class="w-80"
+    id="enroll">
+    <form
+      enctype="multipart/form-data"
+      method="post"
+      class="row">
+      <!-- academic year -->
+      <div class="col-6 my-1 d-flex justify-content-end">
+        <div class="w-50 mx-5">
+          <label
+            for="academic_year"
+            class="form-label">
+            Academic Year
+            <span class="text-danger">*</span>
+          </label>
+          <select
+            name="Academic Year"
+            id="academic_year"
+            class="form-control form-select">
+            <option
+              value
+              disabled
+              selected>
+              Please select academic year
+            </option>
+            <option value="2023-2024">2023-2024</option>
+            <option value="2022-2023">2022-2023</option>
+          </select>
+        </div>
+      </div>
+      <!-- courses -->
+      <div class="col-6 my-1 d-flex justify-content-start">
+        <div class="w-50 mx-5">
+          <label
+            for="semester"
+            class="form-label">
+            Program
+            <span class="text-danger">*</span>
+          </label>
+          <select
+            name="Academic Year"
+            id="semester"
+            class="form-control form-select">
+            <option
+              value
+              disabled
+              selected>
+              Please select Program
+            </option>
+            <option value="DBOT">
+              Diploma in Business Operations Technology
+            </option>
+            <option value="DIST">
+              Diploma in Information Systems Technology
+            </option>
+            <option value="DIT">Diploma in Information Technology</option>
+            <option value="DSOT">
+              Diploma in Security Operations Technology
+            </option>
+          </select>
+        </div>
+      </div>
+      <!-- Status -->
+    </form>
   </div>
-  <div class="divider"></div>
-  <div class="row py-4 px-7 mx-auto">
-    <div class="col-6">
-      <div class="mb-3">
-        <label
-          for="permanent_address"
-          class="form-label">
-          Permanent Address
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="permanent_address"
-          id="permanent_address"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-3">
-        <label
-          for="home_address"
-          class="form-label">
-          Home Address
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="home_address"
-          id="home_address"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <div class="row py-4 px-3 mx-auto">
-    <div class="col-12 text-start">
-      <p class="h5">RECORD OF EDUCATION</p>
-    </div>
-    <div class="col-4 px-5">
-      <p class="h6 py-3">ELEMENTARY</p>
-      <div class="mb-3">
-        <label
-          for
-          class="form-label">
-          School Name
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name
-          id
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-      <div class="mb-3">
-        <label
-          for
-          class="form-label">
-          Year Graduated
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name
-          id
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-4 px-5">
-      <p class="h6 py-3">JUNIOR HIGH SCHOOL</p>
-      <div class="mb-3">
-        <label
-          for
-          class="form-label">
-          School Name
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name
-          id
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-      <div class="mb-3">
-        <label
-          for
-          class="form-label">
-          Year Graduated
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name
-          id
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-4 px-5">
-      <p class="h6 py-3">SENIOR HIGH SCHOOL</p>
-      <div class="mb-3">
-        <label
-          for
-          class="form-label">
-          School Name
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name
-          id
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-      <div class="mb-3">
-        <label
-          for
-          class="form-label">
-          Year Graduated
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name
-          id
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <div class="row py-4 px-7 mx-auto">
-    <div class="col-6">
-      <div class="mb-3">
-        <label
-          for="permanent_address"
-          class="form-label">
-          School last attended
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="permanent_address"
-          id="permanent_address"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-3">
-        <label
-          for="home_address"
-          class="form-label">
-          Last School Attended School Year
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="home_address"
-          id="home_address"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <div class="row py-4 px-7 mx-auto">
-    <div class="col-6">
-      <div class="mb-3">
-        <label
-          for="permanent_address"
-          class="form-label">
-          Parent/Guardian’s Name
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="permanent_address"
-          id="permanent_address"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-3">
-        <label
-          for="home_address"
-          class="form-label">
-          Active Number
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="home_address"
-          id="home_address"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-3">
-        <label
-          for="home_address"
-          class="form-label">
-          Occupation
-        </label>
-        <input
-          type="text"
-          class="form-control"
-          name="home_address"
-          id="home_address"
-          aria-describedby="helpId"
-          placeholder>
-      </div>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <div class="row py-4 px-7 mx-auto">
-    <h3>REQUIREMENT/S</h3>
-    <div class="col-6">
-      <div class="mb-3 py-3 px-4">
-        <label
-          for="good_moral"
-          class="form-label fw-bold">
-          Certificate of Good Moral
-        </label>
-        <input
-          type="file"
-          class="form-control"
-          name="good_moral"
-          id="good_moral"
-          placeholder
-          aria-describedby="fileHelpId">
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-3 py-3 px-4">
-        <label
-          for="good_moral"
-          class="form-label fw-bold">
-          FORM138
-        </label>
-        <input
-          type="file"
-          class="form-control"
-          name="good_moral"
-          id="good_moral"
-          placeholder
-          aria-describedby="fileHelpId">
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-3 py-3 px-4">
-        <label
-          for="psa"
-          class="form-label fw-bold">
-          PSA Birth Certificate
-        </label>
-        <input
-          type="file"
-          class="form-control"
-          name="psa"
-          id="psa"
-          placeholder
-          aria-describedby="fileHelpId">
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-3 py-3 px-4">
-        <label
-          for="tor"
-          class="form-label fw-bold">
-          TOR
-        </label>
-        <input
-          type="file"
-          class="form-control"
-          name="tor"
-          id="tor"
-          placeholder
-          aria-describedby="fileHelpId">
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-3 py-3 px-4">
-        <label
-          for="honorable_dismissal"
-          class="form-label fw-bold">
-          Honorable Dismissal
-        </label>
-        <input
-          type="file"
-          class="form-control"
-          name="honorable_dismissal"
-          id="honorable_dismissal"
-          placeholder
-          aria-describedby="fileHelpId">
-      </div>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <div class="py-4 px-7 mx-auto">
-    <div class="mb-3 w-50">
-      <label
-        for="beenInAsc"
-        class="form-label">
-        Have you ever been in Andres Soriano Colleges of Bislig?
-      </label>
-      <input
-        type="text"
-        class="form-control"
-        name="beenInAsc"
-        id="beenInAsc"
-        aria-describedby="helpId"
-        placeholder>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <div class="py-4 px-7 mx-auto">
-    <div class="mb-3">
-      <label
-        for="initialPayment"
-        class="form-label">
-        Initial Payment
-      </label>
-      <input
-        type="text"
-        class="form-control"
-        name="initialPayment"
-        id="initialPayment"
-        aria-describedby="helpId"
-        placeholder>
-    </div>
-  </div>
-  <div class="divider"></div>
-  <h4 class="py-4 px-7 text-center">In consideration of my admission to the Andres Soriano Colleges of Bislig and the privileges of a student in the constitution, I promise to abide and comply with the rules and regulations laid by the School authorities. </h4>
 
-  <app-enroll-signature-pad></app-enroll-signature-pad>
+  <!-- <app-pagination></app-pagination> -->
+  <app-mat-pagination></app-mat-pagination>
+  <app-footernavigation></app-footernavigation>
 </div>
