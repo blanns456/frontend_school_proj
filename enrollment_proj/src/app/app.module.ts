@@ -87,6 +87,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     StudentDashboardFinancialComponent,
     StudentDashboardSettingsComponent,
     StudentDashboardEnrollmentComponent,
+    AccountingDashboardHomeComponent,
+    AccountingSidebarComponent,
+    AccountingNavbarComponent
   ],
   imports: [
     BrowserModule,
