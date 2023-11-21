@@ -45,6 +45,7 @@ import { StudentDashboardEnrollmentComponent } from './pages/students-pov/studen
 import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
 import { AccountingSidebarComponent } from './pages/accounting-pov/accounting-sidebar/accounting-sidebar.component';
 import { AccountingNavbarComponent } from './pages/accounting-pov/accounting-navbar/accounting-navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { AccountingNavbarComponent } from './pages/accounting-pov/accounting-nav
     AngularSignaturePadModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
 
   providers: [],

@@ -1,4 +1,5 @@
 // import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 // import { Observable } from "rxjs";
 
@@ -37,7 +38,7 @@ export class CollegeEnrollmentController{
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor() {
+  constructor(private http: HttpClient) {
 
   }
 
