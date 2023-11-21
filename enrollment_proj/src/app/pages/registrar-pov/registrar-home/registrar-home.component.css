@@ -1,0 +1,29 @@
+.content {
+  padding-top: 8%;
+  width: 85%;
+  margin: auto;
+}
+
+.divider {
+  width: 100%;
+}
+
+.route {
+  position: relative;
+  width: 200px;
+}
+
+.route::after {
+  position: absolute;
+  content: "Applicant";
+  top: 0;
+  right: 0;
+}
+
+.route::before {
+  position: absolute;
+  content: "Applicant";
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}

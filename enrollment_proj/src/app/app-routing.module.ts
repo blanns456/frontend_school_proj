@@ -29,6 +29,7 @@ import { AccountingDashboardHomeComponent } from './pages/accounting-pov/account
 import { StudentDashboardSettingsComponent } from './pages/students-pov/student-dashboard-settings/student-dashboard-settings.component';
 import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar/registrar-navbar.component';
 import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
+import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/registrar-home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -111,6 +112,10 @@ const routes: Routes = [
   {
     path: 'registrar-navbar',
     component: RegistrarNavbarComponent,
+  },
+  {
+    path: 'registrar-home',
+    component: RegistrarHomeComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];
