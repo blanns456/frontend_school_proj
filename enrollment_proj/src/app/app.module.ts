@@ -99,7 +99,7 @@ import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/reg
     EnrollTesda3Component,
     RegistrarNavbarComponent,
     RegistrarSidebarComponent,
-    RegistrarHomeComponent
+    RegistrarHomeComponent,
   ],
   imports: [
     BrowserModule,
