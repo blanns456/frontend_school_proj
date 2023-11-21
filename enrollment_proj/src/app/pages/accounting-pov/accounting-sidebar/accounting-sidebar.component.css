@@ -7,7 +7,7 @@
   background-position: center;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 5px;
 }
 
@@ -17,7 +17,7 @@
 
 ::-webkit-scrollbar-thumb {
   background: #1E3050; 
-}
+} */
 
 #profile {
   border-radius: 50%;
@@ -27,7 +27,12 @@
   width: 20%;
   height: 100vh;
   background: white;  
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+}
+
+.subtoggle {
+  list-style: none;
+  display: none;
 }
 
 .list-group a {
