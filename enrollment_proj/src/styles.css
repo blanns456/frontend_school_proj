@@ -59,7 +59,7 @@ body::-webkit-scrollbar {
   padding-bottom: 7rem !important;
 }
 
-.invalid{
+.invalid {
   border: 1px solid red;
 }
 
@@ -75,14 +75,13 @@ body::-webkit-scrollbar {
 }
 
 .bg-secondary {
-  background-color: #03A6D7 !important;
+  background-color: #03a6d7 !important;
 }
 
-.btn-secondary{
-  background-color: #03A6D7 !important;
+.btn-secondary {
+  background-color: #03a6d7 !important;
   border: none;
 }
-
 
 /*line divider*/
 .divider {

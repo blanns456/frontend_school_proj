@@ -47,6 +47,9 @@ import { AccountingDashboardHomeComponent } from './pages/accounting-pov/account
 import { AccountingSidebarComponent } from './pages/accounting-pov/accounting-sidebar/accounting-sidebar.component';
 import { AccountingNavbarComponent } from './pages/accounting-pov/accounting-navbar/accounting-navbar.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar/registrar-navbar.component';
+import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
+import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/registrar-home.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +92,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     StudentDashboardEnrollmentComponent,
     AccountingDashboardHomeComponent,
     AccountingSidebarComponent,
-    AccountingNavbarComponent
+    AccountingNavbarComponent,
+    RegistrarNavbarComponent,
+    RegistrarSidebarComponent,
+    RegistrarHomeComponent
   ],
   imports: [
     BrowserModule,
