@@ -43,3 +43,9 @@ div a{
 .count6::before{
   content: "Class List";
 }
+
+#divChart{
+    display: block;
+    width: 400px;
+    height: 400px;
+}
