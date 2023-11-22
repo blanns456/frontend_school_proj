@@ -7,17 +7,13 @@
   background-position: center;
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #0840a1; 
 }
 
 ::-webkit-scrollbar-thumb {
   background: #1E3050; 
-} */
+}
 
 #profile {
   border-radius: 50%;
@@ -27,10 +23,13 @@
   width: 20%;
   height: 100vh;
   background: white;  
-  /* overflow-y: scroll; */
+  overflow-y: auto;
 }
 
-.subtoggle {
+.accSetupToggle-sub, 
+.accReportsToggle-sub, 
+.accFinanceToggle-sub, 
+.telleringToggle-sub{
   list-style: none;
   display: none;
 }
@@ -42,6 +41,7 @@
   transition: 0.3s ease-out;
   border-radius: 0 !important;
   border: none;
+  cursor: pointer;
 }
 .list-group a:hover {
   background-position: left;
