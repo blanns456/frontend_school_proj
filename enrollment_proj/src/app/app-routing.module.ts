@@ -32,6 +32,7 @@ import { StudentDashboardSettingsComponent } from './pages/students-pov/student-
 import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar/registrar-navbar.component';
 import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
 import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/registrar-home.component';
+import { SignupAccountingComponent } from './pages/signup-staff/signup-accounting/signup-accounting.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -117,6 +118,11 @@ const routes: Routes = [
   {
     path: 'registrar-home',
     component: RegistrarHomeComponent,
+  },
+  // signup staff route
+   {
+    path: 'accounting/staff/sign-up',
+    component: SignupAccountingComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];
