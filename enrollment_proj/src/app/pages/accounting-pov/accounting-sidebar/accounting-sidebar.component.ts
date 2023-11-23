@@ -15,6 +15,7 @@ export class AccountingSidebarComponent {
                 accSetup++;
                 if (accSetup % 2 == 0) {
                     $('.accSetupToggle-sub').slideToggle();
+
                 } else {
                     $('.accSetupToggle-sub').slideDown();
                 }
