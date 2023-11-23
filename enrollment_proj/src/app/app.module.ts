@@ -52,6 +52,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar/registrar-navbar.component';
 import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
 import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/registrar-home.component';
+import { AccountingDashboardSchoolfeesComponent } from './pages/accounting-pov/accounting-dashboard-schoolfees/accounting-dashboard-schoolfees.component';
+import { AccountingDashboardLabfeesComponent } from './pages/accounting-pov/accounting-dashboard-labfees/accounting-dashboard-labfees.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +102,8 @@ import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/reg
     RegistrarNavbarComponent,
     RegistrarSidebarComponent,
     RegistrarHomeComponent,
+    AccountingDashboardSchoolfeesComponent,
+    AccountingDashboardLabfeesComponent,
   ],
   imports: [
     BrowserModule,
