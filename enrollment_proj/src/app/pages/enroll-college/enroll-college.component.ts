@@ -9,6 +9,9 @@ import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enroll
   styleUrls: ['./enroll-college.component.css'],
 })
 export class EnrollCollegeComponent implements OnInit {
+  data: any;
+  courses: any;
+  yearLvl: any;
   selectedyearlvl: string | undefined;
   selectedacademic_yearisEmpty = false;
   selectedacademic_selectedsemester = false;
@@ -26,12 +29,24 @@ export class EnrollCollegeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadcourses();
     this.selectedyearlvl = this.college_enrollment.collegeinfo.year_level;
     this.selectedacademic_year =
-      this.college_enrollment.collegeinfo.academic_year;
+    this.college_enrollment.collegeinfo.academic_year;
     this.selectedsemester = this.college_enrollment.collegeinfo.semester;
     this.selectedcourse = this.college_enrollment.collegeinfo.course;
     this.selectedstatus = this.college_enrollment.collegeinfo.student_status;
+  }
+
+
+  loadcourses() {
+    this.college_enrollment.getcourses().subscribe(res => {
+      this.data = res;
+      this.courses = this.data[0];
+      this.courses = this.data[0];
+      this.yearLvl = this.data[1];
+      console.log(this.courses);
+    })
   }
 
   onChange(event: Event) {
@@ -103,6 +118,9 @@ export class EnrollCollegeComponent implements OnInit {
       }
       if (page === 3) {
         this.router.navigate(['/enroll-college-education-record']);
+      }
+      if (page === 4) {
+        this.router.navigate(['/enroll-college-signature']);
       }
     }
 

@@ -44,9 +44,9 @@ export class CollegeEnrollmentController{
 
 
 
-  // public getusers() {
-  //   return this.http.get(this.Root_URL + 'users');
-  // }
+  public getcourses() {
+    return this.http.get(this.Root_URL + 'courses');
+  }
 
 }
 

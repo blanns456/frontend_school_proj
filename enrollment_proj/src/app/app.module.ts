@@ -22,7 +22,6 @@ import { EnrollCollege3Component } from './pages/enroll-college3/enroll-college3
 import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4.component';
 // import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
-import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
 
@@ -46,6 +45,7 @@ import { AccountingDashboardHomeComponent } from './pages/accounting-pov/account
 import { AccountingSidebarComponent } from './pages/accounting-pov/accounting-sidebar/accounting-sidebar.component';
 import { AccountingNavbarComponent } from './pages/accounting-pov/accounting-navbar/accounting-navbar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CollegeSignaturepadComponent } from './pages/college-signaturepad/college-signaturepad.component';
 
 @NgModule({
   declarations: [
@@ -59,8 +59,6 @@ import { HttpClientModule } from '@angular/common/http';
     HeadnavagationComponent,
     StudentResetPasswordComponent,
     EmployeeResetPasswordComponent,
-    EnrollSignaturePadComponent,
-
     EnrollCollegeComponent,
     FooternavigationComponent,
     PaginationComponent,
@@ -88,6 +86,7 @@ import { HttpClientModule } from '@angular/common/http';
     AccountingDashboardHomeComponent,
     AccountingSidebarComponent,
     AccountingNavbarComponent,
+    CollegeSignaturepadComponent,
   ],
   imports: [
     BrowserModule,
