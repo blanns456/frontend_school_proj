@@ -55,6 +55,8 @@ import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/reg
 import { SignupAccountingComponent } from './pages/signup-staff/signup-accounting/signup-accounting.component';
 import { AccountingDashboardSchoolfeesComponent } from './pages/accounting-pov/accounting-dashboard-schoolfees/accounting-dashboard-schoolfees.component';
 import { AccountingDashboardLabfeesComponent } from './pages/accounting-pov/accounting-dashboard-labfees/accounting-dashboard-labfees.component';
+import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/accounting-reports/accounting-statement-of-accounts/accounting-statement-of-accounts.component';
+import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +108,8 @@ import { AccountingDashboardLabfeesComponent } from './pages/accounting-pov/acco
     SignupAccountingComponent,
     AccountingDashboardSchoolfeesComponent,
     AccountingDashboardLabfeesComponent,
+    AccountingStatementOfAccountsComponent,
+    AccountingStudentLedgerComponent,
   ],
   imports: [
     BrowserModule,
