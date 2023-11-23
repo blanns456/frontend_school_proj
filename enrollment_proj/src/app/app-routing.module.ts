@@ -35,6 +35,7 @@ import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/reg
 import { SignupAccountingComponent } from './pages/signup-staff/signup-accounting/signup-accounting.component';
 import { AccountingDashboardSchoolfeesComponent } from './pages/accounting-pov/accounting-dashboard-schoolfees/accounting-dashboard-schoolfees.component';
 import { AccountingDashboardLabfeesComponent } from './pages/accounting-pov/accounting-dashboard-labfees/accounting-dashboard-labfees.component';
+import { SignupDeanComponent } from './pages/signup-staff/signup-dean/signup-dean.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -134,6 +135,10 @@ const routes: Routes = [
   // signup staff route
    {
     path: 'accounting/staff/sign-up',
+    component: SignupAccountingComponent,
+  },
+   {
+    path: 'dean/staff/sign-up',
     component: SignupAccountingComponent,
   },
   { path: '**', component: NotFoundComponent },
