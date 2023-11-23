@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
+import Swal from 'sweetalert2';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -109,7 +110,13 @@ export class EnrollCollegeComponent implements OnInit {
       this.selectedacademic_selectedcourse =
         !this.college_enrollment.collegeinfo.course;
 
-      alert('all input must be required');
+       Swal.fire(
+      'ERROR',
+       'All input must be required',
+       'error'
+        )
+
+      // alert(');
     } else {
       page;
       // alert(this.currentPage);
