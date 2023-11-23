@@ -33,6 +33,8 @@ import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar
 import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
 import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/registrar-home.component';
 import { SignupAccountingComponent } from './pages/signup-staff/signup-accounting/signup-accounting.component';
+import { AccountingDashboardSchoolfeesComponent } from './pages/accounting-pov/accounting-dashboard-schoolfees/accounting-dashboard-schoolfees.component';
+import { AccountingDashboardLabfeesComponent } from './pages/accounting-pov/accounting-dashboard-labfees/accounting-dashboard-labfees.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -75,6 +77,16 @@ const routes: Routes = [
     path: 'accounting-dashboard-home',
     component: AccountingDashboardHomeComponent,
     title: 'Accounting | Home',
+  },
+  {
+    path: 'accounting-dashboard-schoolfees',
+    component: AccountingDashboardSchoolfeesComponent,
+    title: 'Accounting | School Fees',
+  },
+  {
+    path: 'accounting-dashboard-labfees',
+    component: AccountingDashboardLabfeesComponent,
+    title: 'Accounting | Lab Fees',
   },
   {
     path: 'student-dashboard-information',

@@ -34,8 +34,8 @@
       </a>
       <a
         class="my-1 py-3 list-group-item list-group-item-action"
-        routerLinkActive="active"
         id="accSetupToggle"
+        routerLinkActive="active"
       >
         <i class="mx-2 fa-solid fa-book-open-reader"></i>
         Accounting Setup
@@ -44,16 +44,18 @@
       <ul class="accSetupToggle-sub">
         <li>
           <a
+            routerLink="/accounting-dashboard-schoolfees"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action"
+            class="list-group-item list-group-item-action py-2"
           >
             <i class="fa-solid fa-truck-fast mx-2"></i>School Fees
           </a>
         </li>
         <li>
           <a
+            routerLink="/accounting-dashboard-labfees"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action"
+            class="list-group-item list-group-item-action py-2 my-1"
           >
             <i class="fa-solid fa-notes-medical mx-2"></i>Lab Fees
           </a>

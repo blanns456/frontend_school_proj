@@ -53,6 +53,8 @@ import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar
 import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
 import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/registrar-home.component';
 import { SignupAccountingComponent } from './pages/signup-staff/signup-accounting/signup-accounting.component';
+import { AccountingDashboardSchoolfeesComponent } from './pages/accounting-pov/accounting-dashboard-schoolfees/accounting-dashboard-schoolfees.component';
+import { AccountingDashboardLabfeesComponent } from './pages/accounting-pov/accounting-dashboard-labfees/accounting-dashboard-labfees.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +104,8 @@ import { SignupAccountingComponent } from './pages/signup-staff/signup-accountin
     RegistrarSidebarComponent,
     RegistrarHomeComponent,
     SignupAccountingComponent,
+    AccountingDashboardSchoolfeesComponent,
+    AccountingDashboardLabfeesComponent,
   ],
   imports: [
     BrowserModule,
