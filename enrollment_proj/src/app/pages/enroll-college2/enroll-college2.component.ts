@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-enroll-college2',
@@ -19,17 +20,28 @@ export class EnrollCollege2Component implements OnInit {
   firstnameval: string = '';
   firstnamevalisEmpty = false;
   middlenameval: string = '';
+  middlenamevalisEmpty = false;
   suffixval: string = '';
   birthdateval: string = '';
+  birthdatevalisEmpty = false;
   religionval: string = '';
+  religionvalisEmpty = false;
   email_addressval: string = '';
+  email_addressvalisEmpty = false;
   birth_placeval: string = '';
+  birth_placevalisEmpty = false;
   citizenshipval: string = '';
+  citizenshipvalisEmpty = false;
   contactnumberval: string = '';
+  contactnumbervalisEmpty = false;
   genderval: string = '';
+  gendervalisEmpty = false;
   civilstatusval: string = '';
+  civilstatusvalisEmpty = false;
   permanentaddressval: string = '';
+  permanentaddressvalisEmpty = false;
   homeaddressval: string = '';
+  homeaddressvalisEmpty = false;
 
   ngOnInit(): void {
     this.lastnameval = this.college_enrollment.collegeinfo.lastname;
@@ -59,19 +71,7 @@ export class EnrollCollege2Component implements OnInit {
     }
   }
 
-  onPageChanged(page: number) {
-    // Update your data or perform any actions when the page changes
-    page;
-    // alert(this.currentPage);
-    if (page === 1) {
-      this.router.navigate(['/enroll-college']);
-    }
-    if (page === 3) {
-      this.router.navigate(['/enroll-college-education-record']);
-    }
 
-    // Fetch data for the new page or update your data as needed
-  }
 
   lastname(event: Event) {
     // Your change event handler logic here
@@ -93,6 +93,7 @@ export class EnrollCollege2Component implements OnInit {
   middlename(event: Event) {
     // Your change event handler logic here
     const middlenameval = (event.target as HTMLSelectElement).value;
+    this.middlenamevalisEmpty = middlenameval === '';
     this.college_enrollment.collegeinfo.middlename = middlenameval;
     // alert(lastnameval);
   }
@@ -107,6 +108,7 @@ export class EnrollCollege2Component implements OnInit {
   birthdate(event: Event) {
     // Your change event handler logic here
     const birthdateval = (event.target as HTMLSelectElement).value;
+     this.birthdatevalisEmpty = birthdateval === '';
     this.college_enrollment.collegeinfo.birthdate = birthdateval;
     // alert(lastnameval);
   }
@@ -114,6 +116,7 @@ export class EnrollCollege2Component implements OnInit {
   religion(event: Event) {
     // Your change event handler logic here
     const religionval = (event.target as HTMLSelectElement).value;
+    this.religionvalisEmpty = religionval === '';
     this.college_enrollment.collegeinfo.religion = religionval;
     // alert(lastnameval);
   }
@@ -121,6 +124,7 @@ export class EnrollCollege2Component implements OnInit {
   email_address(event: Event) {
     // Your change event handler logic here
     const email_addressval = (event.target as HTMLSelectElement).value;
+    this.email_addressvalisEmpty = email_addressval === '';
     this.college_enrollment.collegeinfo.email_address = email_addressval;
     // alert(lastnameval);
   }
@@ -128,6 +132,7 @@ export class EnrollCollege2Component implements OnInit {
   birth_place(event: Event) {
     // Your change event handler logic here
     const birth_placeval = (event.target as HTMLSelectElement).value;
+    this.birth_placevalisEmpty = birth_placeval === '';
     this.college_enrollment.collegeinfo.birth_place = birth_placeval;
     // alert(lastnameval);
   }
@@ -135,6 +140,7 @@ export class EnrollCollege2Component implements OnInit {
   citizenship(event: Event) {
     // Your change event handler logic here
     const citizenshipval = (event.target as HTMLSelectElement).value;
+    this.citizenshipvalisEmpty = citizenshipval === '';
     this.college_enrollment.collegeinfo.citizenship = citizenshipval;
     // alert(lastnameval);
   }
@@ -142,6 +148,7 @@ export class EnrollCollege2Component implements OnInit {
   contactnumber(event: Event) {
     // Your change event handler logic here
     const contactnumberval = (event.target as HTMLSelectElement).value;
+    this.contactnumbervalisEmpty = contactnumberval === '';
     this.college_enrollment.collegeinfo.contactnumber = contactnumberval;
     // alert(lastnameval);
   }
@@ -149,6 +156,7 @@ export class EnrollCollege2Component implements OnInit {
   gender(event: Event) {
     // Your change event handler logic here
     const genderval = (event.target as HTMLSelectElement).value;
+    this.gendervalisEmpty = genderval === '';
     this.college_enrollment.collegeinfo.gender = genderval;
     // alert(lastnameval);
   }
@@ -156,6 +164,7 @@ export class EnrollCollege2Component implements OnInit {
   civilstatus(event: Event) {
     // Your change event handler logic here
     const civilstatusval = (event.target as HTMLSelectElement).value;
+    this.civilstatusvalisEmpty = civilstatusval === '';
     this.college_enrollment.collegeinfo.civilstatus = civilstatusval;
     // alert(lastnameval);
   }
@@ -163,6 +172,7 @@ export class EnrollCollege2Component implements OnInit {
   permanentaddress(event: Event) {
     // Your change event handler logic here
     const permanentaddressval = (event.target as HTMLSelectElement).value;
+    this.permanentaddressvalisEmpty = permanentaddressval === '';
     this.college_enrollment.collegeinfo.permanentaddress = permanentaddressval;
     // alert(lastnameval);
   }
@@ -170,7 +180,100 @@ export class EnrollCollege2Component implements OnInit {
   homeaddress(event: Event) {
     // Your change event handler logic here
     const homeaddressval = (event.target as HTMLSelectElement).value;
+    this.homeaddressvalisEmpty = homeaddressval === '';
     this.college_enrollment.collegeinfo.homeaddress = homeaddressval;
     // alert(lastnameval);
   }
+
+  onPageChanged(page: number) {
+    if (page > this.currentPage) {
+      if (
+        !this.college_enrollment.collegeinfo.lastname ||
+        !this.college_enrollment.collegeinfo.firstname ||
+        !this.college_enrollment.collegeinfo.middlename ||
+        !this.college_enrollment.collegeinfo.birthdate ||
+        !this.college_enrollment.collegeinfo.religion ||
+        !this.college_enrollment.collegeinfo.email_address ||
+        !this.college_enrollment.collegeinfo.birth_place ||
+        !this.college_enrollment.collegeinfo.citizenship ||
+        !this.college_enrollment.collegeinfo.contactnumber ||
+        !this.college_enrollment.collegeinfo.civilstatus ||
+        !this.college_enrollment.collegeinfo.gender ||
+        !this.college_enrollment.collegeinfo.permanentaddress ||
+        !this.college_enrollment.collegeinfo.homeaddress
+      ) {
+        this.lastnameisEmpty =
+          !this.college_enrollment.collegeinfo.lastname;
+
+        this.firstnamevalisEmpty =
+          !this.college_enrollment.collegeinfo.firstname;
+
+        this.middlenamevalisEmpty =
+          !this.college_enrollment.collegeinfo.middlename;
+
+        this.birthdatevalisEmpty =
+          !this.college_enrollment.collegeinfo.birthdate;
+
+        this.religionvalisEmpty =
+          !this.college_enrollment.collegeinfo.religion;
+
+        this.email_addressvalisEmpty =
+          !this.college_enrollment.collegeinfo.email_address;
+
+        this.birth_placevalisEmpty =
+          !this.college_enrollment.collegeinfo.birth_place;
+
+        this.citizenshipvalisEmpty =
+          !this.college_enrollment.collegeinfo.citizenship;
+
+        this.contactnumbervalisEmpty =
+          !this.college_enrollment.collegeinfo.contactnumber;
+
+        this.gendervalisEmpty =
+          !this.college_enrollment.collegeinfo.gender;
+
+        this.civilstatusvalisEmpty =
+          !this.college_enrollment.collegeinfo.civilstatus;
+
+        this.permanentaddressvalisEmpty =
+          !this.college_enrollment.collegeinfo.permanentaddress;
+
+        this.homeaddressvalisEmpty =
+          !this.college_enrollment.collegeinfo.homeaddress;
+
+        Swal.fire(
+      'ERROR',
+       'All input must be required',
+       'error'
+        )
+      }
+      else {
+      page;
+      // alert(this.currentPage);
+      if (page === 1) {
+        this.router.navigate(['/enroll-college']);
+      }
+      if (page === 3) {
+        this.router.navigate(['/enroll-college-education-record']);
+      }
+      if (page === 4) {
+        this.router.navigate(['/enroll-college-signature']);
+      }
+    }
+    } else {
+      page;
+      // alert(this.currentPage);
+      if (page === 1) {
+        this.router.navigate(['/enroll-college']);
+      }
+      if (page === 3) {
+        this.router.navigate(['/enroll-college-education-record']);
+      }
+      if (page === 4) {
+        this.router.navigate(['/enroll-college-signature']);
+      }
+    }
+    // Fetch data for the new page or update your data as needed
+  }
 }
+

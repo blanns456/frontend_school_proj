@@ -59,10 +59,7 @@
             <option value="" disabled selected>
               Please select academic year
             </option>
-            <option value="first_year">1st Year</option>
-            <option value="second_year">2nd Year</option>
-            <option value="third_year">3rd Year</option>
-            <option value="fourth_year">4th Year</option>
+            <option *ngFor="let option of yearLvl" [value]="option.year_level_id">{{ option.name }}</option>
           </select>
         </div>
       </div>
@@ -104,13 +101,7 @@
             [value]="selectedcourse"
           >
             <option value="" disabled selected>Please select Course</option>
-            <option value="CBA">
-              College of Business Accountancy Education
-            </option>
-            <option value="CBE">College of Business Education</option>
-            <option value="CCE">College of Computer Education</option>
-            <option value="CCJE">College of Criminal Justice Education</option>
-            <option value="CTE">College of Teacher Education</option>
+            <option *ngFor="let option of courses" [value]="option.courses_id">{{ option.name }}</option>
           </select>
         </div>
       </div>

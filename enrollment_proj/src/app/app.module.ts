@@ -21,7 +21,6 @@ import { EnrollCollege3Component } from './pages/enroll-college3/enroll-college3
 import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4.component';
 // import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
-import { EnrollSignaturePadComponent } from './pages/enroll-signature-pad/enroll-signature-pad.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
 
@@ -43,6 +42,8 @@ import { StudentDashboardEnrollmentComponent } from './pages/students-pov/studen
 import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
 import { AccountingSidebarComponent } from './pages/accounting-pov/accounting-sidebar/accounting-sidebar.component';
 import { AccountingNavbarComponent } from './pages/accounting-pov/accounting-navbar/accounting-navbar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CollegeSignaturepadComponent } from './pages/college-signaturepad/college-signaturepad.component';
 import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
 import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
@@ -55,6 +56,9 @@ import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/reg
 import { SignupAccountingComponent } from './pages/signup-staff/signup-accounting/signup-accounting.component';
 import { AccountingDashboardSchoolfeesComponent } from './pages/accounting-pov/accounting-dashboard-schoolfees/accounting-dashboard-schoolfees.component';
 import { AccountingDashboardLabfeesComponent } from './pages/accounting-pov/accounting-dashboard-labfees/accounting-dashboard-labfees.component';
+import { SignupTeacherComponent } from './pages/signup-staff/signup-teacher/signup-teacher.component';
+import { SignupDeanComponent } from './pages/signup-staff/signup-dean/signup-dean.component';
+import { SignupRegistrarComponent } from './pages/signup-staff/signup-registrar/signup-registrar.component';
 import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/accounting-reports/accounting-statement-of-accounts/accounting-statement-of-accounts.component';
 import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
 
@@ -69,8 +73,6 @@ import { AccountingStudentLedgerComponent } from './pages/accounting-pov/account
     HeadnavagationComponent,
     StudentResetPasswordComponent,
     EmployeeResetPasswordComponent,
-    EnrollSignaturePadComponent,
-
     EnrollCollegeComponent,
     FooternavigationComponent,
     PaginationComponent,
@@ -97,6 +99,7 @@ import { AccountingStudentLedgerComponent } from './pages/accounting-pov/account
     AccountingDashboardHomeComponent,
     AccountingSidebarComponent,
     AccountingNavbarComponent,
+    CollegeSignaturepadComponent,
     StudentDashboardInformationComponent,
     StudentDashboardParentComponent,
     EnrollTesdaComponent,
@@ -108,6 +111,9 @@ import { AccountingStudentLedgerComponent } from './pages/accounting-pov/account
     SignupAccountingComponent,
     AccountingDashboardSchoolfeesComponent,
     AccountingDashboardLabfeesComponent,
+    SignupTeacherComponent,
+    SignupDeanComponent,
+    SignupRegistrarComponent,
     AccountingStatementOfAccountsComponent,
     AccountingStudentLedgerComponent,
   ],
@@ -119,6 +125,7 @@ import { AccountingStudentLedgerComponent } from './pages/accounting-pov/account
     AngularSignaturePadModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
 
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
