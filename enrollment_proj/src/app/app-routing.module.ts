@@ -36,6 +36,10 @@ import { SignupAccountingComponent } from './pages/signup-staff/signup-accountin
 import { AccountingDashboardSchoolfeesComponent } from './pages/accounting-pov/accounting-dashboard-schoolfees/accounting-dashboard-schoolfees.component';
 import { AccountingDashboardLabfeesComponent } from './pages/accounting-pov/accounting-dashboard-labfees/accounting-dashboard-labfees.component';
 import { SignupTeacherComponent } from './pages/signup-staff/signup-teacher/signup-teacher.component';
+import { SignupDeanComponent } from './pages/signup-staff/signup-dean/signup-dean.component';
+import { SignupRegistrarComponent } from './pages/signup-staff/signup-registrar/signup-registrar.component';
+import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/accounting-reports/accounting-statement-of-accounts/accounting-statement-of-accounts.component';
+import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -90,6 +94,16 @@ const routes: Routes = [
     title: 'Accounting | Lab Fees',
   },
   {
+    path: 'accounting-dashboard-soa',
+    component: AccountingStatementOfAccountsComponent,
+    title: 'Accounting | Statement of Accounts',
+  },
+  {
+    path: 'accounting-dashboard-studentledger',
+    component: AccountingStudentLedgerComponent,
+    title: 'Accounting | Student Ledger',
+  },
+  {
     path: 'student-dashboard-information',
     component: StudentDashboardInformationComponent,
   },
@@ -133,13 +147,21 @@ const routes: Routes = [
     component: RegistrarHomeComponent,
   },
   // signup staff route
-   {
+  {
     path: 'accounting/staff/sign-up',
     component: SignupAccountingComponent,
   },
-   {
+  {
     path: 'teacher/staff/sign-up',
-    component: SignupAccountingComponent,
+    component: SignupTeacherComponent,
+  },
+  {
+    path: 'dean/staff/sign-up',
+    component: SignupDeanComponent,
+  },
+  {
+    path: 'registrar/staff/sign-up',
+    component: SignupRegistrarComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];
