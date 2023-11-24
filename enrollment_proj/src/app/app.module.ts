@@ -10,7 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { HomeComponent } from './pages/home/home.component';
-import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
 import { HeadnavagationComponent } from './pages/headnavagation/headnavagation.component';
 import { StudentResetPasswordComponent } from './pages/students-pov/student-reset-password/student-reset-password.component';
 import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/employee-reset-password.component';
@@ -36,16 +35,32 @@ import { EnrollMaed3Component } from './pages/enroll-maed3/enroll-maed3.componen
 import { PaginationMaedComponent } from './pages/pagination-maed/pagination-maed.component';
 import { StudentSidebarComponent } from './pages/students-pov/student-sidebar/student-sidebar.component';
 import { StudentNavbarComponent } from './pages/students-pov/student-navbar/student-navbar.component';
-import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
-import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
 import { StudentDashboardAcademicComponent } from './pages/students-pov/student-dashboard-academic/student-dashboard-academic.component';
 import { StudentDashboardFinancialComponent } from './pages/students-pov/student-dashboard-financial/student-dashboard-financial.component';
+import { StudentDashboardSettingsComponent } from './pages/students-pov/student-dashboard-settings/student-dashboard-settings.component';
 import { StudentDashboardEnrollmentComponent } from './pages/students-pov/student-dashboard-enrollment/student-dashboard-enrollment.component';
 import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
 import { AccountingSidebarComponent } from './pages/accounting-pov/accounting-sidebar/accounting-sidebar.component';
 import { AccountingNavbarComponent } from './pages/accounting-pov/accounting-navbar/accounting-navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CollegeSignaturepadComponent } from './pages/college-signaturepad/college-signaturepad.component';
+import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
+import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
+import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
+import { EnrollTesda2Component } from './pages/enroll-tesda2/enroll-tesda2.component';
+import { EnrollTesda3Component } from './pages/enroll-tesda3/enroll-tesda3.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar/registrar-navbar.component';
+import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
+import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/registrar-home.component';
+import { SignupAccountingComponent } from './pages/signup-staff/signup-accounting/signup-accounting.component';
+import { AccountingDashboardSchoolfeesComponent } from './pages/accounting-pov/accounting-dashboard-schoolfees/accounting-dashboard-schoolfees.component';
+import { AccountingDashboardLabfeesComponent } from './pages/accounting-pov/accounting-dashboard-labfees/accounting-dashboard-labfees.component';
+import { SignupTeacherComponent } from './pages/signup-staff/signup-teacher/signup-teacher.component';
+import { SignupDeanComponent } from './pages/signup-staff/signup-dean/signup-dean.component';
+import { SignupRegistrarComponent } from './pages/signup-staff/signup-registrar/signup-registrar.component';
+import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/accounting-reports/accounting-statement-of-accounts/accounting-statement-of-accounts.component';
+import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +70,6 @@ import { CollegeSignaturepadComponent } from './pages/college-signaturepad/colle
     NotFoundComponent,
     ForgotPasswordComponent,
     HomeComponent,
-    EnrollTesdaComponent,
     HeadnavagationComponent,
     StudentResetPasswordComponent,
     EmployeeResetPasswordComponent,
@@ -78,15 +92,30 @@ import { CollegeSignaturepadComponent } from './pages/college-signaturepad/colle
     EnrollMaed3Component,
     StudentSidebarComponent,
     StudentNavbarComponent,
-    StudentDashboardInformationComponent,
-    StudentDashboardParentComponent,
     StudentDashboardAcademicComponent,
     StudentDashboardFinancialComponent,
+    StudentDashboardSettingsComponent,
     StudentDashboardEnrollmentComponent,
     AccountingDashboardHomeComponent,
     AccountingSidebarComponent,
     AccountingNavbarComponent,
     CollegeSignaturepadComponent,
+    StudentDashboardInformationComponent,
+    StudentDashboardParentComponent,
+    EnrollTesdaComponent,
+    EnrollTesda2Component,
+    EnrollTesda3Component,
+    RegistrarNavbarComponent,
+    RegistrarSidebarComponent,
+    RegistrarHomeComponent,
+    SignupAccountingComponent,
+    AccountingDashboardSchoolfeesComponent,
+    AccountingDashboardLabfeesComponent,
+    SignupTeacherComponent,
+    SignupDeanComponent,
+    SignupRegistrarComponent,
+    AccountingStatementOfAccountsComponent,
+    AccountingStudentLedgerComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +128,7 @@ import { CollegeSignaturepadComponent } from './pages/college-signaturepad/colle
     HttpClientModule
   ],
 
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

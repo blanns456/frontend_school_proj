@@ -1,0 +1,48 @@
+<div class="container-dashboard">
+  <app-accounting-sidebar></app-accounting-sidebar>
+  <div class="main-content">
+    <div class="fixed-background"></div>
+    <app-accounting-navbar></app-accounting-navbar>
+    <div
+      class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
+    >
+      <!-- <div class="divider mb-4"></div> -->
+      <div class="bg-white w-100 h-75 rounded">
+        <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+          <h3 class="text-white fw-bold">School Fees</h3>
+        </div>
+        <div class="content d-flex justify-content-end">
+          <button class="btn btnAddFees text-white m-2">
+            <i class="fa-solid fa-file-circle-plus mx-2"></i>Add Fees
+          </button>
+        </div>
+        <div class="container">
+          <table id="example" class="table table-striped" style="width: 100%">
+            <thead>
+              <tr>
+                <th>Student's ID</th>
+                <th>Student's Name</th>
+                <th>School Yr.</th>
+                <th>Course</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+              </tr>
+              <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

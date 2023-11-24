@@ -1,0 +1,149 @@
+<div
+  class="container-fluid p-0 mw-100 vh-100 d-flex justify-content-center align-items-center"
+  id="login">
+  <div class="w-50 bg-light mx-auto container-fluid mt-5 bg-opacity-75 rounded-4 login-bg">
+    <div class="asclogo position-absolute top-25 start-50 translate-middle">
+      <img
+        src="../../../assets/misc/ascb_logo.png"
+        alt
+        class="img-responsive w-100 logo">
+    </div>
+    <form
+      (ngSubmit)="signUp()"
+      [formGroup]="signUpForm"
+      novalidate>
+      <div class="row g-1 mt-5 pt-4">
+        <div class="col-6">
+          <div class="w-75 mx-auto">
+            <div class="mb-2">
+              <label
+                for="first_name"
+                class="form-label">
+                First Name
+              </label>
+              <input
+                type="text"
+                class="form-control fw-bold py-2 shadow-xl"
+                formControlName="first_name"
+                id="first_name"
+                placeholder="ex. john">
+            </div>
+            <div class="mb-2">
+              <label
+                for="email"
+                class="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="email"
+                id="email"
+                placeholder="ex. user@gmail.com">
+            </div>
+            <div class="mb-2">
+              <label
+                for="birth_date"
+                class="form-label">
+                Birth Date
+              </label>
+              <input
+                type="date"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="birth_date"
+                id="birth_date">
+            </div>
+            <div class="form-password">
+              <label
+                for="Password"
+                class="form-label">
+                Password
+              </label>
+              <input
+                [type]="changetype?'password':'text'"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="password"
+                id="Password">
+              <span
+                class="eye-icon"
+                (click)="viewpass()"><i [ngClass]="visible?'fa-solid fa-eye':'fa-solid fa-eye-slash'"></i></span>
+            </div>
+            <span
+              class="text-danger password-error pt-3"
+              *ngIf="signUpForm.errors?.['passwordmatcherror']">Password must be 8 characters long and contains like '“!6csS^m9Hs”'</span>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="w-75 mx-auto">
+            <div class="mb-2">
+              <label
+                for="last_name"
+                class="form-label">
+                Last Name
+              </label>
+              <input
+                type="text"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="last_name"
+                id="last_name"
+                placeholder="ex. doe">
+            </div>
+            <div class="mb-2">
+              <label
+                for="number"
+                class="form-label">
+                Number
+              </label>
+              <input
+                type="tel"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="number"
+                id="number"
+                pattern="[0-9]{11}"
+                placeholder="ex. 09123456789">
+            </div>
+            <div class="mb-2">
+              <label
+                for="username"
+                class="form-label">
+                Username
+              </label>
+              <input
+                type="text"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="username"
+                id="username"
+                placeholder="ex. johndoe123">
+            </div>
+            <div class="form-password">
+              <label
+                for="confirm_password"
+                class="form-label">
+                Confirm password
+              </label>
+              <input
+                [type]="changetype1?'password':'text'"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="confirm_password"
+                id="confirm_password"
+                placeholder>
+              <span
+                class="eye-icon"
+                (click)="viewpass1()"><i [ngClass]="visible1?'fa-solid fa-eye':'fa-solid fa-eye-slash'"></i></span>
+            </div>
+            <span
+              class="text-danger password-error"
+              *ngIf="signUpForm.errors?.['passwordmatcherror']">Password does not match </span>
+          </div>
+        </div>
+        <div class="mt-4 text-center">
+          <button
+            [disabled]="signUpForm.invalid"
+            class="btn btn-primary fw-bold p-2 w-25 login-button">
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
