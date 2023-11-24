@@ -10,7 +10,7 @@ import { EmployeeResetPasswordComponent } from './pages/employee-reset-password/
 import { EnrollCollegeComponent } from './pages/enroll-college/enroll-college.component';
 import { EnrollCollege2Component } from './pages/enroll-college2/enroll-college2.component';
 import { EnrollCollege3Component } from './pages/enroll-college3/enroll-college3.component';
-import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4.component';
+// import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4.component';
 import { EnrollShsComponent } from './pages/enroll-shs/enroll-shs.component';
 import { EnrollShs2Component } from './pages/enroll-shs2/enroll-shs2.component';
 import { EnrollShs3Component } from './pages/enroll-shs3/enroll-shs3.component';
@@ -23,6 +23,7 @@ import { StudentDashboardFinancialComponent } from './pages/students-pov/student
 import { StudentDashboardEnrollmentComponent } from './pages/students-pov/student-dashboard-enrollment/student-dashboard-enrollment.component';
 
 import { AccountingDashboardHomeComponent } from './pages/accounting-pov/accounting-dashboard-home/accounting-dashboard-home.component';
+import { CollegeSignaturepadComponent } from './pages/college-signaturepad/college-signaturepad.component';
 import { StudentDashboardInformationComponent } from './pages/students-pov/student-dashboard-information/student-dashboard-information.component';
 import { StudentDashboardParentComponent } from './pages/students-pov/student-dashboard-parent/student-dashboard-parent.component';
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
@@ -62,10 +63,11 @@ const routes: Routes = [
   { path: 'enroll-maed', component: EnrollMaedComponent },
   { path: 'enroll-maed-student-information', component: EnrollMaed2Component },
   { path: 'enroll-maed-education-record', component: EnrollMaed3Component },
+  { path: 'enroll-college-signature', component: CollegeSignaturepadComponent },
+  // { path: 'enroll-college-signature', component: EnrollCollege4Component },
   { path: 'enroll-tesda', component: EnrollTesdaComponent },
   { path: 'enroll-tesda-student-information', component: EnrollTesda2Component },
   { path: 'enroll-tesda-education-record', component: EnrollTesda3Component },
-  { path: 'enroll-college-signature', component: EnrollCollege4Component },
   { path: 'student-reset-password', component: StudentResetPasswordComponent },
   { path: 'student-dashboard-home', component: StudentDashboardHomeComponent },
   { path: 'student-dashboard-information', component: StudentDashboardInformationComponent },
