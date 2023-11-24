@@ -35,6 +35,7 @@ import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/reg
 import { SignupAccountingComponent } from './pages/signup-staff/signup-accounting/signup-accounting.component';
 import { AccountingDashboardSchoolfeesComponent } from './pages/accounting-pov/accounting-dashboard-schoolfees/accounting-dashboard-schoolfees.component';
 import { AccountingDashboardLabfeesComponent } from './pages/accounting-pov/accounting-dashboard-labfees/accounting-dashboard-labfees.component';
+import { SignupRegistrarComponent } from './pages/signup-staff/signup-registrar/signup-registrar.component';
 import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/accounting-reports/accounting-statement-of-accounts/accounting-statement-of-accounts.component';
 import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
 
@@ -147,6 +148,10 @@ const routes: Routes = [
    {
     path: 'accounting/staff/sign-up',
     component: SignupAccountingComponent,
+  },
+   {
+    path: 'registrar/staff/sign-up',
+    component: SignupRegistrarComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];
