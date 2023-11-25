@@ -145,7 +145,7 @@ const routes: Routes = [
     component: RegistrarNavbarComponent,
   },
   {
-    path: 'registrar-home',
+    path: 'registrar-dashboard-home',
     component: RegistrarHomeComponent,
   },
   // signup staff route

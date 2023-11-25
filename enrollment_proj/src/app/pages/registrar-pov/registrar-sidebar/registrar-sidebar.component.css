@@ -1,24 +1,37 @@
 .logout {
   width: 100%;
   height: 10rem;
+  background-color: #ff0000;
   background-image: url("../../../../assets/misc/profile.png");
   background-size: cover;
   background-position: center;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E3050; 
 }
 
 #profile {
   border-radius: 50%;
 }
 
-.active {
-  background: #0840a1 !important;
-  color: white;
-}
-
 .sidebar {
   width: 20%;
-  min-height: 100%;
-  background: white;
+  height: 100vh;
+  background: white;  
+  overflow-y: auto;
+}
+
+.accSetupToggle-sub, 
+.accReportsToggle-sub, 
+.accFinanceToggle-sub, 
+.telleringToggle-sub{
+  list-style: none;
+  display: none;
 }
 
 .list-group a {
@@ -28,8 +41,14 @@
   transition: 0.3s ease-out;
   border-radius: 0 !important;
   border: none;
+  cursor: pointer;
 }
 .list-group a:hover {
   background-position: left;
+  color: white;
+}
+
+.active {
+  background: #0840a1 !important;
   color: white;
 }
