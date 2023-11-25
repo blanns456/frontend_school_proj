@@ -23,7 +23,8 @@
               </label>
               <input
                 type="text"
-                class="form-control fw-bold py-2 shadow-xl"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
                 formControlName="first_name"
                 id="first_name"
                 placeholder="ex. john">
@@ -37,6 +38,7 @@
               <input
                 type="email"
                 class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
                 formControlName="email"
                 id="email"
                 placeholder="ex. user@gmail.com">
@@ -50,6 +52,7 @@
               <input
                 type="date"
                 class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
                 formControlName="birth_date"
                 id="birth_date">
             </div>
@@ -62,6 +65,7 @@
               <input
                 [type]="changetype?'password':'text'"
                 class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
                 formControlName="password"
                 id="Password">
               <span
@@ -84,6 +88,7 @@
               <input
                 type="text"
                 class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
                 formControlName="last_name"
                 id="last_name"
                 placeholder="ex. doe">
@@ -97,6 +102,7 @@
               <input
                 type="tel"
                 class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
                 formControlName="number"
                 id="number"
                 pattern="[0-9]{11}"
@@ -111,6 +117,7 @@
               <input
                 type="text"
                 class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
                 formControlName="username"
                 id="username"
                 placeholder="ex. johndoe123">
@@ -124,6 +131,7 @@
               <input
                 [type]="changetype1?'password':'text'"
                 class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
                 formControlName="confirm_password"
                 id="confirm_password"
                 placeholder>
