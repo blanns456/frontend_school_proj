@@ -25,7 +25,7 @@
   <div>
     <div id="list-example" class="list-group">
       <a
-        class="py-3 list-group-item list-group-item-action home"
+        class="py-3 list-group-item list-group-item-action home menu-item"
         routerLink="/accounting-dashboard-home"
         routerLinkActive="active"
       >
@@ -33,7 +33,7 @@
         Home
       </a>
       <a
-        class="my-1 py-3 list-group-item list-group-item-action"
+        class="my-1 py-3 list-group-item list-group-item-action menu-item"
         id="accSetupToggle"
         routerLinkActive="active"
       >
@@ -62,7 +62,7 @@
         </li>
       </ul>
       <a
-        class="my-1 py-3 list-group-item list-group-item-action"
+        class="my-1 py-3 list-group-item list-group-item-action menu-item"
         routerLinkActive="active"
         id="accReportsToggle"
       >
@@ -92,7 +92,7 @@
       </ul>
 
       <a
-        class="my-1 py-3 list-group-item list-group-item-action"
+        class="my-1 py-3 list-group-item list-group-item-action menu-item"
         routerLinkActive="active"
         id="accFinanceToggle"
       >
@@ -103,30 +103,23 @@
       <ul class="accFinanceToggle-sub">
         <li>
           <a
+            routerLink="/accounting-matriculation"
             routerLinkActive="active"
             class="list-group-item list-group-item-action"
           >
             <i class="fa-solid fa-truck-fast mx-2"></i>Matriculation
           </a>
         </li>
-        <li>
-          <a
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action"
-          >
-            <i class="fa-solid fa-notes-medical mx-2"></i>Tuition
-          </a>
-        </li>
       </ul>
       <a
-        class="my-1 py-3 list-group-item list-group-item-action"
+        class="my-1 py-3 list-group-item list-group-item-action menu-item"
         href="#list-item-4"
       >
         <i class="mx-2 fa-solid fa-list-check"></i>
         Item Management
       </a>
       <a
-        class="my-1 py-3 list-group-item list-group-item-action"
+        class="my-1 py-3 list-group-item list-group-item-action menu-item"
         id="telleringToggle"
       >
         <i class="mx-2 fa-solid fa-user"></i>

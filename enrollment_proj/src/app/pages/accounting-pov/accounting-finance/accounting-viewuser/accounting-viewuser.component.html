@@ -1,0 +1,680 @@
+<div class="container-dashboard">
+  <app-accounting-sidebar></app-accounting-sidebar>
+  <div class="main-content">
+    <div class="fixed-background"></div>
+    <app-accounting-navbar></app-accounting-navbar>
+    <div
+      class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
+    >
+      <!-- <div class="divider mb-4"></div> -->
+      <div class="contentab bg-white rounded">
+        <div
+          class="text-header shadow w-100 py-2 ps-3 d-flex justify-content-between"
+        >
+          <div class="row w-100">
+            <div class="col">
+              <h3 class="text-white fw-bold fs-3">Rizal, Jose Patricio</h3>
+              <p class="text-white">
+                <i class="fa-solid fa-circle-check me-2"></i>Submitted
+              </p>
+            </div>
+            <div class="col d-flex justify-content-end align-items-end">
+              <button class="btn btn-primary">Tellering</button>
+              <button class="mx-2 btn btn-primary">Update Matriculation</button>
+            </div>
+          </div>
+        </div>
+        <form class="m-4 px-2">
+          <h1 class="fw-bold fs-4">Section Remarks</h1>
+          <div class="divider"></div>
+          <div
+            class="inputGroup row d-flex justify-content-center align-items-center my-3"
+          >
+            <div class="col-4">
+              <label for="ledger">Ledger</label>
+              <select class="inputs" name="ledger" id="ledger">
+                <option selected hidden>Input here..</option>
+                <option value="1">20221545/A.Y 2021-2022</option>
+                <option value="2">20254487/A.Y 2022-2023</option>
+                <option value="3">20200365/A.Y 2023-2024</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="semester">Semester</label>
+              <select class="inputs" name="semester" id="semester">
+                <option selected hidden>Open this select menu</option>
+                <option value="1">1st Trimester</option>
+                <option value="2">2nd Trimester</option>
+                <option value="3">3rd Trimester</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="studid">ID:</label>
+              <input
+                class="inputs"
+                type="number"
+                id="studid"
+                name="studid"
+                placeholder="202244564"
+              />
+            </div>
+            <div class="col-4 my-4">
+              <label for="studname">Student's Name:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="studname"
+                name="studname"
+                placeholder="input here"
+              />
+            </div>
+            <div class="col-4">
+              <label for="course">Course/Yr.</label>
+              <input
+                class="inputs"
+                type="text"
+                id="course"
+                name="course"
+                placeholder="input here"
+              />
+            </div>
+            <div class="col-4">
+              <label for="date">Date:</label>
+              <input
+                class="inputs"
+                type="date"
+                id="date"
+                name="date"
+                placeholder="input date here"
+              />
+            </div>
+          </div>
+          <h1 class="fw-bold fs-4">Student Information</h1>
+          <div class="divider"></div>
+          <div
+            class="inputGroup row d-flex justify-content-center align-items-center my-3"
+          >
+            <div class="col-4">
+              <label for="ledger">Student ID</label>
+              <input
+                class="inputs"
+                type="text"
+                id="status"
+                name="status"
+                value="20221545"
+                readonly
+              />
+            </div>
+            <div class="col-4 my-4">
+              <label for="status">Status</label>
+              <input
+                class="inputs"
+                type="text"
+                id="status"
+                name="status"
+                value="Continuing"
+                readonly
+              />
+            </div>
+            <div class="col-4 my-4">
+              <label for="studname">Student's Name:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="studname"
+                name="studname"
+                value="Rizal Jose Patricio"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="gender">Gender:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="gender"
+                name="gender"
+                value="Male"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="course">Course/Yr.</label>
+              <input
+                class="inputs"
+                type="text"
+                id="course"
+                name="course"
+                value="BSIT/4th Year"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="totalunits">Total Units:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="totalunits"
+                name="totalunits"
+                value="6 units"
+                readonly
+              />
+            </div>
+            <div class="col-4 my-4">
+              <label for="department">Department:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="department"
+                name="department"
+                value="College of Computer Education"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="paymentstatus">Initial Payment Status</label>
+              <input
+                class="inputs fw-bold"
+                type="text"
+                id="paymentstatus"
+                name="paymentstatus"
+                value="Unpaid"
+                readonly
+              />
+            </div>
+          </div>
+        </form>
+        <div class="divider mx-auto my-5"></div>
+        <div class="m-4 px-2">
+          <h1 class="fw-bold fs-4">Finance Information</h1>
+          <div class="divider"></div>
+          <div class="row g-3 my-3">
+            <div class="col-6">
+              <label for="amount">Total Amount</label>
+              <input
+                type="text"
+                class="inputs"
+                id="amount"
+                value="₱ 1,000.00"
+                readonly
+              />
+            </div>
+            <div class="col-6">
+              <label for="prevbalance">Previous Balance</label>
+              <input
+                type="text"
+                class="inputs"
+                id="prevbalance"
+                value="₱ 1,000.00"
+                readonly
+              />
+            </div>
+            <div class="col-6">
+              <label for="totalfees">Total Additional Fees</label>
+              <input
+                type="text"
+                class="inputs"
+                id="totalfees"
+                value="₱ 1,000.00"
+                readonly
+              />
+            </div>
+            <div class="col-6">
+              <label for="finalassessment">Final Assessment</label>
+              <input
+                type="text"
+                class="inputs"
+                id="finalassessment"
+                value="₱ 1,000.00"
+                readonly
+              />
+            </div>
+            <div class="col-6">
+              <label for="downpayment">Downpayment/Initial Payment</label>
+              <input
+                type="text"
+                class="inputs"
+                id="downpayment"
+                value="₱ 1,000.00"
+                readonly
+              />
+            </div>
+
+            <div class="col-6">
+              <label for="grandtotal">Grand Total</label>
+              <input
+                type="text"
+                class="inputs"
+                id="grandtotal"
+                value="₱ 2,000.00"
+                readonly
+              />
+              <span class="fs-6"
+                >Overall assessment including charges, discounts, previous
+                balance and initial payment..</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="divider mx-auto my-5"></div>
+        <div class="container my-5">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="home-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#home-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="home-tab-pane"
+                aria-selected="true"
+              >
+                Subject Taken
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#profile-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="profile-tab-pane"
+                aria-selected="false"
+              >
+                Additional Fee
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="contact-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#contact-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="contact-tab-pane"
+                aria-selected="false"
+              >
+                Default Fee
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="batchcharge-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#batchcharge-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="batchcharge-tab-pane"
+                aria-selected="false"
+              >
+                Batch Charge
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="termfees-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#termfees-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="termfees-tab-pane"
+                aria-selected="false"
+              >
+                Term Fees
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="payments-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#payments-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="payments-tab-pane"
+                aria-selected="false"
+              >
+                Payments
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="home-tab-pane"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+              tabindex="0"
+            >
+              <table
+                id="example"
+                class="table table-striped table-bordered"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>Subjects</th>
+                    <th>Time</th>
+                    <th>Days</th>
+                    <th>Units</th>
+                    <th>Room</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>CAP 101</td>
+                    <td>08:00 AM - 03:00 PM</td>
+                    <td>M,T,W,TH,F</td>
+                    <td>1</td>
+                    <td>Computer Lab</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>CAP 102</td>
+                    <td>09:00 AM - 02:00 PM</td>
+                    <td>M,T,W,TH,F</td>
+                    <td>1</td>
+                    <td>Computer Lab</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="profile-tab-pane"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+              tabindex="0"
+            >
+              <table
+                id="example"
+                class="table table-striped table-bordered"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>Account</th>
+                    <th>Cost Center</th>
+                    <th>Item Name</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sales - ASCB</td>
+                    <td>Main - ASCB</td>
+                    <td>T-shirt</td>
+                    <td>25/11/2023</td>
+                    <td>430</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sales - ASCB</td>
+                    <td>Main - ASCB</td>
+                    <td>OJT Uniform</td>
+                    <td>25/11/2023</td>
+                    <td>2700</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="contact-tab-pane"
+              role="tabpanel"
+              aria-labelledby="contact-tab"
+              tabindex="0"
+            >
+              <table
+                id="example"
+                class="table table-striped table-bordered"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>Account</th>
+                    <th>Cost Center</th>
+                    <th>Particulars</th>
+                    <th>Group</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sales - ASCB</td>
+                    <td>Main - ASCB</td>
+                    <td>Registration Fee</td>
+                    <td>Services</td>
+                    <td>1,000.00</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sales - ASCB</td>
+                    <td>Main - ASCB</td>
+                    <td>ID Fee New</td>
+                    <td>Services</td>
+                    <td>1,000.00</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="batchcharge-tab-pane"
+              role="tabpanel"
+              aria-labelledby="batchcharge-tab"
+              tabindex="0"
+            >
+              <table
+                id="example"
+                class="table table-striped table-bordered"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>ID Number</th>
+                    <th>Student's Name</th>
+                    <th>Ledger</th>
+                    <th>Ledger Status</th>
+                    <th>Semester</th>
+                    <th>Course/Yr.</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>202244564</td>
+                    <td>Rizal, Jose Patricio</td>
+                    <td>20221545/A.Y 2021-2022</td>
+                    <td>Submitted</td>
+                    <td>1st Trimester</td>
+                    <td>BSIT/1st Year</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>202244356</td>
+                    <td>Lumpay, Ignacio P</td>
+                    <td>2022774/A.Y 2023-2024</td>
+                    <td>Submitted</td>
+                    <td>2nd Trimester</td>
+                    <td>BSIT/3rd Year</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="termfees-tab-pane"
+              role="tabpanel"
+              aria-labelledby="termfees-tab"
+              tabindex="0"
+            >
+              <table
+                id="example"
+                class="table table-striped table-bordered"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>Exam</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Prelim</td>
+                    <td>25/11/2023</td>
+                    <td>1,000.00</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Midterm</td>
+                    <td>25/11/2023</td>
+                    <td>1,000.00</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Semi-finals</td>
+                    <td>25/11/2023</td>
+                    <td>1,000.00</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Final</td>
+                    <td>25/11/2023</td>
+                    <td>1,000.00</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="payments-tab-pane"
+              role="tabpanel"
+              aria-labelledby="payments-tab"
+              tabindex="0"
+            >
+              <table
+                id="example"
+                class="table table-striped table-bordered"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>Posting Date</th>
+                    <th>Amount</th>
+                    <th>Remarks</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>25/11/2023</td>
+                    <td>10,000.00</td>
+                    <td>Old Balance</td>
+                    <td>
+                      <button class="btn btn-success mx-2">
+                        <a routerLink="/test"
+                          ><i class="fa-solid fa-pen"></i
+                        ></a>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
