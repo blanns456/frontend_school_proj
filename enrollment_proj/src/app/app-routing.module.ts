@@ -43,6 +43,7 @@ import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/a
 import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
 import { AccountingMatriculationComponent } from './pages/accounting-pov/accounting-finance/accounting-matriculation/accounting-matriculation.component';
 import { AccountingViewuserComponent } from './pages/accounting-pov/accounting-finance/accounting-viewuser/accounting-viewuser.component';
+import { StudentApplicantsComponent } from './pages/registrar-pov/student-applicants/student-applicants.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -156,9 +157,14 @@ const routes: Routes = [
     path: 'registrar-navbar',
     component: RegistrarNavbarComponent,
   },
+  // registrar routes
   {
-    path: 'registrar-home',
+    path: 'registrar-dashboard-home',
     component: RegistrarHomeComponent,
+  },
+  {
+    path: 'registrar-dashboard-applicants',
+    component: StudentApplicantsComponent,
   },
   // signup staff route
   {
