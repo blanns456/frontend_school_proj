@@ -41,6 +41,7 @@ import { SignupDeanComponent } from './pages/signup-staff/signup-dean/signup-dea
 import { SignupRegistrarComponent } from './pages/signup-staff/signup-registrar/signup-registrar.component';
 import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/accounting-reports/accounting-statement-of-accounts/accounting-statement-of-accounts.component';
 import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
+import { StudentApplicantsComponent } from './pages/registrar-pov/student-applicants/student-applicants.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -144,9 +145,14 @@ const routes: Routes = [
     path: 'registrar-navbar',
     component: RegistrarNavbarComponent,
   },
+  // registrar routes
   {
     path: 'registrar-dashboard-home',
     component: RegistrarHomeComponent,
+  },
+  {
+    path: 'registrar-dashboard-applicants',
+    component: StudentApplicantsComponent,
   },
   // signup staff route
   {
