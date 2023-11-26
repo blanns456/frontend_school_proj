@@ -10,6 +10,13 @@ export class AccountingSidebarComponent {
   ngOnInit(): void { 
     $(document).ready(function () {
       // alert('hello world') tas alert to test if it work
+      $('.menu-item').click(function() {
+    // Remove the 'active' class from all menu items
+        $('.menu-item').removeClass('active');
+
+    // Add the 'active' class to the clicked menu item
+        $(this).addClass('active');
+    });
       let accSetup = 0;
             $('#accSetupToggle').click(function() {
                 accSetup++;

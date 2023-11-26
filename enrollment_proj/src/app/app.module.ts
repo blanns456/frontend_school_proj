@@ -61,6 +61,8 @@ import { SignupDeanComponent } from './pages/signup-staff/signup-dean/signup-dea
 import { SignupRegistrarComponent } from './pages/signup-staff/signup-registrar/signup-registrar.component';
 import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/accounting-reports/accounting-statement-of-accounts/accounting-statement-of-accounts.component';
 import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
+import { AccountingMatriculationComponent } from './pages/accounting-pov/accounting-finance/accounting-matriculation/accounting-matriculation.component';
+import { AccountingViewuserComponent } from './pages/accounting-pov/accounting-finance/accounting-viewuser/accounting-viewuser.component';
 import { StudentApplicantsComponent } from './pages/registrar-pov/student-applicants/student-applicants.component';
 
 @NgModule({
@@ -117,6 +119,8 @@ import { StudentApplicantsComponent } from './pages/registrar-pov/student-applic
     SignupRegistrarComponent,
     AccountingStatementOfAccountsComponent,
     AccountingStudentLedgerComponent,
+    AccountingMatriculationComponent,
+    AccountingViewuserComponent,
     StudentApplicantsComponent,
   ],
   imports: [
