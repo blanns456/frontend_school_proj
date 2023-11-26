@@ -13,6 +13,7 @@
 
 ::-webkit-scrollbar-thumb {
   background: #1E3050; 
+  border-radius: 10px;
 }
 
 #profile {
