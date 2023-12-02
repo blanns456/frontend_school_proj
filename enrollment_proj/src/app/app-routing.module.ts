@@ -43,6 +43,7 @@ import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/a
 import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
 import { AccountingMatriculationComponent } from './pages/accounting-pov/accounting-finance/accounting-matriculation/accounting-matriculation.component';
 import { AccountingViewuserComponent } from './pages/accounting-pov/accounting-finance/accounting-viewuser/accounting-viewuser.component';
+import { AccountingItemManagementComponent } from './pages/accounting-pov/accounting-item-management/accounting-item-management.component';
 import { StudentApplicantsComponent } from './pages/registrar-pov/student-applicants/student-applicants.component';
 
 const routes: Routes = [
@@ -119,6 +120,11 @@ const routes: Routes = [
     title: 'Accounting | Matriculation',
   },
   {
+    path: 'accounting-item-management',
+    component: AccountingItemManagementComponent,
+    title: 'Accounting | Item Management',
+  },
+  {
     path: 'student-dashboard-information',
     component: StudentDashboardInformationComponent,
   },
@@ -190,4 +196,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

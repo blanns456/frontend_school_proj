@@ -1,0 +1,273 @@
+<div class="container-dashboard">
+  <app-accounting-sidebar></app-accounting-sidebar>
+  <div class="main-content">
+    <div class="fixed-background"></div>
+    <app-accounting-navbar></app-accounting-navbar>
+    <div class="container-fluid containerTab">
+      <!-- <div class="divider mb-4"></div> -->
+      <div class="contentTab mb-3 bg-white w-100 rounded">
+        <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+          <h3 class="text-white fw-bold">Item Management</h3>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button
+            class="btn btnAddFees text-white m-2"
+            data-bs-toggle="modal"
+            data-bs-target="#newItems"
+          >
+            <i class="fa-solid fa-file-circle-plus mx-2"></i>New Item
+          </button>
+        </div>
+        <div class="container my-2">
+          <table
+            id="example"
+            #dataTable
+            class="table table-striped"
+            style="width: 100%"
+          >
+            <thead>
+              <tr>
+                <th>Item Name</th>
+                <th>Status</th>
+                <th>Item Group</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GRADES EVALUATION</td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Miscellaneous</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>GRADES EVALUATION</td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Miscellaneous</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>GRADES EVALUATION</td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Miscellaneous</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>GRADES EVALUATION</td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Miscellaneous</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>GRADES EVALUATION</td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Miscellaneous</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>GRADES EVALUATION</td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Miscellaneous</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>GRADES EVALUATION</td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Miscellaneous</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>GRADES EVALUATION</td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Miscellaneous</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>GRADES EVALUATION</td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Miscellaneous</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>GRADES EVALUATION</td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Miscellaneous</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  PRACTICUM/WORK INTEGRATED LEARNING/AY 2023-2024/1ST TRIMESTER
+                </td>
+                <td><span class="badge text-bg-success">Enabled</span></td>
+                <td>Tuition Fee</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a><i class="fa-solid fa-pen"></i></a>
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a routerLink="/test"
+                      ><i class="fa-solid fa-trash text-white"></i
+                    ></a>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div
+  class="modal fade"
+  id="newItems"
+  tabindex="-1"
+  aria-labelledby="newItemsLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 fw-bold" id="newItemsLabel">New Item</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="px-1">
+          <div
+            class="inputGroup row d-flex justify-content-center align-items-center"
+          >
+            <div class="col-10">
+              <label for="itemCode">Item Code:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="itemCode"
+                name="itemCode"
+                placeholder="input here"
+              />
+            </div>
+            <div class="col-10 my-4">
+              <label for="itemName">Item Name:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="itemName"
+                name="itemName"
+                placeholder="input here"
+              />
+            </div>
+            <div class="col-10">
+              <label for="itemGroup">Item Group:</label>
+              <select class="inputs" name="itemGroup" id="itemGroup">
+                <option value="" selected hidden>Input here</option>
+                <option value="1">Tuition Fees</option>
+                <option value="2">Trust Fund</option>
+                <option value="3">Miscellaneous</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
