@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -64,6 +64,7 @@ import { AccountingStudentLedgerComponent } from './pages/accounting-pov/account
 import { AccountingMatriculationComponent } from './pages/accounting-pov/accounting-finance/accounting-matriculation/accounting-matriculation.component';
 import { AccountingViewuserComponent } from './pages/accounting-pov/accounting-finance/accounting-viewuser/accounting-viewuser.component';
 import { StudentApplicantsComponent } from './pages/registrar-pov/student-applicants/student-applicants.component';
+import { OfficiallyEnrolledComponent } from './pages/registrar-pov/officially-enrolled/officially-enrolled.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +123,7 @@ import { StudentApplicantsComponent } from './pages/registrar-pov/student-applic
     AccountingMatriculationComponent,
     AccountingViewuserComponent,
     StudentApplicantsComponent,
+    OfficiallyEnrolledComponent,
   ],
   imports: [
     BrowserModule,
@@ -131,7 +133,8 @@ import { StudentApplicantsComponent } from './pages/registrar-pov/student-applic
     AngularSignaturePadModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSlideToggleModule,
   ],
 
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
