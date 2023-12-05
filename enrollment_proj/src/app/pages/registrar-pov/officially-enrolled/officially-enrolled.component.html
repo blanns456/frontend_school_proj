@@ -21,7 +21,7 @@
                 <th>Name</th>
                 <th>Course/Yr.</th>
                 <th>Gender</th>
-                <th>School Year</th>
+                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -31,7 +31,7 @@
                 <td>Badang, James M.</td>
                 <td>BSIT/4th year</td>
                 <td>Male</td>
-                <td>AY 2023-2024</td>
+                <td>Continuing</td>
                 <td colspan="2">
                   <button
                     class="btn btn-secondary btn-sm text-center"
@@ -46,7 +46,7 @@
                 <td>Roda, John Vincent E.</td>
                 <td>BSCS/4th year</td>
                 <td>Female</td>
-                <td>AY 2023-2024</td>
+                <td>Continuing</td>
                 <td colspan="2">
                   <button
                     class="btn btn-secondary btn-sm text-center"
@@ -63,46 +63,4 @@
     </div>
   </div>
 </div>
-
-<div
-  class="modal fade"
-  id="studView"
-  tabindex="-1"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  role="dialog"
-  aria-labelledby="modalTitleId"
-  aria-hidden="true">
-  <div
-    class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl"
-    role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5
-          class="modal-title"
-          id="modalTitleId">BADANG, JAMES MORENO <span><i
-              class="fa-solid fa-circle"
-              style="color: #0fff37;"></i>Approved</span></h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"></button>
-      </div>
-      <div class="modal-body">Body</div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal">
-          Close
-        </button>
-        <button
-          type="button"
-          class="btn btn-primary">
-          Save
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+<app-student-info></app-student-info>
