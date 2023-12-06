@@ -30,7 +30,20 @@ export class CollegeEnrollmentController{
     "gender":"",
     "civilstatus":"",
     "permanentaddress":"",
-    "homeaddress":"",
+    "homeaddress": "",
+    "elemschool": "",
+    "elemyg": "",
+    "jhschool": "",
+    "jhsyg": "",
+    "shschool": "",
+    "shsyg": "",
+    "parentsOrguradian": "",
+    "parentsOccupation": "",
+    "parentcontactnumber": "",
+    "schoollastattended": "",
+    "lastschoolyearattended": "",
+    "status": "1",
+    "signature":""
    }
 
   readonly Root_URL = 'http://127.0.0.1:8000/api/';
@@ -45,8 +58,17 @@ export class CollegeEnrollmentController{
 
 
 
+
+
   public getcourses() {
     return this.http.get(this.Root_URL + 'courses');
+  }
+
+  public createstudent(student: {
+    year_level: string,
+    course: string,
+  }) {
+   return this.http.post(this.Root_URL + 'addstudent', student);
   }
 
 }
