@@ -8,12 +8,11 @@
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #1E3050; 
-  border-radius: 10px;
 }
 
 #profile {
@@ -24,11 +23,12 @@
   width: 20%;
   height: 100vh;
   background: white;  
+  overflow-y: auto;
 }
 
-.links{
-  height: 80vh;
-  overflow-y: auto;
+ul{
+    padding-left: 20px;
+    margin: 0;
 }
 
 .accSetupToggle-sub, 
@@ -43,7 +43,7 @@
   display: inline-block;
   background: linear-gradient(to left, white 50%, #0840a1 50%) right;
   background-size: 200%;
-  transition: 0.3s ease-out;
+  transition: 0.2s ease-out;
   border-radius: 0 !important;
   border: none;
   cursor: pointer;
@@ -57,3 +57,4 @@
   background: #0840a1 !important;
   color: white;
 }
+

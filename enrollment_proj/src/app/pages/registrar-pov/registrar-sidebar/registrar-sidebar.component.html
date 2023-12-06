@@ -1,4 +1,4 @@
-<div class="sidebar position-fixed z-1">
+<div class="sidebar position-fixed">
   <div class="logout position-relative">
     <div class="text-end">
       <a
@@ -20,19 +20,19 @@
       <p class="text-light fs-6 mx-3 fw-light">Registrar</p>
     </div>
   </div>
-  <div class="links pb-5">
+  <div>
     <div
       id="list-example"
       class="list-group">
       <a
-        class="py-3 list-group-item list-group-item-action home"
-        routerLink="/accounting-dashboard-home"
+        class="py-2 list-group-item list-group-item-action home menu-item"
+        routerLink="/registrar-dashboard-home"
         routerLinkActive="active">
         <i class="mx-2 fa-solid fa-house"></i>
         Home
       </a>
       <a
-        class="my-1 py-3 list-group-item list-group-item-action"
+        class="my-1 py-2 list-group-item list-group-item-action menu-item"
         id="accSetupToggle"
         routerLinkActive="active">
         <i class="mx-2 fa-solid fa-book-open-reader"></i>
@@ -44,29 +44,29 @@
           <a
             routerLink="/registrar-dashboard-applicants"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-2"><i class="fa-solid fa-users mx-2"></i>
+            class="list-group-item list-group-item-action py-2"><i class="fa-solid fa-truck-fast mx-2"></i>
             Applicants
           </a>
         </li>
         <li>
           <a
-            routerLink="/accounting-dashboard-labfees"
+            routerLink="/registrar-dashboard-enrolled"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-2 my-1"><i class="fa-solid fa-users-line mx-2"></i>
+            class="list-group-item list-group-item-action py-2 my-1"><i class="fa-solid fa-notes-medical mx-2"></i>
             Officially Enrolled
           </a>
         </li>
         <li>
           <a
-            routerLink="/accounting-dashboard-labfees"
+            routerLink="/registrar-dashboard-enrolled"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-2 my-1"><i class="fa-solid fa-address-book mx-2"></i>
+            class="list-group-item list-group-item-action py-2"><i class="fa-solid fa-notes-medical mx-2"></i>
             Enrolled by Subject
           </a>
         </li>
       </ul>
       <a
-        class="my-1 py-3 list-group-item list-group-item-action"
+        class="my-1 py-2 list-group-item list-group-item-action menu-item"
         routerLinkActive="active"
         id="accReportsToggle">
         <i class="mx-2 fa-solid fa-file-pen"></i>
@@ -93,7 +93,7 @@
       </ul>
 
       <a
-        class="my-1 py-3 list-group-item list-group-item-action"
+        class="my-1 py-2 list-group-item list-group-item-action menu-item"
         routerLinkActive="active"
         id="accFinanceToggle">
         <i class="mx-2 fa-solid fa-hand-holding-dollar"></i>
@@ -103,54 +103,10 @@
       <ul class="accFinanceToggle-sub">
         <li>
           <a
+            routerLink="/accounting-matriculation"
             routerLinkActive="active"
             class="list-group-item list-group-item-action"><i class="fa-solid fa-truck-fast mx-2"></i>
             Matriculation
-          </a>
-        </li>
-        <li>
-          <a
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action"><i class="fa-solid fa-notes-medical mx-2"></i>
-            Tuition
-          </a>
-        </li>
-      </ul>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        href="#list-item-4">
-        <i class="mx-2 fa-solid fa-list-check"></i>
-        Item Management
-      </a>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        id="telleringToggle">
-        <i class="mx-2 fa-solid fa-user"></i>
-        Tellering
-        <i class="fa-solid fa-caret-down"></i>
-      </a>
-      <ul class="telleringToggle-sub">
-        <li>
-          <a
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action"><i class="fa-solid fa-truck-fast mx-2"></i>
-            Daily Collection Setup
-          </a>
-        </li>
-        <li>
-          <a
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action"><i class="fa-solid fa-notes-medical mx-2"></i>
-            Daily Collection
-            Reports
-          </a>
-        </li>
-        <li>
-          <a
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action"><i class="fa-solid fa-notes-medical mx-2"></i>
-            Daily Consolidated
-            Reports
           </a>
         </li>
       </ul>

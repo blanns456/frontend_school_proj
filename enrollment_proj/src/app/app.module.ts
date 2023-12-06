@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -64,6 +63,8 @@ import { AccountingStudentLedgerComponent } from './pages/accounting-pov/account
 import { AccountingMatriculationComponent } from './pages/accounting-pov/accounting-finance/accounting-matriculation/accounting-matriculation.component';
 import { AccountingViewuserComponent } from './pages/accounting-pov/accounting-finance/accounting-viewuser/accounting-viewuser.component';
 import { StudentApplicantsComponent } from './pages/registrar-pov/student-applicants/student-applicants.component';
+import { OfficiallyEnrolledComponent } from './pages/registrar-pov/officially-enrolled/officially-enrolled.component';
+import { StudentInfoComponent } from './pages/registrar-pov/student-info/student-info.component';
 import { AccountingItemManagementComponent } from './pages/accounting-pov/accounting-item-management/accounting-item-management.component';
 
 @NgModule({
@@ -123,6 +124,8 @@ import { AccountingItemManagementComponent } from './pages/accounting-pov/accoun
     AccountingMatriculationComponent,
     AccountingViewuserComponent,
     StudentApplicantsComponent,
+    OfficiallyEnrolledComponent,
+    StudentInfoComponent,
     AccountingItemManagementComponent,
   ],
   imports: [
@@ -133,7 +136,7 @@ import { AccountingItemManagementComponent } from './pages/accounting-pov/accoun
     AngularSignaturePadModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
 
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
