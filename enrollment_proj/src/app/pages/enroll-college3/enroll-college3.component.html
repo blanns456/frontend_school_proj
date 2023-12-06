@@ -23,6 +23,8 @@
             class="form-control"
             name="elementary"
             id="elementary"
+            [value]="elemschoolval"
+            (change)="elemschool($event)"
             required>
         </div>
       </div>
@@ -40,6 +42,8 @@
             class="form-control"
             name="jhs"
             id="jhs"
+            [value]="jhsval"
+            (change)="jhs($event)"
             required>
         </div>
       </div>
@@ -57,6 +61,8 @@
             class="form-control"
             name="shs"
             id="shs"
+            [value]="shsval"
+            (change)="shs($event)"
             required>
         </div>
       </div>
@@ -76,6 +82,8 @@
             class="form-control"
             name="elem_year"
             id="elem_year"
+            [value]="elemschoolyrval"
+            (change)="elemyr($event)"
             required>
         </div>
       </div>
@@ -92,6 +100,8 @@
             class="form-control"
             name="jhs_year"
             id="jhs_year"
+            [value]="jhsyrval"
+            (change)="jhsyr($event)"
             required>
         </div>
       </div>
@@ -108,6 +118,8 @@
             class="form-control"
             name="shs_year"
             id="shs_year"
+            [value]="shsyrval"
+            (change)="shsyr($event)"
             required>
         </div>
       </div>
@@ -129,6 +141,8 @@
             class="form-control"
             name="parent_name"
             id="parent_name"
+            [value]="parentguardianval"
+            (change)="parentguardian($event)"
             required>
         </div>
       </div>
@@ -145,6 +159,8 @@
             class="form-control"
             name="occupation"
             id="occupation"
+            [value]="occupationval"
+            (change)="occupation($event)"
             required>
         </div>
       </div>
@@ -164,6 +180,8 @@
             class="form-control"
             name="parent_number"
             id="parent_number"
+            [value]="parentnumberval"
+            (change)="parentnumber($event)"
             required>
         </div>
       </div>
@@ -183,6 +201,8 @@
             class="form-control"
             name="last_school"
             id="last_school"
+            [value]="last_schoolval"
+            (change)="last_school($event)"
             required>
         </div>
       </div>
@@ -199,6 +219,8 @@
             class="form-control"
             name="last_year_school"
             id="last_year_school"
+            [value]="last_schoolyrval"
+            (change)="last_schoolyr($event)"
             required>
         </div>
       </div>

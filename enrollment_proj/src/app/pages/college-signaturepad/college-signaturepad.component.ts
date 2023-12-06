@@ -9,8 +9,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./college-signaturepad.component.css']
 })
 export class CollegeSignaturepadComponent {
-   signatureNeeded!: boolean;
+  signatureNeeded!: boolean;
   signaturePad!: SignaturePad;
+  info: any;
   @ViewChild('canvas') canvasEl!: ElementRef;
   signatureImg!: string;
 
@@ -41,10 +42,11 @@ export class CollegeSignaturepadComponent {
     const base64Data = this.signaturePad.toDataURL();
     this.signatureImg = base64Data;
 
-    console.log(base64Data);
     this.signatureNeeded = this.signaturePad.isEmpty();
     if (!this.signatureNeeded) {
       this.signatureNeeded = false;
+      this.college_enrollment.collegeinfo.signature = base64Data;
+
 
     } else {
       Swal.fire(
@@ -53,6 +55,41 @@ export class CollegeSignaturepadComponent {
        'error'
       )
     }
+  }
+
+
+  onSubmit() {
+
+    this.college_enrollment.createstudent({
+      year_level: this.college_enrollment.collegeinfo.year_level,
+      course:this.college_enrollment.collegeinfo.course
+
+    }).subscribe(res => {
+      this.info = res;
+      console.log(this.info);
+      if (this.info[0]['message'] === "ERROR") {
+
+        Swal.fire(
+      'Error',
+       this.info[0]['error']["email"][0],
+       'error'
+        )
+        document.querySelector("#email")?.setAttribute("style", "border:1px solid red");
+        return;
+      } else {
+        // this.loadusers();
+        Swal.fire(
+      'Success',
+       'Added Successfully',
+       'success'
+        ).then(e => {
+
+          window.location.reload();
+        })
+        return;
+      }
+    });
+
   }
 
   currentPage: number = 4; // Initialize with a default page
