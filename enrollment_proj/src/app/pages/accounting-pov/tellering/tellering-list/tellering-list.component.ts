@@ -1,12 +1,11 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import DataTable from 'datatables.net-dt';
-
 @Component({
-  selector: 'app-accounting-matriculation',
-  templateUrl: './accounting-matriculation.component.html',
-  styleUrls: ['./accounting-matriculation.component.css']
+  selector: 'app-tellering-list',
+  templateUrl: './tellering-list.component.html',
+  styleUrls: ['./tellering-list.component.css']
 })
-export class AccountingMatriculationComponent implements OnInit, AfterViewInit {
+export class TelleringListComponent implements OnInit, AfterViewInit {
   @ViewChild('dataTable', { static: false }) table: any;
   dataTable: any;
   constructor() {
@@ -21,5 +20,4 @@ export class AccountingMatriculationComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
   }
-
 }

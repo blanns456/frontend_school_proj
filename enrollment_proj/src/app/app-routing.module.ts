@@ -44,6 +44,10 @@ import { AccountingStudentLedgerComponent } from './pages/accounting-pov/account
 import { AccountingMatriculationComponent } from './pages/accounting-pov/accounting-finance/accounting-matriculation/accounting-matriculation.component';
 import { AccountingViewuserComponent } from './pages/accounting-pov/accounting-finance/accounting-viewuser/accounting-viewuser.component';
 import { AccountingItemManagementComponent } from './pages/accounting-pov/accounting-item-management/accounting-item-management.component';
+import { DailycollectionSetupComponent } from './pages/accounting-pov/tellering/dailycollection-setup/dailycollection-setup.component';
+import { TrustfundsItemsComponent } from './pages/accounting-pov/tellering/dailycollection-setup/trustfunds-items/trustfunds-items.component';
+import { TelleringListComponent } from './pages/accounting-pov/tellering/tellering-list/tellering-list.component';
+import { TellerViewuserComponent } from './pages/accounting-pov/tellering/teller-viewuser/teller-viewuser.component';
 import { StudentApplicantsComponent } from './pages/registrar-pov/student-applicants/student-applicants.component';
 import { OfficiallyEnrolledComponent } from './pages/registrar-pov/officially-enrolled/officially-enrolled.component';
 
@@ -124,6 +128,26 @@ const routes: Routes = [
     path: 'accounting-item-management',
     component: AccountingItemManagementComponent,
     title: 'Accounting | Item Management',
+  },
+  {
+    path: 'accounting-tellering-list',
+    component: TelleringListComponent,
+    title: 'Accounting | Teller',
+  },
+  {
+    path: 'teller-viewuser',
+    component: TellerViewuserComponent,
+    title: 'Accounting | TellerView',
+  },
+  {
+    path: 'dailycollection-setup',
+    component: DailycollectionSetupComponent,
+    title: 'Daily Collection Setup',
+  },
+  {
+    path: 'trustfund-items',
+    component: TrustfundsItemsComponent,
+    title: 'Daily Collection Setup',
   },
   {
     path: 'student-dashboard-information',

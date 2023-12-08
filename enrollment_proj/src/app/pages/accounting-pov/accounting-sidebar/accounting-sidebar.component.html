@@ -22,7 +22,7 @@
       <p class="text-light fs-6 mx-3 fw-light">Accounting</p>
     </div>
   </div>
-  <div>
+  <div class="links">
     <div id="list-example" class="list-group">
       <a
         class="py-3 list-group-item list-group-item-action home menu-item"
@@ -46,7 +46,7 @@
           <a
             routerLink="/accounting-dashboard-schoolfees"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-2"
+            class="list-group-item list-group-item-action py-3"
             ><i class="fa-solid fa-truck-fast mx-2"></i>
             School Fees
           </a>
@@ -55,7 +55,7 @@
           <a
             routerLink="/accounting-dashboard-labfees"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-2 my-1"
+            class="list-group-item list-group-item-action py-3 my-1"
             ><i class="fa-solid fa-notes-medical mx-2"></i>
             Lab Fees
           </a>
@@ -75,7 +75,7 @@
           <a
             routerLink="/accounting-dashboard-soa"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action"
+            class="list-group-item list-group-item-action py-3"
             ><i class="fa-solid fa-truck-fast mx-2"></i>
             Statement of Accounts
           </a>
@@ -84,7 +84,7 @@
           <a
             routerLink="/accounting-dashboard-studentledger"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action"
+            class="list-group-item list-group-item-action py-3 my-1"
             ><i class="fa-solid fa-notes-medical mx-2"></i>
             Student's Ledger
           </a>
@@ -104,7 +104,7 @@
           <a
             routerLink="/accounting-matriculation"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action"
+            class="list-group-item list-group-item-action py-3"
             ><i class="fa-solid fa-truck-fast mx-2"></i>
             Matriculation
           </a>
@@ -129,24 +129,36 @@
       <ul class="telleringToggle-sub">
         <li>
           <a
+            routerLink="/accounting-tellering-list"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action"
+            class="list-group-item list-group-item-action py-3"
+            ><i class="fa-solid fa-truck-fast mx-2"></i>
+            Tellering List
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/dailycollection-setup"
+            routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3 my-1"
             ><i class="fa-solid fa-truck-fast mx-2"></i>
             Daily Collection Setup
           </a>
         </li>
           <li>
           <a
+            routerLink="/test"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action"
+            class="list-group-item list-group-item-action py-3"
             ><i class="fa-solid fa-notes-medical mx-2"></i>
             Daily Collection Reports
           </a>
         </li>
           <li>
           <a
+            routerLink="/test"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action"
+            class="list-group-item list-group-item-action py-3 my-1"
             ><i class="fa-solid fa-notes-medical mx-2"></i>
             Daily Consolidated Reports
           </a>

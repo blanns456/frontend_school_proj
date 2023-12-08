@@ -66,6 +66,10 @@ import { StudentApplicantsComponent } from './pages/registrar-pov/student-applic
 import { OfficiallyEnrolledComponent } from './pages/registrar-pov/officially-enrolled/officially-enrolled.component';
 import { StudentInfoComponent } from './pages/registrar-pov/student-info/student-info.component';
 import { AccountingItemManagementComponent } from './pages/accounting-pov/accounting-item-management/accounting-item-management.component';
+import { DailycollectionSetupComponent } from './pages/accounting-pov/tellering/dailycollection-setup/dailycollection-setup.component';
+import { TelleringListComponent } from './pages/accounting-pov/tellering/tellering-list/tellering-list.component';
+import { TellerViewuserComponent } from './pages/accounting-pov/tellering/teller-viewuser/teller-viewuser.component';
+import { TrustfundsItemsComponent } from './pages/accounting-pov/tellering/dailycollection-setup/trustfunds-items/trustfunds-items.component';
 
 @NgModule({
   declarations: [
@@ -127,6 +131,10 @@ import { AccountingItemManagementComponent } from './pages/accounting-pov/accoun
     OfficiallyEnrolledComponent,
     StudentInfoComponent,
     AccountingItemManagementComponent,
+    DailycollectionSetupComponent,
+    TelleringListComponent,
+    TellerViewuserComponent,
+    TrustfundsItemsComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,11 @@
 .sidebar {
   width: 20%;
   height: 100vh;
-  background: white;  
+  background: white;
+}
+
+.links{
+  height: 80vh;
   overflow-y: auto;
 }
 
@@ -32,6 +36,10 @@
 .telleringToggle-sub{
   list-style: none;
   display: none;
+}
+
+.list-group ul {
+  margin-left: -25px;
 }
 
 .list-group a {
