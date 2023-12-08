@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-college-signaturepad',
   templateUrl: './college-signaturepad.component.html',
-  styleUrls: ['./college-signaturepad.component.css']
+  styleUrls: ['./college-signaturepad.component.css'],
 })
 export class CollegeSignaturepadComponent {
   signatureNeeded!: boolean;
@@ -15,13 +15,12 @@ export class CollegeSignaturepadComponent {
   @ViewChild('canvas') canvasEl!: ElementRef;
   signatureImg!: string;
 
-    constructor(
+  constructor(
     private college_enrollment: CollegeEnrollmentController,
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   ngAfterViewInit() {
     this.signaturePad = new SignaturePad(this.canvasEl.nativeElement);
   }
@@ -46,50 +45,50 @@ export class CollegeSignaturepadComponent {
     if (!this.signatureNeeded) {
       this.signatureNeeded = false;
       this.college_enrollment.collegeinfo.signature = base64Data;
-
-
+      this.onSubmit();
     } else {
-      Swal.fire(
-      'ERROR',
-       'Signature is required',
-       'error'
-      )
+      Swal.fire('ERROR', 'Signature is required', 'error');
     }
   }
 
-
   onSubmit() {
+    this.college_enrollment
+      .createstudent({
+        year_level: this.college_enrollment.collegeinfo.year_level,
+        course: this.college_enrollment.collegeinfo.course,
+        semester: this.college_enrollment.collegeinfo.semester,
+        student_status: this.college_enrollment.collegeinfo.status,
+        lastname: this.college_enrollment.collegeinfo.lastname,
+        firstname: this.college_enrollment.collegeinfo.firstname,
+        middlename: this.college_enrollment.collegeinfo.middlename,
+        suffix: this.college_enrollment.collegeinfo.suffix,
+        birthdate: this.college_enrollment.collegeinfo.birthdate,
+        religion: this.college_enrollment.collegeinfo.religion,
+        email_address: this.college_enrollment.collegeinfo.email_address,
+        birth_place: this.college_enrollment.collegeinfo.birth_place,
+        citizenship: this.college_enrollment.collegeinfo.citizenship,
+        contact_number: this.college_enrollment.collegeinfo.contactnumber,
+        gender: this.college_enrollment.collegeinfo.gender,
+        civil_status: this.college_enrollment.collegeinfo.civilstatus,
+        permanent_address: this.college_enrollment.collegeinfo.permanentaddress,
+        home_address: this.college_enrollment.collegeinfo.homeaddress,
+        signature: this.college_enrollment.collegeinfo.signature,
+      })
+      .subscribe((res) => {
+        this.info = res;
+        console.log(this.info);
+        if (this.info[0]['message'] === 'ERROR') {
+          Swal.fire('Error', 'error', 'error');
 
-    this.college_enrollment.createstudent({
-      year_level: this.college_enrollment.collegeinfo.year_level,
-      course:this.college_enrollment.collegeinfo.course
-
-    }).subscribe(res => {
-      this.info = res;
-      console.log(this.info);
-      if (this.info[0]['message'] === "ERROR") {
-
-        Swal.fire(
-      'Error',
-       this.info[0]['error']["email"][0],
-       'error'
-        )
-        document.querySelector("#email")?.setAttribute("style", "border:1px solid red");
-        return;
-      } else {
-        // this.loadusers();
-        Swal.fire(
-      'Success',
-       'Added Successfully',
-       'success'
-        ).then(e => {
-
-          window.location.reload();
-        })
-        return;
-      }
-    });
-
+          return;
+        } else {
+          // this.loadusers();
+          Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
+            window.location.reload();
+          });
+          return;
+        }
+      });
   }
 
   currentPage: number = 4; // Initialize with a default page
@@ -98,21 +97,18 @@ export class CollegeSignaturepadComponent {
   onPageChanged(page: number) {
     // Update your data or perform any actions when the page changes
 
-      page;
+    page;
     // alert(this.currentPage);
-     if (page === 1) {
-        this.router.navigate(['/enroll-college']);
-      }
-      if (page === 2) {
-        this.router.navigate(['/enroll-college-student-information']);
-      }
-      if (page === 3) {
-        this.router.navigate(['/enroll-college-education-record']);
-      }
-
+    if (page === 1) {
+      this.router.navigate(['/enroll-college']);
     }
+    if (page === 2) {
+      this.router.navigate(['/enroll-college-student-information']);
+    }
+    if (page === 3) {
+      this.router.navigate(['/enroll-college-education-record']);
+    }
+  }
 
-    // Fetch data for the new page or update your data as needed
-
-
+  // Fetch data for the new page or update your data as needed
 }
