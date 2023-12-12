@@ -45,6 +45,7 @@ export class CollegeSignaturepadComponent {
     if (!this.signatureNeeded) {
       this.signatureNeeded = false;
       this.college_enrollment.collegeinfo.signature = base64Data;
+      console.log(this.college_enrollment.collegeinfo);
       this.onSubmit();
     } else {
       Swal.fire('ERROR', 'Signature is required', 'error');
@@ -52,43 +53,43 @@ export class CollegeSignaturepadComponent {
   }
 
   onSubmit() {
-    this.college_enrollment
-      .createstudent({
-        year_level: this.college_enrollment.collegeinfo.year_level,
-        course: this.college_enrollment.collegeinfo.course,
-        semester: this.college_enrollment.collegeinfo.semester,
-        student_status: this.college_enrollment.collegeinfo.status,
-        lastname: this.college_enrollment.collegeinfo.lastname,
-        firstname: this.college_enrollment.collegeinfo.firstname,
-        middlename: this.college_enrollment.collegeinfo.middlename,
-        suffix: this.college_enrollment.collegeinfo.suffix,
-        birthdate: this.college_enrollment.collegeinfo.birthdate,
-        religion: this.college_enrollment.collegeinfo.religion,
-        email_address: this.college_enrollment.collegeinfo.email_address,
-        birth_place: this.college_enrollment.collegeinfo.birth_place,
-        citizenship: this.college_enrollment.collegeinfo.citizenship,
-        contact_number: this.college_enrollment.collegeinfo.contactnumber,
-        gender: this.college_enrollment.collegeinfo.gender,
-        civil_status: this.college_enrollment.collegeinfo.civilstatus,
-        permanent_address: this.college_enrollment.collegeinfo.permanentaddress,
-        home_address: this.college_enrollment.collegeinfo.homeaddress,
-        signature: this.college_enrollment.collegeinfo.signature,
-      })
-      .subscribe((res) => {
-        this.info = res;
-        console.log(this.info);
-        if (this.info[0]['message'] === 'ERROR') {
-          Swal.fire('Error', 'error', 'error');
+    var dataform = {
+      year_level: this.college_enrollment.collegeinfo.year_level,
+      course: this.college_enrollment.collegeinfo.course,
+      semester: this.college_enrollment.collegeinfo.semester,
+      student_status: this.college_enrollment.collegeinfo.status,
+      lastname: this.college_enrollment.collegeinfo.lastname,
+      firstname: this.college_enrollment.collegeinfo.firstname,
+      middlename: this.college_enrollment.collegeinfo.middlename,
+      suffix: this.college_enrollment.collegeinfo.suffix,
+      birthdate: this.college_enrollment.collegeinfo.birthdate,
+      religion: this.college_enrollment.collegeinfo.religion,
+      email_address: this.college_enrollment.collegeinfo.email_address,
+      birth_place: this.college_enrollment.collegeinfo.birth_place,
+      citizenship: this.college_enrollment.collegeinfo.citizenship,
+      contact_number: this.college_enrollment.collegeinfo.contactnumber,
+      gender: this.college_enrollment.collegeinfo.gender,
+      civil_status: this.college_enrollment.collegeinfo.civilstatus,
+      permanent_address: this.college_enrollment.collegeinfo.permanentaddress,
+      home_address: this.college_enrollment.collegeinfo.homeaddress,
+      signature: this.college_enrollment.collegeinfo.signature,
+    };
 
-          return;
-        } else {
-          // this.loadusers();
-          Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
-            window.location.reload();
-          });
-          return;
-        }
-      });
+    this.college_enrollment.createstudent(dataform).subscribe((res) => {
+      this.info = res;
+      console.log(this.info);
+      if (this.info[0]['message'] === 'ERROR') {
+        Swal.fire('Error', 'error', 'error');
+
+        return;
+      } else {
+        // this.loadusers();
+        Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
+          window.location.reload();
+        });
+        return;
+      }
+    });
   }
 
   currentPage: number = 4; // Initialize with a default page
