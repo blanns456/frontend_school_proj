@@ -70,6 +70,8 @@ import { DailycollectionSetupComponent } from './pages/accounting-pov/tellering/
 import { TelleringListComponent } from './pages/accounting-pov/tellering/tellering-list/tellering-list.component';
 import { TellerViewuserComponent } from './pages/accounting-pov/tellering/teller-viewuser/teller-viewuser.component';
 import { TrustfundsItemsComponent } from './pages/accounting-pov/tellering/dailycollection-setup/trustfunds-items/trustfunds-items.component';
+import { DailycollectionReportsComponent } from './pages/accounting-pov/tellering/dailycollection-reports/dailycollection-reports.component';
+import { DailyconsolidatedReportsComponent } from './pages/accounting-pov/tellering/dailyconsolidated-reports/dailyconsolidated-reports.component';
 
 @NgModule({
   declarations: [
@@ -135,6 +137,8 @@ import { TrustfundsItemsComponent } from './pages/accounting-pov/tellering/daily
     TelleringListComponent,
     TellerViewuserComponent,
     TrustfundsItemsComponent,
+    DailycollectionReportsComponent,
+    DailyconsolidatedReportsComponent,
   ],
   imports: [
     BrowserModule,

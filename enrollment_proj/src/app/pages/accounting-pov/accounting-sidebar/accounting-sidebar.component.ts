@@ -13,10 +13,10 @@ export class AccountingSidebarComponent {
                 $('.menu-item').removeClass('active');
                 $(this).addClass('active');
             });
+
             let accSetup = 0;
             $('#accSetupToggle').click(function () {
                 accSetup++;
-                // e.stopPropagation();
                 if (accSetup % 2 == 0) {
                     $('.accSetupToggle-sub').slideToggle();
                 } else {

@@ -44,7 +44,9 @@ import { AccountingStudentLedgerComponent } from './pages/accounting-pov/account
 import { AccountingMatriculationComponent } from './pages/accounting-pov/accounting-finance/accounting-matriculation/accounting-matriculation.component';
 import { AccountingViewuserComponent } from './pages/accounting-pov/accounting-finance/accounting-viewuser/accounting-viewuser.component';
 import { AccountingItemManagementComponent } from './pages/accounting-pov/accounting-item-management/accounting-item-management.component';
+import { DailycollectionReportsComponent } from './pages/accounting-pov/tellering/dailycollection-reports/dailycollection-reports.component';
 import { DailycollectionSetupComponent } from './pages/accounting-pov/tellering/dailycollection-setup/dailycollection-setup.component';
+import { DailyconsolidatedReportsComponent } from './pages/accounting-pov/tellering/dailyconsolidated-reports/dailyconsolidated-reports.component';
 import { TrustfundsItemsComponent } from './pages/accounting-pov/tellering/dailycollection-setup/trustfunds-items/trustfunds-items.component';
 import { TelleringListComponent } from './pages/accounting-pov/tellering/tellering-list/tellering-list.component';
 import { TellerViewuserComponent } from './pages/accounting-pov/tellering/teller-viewuser/teller-viewuser.component';
@@ -140,9 +142,19 @@ const routes: Routes = [
     title: 'Accounting | TellerView',
   },
   {
+    path: 'dailycollection-reports',
+    component: DailycollectionReportsComponent,
+    title: 'Daily Collection Reports',
+  },
+  {
     path: 'dailycollection-setup',
     component: DailycollectionSetupComponent,
     title: 'Daily Collection Setup',
+  },
+  {
+    path: 'dailyconsolidated-reports',
+    component: DailyconsolidatedReportsComponent,
+    title: 'Daily Consolidated Reports',
   },
   {
     path: 'trustfund-items',
