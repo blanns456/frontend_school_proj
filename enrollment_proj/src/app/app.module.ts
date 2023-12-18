@@ -72,6 +72,13 @@ import { TellerViewuserComponent } from './pages/accounting-pov/tellering/teller
 import { TrustfundsItemsComponent } from './pages/accounting-pov/tellering/dailycollection-setup/trustfunds-items/trustfunds-items.component';
 import { DailycollectionReportsComponent } from './pages/accounting-pov/tellering/dailycollection-reports/dailycollection-reports.component';
 import { DailyconsolidatedReportsComponent } from './pages/accounting-pov/tellering/dailyconsolidated-reports/dailyconsolidated-reports.component';
+import { TeachersDashboardHomeComponent } from './pages/teachers-pov/teachers-dashboard-home/teachers-dashboard-home.component';
+import { TeachersSidebarComponent } from './pages/teachers-pov/teachers-sidebar/teachers-sidebar.component';
+import { TeachersNavbarComponent } from './pages/teachers-pov/teachers-navbar/teachers-navbar.component';
+import { TeachersClasslistComponent } from './pages/teachers-pov/teachers-classlist/teachers-classlist.component';
+import { ViewSubjectsComponent } from './pages/teachers-pov/view-subjects/view-subjects.component';
+import { SubmitGradesComponent } from './pages/teachers-pov/submit-grades/submit-grades.component';
+import { ViewSubmitgradesComponent } from './pages/teachers-pov/view-submitgrades/view-submitgrades.component';
 
 @NgModule({
   declarations: [
@@ -139,6 +146,13 @@ import { DailyconsolidatedReportsComponent } from './pages/accounting-pov/teller
     TrustfundsItemsComponent,
     DailycollectionReportsComponent,
     DailyconsolidatedReportsComponent,
+    TeachersDashboardHomeComponent,
+    TeachersSidebarComponent,
+    TeachersNavbarComponent,
+    TeachersClasslistComponent,
+    ViewSubjectsComponent,
+    SubmitGradesComponent,
+    ViewSubmitgradesComponent,
   ],
   imports: [
     BrowserModule,
