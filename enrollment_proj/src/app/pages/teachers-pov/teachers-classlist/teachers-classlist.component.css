@@ -1,0 +1,44 @@
+.text-header {
+    background-color: #0287AF;
+}
+
+.btnAddFees {
+    background-color: #1E3050;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1E3050; 
+}
+
+.containerTab {
+  height: 100vh;
+  padding-top: 7%;
+}
+
+.contentTab{
+  height: 100%;
+  overflow-y: auto;
+}
+
+table th {
+  color: #fff;
+  background-color: #0287AF;
+}
+
+input[type=text], input[type=date], select {
+  font-size: 1rem;
+  width: 95%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+}
+
+.inputs:hover {
+  border-bottom: 3px solid #0287AF;
+}

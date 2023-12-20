@@ -52,6 +52,11 @@ import { TelleringListComponent } from './pages/accounting-pov/tellering/telleri
 import { TellerViewuserComponent } from './pages/accounting-pov/tellering/teller-viewuser/teller-viewuser.component';
 import { StudentApplicantsComponent } from './pages/registrar-pov/student-applicants/student-applicants.component';
 import { OfficiallyEnrolledComponent } from './pages/registrar-pov/officially-enrolled/officially-enrolled.component';
+import { TeachersDashboardHomeComponent } from './pages/teachers-pov/teachers-dashboard-home/teachers-dashboard-home.component';
+import { TeachersClasslistComponent } from './pages/teachers-pov/teachers-classlist/teachers-classlist.component';
+import { ViewSubjectsComponent } from './pages/teachers-pov/view-subjects/view-subjects.component';
+import { SubmitGradesComponent } from './pages/teachers-pov/submit-grades/submit-grades.component';
+import { ViewSubmitgradesComponent } from './pages/teachers-pov/view-submitgrades/view-submitgrades.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -184,6 +189,28 @@ const routes: Routes = [
   {
     path: 'student-dashboard-settings',
     component: StudentDashboardSettingsComponent,
+  },
+  {
+    path: 'teachers-home',
+    component: TeachersDashboardHomeComponent,
+  },
+  {
+    path: 'teachers-classlist',
+    component: TeachersClasslistComponent,
+    title: 'Teachers | Class List'
+  },
+  {
+    path: 'teachers-viewsubjects',
+    component: ViewSubjectsComponent,
+    title: 'Teachers | Submit Grades'
+  },
+  {
+    path: 'teachers-viewgrades',
+    component: ViewSubmitgradesComponent
+  },
+  {
+    path: 'teachers-submitgrades',
+    component: SubmitGradesComponent
   },
   { path: 'student-dashboard-academic', component: StudentDashboardAcademicComponent },
   { path: 'student-dashboard-financial', component: StudentDashboardFinancialComponent },
