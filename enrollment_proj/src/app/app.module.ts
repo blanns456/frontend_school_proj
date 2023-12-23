@@ -66,6 +66,7 @@ import { StudentApplicantsComponent } from './pages/registrar-pov/student-applic
 import { OfficiallyEnrolledComponent } from './pages/registrar-pov/officially-enrolled/officially-enrolled.component';
 import { StudentInfoComponent } from './pages/registrar-pov/student-info/student-info.component';
 import { AccountingItemManagementComponent } from './pages/accounting-pov/accounting-item-management/accounting-item-management.component';
+import { CountBySubjectComponent } from './pages/registrar-pov/count-by-subject/count-by-subject.component';
 
 @NgModule({
   declarations: [
@@ -127,6 +128,7 @@ import { AccountingItemManagementComponent } from './pages/accounting-pov/accoun
     OfficiallyEnrolledComponent,
     StudentInfoComponent,
     AccountingItemManagementComponent,
+    CountBySubjectComponent,
   ],
   imports: [
     BrowserModule,

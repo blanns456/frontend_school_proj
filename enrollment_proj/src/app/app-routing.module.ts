@@ -46,6 +46,7 @@ import { AccountingViewuserComponent } from './pages/accounting-pov/accounting-f
 import { AccountingItemManagementComponent } from './pages/accounting-pov/accounting-item-management/accounting-item-management.component';
 import { StudentApplicantsComponent } from './pages/registrar-pov/student-applicants/student-applicants.component';
 import { OfficiallyEnrolledComponent } from './pages/registrar-pov/officially-enrolled/officially-enrolled.component';
+import { CountBySubjectComponent } from './pages/registrar-pov/count-by-subject/count-by-subject.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -176,6 +177,10 @@ const routes: Routes = [
   {
     path: 'registrar-dashboard-enrolled',
     component: OfficiallyEnrolledComponent,
+  },
+  {
+    path: 'registrar-count-subject',
+    component: CountBySubjectComponent,
   },
   // signup staff route
   {

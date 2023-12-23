@@ -1,0 +1,51 @@
+<div class="container-dashboard">
+  <app-registrar-sidebar></app-registrar-sidebar>
+  <div class="main-content">
+    <div class="fixed-background"></div>
+    <app-registrar-navbar></app-registrar-navbar>
+    <div class="container-fluid vh-100 applicants">
+      <div class="bg-white w-100 rounded">
+        <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+          <h3 class="text-white fw-bold h5 m-0">Enrolled by Subject</h3>
+        </div>
+        <div class="container py-3">
+          <table
+            #dataTable
+            class="table table-striped"
+            style="width:100%">
+            <thead>
+              <tr>
+                <th>Course No.</th>
+                <th>Course Title</th>
+                <th>Section</th>
+                <th>Schedule</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody class="text-start">
+              <tr>
+                <td>CC101</td>
+                <td>
+                  Introduction to Computing with Keyboarding
+                </td>
+                <td>CCEA</td>
+                <td>03:00-05:00pm WTH</td>
+                <td>26</td>
+              </tr>
+              <tr>
+                <td>CC102</td>
+                <td>
+                  Introduction to Computing with Keyboarding
+                </td>
+                <td>CCEB</td>
+                <td>05:00-07:00pm WTH</td>
+                <td>30</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
