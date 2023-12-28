@@ -79,6 +79,12 @@ import { TeachersClasslistComponent } from './pages/teachers-pov/teachers-classl
 import { ViewSubjectsComponent } from './pages/teachers-pov/view-subjects/view-subjects.component';
 import { SubmitGradesComponent } from './pages/teachers-pov/submit-grades/submit-grades.component';
 import { ViewSubmitgradesComponent } from './pages/teachers-pov/view-submitgrades/view-submitgrades.component';
+import { DeansDashboardHomeComponent } from './pages/deans-pov/deans-dashboard-home/deans-dashboard-home.component';
+import { DeansSidebarComponent } from './pages/deans-pov/deans-sidebar/deans-sidebar.component';
+import { DeansNavbarComponent } from './pages/deans-pov/deans-navbar/deans-navbar.component';
+import { DeansGradeApprovalComponent } from './pages/deans-pov/deans-grade-approval/deans-grade-approval.component';
+import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-subjects/deans-assign-subjects.component';
+import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component';
 
 @NgModule({
   declarations: [
@@ -153,6 +159,12 @@ import { ViewSubmitgradesComponent } from './pages/teachers-pov/view-submitgrade
     ViewSubjectsComponent,
     SubmitGradesComponent,
     ViewSubmitgradesComponent,
+    DeansDashboardHomeComponent,
+    DeansSidebarComponent,
+    DeansNavbarComponent,
+    DeansGradeApprovalComponent,
+    DeansAssignSubjectsComponent,
+    DeansSubjectlistComponent,
   ],
   imports: [
     BrowserModule,

@@ -71,8 +71,6 @@ export class EnrollCollege2Component implements OnInit {
     }
   }
 
-
-
   lastname(event: Event) {
     // Your change event handler logic here
     const lastnameval = (event.target as HTMLSelectElement).value;
@@ -108,7 +106,7 @@ export class EnrollCollege2Component implements OnInit {
   birthdate(event: Event) {
     // Your change event handler logic here
     const birthdateval = (event.target as HTMLSelectElement).value;
-     this.birthdatevalisEmpty = birthdateval === '';
+    this.birthdatevalisEmpty = birthdateval === '';
     this.college_enrollment.collegeinfo.birthdate = birthdateval;
     // alert(lastnameval);
   }
@@ -202,8 +200,7 @@ export class EnrollCollege2Component implements OnInit {
         !this.college_enrollment.collegeinfo.permanentaddress ||
         !this.college_enrollment.collegeinfo.homeaddress
       ) {
-        this.lastnameisEmpty =
-          !this.college_enrollment.collegeinfo.lastname;
+        this.lastnameisEmpty = !this.college_enrollment.collegeinfo.lastname;
 
         this.firstnamevalisEmpty =
           !this.college_enrollment.collegeinfo.firstname;
@@ -214,8 +211,7 @@ export class EnrollCollege2Component implements OnInit {
         this.birthdatevalisEmpty =
           !this.college_enrollment.collegeinfo.birthdate;
 
-        this.religionvalisEmpty =
-          !this.college_enrollment.collegeinfo.religion;
+        this.religionvalisEmpty = !this.college_enrollment.collegeinfo.religion;
 
         this.email_addressvalisEmpty =
           !this.college_enrollment.collegeinfo.email_address;
@@ -229,8 +225,7 @@ export class EnrollCollege2Component implements OnInit {
         this.contactnumbervalisEmpty =
           !this.college_enrollment.collegeinfo.contactnumber;
 
-        this.gendervalisEmpty =
-          !this.college_enrollment.collegeinfo.gender;
+        this.gendervalisEmpty = !this.college_enrollment.collegeinfo.gender;
 
         this.civilstatusvalisEmpty =
           !this.college_enrollment.collegeinfo.civilstatus;
@@ -241,25 +236,20 @@ export class EnrollCollege2Component implements OnInit {
         this.homeaddressvalisEmpty =
           !this.college_enrollment.collegeinfo.homeaddress;
 
-        Swal.fire(
-      'ERROR',
-       'All input must be required',
-       'error'
-        )
+        Swal.fire('ERROR', 'All input must be required', 'error');
+      } else {
+        page;
+        // alert(this.currentPage);
+        if (page === 1) {
+          this.router.navigate(['/enroll-college']);
+        }
+        if (page === 3) {
+          this.router.navigate(['/enroll-college-education-record']);
+        }
+        if (page === 4) {
+          this.router.navigate(['/enroll-college-signature']);
+        }
       }
-      else {
-      page;
-      // alert(this.currentPage);
-      if (page === 1) {
-        this.router.navigate(['/enroll-college']);
-      }
-      if (page === 3) {
-        this.router.navigate(['/enroll-college-education-record']);
-      }
-      if (page === 4) {
-        this.router.navigate(['/enroll-college-signature']);
-      }
-    }
     } else {
       page;
       // alert(this.currentPage);
@@ -276,4 +266,3 @@ export class EnrollCollege2Component implements OnInit {
     // Fetch data for the new page or update your data as needed
   }
 }
-
