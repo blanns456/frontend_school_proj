@@ -15,7 +15,7 @@
           <label
             for="elementary"
             class="form-label">
-            School Name
+            Elementary School Name
             <span class="text-danger">*</span>
           </label>
           <input
@@ -34,7 +34,7 @@
           <label
             for="jhs"
             class="form-label">
-            School Name
+            JHS School Name
             <span class="text-danger">*</span>
           </label>
           <input
@@ -53,7 +53,7 @@
           <label
             for="shs"
             class="form-label">
-            School Name
+            SHS School Name
             <span class="text-danger">*</span>
           </label>
           <input
@@ -74,7 +74,7 @@
           <label
             for="elem_year"
             class="form-label">
-            Year Graduated
+            Elementary Year Graduated
             <span class="text-danger">*</span>
           </label>
           <input
@@ -92,7 +92,7 @@
           <label
             for="jhs_year"
             class="form-label">
-            Year Graduated
+            JHS Year Graduated
             <span class="text-danger">*</span>
           </label>
           <input
@@ -110,7 +110,7 @@
           <label
             for="shs_year"
             class="form-label">
-            Year Graduated
+            SHS Year Graduated
             <span class="text-danger">*</span>
           </label>
           <input
@@ -175,7 +175,7 @@
             <span class="text-danger">*</span>
           </label>
           <input
-            type="text"
+            type="tel"
             pattern="[0-9]{11}"
             class="form-control"
             name="parent_number"
@@ -229,6 +229,9 @@
   </div>
 
   <!-- <app-pagination></app-pagination> -->
-  <app-mat-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChanged)="onPageChanged($event)"></app-mat-pagination>
+  <app-mat-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChanged)="onPageChanged($event)"></app-mat-pagination>
   <app-footernavigation></app-footernavigation>
 </div>
