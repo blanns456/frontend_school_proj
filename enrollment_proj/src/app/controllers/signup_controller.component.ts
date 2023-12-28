@@ -20,8 +20,7 @@ export class SignupController {
     birth_date: string;
     username: string;
     password: string;
-    confirm_password: string;
   }) {
-    return this.http.post(this.Root_URL + 'adduser', user);
+    return this.http.post(this.Root_URL + 'registrar-signup', user);
   }
 }
