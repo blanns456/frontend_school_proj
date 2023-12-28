@@ -1,0 +1,61 @@
+<div class="sidebar position-fixed">
+  <div class="logout position-relative">
+    <div class="text-end">
+      <a
+        href="#"
+        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0"
+      >
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+      </a>
+    </div>
+    <div class="text-start">
+      <img
+        src="../../../assets/misc/default.jpg"
+        alt="avatar"
+        id="profile"
+        width="60"
+        height="60"
+        class="img-thumbnail mt-4 mx-3"
+      />
+      <h2 class="h6 fw-bold text-white mx-3 my-2">Doe, John</h2>
+      <p class="text-light fs-6 mx-3 fw-light">Dean</p>
+    </div>
+  </div>
+  <div class="links">
+    <div id="list-example" class="list-group">
+      <a
+        class="my-1 py-3 accordion-body list-group-item list-group-item-action home"
+        routerLink="/deans-home"
+        routerLinkActive="active"
+      >
+        <i class="mx-2 fa-solid fa-house"></i>
+        Home
+      </a>
+      <a
+        class="my-1 py-3 list-group-item list-group-item-action menu-item"
+        routerLinkActive="active"
+        routerLink="/deans-subjectlist"
+      >
+        <i class="mx-2 fa-solid fa-book-open-reader"></i>
+        Subjects
+      </a>
+      <a
+        class="my-1 py-3 list-group-item list-group-item-action menu-item"
+        routerLinkActive="active"
+        routerLink="/deans-assignSubject"
+      >
+        <i class="mx-2 fa-solid fa-file-pen"></i>
+        Assign Subjects
+      </a>
+      <a
+        class="my-1 py-3 list-group-item list-group-item-action menu-item"
+        routerLinkActive="active"
+        routerLink="/deans-gradeApproval"
+      >
+        <i class="mx-2 fa-solid fa-note-sticky"></i>
+        Grades Approval
+      </a>
+    </div>
+  </div>
+</div>
