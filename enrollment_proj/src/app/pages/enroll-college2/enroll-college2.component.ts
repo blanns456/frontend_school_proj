@@ -271,7 +271,7 @@ export class EnrollCollege2Component implements OnInit {
       }
       if (page === 4) {
         this.router.navigate(['/enroll-college-signature']);
-      }
+      } 
     }
     // Fetch data for the new page or update your data as needed
   }
