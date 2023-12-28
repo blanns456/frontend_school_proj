@@ -57,6 +57,10 @@ import { TeachersClasslistComponent } from './pages/teachers-pov/teachers-classl
 import { ViewSubjectsComponent } from './pages/teachers-pov/view-subjects/view-subjects.component';
 import { SubmitGradesComponent } from './pages/teachers-pov/submit-grades/submit-grades.component';
 import { ViewSubmitgradesComponent } from './pages/teachers-pov/view-submitgrades/view-submitgrades.component';
+import { DeansDashboardHomeComponent } from './pages/deans-pov/deans-dashboard-home/deans-dashboard-home.component'
+import { DeansGradeApprovalComponent } from './pages/deans-pov/deans-grade-approval/deans-grade-approval.component'
+import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-subjects/deans-assign-subjects.component'
+import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component'
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -160,6 +164,23 @@ const routes: Routes = [
     path: 'dailyconsolidated-reports',
     component: DailyconsolidatedReportsComponent,
     title: 'Daily Consolidated Reports',
+  },
+  {
+    path: 'deans-home',
+    component: DeansDashboardHomeComponent
+  },
+  {
+    path: 'deans-gradeApproval',
+    component: DeansGradeApprovalComponent
+  },
+  {
+    path: 'deans-assignSubject',
+    component: DeansAssignSubjectsComponent,
+    title: 'Deans | Assign Subjects'
+  },
+  {
+    path: 'deans-subjectlist',
+    component: DeansSubjectlistComponent,
   },
   {
     path: 'trustfund-items',
