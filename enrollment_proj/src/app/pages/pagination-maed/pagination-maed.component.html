@@ -1,22 +1,38 @@
 <div class="position-absolute bottom-25 end-0 mx-5">
   <nav aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item"><a
+      <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
+        <a
+          (click)="goToPage(currentPage - 1)"
           class="page-link"
-          href="#">
-          Previous
-        </a></li>
-      <li class="page-item"><a
+          aria-label="Previous"
+        >
+          <!-- Previous -->
+          <span aria-hidden="true">Previous</span>
+        </a>
+      </li>
+      <li
+        class="page-item"
+        *ngFor="let page of pages"
+        [ngClass]="{ active: page === currentPage }"
+      >
+        <a (click)="goToPage(page)" class="page-link">
+          {{ page }}
+        </a>
+      </li>
+      <li
+        class="page-item"
+        [ngClass]="{ disabled: currentPage === totalPages }"
+      >
+        <a
           class="page-link"
-          routerLink="/enroll-maed">
-          1
-        </a></li>
-      <li class="page-item"><a
-          class="page-link"
-          routerLink="/enroll-maed-student-information">
-          2
-        </a></li>
-      <li class="page-item"><a
+          (click)="goToPage(currentPage + 1)"
+          aria-label="Next"
+        >
+          <span aria-hidden="true">Next</span>
+        </a>
+      </li>
+      <!-- <li class="page-item"><a
           class="page-link"
           routerLink="/enroll-maed-education-record">
           3
@@ -30,7 +46,7 @@
           class="page-link"
           href="#">
           Next
-        </a></li>
+        </a></li> -->
     </ul>
   </nav>
 </div>

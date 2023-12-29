@@ -1,4 +1,6 @@
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column">
+<div
+  class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
+>
   <app-headnavagation></app-headnavagation>
 
   <div class="w-75 p-0">
@@ -12,9 +14,7 @@
       <div class="col-4">
         <div class="mb-3">
           <h2 class="h4">Elementary</h2>
-          <label
-            for="elementary"
-            class="form-label">
+          <label for="elementary" class="form-label">
             School Name
             <span class="text-danger">*</span>
           </label>
@@ -23,15 +23,17 @@
             class="form-control"
             name="elementary"
             id="elementary"
-            required>
+            [value]="elem_yrval"
+            [class.is-invalid]="elem_yrisEmpty"
+            (change)="elem_yr($event)"
+            required
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
           <h2 class="h4">Junior High School</h2>
-          <label
-            for="jhs"
-            class="form-label">
+          <label for="jhs" class="form-label">
             School Name
             <span class="text-danger">*</span>
           </label>
@@ -40,15 +42,17 @@
             class="form-control"
             name="jhs"
             id="jhs"
-            required>
+            [value]="jrhigh_yrval"
+            [class.is-invalid]="jrhigh_yrisEmpty"
+            (change)="jrhigh_yr($event)"
+            required
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
           <h2 class="h4">Senior High School</h2>
-          <label
-            for="shs"
-            class="form-label">
+          <label for="shs" class="form-label">
             School Name
             <span class="text-danger">*</span>
           </label>
@@ -57,7 +61,11 @@
             class="form-control"
             name="shs"
             id="shs"
-            required>
+            [value]="shs_yrval"
+            [class.is-invalid]="shs_yrisEmpty"
+            (change)="shs_yr($event)"
+            required
+          />
         </div>
       </div>
     </div>
@@ -65,9 +73,7 @@
     <div class="row">
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="elem_year"
-            class="form-label">
+          <label for="elem_year" class="form-label">
             Year Graduated
             <span class="text-danger">*</span>
           </label>
@@ -76,14 +82,16 @@
             class="form-control"
             name="elem_year"
             id="elem_year"
-            required>
+            [value]="elem_yearGradval"
+            [class.is-invalid]="elem_yearGradisEmpty"
+            (change)="elem_yearGrad($event)"
+            required
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="jhs_year"
-            class="form-label">
+          <label for="jhs_year" class="form-label">
             Year Graduated
             <span class="text-danger">*</span>
           </label>
@@ -92,14 +100,16 @@
             class="form-control"
             name="jhs_year"
             id="jhs_year"
-            required>
+            [value]="jhshigh_yearGradval"
+            [class.is-invalid]="jhshigh_yearGradisEmpty"
+            (change)="jhshigh_yearGrad($event)"
+            required
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="shs_year"
-            class="form-label">
+          <label for="shs_year" class="form-label">
             Year Graduated
             <span class="text-danger">*</span>
           </label>
@@ -108,7 +118,11 @@
             class="form-control"
             name="shs_year"
             id="shs_year"
-            required>
+            [value]="shs_yearGradval"
+            [class.is-invalid]="shs_yearGradisEmpty"
+            (change)="shs_yearGrad($event)"
+            required
+          />
         </div>
       </div>
     </div>
@@ -116,9 +130,7 @@
     <div class="row">
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="parent_name"
-            class="form-label">
+          <label for="parent_name" class="form-label">
             Parent/Guardian
             <span>'</span>
             s Name
@@ -129,14 +141,16 @@
             class="form-control"
             name="parent_name"
             id="parent_name"
-            required>
+            [value]="parentVal"
+            [class.is-invalid]="parentValisEmpty"
+            (change)="parentsVal($event)"
+            required
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="occupation"
-            class="form-label">
+          <label for="occupation" class="form-label">
             Occupation
             <span class="text-danger">*</span>
           </label>
@@ -145,14 +159,16 @@
             class="form-control"
             name="occupation"
             id="occupation"
-            required>
+            [value]="occupationVal"
+            [class.is-invalid]="occupationValisEmpty"
+            (change)="occupation($event)"
+            required
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="parent_number"
-            class="form-label">
+          <label for="parent_number" class="form-label">
             Parent/Guardian
             <span>'</span>
             s Contact Number
@@ -164,7 +180,11 @@
             class="form-control"
             name="parent_number"
             id="parent_number"
-            required>
+            [value]="contactNumVal"
+            [class.is-invalid]="contactNumValisEmpty"
+            (change)="contactNumVals($event)"
+            required
+          />
         </div>
       </div>
     </div>
@@ -172,9 +192,7 @@
     <div class="row">
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="last_school"
-            class="form-label">
+          <label for="last_school" class="form-label">
             Last School Attended
             <span class="text-danger">*</span>
           </label>
@@ -183,14 +201,16 @@
             class="form-control"
             name="last_school"
             id="last_school"
-            required>
+            [value]="lastSchoolAttendVal"
+            [class.is-invalid]="lastSchoolAttendValisEmpty"
+            (change)="lastSchoolAttendVals($event)"
+            required
+          />
         </div>
       </div>
       <div class="col-4">
         <div class="mb-3">
-          <label
-            for="last_year_school"
-            class="form-label">
+          <label for="last_year_school" class="form-label">
             Last School Year Attended
             <span class="text-danger">*</span>
           </label>
@@ -199,13 +219,20 @@
             class="form-control"
             name="last_year_school"
             id="last_year_school"
-            required>
+            [value]="lastSchool_yearAttendVal"
+            [class.is-invalid]="lastSchool_yearAttendValisEmpty"
+            (change)="lastSchool_yearAttendVals($event)"
+            required
+          />
         </div>
       </div>
     </div>
-
   </div>
 
-  <app-pagination-maed></app-pagination-maed>
+  <app-pagination-maed
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChanged)="onPageChanged($event)"
+  ></app-pagination-maed>
   <app-footernavigation></app-footernavigation>
 </div>
