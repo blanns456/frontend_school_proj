@@ -60,7 +60,8 @@ import { ViewSubmitgradesComponent } from './pages/teachers-pov/view-submitgrade
 import { DeansDashboardHomeComponent } from './pages/deans-pov/deans-dashboard-home/deans-dashboard-home.component'
 import { DeansGradeApprovalComponent } from './pages/deans-pov/deans-grade-approval/deans-grade-approval.component'
 import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-subjects/deans-assign-subjects.component'
-import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component'
+import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component';
+import { ValidateSuccessComponent } from './pages/signup-staff/validate-success/validate-success.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -277,6 +278,10 @@ const routes: Routes = [
   {
     path: 'registrar/staff/sign-up',
     component: SignupRegistrarComponent,
+  },
+  {
+    path: 'validate-success',
+    component: ValidateSuccessComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];

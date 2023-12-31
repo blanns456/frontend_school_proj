@@ -1,0 +1,29 @@
+#login {
+  background-image: url("../../../../assets/misc/logo_background.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+}
+
+.login-bg{
+    height: 60vh;
+    width: 30%;
+    background: rgba(255, 255, 255, 0.79);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.8px);
+    -webkit-backdrop-filter: blur(6.8px);
+    border: 1px solid rgba(255, 255, 255, 0.82);
+    }
+
+h3{
+    margin-top: 25%;
+    font-size: 3rem;
+    font-weight: bolder;
+    color: #25ae88;
+}
+
+a{
+    text-decoration: none;
+    margin-top: 10%;
+}
