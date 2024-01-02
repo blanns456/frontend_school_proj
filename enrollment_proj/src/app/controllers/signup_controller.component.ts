@@ -9,7 +9,7 @@ export class SignupController {
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public createstaffaccounting(user: {
     first_name: string;
@@ -23,4 +23,20 @@ export class SignupController {
   }) {
     return this.http.post(this.Root_URL + 'registrar-signup', user);
   }
+
+  public createstaffregistrar(user: {
+    first_name: string;
+    last_name: string;
+    email: string;
+    role: string;
+    number: string;
+    status: string;
+    birth_date: string;
+    username: string;
+    password: string;
+  }) {
+    return this.http.post(this.Root_URL + 'registrar-signup', user);
+  }
+
+
 }
