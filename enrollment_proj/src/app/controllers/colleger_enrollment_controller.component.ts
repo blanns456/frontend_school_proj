@@ -42,6 +42,7 @@ export class CollegeEnrollmentController {
   };
 
   readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  // readonly Root_URL = 'http://127.0.0.1:8000/api/';
   token: any;
 
   // alertmessage: string | undefined;
@@ -73,6 +74,17 @@ export class CollegeEnrollmentController {
     permanent_address: string;
     home_address: string;
     signature: string;
+    elemschool: string;
+    elemyg: string;
+    jhschool: string;
+    jhsyg: string;
+    shschool: string;
+    shsyg: string;
+    parentsOrguradian: string;
+    parentsOccupation: string;
+    parentcontactnumber: string;
+    schoollastattended: string;
+    lastschoolyearattended: string;
   }) {
     return this.http.post(this.Root_URL + 'addstudent', student);
   }
