@@ -18,12 +18,13 @@
       <button (click)="clearPad()" class="btn btn-warning">Clear</button>
       <button (click)="savePad()" class="btn btn-success">Submit</button>
     </div>
+
+    <app-mat-pagination
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChanged)="onPageChanged($event)"
+    ></app-mat-pagination>
   </div>
-  <app-mat-pagination
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
-    (pageChanged)="onPageChanged($event)"
-  ></app-mat-pagination>
   <app-footernavigation></app-footernavigation>
 </div>
 <!-- <div *ngIf="signatureNeeded === false">
