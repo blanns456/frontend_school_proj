@@ -1,29 +1,33 @@
-
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column">
-    <app-headnavagation></app-headnavagation>
+<div
+  class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
+>
+  <app-headnavagation></app-headnavagation>
+  <div class="d-none" id="loading">
+    <div class="loader"></div>
+  </div>
+  <div id="mainPage">
     <h4>Please Add your signature here</h4>
-	<canvas
-  		#canvas
-  		(touchstart)="startDrawing($event)"
-  		(touchmove)="moved($event)"
-  		width="700"
-  		height="200"
-	></canvas>
-	<!-- <p class="error-message" *ngIf="signatureNeeded" class="text-danger">Signature is required</p> -->
+    <canvas
+      #canvas
+      (touchstart)="startDrawing($event)"
+      (touchmove)="moved($event)"
+      width="700"
+      height="200"
+    ></canvas>
+    <div class="buttons flex justify-between">
+      <button (click)="clearPad()" class="btn btn-warning">Clear</button>
+      <button (click)="savePad()" class="btn btn-success">Submit</button>
+    </div>
 
-	<div class="buttons flex justify-between">
-  		<button (click)="clearPad()" class="btn btn-warning">Clear</button>
-  		<button (click)="savePad()" class="btn btn-success">Submit</button>
-	</div>
     <app-mat-pagination
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
-    (pageChanged)="onPageChanged($event)"
-  ></app-mat-pagination>
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChanged)="onPageChanged($event)"
+    ></app-mat-pagination>
+  </div>
   <app-footernavigation></app-footernavigation>
 </div>
 <!-- <div *ngIf="signatureNeeded === false">
   <p>Signature in Base64Encoded Format</p>
   <img src="" alt="" srcset="" />
 </div> -->
-
