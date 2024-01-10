@@ -61,7 +61,7 @@ import { DeansDashboardHomeComponent } from './pages/deans-pov/deans-dashboard-h
 import { DeansGradeApprovalComponent } from './pages/deans-pov/deans-grade-approval/deans-grade-approval.component'
 import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-subjects/deans-assign-subjects.component'
 import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component'
-
+import {StudentGradesComponent} from './pages/registrar-pov/student-grades/student-grades.component'
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '', component: HomeComponent },
@@ -260,6 +260,10 @@ const routes: Routes = [
   {
     path: 'registrar-dashboard-enrolled',
     component: OfficiallyEnrolledComponent,
+  },
+  {
+    path: 'registrar-student-list',
+    component: StudentGradesComponent,
   },
   // signup staff route
   {
