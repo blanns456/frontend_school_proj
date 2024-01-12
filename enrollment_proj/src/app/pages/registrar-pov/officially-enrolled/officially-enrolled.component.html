@@ -10,56 +10,85 @@
           <h3 class="text-white fw-bold h5 m-0">Enrolled Students</h3>
         </div>
         <div class="container py-3">
-          <table
-            id="example"
-            #dataTable
-            class="table table-striped"
-            style="width:100%">
-            <thead>
-              <tr>
-                <th>ID No.</th>
-                <th>Name</th>
-                <th>Course/Yr.</th>
-                <th>Gender</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>01234567821</td>
-                <td>Badang, James M.</td>
-                <td>BSIT/4th year</td>
-                <td>Male</td>
-                <td>Continuing</td>
-                <td colspan="2">
-                  <button
-                    class="btn btn-secondary btn-sm text-center"
-                    data-bs-toggle="modal"
-                    data-bs-target="#studView">
-                    View
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>01234567835</td>
-                <td>Roda, John Vincent E.</td>
-                <td>BSCS/4th year</td>
-                <td>Female</td>
-                <td>Continuing</td>
-                <td colspan="2">
-                  <button
-                    class="btn btn-secondary btn-sm text-center"
-                    data-bs-toggle="modal"
-                    data-bs-target="#studView">
-                    View
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="row">
+            <div class="col-6 text-start">
+              <label
+                for="search"
+                class="mx-1 mb-3">
+                Search:
+              </label>
+              <input
+                type="search"
+                aria-label="search"
+                [(ngModel)]="filterObj.name"
+                (input)="filterEnrolled()"
+                id="search">
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table
+              id="example"
+              class="table table-striped table-sm align-middle"
+              style="width:100%">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Course</th>
+                  <th>Year/Level</th>
+                  <th>Department</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let student of students">
+                  <td>{{student.id}}</td>
+                  <td class="text-uppercase">
+                    {{student.lastname}}, {{student.firstname}} {{student.middlename}}
+                  </td>
+                  <td>{{student.course}}</td>
+                  <td>{{student.year_level}}</td>
+                  <td>{{student.department_name}}</td>
+                  <td colspan="2">
+                    <button
+                      class="btn btn-secondary btn-sm text-center"
+                      data-bs-toggle="modal"
+                      data-bs-target="#studView">
+                      View
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="row table-under">
+              <div class="col-6">{{this.total}} Total of Students</div>
+              <div class="col-6">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-end">
+                    <li class="page-item">
+                      <a
+                        class="page-link"
+                        (click)="onPrevious()">
+                        Previous
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link"></a></li>
+                    <li class="page-item">
+                      <a
+                        class="page-link"
+                        (click)="onNext()">
+                        Next
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
+      <p class="opacity-0 my-3">space</p>
     </div>
   </div>
 </div>

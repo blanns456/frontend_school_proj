@@ -9,3 +9,8 @@
 span{
     font-size: .7rem;
 }
+
+.table-under{
+    width: 98%;
+    margin-inline: auto;
+}
