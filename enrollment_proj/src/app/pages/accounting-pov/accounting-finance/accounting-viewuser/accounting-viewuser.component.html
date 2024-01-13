@@ -26,7 +26,6 @@
               >
                 Tellering
               </button>
-              <button class="mx-2 btn btn-primary">Update Matriculation</button>
             </div>
           </div>
         </div>
@@ -34,64 +33,33 @@
           <h1 class="fw-bold fs-4">Section Remarks</h1>
           <div class="divider"></div>
           <div
-            class="inputGroup row d-flex justify-content-center align-items-center my-3"
+            class="inputGroup row d-flex justify-content-center align-items-center my-4"
           >
             <div class="col-4">
               <label for="ledger">Ledger</label>
               <select class="inputs" name="ledger" id="ledger">
-                <option selected hidden>Input here..</option>
-                <option value="1">20221545/A.Y 2021-2022</option>
+                <option value="1" selected>20221545/A.Y 2021-2022</option>
                 <option value="2">20254487/A.Y 2022-2023</option>
                 <option value="3">20200365/A.Y 2023-2024</option>
               </select>
             </div>
-            <div class="col-4">
+            <div class="col-4 my-3">
               <label for="semester">Semester</label>
               <select class="inputs" name="semester" id="semester">
-                <option selected hidden>Open this select menu</option>
                 <option value="1">1st Trimester</option>
-                <option value="2">2nd Trimester</option>
+                <option value="2" selected>2nd Trimester</option>
                 <option value="3">3rd Trimester</option>
               </select>
             </div>
-            <div class="col-4">
-              <label for="studid">ID:</label>
-              <input
-                class="inputs"
-                type="number"
-                id="studid"
-                name="studid"
-                placeholder="202244564"
-              />
-            </div>
-            <div class="col-4 my-4">
-              <label for="studname">Student's Name:</label>
-              <input
-                class="inputs"
-                type="text"
-                id="studname"
-                name="studname"
-                placeholder="input here"
-              />
-            </div>
-            <div class="col-4">
-              <label for="course">Course/Yr.</label>
-              <input
-                class="inputs"
-                type="text"
-                id="course"
-                name="course"
-                placeholder="input here"
-              />
-            </div>
-            <div class="col-4">
+            <div class="col-3">
               <label for="date">Date:</label>
               <input
                 class="inputs"
-                type="date"
+                type="text"
                 id="date"
                 name="date"
-                placeholder="input date here"
+                value="11/01/2024"
+                readonly
               />
             </div>
           </div>
@@ -100,6 +68,17 @@
           <div
             class="inputGroup row d-flex justify-content-center align-items-center my-3"
           >
+            <div class="col-4 my-4">
+              <label for="studname">Student's Name:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="studname"
+                name="studname"
+                value="Rizal Jose Patricio"
+                readonly
+              />
+            </div>
             <div class="col-4">
               <label for="ledger">Student ID</label>
               <input
@@ -122,17 +101,6 @@
                 readonly
               />
             </div>
-            <div class="col-4 my-4">
-              <label for="studname">Student's Name:</label>
-              <input
-                class="inputs"
-                type="text"
-                id="studname"
-                name="studname"
-                value="Rizal Jose Patricio"
-                readonly
-              />
-            </div>
             <div class="col-4">
               <label for="gender">Gender:</label>
               <input
@@ -144,7 +112,7 @@
                 readonly
               />
             </div>
-            <div class="col-4">
+            <div class="col-4 my-3">
               <label for="course">Course/Yr.</label>
               <input
                 class="inputs"
@@ -190,12 +158,11 @@
             </div>
           </div>
         </form>
-        <div class="divider mx-auto my-5"></div>
         <div class="m-4 px-2">
           <h1 class="fw-bold fs-4">Finance Information</h1>
           <div class="divider"></div>
           <div class="row g-3 my-3">
-            <div class="col-6">
+            <div class="col-5">
               <label for="amount">Total Amount</label>
               <input
                 type="text"
@@ -205,7 +172,7 @@
                 readonly
               />
             </div>
-            <div class="col-6">
+            <div class="col-5">
               <label for="prevbalance">Previous Balance</label>
               <input
                 type="text"
@@ -215,7 +182,7 @@
                 readonly
               />
             </div>
-            <div class="col-6">
+            <div class="col-5">
               <label for="totalfees">Total Additional Fees</label>
               <input
                 type="text"
@@ -225,7 +192,7 @@
                 readonly
               />
             </div>
-            <div class="col-6">
+            <div class="col-5">
               <label for="finalassessment">Final Assessment</label>
               <input
                 type="text"
@@ -235,7 +202,7 @@
                 readonly
               />
             </div>
-            <div class="col-6">
+            <div class="col-5">
               <label for="downpayment">Downpayment/Initial Payment</label>
               <input
                 type="text"
@@ -246,7 +213,7 @@
               />
             </div>
 
-            <div class="col-6">
+            <div class="col-5">
               <label for="grandtotal">Grand Total</label>
               <input
                 type="text"
@@ -262,7 +229,6 @@
             </div>
           </div>
         </div>
-        <div class="divider mx-auto my-5"></div>
         <div class="container my-5">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">

@@ -9,6 +9,15 @@
         <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
           <h3 class="text-white fw-bold">Subject List</h3>
         </div>
+        <div class="d-flex justify-content-end">
+          <button
+            class="btn btnAddFees text-white m-2"
+            data-bs-toggle="modal"
+            data-bs-target="#createsub"
+          >
+            <i class="fa-solid fa-file-circle-plus mx-2"></i>Create Subject
+          </button>
+        </div>
         <div class="container my-4">
           <table id="example" #dataTable class="table table-striped">
             <thead>
@@ -16,7 +25,6 @@
                 <th>Subject</th>
                 <th>Instructor</th>
                 <th>Course/Sem</th>
-                <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -26,11 +34,6 @@
                 <td>Alfonso Jose M.</td>
                 <td>BSCS-1A/2nd Trimester</td>
                 <td>
-                  <span class="badge text-bg-success text-center"
-                    >Approved</span
-                  >
-                </td>
-                <td>
                   <button
                     class="btn btn-info"
                     data-bs-toggle="modal"
@@ -39,11 +42,6 @@
                     <a class="text-white text-decoration-none"
                       ><i class="fa-solid fa-eye"></i
                     ></a>
-                  </button>
-                  <button class="mx-2 btn btn-success">
-                    <a class="text-white text-decoration-none"
-                      ><i class="fa-solid fa-check"></i>Approve</a
-                    >
                   </button>
                 </td>
               </tr>
@@ -53,24 +51,14 @@
 
                 <td>BSIT-1A/2nd Trimester</td>
                 <td>
-                  <span class="badge text-bg-success text-center"
-                    >Approved</span
-                  >
-                </td>
-                <td>
                   <button
                     class="btn btn-info"
                     data-bs-toggle="modal"
-                    data-bs-target="#approveGrade"
+                    data-bs-target="#viewSubs"
                   >
                     <a class="text-white text-decoration-none"
                       ><i class="fa-solid fa-eye"></i
                     ></a>
-                  </button>
-                  <button class="mx-2 btn btn-success">
-                    <a class="text-white text-decoration-none"
-                      ><i class="fa-solid fa-check"></i>Approve</a
-                    >
                   </button>
                 </td>
               </tr>
@@ -80,24 +68,14 @@
 
                 <td>BSIT-1A/2nd Trimester</td>
                 <td>
-                  <span class="badge text-bg-secondary text-center"
-                    >Pending</span
-                  >
-                </td>
-                <td>
                   <button
                     class="btn btn-info"
                     data-bs-toggle="modal"
-                    data-bs-target="#approveGrade"
+                    data-bs-target="#viewSubs"
                   >
                     <a class="text-white text-decoration-none"
                       ><i class="fa-solid fa-eye"></i
                     ></a>
-                  </button>
-                  <button class="mx-2 btn btn-success">
-                    <a class="text-white text-decoration-none"
-                      ><i class="fa-solid fa-check"></i>Approve</a
-                    >
                   </button>
                 </td>
               </tr>
@@ -112,15 +90,15 @@
 <!-- MODAL -->
 <div
   class="modal fade"
-  id="approveGrade"
+  id="viewSubs"
   tabindex="-1"
-  aria-labelledby="approveGradeLabel"
+  aria-labelledby="viewSubsLabel"
   aria-hidden="true"
 >
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5 fw-bold" id="approveGradeLabel">
+        <h1 class="modal-title fs-5 fw-bold" id="viewSubsLabel">
           Subject Information
         </h1>
         <button
@@ -133,67 +111,188 @@
       <div class="modal-body">
         <form class="m-2 px-2">
           <div class="inputGroup row d-flex align-items-center">
-            <div class="inputGroup row d-flex align-items-center my-3">
-              <div class="col-4">
-                <label for="studName">Instructor</label>
+            <span class="caption-top text-danger"
+              >*Note: Please Submit Sectioning after Saving..</span
+            >
+            <div class="col-5 my-4">
+              <label for="schoolYr">School Yr</label>
+              <input
+                class="inputs"
+                type="text"
+                id="schoolYr"
+                name="schoolYr"
+                value="AY 2023-2024"
+                readonly
+              />
+            </div>
+            <div class="col-5">
+              <label for="semester">Semester</label>
+              <input
+                class="inputs"
+                type="text"
+                id="semester"
+                name="semester"
+                value="2nd Trimester"
+                readonly
+              />
+            </div>
+            <div class="col-4 my-3">
+              <label for="section">Section</label>
+              <input
+                class="inputs"
+                type="text"
+                id="section"
+                name="section"
+                value="BSIT-2"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="course">Course</label>
+              <input
+                class="inputs"
+                type="text"
+                id="course"
+                name="course"
+                value="BSIT"
+                readonly
+              />
+            </div>
+            <div class="divider my-4 w-100"></div>
+            <div class="container row">
+              <span class="caption-top">Subjects Info</span>
+              <div class="col-4 my-3">
+                <label for="section">Subject</label>
+                <input class="inputs" type="text" id="section" name="section" />
+              </div>
+              <div class="col-4 my-3">
+                <label for="starttime">Start time:</label>
                 <input
                   class="inputs"
                   type="text"
-                  id="studName"
-                  name="studName"
-                  value="Alfonso Jose M."
-                  readonly
+                  id="starttime"
+                  name="starttime"
                 />
               </div>
-              <div class="col-4">
-                <label for="schoolyr">School Year:</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="schoolyr"
-                  name="schoolyr"
-                  value="A.Y 2022-2023"
-                  readonly
-                />
+              <div class="col-4 my-3">
+                <label for="endtime">End time:</label>
+                <input class="inputs" type="text" id="endtime" name="endtime" />
               </div>
-              <div class="divider my-4 w-100"></div>
-              <span class="caption-top">Information</span>
-              <div class="col-9 mt-3">
-                <label for="subName">Subject Name:</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="subName"
-                  name="subName"
-                  value="CC 101/INTRODUCTION TO COMPUTING WITH KEYBOARDING"
-                  readonly
-                />
+              <div class="col-4 my-3">
+                <label for="days">Days</label>
+                <input class="inputs" type="text" id="days" name="days" />
               </div>
-              <div class="col-5 my-4">
-                <label for="section">Section</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="section"
-                  name="section"
-                  value="BSIT-1A - 2nd Trimester"
-                  readonly
-                />
+              <div class="col-4 my-3">
+                <label for="room">Room</label>
+                <input class="inputs" type="text" id="room" name="room" />
               </div>
-              <div class="col-6">
-                <label for="department">Department</label>
+              <div class="col-4 my-3">
+                <label for="instructor">Instructor</label>
                 <input
                   class="inputs"
                   type="text"
-                  id="department"
-                  name="department"
-                  value="College of Computer Education"
-                  readonly
+                  id="instructor"
+                  name="instructor"
                 />
               </div>
             </div>
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- create modal -->
+<div
+  class="modal fade"
+  id="createsub"
+  tabindex="-1"
+  aria-labelledby="createsubLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 fw-bold" id="createsubLabel">
+          Create Subject
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="m-2 px-2">
+          <div class="inputGroup row d-flex align-items-center">
+            <span class="caption-top text-danger"
+              >*Note: Please Submit Sectioning after Saving..</span
+            >
+            <div class="col-5 my-4">
+              <label for="schoolYr">School Yr</label>
+              <input class="inputs" type="text" id="schoolYr" name="schoolYr" />
+            </div>
+            <div class="col-5">
+              <label for="semester">Semester</label>
+              <input class="inputs" type="text" id="semester" name="semester" />
+            </div>
+            <div class="col-4 my-3">
+              <label for="section">Section</label>
+              <input class="inputs" type="text" id="section" name="section" />
+            </div>
+            <div class="col-4">
+              <label for="yrLevel">Year Level</label>
+              <input class="inputs" type="text" id="yrLevel" name="yrLevel" />
+            </div>
+            <div class="col-4">
+              <label for="course">Course</label>
+              <input class="inputs" type="text" id="course" name="course" />
+            </div>
+            <div class="divider my-4 w-100"></div>
+            <div class="container row">
+              <span class="caption-top">Add Subjects</span>
+              <div class="col-4 my-3">
+                <label for="section">Subject</label>
+                <input class="inputs" type="text" id="section" name="section" />
+              </div>
+              <div class="col-4 my-3">
+                <label for="starttime">Start time:</label>
+                <input
+                  class="inputs"
+                  type="text"
+                  id="starttime"
+                  name="starttime"
+                />
+              </div>
+              <div class="col-4 my-3">
+                <label for="endtime">End time:</label>
+                <input class="inputs" type="text" id="endtime" name="endtime" />
+              </div>
+              <div class="col-4 my-3">
+                <label for="days">Days</label>
+                <input class="inputs" type="text" id="days" name="days" />
+              </div>
+              <div class="col-4 my-3">
+                <label for="room">Room</label>
+                <input class="inputs" type="text" id="room" name="room" />
+              </div>
+              <div class="col-4 my-3">
+                <label for="instructor">Instructor</label>
+                <input
+                  class="inputs"
+                  type="text"
+                  id="instructor"
+                  name="instructor"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
