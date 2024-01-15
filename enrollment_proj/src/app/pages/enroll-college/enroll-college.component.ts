@@ -32,10 +32,6 @@ export class EnrollCollegeComponent implements OnInit {
   ngOnInit(): void {
     this.loadcourses();
     this.selectedyearlvl = this.college_enrollment.collegeinfo.year_level;
-    this.selectedacademic_year =
-    this.college_enrollment.collegeinfo.academic_year;
-    this.selectedsemester = this.college_enrollment.collegeinfo.semester;
-    this.selectedcourse = this.college_enrollment.collegeinfo.course;
     this.selectedstatus = this.college_enrollment.collegeinfo.student_status;
   }
 
@@ -90,25 +86,16 @@ export class EnrollCollegeComponent implements OnInit {
     // Update your data or perform any actions when the page changes
     if (
       !this.college_enrollment.collegeinfo.year_level ||
-      !this.college_enrollment.collegeinfo.academic_year ||
-      !this.college_enrollment.collegeinfo.course ||
-      !this.college_enrollment.collegeinfo.semester ||
       !this.college_enrollment.collegeinfo.student_status
     ) {
-      this.selectedacademic_yearisEmpty =
-        !this.college_enrollment.collegeinfo.academic_year;
 
       this.selectedacademic_selectedyearlvl =
         !this.college_enrollment.collegeinfo.year_level;
 
-      this.selectedacademic_selectedsemester =
-        !this.college_enrollment.collegeinfo.semester;
 
       this.selectedacademic_selectedstatus =
         !this.college_enrollment.collegeinfo.student_status;
 
-      this.selectedacademic_selectedcourse =
-        !this.college_enrollment.collegeinfo.course;
 
        Swal.fire(
       'ERROR',

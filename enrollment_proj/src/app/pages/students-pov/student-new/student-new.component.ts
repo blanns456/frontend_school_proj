@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { matchpassword, StrongPasswordRegx } from './match-password.validator';
 
 @Component({
-  selector: 'app-signup-teacher',
-  templateUrl: './signup-teacher.component.html',
-  styleUrls: ['./signup-teacher.component.css']
+  selector: 'app-student-new',
+  templateUrl: './student-new.component.html',
+  styleUrls: ['./student-new.component.css']
 })
-export class SignupTeacherComponent {
+export class StudentNewComponent {
+
   visible: boolean = true;
   changetype: boolean = true;
   visible1: boolean = true;
@@ -26,21 +26,22 @@ export class SignupTeacherComponent {
 
   constructor() {
     this.signUpForm = new FormGroup({
-      first_name: new FormControl(null, [Validators.required]),
       last_name: new FormControl(null, [Validators.required]),
+      first_name: new FormControl(null, [Validators.required]),
+      middle_name: new FormControl(null, [Validators.required]),
+      gender: new FormControl(null, [Validators.required]),
+      civil_status: new FormControl(null, [Validators.required]),
+      birth_date: new FormControl(null, [Validators.required]),
+      birth_place: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.required]),
       number: new FormControl(null, [Validators.required]),
-      birth_date: new FormControl(null, [Validators.required]),
-      username: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required, Validators.pattern(StrongPasswordRegx), Validators.minLength(8)]),
-      confirm_password: new FormControl(null, [Validators.required]),
-    },
-    {
-      validators: matchpassword
+      citizenship: new FormControl(null, [Validators.required]),
+      religion: new FormControl(null, [Validators.required]),
     })
   }
 
   signUp() {
     console.log(this.signUpForm.value);
   }
+
 }

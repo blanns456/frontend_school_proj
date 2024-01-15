@@ -8,7 +8,6 @@ import { matchpassword, StrongPasswordRegx } from './match-password.validator';
   styleUrls: ['./signup-registrar.component.css']
 })
 export class SignupRegistrarComponent {
-
   visible: boolean = true;
   changetype: boolean = true;
   visible1: boolean = true;
@@ -33,8 +32,8 @@ export class SignupRegistrarComponent {
       number: new FormControl(null, [Validators.required]),
       birth_date: new FormControl(null, [Validators.required]),
       username: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required, Validators.pattern(StrongPasswordRegx)]),
-      confirm_password: new FormControl(null),
+      password: new FormControl(null, [Validators.required, Validators.pattern(StrongPasswordRegx), Validators.minLength(8)]),
+      confirm_password: new FormControl(null, [Validators.required]),
     },
     {
       validators: matchpassword
