@@ -303,6 +303,10 @@ const routes: Routes = [
     path: 'registrar/staff/sign-up',
     component: SignupRegistrarComponent,
   },
+  {
+    path: 'new/student',
+    component: StudentNewComponent,
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
