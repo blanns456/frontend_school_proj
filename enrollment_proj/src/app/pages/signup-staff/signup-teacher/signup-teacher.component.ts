@@ -32,14 +32,15 @@ export class SignupTeacherComponent {
       number: new FormControl(null, [Validators.required]),
       birth_date: new FormControl(null, [Validators.required]),
       username: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required, Validators.pattern(StrongPasswordRegx)]),
-      confirm_password: new FormControl(null),
+      password: new FormControl(null, [Validators.required, Validators.pattern(StrongPasswordRegx), Validators.minLength(8)]),
+      confirm_password: new FormControl(null, [Validators.required]),
     },
     {
       validators: matchpassword
     })
   }
-   signUp() {
+
+  signUp() {
     console.log(this.signUpForm.value);
   }
 }
