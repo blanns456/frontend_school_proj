@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class SignupController {
-  readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/';
   token: any;
 
   // alertmessage: string | undefined;
@@ -12,6 +13,19 @@ export class SignupController {
   constructor(private http: HttpClient) {}
 
   public createstaffaccounting(user: {
+    first_name: string;
+    last_name: string;
+    email: string;
+    role: string;
+    number: string;
+    birth_date: string;
+    username: string;
+    password: string;
+  }) {
+    return this.http.post(this.Root_URL + 'staff-signup', user);
+  }
+
+  public createstaffregistrar(user: {
     first_name: string;
     last_name: string;
     email: string;
