@@ -63,6 +63,7 @@ import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-sub
 import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component';
 import { StudentGradesComponent } from './pages/registrar-pov/student-grades/student-grades.component';
 import { AuthGuard } from 'src/app/auth.guard';
+import { StudentNewComponent } from './pages/students-pov/student-new/student-new.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
