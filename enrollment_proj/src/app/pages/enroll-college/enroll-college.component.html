@@ -10,67 +10,21 @@
       <h2 class="h3 fw-bold">ASCB College</h2>
       <h2 class="h3 fw-bold">Enrollment Form</h2>
       <h3 class="h6">A.Y. 2023-2024</h3>
+      <span class="semester">2nd Trimester</span>
     </div>
   </div>
 
   <div class="divider my-3"></div>
 
-  <div
-    class="w-80"
-    id="enroll">
+  <div id="enroll">
     <form
       enctype="multipart/form-data"
       method="post"
       class="row">
 
-      <!-- semester -->
-      <div class="col-6 my-1 d-flex justify-content-end">
-        <div class="w-50 mx-5">
-          <label
-            for="semester"
-            class="form-label">
-            Trimester
-          </label>
-          <input
-            type="text"
-            id="semester"
-            class="form-control"
-            name="trimester"
-            value="2nd Trimester"
-            readonly>
-        </div>
-      </div>
-      <!-- year Level -->
-      <div class="col-6 my-1 d-flex justify-content-start">
-        <div class="w-50 mx-5">
-          <label
-            for="year_level"
-            class="form-label">
-            Year Level
-          </label>
-          <select
-            name="Academic Year"
-            id="year_level"
-            class="form-control form-select"
-            [class.is-invalid]="selectedacademic_selectedyearlvl"
-            (change)="onyearlvl($event)"
-            [value]="selectedyearlvl">
-            <option
-              value
-              disabled
-              selected>
-              Please select year level
-            </option>
-            <option value="1st Year">1st Year</option>
-            <option value="2nd Year">2nd Year</option>
-            <option value="3rd Year">3rd Year</option>
-            <option value="4th Year">4th Year</option>
-          </select>
-        </div>
-      </div>
       <!-- program -->
-      <div class="col-6 my-1 d-flex justify-content-end">
-        <div class="w-50 mx-5">
+      <div class="col-4 my-1 d-flex justify-content-end">
+        <div>
           <label
             for="semester"
             class="form-label">
@@ -97,9 +51,39 @@
           </select>
         </div>
       </div>
+
+      <!-- year Level -->
+      <div class="col-4 my-1 d-flex justify-content-start">
+        <div>
+          <label
+            for="year_level"
+            class="form-label">
+            Year Level
+          </label>
+          <select
+            name="Academic Year"
+            id="year_level"
+            class="form-control form-select"
+            [class.is-invalid]="selectedacademic_selectedyearlvl"
+            (change)="onyearlvl($event)"
+            [value]="selectedyearlvl">
+            <option
+              value
+              disabled
+              selected>
+              Please select year level
+            </option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
+        </div>
+      </div>
+
       <!-- Status -->
-      <div class="col-6 my-1 d-flex justify-content-start">
-        <div class="w-50 mx-5">
+      <div class="col-4 my-1 d-flex justify-content-start">
+        <div>
           <label
             for="student_status"
             class="form-label">
@@ -121,6 +105,7 @@
             <option value="Regular">Regular</option>
             <option value="Old Student">Old Student</option>
             <option value="Transferee">Transferee</option>
+            <option value="Shiftee">Shiftee</option>
           </select>
         </div>
       </div>
