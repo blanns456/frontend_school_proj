@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-course-list',
@@ -7,13 +8,23 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./course-list.component.css']
 })
 export class CourseListComponent {
+
+  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+
   rows1: any[] = [];
   rows2: any[] = [];
   rows3: any[] = [];
   rows4: any[] = [];
+  courses: any = [];
   addProgram: FormGroup;
 
-  constructor()
+  courseGet() {
+    this.http.get(this.Root_URL + 'courses').subscribe((course) => {
+      console.log(course);
+    });
+  }
+
+  constructor(private http: HttpClient)
   {
     this.addProgram = new FormGroup({
     program : new FormControl(null, [Validators.required]),
