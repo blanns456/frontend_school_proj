@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 })
 export class ProspectusComponent {
 
-  constructor(private prospectus: ProspectusController, private http: HttpClient)
+  constructor(private prospectus_get: ProspectusController, private http: HttpClient)
   { }
 
-  students: any = [];
+  prospectus: any = [];
   total: any;
   data: any;
   totalPage: any;
@@ -22,7 +22,7 @@ export class ProspectusComponent {
 
   filterObj = {
     'name': "",
-    'sort': "asc",
+    'sort': "desc",
     'perPage': 10,
     'page': 1,
   };
@@ -42,12 +42,12 @@ export class ProspectusComponent {
   }
 
   filterEnrolled() {
-    this.http.post(this.prospectus.Root_URL+'get-prospectus', this.filterObj).subscribe((prospectus) => {
-      this.data = prospectus;
-      this.students = this.data.data;
+    this.http.post(this.prospectus_get.Root_URL+'get-prospectus', this.filterObj).subscribe((prospectus_filter) => {
+      this.data = prospectus_filter;
+      this.prospectus = this.data.data;
       this.total = this.data.total;
       this.totalPage = this.data.lastPage;
-      console.log(this.data.page);
+      // console.log(this.data.page);
     });
   }
 

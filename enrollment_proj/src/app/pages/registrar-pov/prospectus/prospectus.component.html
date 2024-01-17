@@ -46,33 +46,16 @@
           <thead>
             <tr>
               <th>Name</th>
-              <th>Date Start</th>
-              <th>Date End</th>
+              <th>Effective School Year</th>
               <th>Courses</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Bachelor of Science in Computer Science</td>
-              <td>2023</td>
-              <td>2024</td>
+            <tr *ngFor="let program of prospectus">
+              <td>{{program.course}}</td>
               <td>
-
-                <button
-                  class="btn btn-secondary btn-sm mx-1"
-                  data-bs-toggle="modal"
-                  data-bs-target="#course-list">
-                  <i class="fa-solid fa-eye"></i>
-                  View
-                </button>
+                {{program.date_start | date:'y'}} - {{program.date_end | date:'y'}}
               </td>
-            </tr>
-            <tr>
-              <td>
-                Bachelor of Science in Information Technology
-              </td>
-              <td>2023</td>
-              <td>2024</td>
               <td>
 
                 <button
