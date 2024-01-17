@@ -15,3 +15,8 @@ input[type=text], input[type=date], input[type=search], select {
   border-bottom: 2px solid black;
   border-radius: 0 !important;
 }
+
+th{
+  background: #0840a1;
+  color: white;
+}

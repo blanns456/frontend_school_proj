@@ -90,6 +90,7 @@ import { StudentNewComponent } from './pages/students-pov/student-new/student-ne
 import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus.component';
 import { CourseListComponent } from './pages/registrar-pov/course-list/course-list.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
