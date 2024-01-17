@@ -1,0 +1,129 @@
+<div class="container-dashboard">
+  <app-registrar-sidebar></app-registrar-sidebar>
+  <div class="main-content">
+    <div class="fixed-background"></div>
+    <app-registrar-navbar></app-registrar-navbar>
+    <div class="container-fluid vh-100 content">
+      <h2 class="h3 text-white">Prospectus</h2>
+      <div class="container bg-white prospectus">
+
+        <hr class="my-4">
+        <div class="d-flex justify-content-between">
+          <div>
+            <label
+              for="search"
+              class="mx-2">
+              Search:
+            </label>
+            <input
+              type="search"
+              name="filter_prospectus"
+              id="filter_prospectus"
+              class="my-2"
+              aria-label="search">
+            <select
+              name="show"
+              id="show"
+              class="mx-2">
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+          <div>
+            <button
+              class="btn btn-outline-primary btn-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#new_program">
+              Program
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <table class="table caption-top table-striped">
+          <caption class="fw-bold">Programs</caption>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date Start</th>
+              <th>Date End</th>
+              <th>Courses</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bachelor of Science in Computer Science</td>
+              <td>2023</td>
+              <td>2024</td>
+              <td>
+
+                <button
+                  class="btn btn-secondary btn-sm mx-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#course-list">
+                  <i class="fa-solid fa-eye"></i>
+                  View
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Bachelor of Science in Information Technology
+              </td>
+              <td>2023</td>
+              <td>2024</td>
+              <td>
+
+                <button
+                  class="btn btn-secondary btn-sm mx-1"
+                  data-bs-toggle="modal"
+                  data-bs-target="#course-list">
+                  <i class="fa-solid fa-eye"></i>
+                  View
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-between">
+          <div>10 Totals of Programs</div>
+          <div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item"><a
+                    class="page-link"
+                    href="#">
+                    Previous
+                  </a></li>
+                <li class="page-item"><a
+                    class="page-link"
+                    href="#">
+                    1
+                  </a></li>
+                <li class="page-item"><a
+                    class="page-link"
+                    href="#">
+                    2
+                  </a></li>
+                <li class="page-item"><a
+                    class="page-link"
+                    href="#">
+                    3
+                  </a></li>
+                <li class="page-item"><a
+                    class="page-link"
+                    href="#">
+                    Next
+                  </a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="opacity-0 py-2">spacer</div>
+      </div>
+      <div class="opacity-0 py-2">spacer</div>
+    </div>
+  </div>
+</div>
+<app-course-list></app-course-list>
