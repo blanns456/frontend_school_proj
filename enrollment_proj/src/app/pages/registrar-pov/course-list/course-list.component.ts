@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-course-list',
@@ -12,15 +11,14 @@ export class CourseListComponent {
   rows2: any[] = [];
   rows3: any[] = [];
   rows4: any[] = [];
+  addProgram: FormGroup;
 
-  constructor(private formbuilder: FormBuilder)
-  {}
-
-  addProgram = this.formbuilder.group({
-    program: '',
-    date_start: '',
-    date_end:''
-  });
+  constructor()
+  {
+    this.addProgram = new FormGroup({
+    program : new FormControl(null, [Validators.required]),
+    });
+  }
 
   onSubmitProgram() {
     
