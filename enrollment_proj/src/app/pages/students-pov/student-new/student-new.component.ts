@@ -42,6 +42,8 @@ export class StudentNewComponent {
 
   signUp() {
     console.log(this.signUpForm.value);
+
+
   }
 
 }
