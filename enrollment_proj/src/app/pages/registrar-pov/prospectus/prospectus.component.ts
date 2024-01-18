@@ -28,20 +28,20 @@ export class ProspectusComponent {
   };
   
   ngOnInit(): void {
-    this.filterEnrolled();
+    this.filterProspectus();
   }
 
   onPrevious(){
     this.filterObj.perPage --;
-    this.filterEnrolled();
+    this.filterProspectus();
   }
 
   onNext(){
     this.filterObj.perPage++; 
-    this.filterEnrolled();
+    this.filterProspectus();
   }
 
-  filterEnrolled() {
+  filterProspectus() {
     this.http.post(this.prospectus_get.Root_URL+'get-prospectus', this.filterObj).subscribe((prospectus_filter) => {
       this.data = prospectus_filter;
       this.prospectus = this.data.data;
@@ -49,6 +49,17 @@ export class ProspectusComponent {
       this.totalPage = this.data.lastPage;
       // console.log(this.data.page);
     });
+  }
+
+  generatePageNumbers(): number[] {
+    return Array.from({ length: this.totalPage }, (_, index) => index + 1);
+  }
+
+  goToPage(pageNum: number): void {
+    if (pageNum >= 1 && pageNum <= this.totalPage && pageNum !== this.filterObj.page) {
+      this.filterObj.page = pageNum;
+      this.filterProspectus();
+    }
   }
 
 }

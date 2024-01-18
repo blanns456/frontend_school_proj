@@ -4,7 +4,7 @@
     <div class="fixed-background"></div>
     <app-registrar-navbar></app-registrar-navbar>
     <div class="container-fluid vh-100 content">
-      <h2 class="h3 text-white">Prospectus</h2>
+      <h2 class="h3 text-white my-0">Prospectus</h2>
       <div class="container bg-white prospectus">
 
         <hr class="my-4">
@@ -20,8 +20,10 @@
               name="filter_prospectus"
               id="filter_prospectus"
               class="my-2"
+              [(ngModel)]="filterObj.name"
+              (input)="filterProspectus()"
               aria-label="search">
-            <select
+            <!-- <select
               name="show"
               id="show"
               class="mx-2">
@@ -29,7 +31,7 @@
               <option value="25">25</option>
               <option value="50">50</option>
               <option value="100">100</option>
-            </select>
+            </select> -->
           </div>
           <div>
             <button
@@ -41,7 +43,7 @@
             </button>
           </div>
         </div>
-        <table class="table caption-top table-striped">
+        <table class="table caption-top table-striped table-responsive">
           <caption class="fw-bold">Programs</caption>
           <thead>
             <tr>
@@ -70,37 +72,47 @@
           </tbody>
         </table>
         <div class="d-flex justify-content-between">
-          <div>10 Totals of Programs</div>
+          <div>{{this.total}} Totals</div>
           <div>
             <nav aria-label="Page navigation example">
               <ul class="pagination">
-                <li class="page-item"><a
+                <li
+                  class="page-item"
+                  (click)="onPrevious()"
+                  [class.disabled]="filterObj.page === 1">
+                  <a
                     class="page-link"
-                    href="#">
+                    href="#"
+                    tabindex="-1"
+                    aria-disabled="true">
                     Previous
-                  </a></li>
-                <li class="page-item"><a
+                  </a>
+                </li>
+
+                <!-- Generate dynamic page links -->
+                <li
+                  class="page-item"
+                  *ngFor="let pageNum of generatePageNumbers()">
+                  <p
                     class="page-link"
-                    href="#">
-                    1
-                  </a></li>
-                <li class="page-item"><a
-                    class="page-link"
-                    href="#">
-                    2
-                  </a></li>
-                <li class="page-item"><a
-                    class="page-link"
-                    href="#">
-                    3
-                  </a></li>
-                <li class="page-item"><a
+                    (click)="goToPage(pageNum)">
+                    {{ pageNum }}
+                  </p>
+               </li>
+
+                <li
+                  class="page-item"
+                  (click)="onNext()"
+                  [class.disabled]="filterObj.page === totalPage">
+                   <a
                     class="page-link"
                     href="#">
                     Next
-                  </a></li>
+                  </a>
+                </li>
               </ul>
             </nav>
+
           </div>
         </div>
         <div class="opacity-0 py-2">spacer</div>

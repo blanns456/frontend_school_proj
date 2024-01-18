@@ -40,7 +40,9 @@
           </div>
         </div>
         <hr>
-        <form action>
+        <form
+          [formGroup]="addSubj"
+          (ngSubmit)="saveData()">
           <table class="table table-striped table-bordered caption-top">
             <caption>1st Year</caption>
             <thead>
@@ -57,31 +59,37 @@
                 <td>
                   <input
                     type="text"
-                    [(ngModel)]="row.course_number"
+                    [(ngModel)]="row.code"
+                    [ngModelOptions]="{standalone: true}"
+                    form
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.description"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.pre_requisite"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.units"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.trimester"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
               </tr>
@@ -89,7 +97,7 @@
             <button
               class="btn btn-outline-primary btn-sm my-2"
               type="button"
-              (click)="addRow1st()">
+              (click)="addRow(1)">
               Row
               <i class="fa-solid fa-plus"></i>
             </button>
@@ -110,31 +118,36 @@
                 <td>
                   <input
                     type="text"
-                    [(ngModel)]="row.course_number"
+                    [(ngModel)]="row.code"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.description"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.pre_requisite"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.units"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.trimester"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
               </tr>
@@ -142,7 +155,7 @@
             <button
               class="btn btn-outline-primary btn-sm my-2"
               type="button"
-              (click)="addRow2nd()">
+              (click)="addRow(2)">
               Row
               <i class="fa-solid fa-plus"></i>
             </button>
@@ -163,31 +176,36 @@
                 <td>
                   <input
                     type="text"
-                    [(ngModel)]="row.course_number"
+                    [(ngModel)]="row.code"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.description"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.pre_requisite"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.units"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.trimester"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
               </tr>
@@ -195,7 +213,7 @@
             <button
               class="btn btn-outline-primary btn-sm my-2"
               type="button"
-              (click)="addRow3rd()">
+              (click)="addRow(3)">
               Row
               <i class="fa-solid fa-plus"></i>
             </button>
@@ -216,31 +234,36 @@
                 <td>
                   <input
                     type="text"
-                    [(ngModel)]="row.course_number"
+                    [(ngModel)]="row.code"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.description"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.pre_requisite"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.units"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
                 <td>
                   <input
                     type="text"
                     [(ngModel)]="row.trimester"
+                    [ngModelOptions]="{standalone: true}"
                     class="form-control">
                 </td>
               </tr>
@@ -248,7 +271,7 @@
             <button
               class="btn btn-outline-primary btn-sm my-2"
               type="button"
-              (click)="addRow4th()">
+              (click)="addRow(4)">
               Row
               <i class="fa-solid fa-plus"></i>
             </button>
@@ -261,7 +284,7 @@
               Close
             </button>
             <button
-              type="button"
+              type="submit"
               class="btn btn-primary">
               Save
             </button>
