@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
       if (this.data.status === 1) {
         this.token = this.data.data.token;
         localStorage.setItem('token', this.token);
+        this.logincontroller.reloaddata();
         $('#loading').addClass('d-none');
         $('#mainPage').removeClass('d-none');
         this.router.navigate(['student-dashboard-academic']);

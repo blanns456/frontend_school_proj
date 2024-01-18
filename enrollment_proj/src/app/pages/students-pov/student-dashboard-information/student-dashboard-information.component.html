@@ -4,198 +4,177 @@
     <div class="fixed-background"></div>
     <app-student-navbar></app-student-navbar>
     <div class="container-fluid content mb-5">
-      <h2 class="text-white h3 mb-3">
-      Student's Information
-      </h2>
+      <h2 class="text-white h3 mb-3">Student's Information</h2>
 
       <div class="container-fluid bg-white rounded">
         <div class="row bg-secondary py-3 info-links">
           <div class="col-6 text-center">
             <a
               class="link-offset-2 link-underline link-underline-opacity-0 text-white fs-5 student-info"
-              routerLink="/student-dashboard-information">
+              routerLink="/student-dashboard-information"
+            >
               Student Information
             </a>
             <div class="divider mx-auto"></div>
-
           </div>
           <div class="col-6 text-center">
             <a
               class="link-offset-2 link-underline link-underline-opacity-0 text-white fs-5 parent-info"
-              routerLink="/student-dashboard-parent">
+              routerLink="/student-dashboard-parent"
+            >
               Parent/Guardian's Information
             </a>
           </div>
         </div>
         <form
-          action
-          method>
+          (ngSubmit)="onSave()"
+          method="post"
+          [formGroup]="UpdateStudInfoForm"
+        >
           <div class="row mt-3">
-            <div class="col-6">
-              <div class="mb-3 input-holder">
-                <label
-                  for="id_number"
-                  class="form-label">
-                  ID Number
-                </label>
+            <!-- <div class="col-6"> -->
+            <!-- <div class="mb-3 input-holder">
+                <label for="id_number" class="form-label"> ID Number </label>
                 <input
                   type="text"
                   class="form-control"
                   name="id_number"
                   id="id_number"
                   value="ex.123456789"
-                  readonly>
+                  readonly
+                />
               </div>
             </div>
             <div class="col-6">
               <div class="mb-3 input-holder">
-                <label
-                  for="id_number"
-                  class="form-label">
-                  LRN Number
-                </label>
+                <label for="id_number" class="form-label"> LRN Number </label>
                 <input
                   type="text"
                   class="form-control"
                   name="id_number"
                   id="id_number"
                   value="ex.123456789"
-                  readonly>
+                  readonly
+                />
               </div>
-            </div>
+            </div> -->
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="first_name"
-                  class="form-label">
-                  First Name
-                </label>
+                <label for="first_name" class="form-label"> First Name </label>
                 <input
+                  formControlName="first_name"
                   type="text"
                   class="form-control"
                   name="first_name"
                   id="first_name"
+                  [value]="this.studentdata[0]['firstname']"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="middle_name"
-                  class="form-label">
+                <label for="middle_name" class="form-label">
                   Middle Name
                 </label>
                 <input
+                  formControlName="middle_name"
                   type="text"
                   class="form-control"
                   name="middle_name"
                   id="middle_name"
+                  [value]="this.studentdata[0]['middlename']"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="last_name"
-                  class="form-label">
-                  Last Name
-                </label>
+                <label for="last_name" class="form-label"> Last Name </label>
                 <input
                   type="text"
+                  formControlName="lastname"
                   class="form-control"
                   name="last_name"
+                  [value]="this.studentdata[0]['lastname']"
                   id="last_name"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="suffix"
-                  class="form-label">
-                  Suffix
-                </label>
+                <label for="suffix" class="form-label"> Suffix </label>
                 <input
                   type="text"
+                  formControlName="suffix"
                   class="form-control"
+                  [value]="this.studentdata[0]['suffix']"
                   name="suffix"
                   id="suffix"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="Gender"
-                  class="form-label">
-                  Gender
-                </label>
+                <label for="Gender" class="form-label"> Gender </label>
                 <select
                   name="Gender"
                   id="Gender"
                   class="form-select"
-                  required>
-                  <option
-                    value
-                    disabled
-                    selected>
-                    Please Select Gender
-                  </option>
-                  <option value="M">Male</option>
-                  <option value="F">Female</option>
+                  [value]="this.studentdata[0]['gender']"
+                  required
+                >
+                  <option value disabled selected>Please Select Gender</option>
+                  <option value="male" id="male">Male</option>
+                  <option value="female" id="female">Female</option>
                 </select>
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="civil_status"
-                  class="form-label">
+                <label for="civil_status" class="form-label">
                   Civil Status
                 </label>
                 <select
                   name="civil_status"
                   id="civil_status"
                   class="form-select"
-                  required>
-                  <option
-                    value
-                    disabled
-                    selected>
+                  [value]="this.studentdata[0]['civil_status']"
+                  required
+                >
+                  <option value disabled selected>
                     Please Select Civil Status
                   </option>
-                  <option value="Single">Single</option>
-                  <option value="Married">Married</option>
-                  <option value="Widowed">Widowed</option>
-                  <option value="Divorced">Divorced</option>
+                  <option value="single">Single</option>
+                  <option value="married">Married</option>
+                  <option value="widowed">Widowed</option>
+                  <option value="divorced">Divorced</option>
                 </select>
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="birth_date"
-                  class="form-label">
-                  Birthdate
-                </label>
+                <label for="birth_date" class="form-label"> Birthdate </label>
                 <input
                   type="date"
                   class="form-control"
                   name="birth_date"
                   id="birth_date"
+                  [value]="this.studentdata[0]['birthdate']"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="birth_place"
-                  class="form-label">
+                <label for="birth_place" class="form-label">
                   Place of Birth
                 </label>
                 <input
@@ -203,31 +182,29 @@
                   class="form-control"
                   name="birth_place"
                   id="birth_place"
+                  [value]="this.studentdata[0]['birth_place']"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="religion"
-                  class="form-label">
-                  Religion
-                </label>
+                <label for="religion" class="form-label"> Religion </label>
                 <input
                   type="text"
                   class="form-control"
                   name="religion"
                   id="religion"
+                  [value]="this.studentdata[0]['religion']"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="contact_number"
-                  class="form-label">
+                <label for="contact_number" class="form-label">
                   Contact Number
                 </label>
                 <input
@@ -236,31 +213,29 @@
                   class="form-control"
                   name="contact_number"
                   id="contact_number"
+                  [value]="this.studentdata[0]['contact_number']"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="email"
-                  class="form-label">
-                  Email
-                </label>
+                <label for="email" class="form-label"> Email </label>
                 <input
                   type="email"
                   class="form-control"
                   name="email"
                   id="email"
+                  [value]="this.studentdata[0]['email_address']"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label
-                  for="citizenship"
-                  class="form-label">
+                <label for="citizenship" class="form-label">
                   Citizenship
                 </label>
                 <input
@@ -268,53 +243,47 @@
                   class="form-control"
                   name="citizenship"
                   id="citizenship"
+                  [value]="this.studentdata[0]['citizenship']"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-6">
               <div class="mb-3 input-holder">
-                <label
-                  for="home_address"
-                  class="form-label">
+                <label for="home_address" class="form-label">
                   Home Address
                 </label>
                 <input
                   type="text"
                   class="form-control"
                   name="home_address"
+                  [value]="this.studentdata[0]['home_address']"
                   id="home_address"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
             <div class="col-6">
               <div class="mb-3 input-holder">
-                <label
-                  for="permanent_address"
-                  class="form-label">
+                <label for="permanent_address" class="form-label">
                   Permanent Address
                 </label>
                 <input
                   type="text"
                   class="form-control"
                   name="permanent_address"
+                  [value]="this.studentdata[0]['permanent_address']"
                   id="permanent_address"
                   value
-                  required>
+                  required
+                />
               </div>
             </div>
-            <div class="col-6 my-2 text-center">
-              <button
-                type="button"
-                class="btn btn-secondary w-50 mx-auto">
-                Edit
-              </button>
-            </div>
-            <div class="col-6 my-2 text-center">
-              <button
-                type="submit"
-                class="btn btn-success w-50 mx-auto">
+
+            <div class="col-12 my-2 text-end">
+              <button type="submit" class="btn btn-success w-25 mx-auto">
                 Save
               </button>
             </div>
