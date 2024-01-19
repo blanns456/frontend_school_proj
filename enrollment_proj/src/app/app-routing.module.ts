@@ -63,8 +63,9 @@ import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-sub
 import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component'
 import { StudentGradesComponent } from './pages/registrar-pov/student-grades/student-grades.component'
 import { StudentNewComponent } from './pages/students-pov/student-new/student-new.component';
-import { ProspectusComponentStudents } from './pages/students-pov/prospectus/prospectus.component';
 import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus.component';
+import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-students/prospectus-students.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '', component: HomeComponent },
@@ -239,7 +240,7 @@ const routes: Routes = [
   { path: 'student-dashboard-academic', component: StudentDashboardAcademicComponent },
   { path: 'student-dashboard-financial', component: StudentDashboardFinancialComponent },
   { path: 'student-dashboard-enrollment', component: StudentDashboardEnrollmentComponent },
-  { path: 'student-dashboard-prospectus', component: ProspectusComponentStudents },
+  { path: 'student-dashboard-prospectus', component: ProspectusStudentsComponent},
   {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,

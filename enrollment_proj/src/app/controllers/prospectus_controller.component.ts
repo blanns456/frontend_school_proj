@@ -33,4 +33,13 @@ export class ProspectusController {
     return this.http.post(this.Root_URL + 'get-prospectus', filterPros);
   }
 
+  public studentProspectus(
+    getPros: {
+      course: string;
+      year_lvl: string;
+    })
+  {
+    return this.http.post(this.Root_URL + 'students-prospectus', getPros);
+  }
+
 }
