@@ -4,12 +4,13 @@ import { ProspectusController } from 'src/app/controllers/prospectus_controller.
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { concat } from 'rxjs/operators';
+declare var $: any;
 import Swal from 'sweetalert2';
- 
+
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
-  styleUrls: ['./course-list.component.css']
+  styleUrls: ['./course-list.component.css'],
 })
 export class CourseListComponent implements OnInit {
   rows1: any[] = [];
@@ -21,17 +22,20 @@ export class CourseListComponent implements OnInit {
   info: any;
   addProgram: FormGroup;
   addSubj: FormGroup;
+  prosdata: any;
 
-  constructor(private prospectus: ProspectusController, private http: HttpClient)
-  {
+  constructor(
+    private prospectus: ProspectusController,
+    private http: HttpClient
+  ) {
     this.addProgram = new FormGroup({
-    program : new FormControl(null, [Validators.required]),
-    date_start : new FormControl(null, [Validators.required]),
-    date_end : new FormControl(null, [Validators.required]),
+      program: new FormControl(null, [Validators.required]),
+      date_start: new FormControl(null, [Validators.required]),
+      date_end: new FormControl(null, [Validators.required]),
     });
 
     this.addSubj = new FormGroup({
-      subjects : new FormArray([]),
+      subjects: new FormArray([]),
     });
   }
 
@@ -44,35 +48,33 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseGet();
+    this.prosdata = this.prospectus.procpectusdata;
+    console.log(this.prospectus.procpectusdata);
   }
 
   onSubmitProgram() {
     console.log(this.addProgram.value);
-    this.prospectus
-      .createProspectus(this.addProgram.value)
-      .subscribe((res) => {
-        this.info = res;
-        if (this.info[0]['message'] === 'ERROR') {
-          if (this.info[0]['error']['program']) {
-            Swal.fire('Error', this.info[0]['error']['program'][0], 'error');
-          } else if (this.info[0]['error']['date_start']) {
-            Swal.fire('Error', this.info[0]['error']['date_start'][0], 'error');
-          } else if (this.info[0]['error']['date_end']) {
-            Swal.fire('Error', this.info[0]['error']['date_end'][0], 'error');
-          }
-          return;
-        } else {
-          Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
-            window.location.reload();
-          });
-          return;
+    this.prospectus.createProspectus(this.addProgram.value).subscribe((res) => {
+      this.info = res;
+      if (this.info[0]['message'] === 'ERROR') {
+        if (this.info[0]['error']['program']) {
+          Swal.fire('Error', this.info[0]['error']['program'][0], 'error');
+        } else if (this.info[0]['error']['date_start']) {
+          Swal.fire('Error', this.info[0]['error']['date_start'][0], 'error');
+        } else if (this.info[0]['error']['date_end']) {
+          Swal.fire('Error', this.info[0]['error']['date_end'][0], 'error');
         }
+        return;
+      } else {
+        Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
+          window.location.reload();
+        });
+        return;
+      }
     });
   }
 
-  onSubmitProspectus() {
-    
-  }
+  onSubmitProspectus() {}
 
   addRow(year: number) {
     const newRow = {
@@ -103,28 +105,35 @@ export class CourseListComponent implements OnInit {
   }
 
   saveData() {
-    const allRows = [...this.rows1, ...this.rows2, ...this.rows3, ...this.rows4];
-    const rowsWithYear = allRows.map(row => ({ ...row, year_lvl: row.year_lvl, prospectus_id: 1 }));
-    
-    console.log('Data to be sent:', rowsWithYear);  // Log the data
+    // console.log($('#prospecid').val());
+    const allRows = [
+      ...this.rows1,
+      ...this.rows2,
+      ...this.rows3,
+      ...this.rows4,
+    ];
+    const rowsWithYear = allRows.map((row) => ({
+      ...row,
+      year_lvl: row.year_lvl,
+      prospectus_id: $('#prospecid').val(),
+    }));
 
-    // rowsWithYear.forEach(e => console.log(e));
+    console.log('Data to be sent:', rowsWithYear); // Log the data
 
-
-    // this.http.post(this.prospectus.Root_URL + 'add-subject', rowsWithYear)
-    //   .subscribe(
-    //     (response) => {
-    //       console.log('Backend response:', response);  // Log the backend response
-    //       Swal.fire('Success', 'Added Successfully', 'success').then(() => {
-    //         window.location.reload();
-    //       });
-    //     },
-    //     error => {
-    //       console.error('Error sending data to backend:', error);  // Log any errors
-    //       Swal.fire('Error', 'Failed to add subjects', 'error');
-    //     }
-    // );
-    // console.log(this.addSubj.value);
+    rowsWithYear.forEach((e) => {
+      this.prospectus
+        .addsubjects({
+          description: e.description,
+          prospectus_id: e.prospectus_id + '',
+          code: e.code,
+          units: e.units,
+          pre_requisite: e.pre_requisite,
+          year_lvl: e.year_lvl + '',
+          semester: e.trimester,
+        })
+        .subscribe((res) => {
+          console.log(res);
+        });
+    });
   }
-
 }
