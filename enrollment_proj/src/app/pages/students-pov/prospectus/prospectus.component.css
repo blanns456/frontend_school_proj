@@ -27,3 +27,8 @@ thead tr th{
     border-top: 0;
     border-bottom: 0;
 }   
+
+.all::before{
+    content: "All";
+    margin: -22px;
+}

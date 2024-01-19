@@ -87,6 +87,7 @@ import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-sub
 import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component';
 import { StudentGradesComponent } from './pages/registrar-pov/student-grades/student-grades.component';
 import { StudentNewComponent } from './pages/students-pov/student-new/student-new.component';
+import { ProspectusComponent } from './pages/students-pov/prospectus/prospectus.component';
 
 @NgModule({
   declarations: [
@@ -169,6 +170,7 @@ import { StudentNewComponent } from './pages/students-pov/student-new/student-ne
     DeansSubjectlistComponent,
     StudentGradesComponent,
     StudentNewComponent,
+    ProspectusComponent,
   ],
   imports: [
     BrowserModule,
