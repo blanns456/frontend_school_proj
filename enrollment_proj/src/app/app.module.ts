@@ -87,7 +87,10 @@ import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-sub
 import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component';
 import { StudentGradesComponent } from './pages/registrar-pov/student-grades/student-grades.component';
 import { StudentNewComponent } from './pages/students-pov/student-new/student-new.component';
-import { ProspectusComponent } from './pages/students-pov/prospectus/prospectus.component';
+import { ProspectusComponentStudents } from './pages/students-pov/prospectus/prospectus.component';
+import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus.component';
+import { CourseListComponent } from './pages/registrar-pov/course-list/course-list.component';
+
 
 @NgModule({
   declarations: [
@@ -171,6 +174,7 @@ import { ProspectusComponent } from './pages/students-pov/prospectus/prospectus.
     StudentGradesComponent,
     StudentNewComponent,
     ProspectusComponent,
+    CourseListComponent,
   ],
   imports: [
     BrowserModule,
