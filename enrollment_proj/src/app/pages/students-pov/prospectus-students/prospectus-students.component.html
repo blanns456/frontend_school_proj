@@ -4,9 +4,7 @@
     <div class="fixed-background"></div>
     <app-student-navbar></app-student-navbar>
     <div class="container-fluid vh-100 content">
-      <h2 class="h3 text-white">
-        Course List
-      </h2>
+      <h2 class="h3 text-white">Course List</h2>
       <div class="position-relative">
         <div class="my-3 bg-white rounded">
           <div class="bg-secondary text-white px-3 py-2">
@@ -14,7 +12,13 @@
           </div>
           <div class="my-2 container-fluid">
             <div>
-              <span>Program: <strong>BSIT</strong></span>
+              <span
+                >Program:
+                <strong
+                  >Bachelor of Science in Business Administration Major in Human
+                  Resource Development Management</strong
+                ></span
+              >
             </div>
             <div>
               <span>Available Units: <strong>24 Units</strong></span>
@@ -24,51 +28,50 @@
             </div>
           </div>
           <div class="my-2 container">
-            <table class="table table-bordered py-2">
+            <table class="table table-bordered py-2 text-center">
               <thead>
                 <tr>
-                  <th>Course No.</th>
-                  <th>Course Title</th>
-                  <th>Rating</th>
+                  <th>Course Code.</th>
+                  <th>Descriptive Titles</th>
                   <th>Units</th>
-                  <th>Weight Ave</th>
+                  <th>Pre-requisite</th>
+                  <th>Action</th>
                 </tr>
               </thead>
-              <tbody class="text-start">
+              <tbody>
                 <tr>
-                  <td>CC101</td>
+                  <td colspan="4"></td>
                   <td>
-                    Introduction to Computing with Keyboarding
+                    <input
+                      type="checkbox"
+                      id="allButton"
+                      class="all form-check mx-auto"
+                      (change)="selectAll($event); updateTotalUnits($event, '')"
+                    />
                   </td>
-                  <td>1.2</td>
-                  <td>3</td>
-                  <td>3.6</td>
                 </tr>
-                <tr>
-                  <td>CSS 1</td>
+                <tr *ngFor="let subject of prospectus">
+                  <td>{{ subject.code }}</td>
+                  <td>{{ subject.course }}</td>
+                  <td>{{ subject.units }}</td>
+                  <td>{{ subject.pre_requisite }}</td>
                   <td>
-                    Install and Configure Computers/Set-up Computer Networks
+                    <input
+                      type="checkbox"
+                      [value]="subject.units"
+                      (change)="updateTotalUnits($event, subject.units)"
+                    />
                   </td>
-                  <td>1.7</td>
-                  <td>3</td>
-                  <td>5.1</td>
                 </tr>
                 <tr>
-                  <td></td>
-                  <td>Total:</td>
-                  <td></td>
-                  <td>6</td>
-                  <td>8.7</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>Weighted GWA:</td>
-                  <td>1.44</td>
-                  <td></td>
-                  <td></td>
+                  <td colspan="4" class="text-end">Total Units</td>
+                  <td class="text-center">{{ totalUnits }}</td>
                 </tr>
               </tbody>
             </table>
+            <div class="text-end">
+              <button class="btn btn-sm btn-success">Submit</button>
+            </div>
             <div class="opacity-0">spacer</div>
           </div>
         </div>
@@ -76,6 +79,5 @@
         <div class="opacity-0">spacer</div>
       </div>
     </div>
-
   </div>
 </div>
