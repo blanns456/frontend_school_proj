@@ -3,7 +3,8 @@
     <div class="text-end">
       <a
         href="#"
-        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0">
+        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0"
+      >
         <i class="fa-solid fa-right-from-bracket"></i>
         Logout
       </a>
@@ -15,26 +16,27 @@
         id="profile"
         width="60"
         height="60"
-        class="img-thumbnail mt-4 mx-3">
+        class="img-thumbnail mt-4 mx-3"
+      />
       <h2 class="h6 fw-bold text-white mx-3 my-2">Doe, John</h2>
       <p class="text-light fs-6 mx-3 fw-light">Registrar</p>
     </div>
   </div>
   <div>
-    <div
-      id="list-example"
-      class="list-group">
+    <div id="list-example" class="list-group">
       <a
         class="py-2 list-group-item list-group-item-action home menu-item"
         routerLink="/registrar-dashboard-home"
-        routerLinkActive="active">
+        routerLinkActive="active"
+      >
         <i class="mx-2 fa-solid fa-house"></i>
         Home
       </a>
       <a
         class="my-1 py-2 list-group-item list-group-item-action menu-item"
         id="accSetupToggle"
-        routerLinkActive="active">
+        routerLinkActive="active"
+      >
         <i class="mx-2 fa-solid fa-book-open-reader"></i>
         Enrollment
         <i class="fa-solid fa-caret-down"></i>
@@ -44,7 +46,8 @@
           <a
             routerLink="/registrar-dashboard-applicants"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-2"><i class="fa-solid fa-truck-fast mx-2"></i>
+            class="list-group-item list-group-item-action py-2"
+            ><i class="fa-solid fa-truck-fast mx-2"></i>
             Applicants
           </a>
         </li>
@@ -52,7 +55,8 @@
           <a
             routerLink="/registrar-dashboard-enrolled"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-2 my-1"><i class="fa-solid fa-notes-medical mx-2"></i>
+            class="list-group-item list-group-item-action py-2 my-1"
+            ><i class="fa-solid fa-notes-medical mx-2"></i>
             Officially Enrolled
           </a>
         </li>
@@ -60,7 +64,8 @@
           <a
             routerLink="/registrar-dashboard-enrolled"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-2"><i class="fa-solid fa-notes-medical mx-2"></i>
+            class="list-group-item list-group-item-action py-2"
+            ><i class="fa-solid fa-notes-medical mx-2"></i>
             Enrolled by Subject
           </a>
         </li>
@@ -69,20 +74,21 @@
         class="my-1 py-2 list-group-item list-group-item-action menu-item"
         routerLink="/registrar-student-list"
         routerLinkActive="active"
-        id="">
+        id=""
+      >
         <i class="mx-2 fa-solid fa-file-pen"></i>
         Student Grades
         <!-- <i class="fa-solid fa-caret-down"></i> -->
       </a>
       <a
         class="my-1 py-2 list-group-item list-group-item-action menu-item"
+        routerLink="/registrar-semester"
         routerLinkActive="active"
-        id="accReportsToggle">
+      >
         <i class="mx-2 fa-solid fa-file-pen"></i>
-        Accounting Reports
-        <i class="fa-solid fa-caret-down"></i>
+        Semester
       </a>
-      <ul class="accReportsToggle-sub">
+      <!-- <ul class="accReportsToggle-sub">
         <li>
           <a
             routerLink="/accounting-dashboard-soa"
@@ -99,12 +105,13 @@
             Student's Ledger
           </a>
         </li>
-      </ul>
+      </ul> -->
 
       <a
         class="my-1 py-2 list-group-item list-group-item-action menu-item"
         routerLinkActive="active"
-        id="accFinanceToggle">
+        id="accFinanceToggle"
+      >
         <i class="mx-2 fa-solid fa-hand-holding-dollar"></i>
         Accounting Finance
         <i class="fa-solid fa-caret-down"></i>
@@ -114,7 +121,8 @@
           <a
             routerLink="/accounting-matriculation"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action"><i class="fa-solid fa-truck-fast mx-2"></i>
+            class="list-group-item list-group-item-action"
+            ><i class="fa-solid fa-truck-fast mx-2"></i>
             Matriculation
           </a>
         </li>

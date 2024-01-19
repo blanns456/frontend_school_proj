@@ -1,0 +1,704 @@
+<div class="container-dashboard">
+  <app-deans-sidebar></app-deans-sidebar>
+  <div class="main-content">
+    <div class="fixed-background"></div>
+    <app-deans-navbar></app-deans-navbar>
+    <div class="container-fluid containerTab">
+      <!-- <div class="divider mb-4"></div> -->
+      <div class="contentTab mb-3 bg-white w-100 rounded">
+        <div class="text-start text-header rounded-top shadow w-100 py-3 ps-3">
+          <h3 class="text-white fw-bold">Section</h3>
+        </div>
+        <div class="container my-2">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="home-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#home-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="home-tab-pane"
+                aria-selected="true"
+              >
+                BSCS
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#profile-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="profile-tab-pane"
+                aria-selected="false"
+              >
+                BSIT
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="contact-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#contact-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="contact-tab-pane"
+                aria-selected="false"
+              >
+                BSIS
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="home-tab-pane"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+              tabindex="0"
+            >
+              <!-- BSCS -->
+              <div class="row1">
+                <div
+                  class="d-flex justify-content-between align-items-center p-2"
+                >
+                  <input
+                    type="text"
+                    id="sectioname"
+                    class="form-control w-25"
+                  />
+                  <button
+                    class="btn btnAddFees text-white m-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#assignModal"
+                  >
+                    <i class="fa-solid fa-file-circle-plus mx-2"></i>Create
+                    Section
+                  </button>
+                </div>
+                <table
+                  id="example"
+                  class="table table-striped"
+                  style="width: 100%"
+                >
+                  <thead>
+                    <tr>
+                      <th>Section Name</th>
+                      <th>Year Level</th>
+                      <th>Max Students</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let section of sections">
+                      <td>{{ section.name }} - {{ section.section_type }}</td>
+                      <td>{{ section.year_level }}</td>
+                      <td>{{ section.max_students }}/40</td>
+                      <td>
+                        <button
+                          class="btn btn-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#viewSubs"
+                        >
+                          <a class="text-white text-decoration-none"
+                            ><i class="fa-solid fa-eye"></i>View</a
+                          >
+                        </button>
+                        <button
+                          class="btn btn-success mx-2"
+                          data-bs-toggle="modal"
+                          data-bs-target="#addStudes"
+                        >
+                          <a class="text-white text-decoration-none"
+                            ><i class="fa-solid fa-pen text-white"></i>Edit</a
+                          >
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="profile-tab-pane"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+              tabindex="0"
+            >
+              <!-- BSIT -->
+              <div class="row1">
+                <div
+                  class="d-flex justify-content-between align-items-center p-2"
+                >
+                  <input
+                    type="text"
+                    id="sectioname"
+                    class="form-control w-25"
+                  />
+                  <button
+                    class="btn btnAddFees text-white m-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#assignModal"
+                  >
+                    <i class="fa-solid fa-file-circle-plus mx-2"></i>Create
+                    Section
+                  </button>
+                </div>
+                <table
+                  id="example"
+                  class="table table-striped"
+                  style="width: 100%"
+                >
+                  <thead>
+                    <tr>
+                      <th>Section Name</th>
+                      <th>Year Level</th>
+                      <th>Max Students</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let section of sections2">
+                      <td>{{ section.name }} - {{ section.section_type }}</td>
+                      <td>{{ section.year_level }}</td>
+                      <td>{{ section.max_students }}</td>
+                      <td>
+                        <button
+                          class="btn btn-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#viewSubs"
+                        >
+                          <a class="text-white text-decoration-none"
+                            ><i class="fa-solid fa-eye"></i>View</a
+                          >
+                        </button>
+                        <button
+                          class="btn btn-success mx-2"
+                          data-bs-toggle="modal"
+                          data-bs-target="#addStudes"
+                        >
+                          <a class="text-white text-decoration-none"
+                            ><i class="fa-solid fa-pen text-white"></i>Edit</a
+                          >
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="contact-tab-pane"
+              role="tabpanel"
+              aria-labelledby="contact-tab"
+              tabindex="0"
+            >
+              <!-- BSIS -->
+              <div class="row1">
+                <div
+                  class="d-flex justify-content-between align-items-center p-2"
+                >
+                  <input
+                    type="text"
+                    id="sectioname"
+                    class="form-control w-25"
+                  />
+                  <button
+                    class="btn btnAddFees text-white m-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#assignModal"
+                  >
+                    <i class="fa-solid fa-file-circle-plus mx-2"></i>Create
+                    Section
+                  </button>
+                </div>
+                <table
+                  id="example"
+                  class="table table-striped"
+                  style="width: 100%"
+                >
+                  <thead>
+                    <tr>
+                      <th>Section Name</th>
+                      <th>Year Level</th>
+                      <th>Max Students</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let section of sections3">
+                      <td>{{ section.name }} - {{ section.section_type }}</td>
+                      <td>{{ section.year_level }}</td>
+                      <td>{{ section.max_students }}</td>
+                      <td>
+                        <button
+                          class="btn btn-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#viewSubs"
+                        >
+                          <a class="text-white text-decoration-none"
+                            ><i class="fa-solid fa-eye"></i>View</a
+                          >
+                        </button>
+                        <button
+                          class="btn btn-success mx-2"
+                          data-bs-toggle="modal"
+                          data-bs-target="#addStudes"
+                        >
+                          <a class="text-white text-decoration-none"
+                            ><i class="fa-solid fa-pen text-white"></i>Edit</a
+                          >
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add MODAL -->
+<div
+  class="modal fade"
+  id="assignModal"
+  tabindex="-1"
+  aria-labelledby="assignModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 fw-bold" id="assignModalLabel">
+          Create Section
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          (ngSubmit)="onSubmitSection()"
+          [formGroup]="addSection"
+          class="m-2 px-2"
+        >
+          <div class="row1">
+            <div class="d-flex justify-content-between align-items-center p-2">
+              <span class="caption-top fw-bold">1st Year</span>
+            </div>
+            <table id="example" class="table table-striped" style="width: 100%">
+              <thead>
+                <tr>
+                  <th>Section Name</th>
+                  <th>Section Type</th>
+                  <th>Year Level</th>
+                  <th>Max Students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of rows1">
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="sectioname"
+                      id="sectioname"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="sectype"
+                      id="sectype"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="yr_lvl"
+                      id="yr_lvl"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="maxstuds"
+                      id="maxstuds"
+                      class="form-control"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+              <button
+                class="btn btn-outline-primary btn-sm my-2"
+                type="button"
+                (click)="addRow1st()"
+              >
+                Row
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </table>
+          </div>
+          <div class="divider mx-auto py-3"></div>
+          <div class="row2">
+            <div class="d-flex justify-content-between align-items-center p-2">
+              <span class="caption-top fw-bold">2nd Year</span>
+            </div>
+            <table id="example" class="table table-striped" style="width: 100%">
+              <thead>
+                <tr>
+                  <th>Section Name</th>
+                  <th>Section Type</th>
+                  <th>Year Level</th>
+                  <th>Max Students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of rows2">
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="sectioname"
+                      id="sectioname"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="sectype"
+                      id="sectype"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="yr_lvl"
+                      id="yr_lvl"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="maxstuds"
+                      id="maxstuds"
+                      class="form-control"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+              <button
+                class="btn btn-outline-primary btn-sm my-2"
+                type="button"
+                (click)="addRow2nd()"
+              >
+                Row
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </table>
+          </div>
+          <div class="divider mx-auto py-3"></div>
+          <div class="row3">
+            <div class="d-flex justify-content-between align-items-center p-2">
+              <span class="caption-top fw-bold">3rd Year</span>
+            </div>
+            <table id="example" class="table table-striped" style="width: 100%">
+              <thead>
+                <tr>
+                  <th>Section Name</th>
+                  <th>Section Type</th>
+                  <th>Year Level</th>
+                  <th>Max Students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of rows3">
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="sectioname"
+                      id="sectioname"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="sectype"
+                      id="sectype"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="yr_lvl"
+                      id="yr_lvl"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="maxstuds"
+                      id="maxstuds"
+                      class="form-control"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+              <button
+                class="btn btn-outline-primary btn-sm my-2"
+                type="button"
+                (click)="addRow3rd()"
+              >
+                Row
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </table>
+          </div>
+          <div class="divider mx-auto py-3"></div>
+          <div class="row4">
+            <div class="d-flex justify-content-between align-items-center p-2">
+              <span class="caption-top fw-bold">4th Year</span>
+            </div>
+            <table id="example" class="table table-striped" style="width: 100%">
+              <thead>
+                <tr>
+                  <th>Section Name</th>
+                  <th>Section Type</th>
+                  <th>Year Level</th>
+                  <th>Max Students</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of rows4">
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="sectioname"
+                      id="sectioname"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="sectype"
+                      id="sectype"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="yr_lvl"
+                      id="yr_lvl"
+                      class="form-control"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      formControlName="maxstuds"
+                      id="maxstuds"
+                      class="form-control"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+              <button
+                class="btn btn-outline-primary btn-sm my-2"
+                type="button"
+                (click)="addRow4th()"
+              >
+                Row
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </table>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-success me-2">
+              <i class="fa-solid fa-user-check"></i>
+              Submit
+            </button>
+            <button class="btn btn-danger">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- View MODAL -->
+<div
+  class="modal fade"
+  id="viewSubs"
+  tabindex="-1"
+  aria-labelledby="viewSubsLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="viewSubsLabel">Section Information</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="m-2 px-2">
+          <div class="inputGroup row d-flex align-items-center my-3">
+            <div class="col-6">
+              <label for="name">Section Name</label>
+              <input class="inputs" type="text" id="name" name="name" />
+            </div>
+            <div class="col-4">
+              <label for="schoolyr">School Year:</label>
+              <select class="inputs" name="schoolyr" id="schoolyr">
+                <option value="" selected hidden>Input here</option>
+                <option value="1">A.Y 2022-2023</option>
+                <option value="2">A.Y 2023-2024</option>
+                <option value="3">A.Y 2024-2025</option>
+              </select>
+            </div>
+            <div class="col-3 my-4">
+              <label for="yrlevel">Year Level:</label>
+              <select class="inputs" name="yrlevel" id="yrlevel">
+                <option value="" selected hidden>Select here</option>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+              </select>
+            </div>
+            <div class="col-5">
+              <label for="maxstuds">Max Students</label>
+              <input class="inputs" type="text" id="maxstuds" name="maxstuds" />
+            </div>
+            <div class="divider my-4 w-100"></div>
+            <span class="caption-top">List of Students</span>
+            <table
+              id="example"
+              class="table table-striped table-bordered my-3"
+              style="width: 100%"
+            >
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Email</th>
+                  <th>Number</th>
+                  <th>Course</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rizal Jose P.</td>
+                  <td>user123&#64;gmail.com</td>
+                  <td>09458223652</td>
+                  <td>BSCS 1</td>
+                  <td>
+                    <span class="badge bg-success">Officially Enrolled</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit MODAL -->
+<div
+  class="modal fade"
+  id="addStudes"
+  tabindex="-1"
+  aria-labelledby="addStudesLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addStudesLabel">Edit Section</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="m-2 px-2">
+          <div class="inputGroup row d-flex align-items-center">
+            <div class="col-6">
+              <label for="name">Section Name</label>
+              <input
+                class="inputs"
+                type="text"
+                id="name"
+                name="name"
+                value="Bachelor of Science in Information Technology - 1A"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="schoolyr">School Year:</label>
+              <select class="inputs" name="schoolyr" id="schoolyr">
+                <option value="" hidden>Input here</option>
+                <option value="1" selected>A.Y 2022-2023</option>
+                <option value="2">A.Y 2023-2024</option>
+                <option value="3">A.Y 2024-2025</option>
+              </select>
+            </div>
+            <div class="col-3 my-4">
+              <label for="yrlevel">Year Level:</label>
+              <select class="inputs" name="yrlevel" id="yrlevel">
+                <option value="" selected hidden>Select here</option>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+              </select>
+            </div>
+            <div class="col-5">
+              <label for="maxstuds">Max Students</label>
+              <input
+                class="inputs"
+                type="text"
+                id="maxstuds"
+                name="maxstuds"
+                value="30/30"
+                readonly
+              />
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
