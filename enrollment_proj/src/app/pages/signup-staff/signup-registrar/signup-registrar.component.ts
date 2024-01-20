@@ -10,9 +10,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./signup-registrar.component.css'],
 })
 export class SignupRegistrarComponent {
+  info: any;
   visible: boolean = true;
   changetype: boolean = true;
-  info: any;
   visible1: boolean = true;
   changetype1: boolean = true;
   signUpForm: FormGroup;
@@ -55,7 +55,6 @@ export class SignupRegistrarComponent {
       .createstaffregistrar(this.signUpForm.value)
       .subscribe((res) => {
         this.info = res;
-        console.log(this.info);
         if (this.info[0]['message'] === 'ERROR') {
           if (this.info[0]['error']['email']) {
             Swal.fire('Error', this.info[0]['error']['email'][0], 'error');
@@ -66,7 +65,6 @@ export class SignupRegistrarComponent {
           }
           return;
         } else {
-          // this.loadusers();
           Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
             window.location.reload();
           });
