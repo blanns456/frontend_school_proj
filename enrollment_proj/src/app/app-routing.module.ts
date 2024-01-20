@@ -57,12 +57,14 @@ import { TeachersClasslistComponent } from './pages/teachers-pov/teachers-classl
 import { ViewSubjectsComponent } from './pages/teachers-pov/view-subjects/view-subjects.component';
 import { SubmitGradesComponent } from './pages/teachers-pov/submit-grades/submit-grades.component';
 import { ViewSubmitgradesComponent } from './pages/teachers-pov/view-submitgrades/view-submitgrades.component';
-import { DeansDashboardHomeComponent } from './pages/deans-pov/deans-dashboard-home/deans-dashboard-home.component'
-import { DeansGradeApprovalComponent } from './pages/deans-pov/deans-grade-approval/deans-grade-approval.component'
-import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-subjects/deans-assign-subjects.component'
-import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component'
-import { StudentGradesComponent } from './pages/registrar-pov/student-grades/student-grades.component'
+import { DeansDashboardHomeComponent } from './pages/deans-pov/deans-dashboard-home/deans-dashboard-home.component';
+import { DeansGradeApprovalComponent } from './pages/deans-pov/deans-grade-approval/deans-grade-approval.component';
+import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-subjects/deans-assign-subjects.component';
+import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component';
+import { StudentGradesComponent } from './pages/registrar-pov/student-grades/student-grades.component';
+import { AuthGuard } from 'src/app/auth.guard';
 import { StudentNewComponent } from './pages/students-pov/student-new/student-new.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '', component: HomeComponent },
@@ -87,15 +89,25 @@ const routes: Routes = [
   { path: 'enroll-college-signature', component: CollegeSignaturepadComponent },
   // { path: 'enroll-college-signature', component: EnrollCollege4Component },
   { path: 'enroll-tesda', component: EnrollTesdaComponent },
-  { path: 'enroll-tesda-student-information', component: EnrollTesda2Component },
+  {
+    path: 'enroll-tesda-student-information',
+    component: EnrollTesda2Component,
+  },
   { path: 'enroll-tesda-education-record', component: EnrollTesda3Component },
   { path: 'student-reset-password', component: StudentResetPasswordComponent },
   { path: 'student-dashboard-home', component: StudentDashboardHomeComponent },
-  { path: 'student-dashboard-information', component: StudentDashboardInformationComponent },
-  { path: 'student-dashboard-parent', component: StudentDashboardParentComponent },
+  {
+    path: 'student-dashboard-information',
+    component: StudentDashboardInformationComponent,
+  },
+  {
+    path: 'student-dashboard-parent',
+    component: StudentDashboardParentComponent,
+  },
   {
     path: 'student-dashboard-academic',
     component: StudentDashboardAcademicComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-financial',
@@ -168,16 +180,16 @@ const routes: Routes = [
   },
   {
     path: 'deans-home',
-    component: DeansDashboardHomeComponent
+    component: DeansDashboardHomeComponent,
   },
   {
     path: 'deans-gradeApproval',
-    component: DeansGradeApprovalComponent
+    component: DeansGradeApprovalComponent,
   },
   {
     path: 'deans-assignSubject',
     component: DeansAssignSubjectsComponent,
-    title: 'Deans | Assign Subjects'
+    title: 'Deans | Assign Subjects',
   },
   {
     path: 'deans-subjectlist',
@@ -219,24 +231,33 @@ const routes: Routes = [
   {
     path: 'teachers-classlist',
     component: TeachersClasslistComponent,
-    title: 'Teachers | Class List'
+    title: 'Teachers | Class List',
   },
   {
     path: 'teachers-viewsubjects',
     component: ViewSubjectsComponent,
-    title: 'Teachers | Submit Grades'
+    title: 'Teachers | Submit Grades',
   },
   {
     path: 'teachers-viewgrades',
-    component: ViewSubmitgradesComponent
+    component: ViewSubmitgradesComponent,
   },
   {
     path: 'teachers-submitgrades',
-    component: SubmitGradesComponent
+    component: SubmitGradesComponent,
   },
-  { path: 'student-dashboard-academic', component: StudentDashboardAcademicComponent },
-  { path: 'student-dashboard-financial', component: StudentDashboardFinancialComponent },
-  { path: 'student-dashboard-enrollment', component: StudentDashboardEnrollmentComponent },
+  {
+    path: 'student-dashboard-academic',
+    component: StudentDashboardAcademicComponent,
+  },
+  {
+    path: 'student-dashboard-financial',
+    component: StudentDashboardFinancialComponent,
+  },
+  {
+    path: 'student-dashboard-enrollment',
+    component: StudentDashboardEnrollmentComponent,
+  },
   {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
@@ -294,4 +315,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
