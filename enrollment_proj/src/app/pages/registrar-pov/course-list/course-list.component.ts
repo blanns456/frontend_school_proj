@@ -23,6 +23,7 @@ export class CourseListComponent implements OnInit {
   addProgram: FormGroup;
   addSubj: FormGroup;
   prosdata: any;
+  alertShown = false;
 
   constructor(
     private prospectus: ProspectusController,
@@ -80,8 +81,8 @@ export class CourseListComponent implements OnInit {
     const newRow = {
       code: '',
       description: '',
-      pre_requisite: '',
       units: '',
+      pre_requisite: '',
       trimester: '',
       year_lvl: year,
     };
@@ -121,6 +122,7 @@ export class CourseListComponent implements OnInit {
     console.log('Data to be sent:', rowsWithYear); // Log the data
 
     rowsWithYear.forEach((e) => {
+      // console.log(e.units);
       this.prospectus
         .addsubjects({
           description: e.description,
@@ -133,6 +135,47 @@ export class CourseListComponent implements OnInit {
         })
         .subscribe((res) => {
           console.log(res);
+          this.info = res;
+          if (this.info[0]['message'] === 'ERROR') {
+            if (this.info[0]['error']['description']) {
+              Swal.fire(
+                'ERROR',
+                this.info[0]['error']['description'][0],
+                'error'
+              );
+            } else if (this.info[0]['error']['prospectus_id']) {
+              Swal.fire(
+                'ERROR',
+                this.info[0]['error']['prospectus_id'][0],
+                'error'
+              );
+            } else if (this.info[0]['error']['code']) {
+              Swal.fire('ERROR', this.info[0]['error']['code'][0], 'error');
+            } else if (this.info[0]['error']['units']) {
+              Swal.fire('ERROR', this.info[0]['error']['units'][0], 'error');
+            } else if (this.info[0]['error']['pre_requisite']) {
+              Swal.fire(
+                'ERROR',
+                this.info[0]['error']['pre_requisite'][0],
+                'error'
+              );
+            } else if (this.info[0]['error']['year_lvl']) {
+              Swal.fire('ERROR', this.info[0]['error']['year_lvl'][0], 'error');
+            } else if (this.info[0]['error']['semester']) {
+              Swal.fire('ERROR', this.info[0]['error']['semester'][0], 'error');
+            }
+            return;
+          } else {
+            if (!this.alertShown) {
+              Swal.fire('Success', 'Added Successfully', 'success').then(
+                (e) => {
+                  window.location.reload();
+                }
+              );
+              this.alertShown = true;
+            }
+            return;
+          }
         });
     });
   }
