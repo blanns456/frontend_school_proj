@@ -1,0 +1,413 @@
+<!-- course-list -->
+<div
+  class="modal fade"
+  id="course-list"
+  tabindex="-1"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  role="dialog"
+  aria-labelledby="modalTitleId"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">Courses</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <input type="hidden" name="" id="prospecid" />
+          <div>
+            Program:
+            <span class="fw-bold" id="programs"
+              >Bachelor of Science in Information Technology</span
+            >
+          </div>
+          <div>
+            Department:
+            <span class="fw-bold" id="deptname"
+              >College of Computer Education</span
+            >
+          </div>
+          <div>
+            Duration:
+            <span class="fw-bold" id="effectyear">03/01/2024 - 04/01/2024</span>
+          </div>
+        </div>
+        <hr />
+        <form [formGroup]="addSubj" (ngSubmit)="saveData()">
+          <table class="table table-striped table-bordered caption-top">
+            <caption>
+              1st Year
+            </caption>
+            <thead>
+              <tr>
+                <th>Course Code</th>
+                <th>Descriptive Titles</th>
+                <th>Units</th>
+                <th>Pre-requisite</th>
+                <th>Trimester</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of rows1">
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.code"
+                    [ngModelOptions]="{ standalone: true }"
+                    form
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.description"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.units"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.pre_requisite"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.trimester"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+              </tr>
+            </tbody>
+            <button
+              class="btn btn-outline-primary btn-sm my-2"
+              type="button"
+              (click)="addRow(1)"
+            >
+              Row
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </table>
+          <table class="table table-striped table-bordered caption-top">
+            <caption>
+              2nd Year
+            </caption>
+            <thead>
+              <tr>
+                <th>Course Code</th>
+                <th>Descriptive Titles</th>
+                <th>Units</th>
+                <th>Pre-requisite</th>
+                <th>Trimester</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of rows2">
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.code"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.description"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.units"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.pre_requisite"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.trimester"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+              </tr>
+            </tbody>
+            <button
+              class="btn btn-outline-primary btn-sm my-2"
+              type="button"
+              (click)="addRow(2)"
+            >
+              Row
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </table>
+          <table class="table table-striped table-bordered caption-top">
+            <caption>
+              3rd Year
+            </caption>
+            <thead>
+              <tr>
+                <th>Course Code</th>
+                <th>Descriptive Titles</th>
+                <th>Units</th>
+                <th>Pre-requisite</th>
+                <th>Trimester</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of rows3">
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.code"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.description"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.units"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.pre_requisite"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.trimester"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+              </tr>
+            </tbody>
+            <button
+              class="btn btn-outline-primary btn-sm my-2"
+              type="button"
+              (click)="addRow(3)"
+            >
+              Row
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </table>
+          <table class="table table-striped table-bordered caption-top">
+            <caption>
+              4th Year
+            </caption>
+            <thead>
+              <tr>
+                <th>Course Code</th>
+                <th>Descriptive Titles</th>
+                <th>Units</th>
+                <th>Pre-requisite</th>
+                <th>Trimester</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of rows4">
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.code"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.description"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.units"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.pre_requisite"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    [(ngModel)]="row.trimester"
+                    [ngModelOptions]="{ standalone: true }"
+                    class="form-control"
+                  />
+                </td>
+              </tr>
+            </tbody>
+            <button
+              class="btn btn-outline-primary btn-sm my-2"
+              type="button"
+              (click)="addRow(4)"
+            >
+              Row
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </table>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="new_program"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalTitleId"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitleId">New Prospectus</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="container-fluid">
+          <form [formGroup]="addProgram" (ngSubmit)="onSubmitProgram()">
+            <div class="mb-3 mx-auto">
+              <label for="program" class="form-label"> Program </label>
+              <select
+                name="program"
+                id="program"
+                class="form-control mb-3"
+                formControlName="program"
+              >
+                <option value disabled selected>Please Select Program</option>
+                <option
+                  *ngFor="let course of courses"
+                  [value]="course.courses_id"
+                >
+                  {{ course.name }}
+                </option>
+              </select>
+              <div class="row mx-auto">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="date_start" class="form-label">
+                      Date Start
+                    </label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      name="date_start"
+                      id="date_start"
+                      formControlName="date_start"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-3 mx-auto">
+                    <label for="date_end" class="form-label"> Date End </label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      name="date_end"
+                      id="date_end"
+                      formControlName="date_end"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
