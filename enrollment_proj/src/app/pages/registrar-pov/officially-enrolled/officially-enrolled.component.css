@@ -1,16 +1,32 @@
-.enrolled{
-    padding-top: 7%;    
+.enrolled {
+  padding-top: 7%;
 }
 
 .text-header {
-    background-color: #0287AF;
+  background-color: #0287af;
 }
 
-span{
-    font-size: .7rem;
+span {
+  font-size: 0.7rem;
 }
 
-.table-under{
-    width: 98%;
-    margin-inline: auto;
+.table-under {
+  width: 98%;
+  margin-inline: auto;
+}
+
+span {
+  font-size: x-small;
+}
+
+small {
+  user-select: none;
+}
+
+input {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 2px solid black;
+  border-radius: 0 !important;
 }
