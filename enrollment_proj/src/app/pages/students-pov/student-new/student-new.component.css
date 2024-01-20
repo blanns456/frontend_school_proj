@@ -11,10 +11,6 @@ label{
     user-select: none;
 }
 
-label::after{
-    content: "*";
-    color: red;
-}
 
 input {
   border: none;
