@@ -3,6 +3,7 @@
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
+  overflow: auto;
 }
 
 label{
@@ -34,5 +35,6 @@ input {
 }
 
 .password-error{
-    font-size: small;
+    font-size: .9rem;
+    font-weight: bold;
 }

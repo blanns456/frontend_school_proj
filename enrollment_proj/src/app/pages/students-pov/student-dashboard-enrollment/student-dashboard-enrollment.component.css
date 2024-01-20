@@ -11,3 +11,17 @@
 .info-links{
     border-radius:5px 5px 0 0;
 }
+
+input[type=text],
+input[type=date],
+input[type=tel],
+input[type=email],
+select {
+    font-size: 1rem;
+    width: 95%;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+}
