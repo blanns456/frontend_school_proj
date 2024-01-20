@@ -24,13 +24,31 @@ export class LoginController {
     this.token = localStorage.getItem('token') + 's***s';
     this.userdata = jwtDecode(this.token.substr(0, this.token.length - 5));
     const authenticate_id = btoa('authenticate_id');
+    // console.log('this is the data:' + this.userdata.id_token);
     localStorage.setItem(authenticate_id, btoa(this.userdata.id_token));
   }
 
   getuserdetails() {
     this.studentdata = localStorage.getItem(btoa('authenticate_id'));
     var decodingtoken = atob(this.studentdata);
+    // console.log(decodingtoken);
     var decodeddata = JSON.parse(decodingtoken);
     return decodeddata;
+  }
+
+  reloadstudentdatainfo() {
+    var info = this.getuserdetails();
+    return this.http.get(this.Root_URL + 'showstudentdetails/' + info[0].id);
+  }
+
+  setdata(stringnewdata: any) {
+    // console.log();
+    const authenticate_id = btoa('authenticate_id');
+    localStorage.setItem(
+      authenticate_id,
+      btoa(JSON.stringify([stringnewdata]))
+    );
+    this.getuserdetails();
+    console.log(this.getuserdetails());
   }
 }

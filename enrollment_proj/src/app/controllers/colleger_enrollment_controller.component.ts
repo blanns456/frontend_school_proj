@@ -88,4 +88,9 @@ export class CollegeEnrollmentController {
   }) {
     return this.http.post(this.Root_URL + 'addstudent', student);
   }
+
+  public updatestudent(student: string) {
+    // console.log(JSON.stringify(student));
+    return this.http.post(this.Root_URL + 'editstudents', JSON.parse(student));
+  }
 }

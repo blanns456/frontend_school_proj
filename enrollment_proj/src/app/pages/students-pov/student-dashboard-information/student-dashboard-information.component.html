@@ -15,22 +15,16 @@
             </a>
           </div>
         </div>
-        <form
-          (ngSubmit)="onSave()"
-          method="post"
-          [formGroup]="UpdateStudInfoForm"
-        >
+        <form (ngSubmit)="onEdit()" method="post">
           <div class="row mt-3 p-3">
             <div class="col-4">
               <div class="mb-3 input-holder">
                 <label for="first_name" class="form-label"> First Name </label>
                 <input
-                  formControlName="first_name"
                   type="text"
                   name="first_name"
                   id="first_name"
-                  [value]="this.studentdata[0]['firstname']"
-                  value
+                  [value]="this.studentdata[0].firstname"
                   required
                 />
               </div>
@@ -41,7 +35,6 @@
                   Middle Name
                 </label>
                 <input
-                  formControlName="middle_name"
                   type="text"
                   name="middle_name"
                   id="middle_name"
@@ -56,11 +49,9 @@
                 <label for="last_name" class="form-label"> Last Name </label>
                 <input
                   type="text"
-                  formControlName="lastname"
                   name="last_name"
                   [value]="this.studentdata[0]['lastname']"
                   id="last_name"
-                  value
                   required
                 />
               </div>
@@ -70,7 +61,6 @@
                 <label for="suffix" class="form-label"> Suffix </label>
                 <input
                   type="text"
-                  formControlName="suffix"
                   [value]="this.studentdata[0]['suffix']"
                   name="suffix"
                   id="suffix"
@@ -81,11 +71,10 @@
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label for="Gender" class="form-label"> Gender </label>
+                <label for="gender" class="form-label"> Gender </label>
                 <select
-                  formControlName="Gender"
-                  name="Gender"
-                  id="Gender"
+                  name="gender"
+                  id="gender"
                   [value]="this.studentdata[0]['gender']"
                   required
                 >
@@ -101,7 +90,6 @@
                   Civil Status
                 </label>
                 <select
-                  formControlName="civil_status"
                   name="civil_status"
                   id="civil_status"
                   [value]="this.studentdata[0]['civil_status']"
@@ -121,7 +109,6 @@
               <div class="mb-3 input-holder">
                 <label for="birth_date" class="form-label"> Birthdate </label>
                 <input
-                  formControlName="birth_date"
                   type="date"
                   name="birth_date"
                   id="birth_date"
@@ -137,7 +124,6 @@
                   Place of Birth
                 </label>
                 <input
-                  formControlName="birth_place"
                   type="text"
                   name="birth_place"
                   id="birth_place"
@@ -151,7 +137,6 @@
               <div class="mb-3 input-holder">
                 <label for="religion" class="form-label"> Religion </label>
                 <input
-                  formControlName="religion"
                   type="text"
                   name="religion"
                   id="religion"
@@ -167,7 +152,6 @@
                   Contact Number
                 </label>
                 <input
-                  formControlName="contact_number"
                   type="tel"
                   pattern="[0-9]{11}"
                   name="contact_number"
@@ -182,7 +166,6 @@
               <div class="mb-3 input-holder">
                 <label for="email" class="form-label"> Email </label>
                 <input
-                  formControlName="email"
                   type="email"
                   name="email"
                   id="email"
@@ -198,7 +181,6 @@
                   Citizenship
                 </label>
                 <input
-                  formControlName="citizenship"
                   type="text"
                   name="citizenship"
                   id="citizenship"
@@ -214,7 +196,6 @@
                   Home Address
                 </label>
                 <input
-                  formControlName="home_address"
                   type="text"
                   name="home_address"
                   [value]="this.studentdata[0]['home_address']"
@@ -230,7 +211,6 @@
                   Present Address
                 </label>
                 <input
-                  formControlName="permanent_address"
                   type="text"
                   name="permanent_address"
                   [value]="this.studentdata[0]['permanent_address']"
@@ -253,18 +233,18 @@
                       <p class="card-text">
                         <label for="elem_school">School Name</label>
                         <input
-                          formControlName="elem_school"
                           type="text"
                           name="elem_school"
                           id="elem_school"
+                          [value]="this.studentdata[0]['elemschool']"
                         />
                         <label for="elem_yrgrad" class="mt-3"
                           >Year Graduated</label
                         >
                         <input
-                          formControlName="elem_yrgrad"
                           type="text"
                           name="elem_yrgrad"
+                          [value]="this.studentdata[0]['elemgradyr']"
                           id="elem_yrgrad"
                         />
                       </p>
@@ -278,19 +258,19 @@
                       <p class="card-text">
                         <label for="jhs_school">School Name</label>
                         <input
-                          formControlName="jhs_school"
                           type="text"
                           name="jhs_school"
                           id="jhs_school"
+                          [value]="this.studentdata[0]['jhsschoolname']"
                         />
                         <label for="jhs_yrgrad" class="mt-3"
                           >Year Graduated</label
                         >
                         <input
-                          formControlName="jhs_yrgrad"
                           type="text"
                           name="jhs_yrgrad"
                           id="jhs_yrgrad"
+                          [value]="this.studentdata[0]['jhsgradsyr']"
                         />
                       </p>
                     </div>
@@ -303,19 +283,19 @@
                       <p class="card-text">
                         <label for="shs_school">School Name</label>
                         <input
-                          formControlName="shs_school"
                           type="text"
                           name="shs_school"
                           id="shs_school"
+                          [value]="this.studentdata[0]['shsschoolname']"
                         />
                         <label for="shs_yrgrad" class="mt-3"
                           >Year Graduated</label
                         >
                         <input
-                          formControlName="shs_yrgrad"
                           type="text"
                           name="shs_yrgrad"
                           id="shs_yrgrad"
+                          [value]="this.studentdata[0]['shsschoolgradyr']"
                         />
                       </p>
                     </div>
@@ -324,9 +304,9 @@
                 <div class="col-4 mt-4">
                   <label for="lastschoolattended">Last School Attended</label>
                   <input
-                    formControlName="lastschoolattended"
                     type="text"
                     name="lastschoolattended"
+                    [value]="this.studentdata[0]['schoollastattended']"
                     id="lastschoolattended"
                   />
                 </div>
@@ -337,8 +317,8 @@
                   <input
                     type="text"
                     name="lastschool_yrattend"
-                    formControlName="lastschool_yrattend"
                     id="lastschool_yrattend"
+                    [value]="this.studentdata[0]['lastschoolyearattended']"
                   />
                 </div>
               </div>
@@ -355,10 +335,10 @@
                       Parent's/Guardian's Name
                     </label>
                     <input
-                      formControlName="parent_name"
                       type="text"
                       name="parent_name"
                       id="parent_name"
+                      [value]="this.studentdata[0]['parentsOrguradian']"
                       value
                       required
                     />
@@ -370,10 +350,10 @@
                       If Employed? Where?
                     </label>
                     <input
-                      formControlName="employed_where"
                       type="text"
                       name="employed_where"
                       id="employed_where"
+                      [value]="this.studentdata[0]['employedwhere']"
                       value
                     />
                   </div>
@@ -384,10 +364,10 @@
                       Occupation
                     </label>
                     <input
-                      formControlName="parent_occupation"
                       type="text"
                       name="parent_occupation"
                       id="parent_occupation"
+                      [value]="this.studentdata[0]['parentsOccupation']"
                       value
                       required
                     />
@@ -399,10 +379,10 @@
                       Contact Number
                     </label>
                     <input
-                      formControlName="parent_contact"
                       type="tel"
                       pattern="[0-9]{11}"
                       name="parent_contact"
+                      [value]="this.studentdata[0]['parentcontactnumber']"
                       id="parent_contact"
                       value
                       required
@@ -415,9 +395,9 @@
                       Home Address
                     </label>
                     <input
-                      formControlName="parent_home_address"
                       type="text"
                       name="parent_home_address"
+                      [value]="this.studentdata[0]['parentshomeaddress']"
                       id="parent_home_address"
                       value
                       required
@@ -430,8 +410,8 @@
                       Present Address
                     </label>
                     <input
-                      formControlName="parent_permanent_address"
                       type="text"
+                      [value]="this.studentdata[0]['parentspresentaddress']"
                       name="parent_permanent_address"
                       id="parent_permanent_address"
                       value
