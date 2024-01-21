@@ -6,11 +6,10 @@
   overflow: auto;
 }
 
-label{
-    font-weight: bold;
-    user-select: none;
+label {
+  font-weight: bold;
+  user-select: none;
 }
-
 
 input {
   border: none;
@@ -21,16 +20,16 @@ input {
 }
 
 .form-password {
-    position: relative;
+  position: relative;
 }
 
-.eye-icon{
-    position: absolute;
-    top: 60%;
-    left: 88%;
+.eye-icon {
+  position: absolute;
+  top: 60%;
+  left: 88%;
 }
 
-.password-error{
-    font-size: .9rem;
-    font-weight: bold;
+.password-error {
+  font-size: 0.9rem;
+  font-weight: bold;
 }
