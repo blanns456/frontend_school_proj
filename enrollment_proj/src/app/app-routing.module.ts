@@ -62,6 +62,8 @@ import { DeansGradeApprovalComponent } from './pages/deans-pov/deans-grade-appro
 import { DeansAssignSubjectsComponent } from './pages/deans-pov/deans-assign-subjects/deans-assign-subjects.component';
 import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/deans-subjectlist.component';
 import { StudentGradesComponent } from './pages/registrar-pov/student-grades/student-grades.component';
+import { AddSemesterComponent } from './pages/registrar-pov/add-semester/add-semester.component';
+import { DeansClassroomComponent } from './pages/deans-pov/deans-classroom/deans-classroom.component';
 import { AuthGuard } from 'src/app/auth.guard';
 import { StudentNewComponent } from './pages/students-pov/student-new/student-new.component';
 import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus.component';
@@ -203,6 +205,11 @@ const routes: Routes = [
     title: 'Deans | Assign Subjects',
   },
   {
+    path: 'deans-classroom',
+    component: DeansClassroomComponent,
+    title: 'Deans | Classroom',
+  },
+  {
     path: 'deans-subjectlist',
     component: DeansSubjectlistComponent,
   },
@@ -296,6 +303,10 @@ const routes: Routes = [
   {
     path: 'registrar-navbar',
     component: RegistrarNavbarComponent,
+  },
+  {
+    path: 'registrar-semester',
+    component: AddSemesterComponent,
   },
   // registrar routes
   {
