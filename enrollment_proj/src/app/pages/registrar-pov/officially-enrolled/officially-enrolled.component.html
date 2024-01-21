@@ -52,8 +52,11 @@
                       {{ student.middlename }}
                     </td>
                     <td>{{ student.course }}</td>
-                    <td>{{ student.year_level }}</td>
-                    <td>{{ student.department_name }}</td>
+                    <td *ngIf="student.student_yr_lvl === '1'">1st Year</td>
+                    <td *ngIf="student.student_yr_lvl === '2'">2nd Year</td>
+                    <td *ngIf="student.student_yr_lvl === '3'">3rd Year</td>
+                    <td *ngIf="student.student_yr_lvl === '4'">4th Year</td>
+                    <td>{{ student.department }}</td>
                     <td colspan="2">
                       <button
                         [id]="student.id"
@@ -144,7 +147,7 @@
           {{ student.lastname }}, {{ student.firstname }}
           {{ student.middlename }}
         </h3>
-        <small class="mx-3">New</small>
+        <!-- <small class="mx-3">New</small> -->
         <button
           type="button"
           class="btn-close"
@@ -180,7 +183,7 @@
             <div class="col-3">
               <input
                 type="text"
-                *ngIf="student.year_level === 1"
+                *ngIf="student.student_yr_lvl === '1'"
                 value="1st Yr."
                 id="year"
                 class="form-control"
@@ -189,7 +192,7 @@
               />
               <input
                 type="text"
-                *ngIf="student.year_level === 2"
+                *ngIf="student.student_yr_lvl === '2'"
                 value="2nd Yr."
                 id="year"
                 class="form-control"
@@ -198,7 +201,7 @@
               />
               <input
                 type="text"
-                *ngIf="student.year_level === 3"
+                *ngIf="student.student_yr_lvl === '3'"
                 value="3rd Yr."
                 id="year"
                 class="form-control"
@@ -207,7 +210,7 @@
               />
               <input
                 type="text"
-                *ngIf="student.year_level === 4"
+                *ngIf="student.student_yr_lvl === '4'"
                 value="4th Yr."
                 id="year"
                 class="form-control"
@@ -381,7 +384,7 @@
                 <input
                   type="text"
                   id="elem_name"
-                  value=""
+                  [value]="student.elemschool"
                   class="form-control text-capitalize"
                   aria-readonly="true"
                   readonly
@@ -392,7 +395,7 @@
                 <input
                   type="text"
                   id="elem_year"
-                  value=""
+                  [value]="student.elemgradyr"
                   class="form-control text-capitalize"
                   aria-readonly="true"
                   readonly
@@ -406,7 +409,7 @@
                 <input
                   type="text"
                   id="jsh_name"
-                  value=""
+                  [value]="student.jhsschoolname"
                   class="form-control text-capitalize"
                   aria-readonly="true"
                   readonly
@@ -417,7 +420,7 @@
                 <input
                   type="text"
                   id="jhs_year"
-                  value=""
+                  [value]="student.jhsgradsyr"
                   class="form-control text-capitalize"
                   aria-readonly="true"
                   readonly
@@ -431,7 +434,7 @@
                 <input
                   type="text"
                   id="shs_name"
-                  value=""
+                  [value]="student.shsschoolname"
                   class="form-control text-capitalize"
                   aria-readonly="true"
                   readonly
@@ -442,7 +445,7 @@
                 <input
                   type="text"
                   id="shs_year"
-                  value=""
+                  [value]="student.shsschoolgradyr"
                   class="form-control text-capitalize"
                   aria-readonly="true"
                   readonly
@@ -487,6 +490,14 @@
                 readonly
               />
               <small>Contact Number</small>
+            </div>
+            <div class="text-center mt-4">
+              <h3 class="h3">Signature</h3>
+              <img
+                [src]="student.signature"
+                alt="signature"
+                class="signature"
+              />
             </div>
           </div>
         </div>

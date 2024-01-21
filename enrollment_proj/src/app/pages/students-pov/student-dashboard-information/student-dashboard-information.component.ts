@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
 import { LoginController } from 'src/app/controllers/login_controller.component';
 declare var $: any;
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-student-dashboard-information',
@@ -66,6 +67,7 @@ export class StudentDashboardInformationComponent implements OnInit {
           var data = res;
 
           this.logincontroller.setdata(data);
+          Swal.fire('Success', 'Changes saved!', 'success');
           window.location.reload();
           // this.studentdata = this.logincontroller.getuserdetails();
         });
