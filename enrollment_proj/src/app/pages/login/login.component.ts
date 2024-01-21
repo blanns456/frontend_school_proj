@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  studentdata: any;
   submitted = false;
   data: any;
   token: any;
@@ -49,7 +50,12 @@ export class LoginComponent implements OnInit {
         this.logincontroller.reloaddata();
         $('#loading').addClass('d-none');
         $('#mainPage').removeClass('d-none');
-        this.router.navigate(['student-dashboard-academic']);
+        console.log(this.logincontroller.userdata);
+        if (this.logincontroller.userdata.role === 'student') {
+          this.router.navigate(['student-dashboard-home']);
+        } else if (this.logincontroller.userdata.role === 'accounting') {
+          this.router.navigate(['accounting-dashboard-home']);
+        }
       } else if (this.data.status === 0) {
         Swal.fire('Error', this.data.message, 'error');
         $('#loading').addClass('d-none');

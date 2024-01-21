@@ -46,6 +46,7 @@ export class StudentNewComponent {
     this.collegecontroller
       .createstudent(this.signUpForm.value)
       .subscribe((res) => {
+        var info = res;
         console.log(res);
       });
   }
