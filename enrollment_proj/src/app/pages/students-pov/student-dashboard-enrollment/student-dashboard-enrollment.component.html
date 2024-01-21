@@ -22,16 +22,9 @@
                   type="text"
                   name="academic_year"
                   id="academic_year"
-                  value="2023-2024"
+                  [value]="activateyr"
                   readonly
                 />
-                <!-- <select name="Academic Year" id="academic_year" required>
-                  <option value disabled selected>
-                    Please select academic year
-                  </option>
-                  <option value="2023-2024">2023-2024</option>
-                  <option value="2022-2023">2022-2023</option>
-                </select> -->
               </div>
             </div>
             <div class="col-4">
@@ -53,49 +46,49 @@
             </div>
             <div class="col-4">
               <div class="mb-3 input-holder">
-                <label for="semester" class="form-label">
+                <label for="academic_year" class="form-label">
                   Semester
                   <span class="text-danger">*</span>
                 </label>
-                <select name="Academic Year" id="semester" required>
-                  <option value disabled selected>
-                    Please select Semester
-                  </option>
-                  <option value="1st_trimester">1st Trimester</option>
-                  <option value="2nd_trimester">2nd Trimester</option>
-                  <option value="3rd_trimester">3rd Trimester</option>
-                </select>
+                <input
+                  type="text"
+                  name="academic_year"
+                  id="academic_year"
+                  [value]="semester"
+                  readonly
+                />
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-4">
+          <div class="row container">
+            <div class="col-6">
               <div class="mb-3 input-holder">
-                <label for="semester" class="form-label">
+                <label for="course" class="form-label">
                   Course
                   <span class="text-danger">*</span>
                 </label>
-                <select name="Academic Year" id="semester">
+                <select name="course" id="course" class="form-select">
                   <option value disabled selected>Please select Course</option>
-                  <option value="CBA">
-                    College of Business Accountancy Education
+                  <option
+                    *ngFor="let option of courses"
+                    [value]="option.courses_id"
+                  >
+                    {{ option.name }}
                   </option>
-                  <option value="CBE">College of Business Education</option>
-                  <option value="CCE">College of Computer Education</option>
-                  <option value="CCJE">
-                    College of Criminal Justice Education
-                  </option>
-                  <option value="CTE">College of Teacher Education</option>
                 </select>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-6">
               <div class="mb-3 input-holder">
                 <label for="student_status" class="form-label">
                   Student Status
                   <span class="text-danger">*</span>
                 </label>
-                <select name="student_status" id="student_status">
+                <select
+                  name="student_status"
+                  id="student_status"
+                  class="form-select"
+                >
                   <option value="">Please Select Status</option>
                   <option value="regular">Regular Student</option>
                   <option value="old">Old Student</option>
