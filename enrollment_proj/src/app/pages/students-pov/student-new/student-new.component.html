@@ -1,79 +1,68 @@
 <div
   class="container-fluid p-0 mw-100 vh-100 d-flex justify-content-center align-items-center"
-  id="login">
-  <div class="w-75 bg-light mx-auto container-fluid mt-5 bg-opacity-75 rounded-4 login-bg">
+  id="login"
+>
+  <div
+    class="w-75 bg-light mx-auto container-fluid mt-5 bg-opacity-75 rounded-4 login-bg"
+  >
     <div class="asclogo position-absolute top-25 start-50 translate-middle">
       <img
         src="../../../assets/misc/ascb_logo.png"
         alt
-        class="img-responsive w-100 logo">
+        class="img-responsive w-100 logo"
+      />
     </div>
-    <form
-      (ngSubmit)="signUp()"
-      [formGroup]="signUpForm"
-      novalidate>
+    <form (ngSubmit)="signUp()" [formGroup]="signUpForm" novalidate>
       <div class="row mt-5 pt-4">
         <div class="col-4">
           <div class="w-75">
             <div class="mb-2">
-              <label
-                for="last_name"
-                class="form-label">
-                Last Name
-              </label>
+              <label for="last_name" class="form-label"> Last Name </label>
               <input
                 type="text"
                 class="form-control fw-bold mx-auto py-2 shadow-xl"
                 autocomplete="off"
-                formControlName="last_name"
-                id="last_name"
-                placeholder="ex. doe">
+                formControlName="lastname"
+                id="lastname"
+                placeholder="ex. doe"
+              />
             </div>
           </div>
         </div>
         <div class="col-4">
           <div class="mb-2">
-            <label
-              for="first_name"
-              class="form-label">
-              First Name
-            </label>
+            <label for="firstname" class="form-label"> First Name </label>
             <input
               type="text"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
               autocomplete="off"
-              formControlName="first_name"
-              id="first_name"
-              placeholder="ex. john">
+              formControlName="firstname"
+              id="firstname"
+              placeholder="ex. john"
+            />
           </div>
         </div>
         <div class="col-4">
           <div class="mb-2">
-            <label
-              for="middle_name"
-              class="form-label">
+            <label for="middlename" class="form-label">
               Middle Name (Optional)
             </label>
             <input
               type="text"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
               autocomplete="off"
-              formControlName="middle_name"
+              formControlName="middlename"
               id="middle_name"
-              placeholder="ex. john">
+              placeholder="ex. john"
+            />
           </div>
         </div>
-
       </div>
       <div class="row">
         <div class="col-4">
           <div class="mb-3">
-            <label
-              for="gender"
-              class="form-label">
-              Gender
-            </label>
-            <br>
+            <label for="gender" class="form-label"> Gender </label>
+            <br />
             <div class="form-check d-flex justify-space-between w-100">
               <input
                 type="radio"
@@ -81,44 +70,32 @@
                 id="male"
                 formControlName="gender"
                 class="form-check-input mx-3"
-                value="male">
-              <label
-                for="male"
-                class="w-25">
-                Male
-              </label>
+                value="male"
+              />
+              <label for="male" class="w-25"> Male </label>
               <input
                 type="radio"
                 name="gender"
                 id="female"
                 class="form-check-input mx-3"
                 formControlName="gender"
-                value="female">
-              <label
-                for="female"
-                class="w-25">
-                Female
-              </label>
+                value="female"
+              />
+              <label for="female" class="w-25"> Female </label>
             </div>
           </div>
         </div>
 
         <div class="col-4">
           <div class="mb-3">
-            <label
-              for="civil_status"
-              class="form-label">
-              Civil Status
-            </label>
+            <label for="civil_status" class="form-label"> Civil Status </label>
             <select
               name="civil_status"
               id="civil_status"
               formControlName="civil_status"
-              class="form-control form-select">
-              <option
-                value
-                selected
-                disabled>
+              class="form-control form-select"
+            >
+              <option value selected disabled>
                 Please Select Civil Status
               </option>
               <option value="single">Single</option>
@@ -130,112 +107,96 @@
 
         <div class="col-4">
           <div class="mb-3">
-            <label
-              for="birth_date"
-              class="form-label">
-              Birth Date
-            </label>
+            <label for="birth_date" class="form-label"> Birth Date </label>
             <input
               type="date"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
-              formControlName="birth_date"
+              formControlName="birthdate"
               name="birth_date"
               id="birth_date"
-              required>
+              required
+            />
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-4">
           <div class="mb-3">
-            <label
-              for="birth_place"
-              class="form-label">
-              Birth Place
-            </label>
+            <label for="birth_place" class="form-label"> Birth Place </label>
             <input
               type="text"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
               formControlName="birth_place"
               name="birth_place"
               id="birth_place"
-              required>
+              required
+            />
           </div>
         </div>
         <div class="col-4">
           <div class="mb-3">
-            <label
-              for="email"
-              class="form-label">
-              Email Address
-            </label>
+            <label for="email" class="form-label"> Email Address </label>
             <input
               type="email"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
-              formControlName="email"
+              formControlName="email_address"
               name="email"
               id="email"
-              required>
+              required
+            />
           </div>
         </div>
 
         <div class="col-4">
           <div class="mb-3">
-            <label
-              for="contact_number"
-              class="form-label">
+            <label for="contact_number" class="form-label">
               Contact Number
             </label>
             <input
               type="text"
               pattern="[0-9]{11}"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
-              formControlName="number"
+              formControlName="contact_number"
               name="contact_number"
               id="contact_number"
-              required>
+              required
+            />
           </div>
         </div>
       </div>
       <div class="row">
-
         <div class="col-4">
           <div class="mb-3">
-            <label
-              for="citizenship"
-              class="form-label">
-              Citizenship
-            </label>
+            <label for="citizenship" class="form-label"> Citizenship </label>
             <input
               type="text"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
               formControlName="citizenship"
               name="citizenship"
               id="citizenship"
-              required>
+              required
+            />
           </div>
         </div>
         <div class="col-4">
           <div class="mb-3">
-            <label
-              for="religion"
-              class="form-label">
-              Religion
-            </label>
+            <label for="religion" class="form-label"> Religion </label>
             <input
               type="text"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
               formControlName="religion"
               name="religion"
               id="religion"
-              required>
+              required
+            />
           </div>
         </div>
       </div>
       <div class="mt-4 text-center">
         <button
           [disabled]="signUpForm.invalid"
-          class="btn btn-primary fw-bold p-2 w-25 login-button">
+          class="btn btn-primary fw-bold p-2 w-25 login-button"
+        >
           Create Account
         </button>
       </div>
