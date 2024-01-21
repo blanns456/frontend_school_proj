@@ -90,6 +90,7 @@ import { StudentNewComponent } from './pages/students-pov/student-new/student-ne
 import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus.component';
 import { CourseListComponent } from './pages/registrar-pov/course-list/course-list.component';
 import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-students/prospectus-students.component';
+import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
 
 
 @NgModule({
@@ -176,6 +177,7 @@ import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-stu
     ProspectusComponent,
     CourseListComponent,
     ProspectusStudentsComponent,
+    EmailConfirmationComponent,
   ],
   imports: [
     BrowserModule,
