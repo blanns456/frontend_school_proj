@@ -6,15 +6,10 @@
     <div class="container-fluid vh-100 content">
       <h2 class="h3 text-white my-0">Prospectus</h2>
       <div class="container bg-white prospectus">
-
-        <hr class="my-4">
+        <hr class="my-4" />
         <div class="d-flex justify-content-between">
           <div>
-            <label
-              for="search"
-              class="mx-2">
-              Search:
-            </label>
+            <label for="search" class="mx-2"> Search: </label>
             <input
               type="search"
               name="filter_prospectus"
@@ -22,7 +17,8 @@
               class="my-2"
               [(ngModel)]="filterObj.name"
               (input)="filterProspectus()"
-              aria-label="search">
+              aria-label="search"
+            />
             <!-- <select
               name="show"
               id="show"
@@ -37,14 +33,17 @@
             <button
               class="btn btn-outline-primary btn-sm"
               data-bs-toggle="modal"
-              data-bs-target="#new_program">
+              data-bs-target="#new_program"
+            >
               Program
               <i class="fa-solid fa-plus"></i>
             </button>
           </div>
         </div>
         <table class="table caption-top table-striped table-responsive">
-          <caption class="fw-bold">Programs</caption>
+          <caption class="fw-bold">
+            Programs
+          </caption>
           <thead>
             <tr>
               <th>Name</th>
@@ -54,16 +53,28 @@
           </thead>
           <tbody>
             <tr *ngFor="let program of prospectus">
-              <td>{{program.course}}</td>
               <td>
-                {{program.date_start | date:'y'}} - {{program.date_end | date:'y'}}
+                {{ program.course }}
               </td>
               <td>
-
+                {{ program.date_start | date : "y" }} -
+                {{ program.date_end | date : "y" }}
+              </td>
+              <td>
                 <button
-                  class="btn btn-secondary btn-sm mx-1"
+                  class="btn btn-secondary btn-sm mx-1 viewbutton"
                   data-bs-toggle="modal"
-                  data-bs-target="#course-list">
+                  data-bs-target="#course-list"
+                  (click)="
+                    onclickdata(
+                      program.prosid,
+                      program.course,
+                      program.department_name,
+                      program.date_start,
+                      program.date_end
+                    )
+                  "
+                >
                   <i class="fa-solid fa-eye"></i>
                   View
                 </button>
@@ -72,19 +83,21 @@
           </tbody>
         </table>
         <div class="d-flex justify-content-between">
-          <div>{{this.total}} Totals</div>
+          <div>{{ this.total }} Totals</div>
           <div>
             <nav aria-label="Page navigation example">
               <ul class="pagination">
                 <li
                   class="page-item"
                   (click)="onPrevious()"
-                  [class.disabled]="filterObj.page === 1">
+                  [class.disabled]="filterObj.page === 1"
+                >
                   <a
                     class="page-link"
                     href="#"
                     tabindex="-1"
-                    aria-disabled="true">
+                    aria-disabled="true"
+                  >
                     Previous
                   </a>
                 </li>
@@ -92,27 +105,22 @@
                 <!-- Generate dynamic page links -->
                 <li
                   class="page-item"
-                  *ngFor="let pageNum of generatePageNumbers()">
-                  <p
-                    class="page-link"
-                    (click)="goToPage(pageNum)">
+                  *ngFor="let pageNum of generatePageNumbers()"
+                >
+                  <p class="page-link" (click)="goToPage(pageNum)">
                     {{ pageNum }}
                   </p>
-               </li>
+                </li>
 
                 <li
                   class="page-item"
                   (click)="onNext()"
-                  [class.disabled]="filterObj.page === totalPage">
-                   <a
-                    class="page-link"
-                    href="#">
-                    Next
-                  </a>
+                  [class.disabled]="filterObj.page === totalPage"
+                >
+                  <a class="page-link" href="#"> Next </a>
                 </li>
               </ul>
             </nav>
-
           </div>
         </div>
         <div class="opacity-0 py-2">spacer</div>
