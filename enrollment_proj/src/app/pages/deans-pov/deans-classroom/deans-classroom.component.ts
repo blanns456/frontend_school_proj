@@ -90,12 +90,12 @@ export class DeansClassroomComponent implements OnInit {
     this.getBSIT();
     this.getBSIS();
 
-    $('document').ready(function () {
-      $('#home-tab').change(function () {
-        // alert('a');
-        $('#sectioname').attr('value', 'New value');
-      });
-    });
+    // $('document').ready(function () {
+    //   $('#home-tab').change(function () {
+    //     // alert('a');
+    //     $('#sectioname').attr('value', 'New value');
+    //   });
+    // });
   }
 
   onSubmitSection() {
