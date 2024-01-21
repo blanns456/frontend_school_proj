@@ -89,6 +89,7 @@ import { StudentGradesComponent } from './pages/registrar-pov/student-grades/stu
 import { StudentNewComponent } from './pages/students-pov/student-new/student-new.component';
 import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus.component';
 import { CourseListComponent } from './pages/registrar-pov/course-list/course-list.component';
+import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-students/prospectus-students.component';
 
 
 @NgModule({
@@ -174,6 +175,7 @@ import { CourseListComponent } from './pages/registrar-pov/course-list/course-li
     StudentNewComponent,
     ProspectusComponent,
     CourseListComponent,
+    ProspectusStudentsComponent,
   ],
   imports: [
     BrowserModule,

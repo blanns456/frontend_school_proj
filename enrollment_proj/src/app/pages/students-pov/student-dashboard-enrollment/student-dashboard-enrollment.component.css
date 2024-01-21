@@ -12,16 +12,18 @@
     border-radius:5px 5px 0 0;
 }
 
-input[type=text],
-input[type=date],
-input[type=tel],
-input[type=email],
-select {
-    font-size: 1rem;
-    width: 95%;
-    padding: 10px 15px;
-    box-sizing: border-box;
-    border: none;
+input, select{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
     border-bottom: 2px solid black;
-    outline: none;
+    border-radius: 0 !important;
+}
+
+thead tr th{
+    background: #0287AF !important;
+    color: white;
+    text-align: center !important;
+    border-top: 0;
+    border-bottom: 0;
 }
