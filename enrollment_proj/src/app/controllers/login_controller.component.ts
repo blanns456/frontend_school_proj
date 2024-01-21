@@ -24,7 +24,6 @@ export class LoginController {
     this.token = localStorage.getItem('token') + 's***s';
     this.userdata = jwtDecode(this.token.substr(0, this.token.length - 5));
     const authenticate_id = btoa('authenticate_id');
-    // console.log('this is the data:' + this.userdata.id_token);
     localStorage.setItem(authenticate_id, btoa(this.userdata.id_token));
   }
 
@@ -32,7 +31,9 @@ export class LoginController {
     this.studentdata = localStorage.getItem(btoa('authenticate_id'));
     var decodingtoken = atob(this.studentdata);
     // console.log(decodingtoken);
+    // console.log(decodingtoken);
     var decodeddata = JSON.parse(decodingtoken);
+    // console.log(decodeddata);
     return decodeddata;
   }
 

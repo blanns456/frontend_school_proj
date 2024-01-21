@@ -98,14 +98,20 @@ const routes: Routes = [
   },
   { path: 'enroll-tesda-education-record', component: EnrollTesda3Component },
   { path: 'student-reset-password', component: StudentResetPasswordComponent },
-  { path: 'student-dashboard-home', component: StudentDashboardHomeComponent },
+  {
+    path: 'student-dashboard-home',
+    component: StudentDashboardHomeComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'student-dashboard-information',
     component: StudentDashboardInformationComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-parent',
     component: StudentDashboardParentComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-academic',
@@ -115,11 +121,13 @@ const routes: Routes = [
   {
     path: 'student-dashboard-financial',
     component: StudentDashboardFinancialComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'accounting-dashboard-home',
     component: AccountingDashboardHomeComponent,
     title: 'Accounting | Home',
+    canActivate: [AuthGuard],
   },
   {
     path: 'accounting-dashboard-schoolfees',
