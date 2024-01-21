@@ -66,6 +66,7 @@ import { AuthGuard } from 'src/app/auth.guard';
 import { StudentNewComponent } from './pages/students-pov/student-new/student-new.component';
 import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus.component';
 import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-students/prospectus-students.component';
+import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -260,10 +261,22 @@ const routes: Routes = [
     path: 'student-dashboard-enrollment',
     component: StudentDashboardEnrollmentComponent,
   },
-  { path: 'student-dashboard-academic', component: StudentDashboardAcademicComponent },
-  { path: 'student-dashboard-financial', component: StudentDashboardFinancialComponent },
-  { path: 'student-dashboard-enrollment', component: StudentDashboardEnrollmentComponent },
-  { path: 'student-dashboard-prospectus', component: ProspectusStudentsComponent},
+  {
+    path: 'student-dashboard-academic',
+    component: StudentDashboardAcademicComponent,
+  },
+  {
+    path: 'student-dashboard-financial',
+    component: StudentDashboardFinancialComponent,
+  },
+  {
+    path: 'student-dashboard-enrollment',
+    component: StudentDashboardEnrollmentComponent,
+  },
+  {
+    path: 'student-dashboard-prospectus',
+    component: ProspectusStudentsComponent,
+  },
   {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
@@ -317,6 +330,10 @@ const routes: Routes = [
   {
     path: 'new/student',
     component: StudentNewComponent,
+  },
+  {
+    path: 'email-confirmation',
+    component: EmailConfirmationComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];
