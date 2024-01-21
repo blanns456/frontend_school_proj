@@ -29,52 +29,6 @@
                 id="first_name"
                 placeholder="ex. john">
             </div>
-            <div class="mb-2">
-              <label
-                for="email"
-                class="form-label">
-                Email
-              </label>
-              <input
-                type="email"
-                class="form-control fw-bold mx-auto py-2 shadow-xl"
-                autocomplete="off"
-                formControlName="email"
-                id="email"
-                placeholder="ex. user@gmail.com">
-            </div>
-            <div class="mb-2">
-              <label
-                for="birth_date"
-                class="form-label">
-                Birth Date
-              </label>
-              <input
-                type="date"
-                class="form-control fw-bold mx-auto py-2 shadow-xl"
-                autocomplete="off"
-                formControlName="birth_date"
-                id="birth_date">
-            </div>
-            <div class="form-password">
-              <label
-                for="Password"
-                class="form-label">
-                Password
-              </label>
-              <input
-                [type]="changetype?'password':'text'"
-                class="form-control fw-bold mx-auto py-2 shadow-xl"
-                autocomplete="off"
-                formControlName="password"
-                id="Password">
-              <span
-                class="eye-icon"
-                (click)="viewpass()"><i [ngClass]="visible?'fa-solid fa-eye':'fa-solid fa-eye-slash'"></i></span>
-            </div>
-            <span
-              class="text-danger password-error pt-3"
-              *ngIf="signUpForm.errors?.['passwordmatcherror']">Password must be 8 characters long and contains like '“!6csS^m9Hs”'</span>
           </div>
         </div>
         <div class="col-6">
@@ -93,6 +47,30 @@
                 id="last_name"
                 placeholder="ex. doe">
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="w-75 mx-auto">
+            <div class="mb-2">
+              <label
+                for="email"
+                class="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
+                formControlName="email"
+                id="email"
+                placeholder="ex. user@gmail.com">
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="w-75 mx-auto">
             <div class="mb-2">
               <label
                 for="number"
@@ -105,9 +83,32 @@
                 autocomplete="off"
                 formControlName="number"
                 id="number"
-                pattern="[0-9]{11}"
+                maxlength="11"
                 placeholder="ex. 09123456789">
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="w-75 mx-auto">
+            <div class="mb-2">
+              <label
+                for="birth_date"
+                class="form-label">
+                Birth Date
+              </label>
+              <input
+                type="date"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
+                formControlName="birth_date"
+                id="birth_date">
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="w-75 mx-auto">
             <div class="mb-2">
               <label
                 for="username"
@@ -122,6 +123,37 @@
                 id="username"
                 placeholder="ex. johndoe123">
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="w-75 mx-auto">
+            <div class="form-password">
+              <label
+                for="Password"
+                class="form-label">
+                Password
+              </label>
+              <input
+                [type]="changetype?'password':'text'"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
+                formControlName="password"
+                id="Password">
+              <span
+                class="eye-icon"
+                (click)="viewpass()"><i [ngClass]="visible?'fa-solid fa-eye':'fa-solid fa-eye-slash'"></i></span>
+            </div>
+            <div
+              class="text-danger password-error mt-2"
+              *ngIf="signUpForm.get('password')?.hasError('pattern') && signUpForm.get('password')?.touched">
+              <span>8-character Password (Must have Capital Letter, Number and Special Character!) </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="w-75 mx-auto">
             <div class="form-password">
               <label
                 for="confirm_password"
@@ -139,9 +171,11 @@
                 class="eye-icon"
                 (click)="viewpass1()"><i [ngClass]="visible1?'fa-solid fa-eye':'fa-solid fa-eye-slash'"></i></span>
             </div>
-            <span
-              class="text-danger password-error"
-              *ngIf="signUpForm.errors?.['passwordmatcherror']">Password does not match </span>
+            <div
+              class="text-danger password-error mt-2"
+              *ngIf="signUpForm.errors?.['passwordmatcherror']">
+              <span>Password does not match</span>
+            </div>
           </div>
         </div>
         <div class="mt-4 text-center">

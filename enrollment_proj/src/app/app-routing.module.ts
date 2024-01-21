@@ -64,6 +64,11 @@ import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/d
 import { StudentGradesComponent } from './pages/registrar-pov/student-grades/student-grades.component';
 import { AddSemesterComponent } from './pages/registrar-pov/add-semester/add-semester.component';
 import { DeansClassroomComponent } from './pages/deans-pov/deans-classroom/deans-classroom.component';
+import { AuthGuard } from 'src/app/auth.guard';
+import { StudentNewComponent } from './pages/students-pov/student-new/student-new.component';
+import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus.component';
+import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-students/prospectus-students.component';
+import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -95,27 +100,36 @@ const routes: Routes = [
   },
   { path: 'enroll-tesda-education-record', component: EnrollTesda3Component },
   { path: 'student-reset-password', component: StudentResetPasswordComponent },
-  { path: 'student-dashboard-home', component: StudentDashboardHomeComponent },
+  {
+    path: 'student-dashboard-home',
+    component: StudentDashboardHomeComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'student-dashboard-information',
     component: StudentDashboardInformationComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-parent',
     component: StudentDashboardParentComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-academic',
     component: StudentDashboardAcademicComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-financial',
     component: StudentDashboardFinancialComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'accounting-dashboard-home',
     component: AccountingDashboardHomeComponent,
     title: 'Accounting | Home',
+    canActivate: [AuthGuard],
   },
   {
     path: 'accounting-dashboard-schoolfees',
@@ -263,6 +277,22 @@ const routes: Routes = [
     component: StudentDashboardEnrollmentComponent,
   },
   {
+    path: 'student-dashboard-academic',
+    component: StudentDashboardAcademicComponent,
+  },
+  {
+    path: 'student-dashboard-financial',
+    component: StudentDashboardFinancialComponent,
+  },
+  {
+    path: 'student-dashboard-enrollment',
+    component: StudentDashboardEnrollmentComponent,
+  },
+  {
+    path: 'student-dashboard-prospectus',
+    component: ProspectusStudentsComponent,
+  },
+  {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
   },
@@ -295,6 +325,10 @@ const routes: Routes = [
     path: 'registrar-student-list',
     component: StudentGradesComponent,
   },
+  {
+    path: 'registrar-prospectus-list',
+    component: ProspectusComponent,
+  },
   // signup staff route
   {
     path: 'accounting/staff/sign-up',
@@ -311,6 +345,14 @@ const routes: Routes = [
   {
     path: 'registrar/staff/sign-up',
     component: SignupRegistrarComponent,
+  },
+  {
+    path: 'new/student',
+    component: StudentNewComponent,
+  },
+  {
+    path: 'email-confirmation',
+    component: EmailConfirmationComponent,
   },
   { path: '**', component: NotFoundComponent },
 ];

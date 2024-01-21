@@ -57,62 +57,59 @@ export class CollegeSignaturepadComponent {
   }
 
   onSubmit() {
-    var dataform = {
-      year_level: this.college_enrollment.collegeinfo.year_level,
-      course: this.college_enrollment.collegeinfo.course,
-      semester: this.college_enrollment.collegeinfo.semester,
-      student_status: this.college_enrollment.collegeinfo.status,
-      lastname: this.college_enrollment.collegeinfo.lastname,
-      firstname: this.college_enrollment.collegeinfo.firstname,
-      middlename: this.college_enrollment.collegeinfo.middlename,
-      suffix: this.college_enrollment.collegeinfo.suffix,
-      birthdate: this.college_enrollment.collegeinfo.birthdate,
-      religion: this.college_enrollment.collegeinfo.religion,
-      email_address: this.college_enrollment.collegeinfo.email_address,
-      birth_place: this.college_enrollment.collegeinfo.birth_place,
-      citizenship: this.college_enrollment.collegeinfo.citizenship,
-      contact_number: this.college_enrollment.collegeinfo.contactnumber,
-      gender: this.college_enrollment.collegeinfo.gender,
-      civil_status: this.college_enrollment.collegeinfo.civilstatus,
-      permanent_address: this.college_enrollment.collegeinfo.permanentaddress,
-      home_address: this.college_enrollment.collegeinfo.homeaddress,
-      elemschool: this.college_enrollment.collegeinfo.elemschool,
-      elemyg: this.college_enrollment.collegeinfo.elemyg,
-      jhschool: this.college_enrollment.collegeinfo.jhschool,
-      jhsyg: this.college_enrollment.collegeinfo.jhsyg,
-      shschool: this.college_enrollment.collegeinfo.shschool,
-      shsyg: this.college_enrollment.collegeinfo.shsyg,
-      parentsOrguradian: this.college_enrollment.collegeinfo.parentsOrguradian,
-      parentsOccupation: this.college_enrollment.collegeinfo.parentsOccupation,
-      parentcontactnumber:
-        this.college_enrollment.collegeinfo.parentcontactnumber,
-      schoollastattended:
-        this.college_enrollment.collegeinfo.schoollastattended,
-      lastschoolyearattended:
-        this.college_enrollment.collegeinfo.lastschoolyearattended,
-      signature: this.college_enrollment.collegeinfo.signature,
-    };
-
-    this.college_enrollment.createstudent(dataform).subscribe((res) => {
-      this.info = res;
-      console.log(this.info);
-      if (this.info[0]['message'] === 'ERROR') {
-        Swal.fire('Error', 'error', 'error');
-        $('#loading').addClass('d-none');
-        $('#mainPage').removeClass('d-none');
-
-        return;
-      } else {
-        // this.loadusers();
-        $('#loading').addClass('d-none');
-        $('#mainPage').removeClass('d-none');
-
-        Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
-          window.location.reload();
-        });
-        return;
-      }
-    });
+    // var dataform = {
+    //   year_level: this.college_enrollment.collegeinfo.year_level,
+    //   course: this.college_enrollment.collegeinfo.course,
+    //   semester: this.college_enrollment.collegeinfo.semester,
+    //   student_status: this.college_enrollment.collegeinfo.status,
+    //   lastname: this.college_enrollment.collegeinfo.lastname,
+    //   firstname: this.college_enrollment.collegeinfo.firstname,
+    //   middlename: this.college_enrollment.collegeinfo.middlename,
+    //   suffix: this.college_enrollment.collegeinfo.suffix,
+    //   birthdate: this.college_enrollment.collegeinfo.birthdate,
+    //   religion: this.college_enrollment.collegeinfo.religion,
+    //   email_address: this.college_enrollment.collegeinfo.email_address,
+    //   birth_place: this.college_enrollment.collegeinfo.birth_place,
+    //   citizenship: this.college_enrollment.collegeinfo.citizenship,
+    //   contact_number: this.college_enrollment.collegeinfo.contactnumber,
+    //   gender: this.college_enrollment.collegeinfo.gender,
+    //   civil_status: this.college_enrollment.collegeinfo.civilstatus,
+    //   permanent_address: this.college_enrollment.collegeinfo.permanentaddress,
+    //   home_address: this.college_enrollment.collegeinfo.homeaddress,
+    //   elemschool: this.college_enrollment.collegeinfo.elemschool,
+    //   elemyg: this.college_enrollment.collegeinfo.elemyg,
+    //   jhschool: this.college_enrollment.collegeinfo.jhschool,
+    //   jhsyg: this.college_enrollment.collegeinfo.jhsyg,
+    //   shschool: this.college_enrollment.collegeinfo.shschool,
+    //   shsyg: this.college_enrollment.collegeinfo.shsyg,
+    //   parentsOrguradian: this.college_enrollment.collegeinfo.parentsOrguradian,
+    //   parentsOccupation: this.college_enrollment.collegeinfo.parentsOccupation,
+    //   parentcontactnumber:
+    //     this.college_enrollment.collegeinfo.parentcontactnumber,
+    //   schoollastattended:
+    //     this.college_enrollment.collegeinfo.schoollastattended,
+    //   lastschoolyearattended:
+    //     this.college_enrollment.collegeinfo.lastschoolyearattended,
+    //   signature: this.college_enrollment.collegeinfo.signature,
+    // };
+    // this.college_enrollment.createstudent(dataform).subscribe((res) => {
+    //   this.info = res;
+    //   console.log(this.info);
+    //   if (this.info[0]['message'] === 'ERROR') {
+    //     Swal.fire('Error', 'error', 'error');
+    //     $('#loading').addClass('d-none');
+    //     $('#mainPage').removeClass('d-none');
+    //     return;
+    //   } else {
+    //     // this.loadusers();
+    //     $('#loading').addClass('d-none');
+    //     $('#mainPage').removeClass('d-none');
+    //     Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
+    //       window.location.reload();
+    //     });
+    //     return;
+    //   }
+    // });
   }
 
   currentPage: number = 4; // Initialize with a default page

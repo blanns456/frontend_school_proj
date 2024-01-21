@@ -41,8 +41,8 @@ export class CollegeEnrollmentController {
     signature: '',
   };
 
-  readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
-  // readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/';
   token: any;
 
   // alertmessage: string | undefined;
@@ -55,14 +55,9 @@ export class CollegeEnrollmentController {
   }
 
   public createstudent(student: {
-    year_level: string;
-    course: string;
-    semester: string;
-    student_status: string;
     lastname: string;
     firstname: string;
     middlename: string;
-    suffix: string;
     birthdate: string;
     religion: string;
     email_address: string;
@@ -71,21 +66,12 @@ export class CollegeEnrollmentController {
     contact_number: string;
     gender: string;
     civil_status: string;
-    permanent_address: string;
-    home_address: string;
-    signature: string;
-    elemschool: string;
-    elemyg: string;
-    jhschool: string;
-    jhsyg: string;
-    shschool: string;
-    shsyg: string;
-    parentsOrguradian: string;
-    parentsOccupation: string;
-    parentcontactnumber: string;
-    schoollastattended: string;
-    lastschoolyearattended: string;
   }) {
     return this.http.post(this.Root_URL + 'addstudent', student);
+  }
+
+  public updatestudent(student: string) {
+    // console.log(JSON.stringify(student));
+    return this.http.post(this.Root_URL + 'editstudents', JSON.parse(student));
   }
 }

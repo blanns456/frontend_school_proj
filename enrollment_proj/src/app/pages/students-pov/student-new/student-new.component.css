@@ -1,0 +1,35 @@
+#login {
+  background-image: url("../../../../assets/misc/logo_background.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  overflow: auto;
+}
+
+label {
+  font-weight: bold;
+  user-select: none;
+}
+
+input {
+  border: none;
+}
+
+.login-button {
+  border: none;
+}
+
+.form-password {
+  position: relative;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 60%;
+  left: 88%;
+}
+
+.password-error {
+  font-size: 0.9rem;
+  font-weight: bold;
+}

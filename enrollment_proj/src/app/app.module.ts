@@ -88,6 +88,11 @@ import { DeansSubjectlistComponent } from './pages/deans-pov/deans-subjectlist/d
 import { StudentGradesComponent } from './pages/registrar-pov/student-grades/student-grades.component';
 import { AddSemesterComponent } from './pages/registrar-pov/add-semester/add-semester.component';
 import { DeansClassroomComponent } from './pages/deans-pov/deans-classroom/deans-classroom.component';
+import { StudentNewComponent } from './pages/students-pov/student-new/student-new.component';
+import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus.component';
+import { CourseListComponent } from './pages/registrar-pov/course-list/course-list.component';
+import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-students/prospectus-students.component';
+import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -171,6 +176,11 @@ import { DeansClassroomComponent } from './pages/deans-pov/deans-classroom/deans
     StudentGradesComponent,
     AddSemesterComponent,
     DeansClassroomComponent,
+    StudentNewComponent,
+    ProspectusComponent,
+    CourseListComponent,
+    ProspectusStudentsComponent,
+    EmailConfirmationComponent,
   ],
   imports: [
     BrowserModule,
