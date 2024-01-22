@@ -14,9 +14,10 @@ export class SemesterController {
 
   public createsemester(semester: {
     semester: string;
-    start_date: string;
-    end_date: string;
+    active_year: string;
     status: string;
+    enrollment_start: string;
+    enrollment_end: string;
   }) {
     return this.http.post(this.Root_URL + 'addsem', semester);
   }
