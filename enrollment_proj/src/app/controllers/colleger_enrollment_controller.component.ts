@@ -74,4 +74,13 @@ export class CollegeEnrollmentController {
     // console.log(JSON.stringify(student));
     return this.http.post(this.Root_URL + 'editstudents', JSON.parse(student));
   }
+
+  addacadtransac(user: {
+    student_id: string;
+    courseid: string;
+    student_status: string;
+    student_yr_level: string;
+  }) {
+    return this.http.post(this.Root_URL + 'addacademicrecords', user);
+  }
 }
