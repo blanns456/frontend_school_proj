@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
+import { LoginController } from 'src/app/controllers/login_controller.component';
 import { SemesterController } from 'src/app/controllers/semester_controller.component';
 
 @Component({
@@ -14,14 +16,25 @@ export class StudentDashboardEnrollmentComponent implements OnInit {
   courses: any;
   semester: any;
   activateyr: any;
+  signUpForm: FormGroup;
+  studentdata: any;
 
   constructor(
     private college_enrollment: CollegeEnrollmentController,
+    private loginenrollment: LoginController,
     private semester_controller: SemesterController
-  ) {}
+  ) {
+    this.signUpForm = new FormGroup({
+      courseid: new FormControl(null, [Validators.required]),
+      student_status: new FormControl(null, [Validators.required]),
+      student_yr_level: new FormControl(null, [Validators.required]),
+    });
+  }
+
   ngOnInit(): void {
     this.loadcourses();
     this.getyearandsem();
+    this.studentdata = this.loginenrollment.getuserdetails();
   }
 
   loadcourses() {
@@ -43,5 +56,20 @@ export class StudentDashboardEnrollmentComponent implements OnInit {
         console.log(this.semesterinfo);
       }
     });
+  }
+
+  signUp() {
+    this.college_enrollment
+      .addacadtransac({
+        student_id: this.studentdata[0]['id'],
+        courseid: this.signUpForm.value.courseid,
+        student_status: this.signUpForm.value.student_status,
+        student_yr_level: this.signUpForm.value.student_status,
+      })
+      .subscribe((res) => {
+        console.log(res);
+      });
+    console.log(this.studentdata[0]['id']);
+    console.log(this.signUpForm.value.courseid);
   }
 }

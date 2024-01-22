@@ -10,7 +10,13 @@
             <h2 class="fs-5 text-uppercase text-white my-0">Enrollment Form</h2>
           </div>
         </div>
-        <form action method class="p-3">
+        <form
+          action
+          method
+          (ngSubmit)="signUp()"
+          [formGroup]="signUpForm"
+          class="p-3"
+        >
           <div class="row mt-3">
             <div class="col-4">
               <div class="mb-3 input-holder">
@@ -33,7 +39,12 @@
                   Year Level
                   <span class="text-danger">*</span>
                 </label>
-                <select name="Academic Year" id="year_level" required>
+                <select
+                  name="Academic Year"
+                  id="year_level"
+                  formControlName="student_yr_level"
+                  required
+                >
                   <option value disabled selected>
                     Please select year level
                   </option>
@@ -67,7 +78,12 @@
                   Course
                   <span class="text-danger">*</span>
                 </label>
-                <select name="course" id="course" class="form-select">
+                <select
+                  name="course"
+                  id="course"
+                  class="form-select"
+                  formControlName="courseid"
+                >
                   <option value disabled selected>Please select Course</option>
                   <option
                     *ngFor="let option of courses"
@@ -88,6 +104,7 @@
                   name="student_status"
                   id="student_status"
                   class="form-select"
+                  formControlName="student_status"
                 >
                   <option value="">Please Select Status</option>
                   <option value="regular">Regular Student</option>
