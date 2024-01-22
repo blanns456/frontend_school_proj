@@ -1,7 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { SemesterController } from 'src/app/controllers/semester_controller.component';
 import Swal from 'sweetalert2';
 
@@ -15,15 +14,15 @@ export class AddSemesterComponent implements OnInit {
   stats: any;
   data: any;
   info: any;
-  // private subscription: Subscription;
   addsemester: FormGroup;
 
   constructor(private semesterAll: SemesterController, private router: Router) {
     this.addsemester = new FormGroup({
       semester: new FormControl(null, [Validators.required]),
-      start_date: new FormControl(null, [Validators.required]),
-      end_date: new FormControl(null, [Validators.required]),
+      active_year: new FormControl(null, [Validators.required]),
       status: new FormControl('active', [Validators.required]),
+      enrollment_start: new FormControl(null, [Validators.required]),
+      enrollment_end: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -35,18 +34,8 @@ export class AddSemesterComponent implements OnInit {
     });
   }
 
-  // getstatus() {
-  //   this.semesterAll.getsemester().subscribe((sem) => {
-  //     // console.log('success', sem);
-  //     this.stats = sem;
-  //     console.log(this.stats[0]);
-  //     // const t = this.stats.end _date;
-  //   });
-  // }
-
   ngOnInit(): void {
     this.getsemester();
-    // this.getstatus();
   }
 
   OnsubmitSemester() {
@@ -56,10 +45,20 @@ export class AddSemesterComponent implements OnInit {
       if (this.info[0]['message'] === 'ERROR') {
         if (this.info[0]['error']['semester']) {
           Swal.fire('Error', this.info[0]['error']['semester'][0], 'error');
-        } else if (this.info[0]['error']['start_date']) {
-          Swal.fire('Error', this.info[0]['error']['start_date'][0], 'error');
-        } else if (this.info[0]['error']['end_date']) {
-          Swal.fire('Error', this.info[0]['error']['end_date'][0], 'error');
+        } else if (this.info[0]['error']['active_year']) {
+          Swal.fire('Error', this.info[0]['error']['active_year'][0], 'error');
+        } else if (this.info[0]['error']['enrollment_start']) {
+          Swal.fire(
+            'Error',
+            this.info[0]['error']['enrollment_start'][0],
+            'error'
+          );
+        } else if (this.info[0]['error']['enrollment_end']) {
+          Swal.fire(
+            'Error',
+            this.info[0]['error']['enrollment_end'][0],
+            'error'
+          );
         }
         return;
       } else {
