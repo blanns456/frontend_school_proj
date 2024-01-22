@@ -29,16 +29,16 @@
             <thead>
               <tr>
                 <th>Semester</th>
-                <th>Start Date</th>
-                <th>End Date</th>
+                <th>Active Year</th>
                 <th>Status</th>
+                <th>Enrollment Start</th>
+                <th>Enrollment End</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let semester of semesters">
                 <td>{{ semester.semester }}</td>
-                <td>{{ semester.start_date }}</td>
-                <td>{{ semester.end_date }}</td>
+                <td>{{ semester.active_year }}</td>
                 <td>
                   <span
                     *ngIf="semester.status === 'active'"
@@ -51,16 +51,9 @@
                     >Disable</span
                   >
                 </td>
+                <td>{{ semester.enrollment_start }}</td>
+                <td>{{ semester.enrollment_end }}</td>
               </tr>
-              <!-- <tr>
-                <td>A.Y 2023-2024</td>
-                <td>01/15/2024</td>
-                <td>01/15/2025</td>
-                <td><span class="badge text-bg-danger">Disable</span></td>
-                <td>
-                  <button class="btn btn-danger">Disable</button>
-                </td>
-              </tr> -->
             </tbody>
           </table>
         </div>
@@ -68,7 +61,6 @@
     </div>
   </div>
 </div>
-<!-- <app-student-info></app-student-info> -->
 
 <!-- Modal -->
 <div
@@ -81,7 +73,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Semester</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Semester</h1>
         <button
           type="button"
           class="btn-close"
@@ -96,47 +88,48 @@
           (ngSubmit)="OnsubmitSemester()"
           [formGroup]="addsemester"
         >
-          <label for="semester">Semester</label>
-          <input
-            type="text"
-            formControlName="semester"
-            class="form-control w-50"
-            name="semester"
-            id="semester"
-          />
           <div class="row mt-3">
             <div class="col-6">
-              <label for="startdate">Start Date</label>
+              <label for="semester">Semester</label>
+              <input
+                type="text"
+                formControlName="semester"
+                class="form-control"
+                name="semester"
+                id="semester"
+              />
+            </div>
+            <div class="col-6">
+              <label for="semester">Active Year</label>
+              <input
+                type="text"
+                formControlName="active_year"
+                class="form-control"
+                name="semester"
+                id="semester"
+              />
+            </div>
+            <div class="col-6 my-3">
+              <label for="startdate">Enrollment Start</label>
               <input
                 type="date"
                 class="form-control"
-                formControlName="start_date"
+                formControlName="enrollment_start"
                 name="startdate"
                 id="startdate"
               />
             </div>
-            <div class="col-6">
-              <label for="endDate">End Date</label>
+            <div class="col-6 my-3">
+              <label for="endDate">Enrollment End</label>
               <input
                 type="date"
                 class="form-control"
-                formControlName="end_date"
+                formControlName="enrollment_end"
                 name="endDate"
                 id="endDate"
               />
             </div>
           </div>
-          <!-- <div class="col-4 mt-3">
-            <label for="status">Status</label>
-            <select
-              name="status"
-              id="status"
-              class="form-control"
-              formControlName="status"
-            >
-              <option value="active" selected>Active</option>
-            </select>
-          </div> -->
           <br />
           <button type="submit" class="btn btn-success">Save</button>
         </form>

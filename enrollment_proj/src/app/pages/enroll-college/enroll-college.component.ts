@@ -35,15 +35,12 @@ export class EnrollCollegeComponent implements OnInit {
     this.selectedstatus = this.college_enrollment.collegeinfo.student_status;
   }
 
-
   loadcourses() {
-    this.college_enrollment.getcourses().subscribe(res => {
+    this.college_enrollment.getcourses().subscribe((res) => {
       this.data = res;
       this.courses = this.data[0];
-      this.courses = this.data[0];
-      this.yearLvl = this.data[1];
       console.log(this.courses);
-    })
+    });
   }
 
   onChange(event: Event) {
@@ -88,20 +85,13 @@ export class EnrollCollegeComponent implements OnInit {
       !this.college_enrollment.collegeinfo.year_level ||
       !this.college_enrollment.collegeinfo.student_status
     ) {
-
       this.selectedacademic_selectedyearlvl =
         !this.college_enrollment.collegeinfo.year_level;
-
 
       this.selectedacademic_selectedstatus =
         !this.college_enrollment.collegeinfo.student_status;
 
-
-       Swal.fire(
-      'ERROR',
-       'All input must be required',
-       'error'
-        )
+      Swal.fire('ERROR', 'All input must be required', 'error');
 
       // alert(');
     } else {
