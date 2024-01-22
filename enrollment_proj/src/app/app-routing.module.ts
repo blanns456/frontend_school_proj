@@ -291,6 +291,7 @@ const routes: Routes = [
   {
     path: 'student-dashboard-prospectus',
     component: ProspectusStudentsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'employee-reset-password',

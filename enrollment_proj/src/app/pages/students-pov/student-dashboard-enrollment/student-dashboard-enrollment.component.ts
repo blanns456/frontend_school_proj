@@ -64,7 +64,8 @@ export class StudentDashboardEnrollmentComponent implements OnInit {
         student_id: this.studentdata[0]['id'],
         courseid: this.signUpForm.value.courseid,
         student_status: this.signUpForm.value.student_status,
-        student_yr_level: this.signUpForm.value.student_status,
+        student_yr_level: this.signUpForm.value.student_yr_level,
+        semester: this.semester,
       })
       .subscribe((res) => {
         console.log(res);

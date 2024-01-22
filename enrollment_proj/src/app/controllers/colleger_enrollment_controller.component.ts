@@ -80,7 +80,16 @@ export class CollegeEnrollmentController {
     courseid: string;
     student_status: string;
     student_yr_level: string;
+    semester: string;
   }) {
     return this.http.post(this.Root_URL + 'addacademicrecords', user);
+  }
+
+  addcollegetrancsaction(collegetransac: { subjectdata: string }) {
+    return this.http.post(this.Root_URL + 'addtransaction', collegetransac);
+  }
+
+  gettransaction(transact: { studentid: string; courseid: string }) {
+    return this.http.post(this.Root_URL + 'showtransaction', transact);
   }
 }
