@@ -30,6 +30,10 @@ export class SemesterController {
     return this.http.get(this.Root_URL + 'actiivesem');
   }
 
+  checkEnrollee(stud: { stud_id: any }) {
+    return this.http.post(this.Root_URL + 'alreadyEnrolled', stud);
+  }
+
   // public updatestatus() {
   //   return this.http.get(this.Root_URL + 'changesem');
   // }

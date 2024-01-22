@@ -10,117 +10,127 @@
             <h2 class="fs-5 text-uppercase text-white my-0">Enrollment Form</h2>
           </div>
         </div>
-        <form
-          action
-          method
-          (ngSubmit)="signUp()"
-          [formGroup]="signUpForm"
-          class="p-3"
-        >
-          <div class="row mt-3">
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="academic_year" class="form-label">
-                  Academic Year
-                  <span class="text-danger">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="academic_year"
-                  id="academic_year"
-                  [value]="activateyr"
-                  readonly
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="year_level" class="form-label">
-                  Year Level
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  name="Academic Year"
-                  id="year_level"
-                  formControlName="student_yr_level"
-                  required
-                >
-                  <option value disabled selected>
-                    Please select year level
-                  </option>
-                  <option value="1">1st Year</option>
-                  <option value="2">2nd Year</option>
-                  <option value="3">3rd Year</option>
-                  <option value="4">4th Year</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="academic_year" class="form-label">
-                  Semester
-                  <span class="text-danger">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="academic_year"
-                  id="academic_year"
-                  [value]="semester"
-                  readonly
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row container">
-            <div class="col-6">
-              <div class="mb-3 input-holder">
-                <label for="course" class="form-label">
-                  Course
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  name="course"
-                  id="course"
-                  class="form-select"
-                  formControlName="courseid"
-                >
-                  <option value disabled selected>Please select Course</option>
-                  <option
-                    *ngFor="let option of courses"
-                    [value]="option.courses_id"
+        <div id="enrolled">
+          <p class="p-5 fw-bold fs-2 text-center">
+            Enrollment is Now Pending for Approval
+          </p>
+        </div>
+        <div id="for_enroll">
+          <form
+            action
+            method
+            (ngSubmit)="signUp()"
+            [formGroup]="signUpForm"
+            class="p-3"
+          >
+            <div class="row container">
+              <div class="col-6">
+                <div class="mb-3 input-holder">
+                  <label for="course" class="form-label">
+                    Course
+                    <span class="text-danger">*</span>
+                  </label>
+                  <select
+                    name="course"
+                    id="course"
+                    class="form-select"
+                    formControlName="courseid"
                   >
-                    {{ option.name }}
-                  </option>
-                </select>
+                    <option value disabled selected>
+                      Please select Course
+                    </option>
+                    <option
+                      *ngFor="let option of courses"
+                      [value]="option.courses_id"
+                    >
+                      {{ option.name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="mb-3 input-holder">
+                  <label for="student_status" class="form-label">
+                    Student Status
+                    <span class="text-danger">*</span>
+                  </label>
+                  <select
+                    name="student_status"
+                    id="student_status"
+                    class="form-select"
+                    formControlName="student_status"
+                  >
+                    <option value="">Please Select Status</option>
+                    <option value="regular">Regular Student</option>
+                    <option value="old">Old Student</option>
+                    <option value="returnee">Returnee</option>
+                    <option value="shiftee">Shiftee</option>
+                  </select>
+                </div>
               </div>
             </div>
-            <div class="col-6">
-              <div class="mb-3 input-holder">
-                <label for="student_status" class="form-label">
-                  Student Status
-                  <span class="text-danger">*</span>
-                </label>
-                <select
-                  name="student_status"
-                  id="student_status"
-                  class="form-select"
-                  formControlName="student_status"
-                >
-                  <option value="">Please Select Status</option>
-                  <option value="regular">Regular Student</option>
-                  <option value="old">Old Student</option>
-                  <option value="returnee">Returnee</option>
-                  <option value="shiftee">Shiftee</option>
-                </select>
+            <div class="row mt-3">
+              <div class="col-4">
+                <div class="mb-3 input-holder">
+                  <label for="academic_year" class="form-label">
+                    Academic Year
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="academic_year"
+                    id="academic_year"
+                    [value]="activateyr"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3 input-holder">
+                  <label for="year_level" class="form-label">
+                    Year Level
+                    <span class="text-danger">*</span>
+                  </label>
+                  <select
+                    name="Academic Year"
+                    id="year_level"
+                    formControlName="student_yr_level"
+                    required
+                  >
+                    <option value disabled selected>
+                      Please select year level
+                    </option>
+                    <option value="first_year">1st Year</option>
+                    <option value="second_year">2nd Year</option>
+                    <option value="third_year">3rd Year</option>
+                    <option value="fourth_year">4th Year</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="mb-3 input-holder">
+                  <label for="academic_year" class="form-label">
+                    Semester
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="academic_year"
+                    id="academic_year"
+                    [value]="semester"
+                    readonly
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div class="text-end d-flex mt-4 justify-content-center">
-            <button class="btn btn-success text-end mx-3 my-3">
-              Enroll Now!
-            </button>
-          </div>
-        </form>
+
+            <div class="text-end d-flex mt-4 justify-content-center">
+              <button class="btn btn-success text-end mx-3 my-3">
+                Enroll Now!
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
       <p class="opacity-0">Footer-spacer</p>
     </div>
