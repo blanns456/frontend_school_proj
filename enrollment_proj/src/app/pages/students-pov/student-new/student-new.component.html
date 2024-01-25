@@ -1,21 +1,19 @@
-<div
-  class="container-fluid p-0 mw-100 vh-100 d-flex justify-content-center align-items-center"
-  id="login"
->
+<div class="container-fluid p-0 mw-100 vh-100" id="login">
   <div
-    class="w-75 bg-light mx-auto container-fluid mt-5 bg-opacity-75 rounded-4 login-bg"
+    class="w-75 bg-light mx-auto container-fluid my-5 bg-opacity-75 rounded-4 login-bg"
   >
-    <div class="asclogo position-absolute top-25 start-50 translate-middle">
+    <div class="asclogo mx-auto">
       <img
         src="../../../assets/misc/ascb_logo.png"
-        alt
-        class="img-responsive w-100 logo"
+        alt="ascb_logo"
+        class="img-responsive mt-3 w-100 logo"
       />
+      <p class="text-center m-0 pt-2 fw-bold" [textContent]="activateyr"></p>
     </div>
     <form (ngSubmit)="signUp()" [formGroup]="signUpForm" novalidate>
-      <div class="row mt-5 pt-4">
+      <div class="row pt-2">
         <div class="col-4">
-          <div class="w-75">
+          <div>
             <div class="mb-2">
               <label for="last_name" class="form-label"> Last Name </label>
               <input
@@ -93,7 +91,7 @@
               name="civil_status"
               id="civil_status"
               formControlName="civil_status"
-              class="form-select"
+              class="form-select shadow-xl"
             >
               <option value selected disabled>
                 Please Select Civil Status
@@ -142,6 +140,7 @@
               formControlName="email_address"
               name="email"
               id="email"
+              placeholder="ex. johndoe@gmail.com"
               required
             />
           </div>
@@ -157,9 +156,11 @@
               pattern="[0-9]{11}"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
               formControlName="contact_number"
+              maxlength="11"
+              (input)="inputMask($event)"
               name="contact_number"
               id="contact_number"
-              required
+              placeholder="ex. 09123456789"
             />
           </div>
         </div>
@@ -191,10 +192,20 @@
             />
           </div>
         </div>
-        <div class="col-4">
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-6">
           <div class="mb-3">
-            <label for="" class="form-label">Interested to Enroll In: </label>
-            <select name="" id="" class="form-select">
+            <label for="enrollIn" class="form-label"
+              >Interested to Enroll In:
+            </label>
+            <select
+              name="enrollIn"
+              id="enrollIn"
+              formControlName="enrollIn"
+              class="form-select shadow-xl"
+            >
               <option value=""></option>
               <option value="college">College</option>
               <option value="graduateStudies">Graduate Studies</option>
@@ -203,8 +214,84 @@
             </select>
           </div>
         </div>
+        <div class="col-6">
+          <div class="mb-3 input-holder">
+            <label for="program" class="form-label"> Program </label>
+            <select
+              name="program"
+              id="program"
+              class="form-select shadow-xl"
+              formControlName="program"
+            >
+              <option value disabled selected>Please select Course</option>
+              <option
+                *ngFor="let option of courses"
+                [value]="option.courses_id"
+              >
+                {{ option.name }}
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="mt-4 text-center">
+      <div class="row">
+        <div class="col-4">
+          <div class="mb-3 input-holder">
+            <label for="semester" class="form-label">
+              Semester
+              <span class="text-danger">*</span>
+            </label>
+            <input
+              type="text"
+              name="semester"
+              class="form-control shadow-xl"
+              id="semester"
+              [value]="semester"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="mb-3 input-holder">
+            <label for="student_yr_level" class="form-label">
+              Year Level
+              <span class="text-danger">*</span>
+            </label>
+            <select
+              name="student_yr_level"
+              id="student_yr_level"
+              class="form-select shadow-xl"
+              formControlName="student_yr_level"
+              required
+            >
+              <option value disabled selected>Please select year level</option>
+              <option value="first_year">1st Year</option>
+              <option value="second_year">2nd Year</option>
+              <option value="third_year">3rd Year</option>
+              <option value="fourth_year">4th Year</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="mb-3 input-holder">
+            <label for="student_status" class="form-label">
+              Student Status
+              <span class="text-danger">*</span>
+            </label>
+            <select
+              name="student_status"
+              id="student_status"
+              class="form-select shadow-xl"
+              formControlName="student_status"
+            >
+              <option value="">Please Select Status</option>
+              <option value="regular">Regular Student</option>
+              <option value="irregular">Irregular Student</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="py-3 text-center">
         <button
           [disabled]="signUpForm.invalid"
           class="btn btn-primary fw-bold p-2 w-25 login-button"

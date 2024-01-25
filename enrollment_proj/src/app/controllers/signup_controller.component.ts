@@ -35,7 +35,7 @@ export class SignupController {
     username: string;
     password: string;
   }) {
-    return this.http.post(this.Root_URL + 'registrar-signup', user);
+    return this.http.post(this.Root_URL + 'staff-signup', user);
   }
 
   public createstaffdean(user: {

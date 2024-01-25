@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
+import { SemesterController } from 'src/app/controllers/semester_controller.component';
 import Swal from 'sweetalert2';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-student-new',
   templateUrl: './student-new.component.html',
   styleUrls: ['./student-new.component.css'],
 })
-export class StudentNewComponent {
+export class StudentNewComponent implements OnInit {
   info: any;
   visible: boolean = true;
   changetype: boolean = true;
@@ -17,6 +19,13 @@ export class StudentNewComponent {
   changetype1: boolean = true;
   signUpForm: FormGroup;
   signuploading: boolean = false;
+  numberVal: string | undefined;
+  lastnameControl: any;
+  data: any;
+  courses: any;
+  semesterinfo: any;
+  semester: any;
+  activateyr: any | string;
 
   viewpass() {
     this.visible = !this.visible;
@@ -30,12 +39,13 @@ export class StudentNewComponent {
 
   constructor(
     private collegecontroller: CollegeEnrollmentController,
+    private semester_controller: SemesterController,
     private router: Router
   ) {
     this.signUpForm = new FormGroup({
       lastname: new FormControl(null, [Validators.required]),
       firstname: new FormControl(null, [Validators.required]),
-      middlename: new FormControl(null, [Validators.required]),
+      middlename: new FormControl(null),
       gender: new FormControl(null, [Validators.required]),
       civil_status: new FormControl(null, [Validators.required]),
       birthdate: new FormControl(null, [Validators.required]),
@@ -44,6 +54,11 @@ export class StudentNewComponent {
       contact_number: new FormControl(null, [Validators.required]),
       citizenship: new FormControl(null, [Validators.required]),
       religion: new FormControl(null, [Validators.required]),
+      enrollIn: new FormControl(null, [Validators.required]),
+      program: new FormControl(null, [Validators.required]),
+      semester: new FormControl(null),
+      student_yr_level: new FormControl(null, [Validators.required]),
+      student_status: new FormControl(null, [Validators.required]),
     });
   }
 
@@ -85,5 +100,42 @@ export class StudentNewComponent {
 
         // console.log(res);
       });
+  }
+
+  loadcourses() {
+    this.collegecontroller.getcourses().subscribe((res) => {
+      this.data = res;
+      this.courses = this.data[0];
+      // console.log(this.courses);
+    });
+  }
+
+  getsem() {
+    this.semester_controller.getactivenrollsem().subscribe((res) => {
+      this.semesterinfo = res;
+      if (this.semesterinfo[0]) {
+        this.semester = this.semesterinfo[0][0]['semester'];
+        this.activateyr = this.semesterinfo[0][0]['active_year'];
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.loadcourses();
+    this.getsem();
+  }
+
+  inputMask(event: Event) {
+    var numberValue = (event.target as HTMLSelectElement).value;
+
+    var numericRegex = /^[0-9]+$/;
+
+    if (!numericRegex.test(numberValue)) {
+      var sanitizedValue = numberValue.replace(/[^0-9]/g, '');
+
+      (event.target as HTMLSelectElement).value = sanitizedValue;
+
+      console.log('Invalid input. Please enter only numeric values.');
+    }
   }
 }

@@ -55,7 +55,7 @@ export class StudentApplicantsComponent implements OnInit, AfterViewInit {
 
   filterEnrolled() {
     this.http
-      .post(this.Root_URL + 'get-students', this.filterObj)
+      .post(this.Root_URL + 'approval-students', this.filterObj)
       .subscribe((enrolled_students) => {
         this.data = enrolled_students;
         this.students = this.data.data;
