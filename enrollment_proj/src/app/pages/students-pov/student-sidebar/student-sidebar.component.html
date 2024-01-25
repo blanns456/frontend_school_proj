@@ -19,11 +19,65 @@
         class="img-thumbnail mt-4 mx-3"
       />
       <h2 class="h6 fw-bold text-white mx-3 my-2">{{ studname }}</h2>
-      <p class="text-light fs-6 mx-3 fw-light">Student</p>
+      <p class="text-light fs-6 mx-3 fw-light" *ngFor="let acad of Acads">
+        <span *ngIf="acad.course == 'Bachelor of Elementary Education'">
+          BEED
+        </span>
+        <span
+          *ngIf="
+            acad.course ===
+              'Bachelor of Secondary Education Major in Social Studies' ||
+            acad.course === 'Bachelor of Secondary Education Major in Math' ||
+            acad.course === 'Bachelor of Secondary Education Major in English'
+          "
+        >
+          BSED
+        </span>
+
+        <span
+          *ngIf="
+            acad.course ===
+              'Bachelor of Science in Business Administration Major in Human Resource Development Management' ||
+            acad.course ===
+              'Bachelor of Science in Business Administration Major in Financial Management' ||
+            acad.course ===
+              'Bachelor of Science in Business Administration Major in Marketing Management'
+          "
+        >
+          BSBA
+        </span>
+        <span *ngIf="acad.course == 'Bachelor of Science in Computer Science'">
+          BSCS
+        </span>
+        <span *ngIf="acad.course == 'Bachelor of Science in Accountancy'">
+          BSA
+        </span>
+        <span
+          *ngIf="acad.course == 'Bachelor of Science in Information Technology'"
+        >
+          BSIT
+        </span>
+        <span
+          *ngIf="acad.course == 'Bachelor of Science in Information Systems'"
+        >
+          BSIS
+        </span>
+        <span *ngIf="acad.course == 'Bachelor of Science in Criminology'">
+          BSCrim
+        </span>
+        <span *ngIf="acad.course == '2-Yr. Hotel and Restaurant Management'">
+          HRM
+        </span>
+        <span>- </span>
+        <span *ngIf="acad.year_lvl === '1'">1st Year</span>
+        <span *ngIf="acad.year_lvl === '2'">2nd Year</span>
+        <span *ngIf="acad.year_lvl === '3'">3rd Year</span>
+        <span *ngIf="acad.year_lvl === '4'">4th Year</span>
+      </p>
     </div>
   </div>
   <div>
-    <div id="list-example" class="list-group">
+    <div id="listPros" class="list-group">
       <a
         class="py-3 list-group-item list-group-item-action home"
         routerLink="/student-dashboard-home"
@@ -58,10 +112,19 @@
       </a>
       <a
         class="my-1 py-3 list-group-item list-group-item-action"
-        routerLink="/student-dashboard-prospectus"
-        routerLinkActive="active">
+        routerLink="/student-all-prospectus"
+        routerLinkActive="active"
+      >
         <i class="mx-2 fa-solid fa-book"></i>
         Prospectus
+      </a>
+      <a
+        class="my-1 py-3 list-group-item list-group-item-action"
+        routerLink="/student-dashboard-prospectus"
+        routerLinkActive="active"
+      >
+        <i class="mx-2 fa-solid fa-book"></i>
+        Course Offerings
       </a>
       <a
         class="my-1 py-3 list-group-item list-group-item-action"
@@ -71,14 +134,14 @@
         <i class="mx-2 fa-solid fa-user"></i>
         Enrollment
       </a>
-      <a
+      <!-- <a
         class="my-1 py-3 list-group-item list-group-item-action"
         routerLink="/student-dashboard-settings"
         routerLinkActive="active"
       >
         <i class="mx-2 fa-solid fa-gear"></i>
         Account Settings
-      </a>
+      </a> -->
     </div>
   </div>
 </div>

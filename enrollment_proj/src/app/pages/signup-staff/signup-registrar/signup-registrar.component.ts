@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { matchpassword, StrongPasswordRegx } from './match-password.validator';
 import { SignupController } from 'src/app/controllers/signup_controller.component';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-registrar',
@@ -27,7 +28,10 @@ export class SignupRegistrarComponent {
     this.changetype1 = !this.changetype1;
   }
 
-  constructor(private usercontroller: SignupController) {
+  constructor(
+    private usercontroller: SignupController,
+    private router: Router
+  ) {
     this.signUpForm = new FormGroup(
       {
         first_name: new FormControl(null, [Validators.required]),
@@ -65,9 +69,8 @@ export class SignupRegistrarComponent {
           }
           return;
         } else {
-          Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
-            window.location.reload();
-          });
+          this.router.navigate(['/login']);
+          Swal.fire('Success', 'Added Successfully', 'success');
           return;
         }
       });

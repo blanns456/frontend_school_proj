@@ -33,3 +33,39 @@
   background-position: left;
   color: white;
 }
+
+.content {
+  padding-top: 8%;
+  width: 90%;
+}
+
+.input-holder {
+  width: 90%;
+  margin: auto;
+}
+
+.info-links {
+  border-radius: 5px 5px 0 0;
+}
+
+input,
+select {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 2px solid black;
+  border-radius: 0 !important;
+}
+
+thead tr th {
+  background: #0840a1 !important;
+  color: white;
+  text-align: center !important;
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.all::before {
+  content: "All";
+  margin: -22px;
+}

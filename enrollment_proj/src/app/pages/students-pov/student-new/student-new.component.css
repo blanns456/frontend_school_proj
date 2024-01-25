@@ -33,3 +33,12 @@ input {
   font-size: 0.9rem;
   font-weight: bold;
 }
+
+.login-bg {
+  margin-top: 5%;
+}
+
+.asclogo {
+  margin-top: 20px;
+  width: 150px;
+}

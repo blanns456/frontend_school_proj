@@ -42,6 +42,10 @@ export class LoginController {
     return this.http.get(this.Root_URL + 'showstudentdetails/' + info[0].id);
   }
 
+  studentAcad(user: { id: number }) {
+    return this.http.post(this.Root_URL + 'studentAcad', user);
+  }
+
   setdata(stringnewdata: any) {
     // console.log();
     const authenticate_id = btoa('authenticate_id');
@@ -50,6 +54,6 @@ export class LoginController {
       btoa(JSON.stringify([stringnewdata]))
     );
     this.getuserdetails();
-    console.log(this.getuserdetails());
+    // console.log(this.getuserdetails());
   }
 }

@@ -69,6 +69,7 @@ import { StudentNewComponent } from './pages/students-pov/student-new/student-ne
 import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus.component';
 import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-students/prospectus-students.component';
 import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
+import { StudentProspectusCoursesComponent } from './pages/students-pov/student-prospectus-courses/student-prospectus-courses.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -267,30 +268,41 @@ const routes: Routes = [
   {
     path: 'student-dashboard-academic',
     component: StudentDashboardAcademicComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-financial',
     component: StudentDashboardFinancialComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-enrollment',
     component: StudentDashboardEnrollmentComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-academic',
     component: StudentDashboardAcademicComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-financial',
     component: StudentDashboardFinancialComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-enrollment',
     component: StudentDashboardEnrollmentComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-prospectus',
     component: ProspectusStudentsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'student-all-prospectus',
+    component: StudentProspectusCoursesComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -308,27 +320,33 @@ const routes: Routes = [
   {
     path: 'registrar-semester',
     component: AddSemesterComponent,
+    canActivate: [AuthGuard],
   },
   // registrar routes
   {
     path: 'registrar-dashboard-home',
     component: RegistrarHomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'registrar-dashboard-applicants',
     component: StudentApplicantsComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'registrar-dashboard-enrolled',
     component: OfficiallyEnrolledComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'registrar-student-list',
     component: StudentGradesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'registrar-prospectus-list',
     component: ProspectusComponent,
+    canActivate: [AuthGuard],
   },
   // signup staff route
   {

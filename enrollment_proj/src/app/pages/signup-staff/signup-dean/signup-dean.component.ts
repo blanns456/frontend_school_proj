@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-signup-dean',
   templateUrl: './signup-dean.component.html',
-  styleUrls: ['./signup-dean.component.css']
+  styleUrls: ['./signup-dean.component.css'],
 })
 export class SignupDeanComponent {
   info: any;
@@ -28,41 +28,63 @@ export class SignupDeanComponent {
   }
 
   constructor(private userController: SignupController) {
-    this.signUpForm = new FormGroup({
-      first_name: new FormControl(null, [Validators.required]),
-      last_name: new FormControl(null, [Validators.required]),
-      email: new FormControl(null, [Validators.required]),
-      role: new FormControl('dean', [Validators.required]),
-      number: new FormControl(null, [Validators.required]),
-      birth_date: new FormControl(null, [Validators.required]),
-      username: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required, Validators.pattern(StrongPasswordRegx), Validators.minLength(8)]),
-      confirm_password: new FormControl(null, [Validators.required]),
-    },
+    this.signUpForm = new FormGroup(
       {
-        validators: matchpassword
-      })
+        first_name: new FormControl(null, [Validators.required]),
+        last_name: new FormControl(null, [Validators.required]),
+        email: new FormControl(null, [Validators.required]),
+        role: new FormControl('dean', [Validators.required]),
+        number: new FormControl(null, [Validators.required]),
+        birth_date: new FormControl(null, [Validators.required]),
+        username: new FormControl(null, [Validators.required]),
+        password: new FormControl(null, [
+          Validators.required,
+          Validators.pattern(StrongPasswordRegx),
+          Validators.minLength(8),
+        ]),
+        confirm_password: new FormControl(null, [Validators.required]),
+      },
+      {
+        validators: matchpassword,
+      }
+    );
   }
 
   signUp() {
     console.log(this.signUpForm.value);
-    this.userController.createstaffdean(this.signUpForm.value).subscribe((res) => {
-      this.info = res;
-      if (this.info[0]['message'] === 'ERROR') {
-        if (this.info[0]['error']['email']) {
-          Swal.fire('Error', this.info[0]['error']['email'][0], 'error');
-        } else if (this.info[0]['error']['number']) {
-          Swal.fire('Error', this.info[0]['error']['number'][0], 'error');
-        } else if (this.info[0]['error']['username']) {
-          Swal.fire('Error', this.info[0]['error']['username'][0], 'error');
+    this.userController
+      .createstaffdean(this.signUpForm.value)
+      .subscribe((res) => {
+        this.info = res;
+        if (this.info[0]['message'] === 'ERROR') {
+          if (this.info[0]['error']['email']) {
+            Swal.fire('Error', this.info[0]['error']['email'][0], 'error');
+          } else if (this.info[0]['error']['number']) {
+            Swal.fire('Error', this.info[0]['error']['number'][0], 'error');
+          } else if (this.info[0]['error']['username']) {
+            Swal.fire('Error', this.info[0]['error']['username'][0], 'error');
+          }
+          return;
+        } else {
+          Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
+            window.location.reload();
+          });
+          return;
         }
-        return;
-      } else {
-        Swal.fire('Success', 'Added Successfully', 'success').then((e) => {
-          window.location.reload();
-        });
-        return;
-      }
-    });
+      });
+  }
+
+  inputMask(event: Event) {
+    var numberValue = (event.target as HTMLSelectElement).value;
+
+    var numericRegex = /^[0-9]+$/;
+
+    if (!numericRegex.test(numberValue)) {
+      var sanitizedValue = numberValue.replace(/[^0-9]/g, '');
+
+      (event.target as HTMLSelectElement).value = sanitizedValue;
+
+      console.log('Invalid input. Please enter only numeric values.');
+    }
   }
 }
