@@ -57,6 +57,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['accounting-dashboard-home']);
         } else if (this.logincontroller.userdata.role === 'registrar') {
           this.router.navigate(['registrar-dashboard-home']);
+        } else if (this.logincontroller.userdata.role === 'dean') {
+          this.router.navigate(['deans-home']);
         }
       } else if (this.data.status === 0) {
         Swal.fire('Error', this.data.message, 'error');

@@ -64,7 +64,7 @@ export class SectionController {
   }
 
   public getsection() {
-    return this.http.get(this.Root_URL + 'getsection');
+    return this.http.get(this.Root_URL + 'getsection/3');
   }
 
   public getprogram() {
