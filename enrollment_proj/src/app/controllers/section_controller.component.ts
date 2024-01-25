@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class SectionController {
   // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  readonly Root_URL = 'http://local.genesys.com/api/';
   token: any;
 
   // alertmessage: string | undefined;
@@ -63,8 +63,8 @@ export class SectionController {
     return this.http.post(this.Root_URL + 'addsection', section);
   }
 
-  public getsection() {
-    return this.http.get(this.Root_URL + 'getsection/3');
+  public getsection(deptid: string) {
+    return this.http.get(this.Root_URL + 'getsection/' + deptid);
   }
 
   public getprogram() {
