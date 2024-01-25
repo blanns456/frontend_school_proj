@@ -3,12 +3,14 @@
   <div class="main-content">
     <div class="fixed-background"></div>
     <app-student-navbar></app-student-navbar>
-    <div class="container-fluid vh-100 content">
+    <div *ngIf="alreadysubmitted" class="container-fluid vh-100 content">
       <h2 class="h3 text-white">Course List</h2>
       <div class="position-relative">
         <div class="my-3 bg-white rounded">
           <div class="bg-secondary text-white px-3 py-2">
-            <span><strong>2nd Trimester (A.Y. 2023-2024)</strong></span>
+            <span
+              ><strong>{{ semester }} ({{ activateyr }})</strong></span
+            >
           </div>
           <div class="my-2 container-fluid">
             <div>
@@ -55,7 +57,7 @@
                   </tr>
                   <tr *ngFor="let subject of prospectus">
                     <td>{{ subject.code }}</td>
-                    <td>{{ subject.course }}</td>
+                    <td>{{ subject.description }}</td>
                     <td>{{ subject.units }}</td>
                     <td>{{ subject.pre_requisite }}</td>
                     <td>

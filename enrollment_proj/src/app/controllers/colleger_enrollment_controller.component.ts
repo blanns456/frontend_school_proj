@@ -42,7 +42,7 @@ export class CollegeEnrollmentController {
   };
 
   // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  readonly Root_URL = 'http://local.genesys.com/api/';
   token: any;
 
   // alertmessage: string | undefined;
@@ -85,11 +85,17 @@ export class CollegeEnrollmentController {
     return this.http.post(this.Root_URL + 'addacademicrecords', user);
   }
 
-  addcollegetrancsaction(collegetransac: { subjectdata: string }) {
+  addcollegetrancsaction(collegetransac: {
+    subjectdata: string;
+    studentid: string;
+    acadyr: string;
+  }) {
     return this.http.post(this.Root_URL + 'addtransaction', collegetransac);
   }
 
-  gettransaction(transact: { studentid: string; courseid: string }) {
-    return this.http.post(this.Root_URL + 'showtransaction', transact);
+  gettransaction(studentid: string, semester: string) {
+    return this.http.get(
+      this.Root_URL + 'showtran/' + studentid + '/' + semester
+    );
   }
 }

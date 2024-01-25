@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class LoginController {
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  readonly Root_URL = 'http://local.genesys.com/api/';
   token: any;
   userdata: any;
   usertokenid: any;
@@ -17,6 +17,16 @@ export class LoginController {
   constructor(private http: HttpClient) {}
 
   login(user: { email: string; password: string }) {
+    // var token = localStorage.getItem('token');
+    //  localStorage.getItem('token');
+    // let config = {
+    //   withCredentials: true, // Include credentials (cookies) in the request
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     Authorization:
+    //       '4ntZyLuq5eBJEVvyNeKHRpp2efk4hXxEl6jx15DWoGDdBQBacGjpCBW8y4apxWXa', // Include your JWT token if needed
+    //   },
+    // };
     return this.http.post(this.Root_URL + 'login', user);
   }
 

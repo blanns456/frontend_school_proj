@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
         this.logincontroller.reloaddata();
         $('#loading').addClass('d-none');
         $('#mainPage').removeClass('d-none');
-        console.log(this.logincontroller.userdata);
+        console.log(this.token);
         if (this.logincontroller.userdata.role === 'student') {
           this.router.navigate(['student-dashboard-home']);
         } else if (this.logincontroller.userdata.role === 'accounting') {
