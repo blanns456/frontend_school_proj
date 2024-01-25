@@ -25,6 +25,7 @@ export class StudentNewComponent implements OnInit {
   courses: any;
   semesterinfo: any;
   semester: any;
+  sem: any;
   activateyr: any | string;
 
   viewpass() {
@@ -42,6 +43,7 @@ export class StudentNewComponent implements OnInit {
     private semester_controller: SemesterController,
     private router: Router
   ) {
+    this.sem = new FormControl();
     this.signUpForm = new FormGroup({
       lastname: new FormControl(null, [Validators.required]),
       firstname: new FormControl(null, [Validators.required]),
@@ -56,7 +58,7 @@ export class StudentNewComponent implements OnInit {
       religion: new FormControl(null, [Validators.required]),
       enrollIn: new FormControl(null, [Validators.required]),
       program: new FormControl(null, [Validators.required]),
-      semester: new FormControl(null),
+      semester: this.sem,
       student_yr_level: new FormControl(null, [Validators.required]),
       student_status: new FormControl(null, [Validators.required]),
     });
@@ -97,7 +99,7 @@ export class StudentNewComponent implements OnInit {
             'error'
           );
         }
-
+        // console.log(this.signUpForm.value);
         // console.log(res);
       });
   }
@@ -110,19 +112,17 @@ export class StudentNewComponent implements OnInit {
     });
   }
 
-  getsem() {
+  ngOnInit(): void {
+    this.loadcourses();
+
     this.semester_controller.getactivenrollsem().subscribe((res) => {
       this.semesterinfo = res;
       if (this.semesterinfo[0]) {
         this.semester = this.semesterinfo[0][0]['semester'];
         this.activateyr = this.semesterinfo[0][0]['active_year'];
+        this.sem.setValue(this.semester);
       }
     });
-  }
-
-  ngOnInit(): void {
-    this.loadcourses();
-    this.getsem();
   }
 
   inputMask(event: Event) {

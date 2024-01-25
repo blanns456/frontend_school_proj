@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ProspectusController {
-  readonly Root_URL = 'http://local.genesys.com/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/';
   token: any;
   procpectusdata: any;
 
@@ -47,7 +47,11 @@ export class ProspectusController {
     return this.http.post(this.Root_URL + 'add-subject', subject);
   }
 
-  studprospectus(getProspectus: { course: string; year_lvl: string }) {
+  studprospectus(getProspectus: {
+    course: string;
+    year_lvl: string;
+    semester: string;
+  }) {
     return this.http.post(this.Root_URL + 'student-prospectus', getProspectus);
   }
 
