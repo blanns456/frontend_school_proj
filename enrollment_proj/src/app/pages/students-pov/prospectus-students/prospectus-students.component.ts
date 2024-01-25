@@ -3,6 +3,8 @@ import { ProspectusController } from 'src/app/controllers/prospectus_controller.
 import { HttpClient } from '@angular/common/http';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
 import { LoginController } from 'src/app/controllers/login_controller.component';
+import { SemesterController } from 'src/app/controllers/semester_controller.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-prospectus-students',
@@ -14,36 +16,43 @@ export class ProspectusStudentsComponent implements OnInit {
   prospectus: any = [];
   totalUnits: number = 0;
   studentdata: any;
+  acadtransac: any;
+  transacnotif: any;
+  acadid: any;
+  semesterinfo: any;
+  activateyr: any;
+  semester: any;
+  isalreadyenrolled: any;
+  alreadysubmitted: boolean | undefined;
 
   constructor(
     private prospectus_get: ProspectusController,
     private college_controller: CollegeEnrollmentController,
     private logincontroller: LoginController,
-    private http: HttpClient
+    private semester_controller: SemesterController
   ) {}
 
-  getProspectus = {
-    course: '1',
-    year_lvl: '1',
-  };
+  ngOnInit(): void {
+    this.studentdata = this.logincontroller.getuserdetails();
+    this.getactivateprospectos();
+    this.getyearandsem();
+  }
 
-  studentProspectus() {
-    this.http
-      .post(
-        this.prospectus_get.Root_URL + 'student-prospectus',
-        this.getProspectus
-      )
+  studentProspectus(yrlvl: string, acad: string) {
+    console.log([yrlvl, String(acad)]);
+    this.prospectus_get
+      .studprospectus({
+        year_lvl: yrlvl,
+        course: String(acad),
+      })
       .subscribe((prospectus_filter) => {
         this.data = prospectus_filter;
         this.prospectus = this.data[0];
         console.log(this.data);
-      });
-  }
 
-  ngOnInit(): void {
-    this.studentdata = this.logincontroller.getuserdetails();
-    this.studentProspectus();
-    this.getactivateprospectos();
+        this.alreadysubmit();
+        // console.log(prospectus_filter);
+      });
   }
 
   selectAll(event: any) {
@@ -58,6 +67,20 @@ export class ProspectusStudentsComponent implements OnInit {
   updateTotalUnits(event: any, units: string) {
     this.calculateTotalUnits();
     this.checkAllCheckbox();
+  }
+
+  getyearandsem() {
+    this.semester_controller.getactivenrollsem().subscribe((res) => {
+      this.semesterinfo = res;
+      if (this.semesterinfo[0]) {
+        this.semester = this.semesterinfo[0][0]['semester'];
+        this.activateyr = this.semesterinfo[0][0]['active_year'];
+        // this.alreadysubmit();
+        // console.log(this.semesterinfo);
+      } else {
+        // console.log(this.semesterinfo);
+      }
+    });
   }
 
   checkAllCheckbox() {
@@ -100,19 +123,53 @@ export class ProspectusStudentsComponent implements OnInit {
     );
 
     this.college_controller
-      .addcollegetrancsaction({ subjectdata: subjectids })
+      .addcollegetrancsaction({
+        subjectdata: subjectids,
+        studentid: this.acadid,
+        acadyr: this.activateyr,
+      })
       .subscribe((res) => {
-        console.log(res);
+        this.transacnotif = res;
+        // console.log(res);
+        if (this.transacnotif['message'] === 'success') {
+          Swal.fire('Success', 'Subjects submitted', 'success');
+          this.getactivateprospectos();
+        } else {
+          Swal.fire('Success', this.transacnotif['message'], 'success');
+        }
       });
+
     console.log(subjectids);
   }
 
   getactivateprospectos() {
     console.log(this.studentdata);
     this.college_controller
-      .gettransaction({ studentid: '1', courseid: '1' })
+      .gettransaction(this.studentdata[0]['id'], '1st Trimester')
       .subscribe((res) => {
-        console.log(res);
+        // console.log(res);
+        this.acadtransac = res;
+        // console.log(this.acadtransac[0][0]['id']);
+        this.acadid = this.acadtransac[0][0]['id'];
+        this.studentProspectus(
+          this.acadtransac[0][0]['student_yr_lvl'],
+          this.acadtransac[0][0]['course_id']
+        );
+      });
+  }
+
+  alreadysubmit() {
+    this.prospectus_get
+      .isalreadysubmitted(this.semester, this.acadid)
+      .subscribe((res) => {
+        this.isalreadyenrolled = res;
+        this.alreadysubmitted = this.isalreadyenrolled['message'] === 'new';
+
+        console.log([
+          this.isalreadyenrolled['message'],
+          this.semester,
+          this.acadid,
+        ]);
       });
   }
 }

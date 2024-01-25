@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class ProspectusController {
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  readonly Root_URL = 'http://local.genesys.com/api/';
   token: any;
   procpectusdata: any;
 
@@ -31,12 +31,7 @@ export class ProspectusController {
     return this.http.post(this.Root_URL + 'get-prospectus', filterPros);
   }
 
-  public studentProspectus(
-    getPros: {
-      course: string;
-      year_lvl: string;
-    })
-  {
+  public studentProspectus(getPros: { course: string; year_lvl: string }) {
     return this.http.post(this.Root_URL + 'students-prospectus', getPros);
   }
 
@@ -50,5 +45,15 @@ export class ProspectusController {
     semester: string;
   }) {
     return this.http.post(this.Root_URL + 'add-subject', subject);
+  }
+
+  studprospectus(getProspectus: { course: string; year_lvl: string }) {
+    return this.http.post(this.Root_URL + 'student-prospectus', getProspectus);
+  }
+
+  isalreadysubmitted(semester: string, acadid: string) {
+    return this.http.get(
+      this.Root_URL + 'alreadysubmitted/' + semester + '/' + acadid
+    );
   }
 }
