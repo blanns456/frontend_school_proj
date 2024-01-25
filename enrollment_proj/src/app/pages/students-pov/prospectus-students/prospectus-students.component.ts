@@ -35,20 +35,21 @@ export class ProspectusStudentsComponent implements OnInit {
   ngOnInit(): void {
     this.studentdata = this.logincontroller.getuserdetails();
     this.getactivateprospectos();
-    this.getyearandsem();
+    console.log(this.getactivateprospectos());
   }
 
-  studentProspectus(yrlvl: string, acad: string) {
-    console.log([yrlvl, String(acad)]);
+  studentProspectus(yrlvl: string, acad: string, semester: string) {
+    // console.log([yrlvl, String(acad)]);
     this.prospectus_get
       .studprospectus({
         year_lvl: yrlvl,
         course: String(acad),
+        semester: semester,
       })
       .subscribe((prospectus_filter) => {
         this.data = prospectus_filter;
         this.prospectus = this.data[0];
-        console.log(this.data);
+        // console.log(this.prospectus);
 
         this.alreadysubmit();
         // console.log(prospectus_filter);
@@ -67,20 +68,6 @@ export class ProspectusStudentsComponent implements OnInit {
   updateTotalUnits(event: any, units: string) {
     this.calculateTotalUnits();
     this.checkAllCheckbox();
-  }
-
-  getyearandsem() {
-    this.semester_controller.getactivenrollsem().subscribe((res) => {
-      this.semesterinfo = res;
-      if (this.semesterinfo[0]) {
-        this.semester = this.semesterinfo[0][0]['semester'];
-        this.activateyr = this.semesterinfo[0][0]['active_year'];
-        // this.alreadysubmit();
-        // console.log(this.semesterinfo);
-      } else {
-        // console.log(this.semesterinfo);
-      }
-    });
   }
 
   checkAllCheckbox() {
@@ -151,10 +138,19 @@ export class ProspectusStudentsComponent implements OnInit {
         this.acadtransac = res;
         // console.log(this.acadtransac[0][0]['id']);
         this.acadid = this.acadtransac[0][0]['id'];
-        this.studentProspectus(
-          this.acadtransac[0][0]['student_yr_lvl'],
-          this.acadtransac[0][0]['course_id']
-        );
+
+        this.semester_controller.getactivenrollsem().subscribe((res) => {
+          this.semesterinfo = res;
+          if (this.semesterinfo[0]) {
+            this.semester = this.semesterinfo[0][0]['semester'];
+            this.activateyr = this.semesterinfo[0][0]['active_year'];
+            this.studentProspectus(
+              this.acadtransac[0][0]['student_yr_lvl'],
+              this.acadtransac[0][0]['course_id'],
+              this.semesterinfo[0][0]['semester']
+            );
+          }
+        });
       });
   }
 

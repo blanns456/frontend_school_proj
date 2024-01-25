@@ -14,7 +14,7 @@ import * as $ from 'jquery';
   styleUrls: ['./officially-enrolled.component.css'],
 })
 export class OfficiallyEnrolledComponent implements OnInit, AfterViewInit {
-  readonly Root_URL = 'http://local.genesys.com/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/';
 
   students: any = [];
   info: any = [];

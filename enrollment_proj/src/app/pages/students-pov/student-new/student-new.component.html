@@ -208,9 +208,9 @@
             >
               <option value=""></option>
               <option value="college">College</option>
-              <option value="graduateStudies">Graduate Studies</option>
+              <!-- <option value="graduateStudies">Graduate Studies</option>
               <option value="tesda">TESDA</option>
-              <option value="shs">Senior HighSchool</option>
+              <option value="shs">Senior HighSchool</option> -->
             </select>
           </div>
         </div>
@@ -246,6 +246,7 @@
               name="semester"
               class="form-control shadow-xl"
               id="semester"
+              formControlName="semester"
               [value]="semester"
               readonly
             />
@@ -265,10 +266,10 @@
               required
             >
               <option value disabled selected>Please select year level</option>
-              <option value="first_year">1st Year</option>
-              <option value="second_year">2nd Year</option>
-              <option value="third_year">3rd Year</option>
-              <option value="fourth_year">4th Year</option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year</option>
+              <option value="4">4th Year</option>
             </select>
           </div>
         </div>
