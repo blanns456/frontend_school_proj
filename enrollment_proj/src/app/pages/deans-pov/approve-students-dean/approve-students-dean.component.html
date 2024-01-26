@@ -33,7 +33,12 @@
                 <td *ngIf="approve.student_yr_lvl == '4'">4th Year</td>
                 <td>{{ approve.student_status }}</td>
                 <td>
-                  <button class="btn btn-success btn-sm">Approve</button>
+                  <button
+                    class="btn btn-success btn-sm"
+                    (click)="approvestudent(approve.acad_records_id)"
+                  >
+                    Approve
+                  </button>
                   <button class="btn btn-danger btn-sm">Delete</button>
                 </td>
               </tr>
