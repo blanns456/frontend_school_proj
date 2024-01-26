@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginController } from 'src/app/controllers/login_controller.component';
 import { SectionController } from 'src/app/controllers/section_controller.component';
 import Swal from 'sweetalert2';
 
@@ -28,6 +29,7 @@ export class DeansClassroomComponent implements OnInit {
   addSection: FormGroup;
   addstudentsection: FormGroup;
   alertShown = false;
+  deandata: any;
 
   filterObj = {
     name: '',
@@ -36,7 +38,11 @@ export class DeansClassroomComponent implements OnInit {
     page: 1,
   };
 
-  constructor(private sectionAll: SectionController, private router: Router) {
+  constructor(
+    private sectionAll: SectionController,
+    private router: Router,
+    private logincontroller: LoginController
+  ) {
     // this.addstudentsection = new FormGroup({
     //   addstudes: new FormControl(null, [Validators.required]),
     // });
@@ -63,11 +69,14 @@ export class DeansClassroomComponent implements OnInit {
   }
 
   getsection() {
-    this.sectionAll.getsection().subscribe((section) => {
-      this.data = section;
-      this.sections = this.data[0];
-      // console.log(section);
-    });
+    console.log(this.deandata[0]['deptid']);
+    this.sectionAll
+      .getsection(this.deandata[0]['deptid'])
+      .subscribe((section) => {
+        this.data = section;
+        this.sections = this.data[0];
+        // console.log(section);
+      });
   }
 
   getstudes() {
@@ -87,8 +96,10 @@ export class DeansClassroomComponent implements OnInit {
   // }
 
   ngOnInit(): void {
+    this.deandata = this.logincontroller.getuserdetails();
     this.getsection();
     this.getstudes();
+    console.log(this.deandata);
     // this.getProgram();
   }
 

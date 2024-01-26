@@ -7,6 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import * as $ from 'jquery';
+import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-student-applicants',
@@ -14,7 +16,7 @@ import * as $ from 'jquery';
   styleUrls: ['./student-applicants.component.css'],
 })
 export class StudentApplicantsComponent implements OnInit, AfterViewInit {
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  readonly Root_URL = 'http://local.genesys.com/api/';
 
   students: any = [];
   info: any = [];
@@ -24,6 +26,7 @@ export class StudentApplicantsComponent implements OnInit, AfterViewInit {
   currentStudents: any;
   id: any;
   getInfo: any;
+  approvalinfo: any;
   idget: any = {};
 
   filterObj = {
@@ -33,7 +36,11 @@ export class StudentApplicantsComponent implements OnInit, AfterViewInit {
     page: 1,
   };
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {}
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private collegecontroller: CollegeEnrollmentController
+  ) {}
 
   ngOnInit(): void {
     this.filterEnrolled();
@@ -61,7 +68,7 @@ export class StudentApplicantsComponent implements OnInit, AfterViewInit {
         this.students = this.data.data;
         this.total = this.data.total;
         this.totalPage = this.data.lastPage;
-        // console.log(this.data.page);
+        console.log(this.students);
       });
   }
 
@@ -120,5 +127,18 @@ export class StudentApplicantsComponent implements OnInit, AfterViewInit {
         // console.log(this.info);
         // console.log(idone);
       });
+  }
+
+  approvestudent(acadid: string) {
+    this.collegecontroller.registrarapproval(acadid).subscribe((res) => {
+      this.approvalinfo = res;
+      if (this.approvalinfo['message'] === 'success') {
+        Swal.fire('Success', 'Student Approved', 'success').then(() =>
+          window.location.reload()
+        );
+      } else {
+        Swal.fire('ERROR', 'Please Try Again', 'error');
+      }
+    });
   }
 }
