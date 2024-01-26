@@ -70,7 +70,7 @@ import { ProspectusComponent } from './pages/registrar-pov/prospectus/prospectus
 import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-students/prospectus-students.component';
 import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
 import { StudentProspectusCoursesComponent } from './pages/students-pov/student-prospectus-courses/student-prospectus-courses.component';
-
+import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students-dean/approve-students-dean.component';
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: '', component: HomeComponent },
@@ -199,6 +199,10 @@ const routes: Routes = [
   {
     path: 'deans-gradeApproval',
     component: DeansGradeApprovalComponent,
+  },
+  {
+    path: 'deans-prospectus-approval',
+    component: ApproveStudentsDeanComponent,
   },
   {
     path: 'deans-assignSubject',
