@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class LoginController {
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  readonly Root_URL = 'http://local.genesys.com/api/';
   token: any;
   userdata: any;
   usertokenid: any;

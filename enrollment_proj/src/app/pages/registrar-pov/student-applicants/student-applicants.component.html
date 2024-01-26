@@ -51,9 +51,9 @@
                       {{ student.lastname }}, {{ student.firstname }}
                       {{ student.middlename }}
                     </td>
-                    <td class="text-uppercase">
+                    <!-- <td class="text-uppercase">
                       {{ student.course }}
-                    </td>
+                    </td> -->
                     <td *ngIf="student.student_yr_lvl === '1'">
                       {{ student.course }}/1st Year
                     </td>
@@ -75,9 +75,7 @@
                         <button
                           [id]="student.id"
                           class="btn btn-success btn-sm text-center information"
-                          data-bs-toggle="modal"
-                          data-bs-target="#studView"
-                          (click)="studentInfo(student.id)"
+                          (click)="approvestudent(student.acad_records_id)"
                         >
                           Approve
                         </button>
