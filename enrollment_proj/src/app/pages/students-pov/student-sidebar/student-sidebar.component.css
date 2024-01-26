@@ -12,18 +12,18 @@
 
 .active {
   background: #0840a1 !important;
-  color: white;
+  color: whitesmoke;
 }
 
 .sidebar {
   width: 20%;
   min-height: 100%;
-  background: white;
+  background: whitesmoke;
 }
 
 .list-group a {
   display: inline-block;
-  background: linear-gradient(to left, white 50%, #0840a1 50%) right;
+  background: linear-gradient(to left, whitesmoke 50%, #0840a1 50%) right;
   background-size: 200%;
   transition: 0.3s ease-out;
   border-radius: 0 !important;
@@ -31,5 +31,5 @@
 }
 .list-group a:hover {
   background-position: left;
-  color: white;
+  color: whitesmoke;
 }

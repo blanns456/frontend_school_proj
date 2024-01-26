@@ -5,6 +5,7 @@ import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enroll
 import { LoginController } from 'src/app/controllers/login_controller.component';
 import { SemesterController } from 'src/app/controllers/semester_controller.component';
 import * as $ from 'jquery'; // kini sa pgdeclare nis $
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-student-dashboard-enrollment',
@@ -13,88 +14,25 @@ import * as $ from 'jquery'; // kini sa pgdeclare nis $
 })
 export class StudentDashboardEnrollmentComponent implements OnInit {
   data: any;
-  semesterinfo: any;
-  courses: any;
-  semester: any;
-  activateyr: any;
-  signUpForm: FormGroup;
+  enrollments: any;
   studentdata: any;
-  checker: any;
   studname: string | undefined;
 
   constructor(
-    private college_enrollment: CollegeEnrollmentController,
-    private loginenrollment: LoginController,
-    private semester_controller: SemesterController,
-    private router: Router
-  ) {
-    this.signUpForm = new FormGroup({
-      courseid: new FormControl(null, [Validators.required]),
-      student_status: new FormControl(null, [Validators.required]),
-      student_yr_level: new FormControl(null, [Validators.required]),
-    });
-  }
+    private http: HttpClient,
+    private loginenrollment: LoginController
+  ) {}
 
   ngOnInit(): void {
-    this.loadcourses();
-    this.getyearandsem();
     this.studentdata = this.loginenrollment.getuserdetails();
-    // this.studentdata = this.loginenrollment.getuserdetails();
     this.studname = this.studentdata[0]['id'];
-    this.checkEnrollment();
-  }
 
-  checkEnrollment() {
-    this.semester_controller
-      .checkEnrollee({ stud_id: this.studname })
+    this.http
+      .get(this.loginenrollment.Root_URL + 'my_enrollment/' + this.studname)
       .subscribe((res) => {
         this.data = res;
-        this.checker = this.data[0][0].id;
-        if (this.checker == 1) {
-          $('#for_enroll').addClass('d-none');
-        } else {
-          $('#enrolled').addClass('d-none');
-        }
-        // console.log(this.checker);
+        this.enrollments = this.data[0];
+        console.log(this.enrollments[0]['units']);
       });
-  }
-
-  loadcourses() {
-    this.college_enrollment.getcourses().subscribe((res) => {
-      this.data = res;
-      this.courses = this.data[0];
-      // console.log(this.courses);
-    });
-  }
-
-  getyearandsem() {
-    this.semester_controller.getactivenrollsem().subscribe((res) => {
-      this.semesterinfo = res;
-      if (this.semesterinfo[0]) {
-        this.semester = this.semesterinfo[0][0]['semester'];
-        this.activateyr = this.semesterinfo[0][0]['active_year'];
-        // console.log(this.semesterinfo);
-      } else {
-        // console.log(this.semesterinfo);
-      }
-    });
-  }
-
-  signUp() {
-    this.college_enrollment
-      .addacadtransac({
-        student_id: this.studentdata[0]['id'],
-        courseid: this.signUpForm.value.courseid,
-        student_status: this.signUpForm.value.student_status,
-        student_yr_level: this.signUpForm.value.student_yr_level,
-        semester: this.semester,
-      })
-      .subscribe((res) => {
-        // console.log(res);
-        this.checkEnrollment();
-        this.router.navigate(['student-dashboard-prospectus']);
-      });
-    // console.log(this.studentdata[0]['id']);
-    // console.log(this.signUpForm.value.courseid);
   }
 }

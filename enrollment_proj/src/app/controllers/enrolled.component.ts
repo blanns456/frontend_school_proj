@@ -7,7 +7,7 @@
 //   filterObj = {
 
 //   }
-//   readonly Root_URL = 'http://local.genesys.com/api/';
+//   readonly Root_URL = 'http://127.0.0.1:8000/api/';
 //   token: any;
 
 //   constructor(private http: HttpClient) {}

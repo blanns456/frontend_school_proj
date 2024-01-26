@@ -6,6 +6,10 @@
   overflow: auto;
 }
 
+.bg-nav {
+  background: whitesmoke;
+}
+
 label {
   font-weight: bold;
   user-select: none;
