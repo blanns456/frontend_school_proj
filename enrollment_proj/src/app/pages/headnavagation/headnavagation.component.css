@@ -1,0 +1,9 @@
+.navbar {
+  background-color: var(--midnight);
+  font-weight: 600;
+  font-size: 10pt;
+}
+
+.headicon {
+  width: 60;
+}

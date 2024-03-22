@@ -71,9 +71,11 @@ import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-stu
 import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
 import { StudentProspectusCoursesComponent } from './pages/students-pov/student-prospectus-courses/student-prospectus-courses.component';
 import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students-dean/approve-students-dean.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: '', component: HomeComponent },
+  { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },

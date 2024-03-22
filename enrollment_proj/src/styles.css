@@ -1,8 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 /*additional padding not in range of bootstrap*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  --midnight: #191970;
+  --blue: #0066ff;
+  --skyblue: #87ceeb;
+}
+
+body{
+  background: whitesmoke;
 }
 
 /* body {
