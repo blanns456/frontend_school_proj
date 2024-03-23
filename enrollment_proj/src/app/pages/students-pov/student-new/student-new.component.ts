@@ -4,18 +4,20 @@ import { Router } from '@angular/router';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
 import { SemesterController } from 'src/app/controllers/semester_controller.component';
 import Swal from 'sweetalert2';
-import * as $ from 'jquery';
+import nationalities from '../../../../assets/json/nationalities.json';
+import religions from '../../../../assets/json/religions.json';
 
 @Component({
   selector: 'app-student-new',
   templateUrl: './student-new.component.html',
   styleUrls: ['./student-new.component.css'],
 })
+  
 export class StudentNewComponent implements OnInit {
+  nationalitiesList: string[] = [];
+  religionList: string[] = [];
   info: any;
-  visible: boolean = true;
   changetype: boolean = true;
-  visible1: boolean = true;
   changetype1: boolean = true;
   signUpForm: FormGroup;
   signuploading: boolean = false;
@@ -27,27 +29,20 @@ export class StudentNewComponent implements OnInit {
   semester: any;
   sem: any;
   activateyr: any | string;
-
-  viewpass() {
-    this.visible = !this.visible;
-    this.changetype = !this.changetype;
-  }
-
-  viewpass1() {
-    this.visible1 = !this.visible1;
-    this.changetype1 = !this.changetype1;
-  }
+  noMiddleName = false;
 
   constructor(
     private collegecontroller: CollegeEnrollmentController,
     private semester_controller: SemesterController,
-    private router: Router
+    private router: Router,
   ) {
+    
     this.sem = new FormControl();
     this.signUpForm = new FormGroup({
       lastname: new FormControl(null, [Validators.required]),
       firstname: new FormControl(null, [Validators.required]),
-      middlename: new FormControl(null),
+      middleName: new FormControl({ value: this.noMiddleName ? 'N/A' : null, disabled: this.noMiddleName }, Validators.required),
+      suffix: new FormControl(null),
       gender: new FormControl(null, [Validators.required]),
       civil_status: new FormControl(null, [Validators.required]),
       birthdate: new FormControl(null, [Validators.required]),
@@ -64,13 +59,24 @@ export class StudentNewComponent implements OnInit {
     });
   }
 
+  toggleMiddleName() {
+    this.noMiddleName = !this.noMiddleName;
+    const middleNameControl = this.signUpForm.get('middleName');
+    if (this.noMiddleName) {
+      middleNameControl?.setValue('N/A');
+      middleNameControl?.disable();
+    } else {
+      middleNameControl?.setValue(null);
+      middleNameControl?.enable();
+    }
+  }
+
   signUp() {
     // console.log(this.signUpForm.value);
     this.collegecontroller
       .createstudent(this.signUpForm.value)
       .subscribe((res) => {
         this.info = res;
-        // console.log(res);
         if (this.info[0]['message'] == 'Success') {
           Swal.fire(
             'Success',
@@ -99,20 +105,21 @@ export class StudentNewComponent implements OnInit {
             'error'
           );
         }
-        // console.log(this.signUpForm.value);
-        // console.log(res);
-      });
+    });
   }
 
   loadcourses() {
     this.collegecontroller.getcourses().subscribe((res) => {
       this.data = res;
       this.courses = this.data[0];
-      // console.log(this.courses);
     });
   }
 
+
   ngOnInit(): void {
+    this.nationalitiesList = nationalities;
+    this.religionList = religions;
+    // console.log(this.religionList);
     this.loadcourses();
 
     this.semester_controller.getactivenrollsem().subscribe((res) => {

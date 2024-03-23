@@ -74,8 +74,8 @@ import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students
 import { HomepageComponent } from './pages/homepage/homepage.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: '', component: HomepageComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },

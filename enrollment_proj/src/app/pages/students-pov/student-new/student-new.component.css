@@ -1,14 +1,53 @@
-#login {
+/* #login {
   background-image: url("../../../../assets/misc/logo_background.jpg");
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
   overflow: auto;
+} */
+
+/* .fixed-login {
+  background-image: url("../../../../assets/misc/logo_background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+} */
+
+.banner{
+  /* margin-top: 4rem; */
+  height:  50%;
+  background-image: url("../../../../assets/misc/profile.png");
+  background-size: cover;
+  background-position: center center;
+  /* background-attachment: fixed; */
+  z-index: -1;
+}
+
+.banner h1{
+      font-size: 70px;
+}
+
+input{
+  border: 1px solid var(--blue);
+}
+
+.login-bg{
+  width: 90%;
 }
 
 .bg-nav {
   background: whitesmoke;
 }
+
+.formTitle{
+  font-size: 32px;
+  font-weight: 900;
+}
+
 
 label {
   font-weight: bold;
