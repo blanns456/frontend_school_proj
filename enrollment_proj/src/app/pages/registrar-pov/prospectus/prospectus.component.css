@@ -19,6 +19,7 @@ select {
 }
 
 th {
+  width: 90px;
   background: #0840a1;
   color: white;
 }
