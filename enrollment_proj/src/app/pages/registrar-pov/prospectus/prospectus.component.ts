@@ -15,6 +15,8 @@ export class ProspectusComponent {
     private http: HttpClient
   ) {}
 
+  groupedSubjects: { [key: string]: any[] } = {};
+  subjects: any = [];
   prospectus: any = [];
   total: any;
   data: any;
@@ -50,7 +52,7 @@ export class ProspectusComponent {
         this.prospectus = this.data.data;
         this.total = this.data.total;
         this.totalPage = this.data.lastPage;
-        console.log(this.prospectus);
+        // console.log(this.prospectus);
       });
   }
 
@@ -67,6 +69,42 @@ export class ProspectusComponent {
       this.filterObj.page = pageNum;
       this.filterProspectus();
     }
+  }
+
+  getYearLevels(): string[] {
+    return Object.keys(this.groupedSubjects);
+  }
+
+  onclickViewdata(
+    prosid: string,
+    course: string,
+    departmentname: string,
+    datestart: string,
+    dateend: string
+  ) {
+    // alert([course]);
+    $('#programsView').html(course);
+    $('#deptnameView').html(departmentname);
+    $('#prospecid').val(prosid);
+    $('#effectyearView').html(this.dateformater(datestart, dateend));
+
+    const getsubs = prosid;
+    // alert(getsubs);
+    this.http
+      .get(this.prospectus_get.Root_URL + `viewsubjects/${getsubs}`)
+      .subscribe((subs) => {
+        this.data = subs;
+        this.subjects = this.data[0];
+        // console.log(this.subjects);
+        this.groupedSubjects = {};
+        this.subjects.forEach((subjs: { year_lvl: any }) => {
+          const yrlvl = subjs.year_lvl;
+          if (!this.groupedSubjects[yrlvl]) {
+            this.groupedSubjects[yrlvl] = [];
+          }
+          this.groupedSubjects[yrlvl].push(subjs);
+        });
+      });
   }
 
   onclickdata(
