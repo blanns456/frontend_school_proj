@@ -46,21 +46,21 @@
 }
 
 .hero h1 {
-    padding-top: 7rem;
-    font-size: 60px;
-    font-weight: bold;
+  padding-top: 8rem;
+  font-size: 71px;
+  font-weight: bold;
 }
 
 .hero p {
-    font-size: 20px;
-    padding-top: 2rem;
+  font-size: 23px;
+  padding-top: 2rem;
 }
 
 .hero .enrollreq {
-    margin-top: 2rem;
-    padding: 13px;
-    background-color: var(--midnight);
-    font-weight: 600;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--midnight);
+  font-weight: 600;
 }
 
 .about {
