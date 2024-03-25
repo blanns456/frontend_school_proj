@@ -1,7 +1,7 @@
 
-/* body {
-  background: whitesmoke;
-} */
+* {
+  user-select: none;
+}
 
 .navbar {
   background-color: var(--midnight);
@@ -46,14 +46,14 @@
 }
 
 .hero h1 {
-  padding-top: 8rem;
+  /* padding-top: 8rem; */
   font-size: 71px;
   font-weight: bold;
 }
 
 .hero p {
   font-size: 23px;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
 }
 
 .hero .enrollreq {
