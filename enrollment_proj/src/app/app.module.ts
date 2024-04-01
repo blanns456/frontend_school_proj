@@ -96,6 +96,8 @@ import { EmailConfirmationComponent } from './pages/email-confirmation/email-con
 import { StudentProspectusCoursesComponent } from './pages/students-pov/student-prospectus-courses/student-prospectus-courses.component';
 import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students-dean/approve-students-dean.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
+import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
 
 @NgModule({
   declarations: [
@@ -187,6 +189,8 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     StudentProspectusCoursesComponent,
     ApproveStudentsDeanComponent,
     HomepageComponent,
+    RegistrationReqsComponent,
+    DepartmentUiComponent,
   ],
   imports: [
     BrowserModule,

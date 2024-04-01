@@ -1,0 +1,67 @@
+* {
+  user-select: none;
+}
+
+.navbar {
+  background-color: var(--midnight);
+  font-weight: 600;
+  font-size: 10pt;
+}
+
+.headicon {
+  width: 60;
+}
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("src/assets/misc/homepage/bga.jpg");
+  mix-blend-mode: darken;
+  height: 250px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero h1 {
+  padding-top: 2rem;
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.about {
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.list hr {
+  padding: 2px;
+  color: var(--midnight);
+}
+
+.foot1 {
+  background-color: var(--midnight);
+}
+
+.list {
+  font-size: 15px;
+  padding-bottom: 0;
+}
+
+.size {
+  font-size: 15px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.flast {
+  font-size: 20px;
+}
+
+.foot2 {
+  background-color: var(--blue);
+}

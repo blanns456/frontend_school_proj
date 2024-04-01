@@ -1,4 +1,3 @@
-
 * {
   user-select: none;
 }
@@ -106,10 +105,16 @@
 }
 
 .promo {
-  background-image: url(../../../assets/misc/homepage/bga.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../assets/misc/homepage/bga.jpg ");
+  mix-blend-mode: darken;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.promoSub {
+  backdrop-filter: blur(10px);
 }
 
 .current img {

@@ -17,25 +17,26 @@
   z-index: -1;
 } */
 
-.banner{
+.banner {
   /* margin-top: 4rem; */
-  height:  50%;
-  background-image: url("../../../../assets/misc/profile.png");
+  height: 50%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../../assets/misc/homepage/bga.jpg");
   background-size: cover;
   background-position: center center;
   /* background-attachment: fixed; */
   z-index: -1;
 }
 
-.banner h1{
-      font-size: 70px;
+.banner h1 {
+  font-size: 70px;
 }
 
-input{
+input {
   border: 1px solid var(--blue);
 }
 
-.login-bg{
+.login-bg {
   width: 90%;
 }
 
@@ -43,11 +44,10 @@ input{
   background: whitesmoke;
 }
 
-.formTitle{
+.formTitle {
   font-size: 32px;
   font-weight: 900;
 }
-
 
 label {
   font-weight: bold;

@@ -72,6 +72,8 @@ import { EmailConfirmationComponent } from './pages/email-confirmation/email-con
 import { StudentProspectusCoursesComponent } from './pages/students-pov/student-prospectus-courses/student-prospectus-courses.component';
 import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students-dean/approve-students-dean.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
+import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -80,6 +82,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'enroll-college', component: EnrollCollegeComponent },
+  { path: 'registration-req', component: RegistrationReqsComponent },
+  { path: 'department-ui', component: DepartmentUiComponent },
   {
     path: 'enroll-college-student-information',
     component: EnrollCollege2Component,
