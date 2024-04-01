@@ -1,0 +1,172 @@
+* {
+  user-select: none;
+}
+
+.navbar {
+  background-color: var(--midnight);
+  font-weight: 600;
+  font-size: 10pt;
+}
+
+.headicon {
+  width: 60;
+}
+
+.enroll {
+  font-weight: 600;
+  font-size: 10pt;
+  background-color: var(--skyblue);
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../assets/misc/homepage/banner.jpg ");
+  mix-blend-mode: darken;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.banner {
+  width: 80%;
+  /* height: 132px; */
+  background-color: var(--midnight);
+  /* left: 8rem;
+  top: 36rem; */
+}
+
+/* .textcont {
+  padding: 2rem;
+} */
+
+.enrollBtn {
+  background-color: var(--blue);
+}
+
+.hero h1 {
+  /* padding-top: 8rem; */
+  font-size: 71px;
+  font-weight: bold;
+}
+
+.hero p {
+  font-size: 23px;
+  /* padding-top: 2rem; */
+}
+
+.hero .enrollreq {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--midnight);
+  font-weight: 600;
+}
+
+.about {
+  font-size: 32px;
+  font-weight: 900;
+}
+.state {
+  font-size: 15px;
+  color: #555555;
+  padding-left: 1rem;
+}
+
+.state2 {
+  font-size: 15px;
+  color: #555555;
+}
+
+.desc {
+  font-weight: bold;
+  color: #333333;
+  padding-left: 1rem;
+}
+
+.acc {
+  color: var(--midnight);
+  font-weight: bold;
+}
+
+.dept {
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.deptsub {
+  margin-top: 2rem;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.deptsub span {
+  font-weight: 900;
+  color: var(--midnight);
+}
+
+.promo {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../assets/misc/homepage/bga.jpg ");
+  mix-blend-mode: darken;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.promoSub {
+  backdrop-filter: blur(10px);
+}
+
+.current img {
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 1/1;
+  width: 100%;
+}
+
+.allsee {
+  background-color: var(--blue);
+}
+
+.foot1 {
+  background-color: var(--midnight);
+}
+
+.list {
+  font-size: 15px;
+  padding-bottom: 0;
+}
+
+.size {
+  font-size: 15px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.flast {
+  font-size: 20px;
+}
+
+.foot2 {
+  background-color: var(--blue);
+}
+
+#topbtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: #333333;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  transform: rotate(180deg);
+}

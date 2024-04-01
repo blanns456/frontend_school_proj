@@ -1,0 +1,17 @@
+.navbar {
+  background-color: var(--midnight);
+  font-weight: 600;
+  font-size: 10pt;
+}
+
+.headicon {
+  width: 60;
+}
+
+.active{
+  color: rgb(0, 171, 250) !important;
+}
+
+.nav-item a {
+  color: white;
+}
