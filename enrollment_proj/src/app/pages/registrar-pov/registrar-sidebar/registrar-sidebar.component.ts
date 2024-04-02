@@ -10,8 +10,8 @@ import * as $ from 'jquery';
 export class RegistrarSidebarComponent {
   userdata: any;
   loaddetails = false;
-  studentdata: any;
-  studname: string | undefined;
+  regdata: any;
+  regname: string | undefined;
 
   constructor(private logincontroller: LoginController) {}
 
@@ -60,9 +60,9 @@ export class RegistrarSidebarComponent {
       });
     });
 
-    this.studentdata = this.logincontroller.getuserdetails();
-    // this.studname =
-    //   this.studentdata[0]['lastname'] + ', ' + this.studentdata[0]['firstname'];
-    console.log(this.studentdata);
+    this.regdata = this.logincontroller.getuserdetails();
+    this.regname =
+      this.regdata[0]['last_name'] + ', ' + this.regdata[0]['first_name'];
+    // console.log(this.studentdata);
   }
 }

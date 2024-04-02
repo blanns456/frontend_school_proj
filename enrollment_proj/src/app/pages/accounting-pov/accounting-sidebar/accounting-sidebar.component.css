@@ -12,7 +12,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E3050; 
+  background: #1e3050;
 }
 
 #profile {
@@ -25,15 +25,15 @@
   background: white;
 }
 
-.links{
+.links {
   height: 80vh;
   overflow-y: auto;
 }
 
-.accSetupToggle-sub, 
-.accReportsToggle-sub, 
-.accFinanceToggle-sub, 
-.telleringToggle-sub{
+.accSetupToggle-sub,
+.accReportsToggle-sub,
+.accFinanceToggle-sub,
+.telleringToggle-sub {
   list-style: none;
   display: none;
 }

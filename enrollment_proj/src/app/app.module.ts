@@ -95,6 +95,7 @@ import { ProspectusStudentsComponent } from './pages/students-pov/prospectus-stu
 import { EmailConfirmationComponent } from './pages/email-confirmation/email-confirmation.component';
 import { StudentProspectusCoursesComponent } from './pages/students-pov/student-prospectus-courses/student-prospectus-courses.component';
 import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students-dean/approve-students-dean.component';
+import { LoadingPageComponent } from './component/loading-page/loading-page.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
@@ -191,6 +192,7 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
     HomepageComponent,
     RegistrationReqsComponent,
     DepartmentUiComponent,
+    LoadingPageComponent,
   ],
   imports: [
     BrowserModule,
