@@ -33,6 +33,12 @@
   font-weight: 900;
 }
 
+.deptCard:hover {
+  transform: scale(1.03);
+  transition: 0.1s ease-in;
+  box-shadow: 5px 5px 5px 5px rgba(56, 56, 56, 0.151);
+}
+
 .list hr {
   padding: 2px;
   color: var(--midnight);
@@ -64,4 +70,9 @@ ul {
 
 .foot2 {
   background-color: var(--blue);
+}
+
+img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
 }
