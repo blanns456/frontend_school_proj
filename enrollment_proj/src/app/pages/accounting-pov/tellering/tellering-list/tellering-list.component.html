@@ -34,32 +34,12 @@
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let stud of students">
               <tr>
-                <td>Rizal, Jose Patricio</td>
-                <td>Cash</td>
-                <td>04/12/2023</td>
-                <td>Recieved</td>
-                <td>
-                  <button class="btn btn-secondary">
-                    <a
-                      class="text-white text-decoration-none"
-                      routerLink="/teller-viewuser"
-                      ><i class="fa-solid fa-eye"></i>View</a
-                    >
-                  </button>
-                  <button class="btn btn-success mx-2">
-                    <a class="text-white text-decoration-none"
-                      ><i class="fa-solid fa-pen text-white"></i>Update</a
-                    >
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Badang, James Moreno</td>
-                <td>Cash</td>
-                <td>04/12/2023</td>
-                <td>Recieved</td>
+                <td>{{ stud.name }}</td>
+                <td>{{ stud.mop }}</td>
+                <td>{{ stud.pdate }}</td>
+                <td>{{ stud.paytype }}</td>
                 <td>
                   <button class="btn btn-secondary">
                     <a

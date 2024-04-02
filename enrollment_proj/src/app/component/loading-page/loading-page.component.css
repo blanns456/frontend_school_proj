@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  font-family: "Montserrat", sans-serif;
+}
+
+.ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.circle {
+  width: 125px;
+  height: 125px;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.frame {
+  width: 150px;
+  height: 150px;
+  background: transparent;
+  animation: animateA 5s linear infinite;
+}
+.sub {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: transparent;
+  animation: animateB 2s linear infinite;
+}
+
+.payr {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+}
+
+@keyframes animateA {
+  0% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(405deg);
+  }
+}
+@keyframes animateB {
+  0% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(-405deg);
+  }
+}

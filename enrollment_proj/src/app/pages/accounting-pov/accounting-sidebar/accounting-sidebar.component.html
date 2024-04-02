@@ -18,14 +18,16 @@
         height="60"
         class="img-thumbnail mt-4 mx-3"
       />
-      <h2 class="h6 fw-bold text-white mx-3 my-2">Doe, John</h2>
+      <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">
+        {{ accname }}
+      </h2>
       <p class="text-light fs-6 mx-3 fw-light">Accounting</p>
     </div>
   </div>
   <div class="links">
     <div id="list-example" class="list-group">
       <a
-        class="py-3 list-group-item list-group-item-action home"
+        class="py-3 mt-2 list-group-item list-group-item-action home"
         routerLink="/accounting-dashboard-home"
         routerLinkActive="active"
       >
@@ -152,6 +154,15 @@
             class="list-group-item list-group-item-action py-3"
             ><i class="fa-solid fa-notes-medical mx-2"></i>
             Daily Collection Reports
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="#"
+            routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3 my-1"
+            ><i class="fa-solid fa-notes-medical mx-2"></i>
+            Daily Collection Breakdown
           </a>
         </li>
         <li>

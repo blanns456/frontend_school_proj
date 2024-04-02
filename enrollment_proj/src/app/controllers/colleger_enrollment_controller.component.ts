@@ -107,4 +107,12 @@ export class CollegeEnrollmentController {
   registrarapproval(acadid: string) {
     return this.http.get(this.Root_URL + 'approveStudent/' + acadid);
   }
+
+  sentotp(info: { email_address: string }) {
+    return this.http.post(this.Root_URL + 'sendotp', info);
+  }
+
+  verifyotp(otp: { otp: string }) {
+    return this.http.post(this.Root_URL + 'verifyotp', otp);
+  }
 }

@@ -1,4 +1,7 @@
 <div class="container-fluid p-0 mw-100 vh-100" id="login">
+  <div class="loading-overlay" *ngIf="loading">
+    <app-loading-page></app-loading-page>
+  </div>
   <div
     class="w-75 bg-nav mx-auto container-fluid my-5 bg-opacity-75 rounded-4 login-bg"
   >
@@ -10,296 +13,330 @@
       />
       <p class="text-center m-0 pt-2 fw-bold" [textContent]="activateyr"></p>
     </div>
-    <form (ngSubmit)="signUp()" [formGroup]="signUpForm" novalidate>
-      <div class="row pt-2">
-        <div class="col-4">
-          <div>
+    <div *ngIf="!otp">
+      <form (ngSubmit)="signUp()" [formGroup]="signUpForm" novalidate>
+        <div class="row pt-2">
+          <div class="col-4">
+            <div>
+              <div class="mb-2">
+                <label for="last_name" class="form-label"> Last Name </label>
+                <input
+                  type="text"
+                  class="form-control fw-bold mx-auto py-2 shadow-xl"
+                  autocomplete="off"
+                  formControlName="lastname"
+                  id="lastname"
+                  placeholder="ex. doe"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
             <div class="mb-2">
-              <label for="last_name" class="form-label"> Last Name </label>
+              <label for="firstname" class="form-label"> First Name </label>
               <input
                 type="text"
                 class="form-control fw-bold mx-auto py-2 shadow-xl"
                 autocomplete="off"
-                formControlName="lastname"
-                id="lastname"
-                placeholder="ex. doe"
+                formControlName="firstname"
+                id="firstname"
+                placeholder="ex. john"
+              />
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="mb-2">
+              <label for="middlename" class="form-label">
+                Middle Name (Optional)
+              </label>
+              <input
+                type="text"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                autocomplete="off"
+                formControlName="middlename"
+                id="middle_name"
+                placeholder="ex. john"
               />
             </div>
           </div>
         </div>
-        <div class="col-4">
-          <div class="mb-2">
-            <label for="firstname" class="form-label"> First Name </label>
-            <input
-              type="text"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              autocomplete="off"
-              formControlName="firstname"
-              id="firstname"
-              placeholder="ex. john"
-            />
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="mb-2">
-            <label for="middlename" class="form-label">
-              Middle Name (Optional)
-            </label>
-            <input
-              type="text"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              autocomplete="off"
-              formControlName="middlename"
-              id="middle_name"
-              placeholder="ex. john"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <div class="mb-3">
-            <label for="gender" class="form-label"> Gender </label>
-            <br />
-            <div class="form-check d-flex justify-space-between w-100">
-              <input
-                type="radio"
-                name="gender"
-                id="male"
-                formControlName="gender"
-                class="form-check-input mx-3"
-                value="male"
-              />
-              <label for="male" class="w-25"> Male </label>
-              <input
-                type="radio"
-                name="gender"
-                id="female"
-                class="form-check-input mx-3"
-                formControlName="gender"
-                value="female"
-              />
-              <label for="female" class="w-25"> Female </label>
+        <div class="row">
+          <div class="col-4">
+            <div class="mb-3">
+              <label for="gender" class="form-label"> Gender </label>
+              <br />
+              <div class="form-check d-flex justify-space-between w-100">
+                <input
+                  type="radio"
+                  name="gender"
+                  id="male"
+                  formControlName="gender"
+                  class="form-check-input mx-3"
+                  value="male"
+                />
+                <label for="male" class="w-25"> Male </label>
+                <input
+                  type="radio"
+                  name="gender"
+                  id="female"
+                  class="form-check-input mx-3"
+                  formControlName="gender"
+                  value="female"
+                />
+                <label for="female" class="w-25"> Female </label>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-4">
-          <div class="mb-3">
-            <label for="civil_status" class="form-label"> Civil Status </label>
-            <select
-              name="civil_status"
-              id="civil_status"
-              formControlName="civil_status"
-              class="form-select shadow-xl"
-            >
-              <option value selected disabled>
-                Please Select Civil Status
-              </option>
-              <option value="single">Single</option>
-              <option value="married">Married</option>
-              <option value="widowed">Widowed</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="col-4">
-          <div class="mb-3">
-            <label for="birth_date" class="form-label"> Birth Date </label>
-            <input
-              type="date"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              formControlName="birthdate"
-              name="birth_date"
-              id="birth_date"
-              required
-            />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <div class="mb-3">
-            <label for="birth_place" class="form-label"> Birth Place </label>
-            <input
-              type="text"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              formControlName="birth_place"
-              name="birth_place"
-              id="birth_place"
-              required
-            />
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="mb-3">
-            <label for="email" class="form-label"> Email Address </label>
-            <input
-              type="email"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              formControlName="email_address"
-              name="email"
-              id="email"
-              placeholder="ex. johndoe@gmail.com"
-              required
-            />
-          </div>
-        </div>
-
-        <div class="col-4">
-          <div class="mb-3">
-            <label for="contact_number" class="form-label">
-              Contact Number
-            </label>
-            <input
-              type="text"
-              pattern="[0-9]{11}"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              formControlName="contact_number"
-              maxlength="11"
-              (input)="inputMask($event)"
-              name="contact_number"
-              id="contact_number"
-              placeholder="ex. 09123456789"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <div class="mb-3">
-            <label for="citizenship" class="form-label"> Citizenship </label>
-            <input
-              type="text"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              formControlName="citizenship"
-              name="citizenship"
-              id="citizenship"
-              required
-            />
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="mb-3">
-            <label for="religion" class="form-label"> Religion </label>
-            <input
-              type="text"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              formControlName="religion"
-              name="religion"
-              id="religion"
-              required
-            />
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="row">
-        <div class="col-6">
-          <div class="mb-3">
-            <label for="enrollIn" class="form-label"
-              >Interested to Enroll In:
-            </label>
-            <select
-              name="enrollIn"
-              id="enrollIn"
-              formControlName="enrollIn"
-              class="form-select shadow-xl"
-            >
-              <option value=""></option>
-              <option value="college">College</option>
-              <!-- <option value="graduateStudies">Graduate Studies</option>
-              <option value="tesda">TESDA</option>
-              <option value="shs">Senior HighSchool</option> -->
-            </select>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="mb-3 input-holder">
-            <label for="program" class="form-label"> Program </label>
-            <select
-              name="program"
-              id="program"
-              class="form-select shadow-xl"
-              formControlName="program"
-            >
-              <option value disabled selected>Please select Course</option>
-              <option
-                *ngFor="let option of courses"
-                [value]="option.courses_id"
+          <div class="col-4">
+            <div class="mb-3">
+              <label for="civil_status" class="form-label">
+                Civil Status
+              </label>
+              <select
+                name="civil_status"
+                id="civil_status"
+                formControlName="civil_status"
+                class="form-select shadow-xl"
               >
-                {{ option.name }}
-              </option>
-            </select>
+                <option value selected disabled>
+                  Please Select Civil Status
+                </option>
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="widowed">Widowed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="mb-3">
+              <label for="birth_date" class="form-label"> Birth Date </label>
+              <input
+                type="date"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="birthdate"
+                name="birth_date"
+                id="birth_date"
+                required
+              />
+            </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="mb-3">
+              <label for="birth_place" class="form-label"> Birth Place </label>
+              <input
+                type="text"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="birth_place"
+                name="birth_place"
+                id="birth_place"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="mb-3">
+              <label for="email" class="form-label"> Email Address </label>
+              <input
+                type="email"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="email_address"
+                name="email"
+                id="email"
+                placeholder="ex. johndoe@gmail.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="mb-3">
+              <label for="contact_number" class="form-label">
+                Contact Number
+              </label>
+              <input
+                type="text"
+                pattern="[0-9]{11}"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="contact_number"
+                maxlength="11"
+                (input)="inputMask($event)"
+                name="contact_number"
+                id="contact_number"
+                placeholder="ex. 09123456789"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="mb-3">
+              <label for="citizenship" class="form-label"> Citizenship </label>
+              <input
+                type="text"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="citizenship"
+                name="citizenship"
+                id="citizenship"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="mb-3">
+              <label for="religion" class="form-label"> Religion </label>
+              <input
+                type="text"
+                class="form-control fw-bold mx-auto py-2 shadow-xl"
+                formControlName="religion"
+                name="religion"
+                id="religion"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-6">
+            <div class="mb-3">
+              <label for="enrollIn" class="form-label"
+                >Interested to Enroll In:
+              </label>
+              <select
+                name="enrollIn"
+                id="enrollIn"
+                formControlName="enrollIn"
+                class="form-select shadow-xl"
+              >
+                <option value=""></option>
+                <option value="college">College</option>
+                <!-- <option value="graduateStudies">Graduate Studies</option>
+                  <option value="tesda">TESDA</option>
+                  <option value="shs">Senior HighSchool</option> -->
+              </select>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="mb-3 input-holder">
+              <label for="program" class="form-label"> Program </label>
+              <select
+                name="program"
+                id="program"
+                class="form-select shadow-xl"
+                formControlName="program"
+              >
+                <option value disabled selected>Please select Course</option>
+                <option
+                  *ngFor="let option of courses"
+                  [value]="option.courses_id"
+                >
+                  {{ option.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="mb-3 input-holder">
+              <label for="semester" class="form-label">
+                Semester
+                <span class="text-danger">*</span>
+              </label>
+              <input
+                type="text"
+                name="semester"
+                class="form-control shadow-xl"
+                id="semester"
+                formControlName="semester"
+                [value]="semester"
+                readonly
+              />
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="mb-3 input-holder">
+              <label for="student_yr_level" class="form-label">
+                Year Level
+                <span class="text-danger">*</span>
+              </label>
+              <select
+                name="student_yr_level"
+                id="student_yr_level"
+                class="form-select shadow-xl"
+                formControlName="student_yr_level"
+                required
+              >
+                <option value disabled selected>
+                  Please select year level
+                </option>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="mb-3 input-holder">
+              <label for="student_status" class="form-label">
+                Student Status
+                <span class="text-danger">*</span>
+              </label>
+              <select
+                name="student_status"
+                id="student_status"
+                class="form-select shadow-xl"
+                formControlName="student_status"
+              >
+                <option value="">Please Select Status</option>
+                <option value="regular">Regular Student</option>
+                <option value="irregular">Irregular Student</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="py-3 text-center">
+          <button
+            [disabled]="signUpForm.invalid"
+            class="btn btn-primary fw-bold p-2 w-25 login-button"
+          >
+            Create Account
+          </button>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="otp" class="py-3">
+      <div class="text-center mx-auto my-3">
+        <h2 class="fw-bold">Enter OTP Code</h2>
+        <p class="fst-italic mx-auto py-3 w-75">
+          An Otp Verification Code has been sent to your email. Please input the
+          correct code to verify your account.. Thank you
+        </p>
       </div>
-      <div class="row">
-        <div class="col-4">
-          <div class="mb-3 input-holder">
-            <label for="semester" class="form-label">
-              Semester
-              <span class="text-danger">*</span>
-            </label>
-            <input
-              type="text"
-              name="semester"
-              class="form-control shadow-xl"
-              id="semester"
-              formControlName="semester"
-              [value]="semester"
-              readonly
-            />
-          </div>
+      <div class="d-flex justify-content-center align-items-center flex-column">
+        <div class="otp-inputs d-flex gap-3">
+          <input
+            type="text"
+            maxlength="1"
+            autofocus
+            class="form-control shadow-sm my-2 fs-3"
+            [(ngModel)]="enteredOTP[i]"
+            (ngModelChange)="handleInput($event, i)"
+            (keydown)="handleKeydown($event, i)"
+            (input)="inputMask($event)"
+            *ngFor="let item of [].constructor(6); let i = index"
+          />
         </div>
-        <div class="col-4">
-          <div class="mb-3 input-holder">
-            <label for="student_yr_level" class="form-label">
-              Year Level
-              <span class="text-danger">*</span>
-            </label>
-            <select
-              name="student_yr_level"
-              id="student_yr_level"
-              class="form-select shadow-xl"
-              formControlName="student_yr_level"
-              required
-            >
-              <option value disabled selected>Please select year level</option>
-              <option value="1">1st Year</option>
-              <option value="2">2nd Year</option>
-              <option value="3">3rd Year</option>
-              <option value="4">4th Year</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="mb-3 input-holder">
-            <label for="student_status" class="form-label">
-              Student Status
-              <span class="text-danger">*</span>
-            </label>
-            <select
-              name="student_status"
-              id="student_status"
-              class="form-select shadow-xl"
-              formControlName="student_status"
-            >
-              <option value="">Please Select Status</option>
-              <option value="regular">Regular Student</option>
-              <option value="irregular">Irregular Student</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="py-3 text-center">
-        <button
-          [disabled]="signUpForm.invalid"
-          class="btn btn-primary fw-bold p-2 w-25 login-button"
-        >
-          Create Account
+        <br />
+        <button class="btn btn-success" (click)="verifyOTP()">
+          Verify OTP
         </button>
       </div>
-    </form>
+    </div>
   </div>
 </div>

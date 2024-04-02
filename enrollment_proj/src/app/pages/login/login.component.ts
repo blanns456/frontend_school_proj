@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     $('#loading').removeClass('d-none');
-    $('#mainPage').addClass('d-none');
+    // $('#mainPage').addClass('d-none');
 
     this.logincontroller.login(this.form.value).subscribe((res) => {
       this.data = res;
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', this.token);
         this.logincontroller.reloaddata();
         $('#loading').addClass('d-none');
-        $('#mainPage').removeClass('d-none');
+        // $('#mainPage').removeClass('d-none');
         console.log(this.token);
         if (this.logincontroller.userdata.role === 'student') {
           this.router.navigate(['student-dashboard-home']);
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
       } else if (this.data.status === 0) {
         Swal.fire('Error', this.data.message, 'error');
         $('#loading').addClass('d-none');
-        $('#mainPage').removeClass('d-none');
+        // $('#mainPage').removeClass('d-none');
       }
     });
     console.log(this.form.value);

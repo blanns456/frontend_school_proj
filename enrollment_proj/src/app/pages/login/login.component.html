@@ -2,9 +2,8 @@
   class="container-fluid p-0 mw-100 vh-100 d-flex justify-content-center align-items-center"
   id="login"
 >
-  <div class="d-none position-absolute" id="loading">
-    <div class="loader"></div>
-    <div class="text-center">Loading....</div>
+  <div class="d-none position-absolute loading-overlay" id="loading">
+    <app-loading-page></app-loading-page>
   </div>
   <div
     class="w-50 bg-light mx-auto container-fluid p-2 bg-opacity-75 rounded-4 login-bg"
