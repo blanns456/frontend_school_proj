@@ -93,6 +93,11 @@
   font-weight: 900;
 }
 
+.dept a {
+  text-decoration: none;
+  color: #333333;
+}
+
 .deptsub {
   margin-top: 2rem;
   font-size: 16px;

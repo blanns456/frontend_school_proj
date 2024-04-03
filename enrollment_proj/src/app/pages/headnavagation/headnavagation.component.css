@@ -4,11 +4,16 @@
   font-size: 10pt;
 }
 
+.nav-link:hover {
+  transform: scale(1.05);
+  transition: 0.1s linear;
+}
+
 .headicon {
   width: 60;
 }
 
-.active{
+.active {
   color: rgb(0, 171, 250) !important;
 }
 
