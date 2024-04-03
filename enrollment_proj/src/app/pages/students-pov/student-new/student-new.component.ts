@@ -227,18 +227,38 @@ export class StudentNewComponent implements OnInit {
 
         if (this.info[0][0]['expire'] <= myFormattedDate) {
           console.log('expire na');
-          // Handle expired OTP
+          Swal.fire({
+            title: 'Code Expired',
+            text: 'Tap to resend again.',
+            icon: 'error',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Resend Code',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.collegecontroller
+                .sentotp(this.signUpForm.value)
+                .subscribe((res) => {
+                  console.log('Resent Success', res);
+                });
+              Swal.fire({
+                title: 'Code Resent!',
+                text: 'A new code has been sent to your email.',
+                icon: 'success',
+              });
+            }
+            this.enteredOTP = [];
+          });
         } else {
           // console.log('di pa expire');
           this.loading = true;
+          console.log(this.signUpForm.value);
 
           this.collegecontroller
             .createstudent(this.signUpForm.value)
             .subscribe({
               next: (res) => {
                 this.info = res;
-                // console.log(res);
-                if (this.info[0]['message'] == 'Success') {
+                if (this.info[0] && this.info[0]['message'] === 'Success') {
                   Swal.fire({
                     title: 'Success',
                     text: 'Created Successfully, Please Check your Email',
@@ -246,14 +266,23 @@ export class StudentNewComponent implements OnInit {
                   });
                   this.router.navigate(['login']);
                   this.loading = false;
-                } else if (this.info[0]['message'] == 'ERROR') {
-                  if (this.info[0]['error']['contact_number']) {
+                } else if (
+                  this.info[0] &&
+                  this.info[0]['message'] === 'ERROR'
+                ) {
+                  if (
+                    this.info[0]['error'] &&
+                    this.info[0]['error']['contact_number']
+                  ) {
                     Swal.fire(
                       'ERROR',
                       this.info[0]['error']['contact_number'][0],
                       'error'
                     );
-                  } else if (this.info[0]['error']['email_address']) {
+                  } else if (
+                    this.info[0]['error'] &&
+                    this.info[0]['error']['email_address']
+                  ) {
                     Swal.fire(
                       'ERROR',
                       this.info[0]['error']['email_address'][0],
@@ -269,14 +298,24 @@ export class StudentNewComponent implements OnInit {
                   );
                 }
                 this.loading = false;
-                // console.log(this.signUpForm.value);
-                // console.log(res);
               },
               error: (error) => {
                 console.log(error);
                 // Handle error here
               },
             });
+          // this.collegecontroller
+          //   .createstudent(this.signUpForm.value)
+          //   .subscribe({
+          //     next: (res) => {
+          //       console.log('Response from createstudent API:', res);
+          //       // ... (rest of your code)
+          //     },
+          //     error: (error) => {
+          //       console.log('Error from createstudent API:', error);
+          //       // Handle error here
+          //     },
+          //   });
         }
       },
       error: (error: HttpErrorResponse) => {
