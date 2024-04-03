@@ -129,101 +129,35 @@ export class StudentNewComponent implements OnInit {
   }
 
   signUp() {
-    console.log(this.signUpForm.value);
-
+    // console.log(this.signUpForm.value);
     this.collegecontroller.sentotp(this.signUpForm.value).subscribe((res) => {
-      console.log(res);
+      this.info = res;
+      console.log(this.info);
+      if (this.info['message'] === 'Email exist') {
+        // alert('naa na');
+        Swal.fire(
+          'Email already taken',
+          'Please input another email.',
+          'error'
+        );
+      } else {
+        // alert('wla pa');
+        this.otp = true;
+      }
     });
-
-    this.otp = true;
   }
 
   verifyOTP() {
     const enteredOTP = this.enteredOTP.join('');
     // console.log(enteredOTP);
+    // console.log('OTP verified successfully');
 
     this.collegecontroller.verifyotp({ otp: enteredOTP }).subscribe({
       next: (response) => {
         this.info = response;
-        console.log(this.info[0][0]['expire']);
-        console.log('OTP verified successfully');
         const d = Date();
         const myFormattedDate = this.pipe.transform(d, 'Y-MM-dd HH:mm:ss');
         console.log(myFormattedDate);
-
-        // if (this.info[0][0]['expire'] <= myFormattedDate) {
-        //   console.log('expire na');
-        //   Swal.fire({
-        //     title: 'Code Expired',
-        //     text: 'Tap to resend again.',
-        //     icon: 'error',
-        //     confirmButtonColor: '#3085d6',
-        //     confirmButtonText: 'Resend Code',
-        //   }).then((result) => {
-        //     if (result.isConfirmed) {
-        //       // this.collegecontroller
-        //       //   .sentotp(this.signUpForm.value)
-        //       //   .subscribe((res) => {
-        //       //     console.log('Resent Success', res);
-        //       //   });
-        //       Swal.fire({
-        //         title: 'Code Resent!',
-        //         text: 'A new code has been sent to your email.',
-        //         icon: 'success',
-        //       });
-        //     }
-        //     this.enteredOTP = [];
-        //   });
-        // } else {
-        //   console.log('di pa expire');
-        //   this.loading = true;
-        //   // this.collegecontroller
-        //   //   .createstudent(this.signUpForm.value)
-        //   //   .subscribe((res) => {
-        //   //     this.info = res;
-        //   //     // console.log(res);
-        //   //     if (this.info[0]['message'] == 'Success') {
-        //   //       Swal.fire({
-        //   //         title: 'Success',
-        //   //         text: 'Created Successfully, Please Check your Email',
-        //   //         icon: 'success',
-        //   //       });
-        //   //       this.router.navigate(['login']);
-        //   //       this.loading = false;
-        //   //     } else if (this.info[0]['message'] == 'ERROR') {
-        //   //       if (this.info[0]['error']['contact_number']) {
-        //   //         Swal.fire(
-        //   //           'ERROR',
-        //   //           this.info[0]['error']['contact_number'][0],
-        //   //           'error'
-        //   //         );
-        //   //       } else if (this.info[0]['error']['email_address']) {
-        //   //         Swal.fire(
-        //   //           'ERROR',
-        //   //           this.info[0]['error']['email_address'][0],
-        //   //           'error'
-        //   //         );
-        //   //       }
-        //   //       this.router.navigate(['new/student']);
-        //   //     } else {
-        //   //       Swal.fire(
-        //   //         'ERROR',
-        //   //         'Try again later, Please Contact Chat Support',
-        //   //         'error'
-        //   //       );
-        //   //     }
-        //   //     this.loading = false;
-        //   //     // console.log(this.signUpForm.value);
-        //   //     // console.log(res);
-        //   //   });
-        //   Swal.fire({
-        //     title: 'Success',
-        //     text: 'Created Successfully, Please Check your Email',
-        //     icon: 'success',
-        //   });
-        //   this.router.navigate(['login']);
-        //   this.loading = false;
-        // }
 
         if (this.info[0][0]['expire'] <= myFormattedDate) {
           console.log('expire na');
@@ -249,23 +183,22 @@ export class StudentNewComponent implements OnInit {
             this.enteredOTP = [];
           });
         } else {
-          // console.log('di pa expire');
+          console.log('di pa expire');
           this.loading = true;
-          console.log(this.signUpForm.value);
-
           this.collegecontroller
             .createstudent(this.signUpForm.value)
             .subscribe({
               next: (res) => {
                 this.info = res;
                 if (this.info[0] && this.info[0]['message'] === 'Success') {
-                  Swal.fire({
-                    title: 'Success',
-                    text: 'Created Successfully, Please Check your Email',
-                    icon: 'success',
-                  });
+                  setTimeout(() => {
+                    Swal.fire({
+                      title: 'Success',
+                      text: 'Created Successfully, Please Check your Email',
+                      icon: 'success',
+                    });
+                  }, 4000);
                   this.router.navigate(['login']);
-                  this.loading = false;
                 } else if (
                   this.info[0] &&
                   this.info[0]['message'] === 'ERROR'
@@ -279,15 +212,6 @@ export class StudentNewComponent implements OnInit {
                       this.info[0]['error']['contact_number'][0],
                       'error'
                     );
-                  } else if (
-                    this.info[0]['error'] &&
-                    this.info[0]['error']['email_address']
-                  ) {
-                    Swal.fire(
-                      'ERROR',
-                      this.info[0]['error']['email_address'][0],
-                      'error'
-                    );
                   }
                   this.router.navigate(['new/student']);
                 } else {
@@ -298,24 +222,12 @@ export class StudentNewComponent implements OnInit {
                   );
                 }
                 this.loading = false;
+                this.enteredOTP = [];
               },
-              error: (error) => {
-                console.log(error);
-                // Handle error here
+              error: (error: HttpErrorResponse) => {
+                console.log(error.message);
               },
             });
-          // this.collegecontroller
-          //   .createstudent(this.signUpForm.value)
-          //   .subscribe({
-          //     next: (res) => {
-          //       console.log('Response from createstudent API:', res);
-          //       // ... (rest of your code)
-          //     },
-          //     error: (error) => {
-          //       console.log('Error from createstudent API:', error);
-          //       // Handle error here
-          //     },
-          //   });
         }
       },
       error: (error: HttpErrorResponse) => {
