@@ -99,6 +99,7 @@ import { LoadingPageComponent } from './component/loading-page/loading-page.comp
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
+import { FooterNavigationComponent } from './pages/footer-navigation/footer-navigation.component';
 
 @NgModule({
   declarations: [
@@ -193,6 +194,7 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
     RegistrationReqsComponent,
     DepartmentUiComponent,
     LoadingPageComponent,
+    FooterNavigationComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,37 @@
+
+
+.foot1 {
+  background-color: var(--midnight);
+}
+
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  /* align-items: flex-start; */
+}
+
+.flast {
+  font-size: 20px;
+}
+
+.foot2 {
+  background-color: var(--blue);
+}
+
+#topbtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: #333333;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  transform: rotate(180deg);
+}

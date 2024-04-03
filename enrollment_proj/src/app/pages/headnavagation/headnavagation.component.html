@@ -52,7 +52,7 @@
             <a class="nav-link" href> GALLERY </a>
           </li>
           <li class="nav-item">
-            <a
+            <!-- <a
               routerLink="/new/student"
               routerLinkActive="active"
               class="nav-link"
@@ -60,7 +60,17 @@
             >
               ENROLL NOW
             </a>
-          </li>
+          </li> -->
+        <div class="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Enroll Now
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-primary">
+            <li><a class="dropdown-item text-dark" routerLink="/login">Old Student</a></li>
+            <li><a class="dropdown-item text-dark" routerLink="/new/student">New Student</a></li>
+          </ul>
+        </div>
         </ul>
       </div>
     </div>
