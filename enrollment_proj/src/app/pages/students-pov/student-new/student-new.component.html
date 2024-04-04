@@ -355,6 +355,7 @@
         >
           <div class="otp-inputs d-flex gap-3">
             <input
+              autofocus
               *ngFor="let item of [].constructor(6); let i = index"
               [(ngModel)]="enteredOTP[i]"
               (ngModelChange)="handleInput($event, i)"
@@ -362,7 +363,6 @@
               (input)="inputMask($event)"
               type="text"
               maxlength="1"
-              autofocus
               class="form-control shadow-sm my-2 fs-3"
             />
           </div>
