@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 /*additional padding not in range of bootstrap*/
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 * {
   font-family: "Montserrat", sans-serif;
 }
@@ -12,7 +13,7 @@
   --skyblue: #87ceeb;
 }
 
-body{
+body {
   background: whitesmoke;
 }
 

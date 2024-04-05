@@ -99,6 +99,10 @@ import { LoadingPageComponent } from './component/loading-page/loading-page.comp
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
+import { InputOtpModule } from 'primeng/inputotp';
+import { InputMaskModule } from 'primeng/inputmask';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -203,6 +207,10 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    InputOtpModule,
+    InputMaskModule,
+    ToastModule,
   ],
 
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],

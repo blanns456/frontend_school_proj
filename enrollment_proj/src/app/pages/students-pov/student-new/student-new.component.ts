@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
@@ -9,11 +9,13 @@ import religions from '../../../../assets/json/religions.json';
 import * as $ from 'jquery';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-student-new',
   templateUrl: './student-new.component.html',
   styleUrls: ['./student-new.component.css'],
+  providers: [MessageService],
 })
 export class StudentNewComponent implements OnInit {
   nationalitiesList: string[] = [];
@@ -33,11 +35,12 @@ export class StudentNewComponent implements OnInit {
   activateyr: any | string;
   noMiddleName = false;
   otp: boolean = false;
-  enteredOTP: string[] = new Array(6).fill('');
+  // enteredOTP: string[] = new Array(6).fill('');
   pipe: any;
   loading: boolean = false;
   visible: any;
   visible1: any;
+  enteredOTP: string | undefined;
 
   viewpass() {
     this.visible = !this.visible;
@@ -49,39 +52,40 @@ export class StudentNewComponent implements OnInit {
     this.changetype1 = !this.changetype1;
   }
 
-  handleInput(value: string, index: number): void {
-    if (value.length > 1) {
-      this.enteredOTP[index] = value.slice(-1);
-    } else {
-      this.enteredOTP[index] = value;
-    }
+  // handleInput(value: string, index: number): void {
+  //   if (value.length > 1) {
+  //     this.enteredOTP[index] = value.slice(-1);
+  //   } else {
+  //     this.enteredOTP[index] = value;
+  //   }
 
-    if (value && index < this.enteredOTP.length - 1) {
-      this.focusNextInput(index);
-    }
-  }
+  //   if (value && index < this.enteredOTP.length - 1) {
+  //     this.focusNextInput(index);
+  //   }
+  // }
 
-  handleKeydown(event: KeyboardEvent, index: number): void {
-    if (event.key === 'Backspace' && this.enteredOTP[index] === '') {
-      this.focusPrevInput(index);
-    }
-  }
+  // handleKeydown(event: KeyboardEvent, index: number): void {
+  //   if (event.key === 'Backspace' && this.enteredOTP[index] === '') {
+  //     this.focusPrevInput(index);
+  //   }
+  // }
 
-  focusNextInput(index: number): void {
-    const nextInput = document.querySelectorAll('input')[index + 1];
-    if (nextInput) {
-      nextInput.focus();
-    }
-  }
+  // focusNextInput(index: number): void {
+  //   const nextInput = document.querySelectorAll('input')[index + 1];
+  //   if (nextInput) {
+  //     nextInput.focus();
+  //   }
+  // }
 
-  focusPrevInput(index: number): void {
-    const prevInput = document.querySelectorAll('input')[index - 1];
-    if (prevInput) {
-      prevInput.focus();
-    }
-  }
+  // focusPrevInput(index: number): void {
+  //   const prevInput = document.querySelectorAll('input')[index - 1];
+  //   if (prevInput) {
+  //     prevInput.focus();
+  //   }
+  // }
 
   constructor(
+    private messageService: MessageService,
     private http: HttpClient,
     private collegecontroller: CollegeEnrollmentController,
     private semester_controller: SemesterController,
@@ -133,31 +137,26 @@ export class StudentNewComponent implements OnInit {
     this.collegecontroller.sentotp(this.signUpForm.value).subscribe((res) => {
       this.info = res;
       console.log(this.info);
-      if (this.info['message'] === 'Email exist') {
-        // alert('naa na');
+      if (this.info['message'] === 'User found') {
         Swal.fire(
-          'Email already taken',
-          'Please input another email.',
+          'Already exist',
+          'Email/Contact Number already taken.',
           'error'
         );
       } else {
-        // alert('wla pa');
         this.otp = true;
       }
     });
   }
 
   verifyOTP() {
-    const enteredOTP = this.enteredOTP.join('');
-    // console.log(enteredOTP);
-    // console.log('OTP verified successfully');
-
-    this.collegecontroller.verifyotp({ otp: enteredOTP }).subscribe({
+    // const enteredOTP = this.enteredOTP.join('');
+    // console.log(this.signUpForm.value);
+    this.collegecontroller.verifyotp({ otp: this.enteredOTP || '' }).subscribe({
       next: (response) => {
         this.info = response;
         const d = Date();
         const myFormattedDate = this.pipe.transform(d, 'Y-MM-dd HH:mm:ss');
-        console.log(myFormattedDate);
 
         if (this.info[0][0]['expire'] <= myFormattedDate) {
           console.log('expire na');
@@ -180,7 +179,7 @@ export class StudentNewComponent implements OnInit {
                 icon: 'success',
               });
             }
-            this.enteredOTP = [];
+            this.enteredOTP = '';
           });
         } else {
           console.log('di pa expire');
@@ -222,7 +221,7 @@ export class StudentNewComponent implements OnInit {
                   );
                 }
                 this.loading = false;
-                this.enteredOTP = [];
+                this.enteredOTP = '';
               },
               error: (error: HttpErrorResponse) => {
                 console.log(error.message);
@@ -231,13 +230,17 @@ export class StudentNewComponent implements OnInit {
         }
       },
       error: (error: HttpErrorResponse) => {
-        console.log(error.message);
-        Swal.fire({
-          title: 'Invalid OTP',
-          icon: 'error',
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Invalid OTP Code',
+          detail: error.statusText,
         });
+        // Swal.fire({
+        //   title: 'Invalid OTP',
+        //   icon: 'error',
+        // });
         this.otp = true;
-        this.enteredOTP = [];
+        this.enteredOTP = '';
       },
     });
   }
