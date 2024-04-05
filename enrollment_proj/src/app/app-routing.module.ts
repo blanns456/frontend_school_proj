@@ -341,7 +341,7 @@ const routes: Routes = [
   {
     path: 'registrar-dashboard-applicants',
     component: StudentApplicantsComponent,
-    canActivate: [AuthGuard],
+    // canActivate: ,
   },
   {
     path: 'registrar-dashboard-enrolled',

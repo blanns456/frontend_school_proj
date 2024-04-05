@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -22,6 +23,13 @@ import { EnrollCollege4Component } from './pages/enroll-college4/enroll-college4
 import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
+
+import { ButtonModule } from 'primeng/button';
+import { GalleriaModule } from 'primeng/galleria'; 
+import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -203,6 +211,13 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    GalleriaModule,
+    PasswordModule,
+    InputTextModule,
+    ToastModule,
+    MessagesModule
   ],
 
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],

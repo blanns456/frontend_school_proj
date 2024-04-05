@@ -31,18 +31,19 @@
           <img src="../../../assets/misc/70th_ascb_logo.png" alt="70th logo" />
         </div>
         <form (ngSubmit)="submit()" [formGroup]="form">
-          <div>
+          <div class="text-center">
             <label for="username" class="form-label"></label>
-            <input
+            <input pInputText type="text" placeholder="Username" formControlName="username" />
+            <!-- <input
               type="text"
               formControlName="username"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
               name="username"
               id="username"
               placeholder="USERNAME"
-            />
+            /> -->
 
-            <div
+            <!-- <div
               *ngIf="
                 form.controls['username'].invalid &&
                 (form.controls['username'].dirty ||
@@ -55,19 +56,34 @@
               >
                 Username is required.
               </div>
-            </div>
+            </div> -->
           </div>
-          <div class="mt-2">
+          <div class="mt-2 text-center">
             <label for="password" class="form-label"></label>
-            <input
+            <p-password
+              formControlName="password"
+              [feedback]="false"
+              [toggleMask]="true"
+              placeholder="Password"
+            >
+            </p-password>
+            
+            <!-- <span class="p-float-label">
+              <p-password               class="fw-bold w-100 mx-auto py-2 shadow-xl"
+              formControlName="password"
+              [feedback]="false"
+              [toggleMask]="true"></p-password>
+              <label for="password">Password</label>
+            </span> -->
+            <!-- <input
               type="password"
               class="form-control fw-bold mx-auto py-2 shadow-xl"
               name="password"
               id="password"
               formControlName="password"
               placeholder="PASSWORD"
-            />
-            <div
+            /> -->
+            <!-- <div
               *ngIf="
                 form.controls['password'].invalid &&
                 (form.controls['password'].dirty ||
@@ -86,7 +102,7 @@
               >
                 password must be at least 6 characters long.
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="mt-4 text-center">
             <button
