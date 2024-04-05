@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(6)]],
     username: ['', [Validators.required]],
   });
+value: any;
   constructor(
     private formBuilder: FormBuilder,
     private logincontroller: LoginController,
