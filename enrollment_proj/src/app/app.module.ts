@@ -23,6 +23,12 @@ import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
 
+import { ButtonModule } from 'primeng/button';
+import { GalleriaModule } from 'primeng/galleria'; 
+import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
+import { MessagesModule } from 'primeng/messages';
+
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
 import { EnrollShsComponent } from './pages/enroll-shs/enroll-shs.component';
@@ -211,6 +217,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InputOtpModule,
     InputMaskModule,
     ToastModule,
+    ButtonModule,
+    GalleriaModule,
+    PasswordModule,
+    InputTextModule,
+    MessagesModule
   ],
 
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],

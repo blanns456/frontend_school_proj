@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-department-ui',
   templateUrl: './department-ui.component.html',
