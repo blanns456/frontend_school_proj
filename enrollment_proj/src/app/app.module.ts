@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -28,7 +27,6 @@ import { ButtonModule } from 'primeng/button';
 import { GalleriaModule } from 'primeng/galleria'; 
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
-import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
@@ -107,6 +105,10 @@ import { LoadingPageComponent } from './component/loading-page/loading-page.comp
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
+import { InputOtpModule } from 'primeng/inputotp';
+import { InputMaskModule } from 'primeng/inputmask';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -212,11 +214,13 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    InputOtpModule,
+    InputMaskModule,
+    ToastModule,
     ButtonModule,
     GalleriaModule,
     PasswordModule,
     InputTextModule,
-    ToastModule,
     MessagesModule
   ],
 

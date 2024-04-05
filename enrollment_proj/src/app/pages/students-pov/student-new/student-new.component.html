@@ -143,7 +143,13 @@
                 <label for="contact_number" class="form-label">
                   Contact Number
                 </label>
-                <input
+                <p-inputMask
+                  mask="99999999999"
+                  formControlName="contact_number"
+                  placeholder="0912xxxxxxx"
+                ></p-inputMask>
+
+                <!-- <input
                   (input)="inputMask($event)"
                   type="text"
                   pattern="[0-9]{11}"
@@ -152,7 +158,7 @@
                   maxlength="11"
                   name="contact_number"
                   id="contact_number"
-                />
+                /> -->
               </div>
             </div>
           </div>
@@ -354,7 +360,8 @@
           class="d-flex justify-content-center align-items-center flex-column"
         >
           <div class="otp-inputs d-flex gap-3">
-            <input
+            <p-toast></p-toast>
+            <!-- <input
               autofocus
               *ngFor="let item of [].constructor(6); let i = index"
               [(ngModel)]="enteredOTP[i]"
@@ -364,10 +371,22 @@
               type="text"
               maxlength="1"
               class="form-control shadow-sm my-2 fs-3"
-            />
+            /> -->
+            <p-inputOtp
+              [length]="6"
+              (input)="inputMask($event)"
+              class="mx-auto my-3"
+              [(ngModel)]="enteredOTP"
+            ></p-inputOtp>
           </div>
           <br />
-          <button (click)="verifyOTP()" class="btn btn-success">
+          <button
+            pButton
+            pRipple
+            label="Error"
+            (click)="verifyOTP()"
+            class="btn btn-success"
+          >
             Verify OTP
           </button>
         </div>
