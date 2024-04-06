@@ -24,10 +24,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
 
 import { ButtonModule } from 'primeng/button';
-import { GalleriaModule } from 'primeng/galleria'; 
+import { GalleriaModule } from 'primeng/galleria';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessagesModule } from 'primeng/messages';
+import { InputOtpModule } from 'primeng/inputotp';
+import { InputMaskModule } from 'primeng/inputmask';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { CheckboxModule } from 'primeng/checkbox';
+import { AutoFocusModule } from 'primeng/autofocus';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -105,10 +114,6 @@ import { LoadingPageComponent } from './component/loading-page/loading-page.comp
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
-import { InputOtpModule } from 'primeng/inputotp';
-import { InputMaskModule } from 'primeng/inputmask';
-import { ToastModule } from 'primeng/toast';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -221,7 +226,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GalleriaModule,
     PasswordModule,
     InputTextModule,
-    MessagesModule
+    MessagesModule,
+    ProgressBarModule,
+    CalendarModule,
+    DropdownModule,
+    CheckboxModule,
+    AutoFocusModule,
   ],
 
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],

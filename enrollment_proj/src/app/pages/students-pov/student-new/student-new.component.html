@@ -13,7 +13,7 @@
 </div>
 <div class="container-fluid">
   <div
-    class="formContain bg-white rounded-5 shadow-lg mx-auto container-fluid my-5 p-3 login-bg"
+    class="formContain bg-white rounded-2 shadow-lg mx-auto container-fluid my-5 p-3 login-bg"
   >
     <div class="asclogo mx-auto"></div>
     <h2 class="formTitle text-center pb-4">CREATE AN ACCOUNT</h2>
@@ -26,8 +26,10 @@
                 <label for="firstname" class="form-label"> First Name </label>
                 <input
                   type="text"
-                  autofocus
-                  class="mx-auto form-control py-2 shadow-xl"
+                  pInputText
+                  pAutoFocus
+                  [autofocus]="true"
+                  class="py-2 border"
                   autocomplete="off"
                   formControlName="firstname"
                   id="firstname"
@@ -37,10 +39,11 @@
             <div class="col-3">
               <div>
                 <div class="mb-3">
-                  <label for="last_name" class="form-label"> Last Name </label>
+                  <label for="lastname" class="form-label"> Last Name </label>
                   <input
                     type="text"
-                    class="form-control mx-auto py-2 shadow-xl"
+                    pInputText
+                    class="py-2 border"
                     autocomplete="off"
                     formControlName="lastname"
                     id="lastname"
@@ -56,19 +59,27 @@
                 </label>
                 <div class="row">
                   <div class="col-1">
-                    <input
+                    <!-- <input
                       [checked]="noMiddleName"
                       (click)="toggleMiddleName()"
                       type="checkbox"
                       class="form-check"
-                    />
+                    /> -->
+                    <p-checkbox
+                      [ariaChecked]="noMiddleName"
+                      (click)="toggleMiddleName()"
+                      [binary]="true"
+                      inputId="binary"
+                    ></p-checkbox>
                   </div>
                   <div class="col-10">
                     <input
+                      pInputText
                       [readonly]="noMiddleName"
                       formControlName="middleName"
                       type="text"
-                      class="form-control mx-auto py-2 shadow-xl"
+                      class="py-2 border"
+                      id="middlename"
                     />
                   </div>
                 </div>
@@ -79,10 +90,10 @@
                 <div class="mb-3">
                   <label for="suffix" class="form-label"> Extension: </label>
                   <input
+                    pInputText
                     type="text"
-                    class="form-control mx-auto py-2 shadow-xl"
+                    class="py-2 border"
                     autocomplete="off"
-                    formControlName="suffix"
                     formControlName="suffix"
                     id="suffix"
                   />
@@ -94,16 +105,25 @@
             <div class="col-3">
               <div class="mb-3">
                 <label for="gender" class="form-label"> Gender </label>
-                <select
+                <p-dropdown
+                  formControlName="gender"
+                  [options]="gender"
+                  optionLabel="name"
+                  optionValue="value"
+                  placeholder="Select a Gender"
+                  [editable]="true"
+                  [showClear]="true"
+                ></p-dropdown>
+                <!-- <select
                   name="gender"
                   id="gender"
                   formControlName="gender"
                   class="form-select shadow-xl"
                 >
-                  <option value>Please Select Gender</option>
+                  <option [selected]="true" hidden>Please Select Gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
-                </select>
+                </select> -->
               </div>
             </div>
             <div class="col-3">
@@ -111,26 +131,38 @@
                 <label for="civil_status" class="form-label">
                   Civil Status
                 </label>
-                <select
+                <p-dropdown
+                  formControlName="civil_status"
+                  [options]="civilstatus"
+                  optionLabel="name"
+                  optionValue="value"
+                  placeholder="Select Civil Status"
+                  [editable]="true"
+                  [showClear]="true"
+                ></p-dropdown>
+                <!-- <select
                   name="civil_status"
                   id="civil_status"
                   formControlName="civil_status"
                   class="form-select shadow-xl"
                 >
-                  <option value>Please Select Civil Status</option>
+                  <option [selected]="true" hidden>
+                    Please Select Civil Status
+                  </option>
                   <option value="single">Single</option>
                   <option value="married">Married</option>
                   <option value="widowed">Widowed</option>
                   <option value="divorced">Divorced</option>
-                </select>
+                </select> -->
               </div>
             </div>
             <div class="col-3">
               <div class="mb-3">
                 <label for="email" class="form-label"> Email Address </label>
                 <input
+                  pInputText
                   type="email"
-                  class="form-control mx-auto py-2 shadow-xl"
+                  class="py-2 border"
                   formControlName="email_address"
                   name="email"
                   id="email"
@@ -153,7 +185,7 @@
                   (input)="inputMask($event)"
                   type="text"
                   pattern="[0-9]{11}"
-                  class="form-control mx-auto py-2 shadow-xl"
+                  class="form-control py-2 border"
                   formControlName="contact_number"
                   maxlength="11"
                   name="contact_number"
@@ -166,14 +198,15 @@
             <div class="col-4">
               <div class="mb-3">
                 <label for="birth_date" class="form-label"> Birth Date </label>
-                <input
+                <p-calendar
+                  [showIcon]="true"
                   type="date"
-                  class="form-control mx-auto py-2 shadow-xl"
+                  class="py-2 border"
                   formControlName="birthdate"
                   name="birth_date"
                   id="birth_date"
-                  required
-                />
+                >
+                </p-calendar>
               </div>
             </div>
             <div class="col-8">
@@ -182,12 +215,14 @@
                   Birth Place
                 </label>
                 <input
+                  pInputText
                   type="text"
-                  class="form-control mx-auto py-2 shadow-xl"
+                  class="py-2 border"
                   formControlName="birth_place"
                   name="birth_place"
                   id="birth_place"
                   required
+                  [style]="{ minWidth: '100%' }"
                 />
               </div>
             </div>
@@ -198,7 +233,14 @@
                 <label for="citizenship" class="form-label">
                   Citizenship
                 </label>
-                <select
+                <p-dropdown
+                  formControlName="citizenship"
+                  [options]="nationalitiesList"
+                  placeholder="Select Citizenship"
+                  [editable]="true"
+                  [showClear]="true"
+                ></p-dropdown>
+                <!-- <select
                   id="citizenship"
                   class="form-select shadow-xl"
                   formControlName="citizenship"
@@ -209,15 +251,25 @@
                   <ng-container *ngFor="let nationality of nationalitiesList">
                     <option [ngValue]="nationality">{{ nationality }}</option>
                   </ng-container>
-                </select>
+                </select> -->
               </div>
             </div>
             <div class="col-4">
               <div class="mb-3">
                 <label for="religion" class="form-label"> Religion </label>
-                <input
+                <p-dropdown
+                  formControlName="religion"
+                  [options]="religionList"
+                  placeholder="Select Religion"
+                  [showClear]="true"
+                  [editable]="true"
+                  [filter]="true"
+                  filterBy="name"
+                  [style]="{ minWidth: '100%' }"
+                ></p-dropdown>
+                <!-- <input
                   type="text"
-                  class="form-control mx-auto py-2 shadow-xl"
+                  class="form-control py-2 border"
                   formControlName="religion"
                   name="religion"
                   id="religion"
@@ -228,7 +280,7 @@
                   <ng-container *ngFor="let religion of religionList">
                     <option [ngValue]="religion">{{ religion }}</option>
                   </ng-container>
-                </datalist>
+                </datalist> -->
               </div>
             </div>
           </div>
@@ -239,7 +291,19 @@
                 <label for="enrollIn" class="form-label">
                   Interested to Enroll In:
                 </label>
-                <select
+                <p-dropdown
+                  formControlName="enrollIn"
+                  [options]="enrollist"
+                  optionLabel="name"
+                  optionValue="value"
+                  placeholder="Please select"
+                  [editable]="true"
+                  [showClear]="true"
+                  [filter]="true"
+                  filterBy="name"
+                  [style]="{ minWidth: '100%' }"
+                ></p-dropdown>
+                <!-- <select
                   name="enrollIn"
                   id="enrollIn"
                   formControlName="enrollIn"
@@ -250,16 +314,30 @@
                   <option value="shs">SHS</option>
                   <option value="college">College</option>
                   <option value="graduate">Graduate Studies</option>
-                  <!-- <option value="graduateStudies">Graduate Studies</option>
+                  <option value="graduateStudies">Graduate Studies</option>
 					<option value="tesda">TESDA</option>
-					<option value="shs">Senior HighSchool</option> -->
-                </select>
+					<option value="shs">Senior HighSchool</option>
+                </select> -->
               </div>
             </div>
             <div class="col-6">
               <div class="mb-3 input-holder">
                 <label for="program" class="form-label"> Program </label>
-                <select
+                <p-dropdown
+                  formControlName="program"
+                  [options]="courses"
+                  optionLabel="name"
+                  optionValue="courses_id"
+                  placeholder="Please select courses"
+                  [editable]="true"
+                  [showClear]="true"
+                  [filter]="true"
+                  filterBy="name"
+                  [style]="{ minWidth: '100%' }"
+                >
+                  ></p-dropdown
+                >
+                <!-- <select
                   name="program"
                   id="program"
                   class="form-select shadow-xl"
@@ -272,7 +350,7 @@
                   >
                     {{ option.name }}
                   </option>
-                </select>
+                </select> -->
               </div>
             </div>
           </div>
@@ -284,13 +362,15 @@
                   <span class="text-danger">*</span>
                 </label>
                 <input
+                  pInputText
                   [value]="semester"
                   type="text"
                   name="semester"
-                  class="form-control shadow-xl"
+                  class="py-2 border"
                   id="semester"
                   formControlName="semester"
                   readonly
+                  [style]="{ minWidth: '100%' }"
                 />
               </div>
             </div>
@@ -300,7 +380,16 @@
                   Year Level
                   <span class="text-danger">*</span>
                 </label>
-                <select
+                <p-dropdown
+                  formControlName="student_yr_level"
+                  [options]="yearlvl"
+                  optionLabel="name"
+                  optionValue="value"
+                  placeholder="Please select"
+                  [editable]="true"
+                  [showClear]="true"
+                ></p-dropdown>
+                <!-- <select
                   name="student_yr_level"
                   id="student_yr_level"
                   class="form-select shadow-xl"
@@ -314,7 +403,7 @@
                   <option value="2">2nd Year</option>
                   <option value="3">3rd Year</option>
                   <option value="4">4th Year</option>
-                </select>
+                </select> -->
               </div>
             </div>
             <div class="col-4">
@@ -323,7 +412,16 @@
                   Student Status
                   <span class="text-danger">*</span>
                 </label>
-                <select
+                <p-dropdown
+                  formControlName="student_status"
+                  [options]="studstatus"
+                  optionLabel="name"
+                  optionValue="value"
+                  placeholder="Please select"
+                  [editable]="true"
+                  [showClear]="true"
+                ></p-dropdown>
+                <!-- <select
                   name="student_status"
                   id="student_status"
                   class="form-select shadow-xl"
@@ -332,7 +430,7 @@
                   <option disabled value>Please Select Status</option>
                   <option value="regular">Regular Student</option>
                   <option value="irregular">Irregular Student</option>
-                </select>
+                </select> -->
               </div>
             </div>
           </div>
@@ -346,6 +444,11 @@
             </button>
           </div>
         </form>
+        <p-progressBar
+          *ngIf="loadbar"
+          mode="indeterminate"
+          [style]="{ height: '6px' }"
+        ></p-progressBar>
       </div>
 
       <div *ngIf="otp" class="py-3">
@@ -361,18 +464,9 @@
         >
           <div class="otp-inputs d-flex gap-3">
             <p-toast></p-toast>
-            <!-- <input
-              autofocus
-              *ngFor="let item of [].constructor(6); let i = index"
-              [(ngModel)]="enteredOTP[i]"
-              (ngModelChange)="handleInput($event, i)"
-              (keydown)="handleKeydown($event, i)"
-              (input)="inputMask($event)"
-              type="text"
-              maxlength="1"
-              class="form-control shadow-sm my-2 fs-3"
-            /> -->
             <p-inputOtp
+              pAutoFocus
+              [autofocus]="true"
               [length]="6"
               (input)="inputMask($event)"
               class="mx-auto my-3"
@@ -380,13 +474,7 @@
             ></p-inputOtp>
           </div>
           <br />
-          <button
-            pButton
-            pRipple
-            label="Error"
-            (click)="verifyOTP()"
-            class="btn btn-success"
-          >
+          <button pButton pRipple (click)="verifyOTP()" class="btn btn-success">
             Verify OTP
           </button>
         </div>
