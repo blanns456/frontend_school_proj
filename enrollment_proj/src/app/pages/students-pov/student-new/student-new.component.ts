@@ -38,9 +38,37 @@ export class StudentNewComponent implements OnInit {
   // enteredOTP: string[] = new Array(6).fill('');
   pipe: any;
   loading: boolean = false;
+  loadbar: boolean = false;
   visible: any;
   visible1: any;
   enteredOTP: string | undefined;
+  // gender: Gender[] | undefined;
+  gender = [
+    { name: 'Male', value: 'male' },
+    { name: 'Female', value: 'female' },
+  ];
+  civilstatus = [
+    { name: 'Single', value: 'single' },
+    { name: 'Married', value: 'married' },
+    { name: 'Widowed', value: 'widowed' },
+    { name: 'Divorced', value: 'divorced' },
+  ];
+  enrollist = [
+    { name: 'TESDA', value: 'tesda' },
+    { name: 'SHS', value: 'shs' },
+    { name: 'College', value: 'college' },
+    { name: 'Graduate Studies', value: 'graduate' },
+  ];
+  yearlvl = [
+    { name: '1st Year', value: '1' },
+    { name: '2nd Year', value: '2' },
+    { name: '3rd Year', value: '3' },
+    { name: '4th Year', value: '4' },
+  ];
+  studstatus = [
+    { name: 'Regular Student', value: 'regular' },
+    { name: 'Irregular Student', value: 'irregular' },
+  ];
 
   viewpass() {
     this.visible = !this.visible;
@@ -133,7 +161,9 @@ export class StudentNewComponent implements OnInit {
   }
 
   signUp() {
+    this.loadbar = true;
     // console.log(this.signUpForm.value);
+    console.log(this.signUpForm.value);
     this.collegecontroller.sentotp(this.signUpForm.value).subscribe((res) => {
       this.info = res;
       console.log(this.info);
@@ -143,7 +173,9 @@ export class StudentNewComponent implements OnInit {
           'Email/Contact Number already taken.',
           'error'
         );
+        this.loadbar = false;
       } else {
+        this.loadbar = false;
         this.otp = true;
       }
     });
@@ -212,7 +244,7 @@ export class StudentNewComponent implements OnInit {
                       'error'
                     );
                   }
-                  this.router.navigate(['new/student']);
+                  this.otp = false;
                 } else {
                   Swal.fire(
                     'ERROR',
@@ -235,10 +267,6 @@ export class StudentNewComponent implements OnInit {
           summary: 'Invalid OTP Code',
           detail: error.statusText,
         });
-        // Swal.fire({
-        //   title: 'Invalid OTP',
-        //   icon: 'error',
-        // });
         this.otp = true;
         this.enteredOTP = '';
       },
@@ -249,6 +277,7 @@ export class StudentNewComponent implements OnInit {
     this.collegecontroller.getcourses().subscribe((res) => {
       this.data = res;
       this.courses = this.data[0];
+      // console.log(this.courses);
     });
   }
 
