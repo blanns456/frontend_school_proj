@@ -44,14 +44,18 @@ value: any;
 
     this.logincontroller.login(this.form.value).subscribe((res) => {
       this.data = res;
-      console.log(this.data);
+
+      // console.log(this.data);
+
       if (this.data.status === 1) {
+
         this.token = this.data.data.token;
         localStorage.setItem('token', this.token);
         this.logincontroller.reloaddata();
         $('#loading').addClass('d-none');
         // $('#mainPage').removeClass('d-none');
         console.log(this.token);
+
         if (this.logincontroller.userdata.role === 'student') {
           this.router.navigate(['student-dashboard-home']);
         } else if (this.logincontroller.userdata.role === 'accounting') {
@@ -69,4 +73,5 @@ value: any;
     });
     console.log(this.form.value);
   }
+
 }
