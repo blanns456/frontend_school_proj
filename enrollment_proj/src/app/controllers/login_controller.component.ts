@@ -14,7 +14,7 @@ export class LoginController {
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(user: { email: string; password: string }) {
     // var token = localStorage.getItem('token');
@@ -38,13 +38,9 @@ export class LoginController {
   }
 
   getuserdetails() {
-    this.studentdata = localStorage.getItem(btoa('authenticate_id'));
-    var decodingtoken = atob(this.studentdata);
-    // console.log(decodingtoken);
-    // console.log(decodingtoken);
-    var decodeddata = JSON.parse(decodingtoken);
-    // console.log(decodeddata);
-    return decodeddata;
+    this.studentdata = localStorage.getItem(this.token);
+
+    return this.studentdata;
   }
 
   reloadstudentdatainfo() {

@@ -9,7 +9,9 @@ import { LoginController } from 'src/app/controllers/login_controller.component'
 export class StudentDashboardHomeComponent implements OnInit {
   studentdata: any;
   loaddetails = false;
-  constructor(private logincontroller: LoginController) {}
+
+  constructor(private logincontroller: LoginController) { }
+
   ngOnInit(): void {
     this.studentdata = this.logincontroller.getuserdetails();
   }

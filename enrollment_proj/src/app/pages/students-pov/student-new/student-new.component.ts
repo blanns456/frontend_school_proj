@@ -11,6 +11,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 
+
 @Component({
   selector: 'app-student-new',
   templateUrl: './student-new.component.html',
@@ -39,78 +40,38 @@ export class StudentNewComponent implements OnInit {
   pipe: any;
   loading: boolean = false;
   loadbar: boolean = false;
-  visible: any;
-  visible1: any;
   enteredOTP: string | undefined;
-  // gender: Gender[] | undefined;
+
   gender = [
     { name: 'Male', value: 'male' },
     { name: 'Female', value: 'female' },
   ];
+
   civilstatus = [
     { name: 'Single', value: 'single' },
     { name: 'Married', value: 'married' },
     { name: 'Widowed', value: 'widowed' },
     { name: 'Divorced', value: 'divorced' },
   ];
+
   enrollist = [
-    { name: 'TESDA', value: 'tesda' },
-    { name: 'SHS', value: 'shs' },
+    // { name: 'TESDA', value: 'tesda' },
+    // { name: 'SHS', value: 'shs' },
     { name: 'College', value: 'college' },
-    { name: 'Graduate Studies', value: 'graduate' },
+    // { name: 'Graduate Studies', value: 'graduate' },
   ];
+
   yearlvl = [
     { name: '1st Year', value: '1' },
     { name: '2nd Year', value: '2' },
     { name: '3rd Year', value: '3' },
     { name: '4th Year', value: '4' },
   ];
+
   studstatus = [
     { name: 'Regular Student', value: 'regular' },
     { name: 'Irregular Student', value: 'irregular' },
   ];
-
-  viewpass() {
-    this.visible = !this.visible;
-    this.changetype = !this.changetype;
-  }
-
-  viewpass1() {
-    this.visible1 = !this.visible1;
-    this.changetype1 = !this.changetype1;
-  }
-
-  // handleInput(value: string, index: number): void {
-  //   if (value.length > 1) {
-  //     this.enteredOTP[index] = value.slice(-1);
-  //   } else {
-  //     this.enteredOTP[index] = value;
-  //   }
-
-  //   if (value && index < this.enteredOTP.length - 1) {
-  //     this.focusNextInput(index);
-  //   }
-  // }
-
-  // handleKeydown(event: KeyboardEvent, index: number): void {
-  //   if (event.key === 'Backspace' && this.enteredOTP[index] === '') {
-  //     this.focusPrevInput(index);
-  //   }
-  // }
-
-  // focusNextInput(index: number): void {
-  //   const nextInput = document.querySelectorAll('input')[index + 1];
-  //   if (nextInput) {
-  //     nextInput.focus();
-  //   }
-  // }
-
-  // focusPrevInput(index: number): void {
-  //   const prevInput = document.querySelectorAll('input')[index - 1];
-  //   if (prevInput) {
-  //     prevInput.focus();
-  //   }
-  // }
 
   constructor(
     private messageService: MessageService,
@@ -124,7 +85,7 @@ export class StudentNewComponent implements OnInit {
     this.signUpForm = new FormGroup({
       lastname: new FormControl(null, [Validators.required]),
       firstname: new FormControl(null, [Validators.required]),
-      middleName: new FormControl(
+      middlename: new FormControl(
         {
           value: this.noMiddleName ? 'N/A' : null,
           disabled: this.noMiddleName,
@@ -150,7 +111,7 @@ export class StudentNewComponent implements OnInit {
 
   toggleMiddleName() {
     this.noMiddleName = !this.noMiddleName;
-    const middleNameControl = this.signUpForm.get('middleName');
+    const middleNameControl = this.signUpForm.get('middlename');
     if (this.noMiddleName) {
       middleNameControl?.setValue('N/A');
       middleNameControl?.disable();
@@ -162,42 +123,52 @@ export class StudentNewComponent implements OnInit {
 
   signUp() {
     this.loadbar = true;
-    // console.log(this.signUpForm.value);
     console.log(this.signUpForm.value);
-    this.collegecontroller.sentotp(this.signUpForm.value).subscribe((res) => {
-      this.info = res;
-      console.log(this.info);
-      if (this.info['message'] === 'User found') {
-        Swal.fire(
-          'Already exist',
-          'Email/Contact Number already taken.',
-          'error'
-        );
-        this.loadbar = false;
-      } else {
+    this.collegecontroller.sentotp(this.signUpForm.value).subscribe({
+      next: () => {
         this.loadbar = false;
         this.otp = true;
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error);
+        if (error.error.errors.email_address) {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.error.errors.email_address[0]
+          });
+        } else if (error.error.errors.contact_number) {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.error.errors.contact_number[0]
+          });
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error.error.errors.message
+          });
+        }
+        this.loadbar = false;
       }
     });
   }
 
   verifyOTP() {
-    // const enteredOTP = this.enteredOTP.join('');
-    // console.log(this.signUpForm.value);
     this.collegecontroller.verifyotp({ otp: this.enteredOTP || '' }).subscribe({
       next: (response) => {
         this.info = response;
         const d = Date();
         const myFormattedDate = this.pipe.transform(d, 'Y-MM-dd HH:mm:ss');
-
         if (this.info[0][0]['expire'] <= myFormattedDate) {
-          console.log('expire na');
           Swal.fire({
             title: 'Code Expired',
             text: 'Tap to resend again.',
             icon: 'error',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Resend Code',
+
           }).then((result) => {
             if (result.isConfirmed) {
               this.collegecontroller
@@ -205,16 +176,16 @@ export class StudentNewComponent implements OnInit {
                 .subscribe((res) => {
                   console.log('Resent Success', res);
                 });
-              Swal.fire({
-                title: 'Code Resent!',
-                text: 'A new code has been sent to your email.',
-                icon: 'success',
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'A new code has been sent to your email.'
               });
             }
             this.enteredOTP = '';
           });
+
         } else {
-          console.log('di pa expire');
           this.loading = true;
           this.collegecontroller
             .createstudent(this.signUpForm.value)
@@ -222,38 +193,14 @@ export class StudentNewComponent implements OnInit {
               next: (res) => {
                 this.info = res;
                 if (this.info[0] && this.info[0]['message'] === 'Success') {
-                  setTimeout(() => {
-                    Swal.fire({
-                      title: 'Success',
-                      text: 'Created Successfully, Please Check your Email',
-                      icon: 'success',
-                    });
-                  }, 4000);
-                  this.router.navigate(['login']);
-                } else if (
-                  this.info[0] &&
-                  this.info[0]['message'] === 'ERROR'
-                ) {
-                  if (
-                    this.info[0]['error'] &&
-                    this.info[0]['error']['contact_number']
-                  ) {
-                    Swal.fire(
-                      'ERROR',
-                      this.info[0]['error']['contact_number'][0],
-                      'error'
-                    );
-                  }
-                  this.otp = false;
-                } else {
                   Swal.fire(
-                    'ERROR',
-                    'Try again later, Please Contact Chat Support',
-                    'error'
+                    'SUCCESS',
+                    'Check Email For Account Information',
+                    'success'
                   );
+                  this.router.navigate(['login']);
+                  this.loading = false;
                 }
-                this.loading = false;
-                this.enteredOTP = '';
               },
               error: (error: HttpErrorResponse) => {
                 console.log(error.message);
@@ -284,7 +231,6 @@ export class StudentNewComponent implements OnInit {
   ngOnInit(): void {
     this.nationalitiesList = nationalities;
     this.religionList = religions;
-    // console.log(this.religionList);
     this.loadcourses();
 
     this.semester_controller.getactivenrollsem().subscribe((res) => {
