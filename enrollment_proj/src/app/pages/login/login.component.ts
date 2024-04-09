@@ -29,8 +29,6 @@ export class LoginComponent implements OnInit {
     this.logincontroller.login(this.form.value).subscribe({
       next: (response: any) => {
         localStorage.setItem('token', response.token);
-        // if (response.role === 2) {
-        // console.log(response);
         this.router.navigate(['student-dashboard-home']);
       },
       error: (error: any) => {

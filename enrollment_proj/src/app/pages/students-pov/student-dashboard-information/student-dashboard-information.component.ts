@@ -20,7 +20,7 @@ export class StudentDashboardInformationComponent implements OnInit {
     private logincontroller: LoginController,
     private collegeController: CollegeEnrollmentController,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
   ngOnInit(): void {
     // console.log(this.loaddetails);
     this.studentdata = this.logincontroller.getuserdetails();
@@ -66,7 +66,7 @@ export class StudentDashboardInformationComponent implements OnInit {
         this.logincontroller.reloadstudentdatainfo().subscribe((res) => {
           var data = res;
 
-          this.logincontroller.setdata(data);
+          // this.logincontroller.setdata(data);
           Swal.fire('Success', 'Changes saved!', 'success');
           window.location.reload();
           // this.studentdata = this.logincontroller.getuserdetails();

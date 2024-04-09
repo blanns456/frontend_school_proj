@@ -16,10 +16,11 @@ export class StudentSidebarComponent implements OnInit {
   Acads: any;
   data: any;
   studname: string | undefined;
+
   constructor(
     private logincontroller: LoginController,
     private http: HttpClient
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.studentdata = this.logincontroller.getuserdetails();
