@@ -36,6 +36,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox';
+import { MessageService } from 'primeng/api';
 import { AutoFocusModule } from 'primeng/autofocus';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
@@ -114,6 +115,7 @@ import { LoadingPageComponent } from './component/loading-page/loading-page.comp
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
+
 
 @NgModule({
   declarations: [
@@ -232,9 +234,10 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
     DropdownModule,
     CheckboxModule,
     AutoFocusModule,
+
   ],
 
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, MessageService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
