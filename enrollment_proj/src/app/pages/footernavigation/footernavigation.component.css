@@ -1,0 +1,36 @@
+.allsee {
+  background-color: var(--blue);
+}
+
+.foot1 {
+  background-color: var(--midnight);
+}
+
+.list {
+  font-size: 15px;
+  padding-bottom: 0;
+}
+
+.size {
+  font-size: 15px;
+  text-decoration: none;
+}
+.size1 {
+  font-size: 15px;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.flast {
+  font-size: 20px;
+}
+
+.foot2 {
+  background-color: var(--blue);
+}

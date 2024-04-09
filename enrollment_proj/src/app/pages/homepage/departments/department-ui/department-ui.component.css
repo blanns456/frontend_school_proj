@@ -39,6 +39,10 @@
   box-shadow: 5px 5px 5px 5px rgba(56, 56, 56, 0.151);
 }
 
+/* .deptCard {
+  width: 325px;
+} */
+
 .list hr {
   padding: 2px;
   color: var(--midnight);
