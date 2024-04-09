@@ -66,4 +66,12 @@ export class LoginController {
     this.getuserdetails();
     // console.log(this.getuserdetails());
   }
+
+  forgotpass(sentmail: { email_address: string }) {
+    return this.http.post(this.Root_URL + 'forgotpass', sentmail);
+  }
+
+  resetpass(data: { resetcode: string; password: string }) {
+    return this.http.post(this.Root_URL + 'reset-password', data);
+  }
 }

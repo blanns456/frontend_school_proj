@@ -168,11 +168,16 @@ export class StudentNewComponent implements OnInit {
       this.info = res;
       console.log(this.info);
       if (this.info['message'] === 'User found') {
-        Swal.fire(
-          'Already exist',
-          'Email/Contact Number already taken.',
-          'error'
-        );
+        // Swal.fire(
+        //   'Already exist',
+        //   'Email/Contact Number already taken.',
+        //   'error'
+        // );
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Already exist',
+          detail: 'Email/Contact Number already taken.',
+        });
         this.loadbar = false;
       } else {
         this.loadbar = false;
@@ -200,11 +205,11 @@ export class StudentNewComponent implements OnInit {
             confirmButtonText: 'Resend Code',
           }).then((result) => {
             if (result.isConfirmed) {
-              this.collegecontroller
-                .sentotp(this.signUpForm.value)
-                .subscribe((res) => {
-                  console.log('Resent Success', res);
-                });
+              // this.collegecontroller
+              //   .sentotp(this.signUpForm.value)
+              //   .subscribe((res) => {
+              //     console.log('Resent Success', res);
+              //   });
               Swal.fire({
                 title: 'Code Resent!',
                 text: 'A new code has been sent to your email.',
@@ -215,50 +220,50 @@ export class StudentNewComponent implements OnInit {
           });
         } else {
           console.log('di pa expire');
-          this.loading = true;
-          this.collegecontroller
-            .createstudent(this.signUpForm.value)
-            .subscribe({
-              next: (res) => {
-                this.info = res;
-                if (this.info[0] && this.info[0]['message'] === 'Success') {
-                  setTimeout(() => {
-                    Swal.fire({
-                      title: 'Success',
-                      text: 'Created Successfully, Please Check your Email',
-                      icon: 'success',
-                    });
-                  }, 4000);
-                  this.router.navigate(['login']);
-                } else if (
-                  this.info[0] &&
-                  this.info[0]['message'] === 'ERROR'
-                ) {
-                  if (
-                    this.info[0]['error'] &&
-                    this.info[0]['error']['contact_number']
-                  ) {
-                    Swal.fire(
-                      'ERROR',
-                      this.info[0]['error']['contact_number'][0],
-                      'error'
-                    );
-                  }
-                  this.otp = false;
-                } else {
-                  Swal.fire(
-                    'ERROR',
-                    'Try again later, Please Contact Chat Support',
-                    'error'
-                  );
-                }
-                this.loading = false;
-                this.enteredOTP = '';
-              },
-              error: (error: HttpErrorResponse) => {
-                console.log(error.message);
-              },
-            });
+          // this.loading = true;
+          // this.collegecontroller
+          //   .createstudent(this.signUpForm.value)
+          //   .subscribe({
+          //     next: (res) => {
+          //       this.info = res;
+          //       if (this.info[0] && this.info[0]['message'] === 'Success') {
+          //         setTimeout(() => {
+          //           Swal.fire({
+          //             title: 'Success',
+          //             text: 'Created Successfully, Please Check your Email',
+          //             icon: 'success',
+          //           });
+          //         }, 4000);
+          //         this.router.navigate(['login']);
+          //       } else if (
+          //         this.info[0] &&
+          //         this.info[0]['message'] === 'ERROR'
+          //       ) {
+          //         if (
+          //           this.info[0]['error'] &&
+          //           this.info[0]['error']['contact_number']
+          //         ) {
+          //           Swal.fire(
+          //             'ERROR',
+          //             this.info[0]['error']['contact_number'][0],
+          //             'error'
+          //           );
+          //         }
+          //         this.otp = false;
+          //       } else {
+          //         Swal.fire(
+          //           'ERROR',
+          //           'Try again later, Please Contact Chat Support',
+          //           'error'
+          //         );
+          //       }
+          //       this.loading = false;
+          //       this.enteredOTP = '';
+          //     },
+          //     error: (error: HttpErrorResponse) => {
+          //       console.log(error.message);
+          //     },
+          //   });
         }
       },
       error: (error: HttpErrorResponse) => {

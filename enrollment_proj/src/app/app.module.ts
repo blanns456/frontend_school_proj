@@ -37,6 +37,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox';
 import { AutoFocusModule } from 'primeng/autofocus';
+import { DividerModule } from 'primeng/divider';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -232,6 +233,7 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
     DropdownModule,
     CheckboxModule,
     AutoFocusModule,
+    DividerModule,
   ],
 
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],

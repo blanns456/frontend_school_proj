@@ -17,7 +17,7 @@
   >
     <div class="asclogo mx-auto"></div>
     <h2 class="formTitle text-center pb-4">CREATE AN ACCOUNT</h2>
-    <div class="formBody border border-5 pt-3 rounded-5">
+    <div class="formBody border border-5 pt-3 rounded-2">
       <div *ngIf="!otp">
         <form [formGroup]="signUpForm" (ngSubmit)="signUp()" novalidate>
           <div class="row pt-4 pb-3 px-3">
@@ -434,11 +434,14 @@
               </div>
             </div>
           </div>
+          <p-toast position="bottom-right"></p-toast>
           <div class="py-3 text-center">
             <button
+              pButton
+              pRipple
               [disabled]="signUpForm.invalid"
               [disabled]="!signUpForm.valid"
-              class="btn btn-primary p-2 w-25 login-button"
+              class="p-button-info rounded login-button"
             >
               Create Account
             </button>
@@ -459,11 +462,11 @@
             the correct code to verify your account.. Thank you
           </p>
         </div>
+        <p-toast position="bottom-right"></p-toast>
         <div
           class="d-flex justify-content-center align-items-center flex-column"
         >
           <div class="otp-inputs d-flex gap-3">
-            <p-toast></p-toast>
             <p-inputOtp
               pAutoFocus
               [autofocus]="true"
