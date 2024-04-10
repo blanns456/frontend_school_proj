@@ -23,6 +23,8 @@ import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
 
+import { ScrollTopModule } from 'primeng/scrolltop';
+
 import { ButtonModule } from 'primeng/button';
 import { GalleriaModule } from 'primeng/galleria';
 import { PasswordModule } from 'primeng/password';
@@ -117,7 +119,6 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
 import { FooterNavComponent } from './footer-nav/footer-nav.component';
-
 
 @NgModule({
   declarations: [
@@ -238,9 +239,13 @@ import { FooterNavComponent } from './footer-nav/footer-nav.component';
     CheckboxModule,
     AutoFocusModule,
     DividerModule,
+    ScrollTopModule,
   ],
 
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, MessageService],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    MessageService,
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

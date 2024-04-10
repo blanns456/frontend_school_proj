@@ -76,7 +76,10 @@ ul {
   background-color: var(--blue);
 }
 
-img {
-  aspect-ratio: 1/1;
+.deptCard {
+  aspect-ratio: 3/2;
+  display: block;
   object-fit: contain;
+  object-fit: cover;
+  /* max-width: 100%; */
 }

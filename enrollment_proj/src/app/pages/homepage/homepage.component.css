@@ -176,20 +176,56 @@ ul {
   transform: rotate(180deg);
 }
 
-/* [class*="col-"] {
-  width: 100%;
-} */
+@media only screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 50px;
+    padding-top: 6rem;
+  }
 
-@media only screen and (min-width: 600px) {
-  .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url("../../../assets/misc/homepage/banner.jpg ");
-    mix-blend-mode: darken;
-    height: 100vh;
-    width: auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+  .enrollreq {
+    margin-bottom: 3rem;
+  }
+
+  .logoDep {
+    margin-left: 3.8rem;
+  }
+
+  .vid {
+    margin-left: 1.5rem;
+  }
+
+  .linkList li a {
+    font-size: 100px;
+  }
+}
+
+.current img {
+  display: block;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 574px) {
+  .hero h1 {
+    font-size: 45px;
+    padding-top: 6rem;
+  }
+
+  .logoShow .logoDep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150;
+    margin-left: 10rem;
+  }
+  .logoShow {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .txt1 {
+    margin-left: 4rem;
   }
 }
