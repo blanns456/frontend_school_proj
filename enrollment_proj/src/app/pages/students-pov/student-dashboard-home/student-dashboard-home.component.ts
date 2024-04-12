@@ -13,6 +13,13 @@ export class StudentDashboardHomeComponent implements OnInit {
   constructor(private logincontroller: LoginController) { }
 
   ngOnInit(): void {
-    this.studentdata = this.logincontroller.getuserdetails();
+    this.logincontroller.getuserdetails().subscribe({
+      next: (res: any) => {
+        this.studentdata = res[0].data;
+        // console.log(this.studentdata);
+      },
+      error: (error) => {
+      }
+    });
   }
 }

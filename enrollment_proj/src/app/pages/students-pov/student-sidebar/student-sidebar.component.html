@@ -1,138 +1,62 @@
 <div class="sidebar position-fixed">
   <div class="logout position-relative">
     <div class="text-end">
-      <a
-        href="#"
-        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0"
-      >
-        <i class="fa-solid fa-right-from-bracket"></i>
+      <a routerLink="/login" (click)="logout()"
+        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0">
+        <i class="pi pi-sign-out"></i>
         Logout
       </a>
     </div>
     <div class="text-start">
-      <img
-        src="../../../assets/misc/default.jpg"
-        alt="avatar"
-        id="profile"
-        width="60"
-        height="60"
-        class="img-thumbnail mt-4 mx-3"
-      />
-      <h2 class="h6 fw-bold text-white mx-3 my-2">{{ studname }}</h2>
-      <p class="text-light fs-6 mx-3 fw-light" *ngFor="let acad of Acads">
-        <span *ngIf="acad.course == 'Bachelor of Elementary Education'">
-          BEED
-        </span>
-        <span
-          *ngIf="
-            acad.course ===
-              'Bachelor of Secondary Education Major in Social Studies' ||
-            acad.course === 'Bachelor of Secondary Education Major in Math' ||
-            acad.course === 'Bachelor of Secondary Education Major in English'
-          "
-        >
-          BSED
-        </span>
-
-        <span
-          *ngIf="
-            acad.course ===
-              'Bachelor of Science in Business Administration Major in Human Resource Development Management' ||
-            acad.course ===
-              'Bachelor of Science in Business Administration Major in Financial Management' ||
-            acad.course ===
-              'Bachelor of Science in Business Administration Major in Marketing Management'
-          "
-        >
-          BSBA
-        </span>
-        <span *ngIf="acad.course == 'Bachelor of Science in Computer Science'">
-          BSCS
-        </span>
-        <span *ngIf="acad.course == 'Bachelor of Science in Accountancy'">
-          BSA
-        </span>
-        <span
-          *ngIf="acad.course == 'Bachelor of Science in Information Technology'"
-        >
-          BSIT
-        </span>
-        <span
-          *ngIf="acad.course == 'Bachelor of Science in Information Systems'"
-        >
-          BSIS
-        </span>
-        <span *ngIf="acad.course == 'Bachelor of Science in Criminology'">
-          BSCrim
-        </span>
-        <span *ngIf="acad.course == '2-Yr. Hotel and Restaurant Management'">
-          HRM
-        </span>
+      <img src="../../../assets/misc/default.jpg" alt="avatar" id="profile" width="60" height="60"
+        class="img-thumbnail mt-4 mx-3" />
+      <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">{{ data?.lastname }}, {{ data?.firstname }}</h2>
+      <div class="text-white ms-3">
+        <ng-container *ngIf="data">
+          {{ courseAcronym }}
+        </ng-container>
         <span>- </span>
-        <span *ngIf="acad.year_lvl === '1'">1st Year</span>
-        <span *ngIf="acad.year_lvl === '2'">2nd Year</span>
-        <span *ngIf="acad.year_lvl === '3'">3rd Year</span>
-        <span *ngIf="acad.year_lvl === '4'">4th Year</span>
-      </p>
+        <span *ngIf="data?.year_lvl">{{ data?.year_lvl }}{{ getYearLabel(data?.year_lvl) }}</span>
+      </div>
     </div>
   </div>
   <div>
     <div id="listPros" class="list-group">
-      <a
-        class="py-3 mb-1 list-group-item list-group-item-action home"
-        routerLink="/student-dashboard-home"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 fa-solid fa-house"></i>
+      <a class="py-3 mb-1 list-group-item list-group-item-action home" routerLink="/student/home"
+        routerLinkActive="active">
+        <i class="pi pi-home mx-2 pi-user-edit"></i>
+        <!-- <i class=" fa-solid fa-house"></i> -->
         Home
       </a>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        routerLink="/student-dashboard-information"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 fa-solid fa-book-open-reader"></i>
-        Student Information
+      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/information"
+        routerLinkActive="active">
+        <i class="pi mx-2 pi-user-edit"></i>
+        Information
       </a>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        routerLink="/student-dashboard-academic"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 fa-solid fa-file-pen"></i>
-        Academic Record
+      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/academic-record"
+        routerLinkActive="active">
+        <i class="mx-2 pi pi-file"></i>
+        Grade Evaluation
       </a>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        routerLink="/student-dashboard-financial"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 fa-solid fa-hand-holding-dollar"></i>
+      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/financial"
+        routerLinkActive="active">
+        <i class="mx-2 pi pi-dollar"></i>
         Financial Record
       </a>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        routerLink="/student-all-prospectus"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 fa-solid fa-book"></i>
+      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/prospectus"
+        routerLinkActive="active">
+        <i class="mx-2 pi pi-bars"></i>
         Prospectus
       </a>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        routerLink="/student-dashboard-prospectus"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 fa-solid fa-book"></i>
+      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/courses"
+        routerLinkActive="active">
+        <i class="mx-2 pi pi-book"></i>
         Course Offerings
       </a>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        routerLink="/student-dashboard-enrollment"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 fa-solid fa-user"></i>
-        My Enrollment
+      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/enrollment"
+        routerLinkActive="active">
+        <i class="mx-2 pi pi-list"></i>
+        Enrollment
       </a>
       <!-- <a
         class="my-1 py-3 list-group-item list-group-item-action"

@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', response.token);
         // if (response.role === 2) {
         // console.log(response);
-        this.router.navigate(['student-dashboard-home']);
+        this.router.navigate(['student/home']);
       },
       error: (error: any) => {
         if (error.error && error.error.error) {

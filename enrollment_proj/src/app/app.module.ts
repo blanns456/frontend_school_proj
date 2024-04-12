@@ -23,6 +23,8 @@ import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
 
+
+import { ScrollTopModule } from 'primeng/scrolltop';
 import { ButtonModule } from 'primeng/button';
 import { GalleriaModule } from 'primeng/galleria';
 import { PasswordModule } from 'primeng/password';
@@ -43,6 +45,9 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { SidebarModule } from 'primeng/sidebar';
 import { AvatarModule } from 'primeng/avatar';
 import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -120,6 +125,9 @@ import { LoadingPageComponent } from './component/loading-page/loading-page.comp
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
+import { FooterNavComponent } from './footer-nav/footer-nav.component';
+import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
+import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
 
 @NgModule({
   declarations: [
@@ -214,6 +222,9 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
     RegistrationReqsComponent,
     DepartmentUiComponent,
     LoadingPageComponent,
+    FooterNavComponent,
+    StudentParentComponent,
+    CceUiComponent,
   ],
   imports: [
     BrowserModule,
@@ -243,6 +254,10 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
     SidebarModule,
     AvatarModule,
     TableModule,
+    TagModule,
+    CardModule,
+    DialogModule,
+    ScrollTopModule,
   ],
 
   providers: [
@@ -251,4 +266,4 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
