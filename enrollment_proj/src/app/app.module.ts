@@ -39,6 +39,10 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { MessageService } from 'primeng/api';
 import { AutoFocusModule } from 'primeng/autofocus';
 import { DividerModule } from 'primeng/divider';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { SidebarModule } from 'primeng/sidebar';
+import { AvatarModule } from 'primeng/avatar';
+import { TableModule } from 'primeng/table';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -116,7 +120,6 @@ import { LoadingPageComponent } from './component/loading-page/loading-page.comp
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
-
 
 @NgModule({
   declarations: [
@@ -236,9 +239,16 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
     CheckboxModule,
     AutoFocusModule,
     DividerModule,
+    MultiSelectModule,
+    SidebarModule,
+    AvatarModule,
+    TableModule,
   ],
 
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, MessageService],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    MessageService,
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

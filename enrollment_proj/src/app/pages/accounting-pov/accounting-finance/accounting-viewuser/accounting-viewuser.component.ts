@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accounting-viewuser',
   templateUrl: './accounting-viewuser.component.html',
-  styleUrls: ['./accounting-viewuser.component.css']
+  styleUrls: ['./accounting-viewuser.component.css'],
 })
-export class AccountingViewuserComponent {
+export class AccountingViewuserComponent implements OnInit {
+  studentData: any;
 
+  constructor(private router: Router) {
+    this.studentData =
+      this.router.getCurrentNavigation()?.extras.state?.['studentData'];
+    console.log('Received student data:', this.studentData);
+  }
+
+  ngOnInit() {}
 }

@@ -7,13 +7,15 @@
       class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
     >
       <!-- <div class="divider mb-4"></div> -->
-      <div class="contentab bg-white rounded">
+      <div *ngIf="studentData" class="contentab bg-white rounded">
         <div
           class="text-header shadow w-100 py-2 ps-3 d-flex justify-content-between"
         >
           <div class="row w-100">
             <div class="col">
-              <h3 class="text-white fw-bold fs-3">Rizal, Jose Patricio</h3>
+              <h3 class="text-white fw-bold fs-3">
+                {{ studentData.studname }}
+              </h3>
               <p class="text-white">
                 <i class="fa-solid fa-circle-check me-2"></i>Submitted
               </p>
@@ -34,9 +36,9 @@
           <h1 class="fw-bold fs-4">Section Remarks</h1>
           <div class="divider"></div>
           <div
-            class="inputGroup row d-flex justify-content-center align-items-center my-3"
+            class="inputGroup row d-flex justify-content-start align-items-center my-3"
           >
-            <div class="col-4">
+            <!-- <div class="col-4">
               <label for="ledger">Ledger</label>
               <select class="inputs" name="ledger" id="ledger">
                 <option selected hidden>Input here..</option>
@@ -44,34 +46,27 @@
                 <option value="2">20254487/A.Y 2022-2023</option>
                 <option value="3">20200365/A.Y 2023-2024</option>
               </select>
-            </div>
-            <div class="col-4">
-              <label for="semester">Semester</label>
-              <select class="inputs" name="semester" id="semester">
-                <option selected hidden>Open this select menu</option>
-                <option value="1">1st Trimester</option>
-                <option value="2">2nd Trimester</option>
-                <option value="3">3rd Trimester</option>
-              </select>
-            </div>
-            <div class="col-4">
-              <label for="studid">ID:</label>
+            </div> -->
+            <div class="col-3">
+              <label for="studid">Student ID:</label>
               <input
                 class="inputs"
                 type="number"
                 id="studid"
                 name="studid"
-                placeholder="202244564"
+                value="{{ studentData.uid }}"
+                readonly
               />
             </div>
-            <div class="col-4 my-4">
-              <label for="studname">Student's Name:</label>
+            <div class="col-3">
+              <label for="semester">Semester</label>
               <input
-                class="inputs"
                 type="text"
-                id="studname"
-                name="studname"
-                placeholder="input here"
+                class="inputs"
+                name="semester"
+                id="semester"
+                value="{{ studentData.semester }}"
+                readonly
               />
             </div>
             <div class="col-4">
@@ -81,10 +76,13 @@
                 type="text"
                 id="course"
                 name="course"
-                placeholder="input here"
+                value="{{ studentData.course }}/{{
+                  studentData.student_yr_lvl
+                }}"
+                readonly
               />
             </div>
-            <div class="col-4">
+            <!-- <div class="col-4">
               <label for="date">Date:</label>
               <input
                 class="inputs"
@@ -93,7 +91,7 @@
                 name="date"
                 placeholder="input date here"
               />
-            </div>
+            </div> -->
           </div>
           <h1 class="fw-bold fs-4">Student Information</h1>
           <div class="divider"></div>
@@ -190,7 +188,6 @@
             </div>
           </div>
         </form>
-        <div class="divider mx-auto my-5"></div>
         <div class="m-4 px-2">
           <h1 class="fw-bold fs-4">Finance Information</h1>
           <div class="divider"></div>

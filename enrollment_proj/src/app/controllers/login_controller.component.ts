@@ -14,7 +14,7 @@ export class LoginController {
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   login(user: { email: string; password: string }) {
     // var token = localStorage.getItem('token');
