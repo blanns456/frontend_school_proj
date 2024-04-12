@@ -1,62 +1,47 @@
-<div class="container-dashboard">
-  <app-student-sidebar></app-student-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-student-navbar></app-student-navbar>
-    <div class="container-fluid content mb-5">
-      <div class="bg-content rounded">
-        <div class="bg-secondary py-3 info-links">
-          <div class="mx-auto text-center">
-            <h2 class="fs-5 text-uppercase text-white my-0 fw-bold">
-              My Enrollment
-            </h2>
+<div class="container-fluid content mb-5">
+  <div class="bg-content rounded">
+    <div class="bg-secondary py-3 info-links">
+      <div class="mx-auto text-center">
+        <h2 class="fs-5 text-uppercase text-white my-0 fw-bold">
+          My Enrollment
+        </h2>
+      </div>
+    </div>
+    <div class="container-fluid py-2">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button d-block z-1" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              1st Trimester A.Y. 2023-2024
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <table class="table table-bordered table-sm py-2 text-center">
+                <thead>
+                  <tr>
+                    <th>Course Code.</th>
+                    <th>Descriptive Titles</th>
+                    <th>Units</th>
+                    <th>Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let enrollment of enrollments">
+                    <td>{{ enrollment.code }}</td>
+                    <td>{{ enrollment.description }}</td>
+                    <td>{{ enrollment.units }}</td>
+                    <td class="text-capitalize">
+                      {{ enrollment.remarks }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-        <div class="container-fluid py-2">
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button d-block z-1"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  1st Trimester A.Y. 2023-2024
-                </button>
-              </h2>
-              <div
-                id="collapseOne"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="accordion-body">
-                  <table class="table table-bordered table-sm py-2 text-center">
-                    <thead>
-                      <tr>
-                        <th>Course Code.</th>
-                        <th>Descriptive Titles</th>
-                        <th>Units</th>
-                        <th>Remarks</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let enrollment of enrollments">
-                        <td>{{ enrollment.code }}</td>
-                        <td>{{ enrollment.description }}</td>
-                        <td>{{ enrollment.units }}</td>
-                        <td class="text-capitalize">
-                          {{ enrollment.remarks }}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <!-- <div class="accordion-item">
+        <!-- <div class="accordion-item">
               <h2 class="accordion-header">
                 <button
                   class="accordion-button collapsed"
@@ -79,11 +64,9 @@
                 </div>
               </div>
             </div> -->
-            <div class="accordion-item"></div>
-          </div>
-        </div>
-        <p class="opacity-0">Footer-spacer</p>
+        <div class="accordion-item"></div>
       </div>
     </div>
+    <p class="opacity-0">Footer-spacer</p>
   </div>
 </div>

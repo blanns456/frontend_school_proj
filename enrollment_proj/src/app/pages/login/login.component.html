@@ -18,70 +18,12 @@
           <div class="text-center mt-3">
             <label for="username" class="form-label"></label>
             <input pInputText type="text" placeholder="Username" formControlName="username" [style]="{width:'76%'}" />
-            <!-- <input
-              type="text"
-              formControlName="username"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              name="username"
-              id="username"
-              placeholder="USERNAME"
-            /> -->
-
-            <!-- <div
-              *ngIf="
-                form.controls['username'].invalid &&
-                (form.controls['username'].dirty ||
-                  form.controls['username'].touched)
-              "
-            >
-              <div
-                class="text-danger text-center"
-                *ngIf="form.controls['username'].errors?.['required']"
-              >
-                Username is required.
-              </div>
-            </div> -->
           </div>
           <div class="mt-2 text-center">
             <label for="password" class="form-label"></label>
-            <p-password formControlName="password" [feedback]="false" [toggleMask]="true" placeholder="Password">
+            <p-password formControlName="password" [feedback]="false" [toggleMask]="true" placeholder="Password"
+              class="w-100">
             </p-password>
-
-            <!-- <span class="p-float-label">
-              <p-password               class="fw-bold w-100 mx-auto py-2 shadow-xl"
-              formControlName="password"
-              [feedback]="false"
-              [toggleMask]="true"></p-password>
-              <label for="password">Password</label>
-            </span> -->
-            <!-- <input
-              type="password"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              name="password"
-              id="password"
-              formControlName="password"
-              placeholder="PASSWORD"
-            /> -->
-            <!-- <div
-              *ngIf="
-                form.controls['password'].invalid &&
-                (form.controls['password'].dirty ||
-                  form.controls['password'].touched)
-              "
-            >
-              <div
-                class="text-danger text-center"
-                *ngIf="form.controls['password'].errors?.['required']"
-              >
-                password is required.
-              </div>
-              <div
-                class="text-danger text-center"
-                *ngIf="form.controls['password'].errors?.['minlength']"
-              >
-                password must be at least 6 characters long.
-              </div>
-            </div> -->
           </div>
           <div class="mt-4 text-center">
             <button type="submit" class="btn btn-primary fw-bold p-2 w-50 login-button">

@@ -39,6 +39,9 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { MessageService } from 'primeng/api';
 import { AutoFocusModule } from 'primeng/autofocus';
 import { DividerModule } from 'primeng/divider';
+import { TagModule } from 'primeng/tag';
+import { CardModule } from 'primeng/card';
+import { DialogModule } from 'primeng/dialog';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -117,6 +120,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
 import { FooterNavComponent } from './footer-nav/footer-nav.component';
+import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
 
 
 @NgModule({
@@ -213,6 +217,7 @@ import { FooterNavComponent } from './footer-nav/footer-nav.component';
     DepartmentUiComponent,
     LoadingPageComponent,
     FooterNavComponent,
+    StudentParentComponent,
   ],
   imports: [
     BrowserModule,
@@ -238,6 +243,9 @@ import { FooterNavComponent } from './footer-nav/footer-nav.component';
     CheckboxModule,
     AutoFocusModule,
     DividerModule,
+    TagModule,
+    CardModule,
+    DialogModule
   ],
 
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, MessageService],

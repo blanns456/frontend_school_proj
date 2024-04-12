@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { error } from 'jquery';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
@@ -7,45 +8,36 @@ export class LoginController {
   readonly Root_URL = 'http://127.0.0.1:8000/api/';
   token: any;
   userdata: any;
-  usertokenid: any;
+  data: any;
   studentdata: any;
-  // userinfo: any;
-  // loadingdata = false;
-  // alertmessage: string | undefined;
-  // alertmessag: Object;
-  // static createuser: any;
+  user_id: any;
   constructor(private http: HttpClient) { }
 
-  login(user: { email: string; password: string }) {
-    // var token = localStorage.getItem('token');
-    //  localStorage.getItem('token');
-    // let config = {
-    //   withCredentials: true, // Include credentials (cookies) in the request
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Authorization:
-    //       '4ntZyLuq5eBJEVvyNeKHRpp2efk4hXxEl6jx15DWoGDdBQBacGjpCBW8y4apxWXa', // Include your JWT token if needed
-    //   },
-    // };
+  login(user: { username: string; password: string }) {
     return this.http.post(this.Root_URL + 'login', user);
   }
 
-  reloaddata() {
-    this.token = localStorage.getItem('token') + 's***s';
-    this.userdata = jwtDecode(this.token.substr(0, this.token.length - 5));
-    const authenticate_id = btoa('authenticate_id');
-    localStorage.setItem(authenticate_id, btoa(this.userdata.id_token));
-  }
+  // reloaddata() {
+  //   this.token = localStorage.getItem('token') + 's***s';
+  //   this.userdata = jwtDecode(this.token.substr(0, this.token.length - 5));
+  //   const authenticate_id = btoa('authenticate_id');
+  //   localStorage.setItem(authenticate_id, btoa(this.userdata.id_token));
+  // }
 
   getuserdetails() {
-    this.studentdata = localStorage.getItem(this.token);
+    // const ids='';
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    });
 
-    return this.studentdata;
+    return this.http.get(this.Root_URL + 'showstudent', { headers: headers });
   }
 
   reloadstudentdatainfo() {
-    var info = this.getuserdetails();
-    return this.http.get(this.Root_URL + 'showstudentdetails/' + info[0].id);
+    this.getuserdetails();
+    return this.http.get(this.Root_URL + 'showstudentdetails/' + this.user_id);
   }
 
   studentAcad(user: { id: number }) {

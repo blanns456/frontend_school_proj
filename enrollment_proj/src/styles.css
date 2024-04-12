@@ -3,6 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
 * {
   font-family: "Montserrat", sans-serif;
 }
@@ -32,14 +34,17 @@ body::-webkit-scrollbar {
   padding-right: 4rem !important;
   padding-left: 4rem !important;
 }
+
 .px-7 {
   padding-right: 5rem !important;
   padding-left: 5rem !important;
 }
+
 .px-8 {
   padding-right: 6rem !important;
   padding-left: 6rem !important;
 }
+
 .px-9 {
   padding-right: 7rem !important;
   padding-left: 7rem !important;
@@ -48,12 +53,15 @@ body::-webkit-scrollbar {
 .pt-6 {
   padding-top: 4rem !important;
 }
+
 .pt-7 {
   padding-top: 5rem !important;
 }
+
 .pt-8 {
   padding-top: 6rem !important;
 }
+
 .pt-9 {
   padding-top: 7rem !important;
 }
@@ -61,12 +69,15 @@ body::-webkit-scrollbar {
 .pb-6 {
   padding-bottom: 4rem !important;
 }
+
 .pb-7 {
   padding-bottom: 5rem !important;
 }
+
 .pb-8 {
   padding-bottom: 6rem !important;
 }
+
 .pb-9 {
   padding-bottom: 7rem !important;
 }
@@ -98,7 +109,7 @@ body::-webkit-scrollbar {
 /*line divider*/
 .divider {
   border-bottom: 1px solid #dee2e6;
-  width: 80%;
+  width: 90%;
   /* margin-bottom: 2rem; */
   /* margin: auto; */
 }
@@ -123,6 +134,7 @@ body::-webkit-scrollbar {
   margin-left: 20%;
   z-index: 1;
 }
+
 /* bold text */
 
 .fixed-background {
@@ -154,7 +166,8 @@ a {
   border-top: 16px solid #3498db;
   width: 120px;
   height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
   animation: spin 2s linear infinite;
 }
 
@@ -163,6 +176,7 @@ a {
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -172,6 +186,7 @@ a {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
