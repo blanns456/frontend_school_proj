@@ -16,3 +16,8 @@ select {
   border-bottom: 2px solid black;
   outline: none;
 }
+
+.student-info {
+  padding-top: 8%;
+  width: 95%;
+}

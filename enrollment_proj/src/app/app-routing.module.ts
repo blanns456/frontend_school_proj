@@ -74,6 +74,8 @@ import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
+import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
+import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -84,6 +86,8 @@ const routes: Routes = [
   { path: 'enroll-college', component: EnrollCollegeComponent },
   { path: 'registration-req', component: RegistrationReqsComponent },
   { path: 'department-ui', component: DepartmentUiComponent },
+  { path: 'cce-ui', component: CceUiComponent },
+
   {
     path: 'enroll-college-student-information',
     component: EnrollCollege2Component,
@@ -108,15 +112,50 @@ const routes: Routes = [
   { path: 'enroll-tesda-education-record', component: EnrollTesda3Component },
   { path: 'student-reset-password', component: StudentResetPasswordComponent },
   {
-    path: 'student-dashboard-home',
-    component: StudentDashboardHomeComponent,
+    path: 'student',
+    component: StudentParentComponent,
     canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        component: StudentDashboardHomeComponent
+      },
+      {
+        path: 'information',
+        component: StudentDashboardInformationComponent,
+      },
+      {
+        path: 'academic-record',
+        component: StudentDashboardAcademicComponent,
+      },
+      {
+        path: 'financial',
+        component: StudentDashboardFinancialComponent,
+      },
+      {
+        path: 'prospectus',
+        component: StudentProspectusCoursesComponent,
+      },
+      {
+        path: 'courses',
+        component: ProspectusStudentsComponent,
+      },
+      {
+        path: 'enrollment',
+        component: StudentDashboardEnrollmentComponent,
+      },
+    ]
   },
-  {
-    path: 'student-dashboard-information',
-    component: StudentDashboardInformationComponent,
-    canActivate: [AuthGuard],
-  },
+  // {
+  //   path: 'student-dashboard-home',
+  //   component: StudentDashboardHomeComponent,
+  //   canActivate: [AuthGuard],
+  // },
   {
     path: 'student-dashboard-parent',
     component: StudentDashboardParentComponent,
@@ -125,11 +164,6 @@ const routes: Routes = [
   {
     path: 'student-dashboard-academic',
     component: StudentDashboardAcademicComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'student-dashboard-financial',
-    component: StudentDashboardFinancialComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -291,31 +325,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'student-dashboard-academic',
-    component: StudentDashboardAcademicComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'student-dashboard-financial',
-    component: StudentDashboardFinancialComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'student-dashboard-enrollment',
-    component: StudentDashboardEnrollmentComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'student-dashboard-prospectus',
-    component: ProspectusStudentsComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'student-all-prospectus',
-    component: StudentProspectusCoursesComponent,
-    canActivate: [AuthGuard],
-  },
-  {
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
   },
@@ -390,4 +399,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

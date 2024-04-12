@@ -1,438 +1,364 @@
-<div class="container-dashboard">
-  <app-student-sidebar></app-student-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-student-navbar></app-student-navbar>
-    <div class="container-fluid content mb-5">
-      <div class="bg-white rounded">
-        <div class="bg-secondary rounded-top py-3">
-          <div class="text-center">
-            <a
-              class="text-white text-uppercase fs-5 text-decoration-none student-info"
-              routerLink="/student-dashboard-information"
-            >
-              Student Information
-            </a>
+<app-student-navbar></app-student-navbar>
+<div class="container student-info pb-3">
+  <p-card>
+    <div class="d-flex justify-content-between">
+      <div>
+        <h3>Personal Information</h3>
+      </div>
+      <div class="text-center mb-3">
+        <p-button (click)=" showDialog()" icon="pi pi-external-link" label="Update Information"></p-button>
+        <p-dialog header="Update Information" [modal]="true" [(visible)]="visible"
+          [style]="{width: '90vw', height:'80vh'}" [maximizable]="true">
+          <form action="">
+            <div class="container-fluid my-2">
+              <div class="row">
+                <div class="col-lg-3 my-3">
+                  <span class="p-float-label">
+                    <input pInputText id="firstname" [value]="data?.firstname" [style]="{width: '100%'}" />
+                    <label for="firstname">First Name</label>
+                  </span>
+                </div>
+                <div class="col-lg-3 my-3">
+                  <span class="p-float-label">
+                    <input pInputText id="lastname" [value]="data?.lastname" [style]="{width: '100%'}" />
+                    <label for="lastname">Last Name</label>
+                  </span>
+                </div>
+                <div class="col-lg-3 my-3">
+                  <span class="p-float-label">
+                    <input pInputText id="middlename" class="text-capitalize" [value]="data?.middlename"
+                      [style]="{width: '100%'}" />
+                    <label for="middlename">Middle Name</label>
+                  </span>
+                </div>
+                <div class="col-lg-3 my-3">
+                  <span class="p-float-label">
+                    <input pInputText id="suffix" class="text-capitalize" [value]="data?.suffix"
+                      [style]="{width: '100%'}" />
+                    <label for="suffix">Extension</label>
+                  </span>
+                </div>
+                <div class="col-lg-3 my-3">
+                  <span class="p-float-label">
+                    <input pInputText id="gender" class="text-capitalize" [value]="data?.gender"
+                      [style]="{width: '100%'}" />
+                    <label for="gender">Gender</label>
+                  </span>
+                </div>
+                <div class="col-lg-3 my-3">
+                  <span class="p-float-label">
+                    <input pInputText id="civil_status" class="text-capitalize" [value]="data?.civil_status"
+                      [style]="{width: '100%'}" />
+                    <label for="civil_status">Civil Status</label>
+                  </span>
+                </div>
+                <div class="col-lg-3 my-3">
+                  <span class="p-float-label">
+                    <input pInputText id="citizenship" class="text-capitalize" [value]="data?.citizenship"
+                      [style]="{width: '100%'}" />
+                    <label for="citizenship">Citizenship</label>
+                  </span>
+
+                </div>
+                <div class="col-lg-3 my-3">
+                  <span class="p-float-label">
+                    <input pInputText id="religion" class="text-capitalize" [value]="data?.religion"
+                      [style]="{width: '100%'}" />
+                    <label for="religion">Religion</label>
+                  </span>
+                </div>
+                <div class="col-lg-3 my-3">
+                  <span class="p-float-label">
+                    <!-- <input pInputText id="birthdate" class="text-capitalize" [value]="data?.birthdate" /> -->
+                    <p-calendar type="date" [showIcon]="true" class="py-2 border" [(ngModel)]="date"
+                      [ngModelOptions]="{ standalone: true }" dateFormat="yy-mm-dd"
+                      [style]="{width: '100%'}"></p-calendar>
+                    <label for="birthdate">Birth Date</label>
+                  </span>
+                </div>
+                <div class="col-lg-9 my-3">
+                  <span class="p-float-label">
+                    <input pInputText id="birth_place" class="text-capitalize" [value]="data?.birth_place"
+                      [style]="{width: '100%'}" />
+                    <label for="birth_place">Birth Place</label>
+                  </span>
+                </div>
+                <div class="col-lg-6 my-3">
+                  <span class="p-float-label">
+                    <textarea id="float-input" cols="50" rows="2" pInputTextarea [style]="{width: '100%'}"></textarea>
+                    <label for="float-input">Home Address</label>
+                  </span>
+                </div>
+                <div class="col-lg-6 my-3">
+                  <span class="p-float-label">
+                    <textarea id="float-input" cols="50" rows="2" pInputTextarea [style]="{width: '100%'}"></textarea>
+                    <label for=" float-input">Present Address</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </p-dialog>
+      </div>
+    </div>
+    <form action="">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="firstname">First Name</label>
+              <input pInputText id="firstname" [value]="data?.firstname" [readOnly]="true" />
+            </div>
+
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="lastname">Last Name</label>
+              <input pInputText id="lastname" [value]="data?.lastname" [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="middlename">Middle Name</label>
+              <input pInputText id="middlename" class="text-capitalize" [value]="data?.middlename" [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="suffix">Extension</label>
+              <input pInputText id="suffix" class="text-capitalize" [value]="data?.suffix" [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="gender">Gender</label>
+              <input pInputText id="gender" class="text-capitalize" [value]="data?.gender" [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="civil_status">Civil Status</label>
+              <input pInputText id="civil_status" class="text-capitalize" [value]="data?.civil_status"
+                [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="citizenship">Citizenship</label>
+              <input pInputText id="citizenship" class="text-capitalize" [value]="data?.citizenship"
+                [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="religion">Religion</label>
+              <input pInputText id="religion" class="text-capitalize" [value]="data?.religion" [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="contact_number">Contact Number</label>
+              <input pInputText id="contact_number" class="text-capitalize" [value]="data?.contact_number"
+                [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="email">Email</label>
+              <input pInputText id="email" class="text-capitalize" [value]="data?.email_address" [readOnly]=" true" />
+            </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="birthdate">Birth Date</label>
+              <input pInputText id="religion" class="text-capitalize" [value]="data?.birthdate" [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-3 mb-2">
+            <div class="flex flex-column">
+              <label for="birth_place">Birth Place</label>
+              <input pInputText id="birth_place" class="text-capitalize" [value]="data?.birth_place"
+                [style]="{width: '100%'}" [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-6 mb-3">
+            <div class="flex flex-column">
+              <label for="Home">Home Address</label>
+              <textarea id="Home" cols="50" rows="2" pInputTextarea [readOnly]="true"
+                [style]="{width: '100%'}"></textarea>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-3">
+            <div class="flex flex-column">
+              <label for="Present">Present Address</label>
+              <textarea id="Present" cols="50" rows="2" pInputTextarea [readOnly]="true"
+                [style]="{width: '100%'}"></textarea>
+            </div>
+          </div>
+          <hr>
+          <h3>Education</h3>
+          <div class="col-lg-4 mb-3">
+            <p-card header="Elementary">
+              <div class="flex flex-column mb-3">
+                <label for="elem_school">School Name</label>
+                <input pInputText id="elem_school" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                  [readOnly]="true" />
+              </div>
+              <div class="flex flex-column mb-3">
+                <label for="elem_yrgrad">Year Graduated</label>
+                <input pInputText id="elem_yrgrad" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                  [readOnly]="true" />
+              </div>
+            </p-card>
+          </div>
+          <div class="col-lg-4 mb-3">
+            <p-card header="Junior HighSchool">
+              <div class="flex flex-column mb-3">
+                <label for="jhs_school">School Name</label>
+                <input pInputText id="jhs_school" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                  [readOnly]="true" />
+              </div>
+              <div class="flex flex-column mb-3">
+                <label for="jhs_yrgrad">Year Graduated</label>
+                <input pInputText id="jhs_yrgrad" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                  [readOnly]="true" />
+              </div>
+            </p-card>
+          </div>
+          <div class="col-lg-4 mb-3">
+            <p-card header="Senior HighSchool">
+              <div class="flex flex-column mb-3">
+                <label for="shs_school">School Name</label>
+                <input pInputText id="shs_school" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                  [readOnly]="true" />
+              </div>
+              <div class="flex flex-column mb-3">
+                <label for="shs_yrgrad">Year Graduated</label>
+                <input pInputText id="shs_yrgrad" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                  [readOnly]="true" />
+              </div>
+            </p-card>
+          </div>
+          <div class="col-lg-6 mb-3">
+            <div class="flex flex-column">
+              <label for="lastschoolattended">Last School Attended</label>
+              <input pInputText id="lastschoolattended" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                [readOnly]="true" />
+            </div>
+          </div>
+          <div class="col-lg-6 mb-3">
+            <div class="flex flex-column">
+              <label for="Last School Year Attended">Last School Year</label>
+              <input pInputText id="Last School Year Attended" class="text-capitalize" [value]=""
+                [style]="{width: '100%'}" [readOnly]="true" />
+            </div>
+          </div>
+          <hr>
+          <h3>Parent/Guardian&apos;s Information</h3>
+          <div class="col-lg-12 mb-3">
+            <p-card header="Father's Information">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="f_name">Father&apos;s Name</label>
+                    <input pInputText id="f_name" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="employed_where">If Employed? Where?</label>
+                    <input pInputText id="employed_where" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="occupation">Occupation</label>
+                    <input pInputText id="occupation" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="f_number">Mobile Number</label>
+                    <input pInputText id="f_number" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+              </div>
+            </p-card>
+          </div>
+          <div class="col-lg-12 mb-3">
+            <p-card header="Mother's Information">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="m_name">Mother&apos;s Maiden Name</label>
+                    <input pInputText id="m_name" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="m_employed_where">If Employed? Where?</label>
+                    <input pInputText id="m_employed_where" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="m_occupation">Occupation</label>
+                    <input pInputText id="m_occupation" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="m_number">Mobile Number</label>
+                    <input pInputText id="m_number" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+              </div>
+            </p-card>
+          </div>
+          <div class="col-lg-12 mb-3">
+            <p-card header="Guardian's Information">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="g_name">Guardian&apos;s Name</label>
+                    <input pInputText id="g_name" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="g_employed_where">If Employed? Where?</label>
+                    <input pInputText id="g_employed_where" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="g_occupation">Occupation</label>
+                    <input pInputText id="g_occupation" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="flex flex-column mb-3">
+                    <label for="g_number">Mobile Number</label>
+                    <input pInputText id="g_number" class="text-capitalize" [value]="" [style]="{width: '100%'}"
+                      [readOnly]="true" />
+                  </div>
+                </div>
+              </div>
+            </p-card>
           </div>
         </div>
-        <form (ngSubmit)="onEdit()" method="post">
-          <div class="row mt-3 p-3">
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="first_name" class="form-label"> First Name </label>
-                <input
-                  type="text"
-                  name="first_name"
-                  id="first_name"
-                  [value]="this.studentdata[0].firstname"
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="middle_name" class="form-label">
-                  Middle Name
-                </label>
-                <input
-                  type="text"
-                  name="middle_name"
-                  id="middle_name"
-                  [value]="this.studentdata[0]['middlename']"
-                  value
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="last_name" class="form-label"> Last Name </label>
-                <input
-                  type="text"
-                  name="last_name"
-                  [value]="this.studentdata[0]['lastname']"
-                  id="last_name"
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="suffix" class="form-label"> Suffix </label>
-                <input
-                  type="text"
-                  [value]="this.studentdata[0]['suffix']"
-                  name="suffix"
-                  id="suffix"
-                  value
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="gender" class="form-label"> Gender </label>
-                <select
-                  name="gender"
-                  id="gender"
-                  [value]="this.studentdata[0]['gender']"
-                  required
-                >
-                  <option value disabled selected>Please Select Gender</option>
-                  <option value="male" id="male">Male</option>
-                  <option value="female" id="female">Female</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="civil_status" class="form-label">
-                  Civil Status
-                </label>
-                <select
-                  name="civil_status"
-                  id="civil_status"
-                  [value]="this.studentdata[0]['civil_status']"
-                  required
-                >
-                  <option value disabled selected>
-                    Please Select Civil Status
-                  </option>
-                  <option value="single">Single</option>
-                  <option value="married">Married</option>
-                  <option value="widowed">Widowed</option>
-                  <option value="divorced">Divorced</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="birth_date" class="form-label"> Birthdate </label>
-                <input
-                  type="date"
-                  name="birth_date"
-                  id="birth_date"
-                  [value]="this.studentdata[0]['birthdate']"
-                  value
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="birth_place" class="form-label">
-                  Place of Birth
-                </label>
-                <input
-                  type="text"
-                  name="birth_place"
-                  id="birth_place"
-                  [value]="this.studentdata[0]['birth_place']"
-                  value
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="religion" class="form-label"> Religion </label>
-                <input
-                  type="text"
-                  name="religion"
-                  id="religion"
-                  [value]="this.studentdata[0]['religion']"
-                  value
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="contact_number" class="form-label">
-                  Contact Number
-                </label>
-                <input
-                  type="tel"
-                  pattern="[0-9]{11}"
-                  name="contact_number"
-                  id="contact_number"
-                  [value]="this.studentdata[0]['contact_number']"
-                  value
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="email" class="form-label"> Email </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  [value]="this.studentdata[0]['email_address']"
-                  value
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="mb-3 input-holder">
-                <label for="citizenship" class="form-label">
-                  Citizenship
-                </label>
-                <input
-                  type="text"
-                  name="citizenship"
-                  id="citizenship"
-                  [value]="this.studentdata[0]['citizenship']"
-                  value
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="mb-3 input-holder">
-                <label for="home_address" class="form-label">
-                  Home Address
-                </label>
-                <input
-                  type="text"
-                  name="home_address"
-                  [value]="this.studentdata[0]['home_address']"
-                  id="home_address"
-                  value
-                  required
-                />
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="mb-3 input-holder">
-                <label for="permanent_address" class="form-label">
-                  Present Address
-                </label>
-                <input
-                  type="text"
-                  name="permanent_address"
-                  [value]="this.studentdata[0]['permanent_address']"
-                  id="permanent_address"
-                  value
-                  required
-                />
-              </div>
-            </div>
-
-            <div class="divider mx-auto my-5"></div>
-
-            <div class="records">
-              <h4>Records of Education</h4>
-              <div class="row mt-4">
-                <div class="col-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Elementary</h5>
-                      <p class="card-text">
-                        <label for="elem_school">School Name</label>
-                        <input
-                          type="text"
-                          name="elem_school"
-                          id="elem_school"
-                          [value]="this.studentdata[0]['elemschool']"
-                        />
-                        <label for="elem_yrgrad" class="mt-3"
-                          >Year Graduated</label
-                        >
-                        <input
-                          type="text"
-                          name="elem_yrgrad"
-                          [value]="this.studentdata[0]['elemgradyr']"
-                          id="elem_yrgrad"
-                        />
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Junior High School</h5>
-                      <p class="card-text">
-                        <label for="jhs_school">School Name</label>
-                        <input
-                          type="text"
-                          name="jhs_school"
-                          id="jhs_school"
-                          [value]="this.studentdata[0]['jhsschoolname']"
-                        />
-                        <label for="jhs_yrgrad" class="mt-3"
-                          >Year Graduated</label
-                        >
-                        <input
-                          type="text"
-                          name="jhs_yrgrad"
-                          id="jhs_yrgrad"
-                          [value]="this.studentdata[0]['jhsgradsyr']"
-                        />
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Senior High School</h5>
-                      <p class="card-text">
-                        <label for="shs_school">School Name</label>
-                        <input
-                          type="text"
-                          name="shs_school"
-                          id="shs_school"
-                          [value]="this.studentdata[0]['shsschoolname']"
-                        />
-                        <label for="shs_yrgrad" class="mt-3"
-                          >Year Graduated</label
-                        >
-                        <input
-                          type="text"
-                          name="shs_yrgrad"
-                          id="shs_yrgrad"
-                          [value]="this.studentdata[0]['shsschoolgradyr']"
-                        />
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-4 mt-4">
-                  <label for="lastschoolattended">Last School Attended</label>
-                  <input
-                    type="text"
-                    name="lastschoolattended"
-                    [value]="this.studentdata[0]['schoollastattended']"
-                    id="lastschoolattended"
-                  />
-                </div>
-                <div class="col-4 mt-4">
-                  <label for="lastschool_yrattend"
-                    >Last School Year Attended</label
-                  >
-                  <input
-                    type="text"
-                    name="lastschool_yrattend"
-                    id="lastschool_yrattend"
-                    [value]="this.studentdata[0]['lastschoolyearattended']"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div class="divider mx-auto my-5"></div>
-
-            <div class="parents">
-              <h4>Parent/Guardian's Information</h4>
-              <div class="row mt-4">
-                <div class="col-4">
-                  <div class="mb-3 input-holder">
-                    <label for="parent_name" class="form-label">
-                      Parent's/Guardian's Name
-                    </label>
-                    <input
-                      type="text"
-                      name="parent_name"
-                      id="parent_name"
-                      [value]="this.studentdata[0]['parentsOrguradian']"
-                      value
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="mb-3 input-holder">
-                    <label for="employed_where" class="form-label">
-                      If Employed? Where?
-                    </label>
-                    <input
-                      type="text"
-                      name="employed_where"
-                      id="employed_where"
-                      [value]="this.studentdata[0]['employedwhere']"
-                      value
-                    />
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="mb-3 input-holder">
-                    <label for="parent_occupation" class="form-label">
-                      Occupation
-                    </label>
-                    <input
-                      type="text"
-                      name="parent_occupation"
-                      id="parent_occupation"
-                      [value]="this.studentdata[0]['parentsOccupation']"
-                      value
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="col-4 mt-4">
-                  <div class="mb-3 input-holder">
-                    <label for="parent_contact" class="form-label">
-                      Contact Number
-                    </label>
-                    <input
-                      type="tel"
-                      pattern="[0-9]{11}"
-                      name="parent_contact"
-                      [value]="this.studentdata[0]['parentcontactnumber']"
-                      id="parent_contact"
-                      value
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="col-4 mt-4">
-                  <div class="mb-3 input-holder">
-                    <label for="parent_home_address" class="form-label">
-                      Home Address
-                    </label>
-                    <input
-                      type="text"
-                      name="parent_home_address"
-                      [value]="this.studentdata[0]['parentshomeaddress']"
-                      id="parent_home_address"
-                      value
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="col-4 mt-4">
-                  <div class="mb-3 input-holder">
-                    <label for="parent_permanent_address" class="form-label">
-                      Present Address
-                    </label>
-                    <input
-                      type="text"
-                      [value]="this.studentdata[0]['parentspresentaddress']"
-                      name="parent_permanent_address"
-                      id="parent_permanent_address"
-                      value
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex justify-content-center">
-                <div class="col-6 my-2 text-center">
-                  <button type="submit" class="btn btn-success w-50 mx-auto">
-                    Save
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
       </div>
-      <div class="my-5"></div>
-    </div>
-    <p class="opacity-0">Footer-spacer</p>
-  </div>
+    </form>
+  </p-card>
 </div>

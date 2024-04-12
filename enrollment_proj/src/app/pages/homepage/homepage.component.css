@@ -175,3 +175,57 @@ ul {
   border-radius: 4px;
   transform: rotate(180deg);
 }
+
+@media only screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 50px;
+    padding-top: 6rem;
+  }
+
+  .enrollreq {
+    margin-bottom: 3rem;
+  }
+
+  .logoDep {
+    margin-left: 3.8rem;
+  }
+
+  .vid {
+    margin-left: 1.5rem;
+  }
+
+  .linkList li a {
+    font-size: 100px;
+  }
+}
+
+.current img {
+  display: block;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 574px) {
+  .hero h1 {
+    font-size: 45px;
+    padding-top: 6rem;
+  }
+
+  .logoShow .logoDep {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150;
+    margin-left: 10rem;
+  }
+  .logoShow {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .txt1 {
+    margin-left: 4rem;
+  }
+}

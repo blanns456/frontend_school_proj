@@ -1,84 +1,58 @@
-<div class="container-dashboard">
-  <app-student-sidebar></app-student-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-student-navbar></app-student-navbar>
-    <div class="container-fluid vh-100 content">
-      <h2 class="h3 text-white">Prospectus</h2>
-      <div class="position-relative">
-        <div class="my-3 bg-white rounded">
-          <div
-            class="bg-secondary text-white text-center px-3 py-2"
-            *ngFor="let program of Acads"
-          >
-            <!-- <span><strong>2nd Trimester (A.Y. 2023-2024)</strong></span> -->
-            <strong>{{ program.course }}</strong>
-            <!-- <p class="opacity-0" id="courseGet">1</p> -->
-          </div>
-          <div class="my-2 container-fluid">
-            <div class="text-center"></div>
-          </div>
-          <div class="my-2 container">
-            <table class="table table-bordered table-sm bg-secondary py-2">
-              <thead>
-                <tr>
-                  <th>Course Code</th>
-                  <th>Descriptive Titles</th>
-                  <th>Units</th>
-                  <th>Pre-requisite</th>
-                  <th>Semester</th>
-                </tr>
-              </thead>
-              <tbody>
-                <ng-container *ngFor="let yearLevel of getYearLevels()">
-                  <tr>
-                    <td
-                      class="bg-secondary text-white text-center"
-                      colspan="6"
-                      *ngIf="yearLevel === '1'"
-                    >
-                      1st Year
-                    </td>
-                    <td
-                      class="bg-secondary text-white text-center"
-                      colspan="6"
-                      *ngIf="yearLevel === '2'"
-                    >
-                      2nd Year
-                    </td>
-                    <td
-                      class="bg-secondary text-white text-center"
-                      colspan="6"
-                      *ngIf="yearLevel === '3'"
-                    >
-                      3rd Year
-                    </td>
-                    <td
-                      class="bg-secondary text-white text-center"
-                      colspan="6"
-                      *ngIf="yearLevel === '4'"
-                    >
-                      4th Year
-                    </td>
-                  </tr>
-                  <tr *ngFor="let subject of groupedProspectus[yearLevel]">
-                    <td>{{ subject.code }}</td>
-                    <td>{{ subject.description }}</td>
-                    <td>{{ subject.units }}</td>
-                    <td>{{ subject.pre_requisite }}</td>
-                    <td>{{ subject.semester }}</td>
-                  </tr>
-                </ng-container>
-              </tbody>
-            </table>
+<div class="container-fluid vh-100 content">
+  <h2 class="h3 text-white">Prospectus</h2>
+  <div class="position-relative">
+    <div class="my-3 bg-white rounded">
+      <div class="bg-secondary text-white text-center px-3 py-2" *ngFor="let program of Acads">
+        <!-- <span><strong>2nd Trimester (A.Y. 2023-2024)</strong></span> -->
+        <strong>{{ program.course }}</strong>
+        <!-- <p class="opacity-0" id="courseGet">1</p> -->
+      </div>
+      <div class="my-2 container-fluid">
+        <div class="text-center"></div>
+      </div>
+      <div class="my-2 container">
+        <table class="table table-bordered table-sm bg-secondary py-2">
+          <thead>
+            <tr>
+              <th>Course Code</th>
+              <th>Descriptive Titles</th>
+              <th>Units</th>
+              <th>Pre-requisite</th>
+              <th>Semester</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let yearLevel of getYearLevels()">
+              <tr>
+                <td class="bg-secondary text-white text-center" colspan="6" *ngIf="yearLevel === '1'">
+                  1st Year
+                </td>
+                <td class="bg-secondary text-white text-center" colspan="6" *ngIf="yearLevel === '2'">
+                  2nd Year
+                </td>
+                <td class="bg-secondary text-white text-center" colspan="6" *ngIf="yearLevel === '3'">
+                  3rd Year
+                </td>
+                <td class="bg-secondary text-white text-center" colspan="6" *ngIf="yearLevel === '4'">
+                  4th Year
+                </td>
+              </tr>
+              <tr *ngFor="let subject of groupedProspectus[yearLevel]">
+                <td>{{ subject.code }}</td>
+                <td>{{ subject.description }}</td>
+                <td>{{ subject.units }}</td>
+                <td>{{ subject.pre_requisite }}</td>
+                <td>{{ subject.semester }}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
 
-            <div class="text-end"></div>
-            <div class="opacity-0">spacer</div>
-          </div>
-        </div>
-        <div class="opacity-0">spacer</div>
+        <div class="text-end"></div>
         <div class="opacity-0">spacer</div>
       </div>
     </div>
+    <div class="opacity-0">spacer</div>
+    <div class="opacity-0">spacer</div>
   </div>
 </div>

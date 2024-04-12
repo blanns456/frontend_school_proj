@@ -1,48 +1,37 @@
-<div class="container-dashboard">
-  <app-student-sidebar></app-student-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-student-navbar></app-student-navbar>
-    <div *ngIf="alreadysubmitted" class="container-fluid vh-100 content">
-      <h2 class="h3 text-white">Course List</h2>
-      <div class="position-relative">
-        <div class="my-3 bg-white rounded">
-          <div class="bg-secondary text-white px-3 py-2">
-            <span
-              ><strong>{{ semester }} ({{ activateyr }})</strong></span
-            >
-          </div>
-          <div class="my-2 container-fluid">
-            <div>
-              <span
-                >Program:
-                <strong
-                  >Bachelor of Science in Business Administration Major in Human
-                  Resource Development Management</strong
-                ></span
-              >
-            </div>
-            <div>
-              <span>Available Units: <strong>24 Units</strong></span>
-            </div>
-            <div>
-              <span>Year Level: <strong>2nd Yr.</strong></span>
-            </div>
-          </div>
-          <div class="my-2 container">
-            <form>
-              <table class="table table-bordered py-2 text-center">
-                <thead>
-                  <tr>
-                    <th>Course Code.</th>
-                    <th>Descriptive Titles</th>
-                    <th>Units</th>
-                    <th>Pre-requisite</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- <tr>
+<div *ngIf="alreadysubmitted" class="container-fluid vh-100 content">
+  <h2 class="h3 text-white">Course List</h2>
+  <div class="position-relative">
+    <div class="my-3 bg-white rounded">
+      <div class="bg-secondary text-white px-3 py-2">
+        <span><strong>{{ semester }} ({{ activateyr }})</strong></span>
+      </div>
+      <div class="my-2 container-fluid">
+        <div>
+          <span>Program:
+            <strong>Bachelor of Science in Business Administration Major in Human
+              Resource Development Management</strong></span>
+        </div>
+        <div>
+          <span>Available Units: <strong>24 Units</strong></span>
+        </div>
+        <div>
+          <span>Year Level: <strong>2nd Yr.</strong></span>
+        </div>
+      </div>
+      <div class="my-2 container">
+        <form>
+          <table class="table table-bordered py-2 text-center">
+            <thead>
+              <tr>
+                <th>Course Code.</th>
+                <th>Descriptive Titles</th>
+                <th>Units</th>
+                <th>Pre-requisite</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
                     <td colspan="4"></td>
                     <td>
                       <input
@@ -55,38 +44,32 @@
                       />
                     </td>
                   </tr> -->
-                  <tr *ngFor="let subject of prospectus">
-                    <td>{{ subject.code }}</td>
-                    <td>{{ subject.description }}</td>
-                    <td>{{ subject.units }}</td>
-                    <td>{{ subject.pre_requisite }}</td>
-                    <td>
-                      <input
-                        type="checkbox"
-                        [value]="[subject.id, subject.units]"
-                        name="subjects"
-                        (change)="updateTotalUnits($event, subject.units)"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="4" class="text-end">Total Units</td>
-                    <td class="text-center">{{ totalUnits }}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="text-end">
-                <button class="btn btn-sm btn-success" (click)="onsubmit()">
-                  Submit
-                </button>
-              </div>
-              <div class="opacity-0">spacer</div>
-            </form>
+              <tr *ngFor="let subject of prospectus">
+                <td>{{ subject.code }}</td>
+                <td>{{ subject.description }}</td>
+                <td>{{ subject.units }}</td>
+                <td>{{ subject.pre_requisite }}</td>
+                <td>
+                  <input type="checkbox" [value]="[subject.id, subject.units]" name="subjects"
+                    (change)="updateTotalUnits($event, subject.units)" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" class="text-end">Total Units</td>
+                <td class="text-center">{{ totalUnits }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-end">
+            <button class="btn btn-sm btn-success" (click)="onsubmit()">
+              Submit
+            </button>
           </div>
-        </div>
-        <div class="opacity-0">spacer</div>
-        <div class="opacity-0">spacer</div>
+          <div class="opacity-0">spacer</div>
+        </form>
       </div>
     </div>
+    <div class="opacity-0">spacer</div>
+    <div class="opacity-0">spacer</div>
   </div>
 </div>

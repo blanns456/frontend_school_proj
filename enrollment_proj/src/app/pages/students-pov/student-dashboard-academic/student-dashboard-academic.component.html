@@ -1,97 +1,80 @@
-<div class="container-dashboard">
-  <app-student-sidebar></app-student-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-student-navbar></app-student-navbar>
-    <div class="container-fluid vh-100 content">
-      <h2 class="h3 text-white">
-        Academic Record
-      </h2>
-      <div class="position-relative">
-        <div class="my-3 bg-white rounded">
-          <div class="bg-secondary text-white px-3 py-2">Grade Evaluation</div>
-          <div class="d-flex gap-5">
-            <div class="search bg-white p-0 rounded">
-              <span class="semester-text px-3">Semester</span>
-              <form
-                action
-                class="mt-2">
-                <select
-                  name="semester"
-                  id="semester"
-                  class="form-select w-75 mx-auto">
-                  <option
-                    value
-                    disabled
-                    selected>
-                    Please Select Semeter
-                  </option>
-                  <option value="Summer 2023">Summer 2023</option>
-                  <option value="1st Trimester 2023">1st Trimester 2023</option>
-                  <option value="2nd Trimester 2023">2nd Trimester 2023</option>
-                  <option value="3rd Trimester 2023">3rd Trimester 2023</option>
-                </select>
-              </form>
-            </div>
-          </div>
-          <div class="my-2">
-            <table class="table table-bordered py-2">
-              <thead>
-                <tr>
-                  <th>Course No.</th>
-                  <th>Course Title</th>
-                  <th>Rating</th>
-                  <th>Units</th>
-                  <th>Weight Ave</th>
-                </tr>
-              </thead>
-              <tbody class="text-start">
-                <tr>
-                  <td>CC101</td>
-                  <td>
-                    Introduction to Computing with Keyboarding
-                  </td>
-                  <td>1.2</td>
-                  <td>3</td>
-                  <td>3.6</td>
-                </tr>
-                <tr>
-                  <td>CSS 1</td>
-                  <td>
-                    Install and Configure Computers/Set-up Computer Networks
-                  </td>
-                  <td>1.7</td>
-                  <td>3</td>
-                  <td>5.1</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>Total:</td>
-                  <td></td>
-                  <td>6</td>
-                  <td>8.7</td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td>Weighted GWA:</td>
-                  <td>1.44</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="opacity-0">spacer</div>
-          </div>
+<div class="container-fluid vh-100 content">
+  <h2 class="h3 text-white">
+    Academic Record
+  </h2>
+  <div class="position-relative">
+    <div class="my-3 bg-white rounded">
+      <div class="d-flex gap-5">
+        <div class="search bg-white p-0 rounded p-2">
+          <span class="semester-text px-3">Semester</span>
+          <form action class="mt-2">
+            <select name="semester" id="semester" class="form-select w-75 mx-auto">
+              <option value disabled selected>
+                Please Select Semeter
+              </option>
+              <option value="Summer 2023">Summer 2023</option>
+              <option value="1st Trimester 2023">1st Trimester 2023</option>
+              <option value="2nd Trimester 2023">2nd Trimester 2023</option>
+              <option value="3rd Trimester 2023">3rd Trimester 2023</option>
+            </select>
+          </form>
         </div>
-        <div class="opacity-0">spacer</div>
-        <div class="position-absolute bottom-0 end-0 bg-white fs-3 my-2 p-2 rounded-circle">
-          <a href>
-            <i class="fa-solid fa-print"></i>
-          </a>
-        </div>
+      </div>
+      <div class="my-2">
+        <table class="table table-bordered py-2">
+          <thead>
+            <tr>
+              <th>Course No.</th>
+              <th>Course Title</th>
+              <th>Rating</th>
+              <th>Units</th>
+              <th>Weight Ave</th>
+            </tr>
+          </thead>
+          <tbody class="text-start">
+            <tr>
+              <td>CC101</td>
+              <td>
+                Introduction to Computing with Keyboarding
+              </td>
+              <td>1.2</td>
+              <td>3</td>
+              <td>3.6</td>
+            </tr>
+            <tr>
+              <td>CSS 1</td>
+              <td>
+                Install and Configure Computers/Set-up Computer Networks
+              </td>
+              <td>1.7</td>
+              <td>3</td>
+              <td>5.1</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Total:</td>
+              <td></td>
+              <td>6</td>
+              <td>8.7</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>Weighted GWA:</td>
+              <td>1.44</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
         <div class="opacity-0">spacer</div>
       </div>
     </div>
-
+    <div class="opacity-0">spacer</div>
+    <div class="position-absolute bottom-0 end-0 bg-white fs-3 my-2 p-2 rounded-circle">
+      <a href>
+        <i class="fa-solid fa-print"></i>
+      </a>
+    </div>
+    <div class="opacity-0">spacer</div>
   </div>
 </div>
