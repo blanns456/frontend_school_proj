@@ -41,6 +41,10 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { MessageService } from 'primeng/api';
 import { AutoFocusModule } from 'primeng/autofocus';
 import { DividerModule } from 'primeng/divider';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { SidebarModule } from 'primeng/sidebar';
+import { AvatarModule } from 'primeng/avatar';
+import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
@@ -246,6 +250,10 @@ import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.compo
     CheckboxModule,
     AutoFocusModule,
     DividerModule,
+    MultiSelectModule,
+    SidebarModule,
+    AvatarModule,
+    TableModule,
     TagModule,
     CardModule,
     DialogModule,

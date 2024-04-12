@@ -9,9 +9,9 @@ import * as $ from 'jquery'; // kini sa pgdeclare nis $
 })
 export class AccountingSidebarComponent implements OnInit {
   constructor(private logincontroller: LoginController) {}
-
   accountingdata: any;
   accname: any;
+  sidebarVisible: boolean = false;
 
   ngOnInit(): void {
     $(document).ready(function () {
@@ -58,13 +58,13 @@ export class AccountingSidebarComponent implements OnInit {
       });
     });
 
-    this.accountingdata = this.logincontroller.getuserdetails();
-    // console.log(this.accountingdata);
+    // this.accountingdata = this.logincontroller.getuserdetails();
+    // // console.log(this.accountingdata);
 
-    this.accname =
-      this.accountingdata[0]['last_name'] +
-      ', ' +
-      this.accountingdata[0]['first_name'];
+    // this.accname =
+    //   this.accountingdata[0]['last_name'] +
+    //   ', ' +
+    //   this.accountingdata[0]['first_name'];
     // console.log(this.accname);
   }
 }

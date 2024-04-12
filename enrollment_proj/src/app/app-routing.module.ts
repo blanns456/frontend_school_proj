@@ -159,18 +159,15 @@ const routes: Routes = [
   {
     path: 'student-dashboard-parent',
     component: StudentDashboardParentComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-academic',
     component: StudentDashboardAcademicComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'accounting-dashboard-home',
     component: AccountingDashboardHomeComponent,
     title: 'Accounting | Home',
-    canActivate: [AuthGuard],
   },
   {
     path: 'accounting-dashboard-schoolfees',
@@ -312,17 +309,14 @@ const routes: Routes = [
   {
     path: 'student-dashboard-academic',
     component: StudentDashboardAcademicComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-financial',
     component: StudentDashboardFinancialComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'student-dashboard-enrollment',
     component: StudentDashboardEnrollmentComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'employee-reset-password',
@@ -339,13 +333,11 @@ const routes: Routes = [
   {
     path: 'registrar-semester',
     component: AddSemesterComponent,
-    canActivate: [AuthGuard],
   },
   // registrar routes
   {
     path: 'registrar-dashboard-home',
     component: RegistrarHomeComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'registrar-dashboard-applicants',
@@ -355,17 +347,14 @@ const routes: Routes = [
   {
     path: 'registrar-dashboard-enrolled',
     component: OfficiallyEnrolledComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'registrar-student-list',
     component: StudentGradesComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'registrar-prospectus-list',
     component: ProspectusComponent,
-    canActivate: [AuthGuard],
   },
   // signup staff route
   {

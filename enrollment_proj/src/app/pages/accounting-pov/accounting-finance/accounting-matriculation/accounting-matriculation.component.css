@@ -1,9 +1,9 @@
 .text-header {
-    background-color: #0287AF;
+  background-color: #0287af;
 }
 
 .btnAddFees {
-    background-color: #1E3050;
+  background-color: #1e3050;
 }
 
 ::-webkit-scrollbar {
@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E3050; 
+  background: #1e3050;
 }
 
 .containerTab {
@@ -19,22 +19,25 @@
   padding-top: 7%;
 }
 
-.contentTab{
+.contentTab {
   height: 100%;
   overflow-y: auto;
 }
 
 table th {
   color: #fff;
-  background-color: #0287AF;
+  background-color: #0287af;
 }
 
 table td a {
-    text-decoration: none;
-    color: #fff;
+  text-decoration: none;
+  color: #fff;
 }
 
-input[type=text], input[type=date], input[type=number], select {
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
   font-size: 1rem;
   width: 95%;
   padding: 10px 15px;
@@ -45,6 +48,10 @@ input[type=text], input[type=date], input[type=number], select {
 }
 
 .inputs:hover {
-  border-bottom: 3px solid #0287AF;
+  border-bottom: 3px solid #0287af;
 }
 
+:host ::ng-deep .p-multiSelect ul {
+  padding: 0;
+  margin: 0.5rem;
+}
