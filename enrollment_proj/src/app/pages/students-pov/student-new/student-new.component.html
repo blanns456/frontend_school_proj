@@ -28,7 +28,7 @@
       <div *ngIf="!otp">
         <form [formGroup]="signUpForm" (ngSubmit)="signUp()" novalidate>
           <div class="row pt-4 pb-3 px-3">
-            <div class="col-3">
+            <div class="col-lg-3 col-md-6">
               <div class="mb-3">
                 <label for="firstname" class="form-label">
                   First Name<span class="text-danger">*</span> <br /><br
@@ -46,7 +46,7 @@
                 />
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-6">
               <div>
                 <div class="mb-3">
                   <label for="lastname" class="form-label">
@@ -64,7 +64,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-6">
               <div class="mb-1">
                 <label for="middlename" class="form-label">
                   Middle Name <br />
@@ -87,7 +87,7 @@
                 />
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-6">
               <div>
                 <div class="mb-3">
                   <label for="suffix" class="form-label">
@@ -107,10 +107,10 @@
             </div>
           </div>
           <div class="row px-3">
-            <div class="col-3">
+            <div class="col-lg-3 col-md-6 col-12">
               <div class="mb-3">
                 <label for="gender" class="form-label">
-                  Gender<span class="text-danger">*</span>
+                  Gender<span class="text-danger me-lg-0 me-md-0 me-3">*</span>
                 </label>
                 <p-dropdown
                   formControlName="gender"
@@ -133,7 +133,7 @@
                 </select> -->
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-6">
               <div class="mb-3">
                 <label for="civil_status" class="form-label">
                   Civil Status<span class="text-danger">*</span>
@@ -149,7 +149,7 @@
                 ></p-dropdown>
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-6">
               <div class="mb-3">
                 <label for="email" class="form-label">
                   Email Address<span class="text-danger">*</span>
@@ -166,7 +166,7 @@
                 />
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-lg-3 col-md-6">
               <div class="mb-3">
                 <label for="contact_number" class="form-label">
                   Contact Number<span class="text-danger">*</span>
@@ -192,7 +192,7 @@
             </div>
           </div>
           <div class="row px-3">
-            <div class="col-4">
+            <div class="col-lg-4 col-md-5 col-6">
               <div class="mb-3">
                 <label for="birth_date" class="form-label">
                   Birth Date<span class="text-danger">*</span>
@@ -209,7 +209,7 @@
                 </p-calendar>
               </div>
             </div>
-            <div class="col-8">
+            <div class="col-lg-8 col-md-7 col-6">
               <div class="mb-3">
                 <label for="birth_place" class="form-label">
                   Birth Place<span class="text-danger">*</span>
@@ -287,7 +287,7 @@
           </div>
           <hr />
           <div class="row px-3">
-            <div class="col-6">
+            <div class="col-lg-6 col-md-6 col-12">
               <div class="mb-3">
                 <label for="enrollIn" class="form-label">
                   Interested to Enroll In:<span class="text-danger">*</span>
@@ -319,7 +319,7 @@
                 </select> -->
               </div>
             </div>
-            <div class="col-6">
+            <div class="col-lg-6 col-md-6 col-12">
               <div class="mb-3 input-holder">
                 <label for="program" class="form-label">
                   Program<span class="text-danger">*</span>
@@ -355,7 +355,7 @@
             </div>
           </div>
           <div class="row px-3">
-            <div class="col-4">
+            <div class="col-lg-4 col-md-4 col-6">
               <div class="mb-3 input-holder">
                 <label for="semester" class="form-label">
                   Semester
@@ -374,7 +374,7 @@
                 />
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4 col-md-4 col-6">
               <div class="mb-3 input-holder">
                 <label for="student_yr_level" class="form-label">
                   Year Level
@@ -406,7 +406,7 @@
                 </select> -->
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-lg-4 col-md-4 col-12">
               <div class="mb-3 input-holder">
                 <label for="student_status" class="form-label">
                   Student Status
@@ -438,7 +438,7 @@
             <button
               [disabled]="signUpForm.invalid"
               [disabled]="!signUpForm.valid"
-              class="btn btn-primary p-2 w-25 login-button"
+              class="btn btn-primary p-2 w-25 login-button w-auto"
             >
               Create Account
             </button>

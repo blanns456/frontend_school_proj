@@ -119,6 +119,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
 import { FooterNavComponent } from './footer-nav/footer-nav.component';
+import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
 
 @NgModule({
   declarations: [
@@ -214,6 +215,7 @@ import { FooterNavComponent } from './footer-nav/footer-nav.component';
     DepartmentUiComponent,
     LoadingPageComponent,
     FooterNavComponent,
+    CceUiComponent,
   ],
   imports: [
     BrowserModule,
