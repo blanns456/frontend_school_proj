@@ -34,3 +34,14 @@ ul {
 .foot2 {
   background-color: var(--blue);
 }
+
+@media only screen and (max-width: 768px) {
+  .footShow img {
+    width: 150px;
+  }
+}
+@media only screen and (max-width: 574px) {
+  .footShow img {
+    width: 200px;
+  }
+}

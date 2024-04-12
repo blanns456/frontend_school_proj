@@ -7,22 +7,47 @@
       <img src="../../../assets/misc/ascb_logo.png" alt class="img-responsive w-100" />
     </div>
     <div class="row g-1">
-      <div class="col-6 px-3 d-flex align-items-center justify-content-center my-0">
+      <div
+        class="col-lg-6 col-md-12 px-3 pt-3 d-flex align-items-center justify-content-center my-0 d-none d-md-none d-lg-block">
         <img src="../../../assets/misc/container_image_1.png" alt="logo" class="img-responsive mw-100" />
       </div>
-      <div class="col-6">
+      <div class="col-lg-6 col-md-12">
         <div class="img-responsive w-100 text-center">
           <img src="../../../assets/misc/70th_ascb_logo.png" alt="70th logo" />
         </div>
         <form (ngSubmit)="submit()" [formGroup]="form">
-          <div class="text-center mt-3">
-            <label for="username" class="form-label"></label>
-            <input pInputText type="text" placeholder="Username" formControlName="username" [style]="{width:'76%'}" />
+          <div class="text-center formUse">
+            <label for="username" class="formUse form-label"></label>
+            <input pInputText type="text" placeholder="Username" formControlName="username"
+              [style]="{ width: '76%' }" />
+            <!-- <input
+              type="text"
+              formControlName="username"
+              class="form-control fw-bold mx-auto py-2 shadow-xl"
+              name="username"
+              id="username"
+              placeholder="USERNAME"
+
+            /> -->
+
+            <!-- <div
+              *ngIf="
+                form.controls['username'].invalid &&
+                (form.controls['username'].dirty ||
+                  form.controls['username'].touched)
+              "
+            >
+              <div
+                class="text-danger text-center"
+                *ngIf="form.controls['username'].errors?.['required']"
+              >
+                Username is required.
+              </div>
+            </div> -->
           </div>
           <div class="mt-2 text-center">
-            <label for="password" class="form-label"></label>
-            <p-password formControlName="password" [feedback]="false" [toggleMask]="true" placeholder="Password"
-              class="w-100">
+            <label for="password" class="formPass form-label"></label>
+            <p-password formControlName="password" [feedback]="false" [toggleMask]="true" placeholder="Password">
             </p-password>
           </div>
           <div class="mt-4 text-center">
@@ -38,7 +63,7 @@
             </p>
           </div>
           <div class="col-6">
-            <p class="text-start mt-3">
+            <p class="text-center mt-3">
               <a routerLink="/forgot-password" class="fw-normal text-primary">
                 Forgot Password?
               </a>

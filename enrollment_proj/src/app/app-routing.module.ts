@@ -75,6 +75,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
+import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -85,6 +86,8 @@ const routes: Routes = [
   { path: 'enroll-college', component: EnrollCollegeComponent },
   { path: 'registration-req', component: RegistrationReqsComponent },
   { path: 'department-ui', component: DepartmentUiComponent },
+  { path: 'cce-ui', component: CceUiComponent },
+
   {
     path: 'enroll-college-student-information',
     component: EnrollCollege2Component,

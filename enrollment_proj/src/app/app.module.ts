@@ -23,6 +23,8 @@ import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
 
+
+import { ScrollTopModule } from 'primeng/scrolltop';
 import { ButtonModule } from 'primeng/button';
 import { GalleriaModule } from 'primeng/galleria';
 import { PasswordModule } from 'primeng/password';
@@ -121,7 +123,7 @@ import { RegistrationReqsComponent } from './pages/homepage/requirements/registr
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
 import { FooterNavComponent } from './footer-nav/footer-nav.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
-
+import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
 
 @NgModule({
   declarations: [
@@ -218,6 +220,7 @@ import { StudentParentComponent } from './pages/students-pov/student-parent/stud
     LoadingPageComponent,
     FooterNavComponent,
     StudentParentComponent,
+    CceUiComponent,
   ],
   imports: [
     BrowserModule,
@@ -245,10 +248,14 @@ import { StudentParentComponent } from './pages/students-pov/student-parent/stud
     DividerModule,
     TagModule,
     CardModule,
-    DialogModule
+    DialogModule,
+    ScrollTopModule,
   ],
 
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, MessageService],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    MessageService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -2,12 +2,6 @@
   user-select: none;
 }
 
-.navbar {
-  background-color: var(--midnight);
-  font-weight: 600;
-  font-size: 10pt;
-}
-
 .headicon {
   width: 60;
 }
@@ -57,6 +51,11 @@
   padding-bottom: 0;
 }
 
+.list img {
+  aspect-ratio: 1/1;
+  width: 325;
+}
+
 .size {
   font-size: 15px;
 }
@@ -76,7 +75,36 @@ ul {
   background-color: var(--blue);
 }
 
-img {
-  aspect-ratio: 1/1;
+.deptCard {
+  aspect-ratio: 3/2;
+  display: block;
   object-fit: contain;
+  object-fit: cover;
+  /* max-width: 100%; */
+}
+
+@media only screen and (max-width: 768px) {
+  .list img {
+    aspect-ratio: 1/1;
+    width: 275;
+  }
+}
+
+@media only screen and (max-width: 574px) {
+  .hero h1 {
+    font-size: 60px;
+  }
+
+  .list img {
+    aspect-ratio: 1/1;
+    width: 350;
+  }
+
+  .showCase h2 {
+    text-align: center;
+  }
+
+  .showCase img {
+    display: none;
+  }
 }

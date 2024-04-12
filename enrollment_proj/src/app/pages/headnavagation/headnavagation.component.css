@@ -9,14 +9,18 @@
   transition: 0.1s linear;
 }
 
-.headicon {
-  width: 60;
-}
-
 .active {
   color: rgb(0, 171, 250) !important;
 }
 
 .nav-item a {
   color: white;
+}
+
+.home1 {
+  color: #333333;
+}
+
+.offTitle {
+  color: #191970;
 }
