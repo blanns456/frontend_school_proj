@@ -30,7 +30,7 @@ export class ProspectusStudentsComponent implements OnInit {
     private college_controller: CollegeEnrollmentController,
     private logincontroller: LoginController,
     private semester_controller: SemesterController
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.studentdata = this.logincontroller.getuserdetails();
@@ -49,10 +49,8 @@ export class ProspectusStudentsComponent implements OnInit {
       .subscribe((prospectus_filter) => {
         this.data = prospectus_filter;
         this.prospectus = this.data[0];
-        // console.log(this.prospectus);
 
         this.alreadysubmit();
-        // console.log(prospectus_filter);
       });
   }
 

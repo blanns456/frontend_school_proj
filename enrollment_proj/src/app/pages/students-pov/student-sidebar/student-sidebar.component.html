@@ -8,8 +8,12 @@
       </a>
     </div>
     <div class="text-start">
-      <img src="../../../assets/misc/default.jpg" alt="avatar" id="profile" width="60" height="60"
-        class="img-thumbnail mt-4 mx-3" />
+      <div class="mx-3 pt-3">
+        <p-avatar [image]="'http://127.0.0.1:8000/images/user-profile/' + data?.profile" styleClass="mr-2" size="xlarge"
+          shape="circle"></p-avatar>
+      </div>
+      <!-- <img [src]="'http://127.0.0.1:8000/images/user-profile/' + data?.profile" alt="avatar" id="profile" width="60"
+        height="60" class="img-thumbnail mt-4 mx-3" /> -->
       <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">{{ data?.lastname }}, {{ data?.firstname }}</h2>
       <div class="text-white ms-3">
         <ng-container *ngIf="data">

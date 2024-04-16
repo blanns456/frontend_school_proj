@@ -1,23 +1,15 @@
 <div class="sidebar position-fixed">
   <div class="logout position-relative">
     <div class="text-end">
-      <a
-        href="#"
-        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0"
-      >
+      <a href="#"
+        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0">
         <i class="fa-solid fa-right-from-bracket"></i>
         Logout
       </a>
     </div>
     <div class="text-start">
-      <img
-        src="../../../assets/misc/default.jpg"
-        alt="avatar"
-        id="profile"
-        width="60"
-        height="60"
-        class="img-thumbnail mt-4 mx-3"
-      />
+      <img src="../../../assets/misc/default.png" alt="avatar" id="profile" width="60" height="60"
+        class="img-thumbnail mt-4 mx-3" />
       <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">
         {{ accname }}
       </h2>
@@ -26,151 +18,103 @@
   </div>
   <div class="links">
     <div id="list-example" class="list-group">
-      <a
-        class="py-3 mt-2 list-group-item list-group-item-action home"
-        routerLink="/accounting-dashboard-home"
-        routerLinkActive="active"
-      >
+      <a class="py-3 mt-2 list-group-item list-group-item-action home" routerLink="/accounting-dashboard-home"
+        routerLinkActive="active">
         <i class="mx-2 fa-solid fa-house"></i>
         Home
       </a>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action menu-item"
-        id="accSetupToggle"
-        routerLinkActive="active"
-      >
+      <a class="my-1 py-3 list-group-item list-group-item-action menu-item" id="accSetupToggle"
+        routerLinkActive="active">
         <i class="mx-2 fa-solid fa-book-open-reader"></i>
         Accounting Setup
         <i class="fa-solid fa-caret-down"></i>
       </a>
       <ul class="accSetupToggle-sub">
         <li>
-          <a
-            routerLink="/accounting-dashboard-schoolfees"
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+          <a routerLink="/accounting-dashboard-schoolfees" routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
             School Fees
           </a>
         </li>
         <li>
-          <a
-            routerLink="/accounting-dashboard-labfees"
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3 my-1"
-            ><i class="fa-solid fa-notes-medical mx-2"></i>
+          <a routerLink="/accounting-dashboard-labfees" routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3 my-1"><i class="fa-solid fa-notes-medical mx-2"></i>
             Lab Fees
           </a>
         </li>
       </ul>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action menu-item"
-        routerLinkActive="active"
-        id="accReportsToggle"
-      >
+      <a class="my-1 py-3 list-group-item list-group-item-action menu-item" routerLinkActive="active"
+        id="accReportsToggle">
         <i class="mx-2 fa-solid fa-file-pen"></i>
         Accounting Reports
         <i class="fa-solid fa-caret-down"></i>
       </a>
       <ul class="accReportsToggle-sub">
         <li>
-          <a
-            routerLink="/accounting-dashboard-soa"
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+          <a routerLink="/accounting-dashboard-soa" routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
             Statement of Accounts
           </a>
         </li>
         <li>
-          <a
-            routerLink="/accounting-dashboard-studentledger"
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3 my-1"
-            ><i class="fa-solid fa-notes-medical mx-2"></i>
+          <a routerLink="/accounting-dashboard-studentledger" routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3 my-1"><i class="fa-solid fa-notes-medical mx-2"></i>
             Student's Ledger
           </a>
         </li>
       </ul>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action menu-item"
-        routerLinkActive="active"
-        id="accFinanceToggle"
-      >
+      <a class="my-1 py-3 list-group-item list-group-item-action menu-item" routerLinkActive="active"
+        id="accFinanceToggle">
         <i class="mx-2 fa-solid fa-hand-holding-dollar"></i>
         Accounting Finance
         <i class="fa-solid fa-caret-down"></i>
       </a>
       <ul class="accFinanceToggle-sub">
         <li>
-          <a
-            routerLink="/accounting-matriculation"
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+          <a routerLink="/accounting-matriculation" routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
             Matriculation
           </a>
         </li>
       </ul>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        routerLink="/accounting-item-management"
-        routerLinkActive="active"
-      >
+      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/accounting-item-management"
+        routerLinkActive="active">
         <i class="mx-2 fa-solid fa-list-check"></i>
         Item Management
       </a>
-      <a
-        class="my-1 py-3 list-group-item list-group-item-action menu-item"
-        id="telleringToggle"
-      >
+      <a class="my-1 py-3 list-group-item list-group-item-action menu-item" id="telleringToggle">
         <i class="mx-2 fa-solid fa-user"></i>
         Tellering
         <i class="fa-solid fa-caret-down"></i>
       </a>
       <ul class="telleringToggle-sub">
         <li>
-          <a
-            routerLink="/accounting-tellering-list"
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+          <a routerLink="/accounting-tellering-list" routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
             Tellering List
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dailycollection-setup"
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3 my-1"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+          <a routerLink="/dailycollection-setup" routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3 my-1"><i class="fa-solid fa-truck-fast mx-2"></i>
             Daily Collection Setup
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dailycollection-reports"
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-notes-medical mx-2"></i>
+          <a routerLink="/dailycollection-reports" routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-notes-medical mx-2"></i>
             Daily Collection Reports
           </a>
         </li>
         <li>
-          <a
-            routerLink="#"
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3 my-1"
-            ><i class="fa-solid fa-notes-medical mx-2"></i>
+          <a routerLink="#" routerLinkActive="active" class="list-group-item list-group-item-action py-3 my-1"><i
+              class="fa-solid fa-notes-medical mx-2"></i>
             Daily Collection Breakdown
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dailyconsolidated-reports"
-            routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3 my-1"
-            ><i class="fa-solid fa-notes-medical mx-2"></i>
+          <a routerLink="/dailyconsolidated-reports" routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3 my-1"><i class="fa-solid fa-notes-medical mx-2"></i>
             Daily Consolidated Reports
           </a>
         </li>

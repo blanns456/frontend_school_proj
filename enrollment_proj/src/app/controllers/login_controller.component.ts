@@ -10,17 +10,12 @@ export class LoginController {
   userdata: any;
   data: any;
   studentdata: any;
-<<<<<<< HEAD
   // userinfo: any;
   // loadingdata = false;
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) {}
-=======
-  user_id: any;
   constructor(private http: HttpClient) { }
->>>>>>> development
 
   login(user: { username: string; password: string }) {
     return this.http.post(this.Root_URL + 'login', user);
@@ -46,7 +41,7 @@ export class LoginController {
 
   reloadstudentdatainfo() {
     this.getuserdetails();
-    return this.http.get(this.Root_URL + 'showstudentdetails/' + this.user_id);
+    // return this.http.get(this.Root_URL + 'showstudentdetails/' + this.user_id);
   }
 
   studentAcad(user: { id: number }) {
