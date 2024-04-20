@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ProspectusService {
+export class EnrollmentService {
+
   constructor(private http: HttpClient) { }
 
   readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
@@ -17,17 +18,13 @@ export class ProspectusService {
     return this.http.get(this.Root_URL + 'student-all-prospectus', { headers: this.headers });
   }
 
-  student_academics() {
-    return this.http.get(this.Root_URL + 'student-academics', { headers: this.headers });
+  college_enrollment(enrollment_transaction: {
+    subjects: string;
+  }) {
+    return this.http.post(this.Root_URL + 'enrollment-transaction', enrollment_transaction, { headers: this.headers });
   }
 
-  student_current_prospectus() {
-    return this.http.get(this.Root_URL + 'student-prospectus', { headers: this.headers });
+  my_enrollment() {
+    return this.http.get(this.Root_URL + 'my_enrollment/', { headers: this.headers })
   }
-
-  submitted_already() {
-    return this.http.get(this.Root_URL + 'already-submitted', { headers: this.headers });
-  }
-
-
 }

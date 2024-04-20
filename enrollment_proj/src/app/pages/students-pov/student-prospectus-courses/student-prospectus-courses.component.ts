@@ -32,7 +32,7 @@ export class StudentProspectusCoursesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.prospectus_get.student_prospectus().subscribe({
+    this.prospectus_get.student_all_prospectus().subscribe({
       next: (res) => {
         this.data = res;
         this.prospectus = this.data[0];

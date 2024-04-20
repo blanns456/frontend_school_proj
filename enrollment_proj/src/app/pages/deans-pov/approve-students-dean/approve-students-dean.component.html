@@ -1,75 +1,53 @@
-<div class="container-dashboard">
-  <app-deans-sidebar></app-deans-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-deans-navbar></app-deans-navbar>
-    <div class="container-fluid containerTab">
-      <!-- <div class="divider mb-4"></div> -->
-      <div class="contentTab mb-3 bg-white w-100 rounded">
-        <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
-          <h3 class="text-white fw-bold">Subject List</h3>
-        </div>
-        <div class="container my-4">
-          <table id="example" #dataTable class="table table-striped">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Course</th>
-                <th>Year</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let approve of approveStud">
-                <td>
-                  {{ approve.lastname }},{{ approve.firstname }}
-                  {{ approve.middlename }}
-                </td>
-                <td>{{ approve.course }}</td>
-                <td *ngIf="approve.student_yr_lvl == '1'">1st Year</td>
-                <td *ngIf="approve.student_yr_lvl == '2'">2nd Year</td>
-                <td *ngIf="approve.student_yr_lvl == '3'">3rd Year</td>
-                <td *ngIf="approve.student_yr_lvl == '4'">4th Year</td>
-                <td>{{ approve.student_status }}</td>
-                <td>
-                  <button
-                    class="btn btn-success btn-sm"
-                    (click)="approvestudent(approve.acad_records_id)"
-                  >
-                    Approve
-                  </button>
-                  <button class="btn btn-danger btn-sm">Delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+<div class="container-fluid containerTab">
+  <!-- <div class="divider mb-4"></div> -->
+  <div class="py-3">
+    <p-card header="Courses Approval">
+      <div class="container my-4">
+        <table id="example" #dataTable class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Course</th>
+              <th>Year</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let approve of approveStud">
+              <td>
+                {{ approve.lastname }},{{ approve.firstname }}
+                {{ approve.middlename }}
+              </td>
+              <td>{{ approve.course }}</td>
+              <td *ngIf="approve.student_yr_lvl == '1'">1st Year</td>
+              <td *ngIf="approve.student_yr_lvl == '2'">2nd Year</td>
+              <td *ngIf="approve.student_yr_lvl == '3'">3rd Year</td>
+              <td *ngIf="approve.student_yr_lvl == '4'">4th Year</td>
+              <td>{{ approve.student_status }}</td>
+              <td>
+                <button class="btn btn-success btn-sm" (click)="approvestudent(approve.acad_records_id)">
+                  Approve
+                </button>
+                <button class="btn btn-danger btn-sm">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
+    </p-card>
   </div>
 </div>
 
 <!-- MODAL -->
-<div
-  class="modal fade"
-  id="approveGrade"
-  tabindex="-1"
-  aria-labelledby="approveGradeLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="approveGrade" tabindex="-1" aria-labelledby="approveGradeLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5 fw-bold" id="approveGradeLabel">
           Subject Information
         </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form class="m-2 px-2">
@@ -77,60 +55,28 @@
             <div class="inputGroup row d-flex align-items-center my-3">
               <div class="col-4">
                 <label for="studName">Instructor</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="studName"
-                  name="studName"
-                  value="Alfonso Jose M."
-                  readonly
-                />
+                <input class="inputs" type="text" id="studName" name="studName" value="Alfonso Jose M." readonly />
               </div>
               <div class="col-4">
                 <label for="schoolyr">School Year:</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="schoolyr"
-                  name="schoolyr"
-                  value="A.Y 2022-2023"
-                  readonly
-                />
+                <input class="inputs" type="text" id="schoolyr" name="schoolyr" value="A.Y 2022-2023" readonly />
               </div>
               <div class="divider my-4 w-100"></div>
               <span class="caption-top">Information</span>
               <div class="col-9 mt-3">
                 <label for="subName">Subject Name:</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="subName"
-                  name="subName"
-                  value="CC 101/INTRODUCTION TO COMPUTING WITH KEYBOARDING"
-                  readonly
-                />
+                <input class="inputs" type="text" id="subName" name="subName"
+                  value="CC 101/INTRODUCTION TO COMPUTING WITH KEYBOARDING" readonly />
               </div>
               <div class="col-5 my-4">
                 <label for="section">Section</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="section"
-                  name="section"
-                  value="BSIT-1A - 2nd Trimester"
-                  readonly
-                />
+                <input class="inputs" type="text" id="section" name="section" value="BSIT-1A - 2nd Trimester"
+                  readonly />
               </div>
               <div class="col-6">
                 <label for="department">Department</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="department"
-                  name="department"
-                  value="College of Computer Education"
-                  readonly
-                />
+                <input class="inputs" type="text" id="department" name="department"
+                  value="College of Computer Education" readonly />
               </div>
             </div>
           </div>

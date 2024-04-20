@@ -76,6 +76,7 @@ import { RegistrationReqsComponent } from './pages/homepage/requirements/registr
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
 import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
+import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -115,6 +116,7 @@ const routes: Routes = [
     path: 'student',
     component: StudentParentComponent,
     canActivate: [AuthGuard],
+    data: { allowedRoles: ['college'] },
     children: [
       {
         path: '',
@@ -148,6 +150,45 @@ const routes: Routes = [
       {
         path: 'enrollment',
         component: StudentDashboardEnrollmentComponent,
+      },
+    ]
+  },
+  {
+    path: 'dean',
+    component: DeanMainComponent,
+    canActivate: [AuthGuard],
+    data: { allowedRoles: ['dean'] },
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        component: DeansDashboardHomeComponent,
+      },
+      {
+        path: 'courses',
+        component: DeansSubjectlistComponent,
+      },
+      {
+        path: 'classrooms',
+        component: DeansClassroomComponent,
+        title: 'Deans | Classroom',
+      },
+      {
+        path: 'assigning',
+        component: DeansAssignSubjectsComponent,
+        title: 'Deans | Assign Subjects',
+      },
+      {
+        path: 'approval-grade',
+        component: DeansGradeApprovalComponent,
+      },
+      {
+        path: 'courses-approval',
+        component: ApproveStudentsDeanComponent,
       },
     ]
   },
@@ -228,32 +269,6 @@ const routes: Routes = [
     path: 'dailyconsolidated-reports',
     component: DailyconsolidatedReportsComponent,
     title: 'Daily Consolidated Reports',
-  },
-  {
-    path: 'deans-home',
-    component: DeansDashboardHomeComponent,
-  },
-  {
-    path: 'deans-gradeApproval',
-    component: DeansGradeApprovalComponent,
-  },
-  {
-    path: 'deans-prospectus-approval',
-    component: ApproveStudentsDeanComponent,
-  },
-  {
-    path: 'deans-assignSubject',
-    component: DeansAssignSubjectsComponent,
-    title: 'Deans | Assign Subjects',
-  },
-  {
-    path: 'deans-classroom',
-    component: DeansClassroomComponent,
-    title: 'Deans | Classroom',
-  },
-  {
-    path: 'deans-subjectlist',
-    component: DeansSubjectlistComponent,
   },
   {
     path: 'trustfund-items',

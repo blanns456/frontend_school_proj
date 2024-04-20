@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class UpdateStudentServiceService {
+export class DeanServicesService {
+
 
   constructor(private http: HttpClient) { }
 
@@ -14,13 +15,12 @@ export class UpdateStudentServiceService {
     Authorization: `Bearer ${this.token}`,
   });
 
-  student_information() {
-    return this.http.get(this.Root_URL + 'showstudentdetails', { headers: this.headers });
-  }
-
-  updateStudent(data: FormData) {
-    console.log(data);
-    return this.http.post(this.Root_URL + 'update-student', data, { headers: this.headers });
+  dean_details() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get(this.Root_URL + 'dean-details', { headers: headers });
   }
 
 }

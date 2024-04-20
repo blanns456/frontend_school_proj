@@ -1,4 +1,4 @@
-<app-student-navbar></app-student-navbar>
+<!-- <app-student-navbar></app-student-navbar> -->
 <div class="container student-info pb-3">
   <p-card>
     <div class="d-flex justify-content-between">
@@ -12,11 +12,14 @@
     <form action="">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-6 mb-3"><img class="img-thumbnail"
+          <div class="col-6 mb-3">
+            <img *ngIf="!data?.signature" class="img-thumbnail" [src]="'assets/misc/homepage/default.png'" alt="">
+            <img *ngIf="data?.signature" class="img-thumbnail"
               [src]="'http://127.0.0.1:8000/images/user-profile/' + data?.profile" alt="">
           </div>
           <div class="col-6  mb-3">
-            <img class="img-thumbnail" [src]="data?.signature" alt="">
+            <img *ngIf="data?.signature" class="img-thumbnail" [src]="data?.signature" alt="">
+            <img *ngIf="!data?.signature" class="img-thumbnail" [src]="'assets/misc/homepage/default.png'" alt="">
           </div>
           <div class="col-lg-3 mb-2">
             <div class="flex flex-column">
@@ -277,3 +280,4 @@
     </form>
   </p-card>
 </div>
+<p-toast></p-toast>

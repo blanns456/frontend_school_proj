@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LoginController } from 'src/app/controllers/login_controller.component';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-student-dashboard-information',
@@ -10,11 +11,13 @@ import { LoginController } from 'src/app/controllers/login_controller.component'
 export class StudentDashboardInformationComponent implements OnInit {
   data: any;
   date: any;
+  showToastNotification: boolean = false;
 
   @ViewChild('canvas') canvasEl!: ElementRef;
   constructor(
     private logincontroller: LoginController,
-    private http: HttpClient
+    private http: HttpClient,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +38,7 @@ export class StudentDashboardInformationComponent implements OnInit {
           console.error('Error:', error);
         }
       });
+
 
   }
 

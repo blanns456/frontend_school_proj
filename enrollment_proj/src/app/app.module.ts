@@ -130,6 +130,7 @@ import { FooterNavComponent } from './footer-nav/footer-nav.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
 import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
 import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
+import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 
 @NgModule({
   declarations: [
@@ -228,6 +229,7 @@ import { UpdateInfoComponent } from './pages/students-pov/update-info/update-inf
     StudentParentComponent,
     CceUiComponent,
     UpdateInfoComponent,
+    DeanMainComponent,
   ],
   imports: [
     BrowserModule,

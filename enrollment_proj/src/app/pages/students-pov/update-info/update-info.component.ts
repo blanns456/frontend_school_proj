@@ -48,13 +48,13 @@ export class UpdateInfoComponent {
   city: any = City;
   barangay: any = Barangay;
 
-  selectedRegion: any; // Hold the selected region object
-  filteredProvinces: any[] = []; // Hold filtered provinces based on selected region
-  selectedProvince: any; // Hold the selected province object
-  filteredCities: any[] = []; // Hold filtered cities based on selected province
-  selectedCity: any; // Hold the selected city object
-  filteredBarangays: any[] = []; // Hold filtered barangays based on selected city
-  selectedBarangay: any; // Hold the selected barangay object
+  selectedRegion: any;
+  filteredProvinces: any[] = [];
+  selectedProvince: any;
+  filteredCities: any[] = [];
+  selectedCity: any;
+  filteredBarangays: any[] = [];
+  selectedBarangay: any;
 
   signatureNeeded!: boolean;
   signaturePad!: SignaturePad;
@@ -171,6 +171,26 @@ export class UpdateInfoComponent {
             contact_number: this.data.contact_number,
             civil_status: this.data.civil_status,
             birth_place: this.data.birth_place,
+            elem_school: this.data.elem_school,
+            elem_yr: this.data.elem_yr,
+            jhs_school: this.data.jhs_school,
+            jhs_yr: this.data.jhs_yr,
+            shs_school: this.data.shs_school,
+            shs_yr: this.data.shs_yr,
+            last_school: this.data.last_school,
+            last_school_year: this.data.last_school_year,
+            father_name: this.data.father_name,
+            father_employed: this.data.father_employed,
+            father_occupation: this.data.father_occupation,
+            father_contact: this.data.father_contact,
+            mother_name: this.data.mother_name,
+            mother_employed: this.data.mother_employed,
+            mother_occupation: this.data.mother_occupation,
+            mother_contact: this.data.mother_contact,
+            guardian_name: this.data.guardian_name,
+            guardian_employed: this.data.guardian_employed,
+            guardian_occupation: this.data.guardian_occupation,
+            guardian_contact: this.data.guardian_contact,
           });
         },
         error: (error: any) => {
@@ -288,7 +308,12 @@ export class UpdateInfoComponent {
     const formData = new FormData();
 
     formData.append('firstname', this.update_student.controls['firstname'].value);
-    formData.append('middlename', this.update_student.controls['middlename'].value);
+    if (this.update_student.controls['middlename'].value === 'N/A') {
+      formData.append('middlename', '');
+
+    } else {
+      formData.append('middlename', this.update_student.controls['middlename'].value);
+    }
     formData.append('lastname', this.update_student.controls['lastname'].value);
     formData.append('suffix', this.update_student.controls['suffix'].value);
     formData.append('gender', this.update_student.controls['gender'].value);
@@ -299,8 +324,8 @@ export class UpdateInfoComponent {
     formData.append('email', this.update_student.controls['email'].value);
     formData.append('birthdate', this.update_student.controls['birthdate'].value);
     formData.append('birth_place', this.update_student.controls['birth_place'].value);
-    formData.append('home_address', `${this.update_student.controls['home_street'].value}, ${this.update_student.controls['home_barangay'].value} ${this.update_student.controls['home_city'].value} ${this.update_student.controls['home_province'].value} ${this.update_student.controls['home_region'].value} ${this.update_student.controls['home_zip'].value}`);
-    formData.append('present_address', `${this.update_student.controls['present_street'].value}, ${this.update_student.controls['present_barangay'].value} ${this.update_student.controls['present_city'].value} ${this.update_student.controls['present_province'].value} ${this.update_student.controls['present_region'].value} ${this.update_student.controls['present_zip'].value}`);
+    formData.append('home_address', `${this.update_student.controls['home_street'].value} ${this.update_student.controls['home_barangay'].value} ${this.update_student.controls['home_city'].value} ${this.update_student.controls['home_province'].value} ${this.update_student.controls['home_region'].value} ${this.update_student.controls['home_zip'].value}`);
+    formData.append('present_address', `${this.update_student.controls['present_street'].value} ${this.update_student.controls['present_barangay'].value} ${this.update_student.controls['present_city'].value} ${this.update_student.controls['present_province'].value} ${this.update_student.controls['present_region'].value} ${this.update_student.controls['present_zip'].value}`);
     formData.append('elem_school', this.update_student.controls['elem_school'].value);
     formData.append('elem_yr', this.update_student.controls['elem_yr'].value);
     formData.append('jhs_school', this.update_student.controls['jhs_school'].value);
@@ -371,7 +396,7 @@ export class UpdateInfoComponent {
           summary: 'Updated',
           detail: 'Successfully!',
         });
-        window.location.reload();
+        // window.location.reload();
       },
       error: (error) => {
         // Handle the error
