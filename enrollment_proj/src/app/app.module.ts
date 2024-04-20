@@ -23,7 +23,6 @@ import { AngularSignaturePadModule } from '@almothafar/angular-signature-pad';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginationComponent } from './pages/mat-pagination/mat-pagination.component';
 
-
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { ButtonModule } from 'primeng/button';
 import { GalleriaModule } from 'primeng/galleria';
@@ -48,6 +47,9 @@ import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TabViewModule } from 'primeng/tabview';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -128,6 +130,7 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
 import { FooterNavComponent } from './footer-nav/footer-nav.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
 import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
+import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-management/item-modals/item-modals.component';
 
 @NgModule({
   declarations: [
@@ -225,6 +228,7 @@ import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.compo
     FooterNavComponent,
     StudentParentComponent,
     CceUiComponent,
+    ItemModalsComponent,
   ],
   imports: [
     BrowserModule,
@@ -258,6 +262,9 @@ import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.compo
     CardModule,
     DialogModule,
     ScrollTopModule,
+    InputNumberModule,
+    ConfirmDialogModule,
+    TabViewModule,
   ],
 
   providers: [
@@ -266,4 +273,4 @@ import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.compo
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

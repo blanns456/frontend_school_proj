@@ -3,98 +3,101 @@
   <div class="main-content">
     <div class="fixed-background"></div>
     <app-accounting-navbar></app-accounting-navbar>
+    <p-toast></p-toast>
+    <p-confirmDialog></p-confirmDialog>
     <div class="container-fluid containerTab">
       <!-- <div class="divider mb-4"></div> -->
       <div class="contentTab mb-3 bg-white w-100 rounded">
         <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
-          <h3 class="text-white fw-bold">Item Management</h3>
+          <h3 class="text-white fw-bold">Expenses Category</h3>
         </div>
-        <div class="d-flex justify-content-between">
-          <p-multiSelect
-            [options]="selectFilter"
-            optionLabel="itemname"
-            placeholder="Add Filter"
-            class="m-2"
-            display="chip"
-            [filter]="true"
-            [showClear]="true"
-            [(ngModel)]="selectedFilters"
-            (ngModelChange)="filterData()"
-            [style]="{ width: '150%' }"
-          ></p-multiSelect>
-          <button
-            class="btn btnAddFees text-white m-2"
-            data-bs-toggle="modal"
-            data-bs-target="#newItems"
-          >
-            <i class="fa-solid fa-file-circle-plus mx-2"></i>New Item
-          </button>
+        <!-- <div class="d-flex justify-content-between align-items-center p-3">
+        </div> -->
+        <div class="d-flex justify-content-between align-items-center p-2">
+          <div class="W-100">
+            <p-button
+              (click)="showDialog()"
+              icon="pi pi-plus"
+              severity="success"
+              class="mx-2"
+              label="New Category"
+            >
+            </p-button>
+            <span class="p-input-icon-left me-2">
+              <i class="pi pi-search"></i>
+              <input
+                type="text"
+                pInputText
+                placeholder="Search keyword"
+                (input)="filterInput($event)"
+              />
+            </span>
+            <!-- <p-multiSelect
+              [options]="selectFilter"
+              optionLabel="itemname"
+              placeholder="Add Filter"
+              display="chip"
+              [filter]="true"
+              [showClear]="true"
+              [(ngModel)]="selectedFilters"
+              (ngModelChange)="filterData()"
+              [style]="{ width: '60%' }"
+            ></p-multiSelect> -->
+          </div>
+          <p-button
+            class="p-button-danger"
+            icon="pi pi-trash"
+            severity="warning"
+            [disabled]="selectedItems.length === 0"
+            (click)="deleteSelectedItems($event)"
+          ></p-button>
         </div>
+
         <div class="container my-2">
-          <!-- <table class="table table-striped" style="width: 100%">
-            <thead>
-              <tr>
-                <th>Item Name</th>
-                <th>Status</th>
-                <th>Item Group</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let items of matriculation">
-                <td>{{ items.itemname }}</td>
-                <td><span class="badge text-bg-success">Enabled</span></td>
-                <td>{{ items.itemgroup || items.item_group }}</td>
-                <td>
-                  <button class="btn btn-secondary">
-                    <a><i class="fa-solid fa-pen"></i></a>
-                  </button>
-                  <button class="btn btn-danger mx-2">
-                    <a routerLink="/test"
-                      ><i class="fa-solid fa-trash text-white"></i
-                    ></a>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table> -->
           <p-table
             #dt
-            [columns]="cols"
-            [value]="matriculation"
+            [rowHover]="true"
+            [value]="categorylist"
+            selectionMode="multiple"
+            [(selection)]="selectedItems"
+            styleClass="p-datatable-striped p-datatable-sm"
             [tableStyle]="{ 'min-width': '50rem' }"
+            [paginator]="true"
+            [rows]="10"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
           >
             <ng-template pTemplate="header" let-columns>
               <tr>
-                <th>Item Name</th>
-                <th>Item Group</th>
+                <th style="width: 4rem">
+                  <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="itemname" style="width: 30%">
+                  Category Name <p-sortIcon field="itemname"></p-sortIcon>
+                </th>
+                <th pSortableColumn="itemgroup" style="width: 30%">
+                  School Year <p-sortIcon field="itemgroup"></p-sortIcon>
+                </th>
                 <th>Action</th>
-              </tr>
-              <tr>
-                <th>
-                  <p-columnFilter type="text" field="itemname"></p-columnFilter>
-                </th>
-                <th>
-                  <p-columnFilter
-                    type="text"
-                    field="itemgroup"
-                  ></p-columnFilter>
-                </th>
               </tr>
             </ng-template>
             <ng-template pTemplate="body" let-item>
               <tr>
-                <td>{{ item.itemname }}</td>
-                <td>{{ item.itemgroup }}</td>
                 <td>
-                  <button class="btn btn-secondary">
-                    <a><i class="fa-solid fa-pen"></i></a>
-                  </button>
-                  <button class="btn btn-danger mx-2">
-                    <a routerLink="/test"
-                      ><i class="fa-solid fa-trash text-white"></i
-                    ></a>
-                  </button>
+                  <p-tableCheckbox [value]="item"></p-tableCheckbox>
+                </td>
+                <td>{{ item.category_name }}</td>
+                <td>{{ item.semyear }}</td>
+                <td>
+                  <p-button
+                    severity="warn"
+                    (click)="addItembtn(item.categ_id, item.category_name)"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </p-button>
+                  <p-button class="m-2" (click)="showDetailitem(item.categ_id)">
+                    <i class="fa-solid fa-eye"></i>
+                  </p-button>
                 </td>
               </tr>
             </ng-template>
@@ -105,70 +108,242 @@
   </div>
 </div>
 
-<!-- MODAL -->
-<div
-  class="modal fade"
-  id="newItems"
-  tabindex="-1"
-  aria-labelledby="newItemsLabel"
-  aria-hidden="true"
+<p-dialog
+  header="{{ displayedGroupName }}"
+  [modal]="true"
+  [(visible)]="showFeesDetails"
 >
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5 fw-bold" id="newItemsLabel">New Item</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <p-toast></p-toast>
-      <div class="modal-body">
-        <form class="px-1" [formGroup]="addItemForm" (ngSubmit)="submitItems()">
-          <div
-            class="inputGroup row d-flex justify-content-center align-items-center"
-          >
-            <div class="col-10 my-4">
-              <label for="itemName">Item Name:</label>
-              <input
-                class="inputs"
-                type="text"
-                id="itemName"
-                name="itemName"
-                formControlName="itemName"
-                placeholder="input here"
-              />
-            </div>
-            <div class="col-10">
-              <label for="itemGroup">Item Group:</label>
-              <select
-                class="inputs"
-                name="itemGroup"
-                id="itemGroup"
-                formControlName="itemGroup"
-              >
-                <option selected hidden>Select Item</option>
-                <option
-                  *ngFor="let matri of matrigroups"
-                  value="{{ matri.id }}"
-                >
-                  {{ matri.item_group }}
-                </option>
-              </select>
-            </div>
-            <button
-              pButton
-              pRipple
-              type="submit"
-              class="btn btn-primary mt-4 w-50"
-            >
-              Save changes
-            </button>
-          </div>
-        </form>
+  <p-table
+    #dt
+    [rowHover]="true"
+    [value]="itemfeesList"
+    selectionMode="multiple"
+    styleClass="p-datatable-striped p-datatable-sm"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 4rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="itemname" style="width: 20%">Item Name</th>
+        <th pSortableColumn="itemgroup" style="width: 20%">Amount</th>
+        <th pSortableColumn="itemgroup" style="width: 20%">Increase</th>
+        <th pSortableColumn="itemgroup" style="width: 20%">Percent</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-fees>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="fees"></p-tableCheckbox>
+        </td>
+        <td>{{ fees.item_name }}</td>
+        <td>{{ fees.amount }}</td>
+        <td>{{ fees.increase }}</td>
+        <td>{{ fees.percent }}</td>
+        <td>
+          <p-button icon="pi pi-pen-to-square"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-dialog>
+
+<p-dialog
+  header="Add Item Fees"
+  [(visible)]="showaddFeesForm"
+  [style]="{ width: '80vw', height: '500px' }"
+>
+  <p class="fw-bold">Group Name: {{ displayedGroupName }}</p>
+  <form [formGroup]="addFees" (ngSubmit)="saveFeesData()">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Amount</th>
+          <th>Increase</th>
+          <th>Percent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows1">
+          <td>
+            <input
+              [(ngModel)]="row.item_name"
+              [ngModelOptions]="{ standalone: true }"
+              type="text"
+              pInputText
+            />
+          </td>
+          <td>
+            <input
+              [(ngModel)]="row.amount"
+              [ngModelOptions]="{ standalone: true }"
+              type="number"
+              pInputText
+            />
+          </td>
+          <td>
+            <input
+              [(ngModel)]="row.increase"
+              [ngModelOptions]="{ standalone: true }"
+              type="number"
+              pInputText
+            />
+          </td>
+          <td>
+            <input
+              [(ngModel)]="row.percent"
+              [ngModelOptions]="{ standalone: true }"
+              type="number"
+              pInputText
+            />
+          </td>
+        </tr>
+      </tbody>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-plus"
+        type="button"
+        (click)="addRow(1)"
+      >
+        Row
+      </button>
+    </table>
+    <div class="d-flex justify-content-end">
+      <p-button type="submit" label="Submit Fees"></p-button>
+    </div>
+  </form>
+</p-dialog>
+
+<!-- view group modal and add item -->
+<p-dialog
+  header="Category: {{ displayedCategoryName }}"
+  [modal]="true"
+  [(visible)]="showDetails"
+  [style]="{ width: '50%' }"
+>
+  <p class="fw-bold text-start">
+    Semester: <span [textContent]="activeyr"></span>
+  </p>
+  <p-table
+    [rowHover]="true"
+    [value]="matrigroups"
+    styleClass="p-datatable-striped p-datatable-sm"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 4rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th>Group Name</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-matritems>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="matritems"></p-tableCheckbox>
+        </td>
+        <td>{{ matritems.group_name }}</td>
+        <td>
+          <p-button
+            icon="pi pi-plus"
+            class="mx-2"
+            label="Add Fees"
+            (click)="additemfeesbtn(matritems.groupid, matritems.group_name)"
+          ></p-button>
+          <p-button
+            icon="pi pi-eye"
+            (click)="viewitemfeesbtn(matritems.groupid, matritems.group_name)"
+            label="Fees"
+          ></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-dialog>
+
+<!-- Add category -->
+<p-dialog
+  header="ADD CATEGORY"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '40%' }"
+>
+  <p class="fw-bold text-start">
+    Semester: <span [textContent]="activeyr"></span>
+  </p>
+  <form
+    class="px-1 d-flex justify-content-center align-items-center flex-column"
+    [formGroup]="addCategoryForm"
+    (ngSubmit)="submitCategory()"
+  >
+    <div class="inputGroup w-100">
+      <input
+        type="hidden"
+        formControlName="semesteryr"
+        id="syschool"
+        [value]="semester"
+      />
+      <div class="my-4">
+        <label for="category_name">Category Name:</label>
+        <input
+          pInputText
+          type="text"
+          class="ms-2"
+          id="category_name"
+          formControlName="category_name"
+        />
       </div>
     </div>
-  </div>
-</div>
+    <button
+      pButton
+      pRipple
+      type="submit"
+      class="p-button-success"
+      label="Save changes"
+    ></button>
+  </form>
+</p-dialog>
+
+<!-- add Group item -->
+<p-dialog
+  header="Add Group for {{ displayedItemName }} Category"
+  [modal]="true"
+  [style]="{ width: '30%' }"
+  [(visible)]="itemModal"
+>
+  <form
+    class="px-1 d-flex justify-content-center align-items-center flex-column"
+    [formGroup]="addItemForm"
+    (ngSubmit)="submitItems()"
+  >
+    <div class="inputGroup w-100">
+      <div class="my-3">
+        <label for="itemGroup">Item Group:</label>
+        <input
+          pInputText
+          type="text"
+          class="ms-2"
+          id="itemGroup"
+          name="itemGroup"
+          formControlName="itemGroup"
+        />
+      </div>
+    </div>
+    <button
+      pButton
+      pRipple
+      type="submit"
+      class="p-button-success"
+      label="Save changes"
+    ></button>
+  </form>
+</p-dialog>
