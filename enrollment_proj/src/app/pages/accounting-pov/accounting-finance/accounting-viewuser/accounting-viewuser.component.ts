@@ -8,11 +8,16 @@ import { Router } from '@angular/router';
 })
 export class AccountingViewuserComponent implements OnInit {
   studentData: any;
+  dialogVisible: boolean = false;
 
   constructor(private router: Router) {
     this.studentData =
       this.router.getCurrentNavigation()?.extras.state?.['studentData'];
     console.log('Received student data:', this.studentData);
+  }
+
+  showDialog2() {
+    this.dialogVisible = true;
   }
 
   ngOnInit() {}

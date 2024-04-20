@@ -29,12 +29,21 @@
   margin: 0.5rem;
 }
 
+:host ::ng-deep .p-dropdown ul {
+  padding: 0;
+  margin: 0.5rem;
+}
+
+:host ::ng-deep .p-button {
+  border-radius: 5px;
+}
+
 table th {
   color: #fff;
   background-color: #0287af;
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="date"],
 select {
   font-size: 1rem;
@@ -48,4 +57,4 @@ select {
 
 .inputs:hover {
   border-bottom: 3px solid #0287af;
-}
+} */

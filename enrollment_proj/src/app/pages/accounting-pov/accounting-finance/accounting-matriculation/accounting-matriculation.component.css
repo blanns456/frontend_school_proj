@@ -34,7 +34,7 @@ table td a {
   color: #fff;
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="date"],
 input[type="number"],
 select {
@@ -49,9 +49,18 @@ select {
 
 .inputs:hover {
   border-bottom: 3px solid #0287af;
-}
+} */
 
 :host ::ng-deep .p-multiSelect ul {
   padding: 0;
   margin: 0.5rem;
+}
+
+:host ::ng-deep .p-dropdown ul {
+  padding: 0;
+  margin: 0.5rem;
+}
+
+:host ::ng-deep .p-button {
+  border-radius: 5px;
 }

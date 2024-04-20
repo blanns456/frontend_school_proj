@@ -31,9 +31,15 @@
       </a>
       <ul class="accSetupToggle-sub">
         <li>
+          <a routerLink="/" routerLinkActive="active" class="list-group-item list-group-item-action py-3"><i
+              class="fa-solid fa-truck-fast mx-2"></i>
+            Subjects
+          </a>
+        </li>
+        <li>
           <a routerLink="/accounting-dashboard-schoolfees" routerLinkActive="active"
             class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
-            School Fees
+            Matriculation
           </a>
         </li>
         <li>
@@ -57,30 +63,37 @@
           </a>
         </li>
         <li>
-          <a routerLink="/accounting-dashboard-studentledger" routerLinkActive="active"
+          <<<<<<< HEAD <!-- <a routerLink="/accounting-dashboard-studentledger" routerLinkActive="active"
             class="list-group-item list-group-item-action py-3 my-1"><i class="fa-solid fa-notes-medical mx-2"></i>
-            Student's Ledger
-          </a>
+            =======
+            <a routerLink="/accounting-dashboard-studentledger" routerLinkActive="active"
+              class="list-group-item list-group-item-action py-3 my-1"><i class="fa-solid fa-notes-medical mx-2"></i>
+              >>>>>>> development
+              Student's Ledger
+            </a> -->
         </li>
       </ul>
-      <a class="my-1 py-3 list-group-item list-group-item-action menu-item" routerLinkActive="active"
-        id="accFinanceToggle">
+      <a routerLink="/accounting-matriculation" class="my-1 py-3 list-group-item list-group-item-action menu-item"
+        routerLinkActive="active" id="accFinanceToggle">
         <i class="mx-2 fa-solid fa-hand-holding-dollar"></i>
-        Accounting Finance
-        <i class="fa-solid fa-caret-down"></i>
+        Student Ledger
+        <!-- <i class="fa-solid fa-caret-down"></i> -->
       </a>
-      <ul class="accFinanceToggle-sub">
+      <!-- <ul class="accFinanceToggle-sub">
         <li>
-          <a routerLink="/accounting-matriculation" routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
-            Matriculation
+          <a
+            routerLink="/accounting-matriculation"
+            routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3"
+            ><i class="fa-solid fa-truck-fast mx-2"></i>
+            Student Ledger
           </a>
         </li>
-      </ul>
+      </ul> -->
       <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/accounting-item-management"
         routerLinkActive="active">
         <i class="mx-2 fa-solid fa-list-check"></i>
-        Item Management
+        Expenses Category
       </a>
       <a class="my-1 py-3 list-group-item list-group-item-action menu-item" id="telleringToggle">
         <i class="mx-2 fa-solid fa-user"></i>

@@ -3,11 +3,13 @@
   <div class="main-content">
     <div class="fixed-background"></div>
     <app-accounting-navbar></app-accounting-navbar>
+    <p-toast></p-toast>
+    <p-confirmDialog></p-confirmDialog>
     <div class="container-fluid containerTab">
       <!-- <div class="divider mb-4"></div> -->
       <div class="contentTab mb-3 bg-white rounded">
         <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
-          <h3 class="text-white fw-bold">Matriculation</h3>
+          <h3 class="text-white fw-bold">Student Ledger</h3>
         </div>
         <!-- <form class="m-4 px-2">
           <div
@@ -75,24 +77,44 @@
         </form>
         <div class="divider mx-auto my-4"></div> -->
         <div class="container my-4">
-          <div class="my-3">
-            <p-multiSelect
-              [options]="selectedData"
-              optionLabel="name"
-              placeholder="Add Filter"
-              display="chip"
-              [filter]="true"
-              [showClear]="true"
-              [style]="{ width: '30%' }"
-            ></p-multiSelect>
+          <div class="my-3 d-flex justify-content-between align-items-center">
+            <div class="W-100">
+              <span class="p-input-icon-left me-2">
+                <i class="pi pi-search"></i>
+                <input
+                  type="text"
+                  pInputText
+                  placeholder="Search keyword"
+                  (input)="filterInput($event)"
+                />
+              </span>
+              <p-multiSelect
+                [options]="selectFilter"
+                optionLabel="deptname"
+                placeholder="Add Filter"
+                display="chip"
+                [filter]="true"
+                [showClear]="true"
+                [(ngModel)]="selectedFilters"
+                (ngModelChange)="filterData()"
+                [style]="{ width: '40%' }"
+              ></p-multiSelect>
+            </div>
+            <p-button
+              class="p-button-danger"
+              icon="pi pi-trash"
+              severity="warning"
+              [disabled]="selectedStudents.length === 0"
+              (click)="deleteSelectedStuds($event)"
+            ></p-button>
           </div>
-          <table class="table my-3" style="width: 100%">
+          <!-- <table class="table my-3" style="width: 100%">
             <thead>
               <tr>
                 <th>ID Number</th>
                 <th>Student's Name</th>
-                <!-- <th>Ledger</th>
-                <th>Ledger Status</th> -->
+                <th>Ledger</th>
+                <th>Ledger Status</th>
                 <th>Semester</th>
                 <th>Course/Yr.</th>
                 <th>Action</th>
@@ -102,8 +124,8 @@
               <tr *ngFor="let student of students">
                 <td>{{ student.uid }}</td>
                 <td>{{ student.studname }}</td>
-                <!-- <td>20221545/A.Y 2021-2022</td>
-                <td>Submitted</td> -->
+                <td>20221545/A.Y 2021-2022</td>
+                <td>Submitted</td>
                 <td>{{ student.semester }}</td>
                 <td>{{ student.course }}</td>
                 <td>
@@ -116,7 +138,74 @@
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
+          <p-table
+            #dt
+            [rowHover]="true"
+            [value]="students"
+            selectionMode="multiple"
+            [(selection)]="selectedStudents"
+            styleClass="p-datatable-striped p-datatable-sm"
+            [tableStyle]="{ 'min-width': '40rem' }"
+            [paginator]="true"
+            [rows]="10"
+            [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10, 20, 50, 70, 100]"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          >
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th style="width: 4rem">
+                  <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="uid" style="width: 15%">
+                  Student No. <p-sortIcon field="uid"></p-sortIcon>
+                </th>
+                <th pSortableColumn="studname" style="width: 20%">
+                  Student Name
+                  <p-sortIcon field="studname"></p-sortIcon>
+                </th>
+                <th pSortableColumn="semester" style="width: 20%">
+                  Semester <p-sortIcon field="semester"></p-sortIcon>
+                </th>
+                <th pSortableColumn="student_yr_lvl" style="width: 15%">
+                  Year Level
+                  <p-sortIcon field="student_yr_lvl"></p-sortIcon>
+                </th>
+                <th pSortableColumn="course" style="width: 25%">
+                  Course.
+                  <p-sortIcon field="course"></p-sortIcon>
+                </th>
+                <th>Action</th>
+              </tr>
+            </ng-template>
+            <ng-container *ngIf="students?.length === 0; else tableData">
+              <tr>
+                <td colspan="100%">
+                  <div class="no-data-message">
+                    No data found based on the selected filters.
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+            <ng-template #tableData pTemplate="body" let-student>
+              <tr>
+                <td>
+                  <p-tableCheckbox [value]="student"></p-tableCheckbox>
+                </td>
+                <td>{{ student.uid }}</td>
+                <td>{{ student.studname }}</td>
+                <td>{{ student.semester }}</td>
+                <td>{{ getYearLevelString(student.student_yr_lvl) }}</td>
+                <td>{{ student.course }}</td>
+                <td>
+                  <p-button label="View" (click)="viewUser(student)">
+                    <a><i class="fa-solid fa-eye"></i></a>
+                  </p-button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
         </div>
       </div>
     </div>
