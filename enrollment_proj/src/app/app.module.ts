@@ -50,6 +50,7 @@ import { DialogModule } from 'primeng/dialog';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TabViewModule } from 'primeng/tabview';
+import { FileUploadModule } from 'primeng/fileupload';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -131,6 +132,8 @@ import { FooterNavComponent } from './footer-nav/footer-nav.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
 import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
 import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-management/item-modals/item-modals.component';
+import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
+import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 
 @NgModule({
   declarations: [
@@ -229,6 +232,8 @@ import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-mana
     StudentParentComponent,
     CceUiComponent,
     ItemModalsComponent,
+    UpdateInfoComponent,
+    DeanMainComponent,
   ],
   imports: [
     BrowserModule,
@@ -265,6 +270,7 @@ import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-mana
     InputNumberModule,
     ConfirmDialogModule,
     TabViewModule,
+    FileUploadModule
   ],
 
   providers: [
@@ -273,4 +279,4 @@ import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-mana
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

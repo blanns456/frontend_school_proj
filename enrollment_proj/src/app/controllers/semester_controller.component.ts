@@ -6,11 +6,11 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class SemesterController {
-  // readonly Root_URL = 'http://127.0.0.1:8000/api/';
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
   token: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public createsemester(semester: {
     semester: string;
@@ -27,7 +27,7 @@ export class SemesterController {
   }
 
   getactivenrollsem() {
-    return this.http.get(this.Root_URL + 'actiivesem');
+    return this.http.get(this.Root_URL + 'active-semester');
   }
 
   checkEnrollee(stud: { stud_id: any }) {

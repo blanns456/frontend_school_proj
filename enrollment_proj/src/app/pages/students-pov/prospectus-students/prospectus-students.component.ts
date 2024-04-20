@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ProspectusController } from 'src/app/controllers/prospectus_controller.component';
-import { HttpClient } from '@angular/common/http';
+import { ProspectusService } from 'src/app/services/prospectus.service';
+import { EnrollmentService } from 'src/app/services/enrollment.service';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
-import { LoginController } from 'src/app/controllers/login_controller.component';
-import { SemesterController } from 'src/app/controllers/semester_controller.component';
+import { UpdateStudentServiceService } from 'src/app/services/update-student-service.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-prospectus-students',
@@ -13,7 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class ProspectusStudentsComponent implements OnInit {
   data: any;
-  prospectus: any = [];
+  infomation: any;
+  prospectusData: any = [];
   totalUnits: number = 0;
   studentdata: any;
   acadtransac: any;
@@ -23,43 +25,67 @@ export class ProspectusStudentsComponent implements OnInit {
   activateyr: any;
   semester: any;
   isalreadyenrolled: any;
+  is_already_submitted: any;
   alreadysubmitted: boolean | undefined;
+  showToastNotification: boolean = false;
+
 
   constructor(
-    private prospectus_get: ProspectusController,
-    private college_controller: CollegeEnrollmentController,
-    private logincontroller: LoginController,
-    private semester_controller: SemesterController
-  ) {}
+    private prospectus: ProspectusService,
+    private router: Router,
+    private student: UpdateStudentServiceService,
+    private enrollment: EnrollmentService,
+  ) { }
 
   ngOnInit(): void {
-    this.studentdata = this.logincontroller.getuserdetails();
-    this.getactivateprospectos();
-    console.log(this.getactivateprospectos());
-  }
+    this.prospectus.student_academics().subscribe({
+      next: (response) => {
+        // console.log(response);
+        this.prospectusData = response;
+      }
+    });
 
-  studentProspectus(yrlvl: string, acad: string, semester: string) {
-    // console.log([yrlvl, String(acad)]);
-    this.prospectus_get
-      .studprospectus({
-        year_lvl: yrlvl,
-        course: String(acad),
-        semester: semester,
-      })
-      .subscribe((prospectus_filter) => {
-        this.data = prospectus_filter;
-        this.prospectus = this.data[0];
-        // console.log(this.prospectus);
+    this.prospectus.student_current_prospectus().subscribe({
+      next: (response) => {
+        // console.log(responsse);
+        this.data = response;
+        this.prospectusData = this.data[0];
+      }
+    });
 
-        this.alreadysubmit();
-        // console.log(prospectus_filter);
-      });
+    this.student.student_information().subscribe({
+      next: (response) => {
+        // console.log(response);
+        this.data = response
+        this.infomation = this.data[0];
+      }
+    });
+
+    this.prospectus.submitted_already().subscribe({
+      next: (res) => {
+        this.data = res;
+        this.is_already_submitted = this.data.message;
+        // console.log(this.data.message);
+      }
+    });
   }
 
   selectAll(event: any) {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checkboxes = document.querySelectorAll<HTMLInputElement>('input[name="subjects"]');
+    const allChecked = event.target.checked;
+
     checkboxes.forEach((checkbox) => {
-      (checkbox as HTMLInputElement).checked = event.target.checked;
+      if (checkbox !== event.target) {
+        checkbox.checked = allChecked;
+      }
+    });
+
+
+    checkboxes.forEach((checkbox) => {
+      if (checkbox !== event.target) {
+        const changeEvent = new Event('change');
+        checkbox.dispatchEvent(changeEvent);
+      }
     });
 
     this.calculateTotalUnits();
@@ -91,7 +117,6 @@ export class ProspectusStudentsComponent implements OnInit {
     this.totalUnits = Array.from(checkboxes)
       .filter((checkbox) => checkbox.checked)
       .reduce((sum, checkbox) => {
-        console.log(checkbox.value.split(',')[1]);
         const checkboxValue = parseFloat(checkbox.value.split(',')[1]);
         return isNaN(checkboxValue) ? sum : sum + checkboxValue;
       }, 0);
@@ -100,72 +125,36 @@ export class ProspectusStudentsComponent implements OnInit {
   }
 
   onsubmit() {
-    const checkboxes = document.querySelectorAll<HTMLInputElement>(
-      'input[type="checkbox"]'
-    );
-    const subjectids = JSON.stringify(
-      Array.from(checkboxes)
-        .filter((checkbox) => checkbox.checked)
-        .map((e) => e.value[0])
-    );
+    const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
+    const subjectids = Array.from(checkboxes)
+      .filter((checkbox) => checkbox.checked && checkbox.name === 'subjects')
+      .map((checkbox) => checkbox.value.split(',')[0]);
 
-    this.college_controller
-      .addcollegetrancsaction({
-        subjectdata: subjectids,
-        studentid: this.acadid,
-        acadyr: this.activateyr,
-      })
-      .subscribe((res) => {
-        this.transacnotif = res;
-        // console.log(res);
-        if (this.transacnotif['message'] === 'success') {
-          Swal.fire('Success', 'Subjects submitted', 'success');
-          this.getactivateprospectos();
+    this.student.student_information().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.data = response
+        this.infomation = this.data[0];
+        if (this.infomation.has_finished === 'false') {
+          this.router.navigate(['student/information']);
+          Swal.fire('Information!', 'Update Information First', 'info');
         } else {
-          Swal.fire('Success', this.transacnotif['message'], 'success');
+          this.enrollment
+            .college_enrollment({
+              subjects: JSON.stringify(subjectids),
+            })
+            .subscribe((res) => {
+              this.transacnotif = res;
+              if (this.transacnotif['message'] === 'success') {
+                this.router.navigate(['student/enrollment']);
+                Swal.fire('Information', "Courses Pending Dean's Approval.", 'info');
+              } else {
+                Swal.fire('Error', this.transacnotif['message'], 'error');
+              }
+            });
         }
-      });
-
-    console.log(subjectids);
+      }
+    });
   }
 
-  getactivateprospectos() {
-    console.log(this.studentdata);
-    this.college_controller
-      .gettransaction(this.studentdata[0]['id'], '1st Trimester')
-      .subscribe((res) => {
-        // console.log(res);
-        this.acadtransac = res;
-        // console.log(this.acadtransac[0][0]['id']);
-        this.acadid = this.acadtransac[0][0]['id'];
-
-        this.semester_controller.getactivenrollsem().subscribe((res) => {
-          this.semesterinfo = res;
-          if (this.semesterinfo[0]) {
-            this.semester = this.semesterinfo[0][0]['semester'];
-            this.activateyr = this.semesterinfo[0][0]['active_year'];
-            this.studentProspectus(
-              this.acadtransac[0][0]['student_yr_lvl'],
-              this.acadtransac[0][0]['course_id'],
-              this.semesterinfo[0][0]['semester']
-            );
-          }
-        });
-      });
-  }
-
-  alreadysubmit() {
-    this.prospectus_get
-      .isalreadysubmitted(this.semester, this.acadid)
-      .subscribe((res) => {
-        this.isalreadyenrolled = res;
-        this.alreadysubmitted = this.isalreadyenrolled['message'] === 'new';
-
-        console.log([
-          this.isalreadyenrolled['message'],
-          this.semester,
-          this.acadid,
-        ]);
-      });
-  }
 }

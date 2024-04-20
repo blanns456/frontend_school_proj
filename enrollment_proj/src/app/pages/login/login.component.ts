@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  role: any;
 
   form: FormGroup = this.formBuilder.group({
     password: ['', [Validators.required, Validators.minLength(6)]],
@@ -29,11 +30,17 @@ export class LoginComponent implements OnInit {
     this.logincontroller.login(this.form.value).subscribe({
       next: (response: any) => {
         localStorage.setItem('token', response.token);
-        // if (response.role === 2) {
-        // console.log(response);
-        this.router.navigate(['student/home']);
+        localStorage.setItem('role', response.role);
+        this.role = localStorage.getItem('role');
+
+        if (this.role === 'college') {
+          this.router.navigate(['student/home']);
+        } else if (this.role === 'dean') {
+          this.router.navigate(['dean/home']);
+        }
       },
       error: (error: any) => {
+        console.log(error);
         if (error.error && error.error.error) {
           this.messageService.add({
             severity: 'error',
