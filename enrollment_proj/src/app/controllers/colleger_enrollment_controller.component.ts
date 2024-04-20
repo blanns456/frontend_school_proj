@@ -1,5 +1,5 @@
 // import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from "@angular/common/http";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 // import { Observable } from "rxjs";
@@ -41,14 +41,13 @@ export class CollegeEnrollmentController {
     signature: '',
   };
 
-  // readonly Root_URL = 'http://127.0.0.1:8000/api/';
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
-  token: any;
+  // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
 
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getcourses() {
     return this.http.get(this.Root_URL + 'courses');
@@ -92,10 +91,9 @@ export class CollegeEnrollmentController {
 
   addcollegetrancsaction(collegetransac: {
     subjectdata: string;
-    studentid: string;
     acadyr: string;
   }) {
-    return this.http.post(this.Root_URL + 'addtransaction', collegetransac);
+    return this.http.post(this.Root_URL + 'enrollment-transaction', collegetransac);
   }
 
   gettransaction(studentid: string, semester: string) {
@@ -114,5 +112,24 @@ export class CollegeEnrollmentController {
 
   verifyotp(otp: { otp: string }) {
     return this.http.post(this.Root_URL + 'verifyotp', otp);
+  }
+
+  token = localStorage.getItem('token');
+  headers = new HttpHeaders({
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${this.token}`,
+  });
+
+  // httpOptions = {
+  //   headers: new HttpHeaders({
+  //     Accept: 'application/vnd.api+json',
+  //     'Content-Type': 'application/vnd.api+json', // Corrected here
+  //   }),
+  // };
+
+  updateStudent(student: FormData) {
+    console.log(student);
+    return this.http.post(this.Root_URL + 'update-student', student, { headers: this.headers });
   }
 }

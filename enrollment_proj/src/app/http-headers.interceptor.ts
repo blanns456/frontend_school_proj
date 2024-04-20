@@ -13,7 +13,7 @@ export class HttpHeadersInterceptor implements HttpInterceptor {
     const modifiedReq = req.clone({
       headers: req.headers
         .set('Accept', 'application/vnd.api+json')
-        .set('Content-Type', 'application/vnd.api+json')
+        .set('Content-Type', 'multipart/form-data')
     });
 
     return next.handle(modifiedReq);

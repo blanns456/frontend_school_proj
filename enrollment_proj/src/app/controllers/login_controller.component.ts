@@ -5,22 +5,17 @@ import { jwtDecode } from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class LoginController {
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
   token: any;
   userdata: any;
   data: any;
   studentdata: any;
-<<<<<<< HEAD
   // userinfo: any;
   // loadingdata = false;
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) {}
-=======
-  user_id: any;
   constructor(private http: HttpClient) { }
->>>>>>> development
 
   login(user: { username: string; password: string }) {
     return this.http.post(this.Root_URL + 'login', user);
@@ -46,7 +41,7 @@ export class LoginController {
 
   reloadstudentdatainfo() {
     this.getuserdetails();
-    return this.http.get(this.Root_URL + 'showstudentdetails/' + this.user_id);
+    // return this.http.get(this.Root_URL + 'showstudentdetails/' + this.user_id);
   }
 
   studentAcad(user: { id: number }) {

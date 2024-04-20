@@ -3,26 +3,20 @@
 <div *ngIf="loading" class="loading-overlay">
   <app-loading-page></app-loading-page>
 </div>
-<div
-  class="banner d-flex justify-content-center align-items-center flex-column"
->
+<div class="banner d-flex justify-content-center align-items-center flex-column">
   <h1 class="text-center text-white fw-bolder mt-5 text-uppercase">
     New Student
   </h1>
   <p [textContent]="activateyr" class="text-center m-0 pt-2 text-white"></p>
 </div>
 <div class="container-fluid">
-  <div
-    class="formContain bg-white rounded-5 shadow-lg mx-auto container-fluid my-5 p-3 login-bg"
-  >
+  <div class="formContain bg-white rounded-5 shadow-lg mx-auto container-fluid my-5 p-3 login-bg">
     <div class="asclogo mx-auto"></div>
 
     <div class="text-center pb-4">
       <h2 class="formTitle text-center">CREATE AN ACCOUNT</h2>
-      <small class="text-center fs-6 fst-italic"
-        ><strong>Note:&nbsp;&nbsp;</strong>All Input with asterisks
-        <span class="text-danger fs-5">&ast;</span> are required!</small
-      >
+      <small class="text-center fs-6 fst-italic"><strong>Note:&nbsp;&nbsp;</strong>All Input with asterisks
+        <span class="text-danger fs-5">&ast;</span> are required!</small>
     </div>
     <div class="formBody border border-5 pt-3 m-3 rounded-5">
       <div *ngIf="!otp">
@@ -31,36 +25,18 @@
             <div class="col-lg-3 col-md-6">
               <div class="mb-3">
                 <label for="firstname" class="form-label">
-                  First Name<span class="text-danger">*</span> <br /><br
-                /></label>
-                <input
-                  type="text"
-                  pInputText
-                  pAutoFocus
-                  [autofocus]="true"
-                  class="border p-inputtext-md px-3"
-                  autocomplete="off"
-                  formControlName="firstname"
-                  id="firstname"
-                  [style]="{ width: '100%' }"
-                />
+                  First Name<span class="text-danger">*</span> <br /><br /></label>
+                <input type="text" pInputText pAutoFocus [autofocus]="true" class="border p-inputtext-md px-3"
+                  autocomplete="off" formControlName="firstname" id="firstname" [style]="{ width: '100%' }" />
               </div>
             </div>
             <div class="col-lg-3 col-md-6">
               <div>
                 <div class="mb-3">
                   <label for="lastname" class="form-label">
-                    Last Name<span class="text-danger">*</span> <br /><br
-                  /></label>
-                  <input
-                    type="text"
-                    pInputText
-                    class="p-inputtext-md border"
-                    autocomplete="off"
-                    formControlName="lastname"
-                    id="lastname"
-                    [style]="{ width: '100%' }"
-                  />
+                    Last Name<span class="text-danger">*</span> <br /><br /></label>
+                  <input type="text" pInputText class="p-inputtext-md border" autocomplete="off"
+                    formControlName="lastname" id="lastname" [style]="{ width: '100%' }" />
                 </div>
               </div>
             </div>
@@ -68,40 +44,21 @@
               <div class="mb-1">
                 <label for="middlename" class="form-label">
                   Middle Name <br />
-                  <small class="fw-normal fst-italic">(check if none)</small
-                  >&nbsp;&nbsp;<p-checkbox
-                    [ariaChecked]="noMiddleName"
-                    (click)="toggleMiddleName()"
-                    [binary]="true"
-                    inputId="binary"
-                  ></p-checkbox>
+                  <small class="fw-normal fst-italic">(check if none)</small>&nbsp;&nbsp;<p-checkbox
+                    [ariaChecked]="noMiddleName" (click)="toggleMiddleName()" [binary]="true"
+                    inputId="binary"></p-checkbox>
                 </label>
-                <input
-                  pInputText
-                  [readonly]="noMiddleName"
-                  formControlName="middlename"
-                  type="text"
-                  class="p-inputtext-md border"
-                  id="middlename"
-                  [style]="{ width: '100%' }"
-                />
+                <input pInputText [readonly]="noMiddleName" formControlName="middlename" type="text"
+                  class="p-inputtext-md border" id="middlename" [style]="{ width: '100%' }" />
               </div>
             </div>
             <div class="col-lg-3 col-md-6">
               <div>
                 <div class="mb-3">
                   <label for="suffix" class="form-label">
-                    Extension: <br /><br
-                  /></label>
-                  <input
-                    pInputText
-                    type="text"
-                    class="p-inputtext-md border"
-                    autocomplete="off"
-                    formControlName="suffix"
-                    id="suffix"
-                    [style]="{ width: '100%' }"
-                  />
+                    Extension: <br /><br /></label>
+                  <input pInputText type="text" class="p-inputtext-md border" autocomplete="off"
+                    formControlName="suffix" id="suffix" [style]="{ width: '100%' }" />
                 </div>
               </div>
             </div>
@@ -112,15 +69,8 @@
                 <label for="gender" class="form-label">
                   Gender<span class="text-danger me-lg-0 me-md-0 me-3">*</span>
                 </label>
-                <p-dropdown
-                  formControlName="gender"
-                  [options]="gender"
-                  optionLabel="name"
-                  optionValue="value"
-                  placeholder="Select a Gender"
-                  [editable]="true"
-                  [showClear]="true"
-                ></p-dropdown>
+                <p-dropdown formControlName="gender" [options]="gender" optionLabel="name" optionValue="value"
+                  placeholder="Select a Gender" [editable]="true" [showClear]="true"></p-dropdown>
                 <!-- <select
                   name="gender"
                   id="gender"
@@ -138,15 +88,9 @@
                 <label for="civil_status" class="form-label">
                   Civil Status<span class="text-danger">*</span>
                 </label>
-                <p-dropdown
-                  formControlName="civil_status"
-                  [options]="civilstatus"
-                  optionLabel="name"
-                  optionValue="value"
-                  placeholder="Select Civil Status"
-                  [showClear]="true"
-                  [style]="{ width: '100%' }"
-                ></p-dropdown>
+                <p-dropdown formControlName="civil_status" [options]="civilstatus" optionLabel="name"
+                  optionValue="value" placeholder="Select Civil Status" [showClear]="true"
+                  [style]="{ width: '100%' }"></p-dropdown>
               </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -154,16 +98,8 @@
                 <label for="email" class="form-label">
                   Email Address<span class="text-danger">*</span>
                 </label>
-                <input
-                  pInputText
-                  type="email"
-                  class="p-inputtext-md border"
-                  formControlName="email_address"
-                  name="email"
-                  id="email"
-                  required
-                  [style]="{ width: '100%' }"
-                />
+                <input pInputText type="email" class="p-inputtext-md border" formControlName="email_address"
+                  name="email" id="email" required [style]="{ width: '100%' }" />
               </div>
             </div>
             <div class="col-lg-3 col-md-6">
@@ -171,12 +107,8 @@
                 <label for="contact_number" class="form-label">
                   Contact Number<span class="text-danger">*</span>
                 </label>
-                <p-inputMask
-                  mask="99999999999"
-                  formControlName="contact_number"
-                  placeholder="0912xxxxxxx"
-                  [style]="{ width: '100%' }"
-                ></p-inputMask>
+                <p-inputMask mask="99999999999" formControlName="contact_number" placeholder="0912xxxxxxx"
+                  [style]="{ width: '100%' }"></p-inputMask>
 
                 <!-- <input
                   (input)="inputMask($event)"
@@ -197,16 +129,8 @@
                 <label for="birth_date" class="form-label">
                   Birth Date<span class="text-danger">*</span>
                 </label>
-                <p-calendar
-                  [showIcon]="true"
-                  type="date"
-                  class="py-2 border"
-                  formControlName="birthdate"
-                  name="birth_date"
-                  id="birth_date"
-                  [style]="{ width: '100%' }"
-                >
-                </p-calendar>
+                <input type="date" formControlName="birthdate" class="form-control w-100 py-2 pb-3 border"
+                  name="birth_date" id="birth_date">
               </div>
             </div>
             <div class="col-lg-8 col-md-7 col-6">
@@ -214,16 +138,8 @@
                 <label for="birth_place" class="form-label">
                   Birth Place<span class="text-danger">*</span>
                 </label>
-                <input
-                  pInputText
-                  type="text"
-                  class="p-inputtext-md border"
-                  formControlName="birth_place"
-                  name="birth_place"
-                  id="birth_place"
-                  required
-                  [style]="{ width: '100%' }"
-                />
+                <input pInputText type="text" class="p-inputtext-md border" formControlName="birth_place"
+                  name="birth_place" id="birth_place" required [style]="{ width: '100%' }" />
               </div>
             </div>
           </div>
@@ -233,13 +149,8 @@
                 <label for="citizenship" class="form-label">
                   Citizenship<span class="text-danger">*</span>
                 </label>
-                <p-dropdown
-                  formControlName="citizenship"
-                  [options]="nationalitiesList"
-                  placeholder="Select Citizenship"
-                  [showClear]="true"
-                  [style]="{ width: '100%' }"
-                ></p-dropdown>
+                <p-dropdown formControlName="citizenship" [options]="nationalitiesList" placeholder="Select Citizenship"
+                  [showClear]="true" [style]="{ width: '100%' }"></p-dropdown>
                 <!-- <select
                   id="citizenship"
                   class="form-select shadow-xl"
@@ -259,15 +170,8 @@
                 <label for="religion" class="form-label">
                   Religion<span class="text-danger">*</span>
                 </label>
-                <p-dropdown
-                  formControlName="religion"
-                  [options]="religionList"
-                  placeholder="Select Religion"
-                  [showClear]="true"
-                  [editable]="true"
-                  filterBy="name"
-                  [style]="{ width: '100%' }"
-                ></p-dropdown>
+                <p-dropdown formControlName="religion" [options]="religionList" placeholder="Select Religion"
+                  [showClear]="true" [editable]="true" filterBy="name" [style]="{ width: '100%' }"></p-dropdown>
                 <!-- <input
                   type="text"
                   class="form-control py-2 border"
@@ -292,16 +196,9 @@
                 <label for="enrollIn" class="form-label">
                   Interested to Enroll In:<span class="text-danger">*</span>
                 </label>
-                <p-dropdown
-                  formControlName="enrollIn"
-                  [options]="enrollist"
-                  optionLabel="name"
-                  optionValue="value"
-                  placeholder="Please select"
-                  [showClear]="true"
-                  filterBy="name"
-                  [style]="{ minWidth: '100%' }"
-                ></p-dropdown>
+                <p-dropdown formControlName="enrollIn" [options]="enrollist" optionLabel="name" optionValue="value"
+                  placeholder="Please select" [showClear]="true" filterBy="name"
+                  [style]="{ minWidth: '100%' }"></p-dropdown>
                 <!-- <select
                   name="enrollIn"
                   id="enrollIn"
@@ -324,19 +221,10 @@
                 <label for="program" class="form-label">
                   Program<span class="text-danger">*</span>
                 </label>
-                <p-dropdown
-                  formControlName="program"
-                  [options]="courses"
-                  optionLabel="name"
-                  optionValue="courses_id"
-                  placeholder="Please select courses"
-                  [showClear]="true"
-                  [filter]="true"
-                  filterBy="name"
-                  [style]="{ minWidth: '100%' }"
-                >
-                  ></p-dropdown
-                >
+                <p-dropdown formControlName="program" [options]="courses" optionLabel="name" optionValue="courses_id"
+                  placeholder="Please select courses" [showClear]="true" [filter]="true" filterBy="name"
+                  [style]="{ minWidth: '100%' }">
+                  ></p-dropdown>
                 <!-- <select
                   name="program"
                   id="program"
@@ -363,15 +251,8 @@
                 </label>
                 <!-- <input pInputText [value]="semester" type="text" name="semester" class="py-2 border" id="semester"
                   formControlName="semester" readonly [style]="{ minWidth: '100%' }" /> -->
-                <input
-                  id="disabled-input"
-                  type="text"
-                  class="p-inputtext-md border"
-                  pInputText
-                  [readonly]="true"
-                  [value]="semester"
-                  [style]="{ width: '100%' }"
-                />
+                <input id="disabled-input" type="text" class="p-inputtext-md border" pInputText [readonly]="true"
+                  [value]="semester" [style]="{ width: '100%' }" />
               </div>
             </div>
             <div class="col-lg-4 col-md-4 col-6">
@@ -380,15 +261,9 @@
                   Year Level
                   <span class="text-danger">*</span>
                 </label>
-                <p-dropdown
-                  formControlName="student_yr_level"
-                  [options]="yearlvl"
-                  optionLabel="name"
-                  optionValue="value"
-                  placeholder="Please select"
-                  [showClear]="true"
-                  [style]="{ width: '100%' }"
-                ></p-dropdown>
+                <p-dropdown formControlName="student_yr_level" [options]="yearlvl" optionLabel="name"
+                  optionValue="value" placeholder="Please select" [showClear]="true"
+                  [style]="{ width: '100%' }"></p-dropdown>
                 <!-- <select
                   name="student_yr_level"
                   id="student_yr_level"
@@ -412,15 +287,9 @@
                   Student Status
                   <span class="text-danger">*</span>
                 </label>
-                <p-dropdown
-                  formControlName="student_status"
-                  [options]="studstatus"
-                  optionLabel="name"
-                  optionValue="value"
-                  placeholder="Please select"
-                  [showClear]="true"
-                  [style]="{ width: '100%' }"
-                ></p-dropdown>
+                <p-dropdown formControlName="student_status" [options]="studstatus" optionLabel="name"
+                  optionValue="value" placeholder="Please select" [showClear]="true"
+                  [style]="{ width: '100%' }"></p-dropdown>
                 <!-- <select
                   name="student_status"
                   id="student_status"
@@ -435,20 +304,14 @@
             </div>
           </div>
           <div class="py-3 text-center">
-            <button
-              [disabled]="signUpForm.invalid"
-              [disabled]="!signUpForm.valid"
-              class="btn btn-primary p-2 w-25 login-button w-auto"
-            >
+            <button [disabled]="signUpForm.invalid" [disabled]="!signUpForm.valid"
+              class="btn btn-primary p-2 w-25 login-button w-auto">
               Create Account
             </button>
           </div>
         </form>
         <div class="py-3 mx-3" *ngIf="loadbar">
-          <p-progressBar
-            mode="indeterminate"
-            [style]="{ height: '6px', }"
-          ></p-progressBar>
+          <p-progressBar mode="indeterminate" [style]="{ height: '6px', }"></p-progressBar>
         </div>
       </div>
       <p-toast></p-toast>
@@ -460,19 +323,11 @@
             the correct code to verify your account.. Thank you
           </p>
         </div>
-        <div
-          class="d-flex justify-content-center align-items-center flex-column"
-        >
+        <div class="d-flex justify-content-center align-items-center flex-column">
           <div class="otp-inputs d-flex gap-3">
             <p-toast></p-toast>
-            <p-inputOtp
-              pAutoFocus
-              [autofocus]="true"
-              [length]="6"
-              (input)="inputMask($event)"
-              class="mx-auto my-3"
-              [(ngModel)]="enteredOTP"
-            ></p-inputOtp>
+            <p-inputOtp pAutoFocus [autofocus]="true" [length]="6" (input)="inputMask($event)" class="mx-auto my-3"
+              [(ngModel)]="enteredOTP"></p-inputOtp>
           </div>
           <br />
           <button pButton pRipple (click)="verifyOTP()" class="btn btn-success">

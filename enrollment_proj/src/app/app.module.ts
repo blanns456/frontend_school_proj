@@ -48,6 +48,7 @@ import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
+import { FileUploadModule } from 'primeng/fileupload';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -128,6 +129,8 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
 import { FooterNavComponent } from './footer-nav/footer-nav.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
 import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
+import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
+import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 
 @NgModule({
   declarations: [
@@ -225,6 +228,8 @@ import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.compo
     FooterNavComponent,
     StudentParentComponent,
     CceUiComponent,
+    UpdateInfoComponent,
+    DeanMainComponent,
   ],
   imports: [
     BrowserModule,
@@ -258,6 +263,7 @@ import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.compo
     CardModule,
     DialogModule,
     ScrollTopModule,
+    FileUploadModule
   ],
 
   providers: [
