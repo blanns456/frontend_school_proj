@@ -72,10 +72,27 @@ import { EmailConfirmationComponent } from './pages/email-confirmation/email-con
 import { StudentProspectusCoursesComponent } from './pages/students-pov/student-prospectus-courses/student-prospectus-courses.component';
 import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students-dean/approve-students-dean.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+//pinaka sugod
 import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
 import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
 import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
+import { CbaeUiComponent } from './pages/homepage/departments/cbae-ui/cbae-ui.component';
+import { CcjeUiComponent } from './pages/homepage/departments/ccje-ui/ccje-ui.component';
+import { CteUiComponent } from './pages/homepage/departments/cte-ui/cte-ui.component';
+import { ShsUiComponent } from './pages/homepage/departments/shs-ui/shs-ui.component';
+import { AboutascComponent } from './pages/homepage/aboutasc/aboutasc.component';
+import { HistoryAscComponent } from './pages/homepage/aboutasc/history-asc/history-asc.component';
+//sugod utro
+import { DeptCceComponent } from './pages/home-tab/dept-cce/dept-cce.component';
+import { DeptUi01Component } from './pages/home-tab/dept-ui01/dept-ui01.component';
+import { DeptCbaeComponent } from './pages/home-tab/dept-cbae/dept-cbae.component';
+import { DeptCcjeComponent } from './pages/home-tab/dept-ccje/dept-ccje.component';
+import { DeptCteComponent } from './pages/home-tab/dept-cte/dept-cte.component';
+import { DeptShsComponent } from './pages/home-tab/dept-shs/dept-shs.component';
+import { DeptElementaryComponent } from './pages/home-tab/dept-elementary/dept-elementary.component';
+import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
+import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -84,10 +101,27 @@ const routes: Routes = [
   // { path: 'register', component: RegisterComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'enroll-college', component: EnrollCollegeComponent },
+  //pinaka sugod
   { path: 'registration-req', component: RegistrationReqsComponent },
+  { path: 'aboutasc', component: AboutascComponent },
+  { path: 'history-asc', component: HistoryAscComponent },
   { path: 'department-ui', component: DepartmentUiComponent },
   { path: 'cce-ui', component: CceUiComponent },
-
+  { path: 'cbae-ui', component: CbaeUiComponent },
+  { path: 'ccje-ui', component: CcjeUiComponent },
+  { path: 'cte-ui', component: CteUiComponent },
+  { path: 'shs-ui', component: ShsUiComponent },
+  //sugod utro
+  { path: 'dept-ui01', component: DeptUi01Component },
+  { path: 'dept-cce', component: DeptCceComponent },
+  { path: 'dept-cbae', component: DeptCbaeComponent },
+  { path: 'dept-ccje', component: DeptCcjeComponent },
+  { path: 'dept-cte', component: DeptCteComponent },
+  { path: 'dept-shs', component: DeptShsComponent },
+  { path: 'dept-elementary', component: DeptElementaryComponent },
+  { path: 'dept-jhs', component: DeptJhsComponent },
+  { path: 'dept-tvet', component: DeptTvetComponent },
+  //end
   {
     path: 'enroll-college-student-information',
     component: EnrollCollege2Component,
@@ -119,11 +153,11 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'home',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'home',
-        component: StudentDashboardHomeComponent
+        component: StudentDashboardHomeComponent,
       },
       {
         path: 'information',
@@ -149,7 +183,7 @@ const routes: Routes = [
         path: 'enrollment',
         component: StudentDashboardEnrollmentComponent,
       },
-    ]
+    ],
   },
   // {
   //   path: 'student-dashboard-home',
@@ -388,4 +422,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

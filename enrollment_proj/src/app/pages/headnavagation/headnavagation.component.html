@@ -1,6 +1,6 @@
 <header>
   <nav
-    class="navbar navbar-expand p-0 fixed-top shadow-lg d-lg-flex d-md-flex d-none d-sm-block w-100"
+    class="navbar navbar-expand p-0 fixed-top shadow-lg d-lg-block d-md-block d-none d-block w-100"
   >
     <div class="container">
       <a class="navbar-brand" href="#">
@@ -38,12 +38,19 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"> ABOUT </a>
+            <a
+              class="nav-link"
+              routerLink="/aboutasc"
+              routerLinkActive="active"
+              href="#"
+            >
+              ABOUT
+            </a>
           </li>
           <li class="nav-item">
             <a
               class="nav-link"
-              routerLink="/department-ui"
+              routerLink="/dept-ui01"
               routerLinkActive="active"
               href="#"
             >
@@ -63,13 +70,9 @@
             >
               PORTAL
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu menu2">
               <li>
-                <a
-                  class="dropdown-item text-dark"
-                  routerLink="/login"
-                  routerLinkActive="active"
-                  href="#"
+                <a class="dropdown-item text-dark" routerLink="/login" href="#"
                   >Login</a
                 >
               </li>
@@ -77,7 +80,6 @@
                 <a
                   class="dropdown-item text-dark"
                   routerLink="/new/student"
-                  routerLinkActive="active"
                   href="#"
                   >New Account</a
                 >
@@ -88,108 +90,49 @@
       </div>
     </div>
   </nav>
-  <nav class="respo navbar fixed-top d-lg-none d-sm-block d-md-none w-100">
-    <div class="container-sm">
-      <a class="navbar-brand" href="#">
-        <img
-          class="headicon"
-          src="../../../assets/misc/ascb_logo.png"
-          width="45"
-        />
-      </a>
+  <div
+    class="respo navbar p-0 fixed-top d-lg-none d-block d-md-none w-100 d-flex justify-content-center"
+  >
+    <img src="../../../assets/misc/n-top.png" width="600" />
+    <div class="dropdown position-absolute">
       <button
-        class="navbar-toggler border border-0"
+        class="btn border-0"
         type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasNavbar"
-        aria-controls="offcanvasNavbar"
-        aria-label="Toggle navigation"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
-        <img src="../assets/misc/burg.png" width="25" />
+        <img class="mt-4" src="../../../assets/misc/ascb_logo.png" width="75" />
+        <p class="dropdown-toggle mt-1 text-light"></p>
       </button>
-      <div
-        class="offcanvas offcanvas-end"
-        tabindex="-1"
-        id="offcanvasNavbar"
-        aria-labelledby="offcanvasNavbarLabel"
-      >
-        <div class="offcanvas-header">
-          <h5
-            class="offTitle offcanvas-title fw-bolder"
-            id="offcanvasNavbarLabel"
+      <ul class="dropdown-menu border-0 text-center w-100 mt-5">
+        <li>
+          <a class="nav-item dropdown-item" routerLink="/home" href="#">Home</a>
+        </li>
+        <li>
+          <a class="nav-item dropdown-item" routerLink="/aboutasc" href="#"
+            >About</a
           >
-            ASCB ONLINE SYSTEM
-          </h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="home1 nav-item">
-              <a
-                class="nav-link active text-dark"
-                routerLink="/home"
-                routerLinkActive="active"
-                href="#"
-                >HOME</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="#">ABOUT</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link text-dark"
-                routerLink="/department-ui"
-                routerLinkActive="active"
-                href="#"
-                >DEPARTMENTS</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-dark" href="#">NEWS AND ACHIEVEMENTS</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle text-dark"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                PORTAL
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a
-                    class="dropdown-item text-dark"
-                    routerLink="/login"
-                    routerLinkActive="active"
-                    href
-                    href="#"
-                    >Log-in</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item text-dark"
-                    routerLink="/new/student"
-                    routerLinkActive="active"
-                    href
-                    href="#"
-                    href="#"
-                    >New Accoumt</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
+        </li>
+        <li>
+          <a class="nav-item dropdown-item" routerLink="/dept-ui01" href="#"
+            >Departments</a
+          >
+        </li>
+        <li>
+          <a class="nav-item dropdown-item" href="#">News</a>
+        </li>
+        <hr class="text-light" />
+        <li>
+          <a class="nav-item dropdown-item" routerLink="/login" href="#"
+            >Login</a
+          >
+        </li>
+        <li>
+          <a class="nav-item dropdown-item" routerLink="/new/student" href="#"
+            >Enroll now</a
+          >
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
 </header>

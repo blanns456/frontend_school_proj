@@ -24,3 +24,23 @@
 .offTitle {
   color: #191970;
 }
+
+.dropdown-menu {
+  background-color: #191970;
+  position: relative;
+}
+
+.dropdown-item {
+  color: whitesmoke;
+}
+
+.menu2 {
+  background-color: whitesmoke;
+  color: #555555;
+}
+
+@media only screen and (max-width: 576px) {
+  .navbar {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
