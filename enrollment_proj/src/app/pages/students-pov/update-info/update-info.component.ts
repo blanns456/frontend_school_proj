@@ -13,6 +13,7 @@ import { error } from 'jquery';
 import { UpdateStudentServiceService } from 'src/app/services/update-student-service.service';
 import nationalities from '../../../../assets/json/nationalities.json';
 import religions from '../../../../assets/json/religions.json';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-info',
@@ -65,7 +66,8 @@ export class UpdateInfoComponent {
     private student: UpdateStudentServiceService,
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) { }
 
   onRegionChange(event: any) {
@@ -194,7 +196,7 @@ export class UpdateInfoComponent {
           });
         },
         error: (error: any) => {
-          console.error('Error:', error);
+          // console.error('Error:', error);
         }
       });
 
@@ -260,6 +262,7 @@ export class UpdateInfoComponent {
     present_zip: ['', [Validators.required]],
     profile: ['', [Validators.required]],
     signature: ['', [Validators.required]],
+    new_password: ['', [Validators.required]],
   });
 
   showPreview(event: Event) {
@@ -331,23 +334,24 @@ export class UpdateInfoComponent {
     formData.append('jhs_school', this.update_student.controls['jhs_school'].value);
     formData.append('jhs_yr', this.update_student.controls['jhs_yr'].value);
     formData.append('shs_school', this.update_student.controls['shs_school'].value);
-    formData.append('shs_yr', this.update_student.controls['shs_yr'].value);
-    formData.append('last_school', this.update_student.controls['last_school'].value);
-    formData.append('last_school_year', this.update_student.controls['last_school_year'].value);
-    formData.append('father_name', this.update_student.controls['father_name'].value);
-    formData.append('father_employed', this.update_student.controls['father_employed'].value);
-    formData.append('father_occupation', this.update_student.controls['father_occupation'].value);
-    formData.append('father_contact', this.update_student.controls['father_contact'].value);
-    formData.append('mother_name', this.update_student.controls['mother_name'].value);
-    formData.append('mother_employed', this.update_student.controls['mother_employed'].value);
-    formData.append('mother_occupation', this.update_student.controls['mother_occupation'].value);
-    formData.append('mother_contact', this.update_student.controls['mother_contact'].value);
-    formData.append('guardian_name', this.update_student.controls['guardian_name'].value);
-    formData.append('guardian_employed', this.update_student.controls['guardian_employed'].value);
-    formData.append('guardian_occupation', this.update_student.controls['guardian_occupation'].value);
-    formData.append('guardian_contact', this.update_student.controls['guardian_contact'].value);
-    formData.append('profile', this.update_student.controls['profile'].value);
-    formData.append('signature', this.update_student.controls['signature'].value);
+    formData.append('shs_yr', this.update_student.controls['shs_yr'].value ?? '');
+    formData.append('last_school', this.update_student.controls['last_school'].value ?? '');
+    formData.append('last_school_year', this.update_student.controls['last_school_year'].value ?? '');
+    formData.append('father_name', this.update_student.controls['father_name'].value ?? '');
+    formData.append('father_employed', this.update_student.controls['father_employed'].value ?? '');
+    formData.append('father_occupation', this.update_student.controls['father_occupation'].value ?? '');
+    formData.append('father_contact', this.update_student.controls['father_contact'].value ?? '');
+    formData.append('mother_name', this.update_student.controls['mother_name'].value ?? '');
+    formData.append('mother_employed', this.update_student.controls['mother_employed'].value ?? '');
+    formData.append('mother_occupation', this.update_student.controls['mother_occupation'].value ?? '');
+    formData.append('mother_contact', this.update_student.controls['mother_contact'].value ?? '');
+    formData.append('guardian_name', this.update_student.controls['guardian_name'].value ?? '');
+    formData.append('guardian_employed', this.update_student.controls['guardian_employed'].value ?? '');
+    formData.append('guardian_occupation', this.update_student.controls['guardian_occupation'].value ?? '');
+    formData.append('guardian_contact', this.update_student.controls['guardian_contact'].value ?? '');
+    formData.append('profile', this.update_student.controls['profile'].value ?? '');
+    formData.append('signature', this.update_student.controls['signature'].value ?? '');
+    formData.append('new_password', this.update_student.controls['new_password'].value);
 
     if (
       this.update_student.controls['firstname'].invalid ||
@@ -377,6 +381,7 @@ export class UpdateInfoComponent {
       this.update_student.controls['last_school'].invalid ||
       this.update_student.controls['last_school_year'].invalid ||
       this.update_student.controls['profile'].invalid ||
+      this.update_student.controls['new_password'].invalid ||
       this.update_student.controls['signature'].invalid
     ) {
       this.messageService.add({
@@ -390,17 +395,21 @@ export class UpdateInfoComponent {
     this.student.updateStudent(formData).subscribe({
       next: (response) => {
         // Handle the response data
-        console.log(response);
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Updated',
-          detail: 'Successfully!',
-        });
-        // window.location.reload();
+        // console.log(response);
+
+        setTimeout(() => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Updated',
+            detail: 'Successfully!',
+          });
+        }, 5000);
+
+        this.router.navigate(['/student/information']);
       },
       error: (error) => {
         // Handle the error
-        console.log(error);
+        // console.log(error);
       },
     });
   }
@@ -414,6 +423,20 @@ export class UpdateInfoComponent {
     } else {
       middleNameControl?.setValue(null);
       middleNameControl?.enable();
+    }
+  }
+
+  inputMask(event: Event) {
+    var numberValue = (event.target as HTMLSelectElement).value;
+
+    var numericRegex = /^[0-9]+$/;
+
+    if (!numericRegex.test(numberValue)) {
+      var sanitizedValue = numberValue.replace(/[^0-9]/g, '');
+
+      (event.target as HTMLSelectElement).value = sanitizedValue;
+
+      // console.log('Invalid input. Please enter only numeric values.');
     }
   }
 }

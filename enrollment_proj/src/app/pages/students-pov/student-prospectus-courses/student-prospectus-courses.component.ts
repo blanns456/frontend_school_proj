@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { LoginController } from 'src/app/controllers/login_controller.component';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ProspectusService } from 'src/app/services/prospectus.service';
-import * as $ from 'jquery'; // kini sa pgdeclare nis $
 
 @Component({
   selector: 'app-student-prospectus-courses',
@@ -13,17 +10,11 @@ export class StudentProspectusCoursesComponent implements OnInit {
   data: any;
   prospectus: any = [];
   groupedProspectus: { [key: string]: any[] } = {};
-  totalUnits: number = 0;
-  studentdata: any;
-  Object: any;
   program: any;
-  student: any;
-  Acads: any;
-  studentAca: any;
-  cId: any;
 
   constructor(
     private prospectus_get: ProspectusService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   getYearLevels(): string[] {
@@ -31,21 +22,25 @@ export class StudentProspectusCoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.prospectus_get.student_all_prospectus().subscribe({
       next: (res) => {
         this.data = res;
         this.prospectus = this.data[0];
         this.program = this.prospectus['course'];
-        this.prospectus.forEach((subject: { year_lvl: any }) => {
-          const yearLevel = subject.year_lvl;
-          if (!this.groupedProspectus[yearLevel]) {
-            this.groupedProspectus[yearLevel] = [];
-          }
-          this.groupedProspectus[yearLevel].push(subject);
-        });
-      }
+        this.groupProspectus();
+        this.cdr.detectChanges();
+      },
     });
+  }
 
+  groupProspectus(): void {
+    this.groupedProspectus = {};
+    this.prospectus.forEach((subject: { year_lvl: any }) => {
+      const yearLevel = subject.year_lvl;
+      if (!this.groupedProspectus[yearLevel]) {
+        this.groupedProspectus[yearLevel] = [];
+      }
+      this.groupedProspectus[yearLevel].push(subject);
+    });
   }
 }

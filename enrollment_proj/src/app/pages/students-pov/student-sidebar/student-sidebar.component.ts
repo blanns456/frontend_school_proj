@@ -59,7 +59,7 @@ export class StudentSidebarComponent implements OnInit {
           this.data = studentDetails;
         },
         error: (error: any) => {
-          console.error('Error:', error);
+          // console.error('Error:', error);
         }
       });
   }
@@ -93,7 +93,7 @@ export class StudentSidebarComponent implements OnInit {
         next: (res: any) => {
         },
         error: (error: any) => {
-          console.error('Error:', error);
+          // console.error('Error:', error);
         }
       });
   }

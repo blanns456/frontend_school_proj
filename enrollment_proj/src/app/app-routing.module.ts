@@ -94,6 +94,7 @@ import { DeptElementaryComponent } from './pages/home-tab/dept-elementary/dept-e
 import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
 import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
+import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -186,6 +187,12 @@ const routes: Routes = [
         component: StudentDashboardEnrollmentComponent,
       },
     ],
+  },
+  {
+    path: 'update-information',
+    component: UpdateInfoComponent,
+    canActivate: [AuthGuard],
+    data: { allowedRoles: ['college'] },
   },
   {
     path: 'dean',
