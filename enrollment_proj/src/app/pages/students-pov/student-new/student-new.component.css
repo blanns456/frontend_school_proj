@@ -38,6 +38,7 @@ input {
 
 .login-bg {
   width: 90%;
+  background-color: whitesmoke;
 }
 
 .bg-nav {
@@ -109,8 +110,14 @@ input {
   z-index: 9999;
 }
 
-@media only screen and (max-width: 574px) {
+@media only screen and (max-width: 576px) {
   .banner h1 {
-    font-size: 50px;
+    font-size: 40px;
+  }
+  .formTitle {
+    font-size: 25px;
+  }
+  .login-bg {
+    width: 100%;
   }
 }

@@ -15,7 +15,9 @@ export class LoginController {
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
+  user_id: any;
   constructor(private http: HttpClient) { }
+  // constructor(private http: HttpClient) { }
 
   login(user: { username: string; password: string }) {
     return this.http.post(this.Root_URL + 'login', user);

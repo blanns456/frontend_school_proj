@@ -176,7 +176,11 @@ ul {
   transform: rotate(180deg);
 }
 
-@media only screen and (max-width: 768px) {
+.logoShow img {
+  aspect-ratio: 1/1;
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
   .hero h1 {
     font-size: 50px;
     padding-top: 6rem;
@@ -205,27 +209,29 @@ ul {
   object-fit: cover;
 }
 
-@media only screen and (max-width: 574px) {
-  .hero h1 {
-    font-size: 45px;
-    padding-top: 6rem;
+@media only screen and (max-width: 576px) {
+  body {
+    padding: 0;
+    margin: 0;
   }
 
-  .logoShow .logoDep {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150;
-    margin-left: 10rem;
+  .enrollreq {
+    font-size: 15px;
   }
-  .logoShow {
-    text-align: center;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+
+  .hero h1 {
+    font-size: 45px;
+    padding-top: 3rem;
+  }
+  .hero p {
+    font-size: 20px;
   }
 
   .txt1 {
     margin-left: 4rem;
+  }
+
+  .aboutShow img {
+    width: 25px;
   }
 }

@@ -10,8 +10,12 @@
 }
 
 input {
-  width: 80%;
+  width: 72%;
   border: none;
+}
+
+.passForm {
+  width: 80%;
 }
 
 .login-button {
@@ -39,15 +43,15 @@ a {
   .asclogo {
     display: none;
   }
-  .formUse {
-    width: 20.5rem;
-    margin-left: 19.5px;
+  input {
+    width: 82%;
+    border: none;
   }
 }
 
 @media only screen and (max-width: 574px) {
-  .formUse {
-    width: 20.5rem;
-    margin-left: -28px;
+  input {
+    width: 82%;
+    border: none;
   }
 }

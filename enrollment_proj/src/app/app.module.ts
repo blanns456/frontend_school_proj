@@ -136,6 +136,21 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
 import { FooterNavComponent } from './footer-nav/footer-nav.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
 import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
+import { CbaeUiComponent } from './pages/homepage/departments/cbae-ui/cbae-ui.component';
+import { CcjeUiComponent } from './pages/homepage/departments/ccje-ui/ccje-ui.component';
+import { CteUiComponent } from './pages/homepage/departments/cte-ui/cte-ui.component';
+import { ShsUiComponent } from './pages/homepage/departments/shs-ui/shs-ui.component';
+import { AboutascComponent } from './pages/homepage/aboutasc/aboutasc.component';
+import { HistoryAscComponent } from './pages/homepage/aboutasc/history-asc/history-asc.component';
+import { DeptCceComponent } from './pages/home-tab/dept-cce/dept-cce.component';
+import { DeptUi01Component } from './pages/home-tab/dept-ui01/dept-ui01.component';
+import { DeptCbaeComponent } from './pages/home-tab/dept-cbae/dept-cbae.component';
+import { DeptCcjeComponent } from './pages/home-tab/dept-ccje/dept-ccje.component';
+import { DeptCteComponent } from './pages/home-tab/dept-cte/dept-cte.component';
+import { DeptShsComponent } from './pages/home-tab/dept-shs/dept-shs.component';
+import { DeptElementaryComponent } from './pages/home-tab/dept-elementary/dept-elementary.component';
+import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
+import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
 import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-management/item-modals/item-modals.component';
 import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
@@ -236,6 +251,21 @@ import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.compone
     FooterNavComponent,
     StudentParentComponent,
     CceUiComponent,
+    CbaeUiComponent,
+    CcjeUiComponent,
+    CteUiComponent,
+    ShsUiComponent,
+    AboutascComponent,
+    HistoryAscComponent,
+    DeptCceComponent,
+    DeptUi01Component,
+    DeptCbaeComponent,
+    DeptCcjeComponent,
+    DeptCteComponent,
+    DeptShsComponent,
+    DeptElementaryComponent,
+    DeptJhsComponent,
+    DeptTvetComponent,
     ItemModalsComponent,
     UpdateInfoComponent,
     DeanMainComponent,
