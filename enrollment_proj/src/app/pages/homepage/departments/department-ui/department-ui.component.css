@@ -1,15 +1,19 @@
-* {
+/* * {
   user-select: none;
+} */
+body {
+  overflow: visible;
 }
 
 .headicon {
   width: 60;
 }
+
 .hero {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("src/assets/misc/homepage/bga.jpg");
   mix-blend-mode: darken;
-  height: 250px;
+  height: 300px;
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -27,11 +31,11 @@
   font-weight: 900;
 }
 
-.deptCard:hover {
+/* .deptCard:hover {
   transform: scale(1.04);
   transition: 0.1s ease-in-out;
   box-shadow: 5px 5px 5px 5px rgba(56, 56, 56, 0.151);
-}
+} */
 
 /* .deptCard {
   width: 325px;
@@ -75,24 +79,27 @@ ul {
   background-color: var(--blue);
 }
 
-.deptCard {
+/* .deptCard {
   aspect-ratio: 3/2;
   display: block;
   object-fit: contain;
   object-fit: cover;
-  /* max-width: 100%; */
-}
+} */
 
 @media only screen and (max-width: 768px) {
   .list img {
     aspect-ratio: 1/1;
     width: 275;
   }
+
+  .hero h1 {
+    font-size: 55px;
+  }
 }
 
-@media only screen and (max-width: 574px) {
+@media only screen and (max-width: 576px) {
   .hero h1 {
-    font-size: 60px;
+    font-size: 40px;
   }
 
   .list img {
@@ -106,5 +113,9 @@ ul {
 
   .showCase img {
     display: none;
+  }
+
+  .showCase p {
+    text-align: justify;
   }
 }

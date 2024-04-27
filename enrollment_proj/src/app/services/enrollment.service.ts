@@ -25,6 +25,6 @@ export class EnrollmentService {
   }
 
   my_enrollment() {
-    return this.http.get(this.Root_URL + 'my_enrollment/', { headers: this.headers })
+    return this.http.get(this.Root_URL + 'my_enrollment', { headers: this.headers })
   }
 }

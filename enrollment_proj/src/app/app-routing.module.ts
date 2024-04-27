@@ -77,6 +77,7 @@ import { DepartmentUiComponent } from './pages/homepage/departments/department-u
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
 import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
+import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -152,6 +153,12 @@ const routes: Routes = [
         component: StudentDashboardEnrollmentComponent,
       },
     ]
+  },
+  {
+    path: 'update-information',
+    component: UpdateInfoComponent,
+    canActivate: [AuthGuard],
+    data: { allowedRoles: ['college'] },
   },
   {
     path: 'dean',

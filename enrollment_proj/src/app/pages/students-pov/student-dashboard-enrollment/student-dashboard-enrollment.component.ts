@@ -22,11 +22,11 @@ export class StudentDashboardEnrollmentComponent implements OnInit {
   ngOnInit(): void {
     this.enrollment.my_enrollment().subscribe({
       next: (response) => {
-        console.log(response);
+        // console.log(response);
         this.data = response;
         this.enrollments = this.data.data;
         this.semester = this.data.semester;
-        console.log(this.data.semester);
+        // console.log(this.data.semester);
       }
     });
   }

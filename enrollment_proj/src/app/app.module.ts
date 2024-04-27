@@ -51,6 +51,11 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TabViewModule } from 'primeng/tabview';
 import { FileUploadModule } from 'primeng/fileupload';
+import { StepperModule } from 'primeng/stepper';
+import { AccordionModule } from 'primeng/accordion';
+import { PanelModule } from 'primeng/panel';
+import { FieldsetModule } from 'primeng/fieldset';
+import { TabMenuModule } from 'primeng/tabmenu';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -270,7 +275,12 @@ import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.compone
     InputNumberModule,
     ConfirmDialogModule,
     TabViewModule,
-    FileUploadModule
+    FileUploadModule,
+    StepperModule,
+    AccordionModule,
+    PanelModule,
+    FieldsetModule,
+    TabMenuModule
   ],
 
   providers: [

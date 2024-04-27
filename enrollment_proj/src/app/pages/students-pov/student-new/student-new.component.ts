@@ -58,7 +58,7 @@ export class StudentNewComponent implements OnInit {
     // { name: 'TESDA', value: 'tesda' },
     // { name: 'SHS', value: 'shs' },
     { name: 'College', value: 'college' },
-    // { name: 'Graduate Studies', value: 'graduate' },
+    { name: 'Graduate Studies', value: 'graduate' },
   ];
 
   yearlvl = [
