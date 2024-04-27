@@ -93,6 +93,7 @@ import { DeptShsComponent } from './pages/home-tab/dept-shs/dept-shs.component';
 import { DeptElementaryComponent } from './pages/home-tab/dept-elementary/dept-elementary.component';
 import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
 import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
+import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -149,6 +150,7 @@ const routes: Routes = [
     path: 'student',
     component: StudentParentComponent,
     canActivate: [AuthGuard],
+    data: { allowedRoles: ['college'] },
     children: [
       {
         path: '',
@@ -184,6 +186,45 @@ const routes: Routes = [
         component: StudentDashboardEnrollmentComponent,
       },
     ],
+  },
+  {
+    path: 'dean',
+    component: DeanMainComponent,
+    canActivate: [AuthGuard],
+    data: { allowedRoles: ['dean'] },
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
+      {
+        path: 'home',
+        component: DeansDashboardHomeComponent,
+      },
+      {
+        path: 'courses',
+        component: DeansSubjectlistComponent,
+      },
+      {
+        path: 'classrooms',
+        component: DeansClassroomComponent,
+        title: 'Deans | Classroom',
+      },
+      {
+        path: 'assigning',
+        component: DeansAssignSubjectsComponent,
+        title: 'Deans | Assign Subjects',
+      },
+      {
+        path: 'approval-grade',
+        component: DeansGradeApprovalComponent,
+      },
+      {
+        path: 'courses-approval',
+        component: ApproveStudentsDeanComponent,
+      },
+    ]
   },
   // {
   //   path: 'student-dashboard-home',
@@ -262,32 +303,6 @@ const routes: Routes = [
     path: 'dailyconsolidated-reports',
     component: DailyconsolidatedReportsComponent,
     title: 'Daily Consolidated Reports',
-  },
-  {
-    path: 'deans-home',
-    component: DeansDashboardHomeComponent,
-  },
-  {
-    path: 'deans-gradeApproval',
-    component: DeansGradeApprovalComponent,
-  },
-  {
-    path: 'deans-prospectus-approval',
-    component: ApproveStudentsDeanComponent,
-  },
-  {
-    path: 'deans-assignSubject',
-    component: DeansAssignSubjectsComponent,
-    title: 'Deans | Assign Subjects',
-  },
-  {
-    path: 'deans-classroom',
-    component: DeansClassroomComponent,
-    title: 'Deans | Classroom',
-  },
-  {
-    path: 'deans-subjectlist',
-    component: DeansSubjectlistComponent,
   },
   {
     path: 'trustfund-items',
@@ -422,4 +437,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

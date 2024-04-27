@@ -150,7 +150,7 @@ export class StudentNewComponent implements OnInit {
             detail: error.error.errors.message
           });
         }
-        this.loadbar = false;
+        // this.loadbar = false;
       }
     });
   }
@@ -191,6 +191,7 @@ export class StudentNewComponent implements OnInit {
             .createstudent(this.signUpForm.value)
             .subscribe({
               next: (res) => {
+                console.log(res);
                 this.info = res;
                 if (this.info[0] && this.info[0]['message'] === 'Success') {
                   Swal.fire(

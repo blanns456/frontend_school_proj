@@ -9,62 +9,43 @@
     </div>
     <div class="container-fluid py-2">
       <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button d-block z-1" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              1st Trimester A.Y. 2023-2024
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <table class="table table-bordered table-sm py-2 text-center">
-                <thead>
-                  <tr>
-                    <th>Course Code.</th>
-                    <th>Descriptive Titles</th>
-                    <th>Units</th>
-                    <th>Remarks</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let enrollment of enrollments">
-                    <td>{{ enrollment.code }}</td>
-                    <td>{{ enrollment.description }}</td>
-                    <td>{{ enrollment.units }}</td>
-                    <td class="text-capitalize">
-                      {{ enrollment.remarks }}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+        <ng-container *ngFor="let sem of semester">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#collapse_' + sem.id" aria-expanded="true"
+                [attr.aria-controls]="'collapse_' + sem.id">
+                {{ sem.semester }} {{ sem.active_year }}
+              </button>
+            </h2>
+            <div [id]="'collapse_' + sem.id" class="accordion-collapse collapse"
+              [attr.data-bs-parent]="'#accordionExample'">
+              <div class="accordion-body">
+                <table class="table table-bordered table-sm py-2 text-center">
+                  <thead>
+                    <tr>
+                      <th>Course Code</th>
+                      <th>Descriptive Titles</th>
+                      <th>Units</th>
+                      <th>Remarks</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let enrollment of enrollments">
+                      <ng-container
+                        *ngIf="enrollment.acadyr === sem.active_year && enrollment.semester === sem.semester">
+                        <td>{{ enrollment.code }}</td>
+                        <td>{{ enrollment.description }}</td>
+                        <td>{{ enrollment.units }}</td>
+                        <td class="text-capitalize">{{ enrollment.remarks }}</td>
+                      </ng-container>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="collapseTwo"
-                >
-                  2nd Trimester A.Y. 2024-2025
-                </button>
-              </h2>
-              <div
-                id="collapseTwo"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionExample"
-              >
-                <div class="accordion-body">
-                  <strong>Not Yet Enrolled</strong>
-                </div>
-              </div>
-            </div> -->
-        <div class="accordion-item"></div>
+        </ng-container>
       </div>
     </div>
     <p class="opacity-0">Footer-spacer</p>

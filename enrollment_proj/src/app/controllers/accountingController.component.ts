@@ -6,28 +6,54 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class AccountingController {
-  // readonly Root_URL = 'http://127.0.0.1:8000/api/';
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
   token: any;
 
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getstudents() {
     return this.http.get(this.Root_URL + 'showstudents');
   }
 
-  getmatrigroup() {
-    return this.http.get(this.Root_URL + 'getmatrigroup');
+  getmatrigroup(categ_id: number) {
+    return this.http.get(this.Root_URL + 'getmatrigroup/' + categ_id);
   }
 
-  showallitems() {
-    return this.http.get(this.Root_URL + 'getitemMatri');
+  showallcategory() {
+    return this.http.get(this.Root_URL + 'categorylist');
   }
 
-  addMatriItems(items: { itemName: string; itemGroup: string }) {
+  showallitemFees(groupid: number) {
+    return this.http.get(this.Root_URL + 'getitemFees/' + groupid);
+  }
+
+  addMatriItems(items: {
+    itemName: string;
+    itemGroupid: number;
+    amount: number;
+    increase: number;
+    percent: number;
+  }) {
     return this.http.post(this.Root_URL + 'additems', items);
+  }
+
+  addcategory(category: { category_name: string; semesteryr: number }) {
+    return this.http.post(this.Root_URL + 'addcategory', category);
+  }
+
+  addItemGroup(grpitems: { itemGroup: string; categ_id: number }) {
+    return this.http.post(this.Root_URL + 'additemgroup', grpitems);
+  }
+
+  deleteItem(itemID: number) {
+    return this.http.delete(this.Root_URL + `delete/${itemID}`);
+  }
+
+  deletestuds(studID: number) {
+    return this.http.delete(this.Root_URL + `deletestuds/${studID}`);
   }
 }

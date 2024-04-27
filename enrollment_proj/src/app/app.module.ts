@@ -47,6 +47,10 @@ import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { CardModule } from 'primeng/card';
 import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TabViewModule } from 'primeng/tabview';
+import { FileUploadModule } from 'primeng/fileupload';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -142,6 +146,9 @@ import { DeptShsComponent } from './pages/home-tab/dept-shs/dept-shs.component';
 import { DeptElementaryComponent } from './pages/home-tab/dept-elementary/dept-elementary.component';
 import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
 import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
+import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-management/item-modals/item-modals.component';
+import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
+import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 
 @NgModule({
   declarations: [
@@ -254,6 +261,9 @@ import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.componen
     DeptElementaryComponent,
     DeptJhsComponent,
     DeptTvetComponent,
+    ItemModalsComponent,
+    UpdateInfoComponent,
+    DeanMainComponent,
   ],
   imports: [
     BrowserModule,
@@ -287,6 +297,10 @@ import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.componen
     CardModule,
     DialogModule,
     ScrollTopModule,
+    InputNumberModule,
+    ConfirmDialogModule,
+    TabViewModule,
+    FileUploadModule
   ],
 
   providers: [
@@ -295,4 +309,4 @@ import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.componen
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
