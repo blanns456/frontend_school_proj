@@ -2,7 +2,7 @@
   <div class="d-none position-absolute loading-overlay" id="loading">
     <app-loading-page></app-loading-page>
   </div>
-  <div class="w-50 bg-light mx-auto container-fluid p-2 bg-opacity-75 rounded-4 login-bg" id="mainPage">
+  <div class="w-auto bg-light mx-auto p-2 bg-opacity-75 rounded-4 login-bg" id="mainPage">
     <div class="asclogo position-absolute top-25 start-50 translate-middle">
       <img src="../../../assets/misc/ascb_logo.png" alt class="img-responsive w-100" />
     </div>
@@ -18,12 +18,36 @@
         <form (ngSubmit)="submit()" [formGroup]="form">
           <div class="text-center formUse">
             <label for="username" class="formUse form-label"></label>
-            <input pInputText type="text" placeholder="Username" formControlName="username"
-              [style]="{ width: '76%' }" />
+            <input pInputText type="text" placeholder="Username" formControlName="username" />
+            <!-- <input
+              type="text"
+              formControlName="username"
+              class="form-control fw-bold mx-auto py-2 shadow-xl"
+              name="username"
+              id="username"
+              placeholder="USERNAME"
+
+            /> -->
+
+            <!-- <div
+              *ngIf="
+                form.controls['username'].invalid &&
+                (form.controls['username'].dirty ||
+                  form.controls['username'].touched)
+              "
+            >
+              <div
+                class="text-danger text-center"
+                *ngIf="form.controls['username'].errors?.['required']"
+              >
+                Username is required.
+              </div>
+            </div> -->
           </div>
           <div class="mt-2 text-center">
             <label for="password" class="formPass form-label"></label>
-            <p-password formControlName="password" [feedback]="false" [toggleMask]="true" placeholder="Password">
+            <p-password class="w-auto" formControlName="password" [feedback]="false" [toggleMask]="true"
+              placeholder="Password">
             </p-password>
           </div>
           <div class="mt-4 text-center">

@@ -1,0 +1,112 @@
+* {
+  user-select: none;
+}
+
+.headicon {
+  width: 60;
+}
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("src/assets/misc/homepage/bga.jpg");
+  mix-blend-mode: darken;
+  height: 250px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero h1 {
+  padding-top: 2rem;
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.about {
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.deptCard:hover {
+  transform: scale(1.04);
+  transition: 0.1s ease-in-out;
+  box-shadow: 5px 5px 5px 5px rgba(56, 56, 56, 0.151);
+}
+
+/* .deptCard {
+  width: 325px;
+} */
+
+.list hr {
+  padding: 2px;
+  color: var(--midnight);
+}
+
+.foot1 {
+  background-color: var(--midnight);
+}
+
+.list {
+  font-size: 15px;
+  padding-bottom: 0;
+}
+
+.list img {
+  aspect-ratio: 1/1;
+  width: 325;
+}
+
+.size {
+  font-size: 15px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.flast {
+  font-size: 20px;
+}
+
+.foot2 {
+  background-color: var(--blue);
+}
+
+.deptCard {
+  aspect-ratio: 3/2;
+  display: block;
+  object-fit: contain;
+  object-fit: cover;
+  /* max-width: 100%; */
+}
+
+@media only screen and (max-width: 768px) {
+  .list img {
+    aspect-ratio: 1/1;
+    width: 275;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .hero h1 {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .list img {
+    aspect-ratio: 1/1;
+    width: 350;
+  }
+
+  .showCase h2 {
+    text-align: center;
+  }
+
+  .showCase img {
+    display: none;
+  }
+}

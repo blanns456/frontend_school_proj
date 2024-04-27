@@ -1,0 +1,99 @@
+* {
+  user-select: none;
+}
+
+.headicon {
+  width: 60;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("src/assets/misc/homepage/bga.jpg");
+  mix-blend-mode: darken;
+  height: 250px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero h1 {
+  padding-top: 2rem;
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.subTxt {
+  font-size: 15px;
+  color: #555555;
+  padding-left: 1rem;
+}
+
+.about {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.deptList a {
+  text-decoration: none;
+}
+.deptList p {
+  color: #555555;
+  font-weight: 600;
+}
+.deptList:hover {
+  transform: scale(1.3);
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.current {
+  font-weight: bold;
+  transform: scale(1.04);
+}
+
+.desc {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.state {
+  font-size: 15px;
+  color: #555555;
+}
+.state1 {
+  font-size: 20px;
+  color: #555555;
+}
+
+.folders:hover {
+  transform: scale(1.2);
+  transition: 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.desc {
+  background-color: #191970;
+}
+
+.others a {
+  text-decoration: none;
+  color: #555555;
+}
+
+@media only screen and (max-width: 576px) {
+  .hero h1 {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .whole {
+    display: flex;
+    justify-content: center;
+  }
+
+  .sRespo {
+    font-size: 22px;
+  }
+}
