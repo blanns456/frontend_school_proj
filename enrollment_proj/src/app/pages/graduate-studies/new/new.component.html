@@ -9,8 +9,9 @@
   <h1
     class="text-center text-white fw-bolder mt-lg-5 mt-md-5 mt-5 text-uppercase"
   >
-    College
+    Graduate Studies
   </h1>
+  <p [textContent]="semester" class="text-center m-0 pt-2 text-white"></p>
   <p [textContent]="activateyr" class="text-center m-0 pt-2 text-white"></p>
 </div>
 <div class="container-fluid">
@@ -126,16 +127,6 @@
                     [editable]="true"
                     [showClear]="true"
                   ></p-dropdown>
-                  <!-- <select
-                  name="gender"
-                  id="gender"
-                  formControlName="gender"
-                  class="form-select shadow-xl"
-                >
-                  <option [selected]="true" hidden>Please Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select> -->
                 </div>
               </div>
               <div class="col-lg-3 col-md-6 col-12">
@@ -182,17 +173,6 @@
                     placeholder="0912xxxxxxx"
                     [style]="{ width: '100%' }"
                   ></p-inputMask>
-
-                  <!-- <input
-                  (input)="inputMask($event)"
-                  type="text"
-                  pattern="[0-9]{11}"
-                  class="form-control py-2 border"
-                  formControlName="contact_number"
-                  maxlength="11"
-                  name="contact_number"
-                  id="contact_number"
-                /> -->
                 </div>
               </div>
             </div>
@@ -246,18 +226,6 @@
                     [showClear]="true"
                     [style]="{ width: '100%' }"
                   ></p-dropdown>
-                  <!-- <select
-                  id="citizenship"
-                  class="form-select shadow-xl"
-                  formControlName="citizenship"
-                >
-                  <option value disabled selected>
-                    Please Select Citizenship
-                  </option>
-                  <ng-container *ngFor="let nationality of nationalitiesList">
-                    <option [ngValue]="nationality">{{ nationality }}</option>
-                  </ng-container>
-                </select> -->
                 </div>
               </div>
               <div class="col-lg-4 col-md-4 col-12">
@@ -274,20 +242,6 @@
                     filterBy="name"
                     [style]="{ width: '100%' }"
                   ></p-dropdown>
-                  <!-- <input
-                  type="text"
-                  class="form-control py-2 border"
-                  formControlName="religion"
-                  name="religion"
-                  id="religion"
-                  list="religionL"
-                  required
-                />
-                <datalist id="religionL">
-                  <ng-container *ngFor="let religion of religionList">
-                    <option [ngValue]="religion">{{ religion }}</option>
-                  </ng-container>
-                </datalist> -->
                 </div>
               </div>
             </div>
@@ -298,31 +252,15 @@
                   <label for="enrollIn" class="form-label">
                     Interested to Enroll In:<span class="text-danger">*</span>
                   </label>
-                  <p-dropdown
+                  <input
+                    id="enrollIn"
+                    type="text"
+                    class="p-inputtext-md border"
                     formControlName="enrollIn"
-                    [options]="enrollist"
-                    optionLabel="name"
-                    optionValue="value"
-                    placeholder="Please select"
-                    [showClear]="true"
-                    filterBy="name"
-                    [style]="{ minWidth: '100%' }"
-                  ></p-dropdown>
-                  <!-- <select
-                  name="enrollIn"
-                  id="enrollIn"
-                  formControlName="enrollIn"
-                  class="form-select shadow-xl"
-                >
-                  <option value disabled selected>Please select</option>
-                  <option value="tesda">TESDA</option>
-                  <option value="shs">SHS</option>
-                  <option value="college">College</option>
-                  <option value="graduate">Graduate Studies</option>
-                  <option value="graduateStudies">Graduate Studies</option>
-					<option value="tesda">TESDA</option>
-					<option value="shs">Senior HighSchool</option>
-                </select> -->
+                    pInputText
+                    [readonly]="true"
+                    [style]="{ width: '100%' }"
+                  />
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12">
@@ -330,124 +268,27 @@
                   <label for="program" class="form-label">
                     Program<span class="text-danger">*</span>
                   </label>
-                  <p-dropdown
-                    formControlName="program"
-                    [options]="courses"
-                    optionLabel="name"
-                    optionValue="courses_id"
-                    placeholder="Please select courses"
-                    [showClear]="true"
-                    [filter]="true"
-                    filterBy="name"
-                    [style]="{ minWidth: '100%' }"
-                  >
-                    ></p-dropdown
-                  >
-                  <!-- <select
-                  name="program"
-                  id="program"
-                  class="form-select shadow-xl"
-                  formControlName="program"
-                >
-                  <option value disabled selected>Please select Course</option>
-                  <option
-                    *ngFor="let option of courses"
-                    [value]="option.courses_id"
-                  >
-                    {{ option.name }}
-                  </option>
-                </select> -->
-                </div>
-              </div>
-            </div>
-            <div class="row px-3">
-              <div class="col-lg-4 col-md-4 col-12">
-                <div class="mb-3 input-holder">
-                  <label for="semester" class="form-label">
-                    Trimester
-                    <span class="text-danger">*</span>
-                  </label>
-                  <!-- <input pInputText [value]="semester" type="text" name="semester" class="py-2 border" id="semester"
-                  formControlName="semester" readonly [style]="{ minWidth: '100%' }" /> -->
                   <input
-                    id="disabled-input"
+                    id="program"
                     type="text"
                     class="p-inputtext-md border"
+                    formControlName="program"
                     pInputText
                     [readonly]="true"
-                    [value]="semester"
+                    value="MAED Major in Administration and Supervision"
                     [style]="{ width: '100%' }"
                   />
                 </div>
               </div>
-              <div class="col-lg-4 col-md-4 col-12">
-                <div class="mb-3 input-holder">
-                  <label for="student_yr_level" class="form-label">
-                    Year Level
-                    <span class="text-danger">*</span>
-                  </label>
-                  <p-dropdown
-                    formControlName="student_yr_level"
-                    [options]="yearlvl"
-                    optionLabel="name"
-                    optionValue="value"
-                    placeholder="Please select"
-                    [showClear]="true"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                  <!-- <select
-                  name="student_yr_level"
-                  id="student_yr_level"
-                  class="form-select shadow-xl"
-                  formControlName="student_yr_level"
-                  required
-                >
-                  <option value disabled selected>
-                    Please select year level
-                  </option>
-                  <option value="1">1st Year</option>
-                  <option value="2">2nd Year</option>
-                  <option value="3">3rd Year</option>
-                  <option value="4">4th Year</option>
-                </select> -->
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-12">
-                <div class="mb-3 input-holder">
-                  <label for="student_status" class="form-label">
-                    Student Status
-                    <span class="text-danger">*</span>
-                  </label>
-                  <p-dropdown
-                    formControlName="student_status"
-                    [options]="studstatus"
-                    optionLabel="name"
-                    optionValue="value"
-                    placeholder="Please select"
-                    [showClear]="true"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                  <!-- <select
-                  name="student_status"
-                  id="student_status"
-                  class="form-select shadow-xl"
-                  formControlName="student_status"
-                >
-                  <option disabled value>Please Select Status</option>
-                  <option value="regular">Regular Student</option>
-                  <option value="irregular">Irregular Student</option>
-                </select> -->
-                </div>
-              </div>
             </div>
             <div class="py-3 text-center">
-              <button
+              <p-button
+                *ngIf="!loadbar"
+                type="submit"
                 [disabled]="signUpForm.invalid"
                 [disabled]="!signUpForm.valid"
-                class="btn btn-primary p-2 w-25 login-button w-auto"
-              >
-                Create Account
-              </button>
+                label="Create Account"
+              ></p-button>
             </div>
           </form>
           <div class="py-3 mx-3" *ngIf="loadbar">

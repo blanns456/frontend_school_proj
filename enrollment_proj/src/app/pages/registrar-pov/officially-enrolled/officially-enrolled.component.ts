@@ -14,7 +14,7 @@ import * as $ from 'jquery';
   styleUrls: ['./officially-enrolled.component.css'],
 })
 export class OfficiallyEnrolledComponent implements OnInit, AfterViewInit {
-  readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/';
 
   students: any = [];
   info: any = [];
@@ -33,7 +33,7 @@ export class OfficiallyEnrolledComponent implements OnInit, AfterViewInit {
     page: 1,
   };
 
-  constructor(private http: HttpClient, private fb: FormBuilder) { }
+  constructor(private http: HttpClient, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.filterEnrolled();
@@ -65,7 +65,7 @@ export class OfficiallyEnrolledComponent implements OnInit, AfterViewInit {
       });
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {}
 
   generatePageNumbers(): number[] {
     const totalVisiblePages = 10;

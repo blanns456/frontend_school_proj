@@ -96,6 +96,9 @@ import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.componen
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
 
+// graduate studies
+import { NewComponent } from './pages/graduate-studies/new/new.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomepageComponent },
@@ -203,7 +206,7 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'home',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'home',
@@ -231,7 +234,7 @@ const routes: Routes = [
         path: 'courses-approval',
         component: ApproveStudentsDeanComponent,
       },
-    ]
+    ],
   },
   // {
   //   path: 'student-dashboard-home',
@@ -437,6 +440,10 @@ const routes: Routes = [
     path: 'email-confirmation',
     component: EmailConfirmationComponent,
   },
+  {
+    path: 'new/graduate-studies',
+    component: NewComponent,
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
@@ -444,4 +451,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

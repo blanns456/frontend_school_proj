@@ -154,6 +154,7 @@ import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.componen
 import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-management/item-modals/item-modals.component';
 import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
+import { NewComponent } from './pages/graduate-studies/new/new.component';
 
 @NgModule({
   declarations: [
@@ -269,6 +270,7 @@ import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.compone
     ItemModalsComponent,
     UpdateInfoComponent,
     DeanMainComponent,
+    NewComponent,
   ],
   imports: [
     BrowserModule,
@@ -310,7 +312,7 @@ import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.compone
     AccordionModule,
     PanelModule,
     FieldsetModule,
-    TabMenuModule
+    TabMenuModule,
   ],
 
   providers: [
@@ -319,4 +321,4 @@ import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.compone
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
