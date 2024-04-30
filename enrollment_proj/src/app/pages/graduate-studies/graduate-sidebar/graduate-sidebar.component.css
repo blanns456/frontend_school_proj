@@ -1,0 +1,9 @@
+.sidebar-content {
+  background: whitesmoke;
+}
+.nav-link {
+  color: black;
+}
+.active {
+  background: #0d6efd;
+}

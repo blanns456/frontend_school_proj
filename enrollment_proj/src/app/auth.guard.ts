@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  Router,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   token: any;
   userRole: string | null = null;
@@ -14,7 +19,11 @@ export class AuthGuard {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     this.token = localStorage.getItem('token');
     this.userRole = localStorage.getItem('role');
 
@@ -34,6 +43,10 @@ export class AuthGuard {
 
   isStudent(): boolean {
     return this.userRole === 'college';
+  }
+
+  isGraduateStudies(): boolean {
+    return this.userRole === 'Graduate Studies';
   }
 
   isRegistrar(): boolean {
@@ -57,7 +70,11 @@ export const authGuard = (router: Router, authGuard: AuthGuard) => {
   return (
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree => {
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree => {
     return authGuard.canActivate(route, state);
   };
 };

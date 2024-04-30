@@ -155,6 +155,10 @@ import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-mana
 import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 import { NewComponent } from './pages/graduate-studies/new/new.component';
+import { GraduateMainComponent } from './pages/graduate-studies/graduate-main/graduate-main.component';
+import { GraduateSidebarComponent } from './pages/graduate-studies/graduate-sidebar/graduate-sidebar.component';
+import { GraduateNavbarComponent } from './pages/graduate-studies/graduate-navbar/graduate-navbar.component';
+import { GraduateHomeComponent } from './pages/graduate-studies/graduate-home/graduate-home.component';
 
 @NgModule({
   declarations: [
@@ -271,6 +275,10 @@ import { NewComponent } from './pages/graduate-studies/new/new.component';
     UpdateInfoComponent,
     DeanMainComponent,
     NewComponent,
+    GraduateMainComponent,
+    GraduateSidebarComponent,
+    GraduateNavbarComponent,
+    GraduateHomeComponent,
   ],
   imports: [
     BrowserModule,

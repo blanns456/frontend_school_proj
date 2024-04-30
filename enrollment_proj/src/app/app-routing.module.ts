@@ -95,6 +95,8 @@ import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
 import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
+import { GraduateMainComponent } from './pages/graduate-studies/graduate-main/graduate-main.component';
+import { GraduateHomeComponent } from './pages/graduate-studies/graduate-home/graduate-home.component';
 
 // graduate studies
 import { NewComponent } from './pages/graduate-studies/new/new.component';
@@ -196,6 +198,29 @@ const routes: Routes = [
     component: UpdateInfoComponent,
     canActivate: [AuthGuard],
     data: { allowedRoles: ['college'] },
+  },
+  // {
+  //   path: 'maed',
+  //   component: GraduateMainComponent,
+  //   // canActivate: [AuthGuard],
+  //   // data: { allowedRoles: ['college'] },
+  // },
+  {
+    path: 'maed',
+    component: GraduateMainComponent,
+    // canActivate: [AuthGuard],
+    // data: { allowedRoles: ['college'] },
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
+        path: 'home',
+        component: GraduateHomeComponent,
+      },
+    ],
   },
   {
     path: 'dean',
