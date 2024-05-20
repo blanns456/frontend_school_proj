@@ -3,46 +3,185 @@
   <div class="main-content">
     <div class="fixed-background"></div>
     <app-accounting-navbar></app-accounting-navbar>
-    <div
-      class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
-    >
-      <!-- <div class="divider mb-4"></div> -->
-      <div class="bg-white w-100 h-75 rounded">
+    <p-toast></p-toast>
+    <div class="container-fluid containerTab">
+      <div class="bg-white w-100 contentTab rounded">
         <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
           <h3 class="text-white fw-bold">Lab Fees</h3>
         </div>
-        <div class="content d-flex justify-content-end">
-          <button class="btn btnAddFees text-white m-2">
-            <i class="fa-solid fa-file-circle-plus mx-2"></i>Add Fees
-          </button>
-        </div>
         <div class="container">
-          <table id="example" class="table table-striped" style="width: 100%">
-            <thead>
+          <p-table
+            [rowHover]="true"
+            [value]="departments"
+            styleClass="p-datatable-striped"
+            [tableStyle]="{ 'min-width': '50rem' }"
+          >
+            <ng-template pTemplate="header">
               <tr>
-                <th>Student's ID</th>
-                <th>Student's Name</th>
-                <th>School Yr.</th>
-                <th>Course</th>
+                <th>Departments</th>
+                <th>Action</th>
               </tr>
-            </thead>
-            <tbody>
+            </ng-template>
+            <ng-template pTemplate="body" let-depts>
               <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
+                <td>{{ depts.department_name }}</td>
+                <td>
+                  <p-button
+                    icon="pi pi-eye"
+                    (click)="showDept(depts.id, depts.department_name)"
+                  >
+                  </p-button>
+                </td>
               </tr>
-              <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-              </tr>
-            </tbody>
-          </table>
+            </ng-template>
+          </p-table>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<p-dialog
+  header="{{ departname }}"
+  [modal]="true"
+  [(visible)]="deptdialog"
+  [style]="{ width: '70%' }"
+>
+  <!-- <span class="p-input-icon-left me-2">
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      pInputText
+      placeholder="Search keyword"
+      (input)="filterInput($event)"
+    />
+  </span> -->
+  <p-accordion [activeIndex]="0">
+    <div *ngFor="let course of getcourses">
+      <p-accordionTab
+        (click)="getid(course.courses_id)"
+        header="{{ course.name }}"
+      >
+        <p-button
+          class="d-flex justify-content-end mb-3"
+          icon="pi pi-plus"
+          label="New"
+          (click)="addShowdialog(course.courses_id, course.name)"
+        ></p-button>
+        <p-table
+          [rowHover]="true"
+          [value]="labfeesdb"
+          [tableStyle]="{ 'min-width': '50rem' }"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Subjects</th>
+              <th>Units</th>
+              <th>Amount</th>
+              <th>Action</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-lfees>
+            <tr>
+              <td>{{ lfees.subjects }}</td>
+              <td>{{ lfees.units }}</td>
+              <td>{{ lfees.feeAmount }}</td>
+              <td>
+                <p-button icon="pi pi-pen-to-square"> </p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-accordionTab>
+    </div>
+  </p-accordion>
+  <!-- <p-table [value]="deptsubjects" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 45%">Code/Course</th>
+        <th>Units</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-subs>
+      <tr>
+        <td>{{ subs.code }}/{{ subs.description }}</td>
+        <td>{{ subs.units }}</td>
+        <td>
+          <p-button icon="pi pi-plus" label="Add Lab fee"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table> -->
+</p-dialog>
+
+<!-- <p-dialog
+  header="{{ departname }}"
+  [modal]="true"
+  [(visible)]="deptdialog"
+  [style]="{ width: '60%' }"
+>
+  <span class="p-input-icon-left me-2">
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      pInputText
+      placeholder="Search keyword"
+      (input)="filterInput($event)"
+    />
+  </span>
+  <p-table [value]="deptsubjects" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 45%">Code/Course</th>
+        <th>Units</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-subs>
+      <tr>
+        <td>{{ subs.code }}/{{ subs.description }}</td>
+        <td>{{ subs.units }}</td>
+        <td>
+          <p-button icon="pi pi-plus" label="Add Lab fee"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-dialog> -->
+
+<p-dialog
+  [modal]="true"
+  header="{{ coursename }}"
+  [(visible)]="coursesDeptDialog"
+  [style]="{ height: '400px', width: '50%' }"
+>
+  <form
+    [formGroup]="addlabfees"
+    (ngSubmit)="savelabfees()"
+    class="d-flex flex-column"
+  >
+    <label for="sublist">Select Subject:</label>
+    <p-dropdown
+      [options]="deptsubjects"
+      [style]="{ width: '50%' }"
+      optionLabel="subjects"
+      optionValue="subjectid"
+      formControlName="subjectid"
+      id="sublist"
+    ></p-dropdown>
+    <br />
+    <label for="amount">Amount:</label>
+    <p-inputNumber
+      inputId="currency-ph"
+      mode="currency"
+      currency="PHP"
+      formControlName="amount"
+      locale="en-PH"
+      id="amount"
+    ></p-inputNumber>
+    <div class="d-flex justify-content-center align-items-center mt-4">
+      <p-button type="submit" label="Submit"></p-button>
+    </div>
+  </form>
+</p-dialog>

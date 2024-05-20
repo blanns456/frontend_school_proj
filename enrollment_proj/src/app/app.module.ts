@@ -56,6 +56,9 @@ import { AccordionModule } from 'primeng/accordion';
 import { PanelModule } from 'primeng/panel';
 import { FieldsetModule } from 'primeng/fieldset';
 import { TabMenuModule } from 'primeng/tabmenu';
+// import { AccordionModule } from 'primeng/accordion';
+// import { StepperModule } from 'primeng/stepper';
+// import { PanelModule } from 'primeng/panel';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -310,6 +313,10 @@ import { RegistrationProcessComponent } from './pages/home-tab/registration-proc
     PanelModule,
     FieldsetModule,
     TabMenuModule,
+    TabMenuModule
+    // AccordionModule,
+    // StepperModule,
+    // PanelModule,
   ],
 
   providers: [
@@ -318,4 +325,4 @@ import { RegistrationProcessComponent } from './pages/home-tab/registration-proc
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

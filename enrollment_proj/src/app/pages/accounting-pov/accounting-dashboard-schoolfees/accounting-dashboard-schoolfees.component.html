@@ -3,46 +3,87 @@
   <div class="main-content">
     <div class="fixed-background"></div>
     <app-accounting-navbar></app-accounting-navbar>
-    <div
-      class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
-    >
+    <p-toast></p-toast>
+    <div class="container-fluid containerTab">
       <!-- <div class="divider mb-4"></div> -->
-      <div class="bg-white w-100 h-75 rounded">
+      <div class="bg-white w-100 contentTab rounded">
         <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
-          <h3 class="text-white fw-bold">School Fees</h3>
+          <h3 class="text-white fw-bold">Matriculation</h3>
         </div>
-        <div class="content d-flex justify-content-end">
+        <!-- <div class="content d-flex justify-content-end">
           <button class="btn btnAddFees text-white m-2">
             <i class="fa-solid fa-file-circle-plus mx-2"></i>Add Fees
           </button>
-        </div>
+        </div> -->
         <div class="container">
-          <table id="example" class="table table-striped" style="width: 100%">
-            <thead>
+          <p-table
+            [rowHover]="true"
+            [value]="departments"
+            styleClass="p-datatable-striped"
+            [tableStyle]="{ 'min-width': '50rem' }"
+          >
+            <ng-template pTemplate="header">
               <tr>
-                <th>Student's ID</th>
-                <th>Student's Name</th>
-                <th>School Yr.</th>
-                <th>Course</th>
+                <th>Departments</th>
+                <th>Action</th>
               </tr>
-            </thead>
-            <tbody>
+            </ng-template>
+            <ng-template pTemplate="body" let-depts>
               <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
+                <td>{{ depts.department_name }}</td>
+                <td>
+                  <p-button
+                    icon="pi pi-eye"
+                    (click)="showmatriFees(depts.id, depts.department_name)"
+                  >
+                  </p-button>
+                  <p-button class="ms-2" icon="pi pi-pen-to-square"> </p-button>
+                </td>
               </tr>
-              <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-              </tr>
-            </tbody>
-          </table>
+            </ng-template>
+          </p-table>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<p-dialog
+  [modal]="true"
+  header="{{ displaydeptname }}/{{ acadyr }}"
+  [(visible)]="deptfeesDialog"
+  [style]="{ width: '70%' }"
+>
+  <div class="d-flex justify-content-end align-items-center m-2">
+    <p-button label="Old"></p-button>
+    <p-button label="New" class="ms-2"></p-button>
+  </div>
+  <p-table
+    [rowHover]="true"
+    [value]="deptfeesdata"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Fees</th>
+        <th>Amount</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-dfees>
+      <tr>
+        <td>{{ dfees.item_name }}</td>
+        <td>{{ dfees.amount }}</td>
+        <td>
+          <p-button icon="pi pi-pen-to-square"> </p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="footer">
+      <tr>
+        <td colspan="1">Total:</td>
+        <td>₱{{ totalamount }}.00</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-dialog>

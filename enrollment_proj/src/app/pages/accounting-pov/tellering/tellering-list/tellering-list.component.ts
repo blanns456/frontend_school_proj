@@ -1,37 +1,52 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import DataTable from 'datatables.net-dt';
+import { AccountingController } from 'src/app/controllers/accountingController.component';
+import { MessageService, ConfirmationService } from 'primeng/api';
+import { Router, NavigationExtras } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { error } from 'jquery';
+
 @Component({
   selector: 'app-tellering-list',
   templateUrl: './tellering-list.component.html',
   styleUrls: ['./tellering-list.component.css'],
 })
-export class TelleringListComponent implements OnInit, AfterViewInit {
-  @ViewChild('dataTable', { static: false }) table: any;
-  dataTable: any;
+export class TelleringListComponent implements OnInit {
+  info: any;
+  studledgers: any;
+  dialogVisible: boolean = false;
 
-  constructor() {}
+  constructor(
+    private AccountingController: AccountingController,
+    private messageService: MessageService,
+    private router: Router
+  ) {}
 
-  students = [
-    {
-      id: 1,
-      name: 'Rizal, Jose Patricio',
-      mop: 'Cash',
-      pdate: '04/12/2023',
-      paytype: 'Recieved',
-    },
-    {
-      id: 2,
-      name: 'Badang, James Moreno',
-      mop: 'GCash',
-      pdate: '04/12/2023',
-      paytype: 'Recieved',
-    },
-  ];
+  showdialog(stud_id: number, stud: any) {
+    this.dialogVisible = true;
 
-  ngAfterViewInit(): void {
-    this.dataTable = $(this.table.nativeElement);
-    new DataTable(this.dataTable);
+    const navigationExtras: NavigationExtras = {
+      state: {
+        studentLedg: stud,
+      },
+    };
+    this.router.navigate(['/teller-viewuser'], navigationExtras);
+    // alert(stud_id);
   }
 
-  ngOnInit(): void {}
+  displaystudLedg() {
+    this.AccountingController.showstudLedger().subscribe({
+      next: (res) => {
+        this.info = res;
+        this.studledgers = this.info[0];
+        console.log(this.studledgers);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message);
+      },
+    });
+  }
+
+  ngOnInit(): void {
+    this.displaystudLedg();
+  }
 }
