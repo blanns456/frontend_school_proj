@@ -5,14 +5,11 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class ProspectusController {
   readonly Root_URL = 'http://127.0.0.1:8000/api/';
-<<<<<<< HEAD
-=======
   // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
->>>>>>> development
   token: any;
   procpectusdata: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getcourses() {
     return this.http.get(this.Root_URL + 'courses');

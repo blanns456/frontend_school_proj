@@ -20,8 +20,8 @@
 .banner {
   /* margin-top: 4rem; */
   height: 50%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../../../../assets/misc/homepage/bga.jpg");
+  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), */
+  /* url("../../../../assets/misc/homepage/bga.jpg"); */
   background-size: cover;
   background-position: center center;
   /* background-attachment: fixed; */
@@ -114,9 +114,11 @@ input {
   .banner h1 {
     font-size: 40px;
   }
+
   .formTitle {
     font-size: 25px;
   }
+
   .login-bg {
     width: 100%;
   }
