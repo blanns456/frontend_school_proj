@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class EnrollmentService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+  // constructor(private http: HttpClient) { }
 
   readonly Root_URL = 'http://127.0.0.1:8000/api/';
   token = localStorage.getItem('token');

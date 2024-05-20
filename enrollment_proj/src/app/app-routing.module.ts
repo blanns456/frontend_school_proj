@@ -72,17 +72,8 @@ import { EmailConfirmationComponent } from './pages/email-confirmation/email-con
 import { StudentProspectusCoursesComponent } from './pages/students-pov/student-prospectus-courses/student-prospectus-courses.component';
 import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students-dean/approve-students-dean.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
-//pinaka sugod
-import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
-import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
-import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
-import { CbaeUiComponent } from './pages/homepage/departments/cbae-ui/cbae-ui.component';
-import { CcjeUiComponent } from './pages/homepage/departments/ccje-ui/ccje-ui.component';
-import { CteUiComponent } from './pages/homepage/departments/cte-ui/cte-ui.component';
-import { ShsUiComponent } from './pages/homepage/departments/shs-ui/shs-ui.component';
-import { AboutascComponent } from './pages/homepage/aboutasc/aboutasc.component';
-import { HistoryAscComponent } from './pages/homepage/aboutasc/history-asc/history-asc.component';
+//pinaka sugod
 //sugod utro
 import { DeptCceComponent } from './pages/home-tab/dept-cce/dept-cce.component';
 import { DeptUi01Component } from './pages/home-tab/dept-ui01/dept-ui01.component';
@@ -109,6 +100,10 @@ import { MaedEnrollmentComponent } from './pages/graduate-studies/maed-enrollmen
 import { MaedUpdateInformationComponent } from './pages/graduate-studies/maed-update-information/maed-update-information.component';
 
 //dean
+import { AscbAboutComponent } from './pages/home-tab/ascb-about/ascb-about.component';
+import { AscbAboutHistoryComponent } from './pages/home-tab/ascb-about-history/ascb-about-history.component';
+import { NewsTabComponent } from './pages/home-tab/news-tab/news-tab.component';
+import { RegistrationProcessComponent } from './pages/home-tab/registration-process/registration-process.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -118,15 +113,6 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'enroll-college', component: EnrollCollegeComponent },
   //pinaka sugod
-  { path: 'registration-req', component: RegistrationReqsComponent },
-  { path: 'aboutasc', component: AboutascComponent },
-  { path: 'history-asc', component: HistoryAscComponent },
-  { path: 'department-ui', component: DepartmentUiComponent },
-  { path: 'cce-ui', component: CceUiComponent },
-  { path: 'cbae-ui', component: CbaeUiComponent },
-  { path: 'ccje-ui', component: CcjeUiComponent },
-  { path: 'cte-ui', component: CteUiComponent },
-  { path: 'shs-ui', component: ShsUiComponent },
   //sugod utro
   { path: 'dept-ui01', component: DeptUi01Component },
   { path: 'dept-cce', component: DeptCceComponent },
@@ -137,6 +123,10 @@ const routes: Routes = [
   { path: 'dept-elementary', component: DeptElementaryComponent },
   { path: 'dept-jhs', component: DeptJhsComponent },
   { path: 'dept-tvet', component: DeptTvetComponent },
+  { path: 'ascb-about', component: AscbAboutComponent },
+  { path: 'ascb-about-history', component: AscbAboutHistoryComponent },
+  { path: 'news-tab', component: NewsTabComponent },
+  { path: 'registration-process', component: RegistrationProcessComponent },
   //end
   {
     path: 'enroll-college-student-information',

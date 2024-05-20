@@ -60,6 +60,9 @@ import { MenuModule } from 'primeng/menu';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { PaginatorModule } from 'primeng/paginator';
+// import { AccordionModule } from 'primeng/accordion';
+// import { StepperModule } from 'primeng/stepper';
+// import { PanelModule } from 'primeng/panel';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -135,17 +138,7 @@ import { StudentProspectusCoursesComponent } from './pages/students-pov/student-
 import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students-dean/approve-students-dean.component';
 import { LoadingPageComponent } from './component/loading-page/loading-page.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
-import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
-import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
-import { FooterNavComponent } from './footer-nav/footer-nav.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
-import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
-import { CbaeUiComponent } from './pages/homepage/departments/cbae-ui/cbae-ui.component';
-import { CcjeUiComponent } from './pages/homepage/departments/ccje-ui/ccje-ui.component';
-import { CteUiComponent } from './pages/homepage/departments/cte-ui/cte-ui.component';
-import { ShsUiComponent } from './pages/homepage/departments/shs-ui/shs-ui.component';
-import { AboutascComponent } from './pages/homepage/aboutasc/aboutasc.component';
-import { HistoryAscComponent } from './pages/homepage/aboutasc/history-asc/history-asc.component';
 import { DeptCceComponent } from './pages/home-tab/dept-cce/dept-cce.component';
 import { DeptUi01Component } from './pages/home-tab/dept-ui01/dept-ui01.component';
 import { DeptCbaeComponent } from './pages/home-tab/dept-cbae/dept-cbae.component';
@@ -171,6 +164,10 @@ import { MaedCoursesComponent } from './pages/graduate-studies/maed-courses/maed
 import { MaedEnrollmentComponent } from './pages/graduate-studies/maed-enrollment/maed-enrollment.component';
 import { MaedUpdateInformationComponent } from './pages/graduate-studies/maed-update-information/maed-update-information.component';
 import { StudentCurrentCoursesComponent } from './pages/deans-pov/student-current-courses/student-current-courses.component';
+import { AscbAboutComponent } from './pages/home-tab/ascb-about/ascb-about.component';
+import { AscbAboutHistoryComponent } from './pages/home-tab/ascb-about-history/ascb-about-history.component';
+import { NewsTabComponent } from './pages/home-tab/news-tab/news-tab.component';
+import { RegistrationProcessComponent } from './pages/home-tab/registration-process/registration-process.component';
 
 @NgModule({
   declarations: [
@@ -262,18 +259,19 @@ import { StudentCurrentCoursesComponent } from './pages/deans-pov/student-curren
     StudentProspectusCoursesComponent,
     ApproveStudentsDeanComponent,
     HomepageComponent,
-    RegistrationReqsComponent,
-    DepartmentUiComponent,
-    LoadingPageComponent,
-    FooterNavComponent,
     StudentParentComponent,
-    CceUiComponent,
-    CbaeUiComponent,
-    CcjeUiComponent,
-    CteUiComponent,
-    ShsUiComponent,
-    AboutascComponent,
-    HistoryAscComponent,
+    LoadingPageComponent,
+    //
+    // RegistrationReqsComponent,
+    // DepartmentUiComponent,
+    // CceUiComponent,
+    // CbaeUiComponent,
+    // CcjeUiComponent,
+    // CteUiComponent,
+    // ShsUiComponent,
+    // AboutascComponent,
+    // HistoryAscComponent,
+    //
     DeptCceComponent,
     DeptUi01Component,
     DeptCbaeComponent,
@@ -299,6 +297,10 @@ import { StudentCurrentCoursesComponent } from './pages/deans-pov/student-curren
     MaedEnrollmentComponent,
     MaedUpdateInformationComponent,
     StudentCurrentCoursesComponent,
+    AscbAboutComponent,
+    AscbAboutHistoryComponent,
+    NewsTabComponent,
+    RegistrationProcessComponent,
   ],
   imports: [
     BrowserModule,
@@ -345,6 +347,10 @@ import { StudentCurrentCoursesComponent } from './pages/deans-pov/student-curren
     IconFieldModule,
     InputIconModule,
     PaginatorModule
+    // TabMenuModule
+    // AccordionModule,
+    // StepperModule,
+    // PanelModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

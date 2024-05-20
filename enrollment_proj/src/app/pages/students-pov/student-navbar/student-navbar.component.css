@@ -1,11 +1,16 @@
 .nav-text {
-  color: #0840a1;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .nav-student {
   width: 80%;
   line-height: 40px;
   margin-left: 20%;
+}
+.nav-color {
+  background-color: var(--midnight);
 }
 
 .noti-icon .noti-dot {

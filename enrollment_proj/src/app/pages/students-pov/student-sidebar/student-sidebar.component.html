@@ -12,10 +12,27 @@
         <p-avatar *ngIf="!data?.profile" [image]="'assets/misc/default.png'" styleClass="mr-2" size="xlarge"></p-avatar>
         <p-avatar *ngIf="data?.profile" [image]="'http://127.0.0.1:8000/images/user-profile/' + data?.profile"
           styleClass="mr-2" size="xlarge"></p-avatar>
+        <!-- <p-avatar
+          *ngIf="!data?.profile"
+          [image]="'assets/misc/default.png'"
+          styleClass="mr-2"
+          size="xlarge"
+        ></p-avatar>
+        <p-avatar
+          *ngIf="data?.profile"
+          [image]="
+            'https://genesys-api.asc-bislig.com/images/user-profile/' +
+            data?.profile
+          "
+          styleClass="mr-2"
+          size="xlarge"
+        ></p-avatar> -->
       </div>
       <!-- <img [src]="'https://genesys-api.asc-bislig.com/images/user-profile/' + data?.profile" alt="avatar" id="profile" width="60"
         height="60" class="img-thumbnail mt-4 mx-3" /> -->
-      <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">{{ data?.unique_id }}</h2>
+      <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">
+        {{ data?.unique_id }}
+      </h2>
       <div class="text-white ms-3">
         <ng-container *ngIf="data">
           {{ courseAcronym }}
@@ -25,7 +42,7 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="nLink">
     <div id="listPros" class="list-group">
       <a class="py-3 mb-1 list-group-item list-group-item-action home" routerLink="/student/home"
         routerLinkActive="active">

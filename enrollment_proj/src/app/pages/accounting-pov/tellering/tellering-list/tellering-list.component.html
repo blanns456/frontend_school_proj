@@ -19,7 +19,7 @@
           </button>
         </div>
         <div class="container my-2">
-          <table
+          <!-- <table
             id="example"
             #dataTable
             class="table table-striped"
@@ -56,7 +56,38 @@
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table> -->
+
+          <p-table
+            [rowHover]="true"
+            [value]="studledgers"
+            class="text-capitalize"
+            styleClass="p-datatable-striped"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Student</th>
+                <th style="width: 30%">Course</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-stud>
+              <tr>
+                <td>{{ stud.studname }}</td>
+                <td>{{ stud.course }}</td>
+                <td>{{ stud.status }}</td>
+                <td>
+                  <p-button
+                    label="Pay"
+                    class="mx-2"
+                    (click)="showdialog(stud.stud_id, stud)"
+                  ></p-button>
+                  <p-button icon="pi pi-eye"></p-button>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
         </div>
       </div>
     </div>
@@ -224,3 +255,48 @@
     </div>
   </div>
 </div>
+
+<p-dialog
+  header="Old"
+  [maximizable]="true"
+  appendTo="body"
+  [(visible)]="dialogVisible"
+  [style]="{ width: '75vw' }"
+  [contentStyle]="{ height: '300px' }"
+>
+  <p-table
+    [scrollable]="true"
+    scrollHeight="flex"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>SY 2022-2023</th>
+        <th>SY 2023-2024</th>
+        <th>Increase</th>
+        <th>%</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body">
+      <tr>
+        <td>Test name</td>
+        <td>1000.00</td>
+        <td>1500.00</td>
+        <td>500.00</td>
+        <td>50.00</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <ng-template pTemplate="footer">
+    <button
+      type="button"
+      pButton
+      pRipple
+      icon="pi pi-times"
+      (click)="dialogVisible = false"
+      label="Dismiss"
+      class="p-button-text"
+    ></button>
+  </ng-template>
+</p-dialog>

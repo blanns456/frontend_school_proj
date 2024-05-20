@@ -20,13 +20,14 @@
 
 .hero {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../../../assets/misc/homepage/banner.jpg ");
+    url("../../../assets/misc/homepage/genesys-ascb-wallpaper-new_building-1.jpg");
   mix-blend-mode: darken;
   height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  background-attachment: fixed;
 }
 .banner {
   width: 80%;
@@ -65,11 +66,18 @@
 .about {
   font-size: 32px;
   font-weight: 900;
+  color: #333333;
+}
+.about a {
+  font-size: 32px;
+  font-weight: 900;
+  color: #333333;
+  text-decoration: none;
 }
 .state {
   font-size: 15px;
   color: #555555;
-  padding-left: 1rem;
+  /* padding-left: 1rem; */
 }
 
 .state2 {
@@ -80,7 +88,12 @@
 .desc {
   font-weight: bold;
   color: #333333;
-  padding-left: 1rem;
+  /* padding-left: 1rem; */
+}
+.desc a {
+  font-weight: bold;
+  color: #333333;
+  text-decoration: none;
 }
 
 .acc {
@@ -111,7 +124,7 @@
 
 .promo {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../../../assets/misc/homepage/bga.jpg ");
+    url("../../../assets/misc/homepage/genesys-ascb-wallpaper-old_building-2.jpg");
   mix-blend-mode: darken;
   background-position: center;
   background-repeat: no-repeat;
@@ -233,5 +246,13 @@ ul {
 
   .aboutShow img {
     width: 25px;
+  }
+
+  .state {
+    padding-left: 1rem;
+  }
+
+  .desc {
+    padding-left: 1rem;
   }
 }
