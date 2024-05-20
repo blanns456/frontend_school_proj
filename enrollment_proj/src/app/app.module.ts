@@ -131,17 +131,7 @@ import { StudentProspectusCoursesComponent } from './pages/students-pov/student-
 import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students-dean/approve-students-dean.component';
 import { LoadingPageComponent } from './component/loading-page/loading-page.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
-import { RegistrationReqsComponent } from './pages/homepage/requirements/registration-reqs/registration-reqs.component';
-import { DepartmentUiComponent } from './pages/homepage/departments/department-ui/department-ui.component';
-import { FooterNavComponent } from './footer-nav/footer-nav.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
-import { CceUiComponent } from './pages/homepage/departments/cce-ui/cce-ui.component';
-import { CbaeUiComponent } from './pages/homepage/departments/cbae-ui/cbae-ui.component';
-import { CcjeUiComponent } from './pages/homepage/departments/ccje-ui/ccje-ui.component';
-import { CteUiComponent } from './pages/homepage/departments/cte-ui/cte-ui.component';
-import { ShsUiComponent } from './pages/homepage/departments/shs-ui/shs-ui.component';
-import { AboutascComponent } from './pages/homepage/aboutasc/aboutasc.component';
-import { HistoryAscComponent } from './pages/homepage/aboutasc/history-asc/history-asc.component';
 import { DeptCceComponent } from './pages/home-tab/dept-cce/dept-cce.component';
 import { DeptUi01Component } from './pages/home-tab/dept-ui01/dept-ui01.component';
 import { DeptCbaeComponent } from './pages/home-tab/dept-cbae/dept-cbae.component';
@@ -154,6 +144,10 @@ import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.componen
 import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-management/item-modals/item-modals.component';
 import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
+import { AscbAboutComponent } from './pages/home-tab/ascb-about/ascb-about.component';
+import { AscbAboutHistoryComponent } from './pages/home-tab/ascb-about-history/ascb-about-history.component';
+import { NewsTabComponent } from './pages/home-tab/news-tab/news-tab.component';
+import { RegistrationProcessComponent } from './pages/home-tab/registration-process/registration-process.component';
 
 @NgModule({
   declarations: [
@@ -245,18 +239,19 @@ import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.compone
     StudentProspectusCoursesComponent,
     ApproveStudentsDeanComponent,
     HomepageComponent,
-    RegistrationReqsComponent,
-    DepartmentUiComponent,
-    LoadingPageComponent,
-    FooterNavComponent,
     StudentParentComponent,
-    CceUiComponent,
-    CbaeUiComponent,
-    CcjeUiComponent,
-    CteUiComponent,
-    ShsUiComponent,
-    AboutascComponent,
-    HistoryAscComponent,
+    LoadingPageComponent,
+    //
+    // RegistrationReqsComponent,
+    // DepartmentUiComponent,
+    // CceUiComponent,
+    // CbaeUiComponent,
+    // CcjeUiComponent,
+    // CteUiComponent,
+    // ShsUiComponent,
+    // AboutascComponent,
+    // HistoryAscComponent,
+    //
     DeptCceComponent,
     DeptUi01Component,
     DeptCbaeComponent,
@@ -269,6 +264,10 @@ import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.compone
     ItemModalsComponent,
     UpdateInfoComponent,
     DeanMainComponent,
+    AscbAboutComponent,
+    AscbAboutHistoryComponent,
+    NewsTabComponent,
+    RegistrationProcessComponent,
   ],
   imports: [
     BrowserModule,
@@ -310,7 +309,7 @@ import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.compone
     AccordionModule,
     PanelModule,
     FieldsetModule,
-    TabMenuModule
+    TabMenuModule,
   ],
 
   providers: [
@@ -319,4 +318,4 @@ import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.compone
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
