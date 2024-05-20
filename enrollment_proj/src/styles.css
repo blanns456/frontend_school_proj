@@ -141,10 +141,13 @@ body::-webkit-scrollbar {
 
 /* bold text */
 
+
 .fixed-background {
-  background-image: url("../src/assets/misc/main-bg.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("assets/misc/homepage/banner.jpg ");
+  mix-blend-mode: darken;
   background-size: cover;
-  background-position: center center;
+  /* background-position: center center; */
   background-attachment: fixed;
   position: fixed;
   width: 100%;

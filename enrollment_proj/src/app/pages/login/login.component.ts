@@ -37,6 +37,8 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['student/home']);
         } else if (this.role === 'dean') {
           this.router.navigate(['dean/home']);
+        } else if (this.role === 'Graduate Studies') {
+          this.router.navigate(['maed']);
         }
       },
       error: (error: any) => {

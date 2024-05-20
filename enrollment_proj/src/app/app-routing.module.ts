@@ -86,6 +86,20 @@ import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
 import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
+import { GraduateMainComponent } from './pages/graduate-studies/graduate-main/graduate-main.component';
+import { GraduateHomeComponent } from './pages/graduate-studies/graduate-home/graduate-home.component';
+import { MaedInformationComponent } from './pages/graduate-studies/maed-information/maed-information.component';
+import { MaedAcademicComponent } from './pages/graduate-studies/maed-academic/maed-academic.component';
+import { MaedFinanceComponent } from './pages/graduate-studies/maed-finance/maed-finance.component';
+
+// graduate studies
+import { NewComponent } from './pages/graduate-studies/new/new.component';
+import { MaedProspectusComponent } from './pages/graduate-studies/maed-prospectus/maed-prospectus.component';
+import { MaedCoursesComponent } from './pages/graduate-studies/maed-courses/maed-courses.component';
+import { MaedEnrollmentComponent } from './pages/graduate-studies/maed-enrollment/maed-enrollment.component';
+import { MaedUpdateInformationComponent } from './pages/graduate-studies/maed-update-information/maed-update-information.component';
+
+//dean
 import { AscbAboutComponent } from './pages/home-tab/ascb-about/ascb-about.component';
 import { AscbAboutHistoryComponent } from './pages/home-tab/ascb-about-history/ascb-about-history.component';
 import { NewsTabComponent } from './pages/home-tab/news-tab/news-tab.component';
@@ -183,6 +197,57 @@ const routes: Routes = [
     component: UpdateInfoComponent,
     canActivate: [AuthGuard],
     data: { allowedRoles: ['college'] },
+  },
+  // {
+  //   path: 'maed',
+  //   component: GraduateMainComponent,
+  //   // canActivate: [AuthGuard],
+  //   // data: { allowedRoles: ['college'] },
+  // },
+  {
+    path: 'maed',
+    component: GraduateMainComponent,
+    canActivate: [AuthGuard],
+    data: { allowedRoles: ['Graduate Studies'] },
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
+        path: 'home',
+        component: GraduateHomeComponent,
+      },
+      {
+        path: 'information',
+        component: MaedInformationComponent,
+      },
+      {
+        path: 'academics',
+        component: MaedAcademicComponent,
+      },
+      {
+        path: 'finance',
+        component: MaedFinanceComponent,
+      },
+      {
+        path: 'prospectus',
+        component: MaedProspectusComponent,
+      },
+      {
+        path: 'courses',
+        component: MaedCoursesComponent,
+      },
+      {
+        path: 'enrollment',
+        component: MaedEnrollmentComponent,
+      },
+      {
+        path: 'update-information',
+        component: MaedUpdateInformationComponent,
+      },
+    ],
   },
   {
     path: 'dean',
@@ -427,6 +492,10 @@ const routes: Routes = [
     path: 'email-confirmation',
     component: EmailConfirmationComponent,
   },
+  {
+    path: 'new/graduate-studies',
+    component: NewComponent,
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
@@ -434,4 +503,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

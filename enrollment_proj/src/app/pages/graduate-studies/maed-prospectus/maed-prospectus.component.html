@@ -1,0 +1,33 @@
+<div class="container-fluid vh-100 content">
+  <div class="pb-3">
+    <p-card header="Prospectus">
+      <p-tabView>
+        <ng-container *ngFor="let yearLevel of getYearLevels()">
+          <p-tabPanel [header]="yearLevel + ' Year Level'">
+            <ng-template pTemplate=" content"> <p-table [value]="groupedProspectus[yearLevel]"
+                styleClass="p-datatable-striped" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>Course Code</th>
+                    <th>Descriptive Titles</th>
+                    <th>Units</th>
+                    <th>Pre-requisite</th>
+                    <th>Semester</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-course>
+                  <tr>
+                    <td>{{ course.code }}</td>
+                    <td>{{ course.description }}</td>
+                    <td>{{ course.units }}</td>
+                    <td>{{ course.pre_requisite }}</td>
+                    <td>{{ course.semester }}</td>
+                  </tr>
+                </ng-template>
+              </p-table></ng-template>
+          </p-tabPanel>
+        </ng-container>
+      </p-tabView>
+    </p-card>
+  </div>
+</div>

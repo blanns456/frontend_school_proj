@@ -11,7 +11,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 
-
 @Component({
   selector: 'app-student-new',
   templateUrl: './student-new.component.html',
@@ -54,12 +53,7 @@ export class StudentNewComponent implements OnInit {
     { name: 'Divorced', value: 'divorced' },
   ];
 
-  enrollist = [
-    // { name: 'TESDA', value: 'tesda' },
-    // { name: 'SHS', value: 'shs' },
-    { name: 'College', value: 'college' },
-    { name: 'Graduate Studies', value: 'graduate' },
-  ];
+  enrollist = [{ name: 'College', value: 'college' }];
 
   yearlvl = [
     { name: '1st Year', value: '1' },
@@ -135,23 +129,23 @@ export class StudentNewComponent implements OnInit {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: error.error.errors.email_address[0]
+            detail: error.error.errors.email_address[0],
           });
         } else if (error.error.errors.contact_number) {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: error.error.errors.contact_number[0]
+            detail: error.error.errors.contact_number[0],
           });
         } else {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: error.error.errors.message
+            detail: error.error.errors.message,
           });
         }
         // this.loadbar = false;
-      }
+      },
     });
   }
 
@@ -168,7 +162,6 @@ export class StudentNewComponent implements OnInit {
             icon: 'error',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'Resend Code',
-
           }).then((result) => {
             if (result.isConfirmed) {
               this.collegecontroller
@@ -179,12 +172,11 @@ export class StudentNewComponent implements OnInit {
               this.messageService.add({
                 severity: 'success',
                 summary: 'Success',
-                detail: 'A new code has been sent to your email.'
+                detail: 'A new code has been sent to your email.',
               });
             }
             this.enteredOTP = '';
           });
-
         } else {
           this.loading = true;
           this.collegecontroller

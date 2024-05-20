@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class EnrollmentService {
   constructor(private http: HttpClient) { }
+  // constructor(private http: HttpClient) { }
 
   readonly Root_URL = 'http://127.0.0.1:8000/api/';
   token = localStorage.getItem('token');
@@ -28,9 +29,8 @@ export class EnrollmentService {
   }
 
   my_enrollment() {
-    return this.http.get(this.Root_URL + 'my_enrollment', { headers: this.headers })
-    // return this.http.get(this.Root_URL + 'my_enrollment/', {
-    //   headers: this.headers,
-    // });
+    return this.http.get(this.Root_URL + 'my_enrollment', {
+      headers: this.headers,
+    });
   }
 }

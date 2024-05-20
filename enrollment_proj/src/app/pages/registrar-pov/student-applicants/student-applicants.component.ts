@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./student-applicants.component.css'],
 })
 export class StudentApplicantsComponent implements OnInit, AfterViewInit {
-  readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/';
 
   students: any = [];
   info: any = [];
@@ -40,7 +40,7 @@ export class StudentApplicantsComponent implements OnInit, AfterViewInit {
     private http: HttpClient,
     private fb: FormBuilder,
     private collegecontroller: CollegeEnrollmentController
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.filterEnrolled();
@@ -72,7 +72,7 @@ export class StudentApplicantsComponent implements OnInit, AfterViewInit {
       });
   }
 
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {}
 
   generatePageNumbers(): number[] {
     const totalVisiblePages = 10;

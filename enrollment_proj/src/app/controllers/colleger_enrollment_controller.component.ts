@@ -41,13 +41,14 @@ export class CollegeEnrollmentController {
     signature: '',
   };
 
+  // readonly Root_URL = 'http://127.0.0.1:8000/api/';
   // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
   readonly Root_URL = 'http://127.0.0.1:8000/api/';
 
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getcourses() {
     return this.http.get(this.Root_URL + 'courses');
@@ -72,6 +73,25 @@ export class CollegeEnrollmentController {
     student_status: string;
   }) {
     return this.http.post(this.Root_URL + 'addstudent', student);
+  }
+
+  public graduate_studies_create(student: {
+    lastname: string;
+    firstname: string;
+    middlename: string;
+    birthdate: string;
+    religion: string;
+    email_address: string;
+    birth_place: string;
+    citizenship: string;
+    contact_number: string;
+    gender: string;
+    civil_status: string;
+    enrollIn: string;
+    program: string;
+    semester: string;
+  }) {
+    return this.http.post(this.Root_URL + 'add/graduate-studies', student);
   }
 
   public updatestudent(student: string) {
@@ -111,6 +131,10 @@ export class CollegeEnrollmentController {
 
   sentotp(info: { email_address: string }) {
     return this.http.post(this.Root_URL + 'sendotp', info);
+  }
+
+  gradaute_sent_otp(info: { email_address: string }) {
+    return this.http.post(this.Root_URL + 'graduate/sendotp', info);
   }
 
   verifyotp(otp: { otp: string }) {
