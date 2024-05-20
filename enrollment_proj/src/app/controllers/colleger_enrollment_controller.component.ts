@@ -42,12 +42,12 @@ export class CollegeEnrollmentController {
   };
 
   // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
-  readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/';
 
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public getcourses() {
     return this.http.get(this.Root_URL + 'courses');
@@ -93,7 +93,10 @@ export class CollegeEnrollmentController {
     subjectdata: string;
     acadyr: string;
   }) {
-    return this.http.post(this.Root_URL + 'enrollment-transaction', collegetransac);
+    return this.http.post(
+      this.Root_URL + 'enrollment-transaction',
+      collegetransac
+    );
   }
 
   gettransaction(studentid: string, semester: string) {
@@ -116,7 +119,7 @@ export class CollegeEnrollmentController {
 
   token = localStorage.getItem('token');
   headers = new HttpHeaders({
-    'Accept': 'application/json',
+    Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: `Bearer ${this.token}`,
   });
@@ -130,6 +133,8 @@ export class CollegeEnrollmentController {
 
   updateStudent(student: FormData) {
     console.log(student);
-    return this.http.post(this.Root_URL + 'update-student', student, { headers: this.headers });
+    return this.http.post(this.Root_URL + 'update-student', student, {
+      headers: this.headers,
+    });
   }
 }

@@ -56,6 +56,9 @@ import { AccordionModule } from 'primeng/accordion';
 import { PanelModule } from 'primeng/panel';
 import { FieldsetModule } from 'primeng/fieldset';
 import { TabMenuModule } from 'primeng/tabmenu';
+// import { AccordionModule } from 'primeng/accordion';
+// import { StepperModule } from 'primeng/stepper';
+// import { PanelModule } from 'primeng/panel';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -311,6 +314,9 @@ import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.compone
     PanelModule,
     FieldsetModule,
     TabMenuModule
+    // AccordionModule,
+    // StepperModule,
+    // PanelModule,
   ],
 
   providers: [
