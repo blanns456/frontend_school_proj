@@ -1,24 +1,47 @@
-<div class="container-fluid p-0 mw-100 vh-100 d-flex justify-content-center align-items-center" id="login">
+<div
+  class="container-fluid p-0 mw-100 vh-100 d-flex justify-content-center align-items-center"
+  id="login"
+>
   <div class="d-none position-absolute loading-overlay" id="loading">
     <app-loading-page></app-loading-page>
   </div>
-  <div class="w-auto bg-light mx-auto p-2 bg-opacity-75 rounded-4 login-bg" id="mainPage">
-    <div class="asclogo position-absolute top-25 start-50 translate-middle">
-      <img src="../../../assets/misc/ascb_logo.png" alt class="img-responsive w-100" />
-    </div>
-    <div class="row g-1">
-      <div
-        class="col-lg-6 col-md-12 px-3 pt-3 d-flex align-items-center justify-content-center my-0 d-none d-md-none d-lg-block">
-        <img src="../../../assets/misc/container_image_1.png" alt="logo" class="img-responsive mw-100" />
-      </div>
+  <div
+    class="bg-light mx-auto p-2 bg-opacity-75 rounded-4 login-bg"
+    id="mainPage"
+  >
+    <!-- <div class="asclogo position-absolute top-25 start-50 translate-middle">
+      <img
+        src="../../../assets/misc/ascb_logo.png"
+        alt
+        class="img-responsive w-100"
+      />
+    </div> -->
+    <div class="row d-flex justify-content-center">
+      <!-- <div
+        class="col-lg-6 col-md-12 px-3 pt-3 d-flex align-items-center justify-content-center my-0 d-none d-md-none d-lg-block"
+      >
+        <img
+          src="../../../assets/misc/container_image_1.png"
+          alt="logo"
+          class="img-responsive mw-100"
+        />
+      </div> -->
       <div class="col-lg-6 col-md-12">
         <div class="img-responsive w-100 text-center">
-          <img src="../../../assets/misc/70th_ascb_logo.png" alt="70th logo" />
+          <img
+            src="../../../assets/misc/genesys-ascb-70th-logo.png"
+            alt="70th logo"
+          />
         </div>
         <form (ngSubmit)="submit()" [formGroup]="form">
           <div class="text-center formUse">
-            <label for="username" class="formUse form-label"></label>
-            <input pInputText type="text" placeholder="Username" formControlName="username" />
+            <label for="username" class="form-label"></label>
+            <input
+              pInputText
+              type="text"
+              placeholder="Username"
+              formControlName="username"
+            />
             <!-- <input
               type="text"
               formControlName="username"
@@ -45,13 +68,20 @@
             </div> -->
           </div>
           <div class="mt-2 text-center">
-            <label for="password" class="formPass form-label"></label>
-            <p-password class="w-auto" formControlName="password" [feedback]="false" [toggleMask]="true"
-              placeholder="Password">
+            <label for="password" class="form-label"></label>
+            <p-password
+              formControlName="password"
+              [feedback]="false"
+              [toggleMask]="true"
+              placeholder="Password"
+            >
             </p-password>
           </div>
           <div class="mt-4 text-center">
-            <button type="submit" class="btn btn-primary fw-bold p-2 w-50 login-button">
+            <button
+              type="submit"
+              class="btn btn-primary fw-bold w-50 login-button"
+            >
               LOGIN
             </button>
           </div>
