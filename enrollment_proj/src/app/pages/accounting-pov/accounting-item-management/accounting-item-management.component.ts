@@ -25,7 +25,6 @@ export class AccountingItemManagementComponent implements OnInit {
   info: any;
   getiteminfo: any;
   addCategoryForm: FormGroup;
-  addFees: FormGroup;
   addItemForm: FormGroup;
   selectedFilters: any[] = [];
   visible: boolean = false;
@@ -56,6 +55,9 @@ export class AccountingItemManagementComponent implements OnInit {
   showFeesDetails: boolean = false;
   getfeesinfo: any;
   itemfeesList: any;
+  getamount: any;
+  totalamount!: number;
+  totalincrease!: number;
 
   constructor(
     private semester_controller: SemesterController,
@@ -71,10 +73,6 @@ export class AccountingItemManagementComponent implements OnInit {
 
     this.addItemForm = new FormGroup({
       itemGroup: new FormControl(null, [Validators.required]),
-    });
-
-    this.addFees = new FormGroup({
-      fees: new FormArray([]),
     });
   }
 
@@ -237,6 +235,14 @@ export class AccountingItemManagementComponent implements OnInit {
       next: (res) => {
         this.getfeesinfo = res;
         this.itemfeesList = this.getfeesinfo[0];
+        // console.log(this.itemfeesList);
+        let total = 0;
+        let total2 = 0;
+        for (let item of this.itemfeesList) {
+          this.totalamount = total += parseFloat(item.amount);
+          this.totalincrease = total2 += parseFloat(item.increase);
+        }
+        // console.log('Total amount:', this.totalamount);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
@@ -298,14 +304,18 @@ export class AccountingItemManagementComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.primengConfig.ripple = true;
-    this.showallcategory();
+  getsemester() {
     this.semester_controller.getactivenrollsem().subscribe((res) => {
       this.seminfo = res;
       this.semester = this.seminfo[0][0]['id'];
       this.activeyr = this.seminfo[0][0]['active_year'];
       this.addCategoryForm.get('semesteryr')?.setValue(this.semester);
     });
+  }
+
+  ngOnInit(): void {
+    this.primengConfig.ripple = true;
+    this.showallcategory();
+    this.getsemester();
   }
 }
