@@ -3,8 +3,9 @@
   <div class="main-content">
     <div class="fixed-background"></div>
     <app-accounting-navbar></app-accounting-navbar>
+    <p-toast></p-toast>
     <div
-      class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
+      class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column text-capitalize"
     >
       <!-- <div class="divider mb-4"></div> -->
       <div *ngIf="studentData" class="contentab bg-white rounded">
@@ -16,9 +17,7 @@
               <h3 class="text-white fw-bold fs-3">
                 {{ studentData.studname }}
               </h3>
-              <p class="text-white">
-                <i class="fa-solid fa-circle-check me-2"></i>Submitted
-              </p>
+              <p class="text-white">{{ getstatusledger }}</p>
             </div>
             <div class="col d-flex justify-content-end align-items-end">
               <button
@@ -28,7 +27,16 @@
               >
                 Tellering
               </button>
-              <button class="mx-2 btn btn-primary">Update Matriculation</button>
+              <p-button
+                class="mx-2"
+                (click)="showupdateDialog(studentData.studid)"
+                label="Update Matriculation"
+              ></p-button>
+              <p-button
+                type="submit"
+                (click)="submitledger()"
+                label="Submit Ledger"
+              ></p-button>
             </div>
           </div>
         </div>
@@ -38,26 +46,6 @@
           <div
             class="inputGroup row d-flex justify-content-start align-items-center my-3"
           >
-            <!-- <div class="col-4">
-              <label for="ledger">Ledger</label>
-              <select class="inputs" name="ledger" id="ledger">
-                <option selected hidden>Input here..</option>
-                <option value="1">20221545/A.Y 2021-2022</option>
-                <option value="2">20254487/A.Y 2022-2023</option>
-                <option value="3">20200365/A.Y 2023-2024</option>
-              </select>
-            </div> -->
-            <div class="col-3">
-              <label for="studid">Student ID:</label>
-              <input
-                class="inputs"
-                type="number"
-                id="studid"
-                name="studid"
-                value="{{ studentData.uid }}"
-                readonly
-              />
-            </div>
             <div class="col-3">
               <label for="semester">Semester</label>
               <input
@@ -65,33 +53,31 @@
                 class="inputs"
                 name="semester"
                 id="semester"
-                value="{{ studentData.semester }}"
+                value="{{ studentData.semester }} / {{ activeyr }}"
                 readonly
               />
             </div>
-            <div class="col-4">
-              <label for="course">Course/Yr.</label>
+            <div class="col-6">
+              <label for="course">Course</label>
               <input
                 class="inputs"
                 type="text"
                 id="course"
                 name="course"
-                value="{{ studentData.course }}/{{
-                  studentData.student_yr_lvl
-                }}"
+                value="{{ studentData.course }}"
                 readonly
               />
             </div>
-            <!-- <div class="col-4">
-              <label for="date">Date:</label>
+            <div class="col-3 my-3">
+              <label for="yrlvl">Year Level:</label>
               <input
                 class="inputs"
-                type="date"
-                id="date"
-                name="date"
-                placeholder="input date here"
+                type="text"
+                id="yrlvl"
+                name="yrlvl"
+                value="{{ getYearLevelString(studentData.student_yr_lvl) }}"
               />
-            </div> -->
+            </div>
           </div>
           <h1 class="fw-bold fs-4">Student Information</h1>
           <div class="divider"></div>
@@ -105,7 +91,7 @@
                 type="text"
                 id="status"
                 name="status"
-                value="20221545"
+                value="{{ studentData.uid }}"
                 readonly
               />
             </div>
@@ -120,36 +106,14 @@
                 readonly
               />
             </div>
-            <div class="col-4 my-4">
-              <label for="studname">Student's Name:</label>
-              <input
-                class="inputs"
-                type="text"
-                id="studname"
-                name="studname"
-                value="Rizal Jose Patricio"
-                readonly
-              />
-            </div>
             <div class="col-4">
               <label for="gender">Gender:</label>
               <input
-                class="inputs"
+                class="inputs text-capitalize"
                 type="text"
                 id="gender"
                 name="gender"
-                value="Male"
-                readonly
-              />
-            </div>
-            <div class="col-4">
-              <label for="course">Course/Yr.</label>
-              <input
-                class="inputs"
-                type="text"
-                id="course"
-                name="course"
-                value="BSIT/4th Year"
+                value="{{ studentData.gender }}"
                 readonly
               />
             </div>
@@ -160,7 +124,7 @@
                 type="text"
                 id="totalunits"
                 name="totalunits"
-                value="6 units"
+                [value]="totalamount || 0"
                 readonly
               />
             </div>
@@ -171,71 +135,150 @@
                 type="text"
                 id="department"
                 name="department"
-                value="College of Computer Education"
+                value="{{ studentData.departments }}"
                 readonly
               />
             </div>
-            <div class="col-4">
+            <!-- <div class="col-4">
               <label for="paymentstatus">Initial Payment Status</label>
               <input
                 class="inputs fw-bold"
                 type="text"
                 id="paymentstatus"
                 name="paymentstatus"
-                value="Unpaid"
+                value="{{ studentData.paymentStatus }}"
                 readonly
               />
-            </div>
+            </div> -->
           </div>
         </form>
         <div class="m-4 px-2">
-          <h1 class="fw-bold fs-4">Finance Information</h1>
-          <!-- <div class="divider mt-3"></div> -->
-          <p-tabView>
-            <p-tabPanel header="Matriculation">
-              <p-button
-                icon="pi pi-inbox"
-                label="Old"
-                (onClick)="showDialog2()"
-              >
+          <div class="d-flex justify-content-between align-items-center p-2">
+            <h1 class="fw-bold fs-4">Finance Information</h1>
+            <div>
+              <p-button icon="pi pi-inbox" label="Old" (click)="showDialog2()">
               </p-button>
               <p-button
                 icon="pi pi-inbox"
                 class="mx-2"
                 label="New"
-                (onClick)="showDialog2()"
+                (click)="showDialog2()"
               ></p-button>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
+            </div>
+          </div>
+          <!-- <div class="divider mt-3"></div> -->
+          <p-tabView>
+            <p-tabPanel header="Matriculation">
+              <p-table
+                #dt
+                [rowHover]="true"
+                [value]="subLedgerFees"
+                styleClass="p-datatable-striped"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                [rows]="10"
+                [showCurrentPageReport]="true"
+              >
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="subjectName">Fees</th>
+                    <th>Amount</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-ledgerfees>
+                  <tr>
+                    <td>{{ ledgerfees.item_name }}</td>
+                    <td>{{ ledgerfees.amount }}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                  <tr>
+                    <td colspan="1">Total:</td>
+                    <td>₱{{ totalamountfees }}.00</td>
+                  </tr>
+                </ng-template>
+              </p-table>
             </p-tabPanel>
             <p-tabPanel header="Tuition Fees">
-              <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit, sed quia
-                consequuntur magni dolores eos qui ratione voluptatem sequi
-                nesciunt. Consectetur, adipisci velit, sed quia non numquam eius
-                modi.
-              </p>
+              <p-table
+                #dt
+                [rowHover]="true"
+                [value]="subjectmatri"
+                styleClass="p-datatable-striped"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                [rows]="10"
+                [showCurrentPageReport]="true"
+              >
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="subjectName">Particulars</th>
+                    <th>Units</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-subjectmatri>
+                  <tr>
+                    <td>
+                      ({{ subjectmatri.code }}) {{ subjectmatri.subjectName }}
+                    </td>
+                    <td>{{ subjectmatri.units }}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                  <tr>
+                    <td colspan="1">Total:</td>
+                    <td>{{ totalamount }} units</td>
+                  </tr>
+                  <tr>
+                    <td colspan="1">Overall:</td>
+                    <td>₱{{ totalall }}.00</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </p-tabPanel>
+            <p-tabPanel header="Lab Fees">
+              <p-table
+                #dt
+                [rowHover]="true"
+                [value]="labfeedatas"
+                styleClass="p-datatable-striped"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                [rows]="10"
+                [showCurrentPageReport]="true"
+              >
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="subjectName">Subject</th>
+                    <th>Amount</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-labfee>
+                  <tr>
+                    <td>{{ labfee.subject }}</td>
+                    <td>{{ labfee.feeAmount }}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                  <tr>
+                    <td colspan="1">Total Labfees:</td>
+                    <td>{{ totallabfees }}</td>
+                  </tr>
+                </ng-template>
+              </p-table>
             </p-tabPanel>
           </p-tabView>
-          <div class="row g-3 my-3">
+          <div class="row g-3 my-3" [formGroup]="studamounts">
+            <input type="hidden" formControlName="studid" />
+            <input type="hidden" formControlName="matrifees_id" />
+            <input type="hidden" formControlName="matrifeetotal" />
+            <input type="hidden" formControlName="labfeetotal" />
+            <!-- <input type="date" formControlName="aw" /> -->
             <div class="col-6">
               <label for="amount">Total Amount</label>
               <input
                 type="text"
                 class="inputs"
                 id="amount"
-                value="₱ 1,000.00"
+                [value]="gettotal || 0"
+                formControlName="totalamount"
                 readonly
               />
             </div>
@@ -245,17 +288,18 @@
                 type="text"
                 class="inputs"
                 id="prevbalance"
-                value="₱ 1,000.00"
+                formControlName="prevbalance"
                 readonly
               />
             </div>
             <div class="col-6">
-              <label for="totalfees">Total Additional Fees</label>
+              <label for="totaladdlfees">Total Additional Fees</label>
               <input
                 type="text"
                 class="inputs"
                 id="totalfees"
-                value="₱ 1,000.00"
+                [value]="totaladditional || 0"
+                formControlName="totaladdlfees"
                 readonly
               />
             </div>
@@ -265,7 +309,8 @@
                 type="text"
                 class="inputs"
                 id="finalassessment"
-                value="₱ 1,000.00"
+                [value]="totalfinalasses"
+                formControlName="finalassessment"
                 readonly
               />
             </div>
@@ -276,6 +321,7 @@
                 class="inputs"
                 id="downpayment"
                 value="₱ 1,000.00"
+                formControlName="downpayment"
                 readonly
               />
             </div>
@@ -294,10 +340,43 @@
                 balance and initial payment..</span
               >
             </div>
+            <p-accordion [activeIndex]="0">
+              <p-accordionTab header="Additional Fees">
+                <p-table
+                  [value]="addsfeedatas"
+                  [tableStyle]="{ 'min-width': '50rem' }"
+                >
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Item Name</th>
+                      <th>Amount</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-studaddfee>
+                    <tr>
+                      <td>{{ studaddfee.item_name }}</td>
+                      <td>{{ studaddfee.amount }}</td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </p-accordionTab>
+              <p-accordionTab header="Batch Charge">
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                  consequuntur magni dolores eos qui ratione voluptatem sequi
+                  nesciunt. Consectetur, adipisci velit, sed quia non numquam
+                  eius modi.
+                </p>
+              </p-accordionTab>
+            </p-accordion>
           </div>
         </div>
-        <div class="divider mx-auto my-5"></div>
-        <div class="container my-5">
+        <!-- <div class="divider mx-auto my-5"></div> -->
+        <!-- <div class="container my-5">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
               <button
@@ -713,11 +792,54 @@
               </table>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </div>
+
+<!-- add additional fee -->
+<p-dialog
+  header="Additional Fees"
+  [(visible)]="showaddtionalFee"
+  [style]="{ width: '50vw' }"
+>
+  <form action="" (ngSubmit)="saveAdditonal()">
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows1">
+          <td>
+            <input
+              [(ngModel)]="row.additionalitem"
+              [ngModelOptions]="{ standalone: true }"
+              type="text"
+              pInputText
+            />
+          </td>
+          <td>
+            <input
+              [(ngModel)]="row.additionalamount"
+              [ngModelOptions]="{ standalone: true }"
+              type="text"
+              pInputText
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p-button icon="pi pi-plus l" label="Row" (click)="addRow(1)"></p-button>
+    <br />
+    <div class="d-flex justify-content-end">
+      <p-button type="submit" class="ms-2" label="Submit"></p-button>
+    </div>
+  </form>
+</p-dialog>
 
 <!-- MODAL -->
 <div
@@ -915,4 +1037,46 @@
       class="p-button-text"
     ></button>
   </ng-template>
+</p-dialog>
+
+<!-- update ledger -->
+<p-dialog
+  header="Update Ledger"
+  [maximizable]="true"
+  appendTo="body"
+  [(visible)]="updateDialog"
+  [style]="{ width: '50vw' }"
+  [modal]="true"
+>
+  <p-button
+    class="d-flex justify-content-end"
+    label="Additional Fees"
+    icon="pi pi-plus"
+    (click)="addtionalFeeDialog()"
+  >
+  </p-button>
+  <form action="" [formGroup]="updateFeesform" (ngSubmit)="updateFees(studid)">
+    <div class="row g-3 my-4">
+      <div class="col-6">
+        <label for="prevbalance">Previous Balance</label>
+        <p-inputNumber
+          formControlName="prevbal"
+          inputId="integeronly"
+          id="prevbalance"
+        />
+      </div>
+      <div class="col-6">
+        <label for="downpayment">Downpayment/Initial Payment</label>
+        <p-inputNumber
+          formControlName="downpayment"
+          inputId="integeronly"
+          id="downpayment"
+        />
+      </div>
+    </div>
+    <div class="d-flex justify-content-end gap-2">
+      <!-- <p-button label="Draft"></p-button> -->
+      <p-button type="submit" label="Submit"></p-button>
+    </div>
+  </form>
 </p-dialog>

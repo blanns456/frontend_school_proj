@@ -1,7 +1,30 @@
 .text-header {
-    background-color: #0287AF;
+  background-color: #0287af;
 }
 
 .btnAddFees {
-    background-color: #1E3050;
+  background-color: #1e3050;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e3050;
+}
+
+:host ::ng-deep .p-dropdown ul {
+  padding: 0;
+  margin: 0.5rem;
+}
+
+.containerTab {
+  height: 100vh;
+  padding-top: 7%;
+}
+
+.contentTab {
+  height: 100%;
+  overflow-y: auto;
 }
