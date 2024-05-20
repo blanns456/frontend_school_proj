@@ -1,0 +1,32 @@
+.content {
+  padding-top: 8%;
+  width: 90%;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="tel"],
+input[type="email"],
+select {
+  font-size: 1rem;
+  width: 95%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border: none;
+  border: solid 1px #d1d5db;
+  /* border: solid 1px #abaeb3; */
+  /*  */
+  border-radius: 5px;
+  outline: none;
+}
+
+img {
+  display: block;
+  aspect-ratio: 3/2;
+  object-fit: contain;
+}
+
+.student-info {
+  padding-top: 8%;
+  width: 95%;
+}

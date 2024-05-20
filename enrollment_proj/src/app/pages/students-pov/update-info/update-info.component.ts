@@ -311,11 +311,12 @@ export class UpdateInfoComponent {
     const formData = new FormData();
 
     formData.append('firstname', this.update_student.controls['firstname'].value);
+    formData.append('middlename', this.update_student.controls['shs_yr'].value ?? '');
     if (this.update_student.controls['middlename'].value === 'N/A') {
       formData.append('middlename', '');
 
     } else {
-      formData.append('middlename', this.update_student.controls['middlename'].value);
+      formData.append('middlename', this.update_student.controls['middlename'].value ?? '');
     }
     formData.append('lastname', this.update_student.controls['lastname'].value);
     formData.append('suffix', this.update_student.controls['suffix'].value);

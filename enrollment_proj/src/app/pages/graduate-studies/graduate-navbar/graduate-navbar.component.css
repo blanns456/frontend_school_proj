@@ -1,5 +1,9 @@
+nav {
+  background-color: var(--midnight);
+}
+
 .nav-text {
-  color: #0840a1;
+  color: white;
 }
 
 .nav-student {

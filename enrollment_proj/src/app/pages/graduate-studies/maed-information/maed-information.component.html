@@ -1,0 +1,271 @@
+<div class="container student-info pb-3">
+  <p-card header="Personal Information">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6 mb-3">
+          <img *ngIf="!data?.signature" class="img-thumbnail" [src]="'assets/misc/homepage/default.png'" alt="">
+          <img *ngIf="data?.signature" class="img-thumbnail"
+            [src]="'https://genesys-api.asc-bislig.com/images/user-profile/' + data?.profile" alt="">
+        </div>
+        <div class="col-6  mb-3">
+          <img *ngIf="data?.signature" class="img-thumbnail" [src]="data?.signature" alt="">
+          <img *ngIf="!data?.signature" class="img-thumbnail" [src]="'assets/misc/homepage/default.png'" alt="">
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="firstname">First Name</label>
+            <input pInputText id="firstname" [value]="data?.firstname" [readOnly]="true" />
+          </div>
+
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="lastname">Last Name</label>
+            <input pInputText id="lastname" [value]="data?.lastname" [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="middlename">Middle Name</label>
+            <input pInputText id="middlename" class="text-capitalize" [value]="data?.middlename" [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="suffix">Extension</label>
+            <input pInputText id="suffix" class="text-capitalize" [value]="data?.suffix" [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="gender">Gender</label>
+            <input pInputText id="gender" class="text-capitalize" [value]="data?.gender" [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="civil_status">Civil Status</label>
+            <input pInputText id="civil_status" class="text-capitalize" [value]="data?.civil_status"
+              [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="citizenship">Citizenship</label>
+            <input pInputText id="citizenship" class="text-capitalize" [value]="data?.citizenship" [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="religion">Religion</label>
+            <input pInputText id="religion" class="text-capitalize" [value]="data?.religion" [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="contact_number">Contact Number</label>
+            <input pInputText id="contact_number" class="text-capitalize" [value]="data?.contact_number"
+              [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="email">Email</label>
+            <input pInputText id="email" [value]="data?.email_address" [readOnly]=" true" />
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="birthdate">Birth Date</label>
+            <input pInputText id="religion" class="text-capitalize" [value]="date | date: 'yyyy-MM-dd'"
+              [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="birth_place">Birth Place</label>
+            <input pInputText id="birth_place" class="text-capitalize" [value]="data?.birth_place"
+              [style]="{width: '100%'}" [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <div class="flex flex-column">
+            <label for="Home">Home Address</label>
+            <textarea id="Home" cols="50" rows="4" pInputTextarea [readOnly]="true"
+              [style]="{width: '100%'}">{{data?.home_address}}</textarea>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <div class="flex flex-column">
+            <label for="Present">Present Address</label>
+            <textarea id="Present" cols="50" rows="4" pInputTextarea [readOnly]="true"
+              [style]="{width: '100%'}">{{data?.present_address}}</textarea>
+          </div>
+        </div>
+        <hr>
+        <h3>Education</h3>
+        <div class="col-lg-4 mb-3">
+          <p-card header="Elementary">
+            <div class="flex flex-column mb-3">
+              <label for="elem_school">School Name</label>
+              <input pInputText id="elem_school" class="text-capitalize" [value]="data?.elem_school"
+                [style]="{width: '100%'}" [readOnly]="true" />
+            </div>
+            <div class="flex flex-column mb-3">
+              <label for="elem_yrgrad">Year Graduated</label>
+              <input pInputText id="elem_yrgrad" class="text-capitalize" [value]="data?.elem_yr"
+                [style]="{width: '100%'}" [readOnly]="true" />
+            </div>
+          </p-card>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <p-card header="Junior HighSchool">
+            <div class="flex flex-column mb-3">
+              <label for="jhs_school">School Name</label>
+              <input pInputText id="jhs_school" class="text-capitalize" [value]="data?.jhs_school"
+                [style]="{width: '100%'}" [readOnly]="true" />
+            </div>
+            <div class="flex flex-column mb-3">
+              <label for="jhs_yrgrad">Year Graduated</label>
+              <input pInputText id="jhs_yrgrad" class="text-capitalize" [value]="data?.jhs_yr" [style]="{width: '100%'}"
+                [readOnly]="true" />
+            </div>
+          </p-card>
+        </div>
+        <div class="col-lg-4 mb-3">
+          <p-card header="Senior HighSchool">
+            <div class="flex flex-column mb-3">
+              <label for="shs_school">School Name</label>
+              <input pInputText id="shs_school" class="text-capitalize" [value]="data?.shs_school"
+                [style]="{width: '100%'}" [readOnly]="true" />
+            </div>
+            <div class="flex flex-column mb-3">
+              <label for="shs_yrgrad">Year Graduated</label>
+              <input pInputText id="shs_yrgrad" class="text-capitalize" [value]="data?.shs_yr" [style]="{width: '100%'}"
+                [readOnly]="true" />
+            </div>
+          </p-card>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <div class="flex flex-column">
+            <label for="lastschoolattended">Last School Attended</label>
+            <input pInputText id="lastschoolattended" class="text-capitalize" [value]="data?.last_school"
+              [style]="{width: '100%'}" [readOnly]="true" />
+          </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <div class="flex flex-column">
+            <label for="Last School Year Attended">Last School Year</label>
+            <input pInputText id="Last School Year Attended" class="text-capitalize" [value]="data?.last_school_year"
+              [style]="{width: '100%'}" [readOnly]="true" />
+          </div>
+        </div>
+        <hr>
+        <h3>Parent/Guardian&apos;s Information</h3>
+        <div class="col-lg-12 mb-3">
+          <p-card header="Father's Information">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="f_name">Father&apos;s Name</label>
+                  <input pInputText id="f_name" class="text-capitalize" [value]="data?.father_name"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="employed_where">If Employed? Where?</label>
+                  <input pInputText id="employed_where" class="text-capitalize" [value]="data?.father_employed"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="occupation">Occupation</label>
+                  <input pInputText id="occupation" class="text-capitalize" [value]="data?.father_occupation"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="f_number">Mobile Number</label>
+                  <input pInputText id="f_number" class="text-capitalize" [value]="data?.father_contact"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+            </div>
+          </p-card>
+        </div>
+        <div class="col-lg-12 mb-3">
+          <p-card header="Mother's Information">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="m_name">Mother&apos;s Maiden Name</label>
+                  <input pInputText id="m_name" class="text-capitalize" [value]="data?.mother_name"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="m_employed_where">If Employed? Where?</label>
+                  <input pInputText id="m_employed_where" class="text-capitalize" [value]="data?.mother_employed"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="m_occupation">Occupation</label>
+                  <input pInputText id="m_occupation" class="text-capitalize" [value]="data?.mother_occupation"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="m_number">Mobile Number</label>
+                  <input pInputText id="m_number" class="text-capitalize" [value]="data?.mother_contact"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+            </div>
+          </p-card>
+        </div>
+        <div class="col-lg-12 mb-3">
+          <p-card header="Guardian's Information">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="g_name">Guardian&apos;s Name</label>
+                  <input pInputText id="g_name" class="text-capitalize" [value]="data?.guardian_contact"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="g_employed_where">If Employed? Where?</label>
+                  <input pInputText id="g_employed_where" class="text-capitalize" [value]="data?.guardian_employed"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="g_occupation">Occupation</label>
+                  <input pInputText id="g_occupation" class="text-capitalize" [value]="data?.guardian_occupation"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="flex flex-column mb-3">
+                  <label for="g_number">Mobile Number</label>
+                  <input pInputText id="g_number" class="text-capitalize" [value]="data?.guardian_contact"
+                    [style]="{width: '100%'}" [readOnly]="true" />
+                </div>
+              </div>
+            </div>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </p-card>
+</div>
+<p-toast></p-toast>

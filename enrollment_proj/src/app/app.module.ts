@@ -56,6 +56,10 @@ import { AccordionModule } from 'primeng/accordion';
 import { PanelModule } from 'primeng/panel';
 import { FieldsetModule } from 'primeng/fieldset';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { MenuModule } from 'primeng/menu';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { PaginatorModule } from 'primeng/paginator';
 
 import { StudentDashboardHomeComponent } from './pages/students-pov/student-dashboard-home/student-dashboard-home.component';
 import { PaginationShsComponent } from './pages/pagination-shs/pagination-shs.component';
@@ -159,6 +163,14 @@ import { GraduateMainComponent } from './pages/graduate-studies/graduate-main/gr
 import { GraduateSidebarComponent } from './pages/graduate-studies/graduate-sidebar/graduate-sidebar.component';
 import { GraduateNavbarComponent } from './pages/graduate-studies/graduate-navbar/graduate-navbar.component';
 import { GraduateHomeComponent } from './pages/graduate-studies/graduate-home/graduate-home.component';
+import { MaedInformationComponent } from './pages/graduate-studies/maed-information/maed-information.component';
+import { MaedAcademicComponent } from './pages/graduate-studies/maed-academic/maed-academic.component';
+import { MaedFinanceComponent } from './pages/graduate-studies/maed-finance/maed-finance.component';
+import { MaedProspectusComponent } from './pages/graduate-studies/maed-prospectus/maed-prospectus.component';
+import { MaedCoursesComponent } from './pages/graduate-studies/maed-courses/maed-courses.component';
+import { MaedEnrollmentComponent } from './pages/graduate-studies/maed-enrollment/maed-enrollment.component';
+import { MaedUpdateInformationComponent } from './pages/graduate-studies/maed-update-information/maed-update-information.component';
+import { StudentCurrentCoursesComponent } from './pages/deans-pov/student-current-courses/student-current-courses.component';
 
 @NgModule({
   declarations: [
@@ -279,6 +291,14 @@ import { GraduateHomeComponent } from './pages/graduate-studies/graduate-home/gr
     GraduateSidebarComponent,
     GraduateNavbarComponent,
     GraduateHomeComponent,
+    MaedInformationComponent,
+    MaedAcademicComponent,
+    MaedFinanceComponent,
+    MaedProspectusComponent,
+    MaedCoursesComponent,
+    MaedEnrollmentComponent,
+    MaedUpdateInformationComponent,
+    StudentCurrentCoursesComponent,
   ],
   imports: [
     BrowserModule,
@@ -321,12 +341,15 @@ import { GraduateHomeComponent } from './pages/graduate-studies/graduate-home/gr
     PanelModule,
     FieldsetModule,
     TabMenuModule,
+    MenuModule,
+    IconFieldModule,
+    InputIconModule,
+    PaginatorModule
   ],
-
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     MessageService,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

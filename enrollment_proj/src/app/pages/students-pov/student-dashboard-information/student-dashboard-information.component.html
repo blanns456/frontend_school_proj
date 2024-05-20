@@ -6,7 +6,7 @@
         <div class="col-6 mb-3">
           <img *ngIf="!data?.signature" class="img-thumbnail" [src]="'assets/misc/homepage/default.png'" alt="">
           <img *ngIf="data?.signature" class="img-thumbnail"
-            [src]="'https://genesys-api.asc-bislig.com/images/user-profile/' + data?.profile" alt="">
+            [src]="'http://127.0.0.1:8000/images/user-profile/' + data?.profile" alt="" width="500">
         </div>
         <div class="col-6  mb-3">
           <img *ngIf="data?.signature" class="img-thumbnail" [src]="data?.signature" alt="">

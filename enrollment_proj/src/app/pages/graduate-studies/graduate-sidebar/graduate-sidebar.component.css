@@ -1,9 +1,11 @@
 .sidebar-content {
-  background: whitesmoke;
+  background: #ffffff;
 }
+
 .nav-link {
   color: black;
 }
+
 .active {
   background: #0d6efd;
 }
