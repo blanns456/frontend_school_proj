@@ -68,7 +68,7 @@ export class AccountingViewuserComponent implements OnInit {
       totalamount: new FormControl('', [Validators.required]),
       totalTuitionfee: new FormControl('', [Validators.required]),
       prevbalance: new FormControl(0, [Validators.required]),
-      totaladdlfees: new FormControl('', [Validators.required]),
+      totaladdlfees: new FormControl(0, [Validators.required]),
       finalassessment: new FormControl('', [Validators.required]),
       downpayment: new FormControl(0, [Validators.required]),
     });
@@ -237,7 +237,7 @@ export class AccountingViewuserComponent implements OnInit {
           (this.totalall || 0) +
           (this.totalamountfees || 0) +
           (this.totallabfees || 0);
-        this.totalfinalasses = this.gettotal + this.totaladditional;
+        this.totalfinalasses = this.gettotal + this.totaladditional || 0;
         this.matrifees_id = this.subLedgerFees[0]['matrifees_id'];
 
         this.studamounts.get('matrifees_id')?.setValue(this.matrifees_id);
@@ -256,10 +256,9 @@ export class AccountingViewuserComponent implements OnInit {
       next: (res) => {
         this.transacinfo = res;
         this.gettransac = this.transacinfo[0];
-        this.getprevbal = this.gettransac[0]['previous_bal'] || 0;
+        this.getprevbal = this.gettransac['previous_bal'] || 0;
         this.getstatusledger = this.gettransac[0]['status'];
         this.studamounts.get('prevbalance')?.setValue(this.getprevbal);
-        // this.grandtotal = this.totalfinalasses + this.getprevbal;
         // console.log(this.gettransac);
       },
       error: (error: HttpErrorResponse) => {

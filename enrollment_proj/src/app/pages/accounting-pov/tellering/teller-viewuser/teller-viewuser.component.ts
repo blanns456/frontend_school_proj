@@ -18,10 +18,10 @@ export class TellerViewuserComponent implements OnInit {
   labfeedatas: any;
   labdata: any;
   payHistoryDialog: boolean = false;
+  showMakePaymentDIalog: boolean = false;
   displayname!: string;
   randomNumber: number;
   studTransac: FormGroup;
-
   students = [
     {
       name: 'John Doe',
@@ -42,6 +42,7 @@ export class TellerViewuserComponent implements OnInit {
   transacinfo: any;
   studentTranac: any;
   selectedItemFees: any[] = [];
+  allocation: any;
 
   constructor(
     private router: Router,
@@ -65,7 +66,7 @@ export class TellerViewuserComponent implements OnInit {
       receiptNo: new FormControl('', [Validators.required]),
       sem_id: new FormControl('', [Validators.required]),
       teller: new FormControl('', [Validators.required]),
-      // afterBal: new FormControl(0, [Validators.required]),
+      afterBal: new FormControl(0, [Validators.required]),
       paidAmount: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       status: new FormControl('', [Validators.required]),
@@ -76,19 +77,37 @@ export class TellerViewuserComponent implements OnInit {
     this.studTransac.get('studledgerId')?.setValue(studledgerId);
   }
 
-  saveStudTransac() {
-    // console.log(this.studTransac.value);
-    // this.selectedItemFees.forEach((fee) => {
-    //   console.log(fee);
-    // });
-    this.AccountingController.addstudtransac(this.studTransac.value).subscribe({
+  showmakePayment() {
+    this.showMakePaymentDIalog = true;
+  }
+
+  allocateFees(paided: number) {
+    this.AccountingController.allocateFees(paided).subscribe({
       next: (res) => {
-        console.log(res);
+        this.allocation = res;
+        console.log(this.allocation);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
       },
     });
+  }
+
+  saveStudTransac() {
+    const paided = this.studTransac.get('paidAmount')?.value;
+    console.log(this.studTransac.value);
+    this.allocateFees(paided);
+    // this.selectedItemFees.forEach((fee) => {
+    //   console.log(fee);
+    // });
+    // this.AccountingController.addstudtransac(this.studTransac.value).subscribe({
+    //   next: (res) => {
+    //     console.log(res);
+    //   },
+    //   error: (error: HttpErrorResponse) => {
+    //     console.log(error.message);
+    //   },
+    // });
   }
 
   showpayHistory(studname: string, stud_id: number) {

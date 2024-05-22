@@ -288,6 +288,7 @@
                 type="text"
                 class="inputs"
                 id="prevbalance"
+                [value]="getprevbal"
                 formControlName="prevbalance"
                 readonly
               />
@@ -298,7 +299,7 @@
                 type="text"
                 class="inputs"
                 id="totalfees"
-                [value]="totaladditional || 0"
+                [value]="totaladditional"
                 formControlName="totaladdlfees"
                 readonly
               />
