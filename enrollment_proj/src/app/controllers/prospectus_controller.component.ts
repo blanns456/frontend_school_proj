@@ -9,7 +9,7 @@ export class ProspectusController {
   token: any;
   procpectusdata: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getcourses() {
     return this.http.get(this.Root_URL + 'courses');

@@ -104,6 +104,9 @@ import { AscbAboutComponent } from './pages/home-tab/ascb-about/ascb-about.compo
 import { AscbAboutHistoryComponent } from './pages/home-tab/ascb-about-history/ascb-about-history.component';
 import { NewsTabComponent } from './pages/home-tab/news-tab/news-tab.component';
 import { RegistrationProcessComponent } from './pages/home-tab/registration-process/registration-process.component';
+import { AccountingMainComponent } from './pages/accounting-pov/accounting-main/accounting-main.component';
+
+//accounting
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -288,6 +291,69 @@ const routes: Routes = [
       },
     ],
   },
+    {
+    path: 'accounting',
+    component: AccountingMainComponent,
+    // canActivate: [AuthGuard],
+    // data: { allowedRoles: ['dean'] },
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
+        path: 'home',
+        component: AccountingDashboardHomeComponent,
+        title: 'Accounting | Home',
+      },
+      {
+        path: 'matriculation pending',
+        component: AccountingDashboardSchoolfeesComponent,
+        title: 'Accounting | School Fees',
+      },
+      {
+        path: 'lab fees',
+        component: AccountingDashboardLabfeesComponent,
+        title: 'Accounting | Lab Fees',
+      },
+      {
+        path: 'statement of accounts',
+        component: AccountingStatementOfAccountsComponent,
+        title: 'Accounting | Statement of Accounts',
+      },
+      {
+        path: 'student ledger',
+        component: AccountingStudentLedgerComponent,
+        title: 'Accounting | Student Ledger',
+      },
+      {
+        path: 'matriculation',
+        component: AccountingMatriculationComponent,
+        title: 'Accounting | Matriculation',
+      },
+      {
+        path: 'expenses category',
+        component: AccountingItemManagementComponent,
+        title: 'Accounting | Item Management',
+      },
+      {
+        path: 'tellering list',
+        component: TelleringListComponent,
+        title: 'Accounting | Teller',
+      },
+      {
+        path: 'daily collection reports',
+        component: DailycollectionReportsComponent,
+        title: 'Daily Collection Reports',
+      },
+      {
+        path: 'daily consolidated reports',
+        component: DailyconsolidatedReportsComponent,
+        title: 'Daily Consolidated Reports',
+      },
+    ],
+  },
   // {
   //   path: 'student-dashboard-home',
   //   component: StudentDashboardHomeComponent,
@@ -301,71 +367,25 @@ const routes: Routes = [
     path: 'student-dashboard-academic',
     component: StudentDashboardAcademicComponent,
   },
-  {
-    path: 'accounting-dashboard-home',
-    component: AccountingDashboardHomeComponent,
-    title: 'Accounting | Home',
-  },
-  {
-    path: 'accounting-dashboard-schoolfees',
-    component: AccountingDashboardSchoolfeesComponent,
-    title: 'Accounting | School Fees',
-  },
-  {
-    path: 'accounting-dashboard-labfees',
-    component: AccountingDashboardLabfeesComponent,
-    title: 'Accounting | Lab Fees',
-  },
-  {
-    path: 'accounting-dashboard-soa',
-    component: AccountingStatementOfAccountsComponent,
-    title: 'Accounting | Statement of Accounts',
-  },
-  {
-    path: 'accounting-dashboard-studentledger',
-    component: AccountingStudentLedgerComponent,
-    title: 'Accounting | Student Ledger',
-  },
-  {
-    path: 'accounting-matriculation',
-    component: AccountingMatriculationComponent,
-    title: 'Accounting | Matriculation',
-  },
+
   {
     path: 'accounting-matriculation-viewuser',
     component: AccountingViewuserComponent,
     title: 'Accounting | Matriculation',
   },
-  {
-    path: 'accounting-item-management',
-    component: AccountingItemManagementComponent,
-    title: 'Accounting | Item Management',
-  },
-  {
-    path: 'accounting-tellering-list',
-    component: TelleringListComponent,
-    title: 'Accounting | Teller',
-  },
+
   {
     path: 'teller-viewuser',
     component: TellerViewuserComponent,
     title: 'Accounting | TellerView',
   },
-  {
-    path: 'dailycollection-reports',
-    component: DailycollectionReportsComponent,
-    title: 'Daily Collection Reports',
-  },
+
   {
     path: 'dailycollection-setup',
     component: DailycollectionSetupComponent,
     title: 'Daily Collection Setup',
   },
-  {
-    path: 'dailyconsolidated-reports',
-    component: DailyconsolidatedReportsComponent,
-    title: 'Daily Consolidated Reports',
-  },
+
   {
     path: 'trustfund-items',
     component: TrustfundsItemsComponent,

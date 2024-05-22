@@ -14,7 +14,7 @@ export class AccountingController {
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getstudents() {
     return this.http.get(this.Root_URL + 'showstudents');
@@ -158,5 +158,9 @@ export class AccountingController {
     }
   ) {
     return this.http.post(this.Root_URL + `updateledg/${studid}`, updateData);
+  }
+
+  allocateFees(paidAmount: number) {
+    return this.http.post(this.Root_URL + 'allocate-fees', paidAmount);
   }
 }
