@@ -48,7 +48,7 @@ export class CollegeEnrollmentController {
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public getcourses() {
     return this.http.get(this.Root_URL + 'courses');
@@ -160,5 +160,9 @@ export class CollegeEnrollmentController {
     return this.http.post(this.Root_URL + 'update-student', student, {
       headers: this.headers,
     });
+  }
+
+  showstudinfo(studid: number) {
+    return this.http.get(this.Root_URL + 'showstudinfo/' + studid);
   }
 }
