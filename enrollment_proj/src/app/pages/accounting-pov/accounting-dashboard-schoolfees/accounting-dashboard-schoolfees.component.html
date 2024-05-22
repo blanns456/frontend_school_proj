@@ -1,52 +1,47 @@
-<div class="container-dashboard">
-  <app-accounting-sidebar></app-accounting-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-accounting-navbar></app-accounting-navbar>
-    <p-toast></p-toast>
-    <div class="container-fluid containerTab">
-      <!-- <div class="divider mb-4"></div> -->
-      <div class="bg-white w-100 contentTab rounded">
-        <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
-          <h3 class="text-white fw-bold">Matriculation</h3>
-        </div>
-        <!-- <div class="content d-flex justify-content-end">
-          <button class="btn btnAddFees text-white m-2">
-            <i class="fa-solid fa-file-circle-plus mx-2"></i>Add Fees
-          </button>
-        </div> -->
-        <div class="container">
-          <p-table
-            [rowHover]="true"
-            [value]="departments"
-            styleClass="p-datatable-striped"
-            [tableStyle]="{ 'min-width': '50rem' }"
-          >
-            <ng-template pTemplate="header">
-              <tr>
-                <th>Departments</th>
-                <th>Action</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-depts>
-              <tr>
-                <td>{{ depts.department_name }}</td>
-                <td>
-                  <p-button
-                    icon="pi pi-eye"
-                    (click)="showmatriFees(depts.id, depts.department_name)"
-                  >
-                  </p-button>
-                  <p-button class="ms-2" icon="pi pi-pen-to-square"> </p-button>
-                </td>
-              </tr>
-            </ng-template>
-          </p-table>
-        </div>
-      </div>
+
+<p-toast></p-toast>
+<div class="container-fluid containerTab">
+  <!-- <div class="divider mb-4"></div> -->
+  <div class="bg-white w-100 contentTab rounded">
+    <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+      <h3 class="text-white fw-bold">Matriculation</h3>
+    </div>
+    <!-- <div class="content d-flex justify-content-end">
+      <button class="btn btnAddFees text-white m-2">
+        <i class="fa-solid fa-file-circle-plus mx-2"></i>Add Fees
+      </button>
+    </div> -->
+    <div class="container">
+      <p-table
+        [rowHover]="true"
+        [value]="departments"
+        styleClass="p-datatable-striped"
+        [tableStyle]="{ 'min-width': '50rem' }"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Departments</th>
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-depts>
+          <tr>
+            <td>{{ depts.department_name }}</td>
+            <td>
+              <p-button
+                icon="pi pi-eye"
+                (click)="showmatriFees(depts.id, depts.department_name)"
+              >
+              </p-button>
+              <p-button class="ms-2" icon="pi pi-pen-to-square"> </p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
   </div>
 </div>
+
 
 <p-dialog
   [modal]="true"

@@ -1,198 +1,191 @@
-<div class="container-dashboard">
-  <app-accounting-sidebar></app-accounting-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-accounting-navbar></app-accounting-navbar>
-    <p-toast></p-toast>
-    <p-confirmDialog></p-confirmDialog>
-    <div class="container-fluid containerTab">
-      <!-- <div class="divider mb-4"></div> -->
-      <div class="contentTab mb-3 bg-white rounded">
-        <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
-          <h3 class="text-white fw-bold">Student Ledger</h3>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+<div class="container-fluid containerTab">
+  <!-- <div class="divider mb-4"></div> -->
+  <div class="contentTab mb-3 bg-white rounded">
+    <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+      <h3 class="text-white fw-bold">Student Ledger</h3>
+    </div>
+    <!-- <form class="m-4 px-2">
+      <div
+        class="inputGroup row d-flex justify-content-center align-items-center"
+      >
+        <div class="col-4">
+          <label for="ledger">Ledger</label>
+          <select class="inputs" name="ledger" id="ledger">
+            <option selected hidden>Input here..</option>
+            <option value="1">20221545/A.Y 2021-2022</option>
+            <option value="2">20254487/A.Y 2022-2023</option>
+            <option value="3">20200365/A.Y 2023-2024</option>
+          </select>
         </div>
-        <!-- <form class="m-4 px-2">
-          <div
-            class="inputGroup row d-flex justify-content-center align-items-center"
-          >
-            <div class="col-4">
-              <label for="ledger">Ledger</label>
-              <select class="inputs" name="ledger" id="ledger">
-                <option selected hidden>Input here..</option>
-                <option value="1">20221545/A.Y 2021-2022</option>
-                <option value="2">20254487/A.Y 2022-2023</option>
-                <option value="3">20200365/A.Y 2023-2024</option>
-              </select>
-            </div>
-            <div class="col-4">
-              <label for="semester">Semester</label>
-              <select class="inputs" name="semester" id="semester">
-                <option selected hidden>Open this select menu</option>
-                <option value="1">1st Trimester</option>
-                <option value="2">2nd Trimester</option>
-                <option value="3">3rd Trimester</option>
-              </select>
-            </div>
-            <div class="col-4">
-              <label for="studid">ID:</label>
-              <input
-                class="inputs"
-                type="number"
-                id="studid"
-                name="studid"
-                placeholder="202244564"
-              />
-            </div>
-            <div class="col-4 my-4">
-              <label for="studname">Student's Name:</label>
-              <input
-                class="inputs"
-                type="text"
-                id="studname"
-                name="studname"
-                placeholder="input here"
-              />
-            </div>
-            <div class="col-4">
-              <label for="course">Course/Yr.</label>
-              <input
-                class="inputs"
-                type="text"
-                id="course"
-                name="course"
-                placeholder="input here"
-              />
-            </div>
-            <div class="col-4">
-              <label for="date">Date:</label>
-              <input
-                class="inputs"
-                type="date"
-                id="date"
-                name="date"
-                placeholder="input date here"
-              />
-            </div>
-          </div>
-        </form>
-        <div class="divider mx-auto my-4"></div> -->
-        <div class="container my-4">
-          <div class="my-3 d-flex justify-content-between align-items-center">
-            <div class="W-100">
-              <span class="p-input-icon-left me-2">
-                <i class="pi pi-search"></i>
-                <input
-                  type="text"
-                  pInputText
-                  placeholder="Search keyword"
-                  (input)="filterInput($event)"
-                />
-              </span>
-              <p-multiSelect
-                [options]="selectFilter"
-                optionLabel="deptname"
-                placeholder="Add Filter"
-                display="chip"
-                [filter]="true"
-                [showClear]="true"
-                [(ngModel)]="selectedFilters"
-                (ngModelChange)="filterData()"
-                [style]="{ width: '40%' }"
-              ></p-multiSelect>
-            </div>
-            <p-button
-              class="p-button-danger"
-              icon="pi pi-trash"
-              severity="warning"
-              [disabled]="selectedStudents.length === 0"
-              (click)="deleteSelectedStuds($event)"
-            ></p-button>
-          </div>
-          <!-- <table class="table my-3" style="width: 100%">
-            <thead>
-              <tr>
-                <th>ID Number</th>
-                <th>Student's Name</th>
-                <th>Ledger</th>
-                <th>Ledger Status</th>
-                <th>Semester</th>
-                <th>Course/Yr.</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let student of students">
-                <td>{{ student.uid }}</td>
-                <td>{{ student.studname }}</td>
-                <td>20221545/A.Y 2021-2022</td>
-                <td>Submitted</td>
-                <td>{{ student.semester }}</td>
-                <td>{{ student.course }}</td>
-                <td>
-                  <button class="btn btn-secondary" (click)="viewUser(student)">
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
-                  <button class="btn btn-success mx-2">
-                    <a routerLink="/test"><i class="fa-solid fa-pen"></i></a>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table> -->
-          <p-table
-            #dt
-            [rowHover]="true"
-            [value]="students"
-            selectionMode="multiple"
-            [(selection)]="selectedStudents"
-            styleClass="p-datatable-striped p-datatable-sm"
-            [tableStyle]="{ 'min-width': '40rem' }"
-            [paginator]="true"
-            [rows]="10"
-            [showCurrentPageReport]="true"
-            [rowsPerPageOptions]="[10, 20, 50, 70, 100]"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-          >
-            <ng-template pTemplate="header" let-columns>
-              <tr>
-                <th style="width: 4rem">
-                  <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                </th>
-                <th pSortableColumn="uid" style="width: 15%">
-                  Student No. <p-sortIcon field="uid"></p-sortIcon>
-                </th>
-                <th style="width: 20%">Student Name</th>
-                <th style="width: 15%">Semester</th>
-                <th style="width: 15%">Year Level</th>
-                <th style="width: 25%">Course.</th>
-                <th>Action</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-student>
-              <tr>
-                <td>
-                  <p-tableCheckbox [value]="student"></p-tableCheckbox>
-                </td>
-                <td>{{ student.uid }}</td>
-                <td>{{ student.studname }}</td>
-                <td>{{ student.semester }}</td>
-                <td>{{ getYearLevelString(student.student_yr_lvl) }}</td>
-                <td>{{ student.course }}</td>
-                <td>
-                  <p-button (click)="viewUser(student)">
-                    <a><i class="fa-solid fa-eye"></i></a>
-                  </p-button>
-                </td>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="emptymessage">
-              <tr>
-                <td class="p-4 text-center" colspan="7">No Data Found.</td>
-              </tr>
-            </ng-template>
-          </p-table>
+        <div class="col-4">
+          <label for="semester">Semester</label>
+          <select class="inputs" name="semester" id="semester">
+            <option selected hidden>Open this select menu</option>
+            <option value="1">1st Trimester</option>
+            <option value="2">2nd Trimester</option>
+            <option value="3">3rd Trimester</option>
+          </select>
+        </div>
+        <div class="col-4">
+          <label for="studid">ID:</label>
+          <input
+            class="inputs"
+            type="number"
+            id="studid"
+            name="studid"
+            placeholder="202244564"
+          />
+        </div>
+        <div class="col-4 my-4">
+          <label for="studname">Student's Name:</label>
+          <input
+            class="inputs"
+            type="text"
+            id="studname"
+            name="studname"
+            placeholder="input here"
+          />
+        </div>
+        <div class="col-4">
+          <label for="course">Course/Yr.</label>
+          <input
+            class="inputs"
+            type="text"
+            id="course"
+            name="course"
+            placeholder="input here"
+          />
+        </div>
+        <div class="col-4">
+          <label for="date">Date:</label>
+          <input
+            class="inputs"
+            type="date"
+            id="date"
+            name="date"
+            placeholder="input date here"
+          />
         </div>
       </div>
+    </form>
+    <div class="divider mx-auto my-4"></div> -->
+    <div class="container my-4">
+      <div class="my-3 d-flex justify-content-between align-items-center">
+        <div class="W-100">
+          <span class="p-input-icon-left me-2">
+            <i class="pi pi-search"></i>
+            <input
+              type="text"
+              pInputText
+              placeholder="Search keyword"
+              (input)="filterInput($event)"
+            />
+          </span>
+          <p-multiSelect
+            [options]="selectFilter"
+            optionLabel="deptname"
+            placeholder="Add Filter"
+            display="chip"
+            [filter]="true"
+            [showClear]="true"
+            [(ngModel)]="selectedFilters"
+            (ngModelChange)="filterData()"
+            [style]="{ width: '40%' }"
+          ></p-multiSelect>
+        </div>
+        <p-button
+          class="p-button-danger"
+          icon="pi pi-trash"
+          severity="warning"
+          [disabled]="selectedStudents.length === 0"
+          (click)="deleteSelectedStuds($event)"
+        ></p-button>
+      </div>
+      <!-- <table class="table my-3" style="width: 100%">
+        <thead>
+          <tr>
+            <th>ID Number</th>
+            <th>Student's Name</th>
+            <th>Ledger</th>
+            <th>Ledger Status</th>
+            <th>Semester</th>
+            <th>Course/Yr.</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of students">
+            <td>{{ student.uid }}</td>
+            <td>{{ student.studname }}</td>
+            <td>20221545/A.Y 2021-2022</td>
+            <td>Submitted</td>
+            <td>{{ student.semester }}</td>
+            <td>{{ student.course }}</td>
+            <td>
+              <button class="btn btn-secondary" (click)="viewUser(student)">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+              <button class="btn btn-success mx-2">
+                <a routerLink="/test"><i class="fa-solid fa-pen"></i></a>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+      <p-table
+        #dt
+        [rowHover]="true"
+        [value]="students"
+        selectionMode="multiple"
+        [(selection)]="selectedStudents"
+        styleClass="p-datatable-striped p-datatable-sm"
+        [tableStyle]="{ 'min-width': '40rem' }"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 20, 50, 70, 100]"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      >
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th style="width: 4rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th pSortableColumn="uid" style="width: 15%">
+              Student No. <p-sortIcon field="uid"></p-sortIcon>
+            </th>
+            <th style="width: 20%">Student Name</th>
+            <th style="width: 15%">Semester</th>
+            <th style="width: 15%">Year Level</th>
+            <th style="width: 25%">Course.</th>
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-student>
+          <tr>
+            <td>
+              <p-tableCheckbox [value]="student"></p-tableCheckbox>
+            </td>
+            <td>{{ student.uid }}</td>
+            <td>{{ student.studname }}</td>
+            <td>{{ student.semester }}</td>
+            <td>{{ getYearLevelString(student.student_yr_lvl) }}</td>
+            <td>{{ student.course }}</td>
+            <td>
+              <p-button (click)="viewUser(student)">
+                <a><i class="fa-solid fa-eye"></i></a>
+              </p-button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td class="p-4 text-center" colspan="7">No Data Found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
   </div>
 </div>
