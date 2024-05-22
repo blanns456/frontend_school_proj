@@ -1,98 +1,92 @@
-<div class="container-dashboard">
-  <app-accounting-sidebar></app-accounting-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-accounting-navbar></app-accounting-navbar>
-    <div class="container-fluid containerTab">
-      <!-- <div class="divider mb-4"></div> -->
-      <div class="contentTab mb-3 bg-white w-100 rounded">
-        <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
-          <h3 class="text-white fw-bold">Tellering</h3>
-        </div>
-        <div class="d-flex justify-content-end">
-          <button
-            class="btn btnAddFees text-white m-2"
-            data-bs-toggle="modal"
-            data-bs-target="#newItems"
-          >
-            <i class="fa-solid fa-file-circle-plus mx-2"></i>New Item
-          </button>
-        </div>
-        <div class="container my-2">
-          <!-- <table
-            id="example"
-            #dataTable
-            class="table table-striped"
-            style="width: 100%"
-          >
-            <thead>
-              <tr>
-                <th>Student Name</th>
-                <th>Mode of Payment</th>
-                <th>Posting Date</th>
-                <th>Payment Type</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let stud of students">
-              <tr>
-                <td>{{ stud.name }}</td>
-                <td>{{ stud.mop }}</td>
-                <td>{{ stud.pdate }}</td>
-                <td>{{ stud.paytype }}</td>
-                <td>
-                  <button class="btn btn-secondary">
-                    <a
-                      class="text-white text-decoration-none"
-                      routerLink="/teller-viewuser"
-                      ><i class="fa-solid fa-eye"></i>View</a
-                    >
-                  </button>
-                  <button class="btn btn-success mx-2">
-                    <a class="text-white text-decoration-none"
-                      ><i class="fa-solid fa-pen text-white"></i>Update</a
-                    >
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table> -->
+<div class="container-fluid containerTab">
+  <!-- <div class="divider mb-4"></div> -->
+  <div class="contentTab mb-3 bg-white w-100 rounded">
+    <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+      <h3 class="text-white fw-bold">Tellering</h3>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button
+        class="btn btnAddFees text-white m-2"
+        data-bs-toggle="modal"
+        data-bs-target="#newItems"
+      >
+        <i class="fa-solid fa-file-circle-plus mx-2"></i>New Item
+      </button>
+    </div>
+    <div class="container my-2">
+      <!-- <table
+        id="example"
+        #dataTable
+        class="table table-striped"
+        style="width: 100%"
+      >
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Mode of Payment</th>
+            <th>Posting Date</th>
+            <th>Payment Type</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let stud of students">
+          <tr>
+            <td>{{ stud.name }}</td>
+            <td>{{ stud.mop }}</td>
+            <td>{{ stud.pdate }}</td>
+            <td>{{ stud.paytype }}</td>
+            <td>
+              <button class="btn btn-secondary">
+                <a
+                  class="text-white text-decoration-none"
+                  routerLink="/teller-viewuser"
+                  ><i class="fa-solid fa-eye"></i>View</a
+                >
+              </button>
+              <button class="btn btn-success mx-2">
+                <a class="text-white text-decoration-none"
+                  ><i class="fa-solid fa-pen text-white"></i>Update</a
+                >
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
 
-          <p-table
-            [rowHover]="true"
-            [value]="studledgers"
-            class="text-capitalize"
-            styleClass="p-datatable-striped"
-          >
-            <ng-template pTemplate="header">
-              <tr>
-                <th>Student</th>
-                <th style="width: 30%">Course</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-stud>
-              <tr>
-                <td>{{ stud.studname }}</td>
-                <td>{{ stud.course }}</td>
-                <td>{{ stud.status }}</td>
-                <td>
-                  <p-button
-                    label="Pay"
-                    class="mx-2"
-                    (click)="showdialog(stud.stud_id, stud)"
-                  ></p-button>
-                  <p-button icon="pi pi-eye"></p-button>
-                </td>
-              </tr>
-            </ng-template>
-          </p-table>
-        </div>
-      </div>
+      <p-table
+        [rowHover]="true"
+        [value]="studledgers"
+        class="text-capitalize"
+        styleClass="p-datatable-striped"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Student</th>
+            <th style="width: 30%">Course</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-stud>
+          <tr>
+            <td>{{ stud.studname }}</td>
+            <td>{{ stud.course }}</td>
+            <td>{{ stud.status }}</td>
+            <td>
+              <p-button
+                label="Pay"
+                class="mx-2"
+                (click)="showdialog(stud.stud_id, stud)"
+              ></p-button>
+              <p-button icon="pi pi-eye"></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
   </div>
 </div>
+
 
 <!-- MODAL -->
 <div

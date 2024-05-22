@@ -1,108 +1,102 @@
-<div class="container-dashboard">
-  <app-accounting-sidebar></app-accounting-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-accounting-navbar></app-accounting-navbar>
-    <p-toast></p-toast>
-    <p-confirmDialog></p-confirmDialog>
-    <div class="container-fluid containerTab">
-      <!-- <div class="divider mb-4"></div> -->
-      <div class="contentTab mb-3 bg-white w-100 rounded">
-        <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
-          <h3 class="text-white fw-bold">Expenses Category</h3>
-        </div>
-        <div class="d-flex justify-content-between align-items-center p-3">
-          <div class="W-100">
-            <p-button
-              (click)="showDialog()"
-              icon="pi pi-plus"
-              severity="success"
-              class="mx-2"
-              label="New Category"
-            >
-            </p-button>
-            <span class="p-input-icon-left me-2">
-              <i class="pi pi-search"></i>
-              <input
-                type="text"
-                pInputText
-                placeholder="Search keyword"
-                (input)="filterInput($event)"
-              />
-            </span>
-            <!-- <p-multiSelect
-              [options]="selectFilter"
-              optionLabel="itemname"
-              placeholder="Add Filter"
-              display="chip"
-              [filter]="true"
-              [showClear]="true"
-              [(ngModel)]="selectedFilters"
-              (ngModelChange)="filterData()"
-              [style]="{ width: '60%' }"
-            ></p-multiSelect> -->
-          </div>
-          <p-button
-            class="p-button-danger"
-            icon="pi pi-trash"
-            severity="warning"
-            [disabled]="selectedItems.length === 0"
-            (click)="deleteSelectedItems($event)"
-          ></p-button>
-        </div>
-
-        <div class="container my-2">
-          <p-table
-            #dt
-            [rowHover]="true"
-            [value]="categorylist"
-            selectionMode="multiple"
-            [(selection)]="selectedItems"
-            styleClass="p-datatable-striped p-datatable-sm"
-            [tableStyle]="{ 'min-width': '50rem' }"
-            [paginator]="true"
-            [rows]="10"
-            [showCurrentPageReport]="true"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-          >
-            <ng-template pTemplate="header" let-columns>
-              <tr>
-                <th style="width: 4rem">
-                  <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                </th>
-                <th pSortableColumn="itemname" style="width: 30%">
-                  Category Name <p-sortIcon field="itemname"></p-sortIcon>
-                </th>
-                <th style="width: 30%">School Year</th>
-                <th>Action</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-item>
-              <tr>
-                <td>
-                  <p-tableCheckbox [value]="item"></p-tableCheckbox>
-                </td>
-                <td>{{ item.category_name }}</td>
-                <td>{{ item.semyear }}</td>
-                <td>
-                  <p-button
-                    severity="warn"
-                    (click)="addItembtn(item.categ_id, item.category_name)"
-                  >
-                    <i class="fa-solid fa-plus"></i>
-                  </p-button>
-                  <p-button class="m-2" (click)="showDetailitem(item.categ_id)">
-                    <i class="fa-solid fa-eye"></i>
-                  </p-button>
-                </td>
-              </tr>
-            </ng-template>
-          </p-table>
-        </div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+<div class="container-fluid containerTab">
+  <!-- <div class="divider mb-4"></div> -->
+  <div class="contentTab mb-3 bg-white w-100 rounded">
+    <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+      <h3 class="text-white fw-bold">Expenses Category</h3>
+    </div>
+    <div class="d-flex justify-content-between align-items-center p-3">
+      <div class="W-100">
+        <p-button
+          (click)="showDialog()"
+          icon="pi pi-plus"
+          severity="success"
+          class="mx-2"
+          label="New Category"
+        >
+        </p-button>
+        <span class="p-input-icon-left me-2">
+          <i class="pi pi-search"></i>
+          <input
+            type="text"
+            pInputText
+            placeholder="Search keyword"
+            (input)="filterInput($event)"
+          />
+        </span>
+        <!-- <p-multiSelect
+          [options]="selectFilter"
+          optionLabel="itemname"
+          placeholder="Add Filter"
+          display="chip"
+          [filter]="true"
+          [showClear]="true"
+          [(ngModel)]="selectedFilters"
+          (ngModelChange)="filterData()"
+          [style]="{ width: '60%' }"
+        ></p-multiSelect> -->
       </div>
+      <p-button
+        class="p-button-danger"
+        icon="pi pi-trash"
+        severity="warning"
+        [disabled]="selectedItems.length === 0"
+        (click)="deleteSelectedItems($event)"
+      ></p-button>
+    </div>
+
+    <div class="container my-2">
+      <p-table
+        #dt
+        [rowHover]="true"
+        [value]="categorylist"
+        selectionMode="multiple"
+        [(selection)]="selectedItems"
+        styleClass="p-datatable-striped p-datatable-sm"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      >
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th style="width: 4rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th pSortableColumn="itemname" style="width: 30%">
+              Category Name <p-sortIcon field="itemname"></p-sortIcon>
+            </th>
+            <th style="width: 30%">School Year</th>
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td>
+              <p-tableCheckbox [value]="item"></p-tableCheckbox>
+            </td>
+            <td>{{ item.category_name }}</td>
+            <td>{{ item.semyear }}</td>
+            <td>
+              <p-button
+                severity="warn"
+                (click)="addItembtn(item.categ_id, item.category_name)"
+              >
+                <i class="fa-solid fa-plus"></i>
+              </p-button>
+              <p-button class="m-2" (click)="showDetailitem(item.categ_id)">
+                <i class="fa-solid fa-eye"></i>
+              </p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
     </div>
   </div>
 </div>
+
 
 <!-- view item fees -->
 <p-dialog header="{{ displayedGroupName }}" [(visible)]="showFeesDetails">
