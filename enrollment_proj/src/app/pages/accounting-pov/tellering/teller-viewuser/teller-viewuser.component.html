@@ -32,235 +32,35 @@
             </div>
           </div>
         </div>
-        <form
-          class="m-4 px-2"
-          [formGroup]="studTransac"
-          (ngSubmit)="saveStudTransac()"
-        >
-          <input type="hidden" formControlName="studledgerId" />
+        <form class="m-4 px-2">
           <h1 class="fw-bold fs-4">Payment Method and Information</h1>
           <p-divider />
+          <div class="row">
+            <div class="col-4">
+              <label for="semester">Semester</label>
+              <input
+                class="inputs"
+                type="text"
+                id="semester"
+                name="semester"
+                [value]="activesem"
+              />
+            </div>
+            <div class="col-4">
+              <label for="schoolyr">School Year</label>
+              <input
+                class="inputs"
+                type="text"
+                id="schoolyr"
+                name="schoolyr"
+                [value]="activeyr"
+              />
+            </div>
+          </div>
           <div class="inputGroup row d-flex align-items-center">
-            <!-- <div class="col-4">
-              <label for="postDate">Posting Date</label>
-              <input
-                class="inputs"
-                type="text"
-                id="postDate"
-                name="postDate"
-                value="04/12/2023"
-                readonly
-              />
-            </div> -->
-            <div class="p-2 row d-flex align-items-center">
-              <div class="col-4">
-                <label for="mop">Mode of Payment:</label>
-                <select class="inputs" formControlName="mop" id="mop">
-                  <option value="" selected hidden>Input here</option>
-                  <option value="cash">Cash</option>
-                  <option value="creditCard">Credit Card</option>
-                  <option value="cheque">Cheque</option>
-                </select>
-              </div>
-              <!-- <div class="col-4">
-              <label for="payDate">Payment Date:</label>
-              <input
-                class="inputs"
-                type="text"
-                id="payDate"
-                name="payDate"
-                value="04/12/2023"
-                readonly
-              />
-            </div> -->
-              <div class="col-4">
-                <label for="schoolyr">School Year</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="schoolyr"
-                  name="schoolyr"
-                  [value]="activeyr"
-                />
-              </div>
-              <div class="col-4 my-3">
-                <label for="receiptNo">Official Receipt No.</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  formControlName="receiptNo"
-                  id="receiptNo"
-                  name="receiptNo"
-                  placeholder="1544458"
-                  [value]="randomNumber"
-                  readonly
-                />
-              </div>
-              <div class="col-4">
-                <label for="semester">Semester</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="semester"
-                  name="semester"
-                  [value]="activesem"
-                />
-              </div>
-              <div class="col-4">
-                <label for="teller">Teller/Cashier Name</label>
-                <input
-                  class="inputs"
-                  type="text"
-                  id="teller"
-                  name="teller"
-                  formControlName="teller"
-                  placeholder="accountingstaff@gmail.com"
-                  readonly
-                />
-              </div>
-            </div>
-            <!-- <div class="col-4 my-3">
-              <label for="schoolBranch">School/Cashier Branch</label>
-              <input
-                class="inputs"
-                type="text"
-                id="schoolBranch"
-                name="schoolBranch"
-                placeholder="ASCB5"
-                readonly
-              />
-            </div> -->
-            <p-divider />
-            <span class="caption-top">Balance Infomation</span>
-            <!-- <div class="col-4 my-3">
-              <label for="overallBal">Previous Balance</label>
-              <input
-                class="inputs"
-                type="text"
-                id="overallBal"
-                name="overallBal"
-                [value]="studentLedg.previous_bal"
-                readonly
-              />
-            </div> -->
-            <!-- <div class="col-4 my-3">
-              <label for="afterBal">Balance After Payment</label>
-              <input
-                class="inputs"
-                type="text"
-                id="afterBal"
-                name="afterBal"
-                formControlName="afterBal"
-                placeholder="₱ 9,660.00"
-                readonly
-              />
-            </div> -->
-            <div class="col-4">
-              <label for="paidAmount">Paid Amount(PHP)</label>
-              <input
-                class="inputs"
-                type="text"
-                id="paidAmount"
-                name="paidAmount"
-                formControlName="paidAmount"
-                placeholder="₱"
-              />
-            </div>
-            <div class="col-4">
-              <label for="payref">Online Payment Reference</label>
-              <input
-                class="inputs"
-                type="text"
-                id="payref"
-                name="payref"
-                formControlName="description"
-                placeholder="sample"
-              />
-            </div>
-            <!-- <div class="col-4">
-              <label for="feetype">Fee Type:</label>
-              <p-multiSelect
-                [options]="feetype"
-                optionLabel="name"
-                id="feetype"
-                [style]="{ width: '50%' }"
-              />
-            </div> -->
-            <div class="d-flex align-items-center gap-3 my-4">
-              <div class="">
-                <p-checkbox
-                  value="paid"
-                  formControlName="status"
-                  inputId="paid"
-                />
-                <label for="paid">Paid</label>
-              </div>
-              <div class="mx-2">
-                <p-checkbox
-                  value="unpaid"
-                  formControlName="status"
-                  inputId="unpaid"
-                />
-                <label for="unpaid">Unpaid</label>
-              </div>
-              <div class="">
-                <p-checkbox
-                  value="partial"
-                  formControlName="status"
-                  inputId="partial"
-                />
-                <label for="partial">Partial</label>
-              </div>
-            </div>
             <p-divider />
             <div class="container">
               <span class="caption-top">Breakdown Fees</span>
-              <!-- <table
-                id="example"
-                #dataTable
-                class="table table-striped table-bordered my-3"
-                style="width: 100%"
-              >
-                <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>Sales Allocated</th>
-                    <th>Transaction Details</th>
-                    <th>Outstanding</th>
-                    <th>Allocated</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Old Balance</td>
-                    <td>Sales - ASCB</td>
-                    <td>04/12/2023</td>
-                    <td>3,980</td>
-                    <td>3,980</td>
-                  </tr>
-                  <tr>
-                    <td>Old Balance</td>
-                    <td>Sales - ASCB</td>
-                    <td>04/12/2023</td>
-                    <td>3,980</td>
-                    <td>3,980</td>
-                  </tr>
-                  <tr>
-                    <td>Old Balance</td>
-                    <td>Sales - ASCB</td>
-                    <td>04/12/2023</td>
-                    <td>3,980</td>
-                    <td>3,980</td>
-                  </tr>
-                  <tr>
-                    <td>Old Balance</td>
-                    <td>Sales - ASCB</td>
-                    <td>04/12/2023</td>
-                    <td>3,980</td>
-                    <td>3,980</td>
-                  </tr>
-                </tbody>
-              </table> -->
               <p class="p-1 fw-bold">
                 Previous Balance: {{ studentLedg.previous_bal }}
               </p>
@@ -274,18 +74,12 @@
               >
                 <ng-template pTemplate="header">
                   <tr>
-                    <th style="width: 4rem">
-                      <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                    </th>
                     <th>Matri Fees</th>
                     <th>Amount</th>
                   </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-item>
                   <tr>
-                    <td>
-                      <p-tableCheckbox [value]="item"></p-tableCheckbox>
-                    </td>
                     <td>{{ item.matriname }}</td>
                     <td>{{ item.matriamount }}</td>
                   </tr>
@@ -342,7 +136,11 @@
             </div>
           </div>
           <div class="d-flex justify-content-end p-4">
-            <p-button type="submit" label="Submit"></p-button>
+            <!-- <p-button type="submit" label="Submit"></p-button> -->
+            <p-button
+              label="Make Payment"
+              (click)="showmakePayment()"
+            ></p-button>
           </div>
         </form>
       </div>
@@ -452,4 +250,126 @@
       </tr>
     </ng-template>
   </p-table>
+</p-dialog>
+
+<p-dialog
+  header="Make Payment"
+  [modal]="true"
+  [maximizable]="true"
+  appendTo="body"
+  [(visible)]="showMakePaymentDIalog"
+  [style]="{ width: '65vw' }"
+  [contentStyle]="{ height: '450px' }"
+>
+  <form action="" [formGroup]="studTransac" (ngSubmit)="saveStudTransac()">
+    <input type="hidden" formControlName="studledgerId" />
+    <div class="p-2 row d-flex align-items-center">
+      <div class="col-4">
+        <label for="mop">Mode of Payment:</label>
+        <select class="inputs" formControlName="mop" id="mop">
+          <option value="" selected hidden>Input here</option>
+          <option value="cash">Cash</option>
+          <option value="creditCard">Credit Card</option>
+          <option value="cheque">Cheque</option>
+        </select>
+      </div>
+      <div class="col-4 my-3">
+        <label for="receiptNo">Official Receipt No.</label>
+        <input
+          class="inputs"
+          type="text"
+          formControlName="receiptNo"
+          id="receiptNo"
+          name="receiptNo"
+          placeholder="1544458"
+          [value]="randomNumber"
+          readonly
+        />
+      </div>
+      <span class="caption-top">Balance Infomation</span>
+      <div class="col-4">
+        <label for="paidAmount">Paid Amount(PHP)</label>
+        <input
+          class="inputs"
+          type="text"
+          id="paidAmount"
+          name="paidAmount"
+          formControlName="paidAmount"
+          placeholder="₱"
+        />
+      </div>
+      <div class="col-4">
+        <label for="payref">Online Payment Reference</label>
+        <input
+          class="inputs"
+          type="text"
+          id="payref"
+          name="payref"
+          formControlName="description"
+          placeholder="sample"
+        />
+      </div>
+    </div>
+    <div class="d-flex align-items-center gap-3 my-4">
+      <div class="">
+        <p-checkbox value="paid" formControlName="status" inputId="paid" />
+        <label for="paid">Paid</label>
+      </div>
+      <div class="">
+        <p-checkbox
+          value="partial"
+          formControlName="status"
+          inputId="partial"
+        />
+        <label for="partial">Partial</label>
+      </div>
+    </div>
+    <p-button icon="pi pi-list-check" label="Allocate Fees"></p-button>
+    <!-- <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of allocation">
+        <td>{{ item.category }}</td>
+        <td>{{ item.amount }}</td>
+      </tr>
+    </tbody>
+  </table> -->
+    <div class="d-flex justify-content-end">
+      <p-button type="submit" label="Submit"></p-button>
+    </div>
+  </form>
+  <!-- <p-table
+    [scrollable]="true"
+    [value]="studentTranac"
+    scrollHeight="flex"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Mode of Payment</th>
+        <th>Amount Paid</th>
+        <th>Posting Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-stud>
+      <tr>
+        <td>{{ displayname }}</td>
+        <td>{{ stud.mop }}</td>
+        <td>{{ stud.paidAmount }}</td>
+        <td>{{ stud.date }}</td>
+        <td>{{ stud.status }}</td>
+        <td>
+          <p-button icon="pi pi-eye"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table> -->
 </p-dialog>
