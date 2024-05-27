@@ -11,7 +11,7 @@ export class SignupController {
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public createstaffaccounting(user: {
     first_name: string;
