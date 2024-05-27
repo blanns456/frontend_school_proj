@@ -5,19 +5,20 @@
   <div class="d-none position-absolute loading-overlay" id="loading">
     <app-loading-page></app-loading-page>
   </div>
-  <div
+
+  <!-- <div
     class="bg-light mx-auto p-2 bg-opacity-75 rounded-4 login-bg"
     id="mainPage"
   >
-    <!-- <div class="asclogo position-absolute top-25 start-50 translate-middle">
+    <div class="asclogo position-absolute top-25 start-50 translate-middle">
       <img
         src="../../../assets/misc/ascb_logo.png"
         alt
         class="img-responsive w-100"
       />
-    </div> -->
+    </div>
     <div class="row d-flex justify-content-center">
-      <!-- <div
+      <div
         class="col-lg-6 col-md-12 px-3 pt-3 d-flex align-items-center justify-content-center my-0 d-none d-md-none d-lg-block"
       >
         <img
@@ -25,7 +26,7 @@
           alt="logo"
           class="img-responsive mw-100"
         />
-      </div> -->
+      </div>
       <div class="col-lg-6 col-md-12">
         <div class="img-responsive w-100 text-center">
           <img
@@ -42,30 +43,6 @@
               placeholder="Username"
               formControlName="username"
             />
-            <!-- <input
-              type="text"
-              formControlName="username"
-              class="form-control fw-bold mx-auto py-2 shadow-xl"
-              name="username"
-              id="username"
-              placeholder="USERNAME"
-
-            /> -->
-
-            <!-- <div
-              *ngIf="
-                form.controls['username'].invalid &&
-                (form.controls['username'].dirty ||
-                  form.controls['username'].touched)
-              "
-            >
-              <div
-                class="text-danger text-center"
-                *ngIf="form.controls['username'].errors?.['required']"
-              >
-                Username is required.
-              </div>
-            </div> -->
           </div>
           <div class="mt-2 text-center">
             <label for="password" class="form-label"></label>
@@ -98,6 +75,66 @@
                 Forgot Password?
               </a>
             </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="back d-flex align-items-center">
+    <div class="login-container m-auto bg-opacity-75 bg-light shadow">
+      <div class="row">
+        <div class="col-12">
+          <div class="topBanner">
+            <img
+              class="img-responisve"
+              src="../../../assets/misc/genesys-ascb-70th-logo.png"
+            />
+          </div>
+          <hr />
+          <form (ngSubmit)="submit()" [formGroup]="form">
+            <div class="text-center">
+              <label for="username" class="form-label"></label>
+              <input
+                class="rounded rounded-3"
+                type="text"
+                name="username"
+                placeholder="Username"
+                required
+                formControlName="username"
+              />
+            </div>
+            <div class="text-center">
+              <label for="password" class="form-label"></label>
+              <input
+                class="rounded rounded-3"
+                type="password"
+                formControlName="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <button
+              type="SUBMIT"
+              class="loginBtn btn mt-3 mb-2 text-light w-100"
+            >
+              Log&dash;in
+            </button>
+            <a routerLink="/forgot-password" href="#" class="text-primary"
+              >Forgot Password&quest;</a
+            >
+            <hr />
+          </form>
+          <div class="d-flex flex-row">
+            <a class="homeBtn mt-1" href="#" routerLink="/home">
+              <img src="../../../assets/misc/genesys-login-back.png" alt="" />
+              <span class="btnTooltip">Homepage</span>
+            </a>
+            <button
+              routerLink="/new/student"
+              class="createBtn btn ms-3 text-light w-100"
+            >
+              Create an account
+            </button>
           </div>
         </div>
       </div>

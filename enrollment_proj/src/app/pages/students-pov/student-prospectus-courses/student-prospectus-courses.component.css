@@ -1,6 +1,13 @@
-@layer module;
-
 .content {
   padding-top: 7%;
-  /* width: 90%; */
+  width: 90%;
+}
+
+ul.p-tabview-nav li a {
+  text-decoration: none;
+  color: #555555;
+}
+
+ul.p-tabview-nav {
+  padding: 0;
 }

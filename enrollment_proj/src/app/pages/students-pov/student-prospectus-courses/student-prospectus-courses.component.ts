@@ -1,10 +1,16 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  ViewEncapsulation,
+} from '@angular/core';
 import { ProspectusService } from 'src/app/services/prospectus.service';
 
 @Component({
   selector: 'app-student-prospectus-courses',
   templateUrl: './student-prospectus-courses.component.html',
   styleUrls: ['./student-prospectus-courses.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class StudentProspectusCoursesComponent implements OnInit {
   data: any;
@@ -15,7 +21,7 @@ export class StudentProspectusCoursesComponent implements OnInit {
   constructor(
     private prospectus_get: ProspectusService,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   getYearLevels(): string[] {
     return Object.keys(this.groupedProspectus);

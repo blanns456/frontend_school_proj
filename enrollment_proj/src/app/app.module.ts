@@ -168,6 +168,7 @@ import { AscbAboutComponent } from './pages/home-tab/ascb-about/ascb-about.compo
 import { AscbAboutHistoryComponent } from './pages/home-tab/ascb-about-history/ascb-about-history.component';
 import { NewsTabComponent } from './pages/home-tab/news-tab/news-tab.component';
 import { RegistrationProcessComponent } from './pages/home-tab/registration-process/registration-process.component';
+import { DeptCaeComponent } from './pages/home-tab/dept-cae/dept-cae.component';
 
 @NgModule({
   declarations: [
@@ -301,6 +302,7 @@ import { RegistrationProcessComponent } from './pages/home-tab/registration-proc
     AscbAboutHistoryComponent,
     NewsTabComponent,
     RegistrationProcessComponent,
+    DeptCaeComponent,
   ],
   imports: [
     BrowserModule,

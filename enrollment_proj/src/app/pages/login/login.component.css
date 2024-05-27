@@ -2,7 +2,7 @@
   user-select: none;
 }
 
-#login {
+/* #login {
   background-image: url("../../../assets/misc/logo_background.jpg");
   background-repeat: no-repeat;
   background-position: bottom;
@@ -49,5 +49,88 @@ a {
   input {
     width: 82%;
     border: none;
+  }
+} */
+
+/** @format */
+
+.back {
+  background: url("../../../assets/misc/homepage/genesys-ascb-wallpaper-new_building-1.jpg");
+  width: 100%;
+  height: 100vh;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.back a {
+  text-decoration: none;
+}
+
+.ul li {
+  list-style: none;
+}
+
+.topBanner img {
+  width: 150px;
+}
+
+.titleTop {
+  color: var(--midnight);
+}
+
+.login-container {
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 25%;
+  text-align: center;
+}
+.login-container h2 {
+  margin-bottom: 20px;
+}
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+.btnTooltip {
+  visibility: hidden;
+  width: 90px;
+  background-color: #ccc;
+  color: #333333;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.loginBtn {
+  background-color: var(--midnight);
+}
+
+.createBtn {
+  background-color: var(--blue);
+}
+
+.homeBtn:hover .btnTooltip {
+  visibility: visible;
+  opacity: 3;
+}
+
+@media only screen and (max-width: 574px) {
+  .login-container {
+    width: 95%;
+  }
+  .topBanner img {
+    width: 90px;
   }
 }

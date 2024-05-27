@@ -1,0 +1,13 @@
+.about {
+  padding: 100px 0 0 25px;
+}
+
+a {
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+}
+
+@media only screen and (max-width: 576px) {
+}
