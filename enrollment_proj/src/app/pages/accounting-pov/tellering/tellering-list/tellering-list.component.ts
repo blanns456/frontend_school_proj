@@ -38,7 +38,7 @@ export class TelleringListComponent implements OnInit {
       next: (res) => {
         this.info = res;
         this.studledgers = this.info[0];
-        console.log(this.studledgers);
+        // console.log(this.studledgers);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);

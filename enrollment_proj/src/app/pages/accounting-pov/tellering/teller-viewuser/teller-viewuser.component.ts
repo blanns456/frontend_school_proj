@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
 import { error } from 'jquery';
+import { MessageService } from 'primeng/api';
 import { AccountingController } from 'src/app/controllers/accountingController.component';
 import { SemesterController } from 'src/app/controllers/semester_controller.component';
 
@@ -10,6 +11,7 @@ import { SemesterController } from 'src/app/controllers/semester_controller.comp
   selector: 'app-teller-viewuser',
   templateUrl: './teller-viewuser.component.html',
   styleUrls: ['./teller-viewuser.component.css'],
+  providers: [MessageService],
 })
 export class TellerViewuserComponent implements OnInit {
   studentLedg: any;
@@ -19,6 +21,8 @@ export class TellerViewuserComponent implements OnInit {
   labdata: any;
   payHistoryDialog: boolean = false;
   showMakePaymentDIalog: boolean = false;
+  allocateTable: boolean = false;
+  showbreakdownDialog: boolean = false;
   displayname!: string;
   randomNumber: number;
   studTransac: FormGroup;
@@ -43,9 +47,13 @@ export class TellerViewuserComponent implements OnInit {
   studentTranac: any;
   selectedItemFees: any[] = [];
   allocation: any;
+  allodata: any;
+  breakinfo: any;
+  feesbreakdown: any;
 
   constructor(
     private router: Router,
+    private messageService: MessageService,
     private semester_controller: SemesterController,
     private AccountingController: AccountingController
   ) {
@@ -81,11 +89,14 @@ export class TellerViewuserComponent implements OnInit {
     this.showMakePaymentDIalog = true;
   }
 
-  allocateFees(paided: number) {
-    this.AccountingController.allocateFees(paided).subscribe({
+  showallocateFees() {
+    this.allocateTable = true;
+    const paidAmountValue = this.studTransac.value;
+    this.AccountingController.allocateFees(paidAmountValue).subscribe({
       next: (res) => {
-        this.allocation = res;
-        console.log(this.allocation);
+        this.allodata = res;
+        this.allocation = this.allodata[0];
+        // console.log(this.allocation);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
@@ -94,26 +105,65 @@ export class TellerViewuserComponent implements OnInit {
   }
 
   saveStudTransac() {
-    const paided = this.studTransac.get('paidAmount')?.value;
-    console.log(this.studTransac.value);
-    this.allocateFees(paided);
-    // this.selectedItemFees.forEach((fee) => {
-    //   console.log(fee);
-    // });
-    // this.AccountingController.addstudtransac(this.studTransac.value).subscribe({
-    //   next: (res) => {
-    //     console.log(res);
-    //   },
-    //   error: (error: HttpErrorResponse) => {
-    //     console.log(error.message);
-    //   },
-    // });
+    // console.log(this.studTransac.value);
+    this.AccountingController.addstudtransac(this.studTransac.value).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.saveallocatedfees();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Reset Success',
+          detail: 'Enjoy!',
+        });
+        setTimeout(() => {
+          window.location.reload;
+        }, 4000);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message);
+      },
+    });
+  }
+
+  saveallocatedfees() {
+    const formData = {
+      studledgerId: this.studTransac.get('studledgerId')?.value,
+      allocatedFees: this.allocation,
+    };
+
+    this.AccountingController.saveallocatedfees(formData).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message);
+      },
+    });
   }
 
   showpayHistory(studname: string, stud_id: number) {
     this.displayname = studname;
     this.payHistoryDialog = true;
     this.getstudTransac(stud_id);
+  }
+
+  showfees(studledger_id: number) {
+    this.showbreakdownDialog = true;
+    alert(studledger_id);
+    this.getfeebreakds(studledger_id);
+  }
+
+  getfeebreakds(studledger_id: number) {
+    this.AccountingController.getfeebreakds(studledger_id).subscribe({
+      next: (res) => {
+        this.breakinfo = res;
+        this.feesbreakdown = this.breakinfo[0];
+        // console.log(this.feesbreakdown);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message);
+      },
+    });
   }
 
   getstudTransac(stud_id: number) {

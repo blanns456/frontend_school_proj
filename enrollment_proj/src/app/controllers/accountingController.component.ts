@@ -56,16 +56,16 @@ export class AccountingController {
     return this.http.get(this.Root_URL + 'getdeptsubs/' + deptid);
   }
 
-  getcourses(id: number) {
-    return this.http.get(this.Root_URL + 'getcoursdept/' + id);
-  }
+  // getcourses(id: number) {
+  //   return this.http.get(this.Root_URL + 'getcoursdept/' + id);
+  // }
 
   getstudlabFees(studedntid: number) {
     return this.http.get(this.Root_URL + 'getstudlabFees/' + studedntid);
   }
 
-  getlabfeesdb(courseid: number) {
-    return this.http.get(this.Root_URL + 'getlabfee/' + courseid);
+  getlabfeesdb(deptid: number) {
+    return this.http.get(this.Root_URL + 'getlabfee/' + deptid);
   }
 
   getfeesdepartment(deptID: number) {
@@ -82,6 +82,10 @@ export class AccountingController {
 
   getstudledger(studid: number) {
     return this.http.get(this.Root_URL + 'getstudledger/' + studid);
+  }
+
+  getfeebreakds(ledgerid: number) {
+    return this.http.get(this.Root_URL + 'getfeebreakds/' + ledgerid);
   }
 
   addMatriItems(items: {
@@ -162,5 +166,10 @@ export class AccountingController {
 
   allocateFees(paidAmount: number) {
     return this.http.post(this.Root_URL + 'allocate-fees', paidAmount);
+  }
+
+  saveallocatedfees(formData: any) {
+    console.log('Sent datas', formData);
+    return this.http.post(this.Root_URL + 'saveallocate-fees', formData);
   }
 }

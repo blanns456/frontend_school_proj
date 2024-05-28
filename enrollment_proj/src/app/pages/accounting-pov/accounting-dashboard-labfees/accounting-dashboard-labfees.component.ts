@@ -35,13 +35,13 @@ export class AccountingDashboardLabfeesComponent implements OnInit {
     private messageService: MessageService
   ) {
     this.addlabfees = new FormGroup({
+      deptid: new FormControl('', [Validators.required]),
       subjectid: new FormControl('', [Validators.required]),
       amount: new FormControl('', [Validators.required]),
     });
   }
 
   savelabfees() {
-    // console.log(this.addlabfees.value);
     this.AccountingController.addlabfee(this.addlabfees.value).subscribe({
       next: (res) => {
         console.log(res);
@@ -60,41 +60,31 @@ export class AccountingDashboardLabfeesComponent implements OnInit {
     });
   }
 
-  filterInput(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
-    this.deptsubjects = this.deptinfo[0].filter(
-      (item: { [s: string]: unknown } | ArrayLike<unknown>) =>
-        Object.values(item).some((value) =>
-          String(value).toLowerCase().includes(filterValue)
-        )
-    );
-    console.log('search data', this.deptsubjects);
-  }
+  // filterInput(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
+  //   this.deptsubjects = this.deptinfo[0].filter(
+  //     (item: { [s: string]: unknown } | ArrayLike<unknown>) =>
+  //       Object.values(item).some((value) =>
+  //         String(value).toLowerCase().includes(filterValue)
+  //       )
+  //   );
+  //   console.log('search data', this.deptsubjects);
+  // }
 
   showDept(id: number, department_name: string) {
     this.deptdialog = true;
     this.departname = department_name;
-    this.getcoursesedept(id);
+    this.getdeptsubject(id);
+    this.getlabfeesdb(id);
+    this.addlabfees.get('deptid')?.setValue(id);
   }
 
-  addShowdialog(courses_id: number, name: string) {
-    // console.log(courses_id);
-    this.coursename = name;
-    this.coursesDeptDialog = true;
-    this.getdeptsubject(courses_id);
-  }
-
-  getid(courses_id: number) {
-    // alert(courses_id);
-    this.getlabfeesdb(courses_id);
-  }
-
-  getlabfeesdb(courses_id: number) {
-    this.AccountingController.getlabfeesdb(courses_id).subscribe({
+  getlabfeesdb(id: number) {
+    this.AccountingController.getlabfeesdb(id).subscribe({
       next: (res) => {
         this.labinfo = res;
         this.labfeesdb = this.labinfo[0];
-        // console.log(this.labfeesdb);
+        console.log(this.labfeesdb);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
@@ -128,22 +118,7 @@ export class AccountingDashboardLabfeesComponent implements OnInit {
     });
   }
 
-  getcoursesedept(id: number) {
-    this.AccountingController.getcourses(id).subscribe({
-      next: (res) => {
-        this.info = res;
-        this.getcourses = this.info[0];
-        // console.log(this.getcourses);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error.message);
-      },
-    });
-  }
-
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
     this.getdepartments();
-    // this.getlabfeesdb();
   }
 }
