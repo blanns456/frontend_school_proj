@@ -3,6 +3,7 @@
   <div class="main-content">
     <div class="fixed-background"></div>
     <app-accounting-navbar></app-accounting-navbar>
+    <p-toast></p-toast>
     <div
       class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
     >
@@ -67,10 +68,10 @@
               <p-table
                 [rowHover]="true"
                 [value]="showledgerfees"
+                styleClass="p-datatable-striped p-datatable-sm"
                 [(selection)]="selectedItemFees"
                 selectionMode="multiple"
                 class="text-capitalize"
-                styleClass="p-datatable-striped p-datatable-sm"
               >
                 <ng-template pTemplate="header">
                   <tr>
@@ -229,7 +230,7 @@
   >
     <ng-template pTemplate="header">
       <tr>
-        <th>Name</th>
+        <th>OR No.</th>
         <th>Mode of Payment</th>
         <th>Amount Paid</th>
         <th>Posting Date</th>
@@ -239,13 +240,16 @@
     </ng-template>
     <ng-template pTemplate="body" let-stud>
       <tr>
-        <td>{{ displayname }}</td>
+        <td>{{ stud.receiptNo }}</td>
         <td>{{ stud.mop }}</td>
         <td>{{ stud.paidAmount }}</td>
         <td>{{ stud.date }}</td>
         <td>{{ stud.status }}</td>
         <td>
-          <p-button icon="pi pi-eye"></p-button>
+          <p-button
+            icon="pi pi-eye"
+            (click)="showfees(stud.studledger_id)"
+          ></p-button>
         </td>
       </tr>
     </ng-template>
@@ -291,7 +295,7 @@
         <label for="paidAmount">Paid Amount(PHP)</label>
         <input
           class="inputs"
-          type="text"
+          type="number"
           id="paidAmount"
           name="paidAmount"
           formControlName="paidAmount"
@@ -324,21 +328,30 @@
         <label for="partial">Partial</label>
       </div>
     </div>
-    <p-button icon="pi pi-list-check" label="Allocate Fees"></p-button>
-    <!-- <table>
-    <thead>
-      <tr>
-        <th>Category</th>
-        <th>Amount</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of allocation">
-        <td>{{ item.category }}</td>
-        <td>{{ item.amount }}</td>
-      </tr>
-    </tbody>
-  </table> -->
+    <p-button
+      icon="pi pi-list-check"
+      (click)="showallocateFees()"
+      label="Allocate Fees"
+    ></p-button>
+    <p-table
+      *ngIf="allocateTable"
+      [rowHover]="true"
+      [value]="allocation"
+      styleClass="p-datatable-striped p-datatable-sm"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Item Fees</th>
+          <th>Amount</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-breakdown>
+        <tr>
+          <td>{{ breakdown.category }}</td>
+          <td>{{ breakdown.amount }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
     <div class="d-flex justify-content-end">
       <p-button type="submit" label="Submit"></p-button>
     </div>
@@ -372,4 +385,32 @@
       </tr>
     </ng-template>
   </p-table> -->
+</p-dialog>
+
+<p-dialog
+  header="Breakdown Fees"
+  [modal]="true"
+  [maximizable]="true"
+  appendTo="body"
+  [(visible)]="showbreakdownDialog"
+  [style]="{ width: '70vw' }"
+  [contentStyle]="{ height: '450px' }"
+>
+  <p-table
+    [scrollable]="true"
+    scrollHeight="flex"
+    [value]="feesbreakdown"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Breakdown Fees</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-datas>
+      <tr>
+        <td>{{ datas.feesbreak }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
 </p-dialog>
