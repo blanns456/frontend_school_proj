@@ -53,8 +53,8 @@ export class AuthGuard {
     return this.userRole === 'registrar';
   }
 
-  isAccounting(): boolean {
-    return this.userRole === 'accounting';
+  isTellering(): boolean {
+    return this.userRole === 'tellering';
   }
 
   isDean(): boolean {
