@@ -1,41 +1,50 @@
-.content{
-    padding-top: 8%;
-    width: 95%;
+.content {
+  padding-top: 8%;
+  width: 95%;
 }
 
-.semester-text{
-    color: grey;
-    font-size: small;
+.semester-text {
+  color: grey;
+  font-size: small;
 }
 
-#semester{
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 2px solid black;
-    border-radius: 0 !important;
+#semester {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 2px solid black;
+  border-radius: 0 !important;
 }
 
-.table{
-    width: 95%;
-    margin: auto;
-    border-bottom: 2px solid black;
+.table {
+  width: 95%;
+  margin: auto;
+  border-bottom: 2px solid black;
 }
 
-thead tr th{
-    background: #0287AF !important;
-    color: white;
-    text-align: center !important;
-    border-top: 0;
-    border-bottom: 0;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+thead tr th {
+  background: #191970 !important;
+  color: white;
+  text-align: center !important;
+  border-top: 0;
+  border-bottom: 0;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
 }
 
-.search{
-    width: 45%;
+.search {
+  width: 45%;
 }
 
-p{
-    font-size: small;
+p {
+  font-size: small;
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+}
+
+@media only screen and (max-width: 576px) {
+  .search {
+    width: 90%;
+  }
 }

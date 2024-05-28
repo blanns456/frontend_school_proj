@@ -1,18 +1,18 @@
-<div class="sidebar position-fixed">
+<!-- <div class="sidebar position-fixed d-lg-block d-none">
   <div class="logout position-relative">
     <div class="text-end">
-      <a routerLink="/login" (click)="logout()"
-        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0">
+      <a
+        routerLink="/login"
+        (click)="logout()"
+        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0"
+      >
         <i class="pi pi-sign-out"></i>
         Logout
       </a>
     </div>
     <div class="text-start">
       <div class="mx-3 pt-3">
-        <p-avatar *ngIf="!data?.profile" [image]="'assets/misc/default.png'" styleClass="mr-2" size="xlarge"></p-avatar>
-        <p-avatar *ngIf="data?.profile" [image]="'http://127.0.0.1:8000/images/user-profile/' + data?.profile"
-          styleClass="mr-2" size="xlarge"></p-avatar>
-        <!-- <p-avatar
+        <p-avatar
           *ngIf="!data?.profile"
           [image]="'assets/misc/default.png'"
           styleClass="mr-2"
@@ -20,74 +20,212 @@
         ></p-avatar>
         <p-avatar
           *ngIf="data?.profile"
-          [image]="
-            'https://genesys-api.asc-bislig.com/images/user-profile/' +
-            data?.profile
-          "
+          [image]="'http://127.0.0.1:8000/images/user-profile/' + data?.profile"
           styleClass="mr-2"
           size="xlarge"
-        ></p-avatar> -->
+        ></p-avatar>
+        <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">
+          {{ data?.unique_id }}
+        </h2>
+        <div class="text-white ms-3">
+          <ng-container *ngIf="data">
+            {{ courseAcronym }}
+          </ng-container>
+          <span>- </span>
+          <span *ngIf="data?.year_lvl"
+            >{{ data?.year_lvl }}{{ getYearLabel(data?.year_lvl) }}</span
+          >
+        </div>
       </div>
-      <!-- <img [src]="'https://genesys-api.asc-bislig.com/images/user-profile/' + data?.profile" alt="avatar" id="profile" width="60"
-        height="60" class="img-thumbnail mt-4 mx-3" /> -->
-      <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">
-        {{ data?.unique_id }}
-      </h2>
-      <div class="text-white ms-3">
-        <ng-container *ngIf="data">
-          {{ courseAcronym }}
-        </ng-container>
-        <span>- </span>
-        <span *ngIf="data?.year_lvl">{{ data?.year_lvl }}{{ getYearLabel(data?.year_lvl) }}</span>
+    </div>
+    <div class="nLink">
+      <div id="listPros" class="list-group">
+        <a
+          class="py-3 mb-1 list-group-item list-group-item-action home"
+          routerLink="/student/home"
+          routerLinkActive="active"
+        >
+          <i class="pi pi-home mx-2 pi-user-edit"></i>
+          Home
+        </a>
+        <a
+          class="my-1 py-3 list-group-item list-group-item-action"
+          routerLink="/student/information"
+          routerLinkActive="active"
+        >
+          <i class="pi mx-2 pi-user-edit"></i>
+          Information
+        </a>
+        <a
+          class="my-1 py-3 list-group-item list-group-item-action"
+          routerLink="/student/academic-record"
+          routerLinkActive="active"
+        >
+          <i class="mx-2 pi pi-file"></i>
+          Grade Evaluation
+        </a>
+        <a
+          class="my-1 py-3 list-group-item list-group-item-action"
+          routerLink="/student/financial"
+          routerLinkActive="active"
+        >
+          <i class="mx-2 pi pi-dollar"></i>
+          Financial Record
+        </a>
+        <a
+          class="my-1 py-3 list-group-item list-group-item-action"
+          routerLink="/student/prospectus"
+          routerLinkActive="active"
+        >
+          <i class="mx-2 pi pi-bars"></i>
+          Prospectus
+        </a>
+        <a
+          class="my-1 py-3 list-group-item list-group-item-action"
+          routerLink="/student/courses"
+          routerLinkActive="active"
+        >
+          <i class="mx-2 pi pi-book"></i>
+          Course Offerings
+        </a>
+        <a
+          class="my-1 py-3 list-group-item list-group-item-action"
+          routerLink="/student/enrollment"
+          routerLinkActive="active"
+        >
+          <i class="mx-2 pi pi-list"></i>
+          Enrollment
+        </a>
       </div>
     </div>
   </div>
-  <div class="nLink">
-    <div id="listPros" class="list-group">
-      <a class="py-3 mb-1 list-group-item list-group-item-action home" routerLink="/student/home"
-        routerLinkActive="active">
+</div> -->
+<div
+  class="d-lg-flex d-none flex-column flex-shrink-0 p-3 vh-100 position-fixed border-4 sidebar-content"
+  style="width: 20%"
+>
+  <div class="text-center">
+    <a href="">
+      <img
+        src="../../../../assets/misc/ascb_logo.png"
+        alt=""
+        width="50"
+        class="mx-auto"
+      />
+    </a>
+  </div>
+  <hr />
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a
+        class="nav-link mb-3"
+        routerLink="/student/home"
+        routerLinkActive="active"
+      >
         <i class="pi pi-home mx-2 pi-user-edit"></i>
         <!-- <i class=" fa-solid fa-house"></i> -->
         Home
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/information"
-        routerLinkActive="active">
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/information"
+        routerLinkActive="active"
+      >
         <i class="pi mx-2 pi-user-edit"></i>
         Information
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/academic-record"
-        routerLinkActive="active">
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/academic-record"
+        routerLinkActive="active"
+      >
         <i class="mx-2 pi pi-file"></i>
         Grade Evaluation
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/financial"
-        routerLinkActive="active">
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/financial"
+        routerLinkActive="active"
+      >
         <i class="mx-2 pi pi-dollar"></i>
         Financial Record
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/prospectus"
-        routerLinkActive="active">
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/prospectus"
+        routerLinkActive="active"
+      >
         <i class="mx-2 pi pi-bars"></i>
         Prospectus
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/courses"
-        routerLinkActive="active">
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/courses"
+        routerLinkActive="active"
+      >
         <i class="mx-2 pi pi-book"></i>
         Course Offerings
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/student/enrollment"
-        routerLinkActive="active">
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/enrollment"
+        routerLinkActive="active"
+      >
         <i class="mx-2 pi pi-list"></i>
         Enrollment
       </a>
-      <!-- <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        routerLink="/student-dashboard-settings"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 fa-solid fa-gear"></i>
-        Account Settings
-      </a> -->
-    </div>
+    </li>
+  </ul>
+  <hr />
+  <div class="dropdown">
+    <a
+      href="#"
+      class="d-flex align-items-center text-decoration-none dropdown-toggle"
+      id="dropdownUser2"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <img
+        src="../../../../assets/misc/defaultasdas.jpg"
+        alt=""
+        width="32"
+        height="32"
+        class="rounded-circle me-2"
+      />
+      <strong>...NAME...</strong>
+    </a>
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+      <li>
+        <a
+          class="dropdown-item"
+          routerLink="/update-information"
+          routerLinkActive="active"
+          >Update Information</a
+        >
+      </li>
+      <li><a class="dropdown-item" href="#">Settings</a></li>
+      <li>
+        <hr class="dropdown-divider" />
+      </li>
+      <li><a class="dropdown-item" href="#">Sign out</a></li>
+    </ul>
   </div>
 </div>

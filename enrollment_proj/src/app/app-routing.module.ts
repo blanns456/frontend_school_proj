@@ -82,6 +82,7 @@ import { DeptCcjeComponent } from './pages/home-tab/dept-ccje/dept-ccje.componen
 import { DeptCteComponent } from './pages/home-tab/dept-cte/dept-cte.component';
 import { DeptShsComponent } from './pages/home-tab/dept-shs/dept-shs.component';
 import { DeptElementaryComponent } from './pages/home-tab/dept-elementary/dept-elementary.component';
+import { DeptCaeComponent } from './pages/home-tab/dept-cae/dept-cae.component';
 import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
 import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
@@ -125,6 +126,7 @@ const routes: Routes = [
   { path: 'dept-shs', component: DeptShsComponent },
   { path: 'dept-elementary', component: DeptElementaryComponent },
   { path: 'dept-jhs', component: DeptJhsComponent },
+  { path: 'dept-cae', component: DeptCaeComponent },
   { path: 'dept-tvet', component: DeptTvetComponent },
   { path: 'ascb-about', component: AscbAboutComponent },
   { path: 'ascb-about-history', component: AscbAboutHistoryComponent },
@@ -523,4 +525,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
