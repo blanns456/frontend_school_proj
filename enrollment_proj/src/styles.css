@@ -141,14 +141,12 @@ body::-webkit-scrollbar {
 
 /* bold text */
 
-
 .fixed-background {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("assets/misc/homepage/banner.jpg ");
+    url("assets/misc/homepage/genesys-ascb-wallpaper-new_building-1.jpg");
   mix-blend-mode: darken;
   background-size: cover;
-  /* background-position: center center; */
-  background-attachment: fixed;
+  background-position: center center;
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -196,5 +194,17 @@ a {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .main-content {
+    margin-left: 0;
   }
 }
