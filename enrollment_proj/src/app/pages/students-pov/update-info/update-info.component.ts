@@ -40,7 +40,7 @@ export class UpdateInfoComponent {
   }
   studentdata: any;
   civil_statusval: any;
-  firstname: any;
+  first_name: any;
   loaddetails = false;
   data: any;
   date: any;
@@ -120,6 +120,7 @@ export class UpdateInfoComponent {
       this.filteredPresentProvinces = [];
     }
   }
+
   onPresentProvinceChange(event: any) {
     const provinceName = event.target?.value;
     const selectedProvince = this.filteredPresentProvinces.find((province: { province_name: any; }) => province.province_name === provinceName);
@@ -162,9 +163,9 @@ export class UpdateInfoComponent {
           // this.date = new Date(this.data.birthdate);
 
           this.update_student.patchValue({
-            firstname: this.data.firstname,
-            lastname: this.data.lastname,
-            middlename: this.data.middlename,
+            first_name: this.data.first_name,
+            last_name: this.data.last_name,
+            middle_name: this.data.middle_name,
             gender: this.data.gender,
             email: this.data.email_address,
             birthdate: this.data.birthdate,
@@ -208,15 +209,15 @@ export class UpdateInfoComponent {
   }
 
   update_student: FormGroup = this.formBuilder.group({
-    firstname: ['', [Validators.required]],
-    middlename: new FormControl(
+    first_name: ['', [Validators.required]],
+    middle_name: new FormControl(
       {
         value: this.noMiddleName ? 'N/A' : null,
         disabled: this.noMiddleName,
       },
       Validators.required
     ),
-    lastname: ['', [Validators.required]],
+    last_name: ['', [Validators.required]],
     suffix: [''],
     gender: ['', [Validators.required]],
     civil_status: ['', [Validators.required]],
@@ -310,15 +311,15 @@ export class UpdateInfoComponent {
 
     const formData = new FormData();
 
-    formData.append('firstname', this.update_student.controls['firstname'].value);
-    formData.append('middlename', this.update_student.controls['shs_yr'].value ?? '');
-    if (this.update_student.controls['middlename'].value === 'N/A') {
-      formData.append('middlename', '');
+    formData.append('first_name', this.update_student.controls['first_name'].value);
+    formData.append('middle_name', this.update_student.controls['shs_yr'].value ?? '');
+    if (this.update_student.controls['middle_name'].value === 'N/A') {
+      formData.append('middle_name', '');
 
     } else {
-      formData.append('middlename', this.update_student.controls['middlename'].value ?? '');
+      formData.append('middle_name', this.update_student.controls['middle_name'].value ?? '');
     }
-    formData.append('lastname', this.update_student.controls['lastname'].value);
+    formData.append('last_name', this.update_student.controls['last_name'].value);
     formData.append('suffix', this.update_student.controls['suffix'].value);
     formData.append('gender', this.update_student.controls['gender'].value);
     formData.append('civil_status', this.update_student.controls['civil_status'].value);
@@ -355,8 +356,8 @@ export class UpdateInfoComponent {
     formData.append('new_password', this.update_student.controls['new_password'].value);
 
     if (
-      this.update_student.controls['firstname'].invalid ||
-      this.update_student.controls['lastname'].invalid ||
+      this.update_student.controls['first_name'].invalid ||
+      this.update_student.controls['last_name'].invalid ||
       this.update_student.controls['gender'].invalid ||
       this.update_student.controls['civil_status'].invalid ||
       this.update_student.controls['citizenship'].invalid ||
@@ -417,7 +418,7 @@ export class UpdateInfoComponent {
 
   toggleMiddleName() {
     this.noMiddleName = !this.noMiddleName;
-    const middleNameControl = this.update_student.get('middlename');
+    const middleNameControl = this.update_student.get('middle_name');
     if (this.noMiddleName) {
       middleNameControl?.setValue('N/A');
       middleNameControl?.disable();
