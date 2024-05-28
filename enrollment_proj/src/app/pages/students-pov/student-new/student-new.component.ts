@@ -77,9 +77,9 @@ export class StudentNewComponent implements OnInit {
     this.pipe = new DatePipe('en-PH');
     this.sem = new FormControl();
     this.signUpForm = new FormGroup({
-      lastname: new FormControl(null, [Validators.required]),
-      firstname: new FormControl(null, [Validators.required]),
-      middlename: new FormControl(
+      last_name: new FormControl(null, [Validators.required]),
+      first_name: new FormControl(null, [Validators.required]),
+      middle_name: new FormControl(
         {
           value: this.noMiddleName ? 'N/A' : null,
           disabled: this.noMiddleName,
@@ -105,7 +105,7 @@ export class StudentNewComponent implements OnInit {
 
   toggleMiddleName() {
     this.noMiddleName = !this.noMiddleName;
-    const middleNameControl = this.signUpForm.get('middlename');
+    const middleNameControl = this.signUpForm.get('middle_name');
     if (this.noMiddleName) {
       middleNameControl?.setValue('N/A');
       middleNameControl?.disable();

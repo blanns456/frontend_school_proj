@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {
   FormBuilder,
   FormControl,
@@ -35,6 +35,10 @@ export class StudentApplicantsComponent implements OnInit, AfterViewInit {
     perPage: 10,
     page: 1,
   };
+  viewstudinfos: boolean = false;
+  displayname: any;
+  studinfos: any;
+  studata: any;
 
   constructor(
     private http: HttpClient,
@@ -44,6 +48,31 @@ export class StudentApplicantsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.filterEnrolled();
+  }
+
+  showDialogStud(
+    id: number,
+    lastname: string,
+    firstname: string,
+    middlename: string
+  ) {
+    this.viewstudinfos = true;
+    // alert(id);
+    this.displayname = lastname + ', ' + firstname + ' ' + middlename;
+    this.getstudentsinfo(id);
+  }
+
+  getstudentsinfo(id: number) {
+    this.collegecontroller.showstudinfo(id).subscribe({
+      next: (res) => {
+        this.studata = res;
+        this.studinfos = this.studata[0];
+        console.log(this.studinfos);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message);
+      },
+    });
   }
 
   onPrevious() {

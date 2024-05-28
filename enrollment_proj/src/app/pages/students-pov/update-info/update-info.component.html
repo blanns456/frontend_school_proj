@@ -21,14 +21,14 @@
           <div class="col-lg-3 ">
             <div class="flex flex-column">
               <label for="firstname " class="mb-1">First Name <span class="text-danger">*</span></label>
-              <input pInputText id="firstname" formControlName="firstname" formControlName="firstname"
+              <input pInputText id="firstname" formControlName="first_name" [value]="data?.first_name"
                 [style]="{width: '100%'}" />
             </div>
           </div>
           <div class="col-lg-3 ">
             <div class="d-flex align-items-stretch flex-column">
               <label for="lastname" class="mb-1">Last Name <span class="text-danger">*</span></label>
-              <input pInputText id="lastname" formControlName="lastname" [value]="data?.lastname"
+              <input pInputText id="lastname" formControlName="last_name" [value]="data?.last_name"
                 [style]="{width: '100%'}" />
             </div>
           </div>
@@ -46,8 +46,8 @@
                 <small class="fw-normal fst-italic">(N/A)</small>&nbsp;&nbsp;<p-checkbox [ariaChecked]="noMiddleName"
                   (click)="toggleMiddleName()" [binary]="true" inputId="binary"></p-checkbox>
               </label>
-              <input pInputText [readonly]="noMiddleName" formControlName="middlename" type="text"
-                class="p-inputtext-md border py-2" id="middlename" [style]="{ width: '100%' }" />
+              <input pInputText [readonly]="noMiddleName" formControlName="middle_name" type="text"
+                class="p-inputtext-md border py-2" id="middle_name" [style]="{ width: '100%' }" [value]="data?.middle_name"/>
             </div>
           </div>
           <div class="col-lg-3 mb-2">
@@ -415,7 +415,7 @@
           <div class="col-6">
             <div class="mb-3">
               <label for="profile" class="form-label">Profile Image <span class="text-danger">*</span></label>
-              <input type="file" accept="image/*" class="form-control mb-3" name="profile" id="profile"
+              <input type="file" accept="image/*" class="form-control mb-3" capture="user" name="profile" id="profile"
                 (change)="showPreview($event)" />
               <div class="imagePreview text-center">
                 <img *ngIf="!imageURL || imageURL === ''" src="../../../../assets/misc/default.png" alt="Default Image"
