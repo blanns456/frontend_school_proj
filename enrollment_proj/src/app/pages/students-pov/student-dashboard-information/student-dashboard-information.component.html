@@ -2,7 +2,7 @@
   <p-card header="Personal Information">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-6 mb-3">
+        <div class="col-lg-6 col-md-6 col-12 mb-3">
           <img
             *ngIf="!data?.signature"
             class="img-thumbnail"
@@ -17,7 +17,7 @@
             width="500"
           />
         </div>
-        <div class="col-6 mb-3">
+        <div class="col-lg-6 col-md-6 col-12 mb-3">
           <img
             *ngIf="data?.signature"
             class="img-thumbnail"
@@ -31,53 +31,44 @@
             alt=""
           />
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="firstname">First Name</label>
-<<<<<<< HEAD
             <input
               pInputText
               id="firstname"
               [value]="data?.firstname"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
-=======
-            <input pInputText id="firstname" [value]="data?.first_name" [readOnly]="true" />
->>>>>>> development
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="lastname">Last Name</label>
-<<<<<<< HEAD
             <input
               pInputText
               id="lastname"
               [value]="data?.lastname"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
-=======
-            <input pInputText id="lastname" [value]="data?.last_name" [readOnly]="true" />
->>>>>>> development
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="middlename">Middle Name</label>
-<<<<<<< HEAD
             <input
               pInputText
               id="middlename"
               class="text-capitalize"
               [value]="data?.middlename"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
-=======
-            <input pInputText id="middlename" class="text-capitalize" [value]="data?.middle_name" [readOnly]="true" />
->>>>>>> development
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="suffix">Extension</label>
             <input
@@ -85,11 +76,12 @@
               id="suffix"
               class="text-capitalize"
               [value]="data?.suffix"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="gender">Gender</label>
             <input
@@ -97,11 +89,12 @@
               id="gender"
               class="text-capitalize"
               [value]="data?.gender"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="civil_status">Civil Status</label>
             <input
@@ -109,11 +102,12 @@
               id="civil_status"
               class="text-capitalize"
               [value]="data?.civil_status"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="citizenship">Citizenship</label>
             <input
@@ -121,11 +115,12 @@
               id="citizenship"
               class="text-capitalize"
               [value]="data?.citizenship"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="religion">Religion</label>
             <input
@@ -133,11 +128,12 @@
               id="religion"
               class="text-capitalize"
               [value]="data?.religion"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="contact_number">Contact Number</label>
             <input
@@ -145,22 +141,24 @@
               id="contact_number"
               class="text-capitalize"
               [value]="data?.contact_number"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="email">Email</label>
             <input
               pInputText
               id="email"
               [value]="data?.email_address"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="birthdate">Birth Date</label>
             <input
@@ -168,11 +166,12 @@
               id="religion"
               class="text-capitalize"
               [value]="date | date : 'yyyy-MM-dd'"
+              [style]="{ width: '100%' }"
               [readOnly]="true"
             />
           </div>
         </div>
-        <div class="col-lg-3 mb-2">
+        <div class="col-lg-3 col-md-6 mb-2">
           <div class="flex flex-column">
             <label for="birth_place">Birth Place</label>
             <input
