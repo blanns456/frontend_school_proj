@@ -30,3 +30,16 @@ img {
   padding-top: 8%;
   width: 95%;
 }
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  .student-info {
+    padding-top: 10%;
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .student-info {
+    padding-top: 23%;
+    width: 100%;
+  }
+}
