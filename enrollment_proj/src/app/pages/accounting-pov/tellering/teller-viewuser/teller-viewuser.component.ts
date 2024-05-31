@@ -112,7 +112,7 @@ export class TellerViewuserComponent implements OnInit {
         this.saveallocatedfees();
         this.messageService.add({
           severity: 'success',
-          summary: 'Reset Success',
+          summary: 'Success',
           detail: 'Enjoy!',
         });
         setTimeout(() => {
@@ -149,7 +149,7 @@ export class TellerViewuserComponent implements OnInit {
 
   showfees(studledger_id: number) {
     this.showbreakdownDialog = true;
-    alert(studledger_id);
+    // alert(studledger_id);
     this.getfeebreakds(studledger_id);
   }
 

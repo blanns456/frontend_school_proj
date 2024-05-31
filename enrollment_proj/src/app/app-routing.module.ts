@@ -41,6 +41,7 @@ import { SignupDeanComponent } from './pages/signup-staff/signup-dean/signup-dea
 import { SignupRegistrarComponent } from './pages/signup-staff/signup-registrar/signup-registrar.component';
 import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/accounting-reports/accounting-statement-of-accounts/accounting-statement-of-accounts.component';
 import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
+import { ViewStudentledgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/view-studentledger/view-studentledger.component';
 import { AccountingMatriculationComponent } from './pages/accounting-pov/accounting-finance/accounting-matriculation/accounting-matriculation.component';
 import { AccountingViewuserComponent } from './pages/accounting-pov/accounting-finance/accounting-viewuser/accounting-viewuser.component';
 import { AccountingItemManagementComponent } from './pages/accounting-pov/accounting-item-management/accounting-item-management.component';
@@ -294,7 +295,7 @@ const routes: Routes = [
       },
     ],
   },
-    {
+  {
     path: 'accounting',
     component: AccountingMainComponent,
     canActivate: [AuthGuard],
@@ -328,6 +329,11 @@ const routes: Routes = [
       {
         path: 'student ledger',
         component: AccountingStudentLedgerComponent,
+        title: 'Accounting | Student Ledger',
+      },
+      {
+        path: 'view student ledger',
+        component: ViewStudentledgerComponent,
         title: 'Accounting | Student Ledger',
       },
       {

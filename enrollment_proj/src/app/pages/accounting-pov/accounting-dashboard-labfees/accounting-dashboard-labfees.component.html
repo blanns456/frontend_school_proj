@@ -40,6 +40,46 @@
   [(visible)]="deptdialog"
   [style]="{ width: '70%' }"
 >
+  <div class="d-flex justify-content-end my-2">
+    <p-button
+      icon="pi pi-plus"
+      label="Lab Fee"
+      (click)="shownewlabFee()"
+    ></p-button>
+  </div>
+  <p-table
+    [value]="labfeesdb"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [paginator]="true"
+    [rows]="10"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 45%">Subjects</th>
+        <th>Amount</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-subs>
+      <tr>
+        <td>{{ subs.subject }}</td>
+        <td>{{ subs.feeAmount }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td class="p-4 text-center" colspan="7">No Data Found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-dialog>
+
+<p-dialog
+  header="New Lab Fee"
+  [modal]="true"
+  [(visible)]="addlabfeedialog"
+  [style]="{ width: '70%' }"
+  [contentStyle]="{ height: '500px' }"
+>
   <form
     [formGroup]="addlabfees"
     (ngSubmit)="savelabfees()"
@@ -71,28 +111,4 @@
       <p-button type="submit" label="Submit"></p-button>
     </div>
   </form>
-  <p-divider />
-  <p-table [value]="labfeesdb" [tableStyle]="{ 'min-width': '50rem' }">
-    <ng-template pTemplate="header">
-      <tr>
-        <th style="width: 45%">Subjects</th>
-        <th>Amount</th>
-        <th>Action</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-subs>
-      <tr>
-        <td>{{ subs.subject }}</td>
-        <td>{{ subs.feeAmount }}</td>
-        <td>
-          <p-button icon="pi pi-pen"></p-button>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td class="p-4 text-center" colspan="7">No Data Found.</td>
-      </tr>
-    </ng-template>
-  </p-table>
 </p-dialog>
