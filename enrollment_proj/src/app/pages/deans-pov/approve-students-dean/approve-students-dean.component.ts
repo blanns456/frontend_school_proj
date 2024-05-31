@@ -36,7 +36,7 @@ export class ApproveStudentsDeanComponent implements OnInit {
       next: (res) => {
         this.data = res;
         this.approveStud = this.data[0];
-        console.log(this.data);
+        // console.log(this.data);
       }
     })
   }

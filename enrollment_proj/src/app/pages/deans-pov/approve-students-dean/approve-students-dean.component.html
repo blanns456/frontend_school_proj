@@ -20,8 +20,8 @@
         </ng-template>
         <ng-template pTemplate="body" let-approve>
           <tr>
-            <td class="text-capitalize">{{ approve.lastname }},{{ approve.firstname }}
-              {{ approve.middlename }}
+            <td class="text-capitalize">{{ approve.last_name }},{{ approve.first_name }}
+              {{ approve.middle_name }}
             </td>
             <td>{{ approve.course }}</td>
             <td *ngIf="approve.student_yr_lvl == '1'">1st Year</td>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginController } from 'src/app/controllers/login_controller.component';
+import { AuthService } from 'src/app/services/auth.service';
 import * as $ from 'jquery'; // kini sa pgdeclare nis $
 
 @Component({
@@ -8,7 +9,7 @@ import * as $ from 'jquery'; // kini sa pgdeclare nis $
   styleUrls: ['./accounting-sidebar.component.css'],
 })
 export class AccountingSidebarComponent implements OnInit {
-  constructor(private logincontroller: LoginController) {}
+  constructor(private logincontroller: LoginController, private authService: AuthService) {}
   accountingdata: any;
   accname: any;
   sidebarVisible: boolean = false;
@@ -58,13 +59,13 @@ export class AccountingSidebarComponent implements OnInit {
       });
     });
 
-    // this.accountingdata = this.logincontroller.getuserdetails();
-    // // console.log(this.accountingdata);
-
-    // this.accname =
-    //   this.accountingdata[0]['last_name'] +
-    //   ', ' +
-    //   this.accountingdata[0]['first_name'];
-    // console.log(this.accname);
+  }
+  onLogout(): void {
+    this.authService.logout().subscribe({
+      next: () => {
+      },error:(err) =>{
+        console.log(err);
+      }
+    })
   }
 }

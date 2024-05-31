@@ -170,6 +170,8 @@ import { NewsTabComponent } from './pages/home-tab/news-tab/news-tab.component';
 import { RegistrationProcessComponent } from './pages/home-tab/registration-process/registration-process.component';
 import { DeptCaeComponent } from './pages/home-tab/dept-cae/dept-cae.component';
 import { AccountingMainComponent } from './pages/accounting-pov/accounting-main/accounting-main.component';
+import { RegistrarPovComponent } from './pages/registrar-pov/registrar-pov.component';
+import { RegistrarMainComponent } from './pages/registrar-pov/registrar-main/registrar-main.component';
 
 @NgModule({
   declarations: [
@@ -305,6 +307,8 @@ import { AccountingMainComponent } from './pages/accounting-pov/accounting-main/
     RegistrationProcessComponent,
     DeptCaeComponent,
     AccountingMainComponent,
+    RegistrarPovComponent,
+    RegistrarMainComponent,
   ],
   imports: [
     BrowserModule,
