@@ -20,6 +20,8 @@ export class AccountingDashboardLabfeesComponent implements OnInit {
   departname: any;
   deptdialog: boolean = false;
   coursesDeptDialog: boolean = false;
+  addlabfeedialog: boolean = false;
+  boolean = false;
   getcourses: any;
   courses: any;
   info: any;
@@ -41,6 +43,10 @@ export class AccountingDashboardLabfeesComponent implements OnInit {
     });
   }
 
+  shownewlabFee() {
+    this.addlabfeedialog = true;
+  }
+
   savelabfees() {
     this.AccountingController.addlabfee(this.addlabfees.value).subscribe({
       next: (res) => {
@@ -50,9 +56,9 @@ export class AccountingDashboardLabfeesComponent implements OnInit {
           summary: 'Successfully Added',
           detail: 'Added Lab Fees',
         });
-        setTimeout(() => {
-          window.location.reload();
-        }, 1500);
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 1500);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
@@ -84,7 +90,7 @@ export class AccountingDashboardLabfeesComponent implements OnInit {
       next: (res) => {
         this.labinfo = res;
         this.labfeesdb = this.labinfo[0];
-        console.log(this.labfeesdb);
+        // console.log(this.labfeesdb);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
