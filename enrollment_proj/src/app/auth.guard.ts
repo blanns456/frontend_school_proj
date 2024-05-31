@@ -42,7 +42,7 @@ export class AuthGuard {
   }
 
   isStudent(): boolean {
-    return this.userRole === 'college';
+    return this.userRole === 'College';
   }
 
   isGraduateStudies(): boolean {

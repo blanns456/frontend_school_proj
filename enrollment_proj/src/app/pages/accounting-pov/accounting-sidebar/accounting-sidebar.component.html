@@ -1,13 +1,12 @@
 <div class="sidebar position-fixed">
   <div class="logout position-relative">
     <div class="text-end">
-      <a
-        href="#"
-        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0"
-      >
+      <button
+        (click)="onLogout()"
+        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0">
         <i class="fa-solid fa-right-from-bracket"></i>
         Logout
-      </a>
+      </button>
     </div>
     <div class="text-start">
       <img
@@ -16,8 +15,7 @@
         id="profile"
         width="60"
         height="60"
-        class="img-thumbnail mt-4 mx-3"
-      />
+        class="img-thumbnail mt-4 mx-3">
       <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">
         {{ accname }}
       </h2>
@@ -25,20 +23,20 @@
     </div>
   </div>
   <div class="links">
-    <div id="list-example" class="list-group">
+    <div
+      id="list-example"
+      class="list-group">
       <a
         class="py-3 mt-2 list-group-item list-group-item-action home"
         routerLink="/accounting/home"
-        routerLinkActive="active"
-      >
+        routerLinkActive="active">
         <i class="mx-2 fa-solid fa-house"></i>
         Home
       </a>
       <a
         class="my-1 py-3 list-group-item list-group-item-action menu-item"
         id="accSetupToggle"
-        routerLinkActive="active"
-      >
+        routerLinkActive="active">
         <i class="mx-2 fa-solid fa-book-open-reader"></i>
         Accounting Setup
         <i class="fa-solid fa-caret-down"></i>
@@ -47,8 +45,7 @@
         <li>
           <a
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
             Subjects
           </a>
         </li>
@@ -56,8 +53,7 @@
           <a
             routerLink="/accounting/matriculation pending"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
             Matriculation
           </a>
         </li>
@@ -65,8 +61,7 @@
           <a
             routerLink="/accounting/lab fees"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3 my-1"
-            ><i class="fa-solid fa-notes-medical mx-2"></i>
+            class="list-group-item list-group-item-action py-3 my-1"><i class="fa-solid fa-notes-medical mx-2"></i>
             Lab Fees
           </a>
         </li>
@@ -74,8 +69,7 @@
       <a
         class="my-1 py-3 list-group-item list-group-item-action menu-item"
         routerLinkActive="active"
-        id="accReportsToggle"
-      >
+        id="accReportsToggle">
         <i class="mx-2 fa-solid fa-file-pen"></i>
         Accounting Reports
         <i class="fa-solid fa-caret-down"></i>
@@ -85,8 +79,7 @@
           <a
             routerLink="/accounting/statement of accounts"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
             Statement of Accounts
           </a>
         </li>
@@ -103,8 +96,7 @@
       <a
         class="my-1 py-3 list-group-item list-group-item-action menu-item"
         routerLinkActive="active"
-        id="accFinanceToggle"
-      >
+        id="accFinanceToggle">
         <i class="mx-2 fa-solid fa-hand-holding-dollar"></i>
         Accounting Finance
         <i class="fa-solid fa-caret-down"></i>
@@ -114,8 +106,7 @@
           <a
             routerLink="/accounting/student ledger"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
             Student Ledger
           </a>
         </li>
@@ -123,8 +114,7 @@
           <a
             routerLink="/accounting/matriculation"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
             Matriculation
           </a>
         </li>
@@ -132,15 +122,13 @@
       <a
         class="my-1 py-3 list-group-item list-group-item-action"
         routerLink="/accounting/expenses category"
-        routerLinkActive="active"
-      >
+        routerLinkActive="active">
         <i class="mx-2 fa-solid fa-list-check"></i>
         Expenses Category
       </a>
       <a
         class="my-1 py-3 list-group-item list-group-item-action menu-item"
-        id="telleringToggle"
-      >
+        id="telleringToggle">
         <i class="mx-2 fa-solid fa-user"></i>
         Tellering
         <i class="fa-solid fa-caret-down"></i>
@@ -150,8 +138,7 @@
           <a
             routerLink="/accounting/tellering list"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-truck-fast mx-2"></i>
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-truck-fast mx-2"></i>
             Tellering List
           </a>
         </li>
@@ -165,8 +152,7 @@
           <a
             routerLink="/accounting/daily collection reports"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3"
-            ><i class="fa-solid fa-notes-medical mx-2"></i>
+            class="list-group-item list-group-item-action py-3"><i class="fa-solid fa-notes-medical mx-2"></i>
             Daily Collection Reports
           </a>
         </li>
@@ -174,8 +160,7 @@
           <a
             routerLink="#"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3 my-1"
-            ><i class="fa-solid fa-notes-medical mx-2"></i>
+            class="list-group-item list-group-item-action py-3 my-1"><i class="fa-solid fa-notes-medical mx-2"></i>
             Daily Collection Breakdown
           </a>
         </li>
@@ -183,8 +168,7 @@
           <a
             routerLink="/accounting/daily consolidated reports"
             routerLinkActive="active"
-            class="list-group-item list-group-item-action py-3 my-1"
-            ><i class="fa-solid fa-notes-medical mx-2"></i>
+            class="list-group-item list-group-item-action py-3 my-1"><i class="fa-solid fa-notes-medical mx-2"></i>
             Daily Consolidated Reports
           </a>
         </li>

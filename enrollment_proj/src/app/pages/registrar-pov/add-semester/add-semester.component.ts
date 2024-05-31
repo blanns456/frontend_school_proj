@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SemesterController } from 'src/app/controllers/semester_controller.component';
+import { TrimesterService } from 'src/app/services/trimester.service';
 import Swal from 'sweetalert2';
+
+interface Trimester {
+  name: string;
+  // code: string;
+}
 
 @Component({
   selector: 'app-add-semester',
@@ -15,15 +21,48 @@ export class AddSemesterComponent implements OnInit {
   data: any;
   info: any;
   addsemester: FormGroup;
+  trimester: Trimester[] | undefined;
 
-  constructor(private semesterAll: SemesterController, private router: Router) {
+
+  constructor(private semesterAll: SemesterController, private router: Router, private formBuilder: FormBuilder, private trimesterService:TrimesterService) {
     this.addsemester = new FormGroup({
-      semester: new FormControl(null, [Validators.required]),
-      active_year: new FormControl(null, [Validators.required]),
-      status: new FormControl('active', [Validators.required]),
-      enrollment_start: new FormControl(null, [Validators.required]),
-      enrollment_end: new FormControl(null, [Validators.required]),
+      trimester: new FormControl(null, [Validators.required]),
+      range_of_trimester: new FormControl(null, [Validators.required]),
+      academic_year: new FormControl(null, [Validators.required]),
+      enrollment: new FormControl(null, [Validators.required]),
     });
+  }
+
+  add_trimester: FormGroup = this.formBuilder.group({
+    trimester: new FormControl(null, [Validators.required]),
+    range_of_trimester: new FormControl(null, [Validators.required]),
+    academic_year: new FormControl(null, [Validators.required]),
+    enrollment: new FormControl(null, [Validators.required]),
+  });
+
+  submit_trimester() {
+    const trimester = this.add_trimester.value;
+    const academic_year1 = trimester.academic_year[0];
+    const academic_year2 = trimester.academic_year[1];
+    const enrollment_start = trimester.enrollment[0];
+    const enrollment_end = trimester.enrollment[1];
+    const trimester_start = trimester.range_of_trimester[0];
+    const trimester_end = trimester.range_of_trimester[1];
+
+    console.log(enrollment_end);
+
+    if (this.add_trimester.valid) {
+      this.trimesterService.add_trimester(trimester.trimester.name,academic_year1,academic_year2,enrollment_start,enrollment_end,trimester_start,trimester_end).subscribe({
+        next: (response) => {
+          console.log('Request successful:', response);
+          this.add_trimester.reset();
+        }
+        // error: (err) => {
+        //   console.error('Request failed:', err);
+        // }
+      });
+    } else {
+    }
   }
 
   getsemester() {
@@ -36,6 +75,11 @@ export class AddSemesterComponent implements OnInit {
 
   ngOnInit(): void {
     this.getsemester();
+    this.trimester = [
+    { name: '1st Trimester'},
+    { name: '2nd Trimester' },
+    { name: '3rd Trimester'},
+    ];
   }
 
   OnsubmitSemester() {
