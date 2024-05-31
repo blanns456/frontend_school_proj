@@ -24,7 +24,23 @@ export class LoginComponent implements OnInit {
     private messageService: MessageService,
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    if (token) {
+          if (role === 'college') {
+          this.router.navigate(['student/home']);
+        } else if (role === 'dean') {
+          this.router.navigate(['dean/home']);
+        } else if (role === 'Graduate Studies') {
+          this.router.navigate(['maed']);
+        } else if (role === 'teller') {
+          this.router.navigate(['accounting']);
+        } else if (role === 'registrar') {
+          this.router.navigate(['registrar']);
+        }
+    }
+  }
 
   submit() {
     this.logincontroller.login(this.form.value).subscribe({
@@ -33,14 +49,16 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('role', response.role);
         this.role = localStorage.getItem('role');
 
-        if (this.role === 'college') {
+        if (this.role === 'College') {
           this.router.navigate(['student/home']);
         } else if (this.role === 'dean') {
           this.router.navigate(['dean/home']);
         } else if (this.role === 'Graduate Studies') {
-          this.router.navigate(['maed']);
+          this.router.navigate(['maed/home']);
         } else if (this.role === 'teller') {
-          this.router.navigate(['accounting']);
+          this.router.navigate(['accounting/home']);
+        } else if (this.role === 'registrar') {
+          this.router.navigate(['registrar/home']);
         }
       },
       error: (error: any) => {

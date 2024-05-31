@@ -1,6 +1,10 @@
 <div class="container student-info pb-3">
   <p-card header="Personal Information">
     <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-8"><h2 class="h6"><strong>Program : </strong>{{data?.program}}</h2><h2 class="h6"><strong>Year Level : </strong>{{data?.student_yr_lvl}}</h2></div>
+        <div class="col-4"><h2 class="h6"><strong>Student I.D. : </strong>{{data?.unique_id}}</h2></div>
+      </div>
       <div class="row">
         <div class="col-6 mb-3">
           <img
@@ -33,10 +37,10 @@
         </div>
         <div class="col-lg-3 mb-2">
           <div class="flex flex-column">
-            <label for="firstname">First Name</label>
+            <label for="first_name">First Name</label>
             <input
               pInputText
-              id="firstname"
+              id="first_name"
               [value]="data?.first_name"
               [readOnly]="true"
             />
@@ -44,17 +48,21 @@
         </div>
         <div class="col-lg-3 mb-2">
           <div class="flex flex-column">
-            <label for="lastname">Last Name</label>
+            <label for="last_name">Last Name</label>
             <input
               pInputText
-              id="lastname"
+              id="last_name"
               [value]="data?.last_name"
               [readOnly]="true"
             />
-            <label for="middlename">Middle Name</label>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-2">
+          <div class="flex flex-column">
+            <label for="middle_name">Middle Name</label>
             <input
               pInputText
-              id="middlename"
+              id="middle_name"
               class="text-capitalize"
               [value]="data?.middle_name"
               [readOnly]="true"

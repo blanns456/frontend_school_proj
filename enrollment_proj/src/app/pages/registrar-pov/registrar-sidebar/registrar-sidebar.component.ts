@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { LoginController } from 'src/app/controllers/login_controller.component';
 import * as $ from 'jquery';
-
+import { RegistrarService } from 'src/app/services/registrar.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-registrar-sidebar',
   templateUrl: './registrar-sidebar.component.html',
@@ -12,8 +13,10 @@ export class RegistrarSidebarComponent {
   loaddetails = false;
   regdata: any;
   regname: string | undefined;
+  data: any;
+  details: any
 
-  constructor(private logincontroller: LoginController) {}
+  constructor(private registrar: RegistrarService, private authService:AuthService) {}
 
   ngOnInit(): void {
     $(document).ready(function () {
@@ -59,10 +62,20 @@ export class RegistrarSidebarComponent {
         }
       });
     });
+    this.registrar.registrar_details().subscribe({
+      next: (res) => {
+        this.data = res;
+        this.details = this.data[0];
+      }
+    });
+  }
 
-    this.regdata = this.logincontroller.getuserdetails();
-    this.regname =
-      this.regdata[0]['last_name'] + ', ' + this.regdata[0]['first_name'];
-    // console.log(this.studentdata);
+  onLogout(): void {
+    this.authService.logout().subscribe({
+      next: () => {
+      },error:(err) =>{
+        console.log(err);
+      }
+    })
   }
 }

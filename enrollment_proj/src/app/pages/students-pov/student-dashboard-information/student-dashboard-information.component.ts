@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { LoginController } from 'src/app/controllers/login_controller.component';
 import { MessageService } from 'primeng/api';
+import { CollegeService } from 'src/app/services/college.service';
 
 @Component({
   selector: 'app-student-dashboard-information',
@@ -10,6 +11,7 @@ import { MessageService } from 'primeng/api';
 })
 export class StudentDashboardInformationComponent implements OnInit {
   data: any;
+  response: any;
   date: any;
   showToastNotification: boolean = false;
 
@@ -17,29 +19,18 @@ export class StudentDashboardInformationComponent implements OnInit {
   constructor(
     private logincontroller: LoginController,
     private http: HttpClient,
-    private messageService: MessageService
+    private college: CollegeService
   ) { }
 
-  ngOnInit(): void {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    });
-
-    this.http.get(this.logincontroller.Root_URL + 'info-student', { headers: headers })
-      .subscribe({
-        next: (res: any) => {
-          this.data = res[0][0];
-          this.date = new Date(this.data.birthdate);
-
-        },
-        error: (error: any) => {
-          console.error('Error:', error);
-        }
-      });
-
-
+  async ngOnInit(): Promise<void> {
+    try {
+      const res = await this.college.information();
+      this.response = res;
+      this.data = this.response[0][0];
+      this.date = new Date(this.data.birthdate);
+    } catch (error) {
+      console.error('Error fetching information', error);
+    }
   }
 
   visible: boolean = false;

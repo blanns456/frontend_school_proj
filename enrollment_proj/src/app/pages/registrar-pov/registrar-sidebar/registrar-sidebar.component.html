@@ -1,24 +1,34 @@
 <div class="sidebar position-fixed">
   <div class="logout position-relative">
     <div class="text-end">
-      <a href="#"
+      <button
+        (click)="onLogout()"
         class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0">
         <i class="fa-solid fa-right-from-bracket"></i>
         Logout
-      </a>
+      </button>
     </div>
     <div class="text-start">
-      <img src="../../../assets/misc/default.png" alt="avatar" id="profile" width="60" height="60"
-        class="img-thumbnail mt-4 mx-3" />
+      <img
+        src="../../../assets/misc/default.png"
+        alt="avatar"
+        id="profile"
+        width="60"
+        height="60"
+        class="img-thumbnail mt-4 mx-3">
       <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">
-        {{ regname }}
+        {{ details?.first_name }} {{ details?.last_name }}
       </h2>
       <p class="text-light fs-6 mx-3 fw-light">Registrar</p>
     </div>
   </div>
   <div>
-    <div id="list-example" class="list-group">
-      <a class="py-3 mb-1 list-group-item list-group-item-action home menu-item" routerLink="/registrar-dashboard-home"
+    <div
+      id="list-example"
+      class="list-group">
+      <a
+        class="py-3 mb-1 list-group-item list-group-item-action home menu-item"
+        routerLink="/registrar/home"
         routerLinkActive="active">
         <i class="mx-2 fa-solid fa-house"></i>
         Home
@@ -33,18 +43,27 @@
       </a> -->
       <!-- <ul class="accSetupToggle-sub">
         <li> -->
-      <a routerLink="/registrar-dashboard-applicants" routerLinkActive="active"
-        class="list-group-item list-group-item-action py-3 mt-1"><i class="mx-1 fa-solid fa-users"></i>
+      <a
+        routerLink="/registrar/pending enrollees"
+        routerLinkActive="active"
+        class="list-group-item list-group-item-action py-3 mt-1">
+        <i class="mx-1 fa-solid fa-users"></i>
         Pending Enrollees
       </a>
       <!-- </li>
         <li> -->
-      <a routerLink="/registrar-dashboard-enrolled" routerLinkActive="active"
-        class="list-group-item list-group-item-action py-3 mt-2"><i class="fa-solid fa-notes-medical mx-2"></i>
+      <a
+        routerLink="/registrar/officially enrolled"
+        routerLinkActive="active"
+        class="list-group-item list-group-item-action py-3 mt-2">
+        <i class="fa-solid fa-notes-medical mx-2"></i>
         Officially Enrolled
       </a>
-      <a routerLink="/registrar-prospectus-list" routerLinkActive="active"
-        class="list-group-item list-group-item-action py-3 mt-2"><i class="fa-solid fa-notes-medical mx-2"></i>
+      <a
+        routerLink="/registrar/prospectus list"
+        routerLinkActive="active"
+        class="list-group-item list-group-item-action py-3 mt-2">
+        <i class="fa-solid fa-notes-medical mx-2"></i>
         Prospectus
       </a>
       <!-- </li>
@@ -58,23 +77,32 @@
       </a> -->
       <!-- </li>
       </ul> -->
-      <a class="my-1 py-2 list-group-item list-group-item-action menu-item py-3 my-2"
-        routerLink="/registrar-student-list" routerLinkActive="active" id>
+      <a
+        class="my-1 py-2 list-group-item list-group-item-action menu-item py-3 my-2"
+        routerLink="/registrar/students grade"
+        routerLinkActive="active"
+        id>
         <i class="mx-2 fa-solid fa-file-pen"></i>
         Student Grades
       </a>
-      <a class="py-2 list-group-item list-group-item-action menu-item py-3" routerLink="/registrar-semester"
+      <a
+        class="py-2 list-group-item list-group-item-action menu-item py-3"
+        routerLink="/registrar/semesters and trisemesters"
         routerLinkActive="active">
         <i class="mx-2 fa-solid fa-file-pen"></i>
         Semester
       </a>
       <ul class="accReportsToggle-sub">
         <li>
-          <a routerLink="/accounting-dashboard-soa" routerLinkActive="active"
+          <a
+            routerLink="/accounting-dashboard-soa"
+            routerLinkActive="active"
             class="list-group-item list-group-item-action"><i class="fa-solid fa-truck-fast mx-2"></i>
             Statement of Accounts
           </a>
-          <a routerLink="/accounting-dashboard-studentledger" routerLinkActive="active"
+          <a
+            routerLink="/accounting-dashboard-studentledger"
+            routerLinkActive="active"
             class="list-group-item list-group-item-action"><i class="fa-solid fa-notes-medical mx-2"></i>
             Student's Ledger
           </a>
