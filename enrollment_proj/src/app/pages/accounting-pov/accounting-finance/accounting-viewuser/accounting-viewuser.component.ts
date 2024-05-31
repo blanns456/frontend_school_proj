@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { error } from 'jquery';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { AccountingController } from 'src/app/controllers/accountingController.component';
@@ -49,10 +49,14 @@ export class AccountingViewuserComponent implements OnInit {
   getprevbal: any;
   getstatusledger: any;
   grandtotal: any;
+  msg: any;
+  additionalData!: string;
+  studentId: any;
 
   constructor(
     private semester_controller: SemesterController,
     private router: Router,
+    private route: ActivatedRoute,
     private AccountingController: AccountingController,
     private messageService: MessageService
   ) {
@@ -139,12 +143,16 @@ export class AccountingViewuserComponent implements OnInit {
     // console.log(this.studamounts.value);
     this.AccountingController.addstudledger(this.studamounts.value).subscribe({
       next: (res) => {
-        console.log('Success', res);
+        this.msg = res;
+        // console.log('Success', res);
         this.messageService.add({
           severity: 'success',
-          summary: 'Success',
-          detail: 'Added Successfully',
+          summary: this.msg,
+          detail: 'Student Ledger Submitted',
         });
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
@@ -277,6 +285,23 @@ export class AccountingViewuserComponent implements OnInit {
     this.getactivesem();
     this.gettransacinfos(this.studid);
     this.studamounts.get('studid')?.setValue(this.studid);
+
+    // this.route.paramMap.subscribe((params) => {
+    //   this.studentId = params.get('id');
+    // });
+
+    // const navigation = this.router.getCurrentNavigation();
+    // if (navigation && navigation.extras && navigation.extras.state) {
+    //   this.additionalData = navigation.extras.state['additionalData'];
+    //   console.log(this.additionalData);
+    // }
+    // this.route.paramMap.subscribe((params) => {
+    //   this.studid = +params.get('studentId')!;
+    //   // Fetch student data from a service using this.studentId
+    //   // For this example, we'll simulate fetching student data
+    //   this.studentId = { id: this.studid, name: `Student ${this.studid}` };
+    //   console.log(this.studentId);
+    // });
   }
 
   getactivesem() {

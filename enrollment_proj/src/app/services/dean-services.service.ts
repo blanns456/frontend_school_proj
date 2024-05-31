@@ -22,7 +22,7 @@ export class DeanServicesService {
     return this.http.get(this.Root_URL + 'dean-details', { headers: headers });
   }
 
-  for_approval_students() {
+  for_approval_students(): Observable<any> {
     return this.http.get(this.Root_URL + 'for-approval-students', { headers: this.headers });
   }
 

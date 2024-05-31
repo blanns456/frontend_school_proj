@@ -7,7 +7,11 @@
           <input type="text" pInputText placeholder="Search" />
         </p-iconField>
       </div>
-      <p-table [value]="approveStud" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}">
+      <p-table
+        [value]="approveStud"
+        styleClass="p-datatable-striped"
+        [tableStyle]="{ 'min-width': '50rem' }"
+      >
         <ng-template pTemplate="header">
           <tr>
             <th>Name</th>
@@ -20,8 +24,8 @@
         </ng-template>
         <ng-template pTemplate="body" let-approve>
           <tr>
-            <td class="text-capitalize">{{ approve.lastname }},{{ approve.firstname }}
-              {{ approve.middlename }}
+            <td class="text-capitalize">{{ approve.last_name }},{{ approve.first_name }}
+              {{ approve.middle_name }}
             </td>
             <td>{{ approve.course }}</td>
             <td *ngIf="approve.student_yr_lvl == '1'">1st Year</td>
@@ -32,24 +36,39 @@
             <td>
               <div class="card flex justify-content-center">
                 <p-button (click)="showDialog()" label="Show" />
-                <p-dialog header="Header" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }"
-                  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" [maximizable]="true">
+                <p-dialog
+                  header="Header"
+                  [modal]="true"
+                  [(visible)]="visible"
+                  [style]="{ width: '50rem' }"
+                  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+                  [maximizable]="true"
+                >
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                    ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                    nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                    est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
                   </p>
                 </p-dialog>
               </div>
             </td>
             <td>
-              <button class="btn btn-success btn-sm"
-                (click)="approveStudent(approve.acad_records_id, approve.id, approve.courses_id, approve.student_yr_lvl)">
+              <button
+                class="btn btn-success btn-sm"
+                (click)="
+                  approveStudent(
+                    approve.acad_records_id,
+                    approve.id,
+                    approve.courses_id,
+                    approve.student_yr_lvl
+                  )
+                "
+              >
                 Approve
               </button>
               <button class="btn btn-danger btn-sm">Delete</button>
@@ -57,20 +76,30 @@
           </tr>
         </ng-template>
       </p-table>
-
     </p-card>
   </div>
 </div>
 
 <!-- MODAL -->
-<div class="modal fade" id="approveGrade" tabindex="-1" aria-labelledby="approveGradeLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="approveGrade"
+  tabindex="-1"
+  aria-labelledby="approveGradeLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5 fw-bold" id="approveGradeLabel">
           Subject Information
         </h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <form class="m-2 px-2">
@@ -78,28 +107,60 @@
             <div class="inputGroup row d-flex align-items-center my-3">
               <div class="col-4">
                 <label for="studName">Instructor</label>
-                <input class="inputs" type="text" id="studName" name="studName" value="Alfonso Jose M." readonly />
+                <input
+                  class="inputs"
+                  type="text"
+                  id="studName"
+                  name="studName"
+                  value="Alfonso Jose M."
+                  readonly
+                />
               </div>
               <div class="col-4">
                 <label for="schoolyr">School Year:</label>
-                <input class="inputs" type="text" id="schoolyr" name="schoolyr" value="A.Y 2022-2023" readonly />
+                <input
+                  class="inputs"
+                  type="text"
+                  id="schoolyr"
+                  name="schoolyr"
+                  value="A.Y 2022-2023"
+                  readonly
+                />
               </div>
               <div class="divider my-4 w-100"></div>
               <span class="caption-top">Information</span>
               <div class="col-9 mt-3">
                 <label for="subName">Subject Name:</label>
-                <input class="inputs" type="text" id="subName" name="subName"
-                  value="CC 101/INTRODUCTION TO COMPUTING WITH KEYBOARDING" readonly />
+                <input
+                  class="inputs"
+                  type="text"
+                  id="subName"
+                  name="subName"
+                  value="CC 101/INTRODUCTION TO COMPUTING WITH KEYBOARDING"
+                  readonly
+                />
               </div>
               <div class="col-5 my-4">
                 <label for="section">Section</label>
-                <input class="inputs" type="text" id="section" name="section" value="BSIT-1A - 2nd Trimester"
-                  readonly />
+                <input
+                  class="inputs"
+                  type="text"
+                  id="section"
+                  name="section"
+                  value="BSIT-1A - 2nd Trimester"
+                  readonly
+                />
               </div>
               <div class="col-6">
                 <label for="department">Department</label>
-                <input class="inputs" type="text" id="department" name="department"
-                  value="College of Computer Education" readonly />
+                <input
+                  class="inputs"
+                  type="text"
+                  id="department"
+                  name="department"
+                  value="College of Computer Education"
+                  readonly
+                />
               </div>
             </div>
           </div>

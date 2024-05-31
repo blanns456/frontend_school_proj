@@ -88,6 +88,10 @@ export class AccountingController {
     return this.http.get(this.Root_URL + 'getfeebreakds/' + ledgerid);
   }
 
+  getstudacad(acadid: number) {
+    return this.http.get(this.Root_URL + 'getstudacad/' + acadid);
+  }
+
   addMatriItems(items: {
     itemName: string;
     itemGroupid: number;

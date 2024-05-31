@@ -41,6 +41,7 @@ import { SignupDeanComponent } from './pages/signup-staff/signup-dean/signup-dea
 import { SignupRegistrarComponent } from './pages/signup-staff/signup-registrar/signup-registrar.component';
 import { AccountingStatementOfAccountsComponent } from './pages/accounting-pov/accounting-reports/accounting-statement-of-accounts/accounting-statement-of-accounts.component';
 import { AccountingStudentLedgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/accounting-student-ledger.component';
+import { ViewStudentledgerComponent } from './pages/accounting-pov/accounting-reports/accounting-student-ledger/view-studentledger/view-studentledger.component';
 import { AccountingMatriculationComponent } from './pages/accounting-pov/accounting-finance/accounting-matriculation/accounting-matriculation.component';
 import { AccountingViewuserComponent } from './pages/accounting-pov/accounting-finance/accounting-viewuser/accounting-viewuser.component';
 import { AccountingItemManagementComponent } from './pages/accounting-pov/accounting-item-management/accounting-item-management.component';
@@ -107,7 +108,8 @@ import { NewsTabComponent } from './pages/home-tab/news-tab/news-tab.component';
 import { RegistrationProcessComponent } from './pages/home-tab/registration-process/registration-process.component';
 import { AccountingMainComponent } from './pages/accounting-pov/accounting-main/accounting-main.component';
 
-//accounting
+//registrar
+import { RegistrarMainComponent } from './pages/registrar-pov/registrar-main/registrar-main.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -160,7 +162,7 @@ const routes: Routes = [
     path: 'student',
     component: StudentParentComponent,
     canActivate: [AuthGuard],
-    data: { allowedRoles: ['college'] },
+    data: { allowedRoles: ['College'] },
     children: [
       {
         path: '',
@@ -201,7 +203,7 @@ const routes: Routes = [
     path: 'update-information',
     component: UpdateInfoComponent,
     canActivate: [AuthGuard],
-    data: { allowedRoles: ['college'] },
+    data: { allowedRoles: ['College'] },
   },
   // {
   //   path: 'maed',
@@ -293,11 +295,11 @@ const routes: Routes = [
       },
     ],
   },
-    {
+  {
     path: 'accounting',
     component: AccountingMainComponent,
-    // canActivate: [AuthGuard],
-    // data: { allowedRoles: ['dean'] },
+    canActivate: [AuthGuard],
+    data: { allowedRoles: ['teller'] },
     children: [
       {
         path: '',
@@ -330,6 +332,11 @@ const routes: Routes = [
         title: 'Accounting | Student Ledger',
       },
       {
+        path: 'view student ledger',
+        component: ViewStudentledgerComponent,
+        title: 'Accounting | Student Ledger',
+      },
+      {
         path: 'matriculation',
         component: AccountingMatriculationComponent,
         title: 'Accounting | Matriculation',
@@ -353,6 +360,45 @@ const routes: Routes = [
         path: 'daily consolidated reports',
         component: DailyconsolidatedReportsComponent,
         title: 'Daily Consolidated Reports',
+      },
+    ],
+  },
+  {
+    path: 'registrar',
+    component: RegistrarMainComponent,
+    canActivate: [AuthGuard],
+    data: { allowedRoles: ['registrar'] },
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
+        path: 'home',
+        component: RegistrarHomeComponent,
+        title: 'Registrar | Home',
+      },
+      {
+        path: 'pending enrollees',
+        component: StudentApplicantsComponent,
+        // canActivate: ,
+      },
+      {
+        path: 'officially enrolled',
+        component: OfficiallyEnrolledComponent,
+      },
+      {
+        path: 'prospectus list',
+        component: ProspectusComponent,
+      },
+      {
+        path: 'students grade',
+        component: StudentGradesComponent,
+      },
+      {
+        path: 'semesters and trisemesters',
+        component: AddSemesterComponent,
       },
     ],
   },
@@ -455,40 +501,16 @@ const routes: Routes = [
     path: 'employee-reset-password',
     component: EmployeeResetPasswordComponent,
   },
-  {
-    path: 'registrar-sidebar',
-    component: RegistrarSidebarComponent,
-  },
-  {
-    path: 'registrar-navbar',
-    component: RegistrarNavbarComponent,
-  },
-  {
-    path: 'registrar-semester',
-    component: AddSemesterComponent,
-  },
+  // {
+  //   path: 'registrar-sidebar',
+  //   component: RegistrarSidebarComponent,
+  // },
+  // {
+  //   path: 'registrar-navbar',
+  //   component: RegistrarNavbarComponent,
+  // },
   // registrar routes
-  {
-    path: 'registrar-dashboard-home',
-    component: RegistrarHomeComponent,
-  },
-  {
-    path: 'registrar-dashboard-applicants',
-    component: StudentApplicantsComponent,
-    // canActivate: ,
-  },
-  {
-    path: 'registrar-dashboard-enrolled',
-    component: OfficiallyEnrolledComponent,
-  },
-  {
-    path: 'registrar-student-list',
-    component: StudentGradesComponent,
-  },
-  {
-    path: 'registrar-prospectus-list',
-    component: ProspectusComponent,
-  },
+
   // signup staff route
   {
     path: 'accounting/staff/sign-up',

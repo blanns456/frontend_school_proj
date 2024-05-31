@@ -1,81 +1,76 @@
-<div class="container-dashboard">
-  <app-registrar-sidebar></app-registrar-sidebar>
-  <div class="main-content">
-    <div class="fixed-background"></div>
-    <app-registrar-navbar></app-registrar-navbar>
-    <div class="container-fluid vh-100 content">
-      <h2 class="h3 text-white">Dashboard</h2>
-      <div class="divider"></div>
-      <div class="container">
-        <div class="row justify-content-evenly my-2">
-          <a
-            routerLink="/registrar-dashboard-applicants"
-            class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
-            <div class="col-2 d-flex justify-content-center align-items-center route">
-              <i class="fa-solid fa-users fs-1"></i>
-            </div>
-            <div class="col-10 d-flex justify-content-center align-items-center">
-              <h3 class="text-center count1">100</h3>
-            </div>
-          </a>
-          <a
-            routerLink="/registrar-dashboard-applicants"
-            class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
-            <div class="col-2 d-flex justify-content-center align-items-center route">
-              <i class="fa-solid fa-clipboard-list fs-1"></i>
-            </div>
-            <div class="col-10 d-flex justify-content-center align-items-center">
-              <h3 class="text-center count2">100</h3>
-            </div>
-          </a>
-          <a
-            routerLink
-            class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
-            <div class="col-2 d-flex justify-content-center align-items-center route">
-              <i class="fa-solid fa-book fs-1"></i>
-            </div>
-            <div class="col-10 d-flex justify-content-center align-items-center">
-              <h3 class="text-center count3">100</h3>
-            </div>
-          </a>
-          <div class="row justify-content-evenly my-4">
-            <a
-              routerLink="/registrar-dashboard-enrolled"
-              class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
-              <div class="col-2 d-flex justify-content-center align-items-center route">
-                <i class="fa-solid fa-users-line fs-1"></i>
-              </div>
-              <div class="col-10 d-flex justify-content-center align-items-center">
-                <h3 class="text-center count4">100</h3>
-              </div>
-            </a>
-            <a
-              routerLink
-              class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
-              <div class="col-2 d-flex justify-content-center align-items-center route">
-                <i class="fa-solid fa-book-open-reader fs-1"></i>
-              </div>
-              <div class="col-10 d-flex justify-content-center align-items-center">
-                <h3 class="text-center count5">100</h3>
-              </div>
-            </a>
-            <a
-              routerLink
-              class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
-              <div class="col-2 d-flex justify-content-center align-items-center route">
-                <i class="fa-solid fa-chalkboard-user fs-1"></i>
-              </div>
-              <div class="col-10 d-flex justify-content-center align-items-center">
-                <h3 class="text-center count6">100</h3>
-              </div>
-            </a>
-          </div>
-          <div class="bg-white p-5">
-            <canvas id="myChart"></canvas>
-          </div>
-          <p class="opacity-0">spacer</p>
+<div class="container-fluid vh-100 content">
+  <h2 class="h3 text-white">Dashboard</h2>
+  <div class="divider"></div>
+  <div class="container">
+    <div class="row justify-content-evenly my-2">
+      <a
+        routerLink="/registrar-dashboard-applicants"
+        class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
+        <div class="col-2 d-flex justify-content-center align-items-center route">
+          <i class="fa-solid fa-users fs-1"></i>
         </div>
+        <div class="col-10 d-flex justify-content-center align-items-center">
+          <h3 class="text-center count1">100</h3>
+        </div>
+      </a>
+      <a
+        routerLink="/registrar-dashboard-applicants"
+        class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
+        <div class="col-2 d-flex justify-content-center align-items-center route">
+          <i class="fa-solid fa-clipboard-list fs-1"></i>
+        </div>
+        <div class="col-10 d-flex justify-content-center align-items-center">
+          <h3 class="text-center count2">100</h3>
+        </div>
+      </a>
+      <a
+        routerLink
+        class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
+        <div class="col-2 d-flex justify-content-center align-items-center route">
+          <i class="fa-solid fa-book fs-1"></i>
+        </div>
+        <div class="col-10 d-flex justify-content-center align-items-center">
+          <h3 class="text-center count3">100</h3>
+        </div>
+      </a>
+      <div class="row justify-content-evenly my-4">
+        <a
+          routerLink="/registrar-dashboard-enrolled"
+          class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
+          <div class="col-2 d-flex justify-content-center align-items-center route">
+            <i class="fa-solid fa-users-line fs-1"></i>
+          </div>
+          <div class="col-10 d-flex justify-content-center align-items-center">
+            <h3 class="text-center count4">100</h3>
+          </div>
+        </a>
+        <a
+          routerLink
+          class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
+          <div class="col-2 d-flex justify-content-center align-items-center route">
+            <i class="fa-solid fa-book-open-reader fs-1"></i>
+          </div>
+          <div class="col-10 d-flex justify-content-center align-items-center">
+            <h3 class="text-center count5">100</h3>
+          </div>
+        </a>
+        <a
+          routerLink
+          class="col-auto row py-3 bg-white link-offset-2 link-underline link-underline-opacity-0 text-dark px-4 mx-1">
+          <div class="col-2 d-flex justify-content-center align-items-center route">
+            <i class="fa-solid fa-chalkboard-user fs-1"></i>
+          </div>
+          <div class="col-10 d-flex justify-content-center align-items-center">
+            <h3 class="text-center count6">100</h3>
+          </div>
+        </a>
       </div>
+      <div class="bg-white p-5">
+        <canvas id="myChart"></canvas>
+      </div>
+      <p class="opacity-0">spacer</p>
     </div>
   </div>
 </div>
+
+<p-toast></p-toast>

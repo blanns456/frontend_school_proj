@@ -1,6 +1,9 @@
 <div class="container containerTab">
   <p-card header="Sections">
-    <p-table [value]="sections" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table
+      [value]="sections"
+      styleClass="p-datatable-gridlines"
+      [tableStyle]="{ 'min-width': '50rem' }">
       <ng-template pTemplate="header">
         <tr>
           <th>Course</th>
@@ -9,13 +12,17 @@
           <th>Action</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-section>
+      <ng-template
+        pTemplate="body"
+        let-section>
         <tr>
           <td>{{ section.course?.name }}</td>
-          <td>{{ section.academic_level }}</td>
-          <td>{{ section.section_number }}</td>
+          <td>{{ section?.academic_level }}</td>
+          <td>{{ section?.section_number }}</td>
           <td>
-            <p-button (click)="onSelectSection(section)">View Students</p-button>
+            <p-button (click)="onSelectSection(section)"
+              >View Students</p-button
+            >
           </td>
         </tr>
       </ng-template>
@@ -44,9 +51,16 @@
     </div>
   </p-card>
 
-  <div *ngIf="selectedSection" class="py-3">
-    <p-card [header]="'Students in Section '+selectedSection.section_number" class="student">
-      <p-table [value]="students" styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '50rem' }">
+  <div
+    *ngIf="selectedSection"
+    class="py-3">
+    <p-card
+      [header]="'Students in Section '+selectedSection.section_number"
+      class="student">
+      <p-table
+        [value]="students"
+        styleClass="p-datatable-gridlines"
+        [tableStyle]="{ 'min-width': '50rem' }">
         <ng-template pTemplate="header">
           <tr>
             <th>ID</th>
@@ -58,12 +72,14 @@
             <!-- <th>Action</th> -->
           </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-student>
+        <ng-template
+          pTemplate="body"
+          let-student>
           <tr>
             <td>{{ student.unique_id }}</td>
-            <td>{{ student.lastname }}</td>
-            <td>{{ student.firstname }}</td>
-            <td>{{ student.middlename }}</td>
+            <td>{{ student.last_name }}</td>
+            <td>{{ student.first_name }}</td>
+            <td>{{ student.middle_name }}</td>
             <!-- <td>{{ student.firstname }}</td> -->
             <!-- <td>{{ student.section_number }}</td> -->
           </tr>

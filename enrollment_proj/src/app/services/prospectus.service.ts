@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class ProspectusService {
     Authorization: `Bearer ${this.token}`,
   });
 
-  student_all_prospectus() {
+  student_all_prospectus(): Observable<any> {
     return this.http.get(this.Root_URL + 'student-all-prospectus', {
       headers: this.headers,
     });
@@ -25,7 +26,7 @@ export class ProspectusService {
     });
   }
 
-  student_current_prospectus() {
+  student_current_prospectus(): Observable<any> {
     return this.http.get(this.Root_URL + 'student-prospectus', {
       headers: this.headers,
     });

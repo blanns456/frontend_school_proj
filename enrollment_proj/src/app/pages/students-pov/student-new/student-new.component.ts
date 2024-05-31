@@ -10,6 +10,8 @@ import * as $ from 'jquery';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
+import { TrimesterService } from 'src/app/services/trimester.service';
+
 
 @Component({
   selector: 'app-student-new',
@@ -35,11 +37,11 @@ export class StudentNewComponent implements OnInit {
   activateyr: any | string;
   noMiddleName = false;
   otp: boolean = false;
-  // enteredOTP: string[] = new Array(6).fill('');
   pipe: any;
   loading: boolean = false;
   loadbar: boolean = false;
   enteredOTP: string | undefined;
+  enrollmentData: any;
 
   gender = [
     { name: 'Male', value: 'male' },
@@ -52,8 +54,6 @@ export class StudentNewComponent implements OnInit {
     { name: 'Widowed', value: 'widowed' },
     { name: 'Divorced', value: 'divorced' },
   ];
-
-  enrollist = [{ name: 'College', value: 'college' }];
 
   yearlvl = [
     { name: '1st Year', value: '1' },
@@ -72,7 +72,8 @@ export class StudentNewComponent implements OnInit {
     private http: HttpClient,
     private collegecontroller: CollegeEnrollmentController,
     private semester_controller: SemesterController,
-    private router: Router
+    private router: Router,
+    private enrollment: TrimesterService
   ) {
     this.pipe = new DatePipe('en-PH');
     this.sem = new FormControl();
@@ -95,7 +96,7 @@ export class StudentNewComponent implements OnInit {
       contact_number: new FormControl(null, [Validators.required]),
       citizenship: new FormControl(null, [Validators.required]),
       religion: new FormControl(null, [Validators.required]),
-      enrollIn: new FormControl(null, [Validators.required]),
+      enrollIn: new FormControl('College', [Validators.required]),
       program: new FormControl(null, [Validators.required]),
       semester: this.sem,
       student_yr_level: new FormControl(null, [Validators.required]),
@@ -124,7 +125,6 @@ export class StudentNewComponent implements OnInit {
         this.otp = true;
       },
       error: (error: HttpErrorResponse) => {
-        console.log(error);
         if (error.error.errors.email_address) {
           this.messageService.add({
             severity: 'error',
@@ -144,6 +144,7 @@ export class StudentNewComponent implements OnInit {
             detail: error.error.errors.message,
           });
         }
+        console.log(error);
         // this.loadbar = false;
       },
     });
@@ -167,7 +168,6 @@ export class StudentNewComponent implements OnInit {
               this.collegecontroller
                 .sentotp(this.signUpForm.value)
                 .subscribe((res) => {
-                  console.log('Resent Success', res);
                 });
               this.messageService.add({
                 severity: 'success',
@@ -183,7 +183,6 @@ export class StudentNewComponent implements OnInit {
             .createstudent(this.signUpForm.value)
             .subscribe({
               next: (res) => {
-                console.log(res);
                 this.info = res;
                 if (this.info[0] && this.info[0]['message'] === 'Success') {
                   Swal.fire(
@@ -195,8 +194,7 @@ export class StudentNewComponent implements OnInit {
                   this.loading = false;
                 }
               },
-              error: (error: HttpErrorResponse) => {
-                console.log(error.message);
+              error: () => {
               },
             });
         }
@@ -217,7 +215,6 @@ export class StudentNewComponent implements OnInit {
     this.collegecontroller.getcourses().subscribe((res) => {
       this.data = res;
       this.courses = this.data[0];
-      // console.log(this.courses);
     });
   }
 
@@ -226,11 +223,26 @@ export class StudentNewComponent implements OnInit {
     this.religionList = religions;
     this.loadcourses();
 
+    this.enrollment.enrollment().subscribe({
+      next: (res) => {
+        this.data = res;
+        this.enrollmentData = this.data;
+      }, error: (err) => {
+        // setTimeout(() => {
+        //   this.messageService.add({
+        //     severity: 'error',
+        //     summary: 'Notice',
+        //     detail: 'Enrollment is no longer available!',
+        //   });
+        // }, 1000);
+        // this.router.navigate(['home']);
+      }
+    });
+
     this.semester_controller.getactivenrollsem().subscribe((res) => {
       this.semesterinfo = res;
       if (this.semesterinfo[0]) {
         this.semester = this.semesterinfo[0][0]['semester'];
-        this.activateyr = this.semesterinfo[0][0]['active_year'];
         this.sem.setValue(this.semester);
       }
     });
@@ -246,7 +258,6 @@ export class StudentNewComponent implements OnInit {
 
       (event.target as HTMLSelectElement).value = sanitizedValue;
 
-      console.log('Invalid input. Please enter only numeric values.');
     }
   }
 }

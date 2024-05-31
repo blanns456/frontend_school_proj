@@ -405,7 +405,7 @@ export class UpdateInfoComponent {
             summary: 'Updated',
             detail: 'Successfully!',
           });
-        }, 5000);
+        }, 1000);
 
         this.router.navigate(['/student/information']);
       },
