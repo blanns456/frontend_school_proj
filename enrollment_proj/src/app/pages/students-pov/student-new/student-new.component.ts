@@ -12,7 +12,6 @@ import { DatePipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { TrimesterService } from 'src/app/services/trimester.service';
 
-
 @Component({
   selector: 'app-student-new',
   templateUrl: './student-new.component.html',
@@ -167,8 +166,7 @@ export class StudentNewComponent implements OnInit {
             if (result.isConfirmed) {
               this.collegecontroller
                 .sentotp(this.signUpForm.value)
-                .subscribe((res) => {
-                });
+                .subscribe((res) => {});
               this.messageService.add({
                 severity: 'success',
                 summary: 'Success',
@@ -194,8 +192,7 @@ export class StudentNewComponent implements OnInit {
                   this.loading = false;
                 }
               },
-              error: () => {
-              },
+              error: () => {},
             });
         }
       },
@@ -227,7 +224,9 @@ export class StudentNewComponent implements OnInit {
       next: (res) => {
         this.data = res;
         this.enrollmentData = this.data;
-      }, error: (err) => {
+        this.sem.setValue(this.enrollmentData?.trimester);
+      },
+      error: (err) => {
         // setTimeout(() => {
         //   this.messageService.add({
         //     severity: 'error',
@@ -236,15 +235,15 @@ export class StudentNewComponent implements OnInit {
         //   });
         // }, 1000);
         // this.router.navigate(['home']);
-      }
+      },
     });
 
     this.semester_controller.getactivenrollsem().subscribe((res) => {
       this.semesterinfo = res;
       if (this.semesterinfo[0]) {
         this.semester = this.semesterinfo[0][0]['semester'];
-        this.sem.setValue(this.semester);
       }
+      // this.sem.setValue(this.semester);
     });
   }
 
@@ -257,7 +256,6 @@ export class StudentNewComponent implements OnInit {
       var sanitizedValue = numberValue.replace(/[^0-9]/g, '');
 
       (event.target as HTMLSelectElement).value = sanitizedValue;
-
     }
   }
 }
