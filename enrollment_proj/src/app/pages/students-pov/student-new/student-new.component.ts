@@ -63,8 +63,9 @@ export class StudentNewComponent implements OnInit {
   ];
 
   studstatus = [
-    { name: 'Regular Student', value: 'regular' },
-    { name: 'Irregular Student', value: 'irregular' },
+    { name: 'New Student', value: 'New Student' },
+    { name: 'Continuing', value: 'Continuing' },
+    { name: 'Transferee', value: 'Transferee' },
   ];
 
   constructor(

@@ -7,6 +7,7 @@ import {
   ConfirmEventType,
 } from 'primeng/api';
 import { Router, NavigationExtras } from '@angular/router';
+import { AccountingService } from 'src/app/services/accounting.service';
 
 @Component({
   selector: 'app-accounting-student-ledger',
@@ -24,7 +25,8 @@ export class AccountingStudentLedgerComponent implements OnInit {
     private messageService: MessageService,
     private AccountingController: AccountingController,
     private confirmationService: ConfirmationService,
-    private router: Router
+    private router: Router,
+    private accounting: AccountingService
   ) {}
 
   viewUser(student: any) {
@@ -37,21 +39,29 @@ export class AccountingStudentLedgerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getstudents();
-  }
-
-  getstudents() {
-    this.AccountingController.getstudents().subscribe({
+    this.accounting.getStudents().subscribe({
       next: (res) => {
         this.data = res;
         this.students = this.data[0];
-        // console.log(this.students);
       },
-      error: (error: HttpErrorResponse) => {
-        console.log(error.message);
+      error: () => {
       },
     });
+    // this.getstudents();
   }
+
+  // getstudents() {
+  //   this.AccountingController.getstudents().subscribe({
+  //     next: (res) => {
+  //       this.data = res;
+  //       this.students = this.data[0];
+  //       // console.log(this.students);
+  //     },
+  //     error: (error: HttpErrorResponse) => {
+  //       console.log(error.message);
+  //     },
+  //   });
+  // }
 
   getYearLevelString(yearLevel: number): string {
     const lastDigit = yearLevel % 10;
