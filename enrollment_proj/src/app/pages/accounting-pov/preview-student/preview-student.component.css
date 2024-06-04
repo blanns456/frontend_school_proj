@@ -36,11 +36,11 @@ select {
   width: 95%;
   padding: 10px 15px;
   box-sizing: border-box;
-  /* border: none; */
-  /* border-bottom: 2px solid black; */
-  /* outline: none; */
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
 }
 
-/* .inputs:hover {
+.inputs:hover {
   border-bottom: 3px solid #0287af;
-} */
+}

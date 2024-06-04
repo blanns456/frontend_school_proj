@@ -111,6 +111,9 @@ import { AccountingMainComponent } from './pages/accounting-pov/accounting-main/
 //registrar
 import { RegistrarMainComponent } from './pages/registrar-pov/registrar-main/registrar-main.component';
 
+// accounting
+import { PreviewStudentComponent } from './pages/accounting-pov/preview-student/preview-student.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomepageComponent },
@@ -360,6 +363,11 @@ const routes: Routes = [
         path: 'daily consolidated reports',
         component: DailyconsolidatedReportsComponent,
         title: 'Daily Consolidated Reports',
+      },
+      {
+        path: 'preview student',
+        component: PreviewStudentComponent,
+        title: 'Preview Student',
       },
     ],
   },

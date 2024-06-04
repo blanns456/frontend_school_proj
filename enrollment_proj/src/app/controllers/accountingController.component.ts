@@ -17,7 +17,7 @@ export class AccountingController {
   constructor(private http: HttpClient) {}
 
   getstudents() {
-    return this.http.get(this.Root_URL + 'showstudents');
+    return this.http.get(this.Root_URL + 'showstudent');
   }
 
   getstudentTransac(stud_id: number) {

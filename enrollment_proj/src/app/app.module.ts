@@ -60,6 +60,7 @@ import { MenuModule } from 'primeng/menu';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { PaginatorModule } from 'primeng/paginator';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 // import { AccordionModule } from 'primeng/accordion';
 // import { StepperModule } from 'primeng/stepper';
 // import { PanelModule } from 'primeng/panel';
@@ -175,6 +176,7 @@ import { ViewStudentledgerComponent } from './pages/accounting-pov/accounting-re
 
 import { RegistrarPovComponent } from './pages/registrar-pov/registrar-pov.component';
 import { RegistrarMainComponent } from './pages/registrar-pov/registrar-main/registrar-main.component';
+import { PreviewStudentComponent } from './pages/accounting-pov/preview-student/preview-student.component';
 
 @NgModule({
   declarations: [
@@ -313,6 +315,7 @@ import { RegistrarMainComponent } from './pages/registrar-pov/registrar-main/reg
     ViewStudentledgerComponent,
     RegistrarPovComponent,
     RegistrarMainComponent,
+    PreviewStudentComponent,
   ],
   imports: [
     BrowserModule,
@@ -358,11 +361,12 @@ import { RegistrarMainComponent } from './pages/registrar-pov/registrar-main/reg
     MenuModule,
     IconFieldModule,
     InputIconModule,
-    PaginatorModule
+    PaginatorModule,
     // TabMenuModule
     // AccordionModule,
     // StepperModule,
     // PanelModule,
+    ScrollPanelModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

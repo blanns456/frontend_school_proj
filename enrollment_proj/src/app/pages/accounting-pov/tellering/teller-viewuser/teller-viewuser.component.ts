@@ -184,7 +184,7 @@ export class TellerViewuserComponent implements OnInit {
       next: (res) => {
         this.data = res;
         this.showledgerfees = this.data[0];
-        // console.log(this.showledgerfees);
+        console.log(this.showledgerfees);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
