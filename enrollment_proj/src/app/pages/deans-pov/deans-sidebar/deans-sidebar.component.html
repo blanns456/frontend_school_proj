@@ -50,81 +50,116 @@
   </div>
 </div> -->
 
-
-<div class="sidebar position-fixed">
-  <div class="logout position-relative">
-    <div class="text-end">
-      <a routerLink="/login" (click)="logout()"
-        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0">
-        <i class="pi pi-sign-out"></i>
-        Logout
-      </a>
-    </div>
-    <div class="text-start">
-      <div class="mx-3 pt-3">
-        <!-- <p-avatar *ngIf="!data?.profile" [image]="'assets/misc/default.png'" styleClass="mr-2" size="xlarge"
-          shape="circle"></p-avatar> -->
-        <!-- <p-avatar [image]="'https://genesys-api.asc-bislig.com/images/user-profile/' + data?.profile" styleClass="mr-2" size="xlarge"
-          shape="circle"></p-avatar> -->
-        <p-avatar [image]="'assets/misc/default.png'" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
-      </div>
-      <!-- <img [src]="'https://genesys-api.asc-bislig.com/images/user-profile/' + data?.profile" alt="avatar" id="profile" width="60"
-        height="60" class="img-thumbnail mt-4 mx-3" /> -->
-
-      <h2 class="h6 fw-bold text-white mx-3 my-2 text-capitalize">
-        {{ dean_account?.first_name }}&nbsp;{{ dean_account?.middle_name }}&nbsp;{{ dean_account?.last_name }}
-      </h2>
-      <p class="mx-3 text-white"><strong>DEAN</strong></p>
-      <!-- <div class="text-white ms-3">
-        <ng-container *ngIf="data">
-          {{ courseAcronym }}
-        </ng-container>
-        <span>- </span>
-        <span *ngIf="data?.year_lvl">{{ data?.year_lvl }}{{ getYearLabel(data?.year_lvl) }}</span>
-      </div> -->
-    </div>
+<div
+  class="d-lg-flex d-none flex-column flex-shrink-0 p-3 vh-100 position-fixed border-4 sidebar-content"
+  style="width: 20%"
+>
+  <div class="text-center">
+    <a href="">
+      <img
+        src="../../../../assets/misc/ascb_logo.png"
+        alt=""
+        width="50"
+        class="mx-auto"
+      />
+    </a>
   </div>
-  <div>
-    <div id="listPros" class="list-group">
-      <a class="py-3 mb-1 list-group-item list-group-item-action home" routerLink="/dean/home"
-        routerLinkActive="active">
+  <hr />
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <a
+        class="nav-link mb-3"
+        routerLink="/dean/home"
+        routerLinkActive="active"
+      >
         <i class="pi pi-home mx-2 pi-user-edit"></i>
         <!-- <i class=" fa-solid fa-house"></i> -->
         Home
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLinkActive="active" routerLink="/dean/courses">
-        <i class="pi mx-2 pi-user-edit"></i>
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/dean/courses"
+        routerLinkActive="active"
+      >
+        <i class="pi pi-home mx-2 pi-user-edit"></i>
         Subjects
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLinkActive="active"
-        routerLink="/dean/classrooms">
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLinkActive="active"
+        routerLink="/dean/classrooms"
+      >
         <i class="mx-2 pi pi-file"></i>
         Classroom
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLinkActive="active"
-        routerLink="/dean/assigning">
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLinkActive="active"
+        routerLink="/dean/assigning"
+      >
         <i class="mx-2 pi pi-dollar"></i>
         Assign Subjects
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/dean/approval-grade"
-        routerLinkActive="active">
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/prospectus"
+        routerLink="/dean/approval-grade"
+        routerLinkActive="active"
+      >
         <i class="mx-2 pi pi-bars"></i>
         Grades Approval
       </a>
-      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/dean/courses-approval"
-        routerLinkActive="active">
+    </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/dean/courses-approval"
+        routerLinkActive="active"
+      >
         <i class="mx-2 pi pi-book"></i>
         Enrollee Approval
       </a>
-
-      <!-- <a
-        class="my-1 py-3 list-group-item list-group-item-action"
-        routerLink="/student-dashboard-settings"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 fa-solid fa-gear"></i>
-        Account Settings
-      </a> -->
-    </div>
+    </li>
+  </ul>
+  <hr />
+  <div class="dropdown">
+    <a
+      href="#"
+      class="d-flex align-items-center text-decoration-none dropdown-toggle"
+      id="dropdownUser2"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <img
+        src="../../../../assets/misc/defaultasdas.jpg"
+        alt=""
+        width="32"
+        height="32"
+        class="rounded-circle me-2"
+      />
+      <strong>...DEAN...</strong>
+    </a>
+    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+      <li>
+        <p class="dropdown-item">Account Settings</p>
+      </li>
+      <li>
+        <hr class="dropdown-divider" />
+      </li>
+      <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+    </ul>
   </div>
 </div>

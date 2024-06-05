@@ -34,3 +34,29 @@
   background-position: left;
   color: whitesmoke;
 }
+
+.sidebar-content {
+  background: #ffffff;
+}
+
+.respo-md {
+  padding-top: 45px;
+}
+
+@media only screen and (min-width: 769px) {
+  .nav-link {
+    color: black;
+    transition: 0.1s ease-out;
+  }
+
+  .nav-link:hover {
+    background: var(--midnight) !important;
+    color: #ffffff;
+    padding-left: 2rem;
+  }
+
+  .active {
+    background: var(--midnight) !important;
+    padding-left: 2rem;
+  }
+}

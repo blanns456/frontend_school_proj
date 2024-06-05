@@ -1,5 +1,12 @@
 .nav-text {
-  color: #0840a1;
+  color: white;
+}
+
+.navbar {
+  background-color: var(--midnight);
+}
+.navbar i{
+  color: white;
 }
 
 .nav-student {

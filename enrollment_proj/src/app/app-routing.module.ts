@@ -161,8 +161,8 @@ const routes: Routes = [
   {
     path: 'student',
     component: StudentParentComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: ['College'] },
+    // canActivate: [AuthGuard],
+    // data: { allowedRoles: ['College'] },
     children: [
       {
         path: '',
@@ -259,8 +259,8 @@ const routes: Routes = [
   {
     path: 'dean',
     component: DeanMainComponent,
-    canActivate: [AuthGuard],
-    data: { allowedRoles: ['dean'] },
+    // canActivate: [AuthGuard],
+    // data: { allowedRoles: ['dean'] },
     children: [
       {
         path: '',
