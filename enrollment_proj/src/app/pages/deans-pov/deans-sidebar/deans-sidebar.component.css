@@ -43,6 +43,22 @@
   padding-top: 45px;
 }
 
+/* none */
+.permit {
+  background-color: whitesmoke;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
+.logoutBtn {
+  text-decoration: none;
+  background-color: var(--midnight);
+  color: white;
+}
+
 @media only screen and (min-width: 769px) {
   .nav-link {
     color: black;

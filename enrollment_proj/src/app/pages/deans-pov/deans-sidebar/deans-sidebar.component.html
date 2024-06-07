@@ -51,7 +51,7 @@
 </div> -->
 
 <div
-  class="d-lg-flex d-none flex-column flex-shrink-0 p-3 vh-100 position-fixed border-4 sidebar-content"
+  class="d-lg-flex d-none flex-column flex-shrink-0 p-3 vh-100 position-fixed border-4 sidebar-content d-lg-flex d-none"
   style="width: 20%"
 >
   <div class="text-center">
@@ -161,5 +161,29 @@
       </li>
       <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
     </ul>
+  </div>
+</div>
+<div class="permit d-lg-none d-flex">
+  <div
+    class="noneText d-flex justify-content-center align-items-center flex-column text-center mx-3"
+  >
+    <img
+      class="mb-3 img-fluid"
+      src="../../../../assets/misc/ascb_logo.png"
+      alt="ASCB Logo"
+      width="aoto"
+    />
+    <!-- <i class="fa fa-exclamation-triangle m-3"></i> -->
+    <h1 class="my-2">Please kindly log off this device!</h1>
+    <h5 class="my-2">
+      For security purposes&semi; Please refrain from using mobile devices to
+      acces your account, instead refer to your personal computer to enter the
+      system.
+    </h5>
+    <a
+      class="logoutBtn btn mt-2 rounded rounded-3 w-25 fw-bold"
+      (click)="logout()"
+      >Log&dash;out</a
+    >
   </div>
 </div>
