@@ -1,23 +1,26 @@
 <p-toast></p-toast>
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column text-capitalize">
+<div
+  class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column text-capitalize"
+>
   <!-- <div class="divider mb-4"></div> -->
-  <div
-    *ngIf="studentData"
-    class="contentab bg-white rounded">
+  <div *ngIf="studentData" class="contentab bg-white rounded">
     <p-card [header]="studentData.studname">
       <div class="col d-flex justify-content-end align-items-end">
         <p-button
           *ngIf="showbtn"
           class="mx-2"
           (click)="viewstudmatri(studentData)"
-          label="View Matriculation"></p-button>
+          label="View Matriculation"
+        ></p-button>
         <!-- <p-button icon="pi pi-pen" (click)="showmodal(studentData.acadid)">
           </p-button> -->
       </div>
       <form class="m-4 px-2">
         <h1 class="fw-bold fs-4">Section Remarks</h1>
         <div class="divider"></div>
-        <div class="inputGroup row d-flex justify-content-start align-items-center my-3">
+        <div
+          class="inputGroup row d-flex justify-content-start align-items-center my-3"
+        >
           <div class="col-3">
             <label for="semester">Trimester</label>
             <input
@@ -27,7 +30,8 @@
               name="semester"
               value="{{ studentData.semester }}"
               id="semester"
-              readonly>
+              readonly
+            />
           </div>
           <div class="col-6">
             <label for="course">Course</label>
@@ -38,7 +42,8 @@
               id="course"
               name="course"
               value="{{ studentData.course }}"
-              readonly>
+              readonly
+            />
           </div>
           <div class="col-3 my-3">
             <label for="yrlvl">Year Level:</label>
@@ -49,12 +54,15 @@
               id="yrlvl"
               name="yrlvl"
               value="{{ getYearLevelString(studentData.student_yr_lvl) }}"
-              readonly>
+              readonly
+            />
           </div>
         </div>
         <h1 class="fw-bold fs-4">Student Information</h1>
         <div class="divider"></div>
-        <div class="inputGroup row d-flex justify-content-center align-items-center my-3">
+        <div
+          class="inputGroup row d-flex justify-content-center align-items-center my-3"
+        >
           <div class="col-4">
             <label for="ledger">Student ID</label>
             <input
@@ -64,7 +72,8 @@
               id="status"
               name="status"
               value="{{ studentData.uid }}"
-              readonly>
+              readonly
+            />
           </div>
           <div class="col-4 my-4">
             <label for="status">Status</label>
@@ -76,7 +85,8 @@
               name="status"
               name="semester"
               value="{{ studentData.student_status }}"
-              readonly>
+              readonly
+            />
           </div>
           <div class="col-4">
             <label for="gender">Gender:</label>
@@ -87,7 +97,8 @@
               id="gender"
               name="gender"
               value="{{ studentData.gender }}"
-              readonly>
+              readonly
+            />
           </div>
           <div class="col-4">
             <label for="totalunits">Total Units:</label>
@@ -98,7 +109,8 @@
               id="totalunits"
               name="totalunits"
               value="{{ totalamount }}"
-              readonly>
+              readonly
+            />
           </div>
           <div class="col-4 my-4">
             <label for="department">Department:</label>
@@ -109,7 +121,8 @@
               id="department"
               name="department"
               value="{{ studentData.departments }}"
-              readonly>
+              readonly
+            />
           </div>
         </div>
       </form>
@@ -122,20 +135,17 @@
           styleClass="p-datatable-striped"
           [tableStyle]="{ 'min-width': '50rem' }"
           [rows]="10"
-          [showCurrentPageReport]="true">
+          [showCurrentPageReport]="true"
+        >
           <ng-template pTemplate="header">
             <tr>
               <th pSortableColumn="subjectName">Particulars</th>
               <th>Units</th>
             </tr>
           </ng-template>
-          <ng-template
-            pTemplate="body"
-            let-subjectmatri>
+          <ng-template pTemplate="body" let-subjectmatri>
             <tr>
-              <td>
-                ({{ subjectmatri.code }}) {{ subjectmatri.subjectName }}
-              </td>
+              <td>({{ subjectmatri.code }}) {{ subjectmatri.subjectName }}</td>
               <td>{{ subjectmatri.units }}</td>
             </tr>
           </ng-template>
@@ -150,7 +160,8 @@
           <p-button
             class="p-3"
             (click)="approveData()"
-            label="Approve"></p-button>
+            label="Approve"
+          ></p-button>
         </div>
       </div>
     </p-card>
@@ -164,14 +175,16 @@
   appendTo="body"
   [(visible)]="approvedialog"
   [style]="{ width: '75vw' }"
-  [contentStyle]="{ height: '500px' }">
+  [contentStyle]="{ height: '500px' }"
+>
   <p-table
     [scrollable]="true"
     scrollHeight="flex"
     selectionMode="multiple"
     [(selection)]="selectedSubs"
     [value]="acadlist"
-    [tableStyle]="{ 'min-width': '50rem' }">
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
     <ng-template pTemplate="header">
       <tr>
         <th style="width: 4rem">
@@ -182,9 +195,7 @@
         <th>Remarks</th>
       </tr>
     </ng-template>
-    <ng-template
-      pTemplate="body"
-      let-datas>
+    <ng-template pTemplate="body" let-datas>
       <tr>
         <td>
           <p-tableCheckbox [value]="datas"></p-tableCheckbox>
@@ -200,7 +211,8 @@
     <p-button
       class="mx-2"
       label="Approve"
-      (click)="approveSubs($event)"></p-button>
+      (click)="approveSubs($event)"
+    ></p-button>
   </div>
 </p-dialog>
 
@@ -210,6 +222,7 @@
   [maximizable]="true"
   appendTo="body"
   [(visible)]="regisformDialog"
-  [style]="{ width: '450px' }">
+  [style]="{ width: '450px' }"
+>
   <form action>.</form>
 </p-dialog>

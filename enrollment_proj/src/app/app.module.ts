@@ -90,7 +90,11 @@ import { StudentDashboardParentComponent } from './pages/students-pov/student-da
 import { EnrollTesdaComponent } from './pages/enroll-tesda/enroll-tesda.component';
 import { EnrollTesda2Component } from './pages/enroll-tesda2/enroll-tesda2.component';
 import { EnrollTesda3Component } from './pages/enroll-tesda3/enroll-tesda3.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {
+  DatePipe,
+  HashLocationStrategy,
+  LocationStrategy,
+} from '@angular/common';
 import { RegistrarNavbarComponent } from './pages/registrar-pov/registrar-navbar/registrar-navbar.component';
 import { RegistrarSidebarComponent } from './pages/registrar-pov/registrar-sidebar/registrar-sidebar.component';
 import { RegistrarHomeComponent } from './pages/registrar-pov/registrar-home/registrar-home.component';
@@ -366,12 +370,13 @@ import { PreviewStudentComponent } from './pages/accounting-pov/preview-student/
     // AccordionModule,
     // StepperModule,
     // PanelModule,
-    ScrollPanelModule
+    ScrollPanelModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     MessageService,
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

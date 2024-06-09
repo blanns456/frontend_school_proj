@@ -4,193 +4,94 @@
     <div class="fixed-background"></div>
     <app-accounting-navbar></app-accounting-navbar>
     <p-toast></p-toast>
-    <div class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column">
+    <div
+      class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
+    >
       <!-- <div class="divider mb-4"></div> -->
-      <div
-        *ngIf="studentLedg"
-        class="contentab bg-white rounded">
-        <div class="text-header shadow w-100 py-2 ps-3 d-flex justify-content-between text-capitalize">
+      <div *ngIf="studentLedg" class="contentab bg-white rounded">
+        <div
+          class="text-header shadow w-100 py-2 ps-3 d-flex justify-content-between text-capitalize"
+        >
           <div class="row w-100">
             <div class="col">
               <h3 class="text-white fw-bold fs-3">
                 {{ studentLedg.studname }}
               </h3>
               <p class="text-white">
-                <i class="fa-solid fa-user me-2"></i>Student
+                <i class="fa-solid fa-user me-2"></i
+                >{{ studentLedg.student_status }}
               </p>
             </div>
             <div class="col d-flex justify-content-end align-items-end">
               <button class="btn btn-primary">Daily Collection Report</button>
-              <p-button
+              <!-- <p-button
                 class="mx-2"
-                (click)="showpayHistory(studentLedg.studname, studentLedg.stud_id)">
+                (click)="
+                  showpayHistory(studentLedg.studname, studentLedg.stud_id)
+                "
+              >
                 Payment History
-              </p-button>
+              </p-button> -->
             </div>
           </div>
         </div>
-        <form class="m-4 px-2">
-          <h1 class="fw-bold fs-4">Payment Method and Information</h1>
-          <p-divider></p-divider>
-          <div class="row">
-            <div class="col-4">
-              <label for="semester">Semester</label>
-              <input
-                class="inputs"
-                type="text"
-                id="semester"
-                name="semester"
-                [value]="activesem">
-            </div>
-            <div class="col-4">
-              <label for="schoolyr">School Year</label>
-              <input
-                class="inputs"
-                type="text"
-                id="schoolyr"
-                name="schoolyr"
-                [value]="activeyr">
-            </div>
-          </div>
-          <div class="inputGroup row d-flex align-items-center">
-            <p-divider></p-divider>
-            <div class="container">
-              <span class="caption-top">Breakdown Fees</span>
-              <p class="p-1 fw-bold">
-                Previous Balance: {{ studentLedg.previous_bal }}
-              </p>
-              <p-table
-                [rowHover]="true"
-                [value]="showledgerfees"
-                styleClass="p-datatable-striped p-datatable-sm"
-                [(selection)]="selectedItemFees"
-                class="text-capitalize">
-                <ng-template pTemplate="header">
-                  <tr>
-                    <th>Matriculation Fees</th>
-                    <th>Amount</th>
-                  </tr>
-                </ng-template>
-                <ng-template
-                  pTemplate="body"
-                  let-item>
-                  <tr>
-                    <td>{{ item.matriname }}</td>
-                    <td>{{ item.matriamount }}</td>
-                  </tr>
-                </ng-template>
-                <ng-template pTemplate="footer">
+        <div class="container my-4">
+          <p-table
+            [rowHover]="true"
+            [value]="receiptform"
+            styleClass="p-datatable-striped"
+            class="text-capitalize"
+            [paginator]="true"
+            [rows]="10"
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Acknowledge No.</th>
+                <th>Mode of Payment</th>
+                <th>Semester/School Yr.</th>
+                <th>Amount</th>
+                <th>Action</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data>
+              <tr>
+                <td>{{ data.ack_no }}</td>
+                <td>{{ data.mop }}</td>
+                <td>{{ data.trimester }}</td>
+                <td>{{ data.amount }}</td>
+                <td>
+                  <p-button label="View"></p-button>
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td class="p-4 text-center" colspan="7">No Data Found.</td>
+              </tr>
+            </ng-template>
+            <!-- <ng-template pTemplate="footer">
                   <tr>
                     <td>Total:</td>
-                    <td>{{ studentLedg.matrifeetotal }}</td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td>Tuition Fees:</td>
-                    <td>{{ studentLedg.totalTuitionfee }}</td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td>Additional Fees:</td>
                     <td>{{ studentLedg.total_addtionalfee }}</td>
                   </tr>
-                </ng-template>
-              </p-table>
-              <p-divider></p-divider>
-              <p-table
-                [rowHover]="true"
-                [value]="labfeedatas"
-                class="text-capitalize"
-                styleClass="p-datatable-striped p-datatable-sm">
-                <ng-template pTemplate="header">
-                  <tr>
-                    <th>Lab Fees</th>
-                    <th>Amount</th>
-                  </tr>
-                </ng-template>
-                <ng-template
-                  pTemplate="body"
-                  let-item>
-                  <tr>
-                    <td>{{ item.subject }}</td>
-                    <td>{{ item.feeAmount }}</td>
-                  </tr>
-                </ng-template>
-              </p-table>
-            </div>
-          </div>
-          <div class="d-flex justify-content-end p-4">
-            <!-- <p-button type="submit" label="Submit"></p-button> -->
-            <p-button
-              label="Make Payment"
-              (click)="showmakePayment()"></p-button>
-          </div>
-        </form>
-      </div>
-      <div class="printBox bg-white fs-3 my-2 p-2 rounded-circle shadow">
-        <a
-          data-bs-toggle="modal"
-          data-bs-target="#printModal">
-          <i class="fa-solid fa-print"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="printModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <div class="container">
-          <div class="d-flex justify-content-center align-items-center">
-            <img
-              src="../../../../../assets/misc/ascb_logo.png"
-              class="w-25"
-              alt>
-            <span class="my-3 w-75 text-center">Andres Soriano Colleges of Bislig Inc. Andres Soriano Avenue,
-              Mangagoy, Bislig City, Surigao del Sur
-              <p>Non-VAT Reg. TIN: 444-624-927-000</p>
-            </span>
-          </div>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>In payment of the following</th>
-                <th>expenses</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Old Balance</td>
-                <td>3,980</td>
-              </tr>
-              <tr>
-                <td>Old Balance</td>
-                <td>3,980</td>
-              </tr>
-              <tr>
-                <td>Old Balance</td>
-                <td>3,980</td>
-              </tr>
-              <tr>
-                <td>Old Balance</td>
-                <td>3,980</td>
-              </tr>
-            </tbody>
-          </table>
+                </ng-template> -->
+          </p-table>
         </div>
       </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-primary">
-          Print
-        </button>
+      <div class="printBox bg-white fs-3 my-2 p-2 rounded-circle shadow">
+        <a data-bs-toggle="modal" data-bs-target="#printModal">
+          <i class="fa-solid fa-print"></i>
+        </a>
       </div>
     </div>
   </div>
@@ -203,12 +104,14 @@
   appendTo="body"
   [(visible)]="payHistoryDialog"
   [style]="{ width: '75vw' }"
-  [contentStyle]="{ height: '500px' }">
+  [contentStyle]="{ height: '500px' }"
+>
   <p-table
     [scrollable]="true"
     [value]="studentTranac"
     scrollHeight="flex"
-    [tableStyle]="{ 'min-width': '50rem' }">
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
     <ng-template pTemplate="header">
       <tr>
         <th>OR No.</th>
@@ -219,9 +122,7 @@
         <th>Action</th>
       </tr>
     </ng-template>
-    <ng-template
-      pTemplate="body"
-      let-stud>
+    <ng-template pTemplate="body" let-stud>
       <tr>
         <td>{{ stud.receiptNo }}</td>
         <td>{{ stud.mop }}</td>
@@ -231,155 +132,12 @@
         <td>
           <p-button
             icon="pi pi-eye"
-            (click)="showfees(stud.studledger_id)"></p-button>
+            (click)="showfees(stud.studledger_id)"
+          ></p-button>
         </td>
       </tr>
     </ng-template>
   </p-table>
-</p-dialog>
-
-<p-dialog
-  header="Make Payment"
-  [modal]="true"
-  [maximizable]="true"
-  appendTo="body"
-  [(visible)]="showMakePaymentDIalog"
-  [style]="{ width: '65vw' }"
-  [contentStyle]="{ height: '450px' }">
-  <form
-    action
-    [formGroup]="studTransac"
-    (ngSubmit)="saveStudTransac()">
-    <input
-      type="hidden"
-      formControlName="studledgerId">
-    <div class="p-2 row d-flex align-items-center">
-      <div class="col-4">
-        <label for="mop">Mode of Payment:</label>
-        <select
-          class="inputs"
-          formControlName="mop"
-          id="mop">
-          <option
-            value
-            selected
-            hidden>
-            Input here
-          </option>
-          <option value="cash">Cash</option>
-          <option value="creditCard">Credit Card</option>
-          <option value="cheque">Cheque</option>
-        </select>
-      </div>
-      <div class="col-4 my-3">
-        <label for="receiptNo">Official Receipt No.</label>
-        <input
-          class="inputs"
-          type="text"
-          formControlName="receiptNo"
-          id="receiptNo"
-          name="receiptNo"
-          placeholder="1544458"
-          [value]="randomNumber"
-          readonly>
-      </div>
-      <span class="caption-top">Balance Infomation</span>
-      <div class="col-4">
-        <label for="paidAmount">Paid Amount(PHP)</label>
-        <input
-          class="inputs"
-          type="number"
-          id="paidAmount"
-          name="paidAmount"
-          formControlName="paidAmount"
-          placeholder="₱">
-      </div>
-      <div class="col-4">
-        <label for="payref">Online Payment Reference</label>
-        <input
-          class="inputs"
-          type="text"
-          id="payref"
-          name="payref"
-          formControlName="description"
-          placeholder="sample">
-      </div>
-    </div>
-    <div class="d-flex align-items-center gap-3 my-4">
-      <div class>
-        <p-checkbox
-          value="paid"
-          formControlName="status"
-          inputId="paid"></p-checkbox>
-        <label for="paid">Paid</label>
-      </div>
-      <div class>
-        <p-checkbox
-          value="partial"
-          formControlName="status"
-          inputId="partial"></p-checkbox>
-        <label for="partial">Partial</label>
-      </div>
-    </div>
-    <p-button
-      icon="pi pi-list-check"
-      (click)="showallocateFees()"
-      label="Allocate Fees"></p-button>
-    <p-table
-      *ngIf="allocateTable"
-      [rowHover]="true"
-      [value]="allocation"
-      styleClass="p-datatable-striped p-datatable-sm">
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Item Fees</th>
-          <th>Amount</th>
-        </tr>
-      </ng-template>
-      <ng-template
-        pTemplate="body"
-        let-breakdown>
-        <tr>
-          <td>{{ breakdown.category }}</td>
-          <td>{{ breakdown.amount }}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-    <div class="d-flex justify-content-end">
-      <p-button
-        type="submit"
-        label="Submit"></p-button>
-    </div>
-  </form>
-  <!-- <p-table
-    [scrollable]="true"
-    [value]="studentTranac"
-    scrollHeight="flex"
-    [tableStyle]="{ 'min-width': '50rem' }"
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Name</th>
-        <th>Mode of Payment</th>
-        <th>Amount Paid</th>
-        <th>Posting Date</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-stud>
-      <tr>
-        <td>{{ displayname }}</td>
-        <td>{{ stud.mop }}</td>
-        <td>{{ stud.paidAmount }}</td>
-        <td>{{ stud.date }}</td>
-        <td>{{ stud.status }}</td>
-        <td>
-          <p-button icon="pi pi-eye"></p-button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table> -->
 </p-dialog>
 
 <p-dialog
@@ -389,21 +147,16 @@
   appendTo="body"
   [(visible)]="showbreakdownDialog"
   [style]="{ width: '70vw' }"
-  [contentStyle]="{ height: '450px' }">
+  [contentStyle]="{ height: '450px' }"
+>
   <div class="row">
     <div class="col-4">
       <label for="semester">Semester:</label>
-      <input
-        type="text"
-        placeholder="2nd Trimester"
-        id="semester">
+      <input type="text" placeholder="2nd Trimester" id="semester" />
     </div>
     <div class="col-4">
       <label for="schoolyr">School Yr:</label>
-      <input
-        type="text"
-        placeholder="A.Y 2023-2024"
-        id="schoolyr">
+      <input type="text" placeholder="A.Y 2023-2024" id="schoolyr" />
     </div>
   </div>
   <p-divider></p-divider>
@@ -412,15 +165,14 @@
     [scrollable]="true"
     scrollHeight="flex"
     [value]="feesbreakdown"
-    [tableStyle]="{ 'min-width': '50rem' }">
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
     <ng-template pTemplate="header">
       <tr>
         <th>Breakdown Fees</th>
       </tr>
     </ng-template>
-    <ng-template
-      pTemplate="body"
-      let-datas>
+    <ng-template pTemplate="body" let-datas>
       <tr>
         <td>{{ datas.feesbreak }}</td>
       </tr>
