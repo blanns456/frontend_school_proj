@@ -6,7 +6,7 @@ import { jwtDecode } from 'jwt-decode';
 @Injectable({ providedIn: 'root' })
 export class LoginController {
   readonly Root_URL = 'http://127.0.0.1:8000/api/';
-  // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
+  // readonly Root_URL = 'http://127.0.0.1:8000/api/';
   token: any;
   userdata: any;
   data: any;
@@ -17,11 +17,11 @@ export class LoginController {
   // alertmessag: Object;
   // static createuser: any;
   user_id: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   // constructor(private http: HttpClient) { }
   // constructor(private http: HttpClient) {}
 
-  login(user: { username: string; password: string }) {
+  login(user: { email: any; password: string }) {
     return this.http.post(this.Root_URL + 'login', user);
   }
 

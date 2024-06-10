@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AccountingService {
+export class ProgramService {
   constructor(private http: HttpClient) {}
+  // constructor(private http: HttpClient) { }
 
   readonly Root_URL = 'http://127.0.0.1:8000/api/';
   token = localStorage.getItem('token');
@@ -14,9 +14,7 @@ export class AccountingService {
     Authorization: `Bearer ${this.token}`,
   });
 
-  getStudents(): Observable<any> {
-    return this.http.get(this.Root_URL + 'show-students', {
-      headers: this.headers,
-    });
+  public getPrograms() {
+    return this.http.get(this.Root_URL + 'programs');
   }
 }
