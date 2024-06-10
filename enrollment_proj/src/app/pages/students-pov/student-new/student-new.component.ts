@@ -11,7 +11,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { TrimesterService } from 'src/app/services/trimester.service';
-
+import { ProgramService } from 'src/app/services/program.service';
+import { OtpService } from 'src/app/services/otp.service';
+import { CollegeService } from 'src/app/services/college.service';
 
 @Component({
   selector: 'app-student-new',
@@ -42,6 +44,7 @@ export class StudentNewComponent implements OnInit {
   loadbar: boolean = false;
   enteredOTP: string | undefined;
   enrollmentData: any;
+  trimester: any;
 
   gender = [
     { name: 'Male', value: 'male' },
@@ -64,7 +67,6 @@ export class StudentNewComponent implements OnInit {
 
   studstatus = [
     { name: 'New Student', value: 'New Student' },
-    { name: 'Continuing', value: 'Continuing' },
     { name: 'Transferee', value: 'Transferee' },
   ];
 
@@ -74,7 +76,10 @@ export class StudentNewComponent implements OnInit {
     private collegecontroller: CollegeEnrollmentController,
     private semester_controller: SemesterController,
     private router: Router,
-    private enrollment: TrimesterService
+    private enrollment: TrimesterService,
+    private program: ProgramService,
+    private otPassword: OtpService,
+    private college: CollegeService
   ) {
     this.pipe = new DatePipe('en-PH');
     this.sem = new FormControl();
@@ -91,17 +96,37 @@ export class StudentNewComponent implements OnInit {
       suffix: new FormControl(null),
       gender: new FormControl(null, [Validators.required]),
       civil_status: new FormControl(null, [Validators.required]),
-      birthdate: new FormControl(null, [Validators.required]),
+      birth_date: new FormControl(null, [Validators.required]),
       birth_place: new FormControl(null, [Validators.required]),
-      email_address: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required]),
       contact_number: new FormControl(null, [Validators.required]),
       citizenship: new FormControl(null, [Validators.required]),
       religion: new FormControl(null, [Validators.required]),
-      enrollIn: new FormControl('College', [Validators.required]),
+      enrolled_in: new FormControl('College', [Validators.required]),
       program: new FormControl(null, [Validators.required]),
-      semester: this.sem,
-      student_yr_level: new FormControl(null, [Validators.required]),
+      trimester: new FormControl(null, [Validators.required]),
+      year_level: new FormControl(null, [Validators.required]),
       student_status: new FormControl(null, [Validators.required]),
+    });
+  }
+
+  enrollmentActive() {
+    this.enrollment.enrollment().subscribe({
+      next: (res) => {
+        this.data = res;
+        this.enrollmentData = this.data;
+        this.signUpForm.patchValue({ trimester: this.enrollmentData.id });
+      },
+      error: (err) => {
+        // setTimeout(() => {
+        //   this.messageService.add({
+        //     severity: 'error',
+        //     summary: 'Notice',
+        //     detail: 'Enrollment is no longer available!',
+        //   });
+        // }, 1000);
+        // this.router.navigate(['home']);
+      },
     });
   }
 
@@ -119,18 +144,18 @@ export class StudentNewComponent implements OnInit {
 
   signUp() {
     this.loadbar = true;
-    console.log(this.signUpForm.value);
-    this.collegecontroller.sentotp(this.signUpForm.value).subscribe({
+
+    this.otPassword.send_otp(this.signUpForm.value).subscribe({
       next: () => {
         this.loadbar = false;
         this.otp = true;
       },
       error: (error: HttpErrorResponse) => {
-        if (error.error.errors.email_address) {
+        if (error.error.errors.email) {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: error.error.errors.email_address[0],
+            detail: error.error.errors.email[0],
           });
         } else if (error.error.errors.contact_number) {
           this.messageService.add({
@@ -145,19 +170,18 @@ export class StudentNewComponent implements OnInit {
             detail: error.error.errors.message,
           });
         }
-        console.log(error);
-        // this.loadbar = false;
+        this.loadbar = false;
       },
     });
   }
 
   verifyOTP() {
-    this.collegecontroller.verifyotp({ otp: this.enteredOTP || '' }).subscribe({
+    this.otPassword.verifyotp({ otp: this.enteredOTP || '' }).subscribe({
       next: (response) => {
         this.info = response;
         const d = Date();
         const myFormattedDate = this.pipe.transform(d, 'Y-MM-dd HH:mm:ss');
-        if (this.info[0][0]['expire'] <= myFormattedDate) {
+        if (this.info?.[0]?.['expire'] <= myFormattedDate) {
           Swal.fire({
             title: 'Code Expired',
             text: 'Tap to resend again.',
@@ -168,8 +192,7 @@ export class StudentNewComponent implements OnInit {
             if (result.isConfirmed) {
               this.collegecontroller
                 .sentotp(this.signUpForm.value)
-                .subscribe((res) => {
-                });
+                .subscribe((res) => {});
               this.messageService.add({
                 severity: 'success',
                 summary: 'Success',
@@ -180,23 +203,20 @@ export class StudentNewComponent implements OnInit {
           });
         } else {
           this.loading = true;
-          this.collegecontroller
-            .createstudent(this.signUpForm.value)
+          this.college
+            .createStudent(this.signUpForm.value)
             .subscribe({
               next: (res) => {
                 this.info = res;
-                if (this.info[0] && this.info[0]['message'] === 'Success') {
-                  Swal.fire(
-                    'SUCCESS',
-                    'Check Email For Account Information',
-                    'success'
-                  );
-                  this.router.navigate(['login']);
-                  this.loading = false;
-                }
+                Swal.fire(
+                  'SUCCESS',
+                  'Check Email For Account Information',
+                  'success'
+                );
+                this.router.navigate(['login']);
+                this.loading = false;
               },
-              error: () => {
-              },
+              error: () => {},
             });
         }
       },
@@ -212,8 +232,8 @@ export class StudentNewComponent implements OnInit {
     });
   }
 
-  loadcourses() {
-    this.collegecontroller.getcourses().subscribe((res) => {
+  loadPrograms() {
+    this.program.getPrograms().subscribe((res) => {
       this.data = res;
       this.courses = this.data[0];
     });
@@ -222,6 +242,7 @@ export class StudentNewComponent implements OnInit {
   ngOnInit(): void {
     this.nationalitiesList = nationalities;
     this.religionList = religions;
+<<<<<<< HEAD
     this.loadcourses();
 
     this.enrollment.enrollment().subscribe({
@@ -247,6 +268,10 @@ export class StudentNewComponent implements OnInit {
     //     this.sem.setValue(this.semester);
     //   }
     // });
+=======
+    this.loadPrograms();
+    this.enrollmentActive();
+>>>>>>> 48b605d239a3fb37cd1c9e9b22fb2681bb4ce93c
   }
 
   inputMask(event: Event) {
@@ -258,7 +283,6 @@ export class StudentNewComponent implements OnInit {
       var sanitizedValue = numberValue.replace(/[^0-9]/g, '');
 
       (event.target as HTMLSelectElement).value = sanitizedValue;
-
     }
   }
 }

@@ -6,15 +6,21 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class SectionController {
+<<<<<<< HEAD
   // readonly Root_URL = 'http://genesys.example.com/api/';
   // readonly Root_URL = 'http://genesys.example.com/api/';
   readonly Root_URL = 'http://genesys.example.com/api/';
+=======
+  // readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  // readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+>>>>>>> 48b605d239a3fb37cd1c9e9b22fb2681bb4ce93c
   token: any;
 
   // alertmessage: string | undefined;
   // alertmessag: Object;
   // static createuser: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public getcourses() {
     return this.http.get(this.Root_URL + 'courses');

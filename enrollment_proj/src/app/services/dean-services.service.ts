@@ -6,9 +6,9 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root',
 })
 export class DeanServicesService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  readonly Root_URL = 'http://genesys.example.com/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/v1';
   token = localStorage.getItem('token');
   headers = new HttpHeaders({
     Authorization: `Bearer ${this.token}`,
@@ -23,12 +23,21 @@ export class DeanServicesService {
   }
 
   for_approval_students(): Observable<any> {
-    return this.http.get(this.Root_URL + 'for-approval-students', { headers: this.headers });
+    return this.http.get(this.Root_URL + 'for-approval-students', {
+      headers: this.headers,
+    });
   }
 
-  approve_student(acadid: any, id: any, courses_id: any, student_yr_lvl: any): Observable<any> {
+  approve_student(
+    acadid: any,
+    id: any,
+    courses_id: any,
+    student_yr_lvl: any
+  ): Observable<any> {
     const payload = { acadid, id, courses_id, student_yr_lvl };
-    return this.http.post(this.Root_URL + 'approve-course', payload, { headers: this.headers });
+    return this.http.post(this.Root_URL + 'approve-course', payload, {
+      headers: this.headers,
+    });
   }
 
   getSections(): Observable<any> {
@@ -36,7 +45,8 @@ export class DeanServicesService {
   }
 
   getStudentsInSection(sectionId: number): Observable<any> {
-    return this.http.get(`${this.Root_URL}sections/${sectionId}/students`, { headers: this.headers });
+    return this.http.get(`${this.Root_URL}sections/${sectionId}/students`, {
+      headers: this.headers,
+    });
   }
-
 }

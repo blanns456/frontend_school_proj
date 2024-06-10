@@ -2,11 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegistrarService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   readonly Root_URL = 'http://genesys.example.com/api/';
   token = localStorage.getItem('token');
@@ -19,7 +18,8 @@ export class RegistrarService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.get(this.Root_URL + 'registrar-information', { headers: headers });
+    return this.http.get(this.Root_URL + 'registrar-information', {
+      headers: headers,
+    });
   }
-
 }

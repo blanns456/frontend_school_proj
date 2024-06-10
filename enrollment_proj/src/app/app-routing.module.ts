@@ -165,11 +165,7 @@ const routes: Routes = [
     path: 'student',
     component: StudentParentComponent,
     canActivate: [AuthGuard],
-<<<<<<< Updated upstream
-    data: { allowedRoles: ['College'] },
-=======
-    data: { allowedRoles: ['college', 'Graduate Studies'] },
->>>>>>> Stashed changes
+    data: { expectedRole: 'college'},
     children: [
       {
         path: '',
@@ -210,7 +206,7 @@ const routes: Routes = [
     path: 'update-information',
     component: UpdateInfoComponent,
     canActivate: [AuthGuard],
-    data: { allowedRoles: ['College'] },
+    data: { expectedRole: 'college'},
   },
   // {
   //   path: 'maed',
