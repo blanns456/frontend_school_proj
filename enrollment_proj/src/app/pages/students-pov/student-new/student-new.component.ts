@@ -242,36 +242,8 @@ export class StudentNewComponent implements OnInit {
   ngOnInit(): void {
     this.nationalitiesList = nationalities;
     this.religionList = religions;
-<<<<<<< HEAD
-    this.loadcourses();
-
-    this.enrollment.enrollment().subscribe({
-      next: (res) => {
-        this.data = res;
-        this.enrollmentData = this.data;
-      }, error: (err) => {
-        // setTimeout(() => {
-        //   this.messageService.add({
-        //     severity: 'error',
-        //     summary: 'Notice',
-        //     detail: 'Enrollment is no longer available!',
-        //   });
-        // }, 1000);
-        // this.router.navigate(['home']);
-      }
-    });
-
-    // this.semester_controller.getactivenrollsem().subscribe((res) => {
-    //   this.semesterinfo = res;
-    //   if (this.semesterinfo[0]) {
-    //     this.semester = this.semesterinfo[0][0]['semester'];
-    //     this.sem.setValue(this.semester);
-    //   }
-    // });
-=======
     this.loadPrograms();
     this.enrollmentActive();
->>>>>>> 48b605d239a3fb37cd1c9e9b22fb2681bb4ce93c
   }
 
   inputMask(event: Event) {

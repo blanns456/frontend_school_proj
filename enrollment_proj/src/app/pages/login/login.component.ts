@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
     });
   }
@@ -29,21 +29,30 @@ export class LoginComponent implements OnInit {
   submit(): void {
     if (this.form.valid) {
       const { email, password } = this.form.value;
-      this.authService.login(email, password).subscribe(
-        () => {
+      this.authService.login(email, password).subscribe({
+        next: () => {
           this.redirectBasedOnRole();
         },
-        error => {
+          error: (error) => {
           console.error(error);
           this.messageService.add({ severity: 'error', summary: 'Login Failed', detail: 'Invalid email or password' });
         }
-      );
+      });
+      // this.authService.login(email, password).subscribe(
+      //   () => {
+      //     this.redirectBasedOnRole();
+      //   },
+      //   error => {
+      //     console.error(error);
+      //     this.messageService.add({ severity: 'error', summary: 'Login Failed', detail: 'Invalid email or password' });
+      //   }
+      // );
     }
   }
 
   private redirectBasedOnRole(): void {
     this.authService.getUserRoles().subscribe(roles => {
-      if (roles.includes('College')) {
+      if (roles.includes('college')) {
         this.router.navigate(['/student']);
       } else if (roles.includes('dean')) {
         this.router.navigate(['/dean']);

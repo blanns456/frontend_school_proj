@@ -9,13 +9,7 @@ import { Observable, firstValueFrom } from 'rxjs';
 export class CollegeService {
   constructor(private router: Router, private http: HttpClient) {}
 
-<<<<<<< HEAD
-  constructor(private router: Router, private http: HttpClient) { }
-
-  readonly Root_URL = 'http://genesys.example.com/api/';
-=======
   readonly Root_URL = 'http://127.0.0.1:8000/api/v1/';
->>>>>>> 48b605d239a3fb37cd1c9e9b22fb2681bb4ce93c
   token = localStorage.getItem('token');
   headers = new HttpHeaders({
     Authorization: `Bearer ${this.token}`,
