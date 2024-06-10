@@ -65,7 +65,7 @@
   bottom: 5px;
 }
 .dropdown-menu {
-  margin-left: -150px;
+  margin-left: -165px;
   margin-top: -15px;
 }
 
@@ -82,6 +82,14 @@
 
 .nav-link i {
   color: black;
+}
+
+.nav-link i:hover {
+  color: var(--blue);
+}
+
+.active {
+  color: var(--blue) !important;
 }
 
 @media only screen and (max-width: 768px) {

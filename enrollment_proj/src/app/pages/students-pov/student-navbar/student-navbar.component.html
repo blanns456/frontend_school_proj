@@ -31,12 +31,12 @@
     <ul class="nav flex-column text-center pt-1">
       <li class="nav-item">
         <a class="nav-link" routerLink="/student/home">
-          <i class="pi pi-home pi-user-edit"></i>
+          <i class="pi pi-home"></i>
         </a>
       </li>
       <li>
         <a href="#" class="nav-link" routerLink="/student/information">
-          <i class="pi pi-user-edit"></i>
+          <i class="pi pi-user"></i>
         </a>
       </li>
       <li>
@@ -104,14 +104,22 @@
             class="dropdown-item"
             routerLink="/update-information"
             routerLinkActive="active"
-            >Update Information</a
+            ><i class="pi pe-2 pi-user-edit"></i>Update Information</a
           >
         </li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i class="fa pe-2 fa-cog"></i>Settings</a
+          >
+        </li>
         <li>
           <hr class="dropdown-divider" />
         </li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i class="fa fa-sign-out pe-2"></i>Sign out</a
+          >
+        </li>
       </ul>
     </div>
   </div>

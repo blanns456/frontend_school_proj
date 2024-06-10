@@ -69,14 +69,28 @@ thead tr th {
   content: "All";
   margin: -22px;
 }
+
+.containerTab {
+  padding-top: 8%;
+  width: 95%;
+}
+
 @media only screen and (min-width: 577px) and (max-width: 768px) {
   .content {
     padding-top: 10%;
+  }
+  .containerTab {
+    padding-top: 10%;
+    width: 95%;
   }
 }
 
 @media only screen and (max-width: 576px) {
   .content {
     padding-top: 20%;
+  }
+  .containerTab {
+    padding-top: 23%;
+    width: 100%;
   }
 }

@@ -1,5 +1,5 @@
 .text-header {
-  background-color: #0287af;
+  background-color: var(--midnight);
 }
 
 .btnAddFees {
@@ -30,9 +30,9 @@
 
 table th {
   color: #fff;
-  background-color: #0287af;
+  background-color: var(--midnight);
 }
 
 .inputs:hover {
-  border-bottom: 3px solid #0287af;
+  border-bottom: 3px solid var(--midnight);
 }

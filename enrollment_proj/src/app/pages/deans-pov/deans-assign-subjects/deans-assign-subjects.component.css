@@ -1,9 +1,9 @@
 .text-header {
-    background-color: #0287AF;
+  background-color: var(--midnight);
 }
 
 .btnAddFees {
-    background-color: #1E3050;
+  background-color: var(--blue);
 }
 
 ::-webkit-scrollbar {
@@ -11,7 +11,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E3050; 
+  background: #1e3050;
 }
 
 .containerTab {
@@ -19,17 +19,19 @@
   padding-top: 7%;
 }
 
-.contentTab{
+.contentTab {
   height: 100%;
   overflow-y: auto;
 }
 
 table th {
   color: #fff;
-  background-color: #0287AF;
+  background-color: var(--midnight);
 }
 
-input[type=text], input[type=date], select {
+/* input[type="text"],
+input[type="date"],
+select {
   font-size: 1rem;
   width: 95%;
   padding: 10px 15px;
@@ -37,8 +39,8 @@ input[type=text], input[type=date], select {
   border: none;
   border-bottom: 2px solid black;
   outline: none;
-}
+} */
 
 .inputs:hover {
-  border-bottom: 3px solid #0287AF;
+  border-bottom: 3px solid var(--midnight);
 }
