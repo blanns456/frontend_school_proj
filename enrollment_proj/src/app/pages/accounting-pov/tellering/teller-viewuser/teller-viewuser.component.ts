@@ -6,6 +6,7 @@ import { error } from 'jquery';
 import { MessageService } from 'primeng/api';
 import { AccountingController } from 'src/app/controllers/accountingController.component';
 import { SemesterController } from 'src/app/controllers/semester_controller.component';
+import { AccountingService } from 'src/app/services/accounting.service';
 
 @Component({
   selector: 'app-teller-viewuser',
@@ -25,7 +26,7 @@ export class TellerViewuserComponent implements OnInit {
   showbreakdownDialog: boolean = false;
   displayname!: string;
   randomNumber: number;
-  studTransac: FormGroup;
+  // studTransac: FormGroup;
   students = [
     {
       name: 'John Doe',
@@ -45,15 +46,20 @@ export class TellerViewuserComponent implements OnInit {
   sem_id: any;
   transacinfo: any;
   studentTranac: any;
-  selectedItemFees: any[] = [];
+  // selectedItemFees: any[] = [];
   allocation: any;
   allodata: any;
   breakinfo: any;
   feesbreakdown: any;
+  resdata: any;
+  receiptform: any;
+  studid: any;
+  studentId: any;
 
   constructor(
     private router: Router,
     private messageService: MessageService,
+    private AccountingService: AccountingService,
     private semester_controller: SemesterController,
     private AccountingController: AccountingController
   ) {
@@ -62,84 +68,83 @@ export class TellerViewuserComponent implements OnInit {
     console.log('Received student data:', this.studentLedg);
     this.randomNumber = Math.floor(1000000 + Math.random() * 9000000);
 
-    const studid = this.studentLedg['stud_id'];
-    const studledgerId = this.studentLedg['id'];
-    this.getstudledger(studid);
-    this.getstudlabfee(studid);
+    // console.log(studid);
+    // this.getstudledger(studid);
+    // this.getstudlabfee(studid);
 
-    this.studTransac = new FormGroup({
-      student_id: new FormControl('', [Validators.required]),
-      studledgerId: new FormControl('', [Validators.required]),
-      mop: new FormControl('', [Validators.required]),
-      receiptNo: new FormControl('', [Validators.required]),
-      sem_id: new FormControl('', [Validators.required]),
-      teller: new FormControl('', [Validators.required]),
-      afterBal: new FormControl(0, [Validators.required]),
-      paidAmount: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      status: new FormControl('', [Validators.required]),
-    });
+    // this.studTransac = new FormGroup({
+    //   student_id: new FormControl('', [Validators.required]),
+    //   studledgerId: new FormControl('', [Validators.required]),
+    //   mop: new FormControl('', [Validators.required]),
+    //   receiptNo: new FormControl('', [Validators.required]),
+    //   sem_id: new FormControl('', [Validators.required]),
+    //   teller: new FormControl('', [Validators.required]),
+    //   afterBal: new FormControl(0, [Validators.required]),
+    //   paidAmount: new FormControl('', [Validators.required]),
+    //   description: new FormControl('', [Validators.required]),
+    //   status: new FormControl('', [Validators.required]),
+    // });
 
-    this.studTransac.get('receiptNo')?.setValue(this.randomNumber);
-    this.studTransac.get('student_id')?.setValue(studid);
-    this.studTransac.get('studledgerId')?.setValue(studledgerId);
+    // this.studTransac.get('receiptNo')?.setValue(this.randomNumber);
+    // this.studTransac.get('student_id')?.setValue(studid);
+    // this.studTransac.get('studledgerId')?.setValue(studledgerId);
   }
 
   showmakePayment() {
     this.showMakePaymentDIalog = true;
   }
 
-  showallocateFees() {
-    this.allocateTable = true;
-    const paidAmountValue = this.studTransac.value;
-    this.AccountingController.allocateFees(paidAmountValue).subscribe({
-      next: (res) => {
-        this.allodata = res;
-        this.allocation = this.allodata[0];
-        // console.log(this.allocation);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error.message);
-      },
-    });
-  }
+  // showallocateFees() {
+  //   this.allocateTable = true;
+  //   const paidAmountValue = this.studTransac.value;
+  //   this.AccountingController.allocateFees(paidAmountValue).subscribe({
+  //     next: (res) => {
+  //       this.allodata = res;
+  //       this.allocation = this.allodata[0];
+  //       // console.log(this.allocation);
+  //     },
+  //     error: (error: HttpErrorResponse) => {
+  //       console.log(error.message);
+  //     },
+  //   });
+  // }
 
-  saveStudTransac() {
-    // console.log(this.studTransac.value);
-    this.AccountingController.addstudtransac(this.studTransac.value).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.saveallocatedfees();
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'Enjoy!',
-        });
-        setTimeout(() => {
-          window.location.reload;
-        }, 4000);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error.message);
-      },
-    });
-  }
+  // saveStudTransac() {
+  //   // console.log(this.studTransac.value);
+  //   this.AccountingController.addstudtransac(this.studTransac.value).subscribe({
+  //     next: (res) => {
+  //       console.log(res);
+  //       this.saveallocatedfees();
+  //       this.messageService.add({
+  //         severity: 'success',
+  //         summary: 'Success',
+  //         detail: 'Enjoy!',
+  //       });
+  //       setTimeout(() => {
+  //         window.location.reload;
+  //       }, 4000);
+  //     },
+  //     error: (error: HttpErrorResponse) => {
+  //       console.log(error.message);
+  //     },
+  //   });
+  // }
 
-  saveallocatedfees() {
-    const formData = {
-      studledgerId: this.studTransac.get('studledgerId')?.value,
-      allocatedFees: this.allocation,
-    };
+  // saveallocatedfees() {
+  //   const formData = {
+  //     studledgerId: this.studTransac.get('studledgerId')?.value,
+  //     allocatedFees: this.allocation,
+  //   };
 
-    this.AccountingController.saveallocatedfees(formData).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error.message);
-      },
-    });
-  }
+  //   this.AccountingController.saveallocatedfees(formData).subscribe({
+  //     next: (res) => {
+  //       console.log(res);
+  //     },
+  //     error: (error: HttpErrorResponse) => {
+  //       console.log(error.message);
+  //     },
+  //   });
+  // }
 
   showpayHistory(studname: string, stud_id: number) {
     this.displayname = studname;
@@ -179,35 +184,50 @@ export class TellerViewuserComponent implements OnInit {
     });
   }
 
-  getstudledger(studid: number) {
-    this.AccountingController.getstudledger(studid).subscribe({
-      next: (res) => {
-        this.data = res;
-        this.showledgerfees = this.data[0];
-        // console.log(this.showledgerfees);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error.message);
-      },
-    });
-  }
+  // getstudledger(studid: number) {
+  //   this.AccountingController.getstudledger(studid).subscribe({
+  //     next: (res) => {
+  //       this.data = res;
+  //       this.showledgerfees = this.data[0];
+  //       console.log(this.showledgerfees);
+  //     },
+  //     error: (error: HttpErrorResponse) => {
+  //       console.log(error.message);
+  //     },
+  //   });
+  // }
 
-  getstudlabfee(studid: number) {
-    this.AccountingController.getstudlabFees(studid).subscribe({
-      next: (res) => {
-        this.labdata = res;
-        this.labfeedatas = this.labdata[0];
-        // console.log(this.labfeedatas);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error.message);
-      },
-    });
-  }
+  // getstudlabfee(studid: number) {
+  //   this.AccountingController.getstudlabFees(studid).subscribe({
+  //     next: (res) => {
+  //       this.labdata = res;
+  //       this.labfeedatas = this.labdata[0];
+  //       // console.log(this.labfeedatas);
+  //     },
+  //     error: (error: HttpErrorResponse) => {
+  //       console.log(error.message);
+  //     },
+  //   });
+  // }
 
   ngOnInit(): void {
+    this.studid = this.studentLedg['studid'];
     // console.log(this.studentLedg['stud_id']);
     this.getactivesem();
+    this.getreceipt(this.studid);
+  }
+
+  getreceipt(studid: number) {
+    this.AccountingService.getReceipt(studid).subscribe({
+      next: (res) => {
+        this.resdata = res;
+        this.receiptform = this.resdata[0];
+        console.log(this.receiptform);
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error.message);
+      },
+    });
   }
 
   getactivesem() {
@@ -216,7 +236,7 @@ export class TellerViewuserComponent implements OnInit {
       this.sem_id = this.seminfo[0][0]['id'];
       this.activeyr = this.seminfo[0][0]['active_year'];
       this.activesem = this.seminfo[0][0]['semester'];
-      this.studTransac.get('sem_id')?.setValue(this.sem_id);
+      // this.studTransac.get('sem_id')?.setValue(this.sem_id);
     });
   }
 }

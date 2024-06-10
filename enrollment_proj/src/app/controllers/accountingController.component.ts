@@ -76,9 +76,9 @@ export class AccountingController {
     return this.http.get(this.Root_URL + 'getadditional/' + studid);
   }
 
-  showstudLedger() {
-    return this.http.get(this.Root_URL + 'showstudLedger');
-  }
+  // showstudLedger() {
+  //   return this.http.get(this.Root_URL + 'showstudLedger');
+  // }
 
   getstudledger(studid: number) {
     return this.http.get(this.Root_URL + 'getstudledger/' + studid);
@@ -176,4 +176,8 @@ export class AccountingController {
     console.log('Sent datas', formData);
     return this.http.post(this.Root_URL + 'saveallocate-fees', formData);
   }
+
+  // gettelleruid() {
+  //   return this.http.get(this.Root_URL + 'generate-receipt');
+  // }
 }

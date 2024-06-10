@@ -21,7 +21,7 @@ table th {
   overflow-y: auto;
 }
 
-input[type="text"],
+/* input[type="text"],
 input[type="date"],
 select {
   font-size: 1rem;
@@ -31,7 +31,7 @@ select {
   border: none;
   border-bottom: 2px solid black;
   outline: none;
-}
+} */
 
 .inputs:hover {
   border-bottom: 3px solid #0287af;
