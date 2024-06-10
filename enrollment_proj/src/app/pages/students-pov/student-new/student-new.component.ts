@@ -240,13 +240,13 @@ export class StudentNewComponent implements OnInit {
       }
     });
 
-    this.semester_controller.getactivenrollsem().subscribe((res) => {
-      this.semesterinfo = res;
-      if (this.semesterinfo[0]) {
-        this.semester = this.semesterinfo[0][0]['semester'];
-        this.sem.setValue(this.semester);
-      }
-    });
+    // this.semester_controller.getactivenrollsem().subscribe((res) => {
+    //   this.semesterinfo = res;
+    //   if (this.semesterinfo[0]) {
+    //     this.semester = this.semesterinfo[0][0]['semester'];
+    //     this.sem.setValue(this.semester);
+    //   }
+    // });
   }
 
   inputMask(event: Event) {

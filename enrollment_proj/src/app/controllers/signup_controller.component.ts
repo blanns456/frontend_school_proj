@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class SignupController {
-  // readonly Root_URL = 'http://127.0.0.1:8000/api/';
-  // readonly Root_URL = 'https://genesys-api.asc-bislig.com/api/';
-  readonly Root_URL = 'http://127.0.0.1:8000/api/';
+  // readonly Root_URL = 'http://genesys.example.com/api/';
+  // readonly Root_URL = 'http://genesys.example.com/api/';
+  readonly Root_URL = 'http://genesys.example.com/api/';
   token: any;
 
   // alertmessage: string | undefined;

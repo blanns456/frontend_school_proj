@@ -49,7 +49,11 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('role', response.role);
         this.role = localStorage.getItem('role');
 
+<<<<<<< Updated upstream
         if (this.role === 'College') {
+=======
+        if (this.role === 'college' || this.role === 'Graduate Studies') {
+>>>>>>> Stashed changes
           this.router.navigate(['student/home']);
         } else if (this.role === 'dean') {
           this.router.navigate(['dean/home']);
@@ -60,6 +64,9 @@ export class LoginComponent implements OnInit {
         } else if (this.role === 'registrar') {
           this.router.navigate(['registrar/home']);
         }
+        // else if (this.role === 'Graduate Studies') {
+        //   this.router.navigate(['maed']);
+        // }
       },
       error: (error: any) => {
         console.log(error);

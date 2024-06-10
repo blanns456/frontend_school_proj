@@ -165,7 +165,11 @@ const routes: Routes = [
     path: 'student',
     component: StudentParentComponent,
     canActivate: [AuthGuard],
+<<<<<<< Updated upstream
     data: { allowedRoles: ['College'] },
+=======
+    data: { allowedRoles: ['college', 'Graduate Studies'] },
+>>>>>>> Stashed changes
     children: [
       {
         path: '',
@@ -555,4 +559,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
