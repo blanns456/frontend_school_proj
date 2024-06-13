@@ -25,11 +25,9 @@ export class StudentDashboardInformationComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     try {
       const res = await this.college.information();
-      this.response = res;
-      this.data = this.response[0][0];
-      this.date = new Date(this.data.birthdate);
+      this.data = res;
+      this.date = new Date(this.data.birth_date);
     } catch (error) {
-      console.error('Error fetching information', error);
     }
   }
 

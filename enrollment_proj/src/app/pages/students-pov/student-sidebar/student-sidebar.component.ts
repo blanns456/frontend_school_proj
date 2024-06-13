@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,17 +9,22 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class StudentSidebarComponent implements OnInit {
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
   onLogout(): void {
     this.authService.logout().subscribe({
-      next: () => {
-      },error:(err) =>{
-        console.log(err);
+      next: (response) => {
+        console.log(response);
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        console.log('Logout error', err);
       }
-    })
+    });
   }
 }

@@ -43,7 +43,10 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    localStorage.removeItem('token');
-    return this.http.get(this.Root_URL + 'logout');
+    const token = this.getToken();
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.post(`${this.Root_URL}logout`, {}, { headers });
   }
 }

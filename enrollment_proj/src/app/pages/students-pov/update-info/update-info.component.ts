@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {Location} from '@angular/common';
 import { FormBuilder, FormGroup, Validators, FormsModule, FormControl } from '@angular/forms';
 import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
 import { LoginController } from 'src/app/controllers/login_controller.component';
@@ -14,6 +15,7 @@ import { UpdateStudentServiceService } from 'src/app/services/update-student-ser
 import nationalities from '../../../../assets/json/nationalities.json';
 import religions from '../../../../assets/json/religions.json';
 import { Router } from '@angular/router';
+import { CollegeService } from 'src/app/services/college.service';
 
 @Component({
   selector: 'app-update-info',
@@ -67,7 +69,9 @@ export class UpdateInfoComponent {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private college: CollegeService,
+    private location:Location
   ) { }
 
   onRegionChange(event: any) {
@@ -84,6 +88,7 @@ export class UpdateInfoComponent {
       this.filteredProvinces = [];
     }
   }
+
 
   onProvinceChange(event: any) {
     const provinceName = event.target?.value;
@@ -141,7 +146,99 @@ export class UpdateInfoComponent {
     }
   }
 
-  ngOnInit(): void {
+  // onSameAsHomeChange(event: any) {
+  //   const isSameAsHome = event.target.checked;
+
+  //   if (isSameAsHome) {
+  //     this.update_student.patchValue({
+  //       present_region: this.update_student.get('home_region')?.value,
+  //       present_province: this.update_student.get('home_province')?.value,
+  //       present_city: this.update_student.get('home_city')?.value,
+  //       present_barangay: this.update_student.get('home_barangay')?.value,
+  //       present_street: this.update_student.get('home_street')?.value,
+  //       present_zip: this.update_student.get('home_zip')?.value,
+  //       });
+  //     this.onPresentRegionChange(this.update_student.get('home_region')?.value);
+  //     this.onPresentProvinceChange(this.update_student.get('home_province')?.value);
+  //     this.onPresentCityChange(this.update_student.get('home_city')?.value);
+  //   } else {
+  //     this.update_student.patchValue({
+  //       present_region: null,
+  //       present_province: null,
+  //       present_city: null,
+  //       present_barangay: null,
+  //       present_street: null,
+  //       present_zip: null,
+  //     });
+  //   }
+
+  //   // // Clear the filtered lists for present address
+  //   // this.filteredPresentProvinces = [];
+  //   // this.filteredPresentCities = [];
+  //   // this.filteredPresentBarangays = [];
+  // }
+
+  onSameAsHomeChange(event: any) {
+    const isSameAsHome = event.target.checked;
+
+    if (isSameAsHome) {
+      const homeRegion = this.update_student.get('home_region')?.value;
+      const homeProvince = this.update_student.get('home_province')?.value;
+      const homeCity = this.update_student.get('home_city')?.value;
+      const homeBarangay = this.update_student.get('home_barangay')?.value;
+      const homeStreet = this.update_student.get('home_street')?.value;
+      const homeZip = this.update_student.get('home_zip')?.value;
+
+      this.update_student.patchValue({
+        present_region: homeRegion,
+        present_province: homeProvince,
+        present_city: homeCity,
+        present_barangay: homeBarangay,
+        present_street: homeStreet,
+        present_zip: homeZip,
+      });
+
+      // Find the selected region object from the regions array
+      const selectedRegion = this.regions.find((region: { region_name: any; }) => region.region_name === homeRegion);
+
+      if (selectedRegion) {
+        // Filter provinces based on the selected region code
+        this.filteredPresentProvinces = this.provinces.filter((province: { region_code: any; }) => province.region_code === selectedRegion.region_code);
+
+        // Find the selected province object from the filtered provinces array
+        const selectedProvince = this.filteredPresentProvinces.find((province: { province_name: any; }) => province.province_name === homeProvince);
+
+        if (selectedProvince) {
+          // Filter cities based on the selected province code
+          this.filteredPresentCities = this.city.filter((city: { province_code: any; }) => city.province_code === selectedProvince.province_code);
+
+          // Find the selected city object from the filtered cities array
+          const selectedCity = this.filteredPresentCities.find((city: { city_name: any; }) => city.city_name === homeCity);
+
+          if (selectedCity) {
+            // Filter barangays based on the selected city code
+            this.filteredPresentBarangays = this.barangay.filter((barangay: { city_code: any; }) => barangay.city_code === selectedCity.city_code);
+          }
+        }
+      }
+    } else {
+      this.update_student.patchValue({
+        present_region: null,
+        present_province: null,
+        present_city: null,
+        present_barangay: null,
+        present_street: null,
+        present_zip: null,
+      });
+
+      // Clear the filtered lists for present address
+      this.filteredPresentProvinces = [];
+      this.filteredPresentCities = [];
+      this.filteredPresentBarangays = [];
+    }
+  }
+
+  async ngOnInit(): Promise<void> {
     this.nationalitiesList = nationalities;
     this.religionList = religions;
     this.regions;
@@ -150,57 +247,46 @@ export class UpdateInfoComponent {
     this.selectedReligion = this.update_student.get('citizenship')?.value;
     // console.log(this.regions);
 
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    });
+    try {
+      const res = await this.college.information();
+      this.data = res;
+      this.date = new Date(this.data.birth_date);
 
-    this.http.get(this.logincontroller.Root_URL + 'info-student', { headers: headers })
-      .subscribe({
-        next: (res: any) => {
-          this.data = res[0][0];
-          // this.date = new Date(this.data.birthdate);
-
-          this.update_student.patchValue({
-            first_name: this.data.first_name,
-            last_name: this.data.last_name,
-            middle_name: this.data.middle_name,
-            gender: this.data.gender,
-            email: this.data.email_address,
-            birthdate: this.data.birthdate,
-            citizenship: this.data.citizenship,
-            religion: this.data.religion,
-            contact_number: this.data.contact_number,
-            civil_status: this.data.civil_status,
-            birth_place: this.data.birth_place,
-            elem_school: this.data.elem_school,
-            elem_yr: this.data.elem_yr,
-            jhs_school: this.data.jhs_school,
-            jhs_yr: this.data.jhs_yr,
-            shs_school: this.data.shs_school,
-            shs_yr: this.data.shs_yr,
-            last_school: this.data.last_school,
-            last_school_year: this.data.last_school_year,
-            father_name: this.data.father_name,
-            father_employed: this.data.father_employed,
-            father_occupation: this.data.father_occupation,
-            father_contact: this.data.father_contact,
-            mother_name: this.data.mother_name,
-            mother_employed: this.data.mother_employed,
-            mother_occupation: this.data.mother_occupation,
-            mother_contact: this.data.mother_contact,
-            guardian_name: this.data.guardian_name,
-            guardian_employed: this.data.guardian_employed,
-            guardian_occupation: this.data.guardian_occupation,
-            guardian_contact: this.data.guardian_contact,
-          });
-        },
-        error: (error: any) => {
-          // console.error('Error:', error);
-        }
+      this.update_student.patchValue({
+        first_name: this.data.first_name,
+        last_name: this.data.last_name,
+        middle_name: this.data.middle_name,
+        gender: this.data.gender,
+        email: this.data.email_address,
+        birthdate: this.data.birthdate,
+        citizenship: this.data.citizenship,
+        religion: this.data.religion,
+        contact_number: this.data.contact_number,
+        civil_status: this.data.civil_status,
+        birth_place: this.data.birth_place,
+        elem_school: this.data.elem_school,
+        elem_yr: this.data.elem_yr,
+        jhs_school: this.data.jhs_school,
+        jhs_yr: this.data.jhs_yr,
+        shs_school: this.data.shs_school,
+        shs_yr: this.data.shs_yr,
+        last_school: this.data.last_school,
+        last_school_year: this.data.last_school_year,
+        father_name: this.data.father_name,
+        father_employed: this.data.father_employed,
+        father_occupation: this.data.father_occupation,
+        father_contact: this.data.father_contact,
+        mother_name: this.data.mother_name,
+        mother_employed: this.data.mother_employed,
+        mother_occupation: this.data.mother_occupation,
+        mother_contact: this.data.mother_contact,
+        guardian_name: this.data.guardian_name,
+        guardian_employed: this.data.guardian_employed,
+        guardian_occupation: this.data.guardian_occupation,
+        guardian_contact: this.data.guardian_contact,
       });
-
+    } catch (error) {
+    }
   }
 
   visible: boolean = false;
@@ -440,5 +526,9 @@ export class UpdateInfoComponent {
 
       // console.log('Invalid input. Please enter only numeric values.');
     }
+  }
+
+  backClicked() {
+    this.location.back();
   }
 }

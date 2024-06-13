@@ -5,81 +5,6 @@
   <div class="d-none position-absolute loading-overlay" id="loading">
     <app-loading-page></app-loading-page>
   </div>
-
-  <!-- <div
-    class="bg-light mx-auto p-2 bg-opacity-75 rounded-4 login-bg"
-    id="mainPage"
-  >
-    <div class="asclogo position-absolute top-25 start-50 translate-middle">
-      <img
-        src="../../../assets/misc/ascb_logo.png"
-        alt
-        class="img-responsive w-100"
-      />
-    </div>
-    <div class="row d-flex justify-content-center">
-      <div
-        class="col-lg-6 col-md-12 px-3 pt-3 d-flex align-items-center justify-content-center my-0 d-none d-md-none d-lg-block"
-      >
-        <img
-          src="../../../assets/misc/container_image_1.png"
-          alt="logo"
-          class="img-responsive mw-100"
-        />
-      </div>
-      <div class="col-lg-6 col-md-12">
-        <div class="img-responsive w-100 text-center">
-          <img
-            src="../../../assets/misc/genesys-ascb-70th-logo.png"
-            alt="70th logo"
-          />
-        </div>
-        <form (ngSubmit)="submit()" [formGroup]="form">
-          <div class="text-center formUse">
-            <label for="username" class="form-label"></label>
-            <input
-              pInputText
-              type="text"
-              placeholder="Username"
-              formControlName="username"
-            />
-          </div>
-          <div class="mt-2 text-center">
-            <label for="password" class="form-label"></label>
-            <p-password
-              formControlName="password"
-              [feedback]="false"
-              [toggleMask]="true"
-              placeholder="Password"
-            >
-            </p-password>
-          </div>
-          <div class="mt-4 text-center">
-            <button
-              type="submit"
-              class="btn btn-primary fw-bold w-50 login-button"
-            >
-              LOGIN
-            </button>
-          </div>
-        </form>
-        <div class="row">
-          <div class="col-6">
-            <p class="text-start mt-3 mx-5">
-              <a routerLink="/" class="fw-normal text-primary"> Back </a>
-            </p>
-          </div>
-          <div class="col-6">
-            <p class="text-center mt-3">
-              <a routerLink="/forgot-password" class="fw-normal text-primary">
-                Forgot Password?
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div class="back d-flex align-items-center">
     <div class="login-container m-auto bg-opacity-75 bg-light shadow">
       <div class="row">
@@ -101,7 +26,13 @@
                 placeholder="Email"
                 required
                 formControlName="email"
+                required
               />
+              <div
+                *ngIf="email.invalid && (email.dirty || email.touched)"
+                class="text-danger">
+                <div *ngIf="email.errors?.['required']">Email is required.</div>
+              </div>
             </div>
             <div class="text-center">
               <label for="password" class="form-label"></label>
@@ -112,13 +43,24 @@
                 placeholder="Password"
                 required
               />
+              <div
+                *ngIf="password.invalid && (password.dirty || password.touched)"
+                class="text-danger">
+                <div *ngIf="password.errors?.['required']">Password is required.</div>
+              </div>
             </div>
-            <button
-              type="SUBMIT"
-              class="loginBtn btn mt-3 mb-2 text-light w-100"
-            >
-              Log&dash;in
-            </button>
+            <ng-template [ngIf]="loading">
+              <p-progressSpinner styleClass="w-4rem h-4rem" strokeWidth="8" animationDuration=".5s"></p-progressSpinner>
+            </ng-template>
+            <ng-template [ngIf]="!loading">
+              <button
+                type="SUBMIT"
+                class="loginBtn btn mt-3 mb-2 text-light w-100"
+                [disabled]="!form.valid"
+              >
+                Log&dash;in
+              </button>
+            </ng-template>
             <a routerLink="/forgot-password" href="#" class="text-primary"
               >Forgot Password&quest;</a
             >
@@ -129,6 +71,7 @@
               <img src="../../../assets/misc/genesys-login-back.png" alt="" />
               <span class="btnTooltip">Homepage</span>
             </a>
+
             <button
               routerLink="/new/student"
               class="createBtn btn ms-3 text-light w-100"

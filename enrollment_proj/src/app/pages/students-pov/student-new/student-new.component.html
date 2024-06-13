@@ -44,7 +44,7 @@
                     pInputText
                     pAutoFocus
                     [autofocus]="true"
-                    class="border p-inputtext-md px-3"
+                    class="border p-inputtext-md px-3 text-uppercase"
                     autocomplete="off"
                     formControlName="first_name"
                     id="firstname"
@@ -61,7 +61,7 @@
                     <input
                       type="text"
                       pInputText
-                      class="p-inputtext-md border"
+                      class="p-inputtext-md border text-uppercase"
                       autocomplete="off"
                       formControlName="last_name"
                       id="lastname"
@@ -79,6 +79,7 @@
                       [ariaChecked]="noMiddleName"
                       (click)="toggleMiddleName()"
                       [binary]="true"
+                      class="text-uppercase"
                       inputId="binary"
                     ></p-checkbox>
                     <br />
@@ -88,7 +89,7 @@
                     [readonly]="noMiddleName"
                     formControlName="middle_name"
                     type="text"
-                    class="p-inputtext-md border"
+                    class="p-inputtext-md border text-uppercase"
                     id="middlename"
                     [style]="{ width: '100%' }"
                   />

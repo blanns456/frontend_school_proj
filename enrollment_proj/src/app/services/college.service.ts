@@ -17,7 +17,7 @@ export class CollegeService {
 
   information(): Promise<any> {
     return firstValueFrom(
-      this.http.get(this.Root_URL + 'info-student', { headers: this.headers })
+      this.http.get(this.Root_URL + 'my-information', { headers: this.headers })
     );
   }
 

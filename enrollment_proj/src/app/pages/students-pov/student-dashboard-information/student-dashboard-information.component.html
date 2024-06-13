@@ -3,9 +3,9 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-8">
-          <h2 class="h6"><strong>Program : </strong>{{ data?.program }}</h2>
+          <h2 class="h6"><strong>Program : </strong>{{ data?.student_academics[0].program.program_name }}</h2>
           <h2 class="h6">
-            <strong>Year Level : </strong>{{ data?.student_yr_lvl }}
+            <strong>Year Level : </strong>{{ data?.student_academics[0].year_level}}
           </h2>
         </div>
         <div class="col-4">
@@ -166,7 +166,7 @@
             <input
               pInputText
               id="email"
-              [value]="data?.email_address"
+              [value]="data?.user.email"
               [style]="{ width: '100%' }"
               [readOnly]="true"
             />
@@ -247,7 +247,7 @@
                 pInputText
                 id="elem_yrgrad"
                 class="text-capitalize"
-                [value]="data?.elem_yr"
+                [value]="data?.elem_year"
                 [style]="{ width: '100%' }"
                 [readOnly]="true"
               />
@@ -273,7 +273,7 @@
                 pInputText
                 id="jhs_yrgrad"
                 class="text-capitalize"
-                [value]="data?.jhs_yr"
+                [value]="data?.jhs_year"
                 [style]="{ width: '100%' }"
                 [readOnly]="true"
               />
@@ -299,7 +299,7 @@
                 pInputText
                 id="shs_yrgrad"
                 class="text-capitalize"
-                [value]="data?.shs_yr"
+                [value]="data?.shs_year"
                 [style]="{ width: '100%' }"
                 [readOnly]="true"
               />
@@ -344,7 +344,7 @@
                     pInputText
                     id="f_name"
                     class="text-capitalize"
-                    [value]="data?.father_name"
+                    [value]="data?.student_parent.father_name"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -357,7 +357,7 @@
                     pInputText
                     id="employed_where"
                     class="text-capitalize"
-                    [value]="data?.father_employed"
+                    [value]="data?.student_parent.father_employed"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -370,7 +370,7 @@
                     pInputText
                     id="occupation"
                     class="text-capitalize"
-                    [value]="data?.father_occupation"
+                    [value]="data?.student_parent.father_occupation"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -383,7 +383,7 @@
                     pInputText
                     id="f_number"
                     class="text-capitalize"
-                    [value]="data?.father_contact"
+                    [value]="data?.student_parent.father_contact"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -402,7 +402,7 @@
                     pInputText
                     id="m_name"
                     class="text-capitalize"
-                    [value]="data?.mother_name"
+                    [value]="data?.student_parent.mother_name"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -415,7 +415,7 @@
                     pInputText
                     id="m_employed_where"
                     class="text-capitalize"
-                    [value]="data?.mother_employed"
+                    [value]="data?.student_parent.mother_employed"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -428,7 +428,7 @@
                     pInputText
                     id="m_occupation"
                     class="text-capitalize"
-                    [value]="data?.mother_occupation"
+                    [value]="data?.student_parent.mother_occupation"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -441,7 +441,7 @@
                     pInputText
                     id="m_number"
                     class="text-capitalize"
-                    [value]="data?.mother_contact"
+                    [value]="data?.student_parent.mother_contact"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -460,7 +460,7 @@
                     pInputText
                     id="g_name"
                     class="text-capitalize"
-                    [value]="data?.guardian_contact"
+                    [value]="data?.student_parent.guardian_contact"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -473,7 +473,7 @@
                     pInputText
                     id="g_employed_where"
                     class="text-capitalize"
-                    [value]="data?.guardian_employed"
+                    [value]="data?.student_parent.guardian_employed"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -486,7 +486,7 @@
                     pInputText
                     id="g_occupation"
                     class="text-capitalize"
-                    [value]="data?.guardian_occupation"
+                    [value]="data?.student_parent.guardian_occupation"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -499,7 +499,7 @@
                     pInputText
                     id="g_number"
                     class="text-capitalize"
-                    [value]="data?.guardian_contact"
+                    [value]="data?.student_parent.guardian_contact"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />

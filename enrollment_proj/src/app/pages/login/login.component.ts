@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,42 +11,50 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup | any;
+  loading = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private messageService: MessageService,
     private authService: AuthService,
+    private ngZone: NgZone
   ) { }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+    this.initForm();
+  }
+
+  private initForm(): void {
+    this.form = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.required),
     });
   }
 
+  get email() {
+    return this.form.get('email');
+  }
+
+  get password() {
+    return this.form.get('password');
+  }
+
   submit(): void {
+    this.ngZone.run(() => {
+      this.loading = true;
+    });
     if (this.form.valid) {
       const { email, password } = this.form.value;
       this.authService.login(email, password).subscribe({
         next: () => {
           this.redirectBasedOnRole();
         },
-          error: (error) => {
-          console.error(error);
-          this.messageService.add({ severity: 'error', summary: 'Login Failed', detail: 'Invalid email or password' });
+          error: () => {
+            this.messageService.add({ severity: 'error', summary: 'Login Failed', detail: 'Invalid email or password' });
+            this.loading = false;
         }
       });
-      // this.authService.login(email, password).subscribe(
-      //   () => {
-      //     this.redirectBasedOnRole();
-      //   },
-      //   error => {
-      //     console.error(error);
-      //     this.messageService.add({ severity: 'error', summary: 'Login Failed', detail: 'Invalid email or password' });
-      //   }
-      // );
     }
   }
 
