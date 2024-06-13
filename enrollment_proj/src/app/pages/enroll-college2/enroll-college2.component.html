@@ -1,4 +1,4 @@
-<div class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column">
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column w-100">
   <app-headnavagation></app-headnavagation>
 
   <div class="w-75 p-0">
@@ -15,14 +15,16 @@
             for="last_name"
             class="form-label">
             Last Name
-            <span class="text-danger">*</span>
           </label>
           <input
             type="text"
-            class="form-control"
+            class="form-control in-valid"
+            [class.is-invalid]="lastnameisEmpty"
             name="last_name"
             id="last_name"
-            required>
+            required
+            [value]="lastnameval"
+            (change)="lastname($event)">
         </div>
       </div>
       <div class="col-3">
@@ -31,14 +33,16 @@
             for="first_name"
             class="form-label">
             First Name
-            <span class="text-danger">*</span>
           </label>
           <input
             type="text"
             class="form-control"
+            [class.is-invalid]="firstnamevalisEmpty"
             name="first_name"
             id="first_name"
-            required>
+            required
+            [value]="firstnameval"
+            (change)="firstname($event)">
         </div>
       </div>
       <div class="col-3">
@@ -46,15 +50,16 @@
           <label
             for="middle_name"
             class="form-label">
-            Middle Name
-            <span class="text-danger">*</span>
+            Middle Name (Optional)
           </label>
           <input
             type="text"
             class="form-control"
             name="middle_name"
             id="middle_name"
-            required>
+            required
+            [value]="middlenameval"
+            (change)="middlename($event)">
         </div>
       </div>
       <div class="col-3">
@@ -62,12 +67,15 @@
           <label
             for="suffix"
             class="form-label">
-            Suffix
+            Suffix (Optional)
           </label>
           <select
             name="suffix"
             id="suffix"
-            class="form-control form-select w-50">
+            class="form-control form-select w-50"
+            required
+            [value]="suffixval"
+            (change)="suffix($event)">
             <option
               value
               selected
@@ -86,118 +94,17 @@
       <div class="col-4">
         <div class="mb-3">
           <label
-            for="birth_date"
-            class="form-label">
-            Birth Date
-            <span class="text-danger">*</span>
-          </label>
-          <input
-            type="date"
-            class="form-control"
-            name="birth_date"
-            id="birth_date"
-            required>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="mb-3">
-          <label
-            for="religion"
-            class="form-label">
-            Religion
-            <span class="text-danger">*</span>
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            name="religion"
-            id="religion"
-            required>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="mb-3">
-          <label
-            for="email"
-            class="form-label">
-            Email Address
-            <span class="text-danger">*</span>
-          </label>
-          <input
-            type="email"
-            class="form-control"
-            name="email"
-            id="email"
-            required>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-4">
-        <div class="mb-3">
-          <label
-            for="birth_place"
-            class="form-label">
-            Birth Place
-            <span class="text-danger">*</span>
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            name="birth_place"
-            id="birth_place"
-            required>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="mb-3">
-          <label
-            for="citizenship"
-            class="form-label">
-            Citizenship
-            <span class="text-danger">*</span>
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            name="citizenship"
-            id="citizenship"
-            required>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="mb-3">
-          <label
-            for="contact_number"
-            class="form-label">
-            Student Contact Number
-            <span class="text-danger">*</span>
-          </label>
-          <input
-            type="text"
-            pattern="[0-9]{11}"
-            class="form-control"
-            name="contact_number"
-            id="contact_number"
-            required>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-4">
-        <div class="mb-3">
-          <label
             for="gender"
             class="form-label">
             Gender
-            <span class="text-danger">*</span>
           </label>
           <select
             name="gender"
             id="gender"
-            class="form-control form-select">
+            class="form-control form-select"
+            [value]="genderval"
+            [class.is-invalid]="gendervalisEmpty"
+            (change)="gender($event)">
             <option
               value
               selected
@@ -209,18 +116,21 @@
           </select>
         </div>
       </div>
+
       <div class="col-4">
         <div class="mb-3">
           <label
             for="civil_status"
             class="form-label">
             Civil Status
-            <span class="text-danger">*</span>
           </label>
           <select
             name="civil_status"
             id="civil_status"
-            class="form-control form-select">
+            class="form-control form-select"
+            [class.is-invalid]="civilstatusvalisEmpty"
+            [value]="civilstatusval"
+            (change)="civilstatus($event)">
             <option
               value
               selected
@@ -233,45 +143,133 @@
           </select>
         </div>
       </div>
+
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="birth_date"
+            class="form-label">
+            Birth Date
+          </label>
+          <input
+            type="date"
+            class="form-control"
+            name="birth_date"
+            id="birth_date"
+            required
+            [value]="birthdateval"
+            [class.is-invalid]="birthdatevalisEmpty"
+            (change)="birthdate($event)">
+        </div>
+      </div>
+
     </div>
 
     <div class="row">
-      <div class="col-6">
+      <div class="col-4">
         <div class="mb-3">
           <label
-            for="permanent_address"
+            for="birth_place"
             class="form-label">
-            Permanent Address
-            <span class="text-danger">*</span>
+            Birth Place
           </label>
           <input
             type="text"
             class="form-control"
-            name="permanent_address"
-            id="permanent_address"
-            required>
+            name="birth_place"
+            id="birth_place"
+            required
+            [value]="birth_placeval"
+            [class.is-invalid]="birth_placevalisEmpty"
+            (change)="birth_place($event)">
         </div>
       </div>
-      <div class="col-6">
+      <div class="col-4">
         <div class="mb-3">
           <label
-            for="home_address"
+            for="email"
             class="form-label">
-            Home Address
-            <span class="text-danger">*</span>
+            Email Address
+          </label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="email"
+            required
+            [value]="email_addressval"
+            [class.is-invalid]="email_addressvalisEmpty"
+            (change)="email_address($event)">
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="contact_number"
+            class="form-label">
+            Student Contact Number
+          </label>
+          <input
+            type="text"
+            pattern="[0-9]{11}"
+            class="form-control"
+            name="contact_number"
+            id="contact_number"
+            required
+            [value]="contactnumberval"
+            [class.is-invalid]="contactnumbervalisEmpty"
+            (change)="contactnumber($event)">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="citizenship"
+            class="form-label">
+            Citizenship
           </label>
           <input
             type="text"
             class="form-control"
-            name="home_address"
-            id="home_address"
-            required>
+            name="citizenship"
+            id="citizenship"
+            required
+            [value]="citizenshipval"
+            [class.is-invalid]="citizenshipvalisEmpty"
+            (change)="citizenship($event)">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="mb-3">
+          <label
+            for="religion"
+            class="form-label">
+            Religion
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            name="religion"
+            id="religion"
+            required
+            [value]="religionval"
+            [class.is-invalid]="religionvalisEmpty"
+            (change)="religion($event)">
         </div>
       </div>
     </div>
 
   </div>
 
-  <app-pagination></app-pagination>
+  <!-- <app-pagination></app-pagination> -->
+  <app-mat-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChanged)="onPageChanged($event)"></app-mat-pagination>
   <app-footernavigation></app-footernavigation>
 </div>

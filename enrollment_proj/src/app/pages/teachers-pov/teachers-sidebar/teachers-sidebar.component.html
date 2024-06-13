@@ -1,0 +1,44 @@
+<div class="sidebar position-fixed">
+  <div class="logout position-relative">
+    <div class="text-end">
+      <a href="#"
+        class="text-white position-absolute top-0 end-0 my-1 mx-3 link-offset-2 link-underline link-underline-opacity-0">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+      </a>
+    </div>
+    <div class="text-start">
+      <img src="../../../assets/misc/default.png" alt="avatar" id="profile" width="60" height="60"
+        class="img-thumbnail mt-4 mx-3" />
+      <h2 class="h6 fw-bold text-white mx-3 my-2">Doe, John</h2>
+      <p class="text-light fs-6 mx-3 fw-light">Teacher</p>
+    </div>
+  </div>
+  <div class="links">
+    <div id="list-example" class="list-group">
+      <a class="py-3 list-group-item list-group-item-action home" routerLink="/teachers-home" routerLinkActive="active">
+        <i class="mx-2 fa-solid fa-house"></i>
+        Home
+      </a>
+      <a class="my-1 py-3 list-group-item list-group-item-action" id="classList" routerLinkActive="active">
+        <i class="mx-2 fa-solid fa-users"></i>
+        Class List
+        <i class="fa-solid fa-caret-down"></i>
+      </a>
+      <ul class="classList-sub">
+        <li>
+          <a routerLink="/teachers-classlist" routerLinkActive="active"
+            class="list-group-item list-group-item-action py-3 text-uppercase"><i
+              class="fa-solid fa-truck-fast mx-2"></i>
+            College
+          </a>
+        </li>
+      </ul>
+      <a class="my-1 py-3 list-group-item list-group-item-action" routerLink="/teachers-submitgrades"
+        routerLinkActive="active">
+        <i class="mx-2 fa-solid fa-file-circle-check"></i>
+        Submit Grades
+      </a>
+    </div>
+  </div>
+</div>

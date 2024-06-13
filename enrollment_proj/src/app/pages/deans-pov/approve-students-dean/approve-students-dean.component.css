@@ -1,0 +1,38 @@
+.text-header {
+  background-color: #0287af;
+}
+
+.btnAddFees {
+  background-color: #1e3050;
+}
+
+.table th {
+  width: 60px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e3050;
+}
+
+.containerTab {
+  height: 100vh;
+  padding-top: 6%;
+}
+
+.contentTab {
+  height: 100%;
+  overflow-y: auto;
+}
+
+table th {
+  color: #fff;
+  background-color: #0287af;
+}
+
+.inputs:hover {
+  border-bottom: 3px solid #0287af;
+}

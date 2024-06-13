@@ -1,0 +1,158 @@
+<div class="container-fluid vh-100 enrolled">
+  <!-- <div class="divider mb-4"></div> -->
+  <div class="bg-white w-100 rounded">
+    <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+      <h3 class="text-white fw-bold h5 m-0">Student Grades</h3>
+    </div>
+    <div class="container py-3">
+      <table
+        id="example"
+        #dataTable
+        class="table table-striped"
+        style="width:100%">
+        <thead>
+          <tr>
+            <th>ID No.</th>
+            <th>Name</th>
+            <th>Course/Yr.</th>
+            <th>School Yr.</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01234567821</td>
+            <td>Badang, James M.</td>
+            <td>BSIT/4th year</td>
+            <td>AY 2022-2023</td>
+            <td colspan="2">
+              <button
+                class="btn btn-secondary btn-sm text-center"
+                data-bs-toggle="modal"
+                data-bs-target="#viewStud">
+                View
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>01234567835</td>
+            <td>Roda, John Vincent E.</td>
+            <td>BSCS/4th year</td>
+            <td>AY 2022-2023</td>
+            <td colspan="2">
+              <button
+                class="btn btn-secondary btn-sm text-center"
+                data-bs-toggle="modal"
+                data-bs-target="#viewStud">
+                View
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <!-- <app-student-info></app-student-info> -->
+
+  <div
+  class="modal fade"
+  id="viewStud"
+  tabindex="-1"
+  aria-labelledby="viewStudLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 fw-bold" id="viewStudLabel">
+          Grades Information
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="m-2 px-2">
+          <div class="inputGroup row d-flex align-items-center">
+            <div class="inputGroup row d-flex align-items-center my-3">
+              <div class="col-4">
+                <label for="studID">Student ID</label>
+                <input
+                  class="inputs"
+                  type="text"
+                  id="studID"
+                  name="studID"
+                  value="20233124"
+                  readonly
+                />
+              </div>
+              <div class="col-4">
+                <label for="studName">Student Name</label>
+                <input
+                  class="inputs"
+                  type="text"
+                  id="studName"
+                  name="studName"
+                  value="Badang, James M."
+                  readonly
+                />
+              </div>
+              <div class="col-4">
+                <label for="schoolyr">School Year:</label>
+                <select name="schoolyr" id="schoolyr">
+                  <option value="" selected hidden>AY 2022-2023</option>
+                  <option value="">Select School Yr.</option>
+                  <option value="">A.Y 2023-2024</option>
+                  <option value="">A.Y 2022-2023</option>
+                  <option value="">A.Y 2012-2022</option>
+                </select>
+              </div>
+              <div class="divider my-4 w-100"></div>
+              <span class="caption-top">Information</span>
+              <table
+                id="example"
+                #dataTable
+                class="table table-striped table-bordered my-3"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>Subject</th>
+                    <th>Prelim</th>
+                    <th>Mid-term</th>
+                    <th>Final</th>
+                    <th>Gen Ave.</th>
+                    <th>Instructor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>AR 101-ARCHITECTURE & ORGANIZATION</td>
+                    <td>80</td>
+                    <td>80</td>
+                    <td>80</td>
+                    <td>2.0</td>
+                    <td>Alfonso Jose M.</td>
+                  </tr>
+                  <tr>
+                    <td>MATH 1A/COLLEGE AND ADVANCED ALGEBRA</td>
+                    <td>90</td>
+                    <td>90</td>
+                    <td>90</td>
+                    <td>1.0</td>
+                    <td>Alfonso Jose M.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

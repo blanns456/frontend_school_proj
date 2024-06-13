@@ -1,0 +1,247 @@
+<div class="container-fluid vh-100 enrolled">
+  <p-card header="Semester and Trimester">
+    <ul
+      class="nav nav-tabs"
+      id="myTab"
+      role="tablist">
+      <li
+        class="nav-item"
+        role="presentation">
+				<button
+          class="nav-link active"
+          id="home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#home-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="home-tab-pane"
+          aria-selected="true">
+          College Trimester
+        </button>
+			</li>
+      <li
+        class="nav-item"
+        role="presentation">
+				<button
+          class="nav-link"
+          id="profile-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#profile-tab-pane"
+          type="button"
+          role="tab"
+          aria-controls="profile-tab-pane"
+          aria-selected="false">
+          Graduate Studies Semester
+        </button>
+			</li>
+    </ul>
+    <div
+      class="tab-content"
+      id="myTabContent">
+      <div
+        class="tab-pane fade show active"
+        id="home-tab-pane"
+        role="tabpanel"
+        aria-labelledby="home-tab"
+        tabindex="0">
+        <form
+          [formGroup]="add_trimester"
+          (ngSubmit)="submit_trimester()"
+          class="p-3">
+          <div class="row">
+            <div class="col-3">
+              <label for="trimester">Trimester</label>
+              <p-dropdown
+                formControlName
+                [options]="trimester"
+                id="trimester"
+                formControlName="trimester"
+                optionLabel="name"
+                placeholder="Select a Trimester"
+                [style]="{ width: '100%' }"></p-dropdown>
+            </div>
+            <div class="col-3">
+              <label for="range_of_trimester">Range of Trimester</label>
+              <p-calendar
+                selectionMode="range"
+                [readonlyInput]="true"
+                id="range_of_trimester"
+                formControlName="range_of_trimester"
+                [style]="{ width: '100%' }"
+                [showButtonBar]="true"
+                [numberOfMonths]="2"
+                [required]="true"
+                [showIcon]="true"
+                [touchUI]="true"></p-calendar>
+            </div>
+            <div class="col-3">
+              <label for="academic_year">Academic Year</label>
+              <p-calendar
+                view="year"
+                selectionMode="range"
+                id="academic_year"
+                formControlName="academic_year"
+                dateFormat="yy"
+                [required]="true"
+                [style]="{ width: '100%' }"
+                [showIcon]="true"></p-calendar>
+            </div>
+            <div class="col-3">
+              <label for="enrollment">Range of Enrollment</label>
+              <p-calendar
+                selectionMode="range"
+                [readonlyInput]="true"
+                [style]="{ width: '100%' }"
+                id="enrollment"
+                formControlName="enrollment"
+                [showButtonBar]="true"
+                [required]="true"
+                [numberOfMonths]="2"
+                [showIcon]="true"
+                [touchUI]="true"></p-calendar>
+            </div>
+            <p-button type="submit">Create Trimester</p-button>
+          </div>
+        </form>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="profile-tab-pane"
+        role="tabpanel"
+        aria-labelledby="profile-tab"
+        tabindex="0">
+        ...
+      </div>
+    </div>
+    <!-- <div class="bg-white w-100 rounded">
+    <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+      <h3 class="text-white fw-bold h5 py-3 m-0">Create Semester</h3>
+    </div>
+    <div class="d-flex justify-content-end p-3">
+      <button
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        <i class="fa-solid fa-plus"></i>
+        Add Sem
+      </button>
+    </div>
+    <div class="container py-3">
+      <table
+        id="example"
+        #dataTable
+        class="table table-striped"
+        style="width: 100%"
+      >
+        <thead>
+          <tr>
+            <th>Semester</th>
+            <th>Active Year</th>
+            <th>Status</th>
+            <th>Enrollment Start</th>
+            <th>Enrollment End</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let semester of semesters">
+            <td>{{ semester.semester }}</td>
+            <td>{{ semester.active_year }}</td>
+            <td>
+              <span
+                *ngIf="semester.status === 'active'"
+                class="badge text-bg-success"
+                >Active</span
+              >
+              <span
+                *ngIf="semester.status === 'disable'"
+                class="badge text-bg-danger"
+                >Disable</span
+              >
+            </td>
+            <td>{{ semester.enrollment_start }}</td>
+            <td>{{ semester.enrollment_end }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> -->
+  </p-card>
+</div>
+
+<!-- Modal -->
+<!-- <div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1
+          class="modal-title fs-5"
+          id="exampleModalLabel">
+					Add Semester
+				</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form
+          [formGroup]="addsemester"
+          (ngSubmit)="OnsubmitSemester()"
+          action
+          class="p-3">
+          <div class="row mt-3">
+            <div class="col-6">
+              <label for="semester">Semester</label>
+              <input
+                type="text"
+                formControlName="semester"
+                class="form-control"
+                name="semester"
+                id="semester">
+            </div>
+            <div class="col-6">
+              <label for="semester">Active Year</label>
+              <input
+                type="text"
+                formControlName="active_year"
+                class="form-control"
+                name="semester"
+                id="semester">
+            </div>
+            <div class="col-6 my-3">
+              <label for="startdate">Enrollment Start</label>
+              <input
+                type="date"
+                class="form-control"
+                formControlName="enrollment_start"
+                name="startdate"
+                id="startdate">
+            </div>
+            <div class="col-6 my-3">
+              <label for="endDate">Enrollment End</label>
+              <input
+                type="date"
+                class="form-control"
+                formControlName="enrollment_end"
+                name="endDate"
+                id="endDate">
+            </div>
+          </div>
+          <br>
+          <button
+            type="submit"
+            class="btn btn-success">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->

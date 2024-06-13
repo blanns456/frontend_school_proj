@@ -1,0 +1,64 @@
+* {
+  user-select: none;
+}
+
+.headicon {
+  width: 60;
+}
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../../../../assets/misc/homepage/genesys-ascb-wallpaper-old_building-2.jpg");
+  mix-blend-mode: darken;
+  height: 250px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero h1 {
+  padding-top: 2rem;
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.about {
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.state {
+  font-size: 16px;
+  color: #555555;
+  padding-left: 2rem;
+}
+
+.desc {
+  font-weight: bold;
+  color: #333333;
+}
+
+.box {
+  width: 30px;
+  height: 30px;
+  background-color: #191970;
+}
+.bullt {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #191970;
+}
+
+@media only screen and (max-width: 574px) {
+  .hero h1 {
+    font-size: 30px;
+    padding-top: 4rem;
+  }
+  .hero p {
+    font-size: 12px;
+  }
+  .about {
+    font-size: 25px;
+  }
+}

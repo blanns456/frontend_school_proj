@@ -1,0 +1,130 @@
+<div class="container-fluid containerTab">
+  <p-toast></p-toast>
+  <!-- <div class="divider mb-4"></div> -->
+  <p-card header="Student's Ledger">
+    <div class="container">
+      <div class="mb-3">
+        <p-iconField iconPosition="right">
+          <p-inputIcon styleClass="pi pi-search"></p-inputIcon>
+          <input
+            type="text"
+            pInputText
+            placeholder="Search">
+        </p-iconField>
+      </div>
+      <p-table
+        #dt
+        [rowHover]="true"
+        [value]="students"
+        selectionMode="multiple"
+        styleClass="p-datatable-striped p-datatable-sm"
+        [tableStyle]="{ 'min-width': '40rem' }"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+        <ng-template
+          pTemplate="header"
+          let-columns>
+          <tr>
+            <th style="width: 4rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th
+              pSortableColumn="uid"
+              style="width: 15%">
+              Student No.
+              <p-sortIcon field="uid"></p-sortIcon>
+            </th>
+            <th style="width: 20%">Student Name</th>
+            <th>Course/Year Level</th>
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template
+          pTemplate="body"
+          let-student>
+          <tr>
+            <td>
+              <p-tableCheckbox [value]="student"></p-tableCheckbox>
+            </td>
+            <td>{{ student?.uid }}</td>
+            <td>{{ student?.studname }}</td>
+            <td>
+              {{ student?.course }} /
+              {{ getYearLevelString(student?.student_yr_lvl) }}
+            </td>
+            <td>
+              <p-button
+                label="View"
+                (click)="viewUser(student)"></p-button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td
+              class="p-4 text-center"
+              colspan="7">
+              No Data Found.
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-card>
+  <!-- <div class="bg-white w-100 contentTab rounded">
+    <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+      <h3 class="text-white fw-bold">Student's Ledger</h3>
+    </div>
+    <div class="container my-4">
+      <p-table
+        #dt
+        [rowHover]="true"
+        [value]="students"
+        selectionMode="multiple"
+        styleClass="p-datatable-striped p-datatable-sm"
+        [tableStyle]="{ 'min-width': '40rem' }"
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      >
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th style="width: 4rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th pSortableColumn="uid" style="width: 15%">
+              Student No. <p-sortIcon field="uid"></p-sortIcon>
+            </th>
+            <th style="width: 20%">Student Name</th>
+            <th style="width: 35%">Course/Year Level</th>
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-student>
+          <tr>
+            <td>
+              <p-tableCheckbox [value]="student"></p-tableCheckbox>
+            </td>
+            <td>{{ student.uid }}</td>
+            <td>{{ student.studname }}</td>
+            <td>
+              {{ student.course }} /
+              {{ getYearLevelString(student.student_yr_lvl) }}
+            </td>
+            <td>
+              <p-button label="View" (click)="viewUser(student)"></p-button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td class="p-4 text-center" colspan="7">No Data Found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div> -->
+</div>

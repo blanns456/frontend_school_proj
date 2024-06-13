@@ -1,13 +1,29 @@
-.content{
-    padding-top: 8%;
-    width: 90%;
+.content {
+  padding-top: 8%;
+  width: 90%;
 }
 
-.input-holder{
-    width: 90%;
-    margin: auto;
+
+img {
+  display: block;
+  aspect-ratio: 3/2;
+  object-fit: contain;
 }
 
-.info-links{
-    border-radius:5px 5px 0 0;
+.student-info {
+  padding-top: 8%;
+  width: 95%;
+}
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  .student-info {
+    padding-top: 10%;
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .student-info {
+    padding-top: 23%;
+    width: 100%;
+  }
 }

@@ -1,0 +1,15 @@
+span {
+  font-size: x-small;
+}
+
+small {
+  user-select: none;
+}
+
+input {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 2px solid black;
+  border-radius: 0 !important;
+}

@@ -7,153 +7,115 @@
       class="img-responsive mt-3 mw-100"
       alt="ascb_logo">
     <div class="my-auto mx-4">
-      <h2 class="h3 fw-bold">ASCB TESDA</h2>
+      <h2 class="h3 fw-bold">ASCB College</h2>
       <h2 class="h3 fw-bold">Enrollment Form</h2>
+      <h3 class="h6">A.Y. 2023-2024</h3>
+      <span class="semester">2nd Trimester</span>
     </div>
   </div>
 
   <div class="divider my-3"></div>
 
-  <div
-    class="w-80"
-    id="enroll">
+  <div id="enroll">
     <form
-      action="#"
       enctype="multipart/form-data"
+      method="post"
       class="row">
 
-      <!-- academic year -->
-      <div class="col-6 my-1 d-flex justify-content-end">
-        <div class="w-50 mx-5">
+      <!-- program -->
+      <div class="col-4 my-1 d-flex justify-content-end">
+        <div>
           <label
-            for="academic_year"
+            for="semester"
             class="form-label">
-            Academic Year
-            <span class="text-danger">*</span>
+            Program
           </label>
           <select
             name="Academic Year"
-            id="academic_year"
-            class="form-control form-select">
+            id="semester"
+            class="form-control form-select"
+            [class.is-invalid]="selectedacademic_selectedcourse"
+            (change)="course($event)"
+            [value]="selectedcourse">
             <option
               value
               disabled
               selected>
-              Please select academic year
+              Please select Program
             </option>
-            <option value="2022-2023">2022-2023</option>
-            <option value="2023-2024">2023-2024</option>
+            <option
+              *ngFor="let option of courses"
+              [value]="option.courses_id">
+              {{ option.name }}
+            </option>
           </select>
         </div>
       </div>
+
       <!-- year Level -->
-      <div class="col-6 my-1 d-flex justify-content-start">
-        <div class="w-50 mx-5">
+      <div class="col-4 my-1 d-flex justify-content-start">
+        <div>
           <label
             for="year_level"
             class="form-label">
             Year Level
-            <span class="text-danger">*</span>
           </label>
           <select
             name="Academic Year"
             id="year_level"
-            class="form-control form-select">
+            class="form-control form-select"
+            [class.is-invalid]="selectedacademic_selectedyearlvl"
+            (change)="onyearlvl($event)"
+            [value]="selectedyearlvl">
             <option
               value
               disabled
               selected>
               Please select year level
             </option>
-            <option value="first_year">1st Year</option>
-            <option value="second_year">2nd Year</option>
-            <option value="third_year">3rd Year</option>
-            <option value="fourth_year">4th Year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
           </select>
         </div>
       </div>
-      <!-- semester -->
-      <div class="col-6 my-1 d-flex justify-content-end">
-        <div class="w-50 mx-5">
-          <label
-            for="semester"
-            class="form-label">
-            Semester
-            <span class="text-danger">*</span>
-          </label>
-          <select
-            name="Academic Year"
-            id="semester"
-            class="form-control form-select">
-            <option
-              value
-              disabled
-              selected>
-              Please select Semester
-            </option>
-            <option value="1st_trimester">1st Trimester</option>
-            <option value="2nd_trimester">2nd Trimester</option>
-            <option value="3rd_trimester">3rd Trimester</option>
-          </select>
-        </div>
-      </div>
-      <!-- courses -->
-      <div class="col-6 my-1 d-flex justify-content-start">
-        <div class="w-50 mx-5">
-          <label
-            for="semester"
-            class="form-label">
-            Course
-            <span class="text-danger">*</span>
-          </label>
-          <select
-            name="Academic Year"
-            id="semester"
-            class="form-control form-select">
-            <option
-              value
-              disabled
-              selected>
-              Please select Course
-            </option>
-            <option value="CBA">
-              College of Business Accountancy Education
-            </option>
-            <option value="CBE">College of Business Education</option>
-            <option value="CCE">College of Computer Education</option>
-            <option value="CCJE">College of Criminal Justice Education</option>
-            <option value="CTE">College of Teacher Education</option>
-          </select>
-        </div>
-      </div>
+
       <!-- Status -->
-      <div class="col-6 my-1 d-flex justify-content-end">
-        <div class="w-50 mx-5">
+      <div class="col-4 my-1 d-flex justify-content-start">
+        <div>
           <label
             for="student_status"
             class="form-label">
             Student Status
-            <span class="text-danger">*</span>
           </label>
           <select
             name="Academic Year"
             id="student_status"
-            class="form-control form-select">
+            class="form-control form-select"
+            [class.is-invalid]="selectedacademic_selectedstatus"
+            (change)="status($event)"
+            [value]="selectedstatus">
             <option
               value
               disabled
               selected>
               Please select Status
             </option>
-            <option value="new">Freshmen</option>
-            <option value="old">Old Student</option>
+            <option value="Regular">Regular</option>
+            <option value="Old Student">Old Student</option>
+            <option value="Transferee">Transferee</option>
+            <option value="Shiftee">Shiftee</option>
           </select>
         </div>
       </div>
-
     </form>
   </div>
 
-  <app-pagination></app-pagination>
+  <!-- <app-pagination></app-pagination> -->
+  <app-mat-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChanged)="onPageChanged($event)"></app-mat-pagination>
   <app-footernavigation></app-footernavigation>
 </div>

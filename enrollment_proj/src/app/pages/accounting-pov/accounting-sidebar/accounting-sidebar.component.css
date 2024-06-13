@@ -1,0 +1,62 @@
+.logout {
+  width: 100%;
+  height: 10rem;
+  background-color: #ff0000;
+  background-image: url("../../../../assets/misc/profile.png");
+  background-size: cover;
+  background-position: center;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e3050;
+}
+
+#profile {
+  border-radius: 50%;
+}
+
+.sidebar {
+  width: 20%;
+  height: 100vh;
+  background: white;
+}
+
+.links {
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.accSetupToggle-sub,
+.accReportsToggle-sub,
+.accFinanceToggle-sub,
+.telleringToggle-sub {
+  list-style: none;
+  display: none;
+}
+
+.list-group ul {
+  margin-left: -25px;
+}
+
+.list-group a {
+  display: inline-block;
+  background: linear-gradient(to left, white 50%, #0840a1 50%) right;
+  background-size: 200%;
+  transition: 0.3s ease-out;
+  border-radius: 0 !important;
+  border: none;
+  cursor: pointer;
+}
+.list-group a:hover {
+  background-position: left;
+  color: white;
+}
+
+.active {
+  background: #0840a1 !important;
+  color: white;
+}

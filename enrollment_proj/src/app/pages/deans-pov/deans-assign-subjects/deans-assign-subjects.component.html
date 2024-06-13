@@ -1,0 +1,256 @@
+<div class="fixed-background"></div>
+<app-deans-navbar></app-deans-navbar>
+<div class="container-fluid containerTab">
+  <!-- <div class="divider mb-4"></div> -->
+  <div class="contentTab mb-3 bg-white w-100 rounded">
+    <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+      <h3 class="text-white fw-bold">Assign Subjects</h3>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button class="btn btnAddFees text-white m-2" data-bs-toggle="modal" data-bs-target="#assignModal">
+        <i class="fa-solid fa-file-circle-plus mx-2"></i>Assign Teachers
+      </button>
+    </div>
+    <div class="container my-2">
+      <table id="example" #dataTable class="table table-striped" style="width: 100%">
+        <thead>
+          <tr>
+            <th>Subject Description</th>
+            <th>Course & Yr.</th>
+            <th>Schedules</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Information Assurance & Security 2</td>
+            <td>BSIT 3</td>
+            <td>07:00 AM-09:00 AM</td>
+            <td>
+              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#viewSubs">
+                <a class="text-white text-decoration-none"><i class="fa-solid fa-eye"></i>View</a>
+              </button>
+              <button class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#addStudes">
+                <a class="text-white text-decoration-none"><i class="fa-solid fa-user-plus text-white"></i>Student</a>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>Graphics and Visual Computing 2</td>
+            <td>BSCS 1</td>
+            <td>09:00 AM-10:00 AM</td>
+            <td>
+              <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#viewSubs">
+                <a class="text-white text-decoration-none"><i class="fa-solid fa-eye"></i>View</a>
+              </button>
+              <button class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#addStudes">
+                <a class="text-white text-decoration-none"><i class="fa-solid fa-user-plus text-white"></i>Student</a>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Assign MODAL -->
+<div class="modal fade" id="assignModal" tabindex="-1" aria-labelledby="assignModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 fw-bold" id="assignModalLabel">
+          Assign Teacher
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="m-2 px-2">
+          <div class="inputGroup row d-flex align-items-center my-3">
+            <div class="col-6">
+              <label for="subName">Subject Name</label>
+              <input class="inputs" type="text" id="subName" name="subName" />
+            </div>
+            <div class="col-4">
+              <label for="instructor">Instructor</label>
+              <input class="inputs" type="text" id="instructor" name="instructor" />
+            </div>
+            <div class="col-4 my-4">
+              <label for="schoolyr">School Year:</label>
+              <input class="inputs" type="text" id="schoolyr" name="schoolyr" value="A.Y 2022-2023" readonly />
+            </div>
+            <div class="col-4">
+              <label for="semester">Semester</label>
+              <select class="inputs" name="semester" id="semester">
+                <option value="" selected hidden>Input here</option>
+                <option value="1">1st Semester</option>
+                <option value="2">2nd Semester</option>
+                <option value="3">3rd Semester</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <label for="subUnits">Course/Yr:</label>
+              <input class="inputs" type="text" id="subUnits" name="subUnits" placeholder="BSCS 1" />
+            </div>
+            <div class="col-6">
+              <label for="department">Department</label>
+              <input class="inputs" type="text" id="department" name="department" value="College of Computer Education"
+                readonly />
+            </div>
+            <div class="col-4">
+              <label for="Room">Room Assigned</label>
+              <input class="inputs" type="text" id="Room" name="Room" />
+            </div>
+            <div class="divider my-4 w-100"></div>
+            <span class="caption-top">Assign Schedule</span>
+            <div class="col-4 my-3">
+              <label for="dateTime">Date & Time:</label>
+              <input class="inputs" type="text" id="dateTime" name="dateTime" />
+            </div>
+            <div class="col-4 my-3">
+              <label for="days">Days</label>
+              <input class="inputs" type="text" id="days" name="days" />
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-success me-2">
+              <i class="fa-solid fa-user-check"></i>
+              Submit
+            </button>
+            <button class="btn btn-danger">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- View MODAL -->
+<div class="modal fade" id="viewSubs" tabindex="-1" aria-labelledby="viewSubsLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="viewSubsLabel">Subject Information</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="m-2 px-2">
+          <div class="inputGroup row d-flex align-items-center my-3">
+            <div class="col-6">
+              <label for="subName">Subject Name</label>
+              <input class="inputs" type="text" id="subName" name="subName" value="	Graphics and Visual Computing 2"
+                readonly />
+            </div>
+            <div class="col-4">
+              <label for="instructor">Instructor</label>
+              <input class="inputs" type="text" id="instructor" name="instructor" value="Doe John D." readonly />
+            </div>
+            <div class="col-4 my-4">
+              <label for="schoolyr">School Year:</label>
+              <input class="inputs" type="text" id="schoolyr" name="schoolyr" value="A.Y 2022-2023" readonly />
+            </div>
+            <div class="col-4">
+              <label for="semester">Semester</label>
+              <input class="inputs" type="text" id="semester" name="semester" value="1st Semester" readonly />
+            </div>
+            <div class="col-3">
+              <label for="subUnits">Course/Yr:</label>
+              <input class="inputs" type="text" id="subUnits" name="subUnits" value="BSCS 1" readonly />
+            </div>
+            <div class="col-6">
+              <label for="department">Department</label>
+              <input class="inputs" type="text" id="department" name="department" value="College of Computer Education"
+                readonly />
+            </div>
+            <div class="col-4">
+              <label for="Room">Room Assigned</label>
+              <input class="inputs" type="text" id="Room" name="Room" value="COMLAB 1" readonly />
+            </div>
+            <div class="divider my-4 w-100"></div>
+            <span class="caption-top">Assign Schedule</span>
+            <div class="col-4 my-3">
+              <label for="dateTime">Date & Time:</label>
+              <input class="inputs" type="text" id="dateTime" name="dateTime" value="09:00 AM-10:00 AM
+" readonly />
+            </div>
+            <div class="col-4 my-3">
+              <label for="days">Days</label>
+              <input class="inputs" type="text" id="days" name="days" value="Wed - Thu" readonly />
+            </div>
+            <div class="divider my-4 w-100"></div>
+            <span class="caption-top">List of Students</span>
+            <table id="example" #dataTable class="table table-striped table-bordered my-3" style="width: 100%">
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>ID Number</th>
+                  <th>Email</th>
+                  <th>Number</th>
+                  <th>Course</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Rizal Jose P.</td>
+                  <td>20221025</td>
+                  <td>user123&#64;gmail.com</td>
+                  <td>09458223652</td>
+                  <td>BSCS 1</td>
+                  <td>
+                    <button class="btn btn-danger">
+                      <i class="fa-solid fa-trash"></i>Remove
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Students MODAL -->
+<div class="modal fade" id="addStudes" tabindex="-1" aria-labelledby="addStudesLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addStudesLabel">Add Students</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="m-2 px-2">
+          <div class="inputGroup row d-flex align-items-center">
+            <span class="fw-bold">Graphics and Visual Computing 2</span>
+            <div class="divider w-100 my-4"></div>
+            <div class="col-4">
+              <label for="studentName">Student Name</label>
+              <input class="inputs" type="text" id="studentName" name="studentName" />
+            </div>
+            <div class="col-4">
+              <label for="postDate">Student ID</label>
+              <input class="inputs" type="text" id="postDate" name="postDate" value="202322545" readonly />
+            </div>
+            <div class="col-4">
+              <label for="email">Email</label>
+              <input class="inputs" type="text" id="email" name="email" />
+            </div>
+            <div class="col-4 my-4">
+              <label for="studNum">Number</label>
+              <input class="inputs" type="text" id="studNum" name="studNum" />
+            </div>
+            <div class="col-4">
+              <label for="course">Course</label>
+              <input class="inputs" type="text" id="course" name="course" />
+            </div>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

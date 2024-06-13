@@ -1,0 +1,300 @@
+<div class="container-fluid containerTab">
+  <!-- <div class="divider mb-4"></div> -->
+  <div class="contentTab mb-3 bg-white w-100 rounded">
+    <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+      <h3 class="text-white fw-bold">Tellering</h3>
+    </div>
+    <div class="d-flex justify-content-end">
+      <button
+        class="btn btnAddFees text-white m-2"
+        data-bs-toggle="modal"
+        data-bs-target="#newItems"
+      >
+        <i class="fa-solid fa-file-circle-plus mx-2"></i>New Item
+      </button>
+    </div>
+    <div class="container my-2">
+      <!-- <table
+        id="example"
+        #dataTable
+        class="table table-striped"
+        style="width: 100%"
+      >
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Mode of Payment</th>
+            <th>Posting Date</th>
+            <th>Payment Type</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let stud of students">
+          <tr>
+            <td>{{ stud.name }}</td>
+            <td>{{ stud.mop }}</td>
+            <td>{{ stud.pdate }}</td>
+            <td>{{ stud.paytype }}</td>
+            <td>
+              <button class="btn btn-secondary">
+                <a
+                  class="text-white text-decoration-none"
+                  routerLink="/teller-viewuser"
+                  ><i class="fa-solid fa-eye"></i>View</a
+                >
+              </button>
+              <button class="btn btn-success mx-2">
+                <a class="text-white text-decoration-none"
+                  ><i class="fa-solid fa-pen text-white"></i>Update</a
+                >
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+
+      <p-table
+        [rowHover]="true"
+        [value]="studledgers"
+        class="text-capitalize"
+        styleClass="p-datatable-striped"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Student</th>
+            <th style="width: 30%">Course</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-stud>
+          <tr>
+            <td>{{ stud.studname }}</td>
+            <td>{{ stud.course }}</td>
+            <td>{{ stud.status }}</td>
+            <td>
+              <p-button
+                label="Pay"
+                class="mx-2"
+                (click)="showdialog(stud.stud_id, stud)"
+              ></p-button>
+              <p-button icon="pi pi-eye"></p-button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td class="p-4 text-center" colspan="7">No Data Found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div
+  class="modal fade"
+  id="newItems"
+  tabindex="-1"
+  aria-labelledby="newItemsLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 fw-bold" id="newItemsLabel">
+          New Tellering
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="m-2 px-2">
+          <div class="inputGroup row d-flex align-items-center">
+            <span class="caption-top">Payment Method and Information</span>
+            <div class="col-4 my-3">
+              <label for="customerID">Student/ID no.</label>
+              <input
+                class="inputs"
+                type="text"
+                id="customerID"
+                name="customerID"
+                placeholder="input here"
+              />
+            </div>
+            <div class="col-4">
+              <label for="postDate">Posting Date</label>
+              <input
+                class="inputs"
+                type="text"
+                id="postDate"
+                name="postDate"
+                value="04/12/2023"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="mop">Mode of Payment:</label>
+              <select class="inputs" name="mop" id="mop">
+                <option value="" selected hidden>Input here</option>
+                <option value="1">Cash</option>
+                <option value="2">Credit Card</option>
+                <option value="3">Cheque</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="payDate">Payment Date:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="payDate"
+                name="payDate"
+                value="04/12/2023"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="schoolyr">School Year</label>
+              <input
+                class="inputs"
+                type="text"
+                id="schoolyr"
+                name="schoolyr"
+                placeholder="A.Y 2023"
+              />
+            </div>
+            <div class="col-4 my-4">
+              <label for="receiptNo">Official Receipt No.</label>
+              <input
+                class="inputs"
+                type="text"
+                id="receiptNo"
+                name="receiptNo"
+                placeholder="1544458"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="semester">Semester</label>
+              <input
+                class="inputs"
+                type="text"
+                id="semester"
+                name="semester"
+                placeholder="input here"
+              />
+            </div>
+            <div class="col-4">
+              <label for="schoolBranch">School/Cashier Branch</label>
+              <input
+                class="inputs"
+                type="text"
+                id="schoolBranch"
+                name="schoolBranch"
+                placeholder="ASCB5"
+                readonly
+              />
+            </div>
+            <div class="divider my-4 w-100"></div>
+            <div class="col-5">
+              <label for="paidAmount">Paid Amount(PHP)</label>
+              <input
+                class="inputs"
+                type="text"
+                id="paidAmount"
+                name="paidAmount"
+              />
+            </div>
+            <div class="col-5">
+              <label for="payref">Online Payment Reference</label>
+              <input class="inputs" type="text" id="payref" name="payref" />
+            </div>
+            <div class="divider my-4 w-100"></div>
+            <div class="container">
+              <span class="caption-top">Breakdown Fees</span>
+              <table
+                id="example"
+                #dataTable
+                class="table table-striped table-bordered my-3"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Sales Allocated</th>
+                    <th>Transaction Details</th>
+                    <th>Outstanding</th>
+                    <th>Allocated</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Old Balance</td>
+                    <td>Sales - ASCB</td>
+                    <td>04/12/2023</td>
+                    <td>3,980</td>
+                    <td>3,980</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn btn-success">Add row</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  header="Old"
+  [maximizable]="true"
+  appendTo="body"
+  [(visible)]="dialogVisible"
+  [style]="{ width: '75vw' }"
+  [contentStyle]="{ height: '300px' }"
+>
+  <p-table
+    [scrollable]="true"
+    scrollHeight="flex"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>SY 2022-2023</th>
+        <th>SY 2023-2024</th>
+        <th>Increase</th>
+        <th>%</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body">
+      <tr>
+        <td>Test name</td>
+        <td>1000.00</td>
+        <td>1500.00</td>
+        <td>500.00</td>
+        <td>50.00</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <ng-template pTemplate="footer">
+    <button
+      type="button"
+      pButton
+      pRipple
+      icon="pi pi-times"
+      (click)="dialogVisible = false"
+      label="Dismiss"
+      class="p-button-text"
+    ></button>
+  </ng-template>
+</p-dialog>

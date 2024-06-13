@@ -1,0 +1,593 @@
+<div class="container-dashboard">
+  <app-accounting-sidebar></app-accounting-sidebar>
+  <div class="main-content">
+    <div class="fixed-background"></div>
+    <app-accounting-navbar></app-accounting-navbar>
+    <p-toast></p-toast>
+    <div
+      class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column text-capitalize"
+    >
+      <!-- <div class="divider mb-4"></div> -->
+      <div *ngIf="studentData" class="contentab bg-white rounded">
+        <div
+          class="text-header shadow w-100 py-2 ps-3 d-flex justify-content-between"
+        >
+          <div class="row w-100">
+            <div class="col">
+              <h3 class="text-white fw-bold fs-3">
+                {{ studentData.studname }}
+              </h3>
+              <p class="text-white">{{ getstatusledger }}</p>
+            </div>
+            <div class="col d-flex justify-content-end align-items-end">
+              <button
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#studTeller"
+              >
+                Tellering
+              </button>
+              <p-button
+                class="mx-2"
+                (click)="showupdateDialog(studentData.studid)"
+                label="Update Matriculation"
+              ></p-button>
+              <p-button
+                type="submit"
+                (click)="submitledger()"
+                label="Submit Ledger"
+              ></p-button>
+            </div>
+          </div>
+        </div>
+        <div class="m-4 px-2">
+          <h1 class="fw-bold fs-4">Section Remarks</h1>
+          <p-divider />
+          <div
+            class="inputGroup row d-flex justify-content-start align-items-center my-3"
+          >
+            <div class="col-3">
+              <label for="semester">Semester</label>
+              <input
+                type="text"
+                class="inputs"
+                name="semester"
+                id="semester"
+                value="{{ studentData.semester }} / {{ activeyr }}"
+                readonly
+              />
+            </div>
+            <div class="col-6">
+              <label for="course">Course</label>
+              <input
+                class="inputs"
+                type="text"
+                id="course"
+                name="course"
+                value="{{ studentData.course }}"
+                readonly
+              />
+            </div>
+            <div class="col-3 my-3">
+              <label for="yrlvl">Year Level:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="yrlvl"
+                name="yrlvl"
+                value="{{ getYearLevelString(studentData.student_yr_lvl) }}"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="m-4 px-2">
+          <div class="d-flex justify-content-between align-items-center p-2">
+            <h1 class="fw-bold fs-4">Finance Information</h1>
+            <div>
+              <p-button icon="pi pi-inbox" label="Old" (click)="showDialog2()">
+              </p-button>
+              <p-button
+                icon="pi pi-inbox"
+                class="mx-2"
+                label="New"
+                (click)="showDialog2()"
+              ></p-button>
+            </div>
+          </div>
+          <!-- <div class="divider mt-3"></div> -->
+          <p-tabView>
+            <p-tabPanel header="Matriculation">
+              <p-table
+                #dt
+                [rowHover]="true"
+                [value]="subLedgerFees"
+                styleClass="p-datatable-striped"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                [rows]="10"
+                [showCurrentPageReport]="true"
+              >
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="subjectName">Fees</th>
+                    <th>Amount</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-ledgerfees>
+                  <tr>
+                    <td>{{ ledgerfees.item_name }}</td>
+                    <td>{{ ledgerfees.amount }}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                  <tr>
+                    <td colspan="1">Total:</td>
+                    <td>₱{{ totalamountfees }}.00</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </p-tabPanel>
+            <p-tabPanel header="Tuition Fees">
+              <p-table
+                #dt
+                [rowHover]="true"
+                [value]="subjectmatri"
+                styleClass="p-datatable-striped"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                [rows]="10"
+                [showCurrentPageReport]="true"
+              >
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="subjectName">Particulars</th>
+                    <th>Units</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-subjectmatri>
+                  <tr>
+                    <td>
+                      ({{ subjectmatri.code }}) {{ subjectmatri.subjectName }}
+                    </td>
+                    <td>{{ subjectmatri.units }}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                  <tr>
+                    <td colspan="1">Total:</td>
+                    <td>{{ totalamount }} units</td>
+                  </tr>
+                  <tr>
+                    <td colspan="1">Overall:</td>
+                    <td>₱{{ totalall }}.00</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </p-tabPanel>
+            <p-tabPanel header="Lab Fees">
+              <p-table
+                #dt
+                [rowHover]="true"
+                [value]="labfeedatas"
+                styleClass="p-datatable-striped"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                [rows]="10"
+                [showCurrentPageReport]="true"
+              >
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="subjectName">Subject</th>
+                    <th>Amount</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-labfee>
+                  <tr>
+                    <td>{{ labfee.subject }}</td>
+                    <td>{{ labfee.feeAmount }}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                  <tr>
+                    <td colspan="1">Total Labfees:</td>
+                    <td>{{ totallabfees }}</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </p-tabPanel>
+          </p-tabView>
+          <form class="row g-3 my-4" [formGroup]="studamounts">
+            <input type="hidden" formControlName="studid" />
+            <input type="hidden" formControlName="matrifees_id" />
+            <input type="hidden" formControlName="matrifeetotal" />
+            <input type="hidden" formControlName="labfeetotal" />
+            <!-- <input type="date" formControlName="aw" /> -->
+            <div class="col-6">
+              <label for="amount">Total Amount</label>
+              <input
+                type="text"
+                class="inputs"
+                id="amount"
+                [value]="gettotal || 0"
+                formControlName="totalamount"
+                readonly
+              />
+            </div>
+            <div class="col-6">
+              <label for="prevbalance">Previous Balance</label>
+              <input
+                type="text"
+                class="inputs"
+                id="prevbalance"
+                [value]="getprevbal"
+                formControlName="prevbalance"
+                readonly
+              />
+            </div>
+            <div class="col-6">
+              <label for="totaladdlfees">Total Additional Fees</label>
+              <input
+                type="text"
+                class="inputs"
+                id="totalfees"
+                [value]="totaladditional"
+                formControlName="totaladdlfees"
+                readonly
+              />
+            </div>
+            <div class="col-6">
+              <label for="finalassessment">Final Assessment</label>
+              <input
+                type="text"
+                class="inputs"
+                id="finalassessment"
+                [value]="totalfinalasses"
+                formControlName="finalassessment"
+                readonly
+              />
+            </div>
+            <div class="col-6">
+              <label for="downpayment">Downpayment/Initial Payment</label>
+              <input
+                type="text"
+                class="inputs"
+                id="downpayment"
+                value="₱ 1,000.00"
+                formControlName="downpayment"
+                readonly
+              />
+            </div>
+
+            <div class="col-6">
+              <label for="grandtotal">Grand Total</label>
+              <input
+                type="text"
+                class="inputs"
+                id="grandtotal"
+                value="₱ 2,000.00"
+                readonly
+              />
+              <span class="fs-6"
+                >Overall assessment including charges, discounts, previous
+                balance and initial payment..</span
+              >
+            </div>
+            <p-accordion [activeIndex]="0">
+              <p-accordionTab header="Additional Fees">
+                <p-table
+                  [value]="addsfeedatas"
+                  [tableStyle]="{ 'min-width': '50rem' }"
+                >
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Item Name</th>
+                      <th>Amount</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-studaddfee>
+                    <tr>
+                      <td>{{ studaddfee.item_name }}</td>
+                      <td>{{ studaddfee.amount }}</td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </p-accordionTab>
+              <p-accordionTab header="Batch Charge">
+                <p>
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                  accusantium doloremque laudantium, totam rem aperiam, eaque
+                  ipsa quae ab illo inventore veritatis et quasi architecto
+                  beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                  quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                  consequuntur magni dolores eos qui ratione voluptatem sequi
+                  nesciunt. Consectetur, adipisci velit, sed quia non numquam
+                  eius modi.
+                </p>
+              </p-accordionTab>
+            </p-accordion>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- add additional fee -->
+<p-dialog
+  header="Additional Fees"
+  [(visible)]="showaddtionalFee"
+  [style]="{ width: '50vw' }"
+>
+  <form action="" (ngSubmit)="saveAdditonal()">
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows1">
+          <td>
+            <input
+              [(ngModel)]="row.additionalitem"
+              [ngModelOptions]="{ standalone: true }"
+              type="text"
+              pInputText
+            />
+          </td>
+          <td>
+            <input
+              [(ngModel)]="row.additionalamount"
+              [ngModelOptions]="{ standalone: true }"
+              type="text"
+              pInputText
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p-button icon="pi pi-plus l" label="Row" (click)="addRow(1)"></p-button>
+    <br />
+    <div class="d-flex justify-content-end">
+      <p-button type="submit" class="ms-2" label="Submit"></p-button>
+    </div>
+  </form>
+</p-dialog>
+
+<!-- MODAL -->
+<div
+  class="modal fade"
+  id="studTeller"
+  tabindex="-1"
+  aria-labelledby="studTellerLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="m-2 px-2">
+          <div class="inputGroup row d-flex align-items-center">
+            <span class="caption-top">Payment Method and Information</span>
+            <div class="col-4 my-3">
+              <label for="customerID">Student/ID no.</label>
+              <input
+                class="inputs"
+                type="text"
+                id="customerID"
+                name="customerID"
+                value="Rizal, Jose Patricio"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="postDate">Posting Date</label>
+              <input
+                class="inputs"
+                type="text"
+                id="postDate"
+                name="postDate"
+                value="04/12/2023"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="mop">Mode of Payment:</label>
+              <select class="inputs" name="mop" id="mop">
+                <option value="" selected hidden>Input here</option>
+                <option value="1">Cash</option>
+                <option value="2">Credit Card</option>
+                <option value="3">Cheque</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label for="payDate">Payment Date:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="payDate"
+                name="payDate"
+                value="04/12/2023"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="schoolyr">School Year</label>
+              <input
+                class="inputs"
+                type="text"
+                id="schoolyr"
+                name="schoolyr"
+                placeholder="A.Y 2023"
+              />
+            </div>
+            <div class="col-4 my-4">
+              <label for="receiptNo">Official Receipt No.</label>
+              <input
+                class="inputs"
+                type="text"
+                id="receiptNo"
+                name="receiptNo"
+                placeholder="1544458"
+                readonly
+              />
+            </div>
+            <div class="col-4">
+              <label for="semester">Semester</label>
+              <input
+                class="inputs"
+                type="text"
+                id="semester"
+                name="semester"
+                placeholder="input here"
+              />
+            </div>
+            <div class="col-4">
+              <label for="schoolBranch">School/Cashier Branch</label>
+              <input
+                class="inputs"
+                type="text"
+                id="schoolBranch"
+                name="schoolBranch"
+                placeholder="ASCB5"
+                readonly
+              />
+            </div>
+            <div class="divider my-4 w-100"></div>
+            <div class="col-5">
+              <label for="paidAmount">Paid Amount(PHP)</label>
+              <input
+                class="inputs"
+                type="text"
+                id="paidAmount"
+                name="paidAmount"
+              />
+            </div>
+            <div class="col-5">
+              <label for="payref">Online Payment Reference</label>
+              <input class="inputs" type="text" id="payref" name="payref" />
+            </div>
+            <div class="divider my-4 w-100"></div>
+            <div class="container">
+              <span class="caption-top">Breakdown Fees</span>
+              <table
+                id="example"
+                #dataTable
+                class="table table-striped table-bordered my-3"
+                style="width: 100%"
+              >
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Sales Allocated</th>
+                    <th>Transaction Details</th>
+                    <th>Outstanding</th>
+                    <th>Allocated</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Old Balance</td>
+                    <td>Sales - ASCB</td>
+                    <td>04/12/2023</td>
+                    <td>3,980</td>
+                    <td>3,980</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn btn-success">Add row</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- view -->
+<p-dialog
+  header="Old"
+  [maximizable]="true"
+  appendTo="body"
+  [(visible)]="dialogVisible"
+  [style]="{ width: '75vw' }"
+  [contentStyle]="{ height: '300px' }"
+>
+  <p-table
+    [scrollable]="true"
+    scrollHeight="flex"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>SY 2022-2023</th>
+        <th>SY 2023-2024</th>
+        <th>Increase</th>
+        <th>%</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body">
+      <tr>
+        <td>Test name</td>
+        <td>1000.00</td>
+        <td>1500.00</td>
+        <td>500.00</td>
+        <td>50.00</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <ng-template pTemplate="footer">
+    <button
+      type="button"
+      pButton
+      pRipple
+      icon="pi pi-times"
+      (click)="dialogVisible = false"
+      label="Dismiss"
+      class="p-button-text"
+    ></button>
+  </ng-template>
+</p-dialog>
+
+<!-- update ledger -->
+<p-dialog
+  header="Update Ledger"
+  [maximizable]="true"
+  appendTo="body"
+  [(visible)]="updateDialog"
+  [style]="{ width: '50vw' }"
+  [modal]="true"
+>
+  <p-button
+    class="d-flex justify-content-end"
+    label="Additional Fees"
+    icon="pi pi-plus"
+    (click)="addtionalFeeDialog()"
+  >
+  </p-button>
+  <form action="" [formGroup]="updateFeesform" (ngSubmit)="updateFees(studid)">
+    <div class="row g-3 my-4">
+      <div class="col-6">
+        <label for="prevbalance">Previous Balance</label>
+        <p-inputNumber
+          formControlName="prevbal"
+          inputId="integeronly"
+          id="prevbalance"
+        />
+      </div>
+      <div class="col-6">
+        <label for="downpayment">Downpayment/Initial Payment</label>
+        <p-inputNumber
+          formControlName="downpayment"
+          inputId="integeronly"
+          id="downpayment"
+        />
+      </div>
+    </div>
+    <div class="d-flex justify-content-end gap-2">
+      <!-- <p-button label="Draft"></p-button> -->
+      <p-button type="submit" label="Submit"></p-button>
+    </div>
+  </form>
+</p-dialog>

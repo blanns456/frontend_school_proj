@@ -1,0 +1,181 @@
+<div class="container-dashboard">
+  <app-accounting-sidebar></app-accounting-sidebar>
+  <div class="main-content">
+    <div class="fixed-background"></div>
+    <app-accounting-navbar></app-accounting-navbar>
+    <div class="container-fluid containerTab">
+      <!-- <div class="divider mb-4"></div> -->
+      <div class="contentTab mb-3 bg-white w-100 rounded">
+        <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+          <h3 class="text-white fw-bold">Daily Collection Setup</h3>
+          <div class="d-flex justify-content-start">
+            <button class="btn btn-primary">
+              <a
+                routerLink="/dailycollection-setup"
+                class="text-white text-decoration-none"
+                >NON TRUST FUND ITEMS</a
+              >
+            </button>
+            <button class="btn btn-primary ms-2">
+              <a
+                routerLink="/trustfund-items"
+                class="text-white text-decoration-none"
+                >TRUST FUND ITEMS</a
+              >
+            </button>
+          </div>
+        </div>
+        <div class="container my-2">
+          <div class="d-flex justify-content-between my-3">
+            <h4 class="caption-top fw-bold">TRUST FUND ITEMS</h4>
+            <button
+              class="btn btnAddFees text-white"
+              data-bs-toggle="modal"
+              data-bs-target="#newItems"
+            >
+              <i class="fa-solid fa-file-circle-plus mx-2"></i>New Item
+            </button>
+          </div>
+          <table
+            class="table table-bordered table-striped"
+            #dataTable
+            style="width: 100%"
+          >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Items</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Lab Fees</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a class="text-white text-decoration-none"
+                      ><i class="fa-solid fa-eye"></i>View</a
+                    >
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a class="text-white text-decoration-none"
+                      ><i class="fa-solid fa-trash text-white"></i>Remove</a
+                    >
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Lab Fees</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a class="text-white text-decoration-none"
+                      ><i class="fa-solid fa-eye"></i>View</a
+                    >
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a class="text-white text-decoration-none"
+                      ><i class="fa-solid fa-trash text-white"></i>Remove</a
+                    >
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Lab Fees</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a class="text-white text-decoration-none"
+                      ><i class="fa-solid fa-eye"></i>View</a
+                    >
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a class="text-white text-decoration-none"
+                      ><i class="fa-solid fa-trash text-white"></i>Remove</a
+                    >
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Lab Fees</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a class="text-white text-decoration-none"
+                      ><i class="fa-solid fa-eye"></i>View</a
+                    >
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a class="text-white text-decoration-none"
+                      ><i class="fa-solid fa-trash text-white"></i>Remove</a
+                    >
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Lab Fees</td>
+                <td>
+                  <button class="btn btn-secondary">
+                    <a class="text-white text-decoration-none"
+                      ><i class="fa-solid fa-eye"></i>View</a
+                    >
+                  </button>
+                  <button class="btn btn-danger mx-2">
+                    <a class="text-white text-decoration-none"
+                      ><i class="fa-solid fa-trash text-white"></i>Remove</a
+                    >
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div
+  class="modal fade"
+  id="newItems"
+  tabindex="-1"
+  aria-labelledby="newItemsLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 fw-bold" id="newItemsLabel">Add Items</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="m-2 px-2">
+          <div class="inputGroup row d-flex align-items-center">
+            <span class="caption-top">Add Trust Fund Items</span>
+            <div class="col-6 my-3">
+              <label for="addfunds">Item:</label>
+              <input
+                class="inputs"
+                type="text"
+                id="addfunds"
+                name="addfunds"
+                placeholder="input here"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

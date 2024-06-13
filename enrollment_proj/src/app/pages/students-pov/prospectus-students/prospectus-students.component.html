@@ -1,0 +1,75 @@
+<div class="container-fluid vh-100 content">
+  <h2 class="h3 text-white">Course List</h2>
+  <div class="position-relative">
+    <div class="my-3 bg-white rounded">
+      <div *ngIf="is_already_submitted !== 'Already submitted'">
+        <div class="bg-secondary text-white px-3 py-2 d-flex justify-content-between ">
+          <div>
+            <span>Program:
+              <strong>{{infomation?.name}}</strong></span>
+          </div>
+          <div>
+            <span>Year Level: <strong>{{infomation?.year_lvl}}</strong></span>
+          </div>
+        </div>
+        <div class="my-2 container-fluid">
+
+        </div>
+        <div class="my-2 container">
+          <form>
+            <table class="table table-bordered py-2 text-center">
+              <thead>
+                <tr>
+                  <th>Course Code.</th>
+                  <th>Descriptive Titles</th>
+                  <th>Units</th>
+                  <th>Pre-requisite</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="4"></td>
+                  <td>
+                    <input type="checkbox" id="allButton" class="all form-check mx-auto"
+                      (change)="selectAll($event); updateTotalUnits($event, '')" />
+
+                  </td>
+                </tr>
+                <tr *ngFor="let subject of prospectusData">
+                  <td>{{ subject.code }}</td>
+                  <td>{{ subject.description }}</td>
+                  <td>{{ subject.units }}</td>
+                  <td>{{ subject.pre_requisite }}</td>
+                  <td>
+                    <input type="checkbox" [value]="subject.id + ',' + subject.units" name="subjects"
+                      (change)="updateTotalUnits($event, subject.units)" />
+
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="4" class="text-end">Total Units</td>
+                  <td class="text-center">{{ totalUnits }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="text-end">
+              <button class="btn btn-sm btn-success" (click)="onsubmit()">
+                Submit
+              </button>
+            </div>
+            <div class="opacity-0">spacer</div>
+          </form>
+        </div>
+      </div>
+      <div *ngIf="is_already_submitted === 'Already submitted'"
+        class="h-25 d-flex align-items-center justify-content-center flex-column">
+        <h1>Courses Submitted </h1>
+        <p>Check the Enrollment Tab to See Courses Status</p>
+        <a routerLink="/student/enrollment">Enrollment</a>
+      </div>
+    </div>
+    <div class="opacity-0">spacer</div>
+    <div class="opacity-0">spacer</div>
+  </div>
+</div>

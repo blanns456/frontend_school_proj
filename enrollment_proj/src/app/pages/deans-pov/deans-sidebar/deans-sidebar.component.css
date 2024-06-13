@@ -1,0 +1,36 @@
+.logout {
+  width: 100%;
+  height: 10rem;
+  background-image: url("../../../../assets/misc/profile.png");
+  background-size: cover;
+  background-position: center;
+}
+
+#profile {
+  border-radius: 50%;
+}
+
+.active {
+  background: #0840a1 !important;
+  color: whitesmoke;
+}
+
+.sidebar {
+  width: 20%;
+  min-height: 100%;
+  background: whitesmoke;
+}
+
+.list-group a {
+  display: inline-block;
+  background: linear-gradient(to left, whitesmoke 50%, #0840a1 50%) right;
+  background-size: 200%;
+  transition: 0.3s ease-out;
+  border-radius: 0 !important;
+  border: none;
+}
+
+.list-group a:hover {
+  background-position: left;
+  color: whitesmoke;
+}

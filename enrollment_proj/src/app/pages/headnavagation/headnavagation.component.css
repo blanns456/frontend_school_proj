@@ -1,0 +1,46 @@
+.navbar {
+  background-color: var(--midnight);
+  font-weight: 600;
+  font-size: 10pt;
+}
+
+.nav-link:hover {
+  transform: scale(1.05);
+  transition: 0.1s linear;
+}
+
+.active {
+  color: rgb(0, 171, 250) !important;
+}
+
+.nav-item a {
+  color: white;
+}
+
+.home1 {
+  color: #333333;
+}
+
+.offTitle {
+  color: #191970;
+}
+
+.dropdown-menu {
+  background-color: #191970;
+  position: relative;
+}
+
+.dropdown-item {
+  color: whitesmoke;
+}
+
+.menu2 {
+  background-color: whitesmoke;
+  color: #555555;
+}
+
+@media only screen and (max-width: 576px) {
+  .navbar {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}

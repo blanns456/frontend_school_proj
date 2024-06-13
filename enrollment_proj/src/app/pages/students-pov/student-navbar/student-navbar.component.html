@@ -1,16 +1,129 @@
-<nav class="navbar bg-body-tertiary position-fixed nav-student">
-  <div class="container-fluid">
-    <div class="mw-100 text-center">
-      <img
-        src="../../../assets/misc/ascb_logo.png"
-        class="img-responsive mw-100"
-        width="50"
-        height="50"
-        alt="ascb_logo"
-      />
-      <span class="navbar-brand mb-0 h2 mx-4 nav-text"
-        >Andres Soriano Colleges of Bislig</span
+<nav class="navbar nav-color z-3 nav-student fixed-top d-lg-flex d-none">
+  <div class="">
+    <div class="mw-100 text-center ps-3">
+      <span class="nav-text mt-1">Andres Soriano Colleges of Bislig</span>
+    </div>
+    <!-- <div class="">
+      <div class="dropdown">
+        <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-bell fs-4"></i>
+          <span class="noti-dot"></span>
+        </button>
+
+        <div class="dropdown-menu noti-list">
+          <div class="">
+            <h3 class="fs-6">Notifications</h3>
+            <a href>View More...</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <i class="fa-solid fa-message fs-4 mx-3"></i>
+      </div>
+    </div> -->
+  </div>
+</nav>
+<nav
+  class="navbar navbar-expand p-0 fixed-top shadow-lg d-lg-none d-md-block d-block w-100"
+>
+  <div class="topNav d-lg-none d-md-none d-flex justify-content-end">
+    <ul class="nav flex-column text-center pt-1">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/student/home">
+          <i class="pi pi-home pi-user-edit"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link" routerLink="/student/information">
+          <i class="pi pi-user-edit"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link" routerLink="/student/academic-record">
+          <i class="pi pi-file"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link" routerLink="/student/financial">
+          <i class="pi pi-dollar"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link" routerLink="/student/prospectus">
+          <i class="pi pi-bars"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link" routerLink="/student/courses">
+          <i class="pi pi-book"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link" routerLink="/student/enrollment">
+          <i class="pi pi-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="profile d-flex flex-row">
+    <div class="brand">
+      <a class="navbar-brand" href="#">
+        <img
+          class="headicon"
+          src="../../../../assets/misc/ascb_logo.png"
+          width="80"
+        />
+      </a>
+    </div>
+    <div class="brandName pt-4 flex-fill">
+      <p class="pfpName text-light d-lg-none d-md-block d-none">
+        Andres Soriano Colleges of Bislig
+      </p>
+      <p class="pfpName text-light d-lg-none d-md-none d-block">ASCB</p>
+    </div>
+    <div class="dropdown m-3">
+      <a
+        href="#"
+        class="d-flex align-items-center text-decoration-none"
+        id="dropdownUser2"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
       >
+        <img
+          src="../../../../assets/misc/defaultasdas.jpg"
+          alt=""
+          width="30"
+          height="30"
+          class="rounded-circle"
+        />
+      </a>
+      <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser2">
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink="/update-information"
+            routerLinkActive="active"
+            >Update Information</a
+          >
+        </li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li>
+          <hr class="dropdown-divider" />
+        </li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
     </div>
   </div>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 </nav>

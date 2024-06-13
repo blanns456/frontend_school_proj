@@ -1,0 +1,112 @@
+<div
+  class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column"
+>
+  <!-- <div class="divider mb-4"></div> -->
+  <div class="bg-white w-100 h-75 rounded">
+    <div class="text-start text-header rounded-top shadow w-100 py-2 ps-3">
+      <h3 class="text-white fw-bold">Statement of Accounts</h3>
+    </div>
+    <form class="m-4 px-2">
+      <div
+        class="inputGroup row d-flex justify-content-center align-items-center"
+      >
+        <div class="col-4">
+          <label for="schoolyr">School Yr.</label>
+          <select class="inputs" name="schoolyr" id="schoolyr">
+            <option selected hidden>Input School Yr.</option>
+            <option value="1">A.Y 2021-2022</option>
+            <option value="2">A.Y 2022-2023</option>
+            <option value="3">A.Y 2023-2024</option>
+          </select>
+        </div>
+        <div class="col-4">
+          <label for="semester">Semester</label>
+          <select class="inputs" name="semester" id="semester">
+            <option selected hidden>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="col-4">
+          <label for="studid">ID:</label>
+          <input
+            class="inputs"
+            type="text"
+            id="studid"
+            name="studid"
+            placeholder="202244564"
+          />
+        </div>
+        <div class="col-4 my-4">
+          <label for="studname">Student's Name:</label>
+          <input
+            class="inputs"
+            type="text"
+            id="studname"
+            name="studname"
+            placeholder="input here"
+          />
+        </div>
+        <div class="col-4">
+          <label for="course">Course/Yr.</label>
+          <input
+            class="inputs"
+            type="text"
+            id="course"
+            name="course"
+            placeholder="input here"
+          />
+        </div>
+        <div class="col-4">
+          <label for="date">Date:</label>
+          <input
+            class="inputs"
+            type="date"
+            id="date"
+            name="date"
+            placeholder="input date here"
+          />
+        </div>
+      </div>
+    </form>
+    <div class="divider mx-auto my-4"></div>
+    <div class="container">
+      <table
+        id="example"
+        class="table table-striped table-bordered"
+        style="width: 100%"
+      >
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>ID Number</th>
+            <th>Student's Name</th>
+            <th>Course/Year</th>
+            <th>School Yr.</th>
+            <th>Particulars</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>23/11/2023</td>
+            <td>202244564</td>
+            <td>Rizal, Jose Patricio</td>
+            <td>BSIT/1st Year</td>
+            <td>2023-2024</td>
+            <td>Test Fee</td>
+          </tr>
+          <tr>
+            <td>13/11/2023</td>
+            <td>202244356</td>
+            <td>Lumpay, Ignacio P</td>
+            <td>BSIT/3rd Year</td>
+            <td>2023-2024</td>
+            <td>Test Fee</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
