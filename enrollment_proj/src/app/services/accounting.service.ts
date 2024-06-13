@@ -59,6 +59,7 @@ export class AccountingService {
     paidAmount: number;
     onlinepayRef: string;
     itemfeeId: number;
+    acknowledgeNo: number;
     receiptId: number;
   }) {
     return this.http.post(this.Root_URL + 'savestud_transac', datas, {

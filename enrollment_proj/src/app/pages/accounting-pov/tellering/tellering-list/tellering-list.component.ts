@@ -75,6 +75,17 @@ export class TelleringListComponent implements OnInit {
     this.displayInput = true;
   }
 
+  filterInput(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
+    this.studledgers = this.info[0].filter(
+      (item: { [s: string]: unknown } | ArrayLike<unknown>) =>
+        Object.values(item).some((value) =>
+          String(value).toLowerCase().includes(filterValue)
+        )
+    );
+    // console.log('search data', this.studledgers);
+  }
+
   showdialog(studid: number, student_status: string, semester: string) {
     const studentid = studid;
     const sem_id = semester;
@@ -85,7 +96,7 @@ export class TelleringListComponent implements OnInit {
   }
 
   saveTransac() {
-    // console.log(this.studTransac.value);
+    console.log(this.studTransac.value);
     this.AccountingService.submitTransaction(this.studTransac.value).subscribe({
       next: (res) => {
         console.log(res);
