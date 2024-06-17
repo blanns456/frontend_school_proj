@@ -33,7 +33,7 @@ export class TelleringListComponent implements OnInit {
   studid: any;
   getmopdata: any;
   data: any;
-  receiptid: any;
+  tellerid: any;
 
   constructor(
     private AccountingController: AccountingController,
@@ -54,7 +54,7 @@ export class TelleringListComponent implements OnInit {
       paidAmount: new FormControl('', [Validators.required]),
       onlinepayRef: new FormControl('', [Validators.required]),
       itemfeeId: new FormControl('', [Validators.required]),
-      receiptId: new FormControl('', [Validators.required]),
+      tellerId: new FormControl('', [Validators.required]),
     });
 
     this.currdate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
@@ -132,11 +132,11 @@ export class TelleringListComponent implements OnInit {
         this.tellerdata = res;
         this.teller = this.tellerdata[0]?.username;
         this.acknowledgeNo = this.tellerdata?.receiptNumber;
+        this.tellerid = this.tellerdata[0]?.account_id;
         this.studTransac.get('acknowledgeNo')?.setValue(this.acknowledgeNo);
         this.studTransac.get('teller')?.setValue(this.teller);
-        this.receiptid = this.tellerdata?.receiptId;
+        this.studTransac.get('tellerId')?.setValue(this.tellerid);
         console.log(res);
-        this.studTransac.get('receiptId')?.setValue(this.receiptid);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
