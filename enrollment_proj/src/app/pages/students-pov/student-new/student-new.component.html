@@ -1,8 +1,6 @@
 <app-headnavagation></app-headnavagation>
 <div class="fixed-login"></div>
-<div *ngIf="loading" class="loading-overlay">
-  <app-loading-page></app-loading-page>
-</div>
+
 <div
   class="banner d-flex justify-content-center align-items-center flex-column"
 >
@@ -127,19 +125,9 @@
                     optionLabel="name"
                     optionValue="value"
                     placeholder="Select a Gender"
-                    [editable]="true"
                     [showClear]="true"
+                    [style]="{ width: '100%' }"
                   ></p-dropdown>
-                  <!-- <select
-                  name="gender"
-                  id="gender"
-                  formControlName="gender"
-                  class="form-select shadow-xl"
-                >
-                  <option [selected]="true" hidden>Please Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select> -->
                 </div>
               </div>
               <div class="col-lg-3 col-md-6 col-12">
@@ -416,7 +404,7 @@
             <h2 class="fw-bold">Enter OTP Code</h2>
             <p class="fst-italic mx-auto py-3 w-75">
               An Otp Verification Code has been sent to your email. Please input
-              the correct code to verify your account.. Thank you
+              the correct code to verify your account, Thank you!
             </p>
           </div>
           <div
@@ -434,14 +422,14 @@
               ></p-inputOtp>
             </div>
             <br />
-            <button
-              pButton
-              pRipple
-              (click)="verifyOTP()"
-              class="btn btn-success"
-            >
-              Verify OTP
-            </button>
+            <p-button *ngIf="!loading" (click)="verifyOTP()">
+              Submit Verification
+            </p-button>
+
+            <span *ngIf="loading">
+              <p-progressSpinner ariaLabel="loading" />
+              <!-- <app-loading-page></app-loading-page> -->
+            </span>
           </div>
         </div>
       </div>

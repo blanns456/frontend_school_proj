@@ -1,5 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,12 +14,11 @@ export class LoginComponent implements OnInit {
   loading = false;
 
   constructor(
-    private formBuilder: FormBuilder,
     private router: Router,
     private messageService: MessageService,
     private authService: AuthService,
     private ngZone: NgZone
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -50,20 +49,30 @@ export class LoginComponent implements OnInit {
         next: () => {
           this.redirectBasedOnRole();
         },
-          error: () => {
-            this.messageService.add({ severity: 'error', summary: 'Login Failed', detail: 'Invalid email or password' });
-            this.loading = false;
-        }
+        error: () => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Login Failed',
+            detail: 'Invalid email or password',
+          });
+          this.loading = false;
+        },
       });
     }
   }
 
   private redirectBasedOnRole(): void {
-    this.authService.getUserRoles().subscribe(roles => {
+    this.authService.getUserRoles().subscribe((roles) => {
       if (roles.includes('college')) {
         this.router.navigate(['/student']);
       } else if (roles.includes('dean')) {
         this.router.navigate(['/dean']);
+      } else if (roles.includes('registrar')) {
+        this.router.navigate(['/registrar']);
+      } else if (roles.includes('teacher')) {
+        this.router.navigate(['/teacher']);
+      } else if (roles.includes('teller')) {
+        this.router.navigate(['/accounting']);
       } else {
         this.router.navigate(['/home']);
       }

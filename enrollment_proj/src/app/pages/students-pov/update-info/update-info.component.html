@@ -1,9 +1,7 @@
 <header>
   <nav class="navbar-expand">
     <div class="container-fluid py-2 shadow d-flex">
-      <a
-        (click)="backClicked()"
-        class="back mx-2 pe-3 my-auto"
+      <a (click)="backClicked()" class="back mx-2 pe-3 my-auto"
         ><img
           src="../../../../assets/misc/genesys-login-back-white.png"
           alt="exit"
@@ -37,6 +35,7 @@
                 pInputText
                 id="firstname"
                 formControlName="first_name"
+                class="text-uppercase"
                 [value]="data?.first_name"
                 [style]="{ width: '100%' }"
               />
@@ -51,6 +50,7 @@
                 pInputText
                 id="lastname"
                 formControlName="last_name"
+                class="text-uppercase"
                 [value]="data?.last_name"
                 [style]="{ width: '100%' }"
               />
@@ -64,6 +64,7 @@
                 >&nbsp;&nbsp;<p-checkbox
                   [ariaChecked]="noMiddleName"
                   (click)="toggleMiddleName()"
+                  class="text-uppercase"
                   [binary]="true"
                   inputId="binary"
                 ></p-checkbox>
@@ -83,8 +84,13 @@
           <div class="col-lg-3 mb-2">
             <div class="flex flex-column">
               <label for="suffix" class="mb-1">Extension </label>
-              <input pInputText id="suffix" formControlName="suffix" [value]="data?.suffix"
-                [style]="{width: '100%'}" />
+              <input
+                pInputText
+                id="suffix"
+                formControlName="suffix"
+                [value]="data?.suffix"
+                [style]="{ width: '100%' }"
+              />
             </div>
           </div>
           <div class="col-lg-3 mb-2">
@@ -121,28 +127,28 @@
               >
                 <option value="" disabled>Please Select</option>
                 <option
-                  value="SINGLE"
-                  [selected]="data?.civil_status === 'SINGLE'"
+                  value="Single"
+                  [selected]="data?.civil_status === 'single'"
                 >
-                  SINGLE
+                  Single
                 </option>
                 <option
-                  value="MARRIED"
-                  [selected]="data?.civil_status === 'MARRIED'"
+                  value="Married"
+                  [selected]="data?.civil_status === 'married'"
                 >
-                  MARRIED
+                  Married
                 </option>
                 <option
-                  value="WIDOWED"
-                  [selected]="data?.civil_status === 'WIDOWED'"
+                  value="Widowed"
+                  [selected]="data?.civil_status === 'widowed'"
                 >
-                  WIDOWED
+                  Widowed
                 </option>
                 <option
-                  value="DIVORCED"
-                  [selected]="data?.civil_status === 'DIVORCED'"
+                  value="Divorced"
+                  [selected]="data?.civil_status === 'divorced'"
                 >
-                  DIVORCED
+                  Divorced
                 </option>
               </select>
             </div>
@@ -191,11 +197,9 @@
                 pInputText
                 id="contact_number"
                 formControlName="contact_number"
-                class="text-capitalize"
                 [value]="data?.contact_number"
                 [style]="{ width: '100%' }"
                 maxlength="11"
-                [readOnly]="true"
               />
             </div>
           </div>
@@ -210,20 +214,19 @@
                 formControlName="email"
                 [value]="data?.user.email"
                 [style]="{ width: '100%' }"
-                [readOnly]="true"
               />
             </div>
           </div>
           <div class="col-lg-3 mb-2">
             <div class="flex flex-column">
-              <label for="birthdate"
+              <label for="birth_date"
                 >Birth Date <span class="text-danger">*</span></label
               >
               <input
                 type="date"
-                name="birthdate"
-                formControlName="birthdate"
-                id="birthdate"
+                name="birth_date"
+                formControlName="birth_date"
+                id="birth_date"
                 [value]="data?.birth_date"
                 class="w-100"
               />
@@ -238,7 +241,6 @@
                 pInputText
                 id="birth_place"
                 formControlName="birth_place"
-                class="text-capitalize"
                 [value]="data?.birth_place"
                 [style]="{ width: '100%' }"
               />
@@ -342,8 +344,15 @@
           <div class="col-lg-12 mb-3 pb-2">
             <div class="container-fluid">
               <div class="form-check mb-2">
-                <input type="checkbox" class="form-check-input" id="sameAsHome" (change)="onSameAsHomeChange($event)">
-                <label class="form-check-label" for="sameAsHome">Same as Home Address</label>
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="sameAsHome"
+                  (change)="onSameAsHomeChange($event)"
+                />
+                <label class="form-check-label" for="sameAsHome"
+                  >Same as Home Address</label
+                >
               </div>
               <h4>Present Address <span class="text-danger">*</span></h4>
               <div class="row">
@@ -456,19 +465,19 @@
                   pInputText
                   id="elem_school"
                   formControlName="elem_school"
-                  class="text-capitalize"
                   [value]="data?.elem_school"
+                  class="text-uppercase"
                   [style]="{ width: '100%' }"
                 />
               </div>
               <div class="flex flex-column mb-3">
-                <label for="elem_yr"
+                <label for="elem_year"
                   >Year Graduated <span class="text-danger">*</span></label
                 >
                 <input
                   pInputText
-                  id="elem_yr"
-                  formControlName="elem_yr"
+                  id="elem_year"
+                  formControlName="elem_year"
                   [value]="data?.elem_year"
                   [style]="{ width: '100%' }"
                   (input)="inputMask($event)"
@@ -488,19 +497,19 @@
                   pInputText
                   id="jhs_school"
                   formControlName="jhs_school"
-                  class="text-capitalize"
                   [value]="data?.jhs_school"
+                  class="text-uppercase"
                   [style]="{ width: '100%' }"
                 />
               </div>
               <div class="flex flex-column mb-3">
-                <label for="jhs_yr"
+                <label for="jhs_year"
                   >Year Graduated <span class="text-danger">*</span></label
                 >
                 <input
                   pInputText
-                  id="jhs_yr"
-                  formControlName="jhs_yr"
+                  id="jhs_year"
+                  formControlName="jhs_year"
                   [value]="data?.jhs_year"
                   [style]="{ width: '100%' }"
                   (input)="inputMask($event)"
@@ -520,19 +529,19 @@
                   pInputText
                   id="shs_school"
                   formControlName="shs_school"
-                  class="text-capitalize"
                   [value]="data?.shs_school"
+                  class="text-uppercase"
                   [style]="{ width: '100%' }"
                 />
               </div>
               <div class="flex flex-column mb-3">
-                <label for="shs_yr"
+                <label for="shs_year"
                   >Year Graduated <span class="text-danger">*</span></label
                 >
                 <input
                   pInputText
-                  id="shs_yr"
-                  formControlName="shs_yr"
+                  id="shs_year"
+                  formControlName="shs_year"
                   [value]="data?.shs_year"
                   [style]="{ width: '100%' }"
                   (input)="inputMask($event)"
@@ -551,8 +560,8 @@
                 pInputText
                 id="last_school"
                 formControlName="last_school"
-                class="text-capitalize"
                 [value]="data?.last_school"
+                class="text-uppercase"
                 [style]="{ width: '100%' }"
               />
             </div>
@@ -575,7 +584,7 @@
             </div>
           </div>
           <hr />
-          <!-- <h3>Parent/Guardian&apos;s Information</h3>
+          <h3>Parent/Guardian&apos;s Information</h3>
           <div class="col-lg-12 mb-3">
             <p-card header="Father's Information">
               <div class="row">
@@ -586,7 +595,8 @@
                       pInputText
                       id="f_name"
                       formControlName="father_name"
-                      [value]="data?.student_parent.father_name"
+                      [value]="data?.student_parent?.father_name"
+                      class="text-uppercase"
                       [style]="{ width: '100%' }"
                     />
                   </div>
@@ -598,8 +608,8 @@
                       pInputText
                       id="employed_where"
                       formControlName="father_employed"
-                      class="text-capitalize"
-                      [value]="data?.student_parent.father_employed"
+                      [value]="data?.student_parent?.father_employed"
+                      class="text-uppercase"
                       [style]="{ width: '100%' }"
                     />
                   </div>
@@ -611,8 +621,8 @@
                       pInputText
                       id="occupation"
                       formControlName="father_occupation"
-                      class="text-capitalize"
-                      [value]="data?.student_parent.father_occupation"
+                      [value]="data?.student_parent?.father_occupation"
+                      class="text-uppercase"
                       [style]="{ width: '100%' }"
                     />
                   </div>
@@ -624,7 +634,7 @@
                       pInputText
                       id="f_number"
                       formControlName="father_contact"
-                      [value]="data?.student_parent.father_contact"
+                      [value]="data?.student_parent?.father_contact"
                       [style]="{ width: '100%' }"
                       (input)="inputMask($event)"
                       maxlength="11"
@@ -645,8 +655,8 @@
                       pInputText
                       id="m_name"
                       formControlName="mother_name"
-                      class="text-capitalize"
-                      [value]="data?.student_parent.mother_name"
+                      [value]="data?.student_parent?.mother_name"
+                      class="text-uppercase"
                       [style]="{ width: '100%' }"
                     />
                   </div>
@@ -658,8 +668,8 @@
                       pInputText
                       id="m_employed_where"
                       formControlName="mother_employed"
-                      class="text-capitalize"
-                      [value]="data?.student_parent.mother_employed"
+                      [value]="data?.student_parent?.mother_employed"
+                      class="text-uppercase"
                       [style]="{ width: '100%' }"
                     />
                   </div>
@@ -671,8 +681,8 @@
                       pInputText
                       id="m_occupation"
                       formControlName="mother_occupation"
-                      class="text-capitalize"
-                      [value]="data?.student_parent.mother_occupation"
+                      [value]="data?.student_parent?.mother_occupation"
+                      class="text-uppercase"
                       [style]="{ width: '100%' }"
                     />
                   </div>
@@ -684,7 +694,7 @@
                       pInputText
                       id="m_number"
                       formControlName="mother_contact"
-                      [value]="data?.student_parent.mother_contact"
+                      [value]="data?.student_parent?.mother_contact"
                       [style]="{ width: '100%' }"
                       (input)="inputMask($event)"
                       maxlength="11"
@@ -694,8 +704,8 @@
                 </div>
               </div>
             </p-card>
-          </div> -->
-          <!-- <div class="col-lg-12 mb-3">
+          </div>
+          <div class="col-lg-12 mb-3">
             <p-card header="Guardian's Information">
               <div class="row">
                 <div class="col-lg-6">
@@ -704,9 +714,9 @@
                     <input
                       pInputText
                       id="g_name"
-                      class="text-capitalize"
                       formControlName="guardian_name"
-                      [value]="data?.student_parent.guardian_name"
+                      [value]="data?.student_parent?.guardian_name"
+                      class="text-uppercase"
                       [style]="{ width: '100%' }"
                     />
                   </div>
@@ -717,9 +727,9 @@
                     <input
                       pInputText
                       id="g_employed_where"
-                      class="text-capitalize"
                       formControlName="guardian_employed"
-                      [value]="data?.student_parent.guardian_employed"
+                      [value]="data?.student_parent?.guardian_employed"
+                      class="text-uppercase"
                       [style]="{ width: '100%' }"
                     />
                   </div>
@@ -731,8 +741,7 @@
                       pInputText
                       id="g_occupation"
                       formControlName="guardian_occupation"
-                      class="text-capitalize"
-                      [value]="data?.student_parent.guardian_occupation"
+                      class="text-uppercase"
                       [style]="{ width: '100%' }"
                     />
                   </div>
@@ -744,7 +753,7 @@
                       pInputText
                       id="g_number"
                       formControlName="guardian_contact"
-                      [value]="data?.student_parent.guardian_contact"
+                      [value]="data?.student_parent?.guardian_contact"
                       [style]="{ width: '100%' }"
                       (input)="inputMask($event)"
                       maxlength="11"
@@ -754,19 +763,6 @@
                 </div>
               </div>
             </p-card>
-          </div> -->
-          <div class="col-12 text-center">
-            <div class="mb-3 d-flex flex-column">
-              <label for="new_password"
-                >New Password <span class="text-danger">&ast;</span>
-              </label>
-              <p-password
-                formControlName="new_password"
-                id="new_password"
-                [toggleMask]="true"
-              >
-              </p-password>
-            </div>
           </div>
           <div class="col-6">
             <div class="mb-3">
@@ -803,9 +799,7 @@
           </div>
           <div class="col-6">
             <div class="mb-3">
-              <label for="mother_occupation" class="form-label"
-                >Your Signature <span class="text-danger">*</span></label
-              >
+
               <canvas
                 #canvas
                 (touchstart)="startDrawing($event)"
@@ -818,19 +812,12 @@
               </small>
 
               <div class="my-3 text-center">
-                <button
-                  (click)="clearPad()"
-                  class="btn btn-outline-info btn-sm"
-                >
-                  Clear
-                </button>
+                <p-button (click)="clearPad()">Clear Signature</p-button>
               </div>
             </div>
           </div>
-          <div class="text-end mt-5">
-            <button class="btn btn-success btn-lg" (click)="update()">
-              Update Information
-            </button>
+          <div class="text-center">
+            <p-button (click)="update()">Update Information</p-button>
           </div>
         </div>
       </div>

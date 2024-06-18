@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class UpdateStudentServiceService {
   constructor(private http: HttpClient) {}
 
-  readonly Root_URL = 'http://genesys.example.com/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/v1/';
   token = localStorage.getItem('token');
   headers = new HttpHeaders({
     Authorization: `Bearer ${this.token}`,
@@ -21,7 +21,7 @@ export class UpdateStudentServiceService {
 
   updateStudent(data: FormData) {
     console.log(data);
-    return this.http.post(this.Root_URL + 'update-student', data, {
+    return this.http.post(this.Root_URL + 'update-information', data, {
       headers: this.headers,
     });
   }
