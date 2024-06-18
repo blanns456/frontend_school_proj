@@ -35,9 +35,7 @@
               <p-button
                 label="Pay"
                 class="mx-2"
-                (click)="
-                  showdialog(stud.studid, stud.student_status, stud.semester)
-                "
+                (click)="showdialog(stud.studid, stud.studname, stud.semester)"
               ></p-button>
               <p-button icon="pi pi-eye" (click)="viewTransac(stud)"></p-button>
             </td>
@@ -54,7 +52,7 @@
 </div>
 
 <p-dialog
-  header="Make Payment"
+  header="{{ studentName }}'s Payment"
   [modal]="true"
   [maximizable]="true"
   appendTo="body"
@@ -147,34 +145,36 @@
         <label for="partial">Partial</label>
       </div>
     </div> -->
-    <p-button
-      icon="pi pi-list-check"
-      (click)="showallocateFees()"
-      label="Allocate Fees"
-    ></p-button>
-    <p-table
-      *ngIf="allocateTable"
-      [rowHover]="true"
-      [value]="allocation"
-      styleClass="p-datatable-striped p-datatable-sm"
-    >
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Item Fees</th>
-          <th>Amount</th>
-          <th>Paid</th>
-          <th>Balance</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-breakdown>
-        <tr>
-          <td>{{ breakdown.category }}</td>
-          <td>{{ breakdown.amount }}</td>
-          <td>{{ breakdown.paid }}</td>
-          <td>{{ breakdown.balance }}</td>
-        </tr>
-      </ng-template>
-    </p-table>
+    <div>
+      <p-button
+        icon="pi pi-list-check"
+        (click)="showallocateFees()"
+        label="Allocate Fees"
+      ></p-button>
+      <p-table
+        *ngIf="allocateTable"
+        [rowHover]="true"
+        [value]="allocation"
+        styleClass="p-datatable-striped p-datatable-sm"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Item Fees</th>
+            <th>Amount</th>
+            <th>Paid</th>
+            <th>Balance</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-breakdown>
+          <tr>
+            <td>{{ breakdown.category }}</td>
+            <td>{{ breakdown.amount }}</td>
+            <td>{{ breakdown.paid }}</td>
+            <td>{{ breakdown.balance }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
     <div class="d-flex justify-content-end">
       <p-button type="submit" label="Submit"></p-button>
     </div>

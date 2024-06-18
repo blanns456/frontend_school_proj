@@ -34,6 +34,7 @@ export class TelleringListComponent implements OnInit {
   getmopdata: any;
   data: any;
   tellerid: any;
+  studentName!: string;
 
   constructor(
     private AccountingController: AccountingController,
@@ -75,9 +76,10 @@ export class TelleringListComponent implements OnInit {
     this.displayInput = true;
   }
 
-  showdialog(studid: number, student_status: string, semester: string) {
+  showdialog(studid: number, studname: string, semester: string) {
     const studentid = studid;
     const sem_id = semester;
+    this.studentName = studname;
     this.showMakePaymentDIalog = true;
     this.tellerTransacForm();
     this.studTransac.get('student_id')?.setValue(studentid);
@@ -85,45 +87,49 @@ export class TelleringListComponent implements OnInit {
   }
 
   saveTransac() {
-    // console.log(this.studTransac.value);
-    this.AccountingService.submitTransaction(this.studTransac.value).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'Added Successfully!',
-        });
-        setTimeout(() => {
-          this.showMakePaymentDIalog = false;
-          this.studTransac.reset({
-            mop: this.getmopdata.find(
-              (option: { description: string }) => option.description === 'Cash'
-            )?.id,
-            paydate: this.currdate,
-            acknowledgeNo: this.acknowledgeNo,
-            teller: this.teller,
-          });
-          this.allocateTable = false;
-        }, 1000);
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error.message);
-        if (error.error.errors.paidAmount) {
-          this.messageService.add({
-            severity: 'warn',
-            summary: 'Error',
-            detail: error.error.errors.paidAmount[0],
-          });
-        } else if (error.error.errors.itemfeeId) {
-          this.messageService.add({
-            severity: 'warn',
-            summary: 'Error',
-            detail: 'Allocate Fees required',
-          });
-        }
-      },
-    });
+    const saveData = {
+      allocation: this.allocation,
+      formData: this.studTransac.value,
+    };
+    console.log(saveData);
+    // this.AccountingService.submitTransaction(this.studTransac.value).subscribe({
+    //   next: (res) => {
+    //     console.log(res);
+    //     this.messageService.add({
+    //       severity: 'success',
+    //       summary: 'Success',
+    //       detail: 'Added Successfully!',
+    //     });
+    //     setTimeout(() => {
+    //       this.showMakePaymentDIalog = false;
+    //       this.studTransac.reset({
+    //         mop: this.getmopdata.find(
+    //           (option: { description: string }) => option.description === 'Cash'
+    //         )?.id,
+    //         paydate: this.currdate,
+    //         acknowledgeNo: this.acknowledgeNo,
+    //         teller: this.teller,
+    //       });
+    //       this.allocateTable = false;
+    //     }, 1000);
+    //   },
+    //   error: (error: HttpErrorResponse) => {
+    //     console.log(error.message);
+    //     if (error.error.errors.paidAmount) {
+    //       this.messageService.add({
+    //         severity: 'warn',
+    //         summary: 'Error',
+    //         detail: error.error.errors.paidAmount[0],
+    //       });
+    //     } else if (error.error.errors.itemfeeId) {
+    //       this.messageService.add({
+    //         severity: 'warn',
+    //         summary: 'Error',
+    //         detail: 'Allocate Fees required',
+    //       });
+    //     }
+    //   },
+    // });
   }
 
   tellerTransacForm() {
@@ -136,7 +142,7 @@ export class TelleringListComponent implements OnInit {
         this.studTransac.get('acknowledgeNo')?.setValue(this.acknowledgeNo);
         this.studTransac.get('teller')?.setValue(this.teller);
         this.studTransac.get('tellerId')?.setValue(this.tellerid);
-        console.log(res);
+        // console.log(res);
       },
       error: (error: HttpErrorResponse) => {
         console.log(error.message);
