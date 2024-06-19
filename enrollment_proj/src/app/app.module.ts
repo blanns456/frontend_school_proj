@@ -151,7 +151,7 @@ import { DeptElementaryComponent } from './pages/home-tab/dept-elementary/dept-e
 import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
 import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
 import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-management/item-modals/item-modals.component';
-import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
+import { UpdateInfoComponent } from './pages/students-pov/update-info/UpdateInfoComponent';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 import { NewComponent } from './pages/graduate-studies/new/new.component';
 import { GraduateMainComponent } from './pages/graduate-studies/graduate-main/graduate-main.component';
@@ -368,7 +368,7 @@ import { PreviewStudentComponent } from './pages/accounting-pov/preview-student/
     // StepperModule,
     // PanelModule,
     ScrollPanelModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -376,4 +376,4 @@ import { PreviewStudentComponent } from './pages/accounting-pov/preview-student/
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

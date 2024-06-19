@@ -1,22 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
   Validators,
-  FormsModule,
   FormControl,
 } from '@angular/forms';
-import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
-import { LoginController } from 'src/app/controllers/login_controller.component';
 import Region from 'src/assets/json/region.json';
 import Province from 'src/assets/json/province.json';
 import City from 'src/assets/json/city.json';
 import Barangay from 'src/assets/json/barangay.json';
 import SignaturePad from 'signature_pad';
 import { MessageService } from 'primeng/api';
-import { error } from 'jquery';
 import { UpdateStudentServiceService } from 'src/app/services/update-student-service.service';
 import nationalities from '../../../../assets/json/nationalities.json';
 import religions from '../../../../assets/json/religions.json';
@@ -301,7 +296,7 @@ export class UpdateInfoComponent {
         });
       }
     } catch (error) {
-      // console.error('Error fetching information', error);
+      console.error('Error fetching information', error);
     }
   }
 
@@ -549,10 +544,10 @@ export class UpdateInfoComponent {
       'signature',
       this.update_student.controls['signature'].value ?? ''
     );
-    // console.log('FormData Entries:');
-    // formData.forEach((value, key) => {
-    //   console.log(`${key}: ${value}`);
-    // });
+    console.log('FormData Entries:');
+    formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
 
     if (
       this.update_student.controls['first_name'].invalid ||

@@ -74,6 +74,7 @@ import { StudentProspectusCoursesComponent } from './pages/students-pov/student-
 import { ApproveStudentsDeanComponent } from './pages/deans-pov/approve-students-dean/approve-students-dean.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { StudentParentComponent } from './pages/students-pov/student-parent/student-parent.component';
+
 //pinaka sugod
 //sugod utro
 import { DeptCceComponent } from './pages/home-tab/dept-cce/dept-cce.component';
@@ -87,7 +88,7 @@ import { DeptCaeComponent } from './pages/home-tab/dept-cae/dept-cae.component';
 import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
 import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
-import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
+import { UpdateInfoComponent } from './pages/students-pov/update-info/UpdateInfoComponent';
 import { GraduateMainComponent } from './pages/graduate-studies/graduate-main/graduate-main.component';
 import { GraduateHomeComponent } from './pages/graduate-studies/graduate-home/graduate-home.component';
 import { MaedInformationComponent } from './pages/graduate-studies/maed-information/maed-information.component';
@@ -165,7 +166,7 @@ const routes: Routes = [
     path: 'student',
     component: StudentParentComponent,
     canActivate: [AuthGuard],
-    data: { expectedRole: 'college'},
+    data: { expectedRole: 'college' },
     children: [
       {
         path: '',
@@ -206,7 +207,7 @@ const routes: Routes = [
     path: 'update-information',
     component: UpdateInfoComponent,
     canActivate: [AuthGuard],
-    data: { expectedRole: 'college'},
+    data: { expectedRole: 'college' },
   },
   // {
   //   path: 'maed',
@@ -555,4 +556,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

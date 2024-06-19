@@ -1,8 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
-import { SemesterController } from 'src/app/controllers/semester_controller.component';
 import Swal from 'sweetalert2';
 import nationalities from '../../../../assets/json/nationalities.json';
 import religions from '../../../../assets/json/religions.json';
@@ -14,6 +12,11 @@ import { TrimesterService } from 'src/app/services/trimester.service';
 import { ProgramService } from 'src/app/services/program.service';
 import { OtpService } from 'src/app/services/otp.service';
 import { CollegeService } from 'src/app/services/college.service';
+
+interface VerifyOTPResponse {
+  message?: string;
+  error?: string;
+}
 
 @Component({
   selector: 'app-student-new',
@@ -47,8 +50,8 @@ export class StudentNewComponent implements OnInit {
   trimester: any;
 
   gender = [
-    { name: 'Male', value: 'male' },
-    { name: 'Female', value: 'female' },
+    { name: 'Male', value: 'Male' },
+    { name: 'Female', value: 'Female' },
   ];
 
   civilstatus = [
@@ -72,9 +75,6 @@ export class StudentNewComponent implements OnInit {
 
   constructor(
     private messageService: MessageService,
-    private http: HttpClient,
-    private collegecontroller: CollegeEnrollmentController,
-    private semester_controller: SemesterController,
     private router: Router,
     private enrollment: TrimesterService,
     private program: ProgramService,
@@ -83,6 +83,7 @@ export class StudentNewComponent implements OnInit {
   ) {
     this.pipe = new DatePipe('en-PH');
     this.sem = new FormControl();
+
     this.signUpForm = new FormGroup({
       last_name: new FormControl(null, [Validators.required]),
       first_name: new FormControl(null, [Validators.required]),
@@ -117,16 +118,7 @@ export class StudentNewComponent implements OnInit {
         this.enrollmentData = this.data;
         this.signUpForm.patchValue({ trimester: this.enrollmentData.id });
       },
-      error: (err) => {
-        // setTimeout(() => {
-        //   this.messageService.add({
-        //     severity: 'error',
-        //     summary: 'Notice',
-        //     detail: 'Enrollment is no longer available!',
-        //   });
-        // }, 1000);
-        // this.router.navigate(['home']);
-      },
+      error: () => {},
     });
   }
 
@@ -177,11 +169,28 @@ export class StudentNewComponent implements OnInit {
 
   verifyOTP() {
     this.otPassword.verifyotp({ otp: this.enteredOTP || '' }).subscribe({
-      next: (response) => {
-        this.info = response;
-        const d = Date();
-        const myFormattedDate = this.pipe.transform(d, 'Y-MM-dd HH:mm:ss');
-        if (this.info?.[0]?.['expire'] <= myFormattedDate) {
+      next: (response: VerifyOTPResponse) => {
+        if (response.message === 'OTP verified successfully') {
+          this.loading = true;
+          this.college.createStudent(this.signUpForm.value).subscribe({
+            next: (res) => {
+              this.info = res;
+              Swal.fire(
+                'SUCCESS',
+                'Check Email For Account Information',
+                'success'
+              );
+              this.router.navigate(['login']);
+              this.loading = false;
+            },
+            error: () => {
+              this.loading = false;
+            },
+          });
+        }
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.error.error === 'OTP expired') {
           Swal.fire({
             title: 'Code Expired',
             text: 'Tap to resend again.',
@@ -190,44 +199,46 @@ export class StudentNewComponent implements OnInit {
             confirmButtonText: 'Resend Code',
           }).then((result) => {
             if (result.isConfirmed) {
-              this.collegecontroller
-                .sentotp(this.signUpForm.value)
-                .subscribe((res) => {});
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'A new code has been sent to your email.',
+              this.otPassword.send_otp(this.signUpForm.value).subscribe({
+                next: (res) => {
+                  this.messageService.add({
+                    severity: 'success',
+                    summary: 'Success',
+                    detail: 'A new code has been sent to your email.',
+                  });
+                },
+                error: (error: HttpErrorResponse) => {
+                  if (
+                    error.error.message ===
+                    'OTP already sent. Please wait for it to expire before requesting a new one.'
+                  ) {
+                    this.messageService.add({
+                      severity: 'error',
+                      summary: 'Error',
+                      detail:
+                        'OTP already sent. Please wait for it to expire before requesting a new one.',
+                    });
+                  } else {
+                    this.messageService.add({
+                      severity: 'error',
+                      summary: 'Error',
+                      detail:
+                        'Failed to resend the OTP. Please try again later.',
+                    });
+                  }
+                },
               });
+              this.enteredOTP = '';
             }
-            this.enteredOTP = '';
           });
         } else {
-          this.loading = true;
-          this.college
-            .createStudent(this.signUpForm.value)
-            .subscribe({
-              next: (res) => {
-                this.info = res;
-                Swal.fire(
-                  'SUCCESS',
-                  'Check Email For Account Information',
-                  'success'
-                );
-                this.router.navigate(['login']);
-                this.loading = false;
-              },
-              error: () => {},
-            });
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Invalid OTP Code',
+          });
+          this.otp = true;
+          this.enteredOTP = '';
         }
-      },
-      error: (error: HttpErrorResponse) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Invalid OTP Code',
-          detail: error.statusText,
-        });
-        this.otp = true;
-        this.enteredOTP = '';
       },
     });
   }
