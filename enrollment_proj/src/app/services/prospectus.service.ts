@@ -8,20 +8,20 @@ import { Observable } from 'rxjs';
 export class ProspectusService {
   constructor(private http: HttpClient) {}
 
-  readonly Root_URL = 'http://genesys.example.com/api/';
+  readonly Root_URL = 'http://127.0.0.1:8000/api/v1/';
   token = localStorage.getItem('token');
   headers = new HttpHeaders({
     Authorization: `Bearer ${this.token}`,
   });
 
   student_all_prospectus(): Observable<any> {
-    return this.http.get(this.Root_URL + 'student-all-prospectus', {
+    return this.http.get(this.Root_URL + 'program-courses', {
       headers: this.headers,
     });
   }
 
-  student_academics() {
-    return this.http.get(this.Root_URL + 'student-academics', {
+  course_offered() {
+    return this.http.get(this.Root_URL + 'courses-offered', {
       headers: this.headers,
     });
   }

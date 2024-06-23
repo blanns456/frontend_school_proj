@@ -39,6 +39,17 @@ export class StudentProspectusCoursesComponent implements OnInit {
     });
   }
 
+  // groupProspectus(): void {
+  //   this.groupedProspectus = {};
+  //   this.prospectus.forEach((subject: { year_lvl: any }) => {
+  //     const yearLevel = subject.year_lvl;
+  //     if (!this.groupedProspectus[yearLevel]) {
+  //       this.groupedProspectus[yearLevel] = [];
+  //     }
+  //     this.groupedProspectus[yearLevel].push(subject);
+  //   });
+  // }
+
   groupProspectus(): void {
     this.groupedProspectus = {};
     this.prospectus.forEach((subject: { year_lvl: any }) => {

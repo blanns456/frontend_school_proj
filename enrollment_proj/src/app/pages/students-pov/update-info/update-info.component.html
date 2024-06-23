@@ -254,7 +254,7 @@
                 <div class="col-3">
                   <select
                     (change)="onRegionChange($event)"
-                    class="w-100"
+                    class="w-100 form-select"
                     formControlName="home_region"
                   >
                     <option value="" selected disabled>Select Region</option>
@@ -269,7 +269,7 @@
                 <div class="col-3">
                   <select
                     (change)="onProvinceChange($event)"
-                    class="w-100"
+                    class="w-100 form-select"
                     formControlName="home_province"
                   >
                     <option value="" selected disabled>Select Province</option>
@@ -284,7 +284,7 @@
                 <div class="col-3">
                   <select
                     (change)="onCityChange($event)"
-                    class="w-100"
+                    class="w-100 form-select"
                     formControlName="home_city"
                   >
                     <option value="" selected disabled>Select City</option>
@@ -297,7 +297,10 @@
                   </select>
                 </div>
                 <div class="col-3">
-                  <select class="w-100" formControlName="home_barangay">
+                  <select
+                    class="w-100 form-select"
+                    formControlName="home_barangay"
+                  >
                     <option value="" selected disabled>Select Barangay</option>
                     <option
                       *ngFor="let barangay of filteredBarangays"
@@ -335,7 +338,7 @@
                     maxlength="4"
                     placeholder="xxxx"
                   />
-                  <!-- <input type="text" id="home_zip" maxlength="4" class="w-100" formControlName="home_zip" class="w-100"> -->
+                  <!-- <input type="text" id="home_zip" maxlength="4" class="w-100 form-select" formControlName="home_zip" class="w-100 form-select"> -->
                 </div>
                 <hr />
               </div>
@@ -360,7 +363,7 @@
                   <select
                     (change)="onPresentRegionChange($event)"
                     formControlName="present_region"
-                    class="w-100"
+                    class="w-100 form-select"
                   >
                     <option value="" selected disabled>
                       Select Present Region
@@ -377,7 +380,7 @@
                   <select
                     (change)="onPresentProvinceChange($event)"
                     formControlName="present_province"
-                    class="w-100"
+                    class="w-100 form-select"
                   >
                     <option value="" selected disabled>
                       Select Present Province
@@ -394,7 +397,7 @@
                   <select
                     (change)="onPresentCityChange($event)"
                     formControlName="present_city"
-                    class="w-100"
+                    class="w-100 form-select"
                   >
                     <option value="" selected disabled>
                       Select Present City
@@ -408,7 +411,10 @@
                   </select>
                 </div>
                 <div class="col-3">
-                  <select formControlName="present_barangay" class="w-100">
+                  <select
+                    formControlName="present_barangay"
+                    class="w-100 form-select"
+                  >
                     <option value="" selected disabled>
                       Select Present Barangay
                     </option>
@@ -474,7 +480,17 @@
                 <label for="elem_year"
                   >Year Graduated <span class="text-danger">*</span></label
                 >
-                <input
+                <p-calendar
+                  view="year"
+                  selectionMode="range"
+                  id="elem_year"
+                  formControlName="elem_year"
+                  dateFormat="yy"
+                  [required]="true"
+                  [style]="{ width: '100%' }"
+                  [showIcon]="true"
+                ></p-calendar>
+                <!-- <input
                   pInputText
                   id="elem_year"
                   formControlName="elem_year"
@@ -483,7 +499,7 @@
                   (input)="inputMask($event)"
                   maxlength="4"
                   placeholder="xxxx"
-                />
+                /> -->
               </div>
             </p-card>
           </div>
@@ -506,6 +522,19 @@
                 <label for="jhs_year"
                   >Year Graduated <span class="text-danger">*</span></label
                 >
+                <p-calendar
+                  view="year"
+                  selectionMode="range"
+                  id="jhs_year"
+                  formControlName="jhs_year"
+                  dateFormat="yy"
+                  [required]="true"
+                  [style]="{ width: '100%' }"
+                  [showIcon]="true"
+                ></p-calendar>
+                <!-- <label for="jhs_year"
+                  >Year Graduated <span class="text-danger">*</span></label
+                >
                 <input
                   pInputText
                   id="jhs_year"
@@ -515,7 +544,7 @@
                   (input)="inputMask($event)"
                   maxlength="4"
                   placeholder="xxxx"
-                />
+                /> -->
               </div>
             </p-card>
           </div>
@@ -538,6 +567,19 @@
                 <label for="shs_year"
                   >Year Graduated <span class="text-danger">*</span></label
                 >
+                <p-calendar
+                  view="year"
+                  selectionMode="range"
+                  id="shs_year"
+                  formControlName="shs_year"
+                  dateFormat="yy"
+                  [required]="true"
+                  [style]="{ width: '100%' }"
+                  [showIcon]="true"
+                ></p-calendar>
+                <!-- <label for="shs_year"
+                  >Year Graduated <span class="text-danger">*</span></label
+                >
                 <input
                   pInputText
                   id="shs_year"
@@ -547,7 +589,7 @@
                   (input)="inputMask($event)"
                   maxlength="4"
                   placeholder="xxxx"
-                />
+                /> -->
               </div>
             </p-card>
           </div>
@@ -567,7 +609,20 @@
             </div>
           </div>
           <div class="col-lg-6 mb-3">
-            <div class="flex flex-column">
+            <label for="last_school_year"
+              >Last School Year <span class="text-danger">*</span></label
+            >
+            <p-calendar
+              view="year"
+              selectionMode="range"
+              id="last_school_year"
+              formControlName="last_school_year"
+              dateFormat="yy"
+              [required]="true"
+              [style]="{ width: '100%' }"
+              [showIcon]="true"
+            ></p-calendar>
+            <!-- <div class="flex flex-column">
               <label for="last_school_year"
                 >Last School Year <span class="text-danger">*</span></label
               >
@@ -581,7 +636,7 @@
                 maxlength="4"
                 placeholder="xxxx"
               />
-            </div>
+            </div> -->
           </div>
           <hr />
           <h3>Parent/Guardian&apos;s Information</h3>
@@ -786,7 +841,6 @@
                   class="img-thumbnail mx-auto"
                   width="400"
                 />
-
                 <img
                   *ngIf="imageURL && imageURL !== ''"
                   [src]="imageURL"
@@ -797,9 +851,9 @@
               </div>
             </div>
           </div>
+
           <div class="col-6">
             <div class="mb-3">
-
               <canvas
                 #canvas
                 (touchstart)="startDrawing($event)"
