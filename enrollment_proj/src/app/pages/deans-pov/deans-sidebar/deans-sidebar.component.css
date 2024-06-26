@@ -43,6 +43,26 @@
   padding-top: 45px;
 }
 
+.profile {
+  border-radius: 50%;
+  width: 50;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+  background-color: var(--blue);
+  color: #ffffff;
+  transition: 0.2s ease-in-out;
+}
+
+.profileName {
+  color: var(--midnight);
+}
+
+.disabled {
+  color: red;
+}
+
 /* none */
 .permit {
   background-color: whitesmoke;

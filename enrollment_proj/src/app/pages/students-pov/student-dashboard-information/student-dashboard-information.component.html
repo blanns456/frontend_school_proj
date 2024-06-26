@@ -1,5 +1,5 @@
 <div class="container student-info pb-3">
-  <p-card header="Personal Information">
+  <!-- <p-card header="My Profile">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-lg-8 col-md-8 col-12">
@@ -207,7 +207,8 @@
               pInputTextarea
               [readOnly]="true"
               [style]="{ width: '100%' }"
-              >{{ data?.home_address }}</textarea
+            >
+{{ data?.home_address }}</textarea
             >
           </div>
         </div>
@@ -221,7 +222,8 @@
               pInputTextarea
               [readOnly]="true"
               [style]="{ width: '100%' }"
-              >{{ data?.present_address }}</textarea
+            >
+{{ data?.present_address }}</textarea
             >
           </div>
         </div>
@@ -509,6 +511,167 @@
         </div>
       </div>
     </div>
-  </p-card>
+  </p-card> -->
+
+  <!-- testrun CV style -->
+
+  <p-card>
+    <div class="profileCard container-fluid">
+      <!-- <div class="row mb-2">
+        <div class="col-lg-8 col-md-8 col-12">
+          <h2 class="h6"><strong>Program : </strong>{{ data?.program }}</h2>
+          <h2 class="h6">
+            <strong>Year Level : </strong>{{ data?.student_yr_lvl }}
+          </h2>
+        </div>
+        <div class="col-lg-4 col-md-8 col-12">
+          <h2 class="h6">
+            <strong>Student I.D. : </strong>{{ data?.unique_id }}
+          </h2>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="col-3 d-flex flex-column border-end">
+          <div class="pfp pb-5 mx-auto">
+            <img
+              *ngIf="!data?.signature"
+              class="img-thumbnail"
+              [src]="'assets/misc/homepage/default.png'"
+              alt="User Profile"
+              style="border-radius: 50%; border: 5px solid #555555;"
+              width="175"
+            />
+            <img
+              *ngIf="data?.signature"
+              class="img-thumbnail"
+              [src]="'assets/misc/homepage/default.png' + data?.profile"
+              alt="User Profile"
+              width="175"
+            />
+          </div>
+          <div class="contacts container">
+            <h2 class="h5 text-center fw-bold">Contacts</h2>
+            <hr />
+            <p>
+              <strong><i class="pi pi-envelope"></i></strong>{{
+              data?.email_address }}
+            </p>
+            <p>
+              <strong><i class="pi pi-phone"></i></strong>{{
+              data?.contact_number }}
+            </p>
+            <p>
+              <strong><i class="pi pi-globe"></i></strong>{{ data?.home_address
+              }} <br />
+              {{ data?.present_address }}
+            </p>
+          </div>
+          <div class="education container">
+            <h2 class="h5 text-center fw-bold">Education</h2>
+            <hr />
+            <h2 class="h6">
+              {{ data?.elem_school }}&nbsp;&lpar;{{ data?.elem_yr }}&rpar;
+              <br />
+              <span style="font-size: 10px;">Elementary</span>
+            </h2>
+            <h2 class="h6">
+              {{ data?.jhs_school }}&nbsp;&lpar;{{ data?.jhs_yr }}&rpar;
+              <br />
+              <span style="font-size: 10px;">Junior HighSchool</span>
+            </h2>
+            <h2 class="h6">
+              {{ data?.shs_school }}&nbsp;&lpar;{{ data?.shs_yr }}&rpar;
+              <br />
+              <span style="font-size: 10px;">Senior HighSchool</span>
+            </h2>
+          </div>
+        </div>
+        <div class="col-9 d-flex flex-column">
+          <div class="profileID my-5 pt-2 pb-3 mx-auto">
+            <!-- <h2 class="h2">
+            <strong
+              >{{ data?.first_name }}  {{ data?.middle_name
+              }} {{ data?.last_name }} {{ data?.suffix }}
+            </strong>
+          </h2> -->
+            <h2 class="h2">
+              <strong>Last Name,</strong> First name Jr., Middle name
+            </h2>
+            <!-- <h2 class="h6">
+            <strong
+              >{{ data?.unique_id }}
+            </strong>
+          </h2> -->
+            <h2 class="h6">ID No. .....</h2>
+            <!-- <h2 class="h6">
+            <strong
+              >{{ data?.student_yr_lvl }}
+            </strong>
+          </h2> -->
+            <h2 class="h6">Program and Yr. level.....</h2>
+          </div>
+          <div class="container pb-3">
+            <h2 class="h5 fw-bold">Personal Information</h2>
+            <hr />
+            <div class="legalProfile d-flex p-2">
+              <h2 class="h6 pe-5">
+                <strong>Gender&colon;</strong> <br />
+                {{ data?.gender }}
+              </h2>
+              <h2 class="h6 pe-5">
+                <strong>Civil Status&colon;</strong> <br />
+                {{ data?.civil_status }}
+              </h2>
+              <h2 class="h6 pe-5">
+                <strong>Religion&colon;</strong> <br />
+                {{ data?.religion }}
+              </h2>
+            </div>
+            <div class="p-2 d-flex">
+              <h2 class="h6 pe-5 py-3">
+                <strong>Birthdate&colon;</strong> <br />
+                {{ date | date : 'yyyy-MM-dd' }}
+              </h2>
+              <h2 class="h6 pe-5 py-3">
+                <strong>Birth Place&colon;</strong> <br />
+                {{ data?.birth_place }}
+              </h2>
+            </div>
+          </div>
+          <div class="personal container">
+            <h2 class="h5 fw-bold">
+              Parent&sol;Guardian&apos;s Information
+            </h2>
+            <hr />
+            <div class="p-2">
+              <h2 class="h6">
+                <strong>Father&apos;s Name&colon;</strong>{{ data?.father_name
+                }}&nbsp;&lpar;{{ data?.father_occupation }}&rpar;
+              </h2>
+              <h2 class="h6">
+                <strong>Contact&colon;</strong>{{ data?.father_contact }}
+              </h2>
+              <h2 class="h6">
+                <strong>Mother&apos;s Maiden Name&colon;</strong>{{
+                data?.mother_name }}&nbsp;&lpar;{{ data?.mother_occupation
+                }}&rpar;
+              </h2>
+              <h2 class="h6">
+                <strong>Contact&colon;</strong>{{ data?.mother_contact }}
+              </h2>
+              <h2 class="h6">
+                <strong>Guardian&apos;s Name&colon;</strong>{{
+                data?.guardian_name }}&nbsp;&lpar;{{ data?.guardian_occupation
+                }}&rpar;
+              </h2>
+              <h2 class="h6">
+                <strong>Contact&colon;</strong>{{ data?.guardian_contact }}
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <p-toast></p-toast>
+      </div></div
+  ></p-card>
 </div>
-<p-toast></p-toast>

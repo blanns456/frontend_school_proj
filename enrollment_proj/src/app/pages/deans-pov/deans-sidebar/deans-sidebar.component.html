@@ -51,20 +51,49 @@
 </div> -->
 
 <div
-  class="d-lg-flex d-none flex-column flex-shrink-0 p-3 vh-100 position-fixed border-4 sidebar-content d-lg-flex d-none"
-  style="width: 20%"
+  class="profile-view d-lg-flex d-none flex-column p-3 vh-100 position-fixed sidebar-content d-lg-flex d-none"
+  style="width: 20%;"
 >
-  <div class="text-center">
-    <a href="">
-      <img
-        src="../../../../assets/misc/ascb_logo.png"
-        alt=""
-        width="50"
-        class="mx-auto"
-      />
-    </a>
+  <div class="d-flex justify-content-between">
+    <img
+      class="profile img-fluid"
+      src="../../../../assets/misc/defaultasdas.jpg"
+      alt="User Profile"
+    />
+    <div class="dropstart">
+      <a
+        class="text-dark"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="pi pi-cog fs-5"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="#" class="dropdown-item disabled">
+            <i class="pi pi-cog"></i>&nbsp;&nbsp;Account Settings
+          </a>
+        </li>
+        <li>
+          <hr class="dropdown-divider" />
+        </li>
+        <li>
+          <a class="dropdown-item" (click)="logout()"
+            ><i class="pi pi-sign-out"></i>&nbsp;&nbsp;Sign out</a
+          >
+        </li>
+      </ul>
+    </div>
   </div>
-  <hr />
+  <div class="pt-2 px-2">
+    <!-- no backend; hardcoded names, change the format if you must-->
+    <p>
+      <span class="fw-bold profileName">Dean&apos;s Name...</span><br />Dean,
+      Department
+    </p>
+    <hr />
+  </div>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
       <a
@@ -72,7 +101,7 @@
         routerLink="/dean/home"
         routerLinkActive="active"
       >
-        <i class="pi pi-home mx-2 pi-user-edit"></i>
+        <i class="pi pi-home mx-2"></i>
         Home
       </a>
     </li>
@@ -83,8 +112,8 @@
         routerLink="/dean/courses"
         routerLinkActive="active"
       >
-        <i class="pi pi-list mx-2 pi-user-edit"></i>
-        Subjects
+        <i class="pi pi-book mx-2"></i>
+        Course list
       </a>
     </li>
     <li>
@@ -94,19 +123,19 @@
         routerLinkActive="active"
         routerLink="/dean/classrooms"
       >
-        <i class="mx-2 pi pi-file"></i>
-        Classroom
+        <i class="mx-2 pi pi-users"></i>
+        Classrooms
       </a>
     </li>
     <li>
       <a
         href="#"
-        class="nav-link mb-3"
+        class="nav-link mb-3 disabled text-danger"
         routerLinkActive="active"
         routerLink="/dean/assigning"
       >
-        <i class="mx-2 pi pi-dollar"></i>
-        Assign Subjects
+        <i class="mx-2 pi pi-lock"></i>
+        Appoint Courses
       </a>
     </li>
     <li>
@@ -117,8 +146,8 @@
         routerLink="/dean/approval-grade"
         routerLinkActive="active"
       >
-        <i class="mx-2 pi pi-bars"></i>
-        Grade Approvals
+        <i class="pi pi-id-card mx-2"></i>
+        Student Grades
       </a>
     </li>
     <li>
@@ -128,13 +157,13 @@
         routerLink="/dean/courses-approval"
         routerLinkActive="active"
       >
-        <i class="mx-2 pi pi-book"></i>
-        Enrollee Approvals
+        <i class="pi pi-user-plus mx-2"></i>
+        Enrollees
       </a>
     </li>
   </ul>
   <hr />
-  <div class="dropdown">
+  <!-- <div class="dropdown">
     <a
       href="#"
       class="d-flex align-items-center text-decoration-none dropdown-toggle"
@@ -160,7 +189,7 @@
       </li>
       <li><a class="dropdown-item" (click)="logout()">Sign out</a></li>
     </ul>
-  </div>
+  </div> -->
 </div>
 <div class="permit d-lg-none d-flex">
   <div
@@ -170,7 +199,7 @@
       class="mb-3 img-fluid"
       src="../../../../assets/misc/ascb_logo.png"
       alt="ASCB Logo"
-      width="aoto"
+      width="auto"
     />
     <!-- <i class="fa fa-exclamation-triangle m-3"></i> -->
     <h1 class="my-2">Please kindly log off this device!</h1>

@@ -1,18 +1,55 @@
 <div
   class="d-lg-flex d-none flex-column flex-shrink-0 p-3 vh-100 position-fixed border-4 sidebar-content"
-  style="width: 20%"
+  style="width: 20%;"
 >
-  <div class="text-center">
-    <a href="">
-      <img
-        src="../../../../assets/misc/ascb_logo.png"
-        alt=""
-        width="50"
-        class="mx-auto"
-      />
-    </a>
+  <div class="d-flex justify-content-between">
+    <img
+      class="profile img-fluid"
+      src="../../../../assets/misc/defaultasdas.jpg"
+      alt="User Profile"
+    />
+    <div class="dropstart">
+      <a
+        class="text-dark"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <i class="pi pi-cog fs-5"></i>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink="/update-information"
+            routerLinkActive="active"
+            ><i class="pi pe-2 pi-user-edit"></i>Update Information</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="#"
+            ><i class="pi pi-cog pe-2"></i>Settings</a
+          >
+        </li>
+        <li>
+          <hr class="dropdown-divider" />
+        </li>
+        <li>
+          <a class="dropdown-item" (click)="onLogout()"
+            ><i class="pi pi-sign-out pe-2"></i>Sign out</a
+          >
+        </li>
+      </ul>
+    </div>
   </div>
-  <hr />
+  <div class="pt-2 px-2">
+    <!-- no backend; hardcoded names, change the format if you must-->
+    <p>
+      <span class="fw-bold profileName">Student&apos;s Name...</span
+      ><br />Program and Yr lvl
+    </p>
+    <hr />
+  </div>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
       <a
@@ -33,7 +70,7 @@
         routerLinkActive="active"
       >
         <i class="pi mx-2 pi-user"></i>
-        Information
+        Profile
       </a>
     </li>
     <li>
@@ -43,30 +80,8 @@
         routerLink="/student/academic-record"
         routerLinkActive="active"
       >
-        <i class="mx-2 pi pi-file"></i>
-        Grade Evaluation
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="nav-link mb-3"
-        routerLink="/student/financial"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 pi pi-dollar"></i>
-        Financial Record
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="nav-link mb-3"
-        routerLink="/student/prospectus"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 pi pi-bars"></i>
-        Prospectus
+        <i class="mx-2 pi pi-id-card"></i>
+        My Grades
       </a>
     </li>
     <li>
@@ -77,9 +92,33 @@
         routerLinkActive="active"
       >
         <i class="mx-2 pi pi-book"></i>
-        Course Offerings
+        My Courses
       </a>
     </li>
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3 disabled text-danger"
+        routerLink="/student/financial"
+        routerLinkActive="active"
+      >
+        <i class="mx-2 pi pi-dollar"></i>
+        Financial Record
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/prospectus"
+        routerLinkActive="active"
+      >
+        <i class="mx-2 pi pi-bookmark"></i>
+        Prospectus
+      </a>
+    </li>
+
     <li>
       <a
         href="#"
@@ -87,13 +126,13 @@
         routerLink="/student/enrollment"
         routerLinkActive="active"
       >
-        <i class="mx-2 pi pi-list"></i>
+        <i class="mx-2 pi pi-file"></i>
         Enrollment
       </a>
     </li>
   </ul>
   <hr />
-  <div class="dropdown">
+  <!-- <div class="dropdown">
     <a
       href="#"
       class="d-flex align-items-center text-decoration-none dropdown-toggle"
@@ -133,12 +172,12 @@
         >
       </li>
     </ul>
-  </div>
+  </div> -->
 </div>
 <!-- responsive -->
 <div
   class="respo-md d-lg-none d-md-flex d-none flex-column flex-shrink-0 mt-5 vh-100 position-fixed sidebar-content"
-  style="width: 10.5%"
+  style="width: 10.5%;"
 >
   <ul class="nav flex-column text-center">
     <li class="nav-item">
@@ -153,17 +192,7 @@
     </li>
     <li>
       <a href="#" class="nav-link mb-3" routerLink="/student/academic-record">
-        <i class="mx-2 pi pi-file"></i>
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link mb-3" routerLink="/student/financial">
-        <i class="mx-2 pi pi-dollar"></i>
-      </a>
-    </li>
-    <li>
-      <a href="#" class="nav-link mb-3" routerLink="/student/prospectus">
-        <i class="mx-2 pi pi-bars"></i>
+        <i class="mx-2 pi pi-id-card"></i>
       </a>
     </li>
     <li>
@@ -172,8 +201,23 @@
       </a>
     </li>
     <li>
+      <a
+        href="#"
+        class="nav-link mb-3 disabled text-danger"
+        routerLink="/student/financial"
+      >
+        <i class="mx-2 pi pi-dollar"></i>
+      </a>
+    </li>
+    <li>
+      <a href="#" class="nav-link mb-3" routerLink="/student/prospectus">
+        <i class="mx-2 pi pi-bookmark"></i>
+      </a>
+    </li>
+
+    <li>
       <a href="#" class="nav-link mb-3" routerLink="/student/enrollment">
-        <i class="mx-2 pi pi-list"></i>
+        <i class="mx-2 pi pi-file"></i>
       </a>
     </li>
   </ul>

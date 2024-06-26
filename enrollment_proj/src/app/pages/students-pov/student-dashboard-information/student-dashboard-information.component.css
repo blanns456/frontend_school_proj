@@ -1,9 +1,9 @@
-.content {
+/* .content {
   padding-top: 8%;
   width: 90%;
-}
+} */
 
-input[type="text"],
+/* input[type="text"],
 input[type="date"],
 input[type="tel"],
 input[type="email"],
@@ -14,15 +14,12 @@ select {
   box-sizing: border-box;
   border: none;
   border: solid 1px #d1d5db;
-  /* border: solid 1px #abaeb3; */
-  /*  */
   border-radius: 5px;
   outline: none;
-}
+} */
 
 img {
   display: block;
-  aspect-ratio: 3/2;
   object-fit: contain;
 }
 
@@ -30,6 +27,11 @@ img {
   padding-top: 8%;
   width: 95%;
 }
+
+.profileCard {
+  padding: 0;
+}
+
 @media only screen and (min-width: 577px) and (max-width: 768px) {
   .student-info {
     padding-top: 10%;
