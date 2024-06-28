@@ -20,6 +20,22 @@ export class AccountingService {
     });
   }
 
+  showtransacs(stud_id: number) {
+    return this.http.get(this.Root_URL + 'showtransacs/' + stud_id);
+  }
+
+  getfeesdepartment(deptID: number) {
+    return this.http.get(this.Root_URL + 'getfeesdept/' + deptID);
+  }
+
+  getaddsFee(studid: number) {
+    return this.http.get(this.Root_URL + 'getadditional/' + studid);
+  }
+
+  getstudlabFees(studedntid: number) {
+    return this.http.get(this.Root_URL + 'getstudlabFees/' + studedntid);
+  }
+
   getReceipt(studid: Number): Observable<any> {
     return this.http.get(this.Root_URL + 'getreceipt/' + studid, {
       headers: this.headers,
@@ -44,9 +60,19 @@ export class AccountingService {
     });
   }
 
-  allocateFees(paidAmount: number): Observable<any> {
+  showSubjectmatri(studid: number): Observable<any> {
+    return this.http.get(this.Root_URL + 'getsubjectmatri/' + studid, {
+      headers: this.headers,
+    });
+  }
+
+  allocateFees(datas: {
+    paidAmount: number;
+    status: string;
+    studid: number;
+  }): Observable<any> {
     // console.log('send', paidAmount);
-    return this.http.post(this.Root_URL + 'allocate-fees', paidAmount, {
+    return this.http.post(this.Root_URL + 'allocate-fees', datas, {
       headers: this.headers,
     });
   }

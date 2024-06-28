@@ -6,6 +6,7 @@ import { error } from 'jquery';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { AccountingController } from 'src/app/controllers/accountingController.component';
 import { SemesterController } from 'src/app/controllers/semester_controller.component';
+import { AccountingService } from 'src/app/services/accounting.service';
 
 @Component({
   selector: 'app-accounting-viewuser',
@@ -58,7 +59,8 @@ export class AccountingViewuserComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private AccountingController: AccountingController,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private AccountingService: AccountingService
   ) {
     this.studentData =
       this.router.getCurrentNavigation()?.extras.state?.['studentData'];
@@ -176,7 +178,7 @@ export class AccountingViewuserComponent implements OnInit {
   }
 
   getstudlabfees(studid: number) {
-    this.AccountingController.getstudlabFees(studid).subscribe({
+    this.AccountingService.getstudlabFees(studid).subscribe({
       next: (res) => {
         this.info = res;
         this.labfeedatas = this.info[0];
@@ -194,7 +196,7 @@ export class AccountingViewuserComponent implements OnInit {
   }
 
   showSubjectmatri(studid: number) {
-    this.AccountingController.showSubjectmatri(studid).subscribe({
+    this.AccountingService.showSubjectmatri(studid).subscribe({
       next: (response) => {
         this.data = response;
         this.subjectmatri = this.data[0];
@@ -213,7 +215,7 @@ export class AccountingViewuserComponent implements OnInit {
   }
 
   getaddsfee(studid: number) {
-    this.AccountingController.getaddsFee(studid).subscribe({
+    this.AccountingService.getaddsFee(studid).subscribe({
       next: (res) => {
         this.addsinfo = res;
         this.addsfeedatas = this.addsinfo[0];
@@ -232,7 +234,7 @@ export class AccountingViewuserComponent implements OnInit {
   }
 
   getstudeptFees(deptid: number) {
-    this.AccountingController.getfeesdepartment(deptid).subscribe({
+    this.AccountingService.getfeesdepartment(deptid).subscribe({
       next: (res) => {
         this.data = res;
         this.subLedgerFees = this.data[0];
@@ -260,7 +262,7 @@ export class AccountingViewuserComponent implements OnInit {
   }
 
   gettransacinfos(studid: number) {
-    this.AccountingController.showtransacs(studid).subscribe({
+    this.AccountingService.showtransacs(studid).subscribe({
       next: (res) => {
         this.transacinfo = res;
         this.gettransac = this.transacinfo[0];

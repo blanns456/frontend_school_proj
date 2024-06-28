@@ -34,9 +34,7 @@ table th {
   background-color: #0287af;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="number"],
+.inputs,
 select {
   font-size: 1rem;
   width: 95%;

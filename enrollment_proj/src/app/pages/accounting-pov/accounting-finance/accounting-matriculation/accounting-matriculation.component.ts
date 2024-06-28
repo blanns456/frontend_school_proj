@@ -9,6 +9,7 @@ import {
   ConfirmEventType,
 } from 'primeng/api';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AccountingService } from 'src/app/services/accounting.service';
 
 @Component({
   selector: 'app-accounting-matriculation',
@@ -34,7 +35,8 @@ export class AccountingMatriculationComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private AccountingController: AccountingController,
-    private router: Router
+    private router: Router,
+    private AccountingService: AccountingService
   ) {}
 
   viewUser(student: any) {
@@ -130,7 +132,7 @@ export class AccountingMatriculationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.AccountingController.getstudents().subscribe((res) => {
+    this.AccountingService.getStudents().subscribe((res) => {
       this.data = res;
       this.students = this.data[0];
       // console.log(this.students);

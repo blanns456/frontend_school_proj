@@ -7,6 +7,7 @@ import {
   ConfirmationService,
   ConfirmEventType,
 } from 'primeng/api';
+import { AccountingService } from 'src/app/services/accounting.service';
 
 @Component({
   selector: 'app-view-studentledger',
@@ -30,7 +31,8 @@ export class ViewStudentledgerComponent implements OnInit {
   constructor(
     private router: Router,
     private AccountingController: AccountingController,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private AccountingService: AccountingService
   ) {
     this.studentData =
       this.router.getCurrentNavigation()?.extras.state?.['studentData'];
@@ -124,7 +126,7 @@ export class ViewStudentledgerComponent implements OnInit {
   }
 
   showSubjectmatri(studid: number) {
-    this.AccountingController.showSubjectmatri(studid).subscribe({
+    this.AccountingService.showSubjectmatri(studid).subscribe({
       next: (response) => {
         this.data = response;
         this.subjectmatri = this.data[0];
