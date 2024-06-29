@@ -168,80 +168,77 @@ export class StudentNewComponent implements OnInit {
   }
 
   verifyOTP() {
-    this.otPassword.verifyotp({ otp: this.enteredOTP || '' }).subscribe({
-      next: (response: VerifyOTPResponse) => {
-        if (response.message === 'OTP verified successfully') {
-          this.loading = true;
-          this.college.createStudent(this.signUpForm.value).subscribe({
-            next: (res) => {
-              this.info = res;
-              Swal.fire(
-                'SUCCESS',
-                'Check Email For Account Information',
-                'success'
-              );
-              this.router.navigate(['login']);
-              this.loading = false;
-            },
-            error: () => {
-              this.loading = false;
-            },
-          });
-        }
-      },
-      error: (error: HttpErrorResponse) => {
-        if (error.error.error === 'OTP expired') {
-          Swal.fire({
-            title: 'Code Expired',
-            text: 'Tap to resend again.',
-            icon: 'error',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Resend Code',
-          }).then((result) => {
-            if (result.isConfirmed) {
-              this.otPassword.send_otp(this.signUpForm.value).subscribe({
-                next: (res) => {
-                  this.messageService.add({
-                    severity: 'success',
-                    summary: 'Success',
-                    detail: 'A new code has been sent to your email.',
+      this.otPassword.verifyotp({ otp: this.enteredOTP || '' }).subscribe({
+          next: (response: VerifyOTPResponse) => {
+              if (response.message === 'OTP verified successfully') {
+                  this.loading = true;
+                  this.college.createStudent(this.signUpForm.value).subscribe({
+                      next: (res) => {
+                          this.info = res;
+                          Swal.fire(
+                              'SUCCESS',
+                              'Check Email For Account Information',
+                              'success'
+                          );
+                          this.router.navigate(['login']);
+                          this.loading = false;
+                      },
+                      error: () => {
+                          this.loading = false;
+                      },
                   });
-                },
-                error: (error: HttpErrorResponse) => {
-                  if (
-                    error.error.message ===
-                    'OTP already sent. Please wait for it to expire before requesting a new one.'
-                  ) {
-                    this.messageService.add({
+              }
+          },
+          error: (error: HttpErrorResponse) => {
+              if (error.error && error.error.error === 'OTP expired') {
+                  Swal.fire({
+                      title: 'Code Expired',
+                      text: 'Tap to resend again.',
+                      icon: 'error',
+                      confirmButtonColor: '#3085d6',
+                      confirmButtonText: 'Resend Code',
+                  }).then((result) => {
+                      if (result.isConfirmed) {
+                          this.otPassword.send_otp(this.signUpForm.value).subscribe({
+                              next: (res) => {
+                                  this.messageService.add({
+                                      severity: 'success',
+                                      summary: 'Success',
+                                      detail: 'A new code has been sent to your email.',
+                                  });
+                              },
+                              error: (error: HttpErrorResponse) => {
+                                  if (error.error && error.error.message ===
+                                      'OTP already sent. Please wait for it to expire before requesting a new one.') {
+                                      this.messageService.add({
+                                          severity: 'error',
+                                          summary: 'Error',
+                                          detail: 'OTP already sent. Please wait for it to expire before requesting a new one.',
+                                      });
+                                  } else {
+                                      this.messageService.add({
+                                          severity: 'error',
+                                          summary: 'Error',
+                                          detail: 'Failed to resend the OTP. Please try again later.',
+                                      });
+                                  }
+                              },
+                          });
+                          this.enteredOTP = '';
+                      }
+                  });
+              } else {
+                  this.messageService.add({
                       severity: 'error',
-                      summary: 'Error',
-                      detail:
-                        'OTP already sent. Please wait for it to expire before requesting a new one.',
-                    });
-                  } else {
-                    this.messageService.add({
-                      severity: 'error',
-                      summary: 'Error',
-                      detail:
-                        'Failed to resend the OTP. Please try again later.',
-                    });
-                  }
-                },
-              });
-              this.enteredOTP = '';
-            }
-          });
-        } else {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Invalid OTP Code',
-          });
-          this.otp = true;
-          this.enteredOTP = '';
-        }
-      },
-    });
+                      summary: 'Invalid OTP Code',
+                  });
+                  this.otp = true;
+                  this.enteredOTP = '';
+              }
+          },
+      });
   }
+
 
   loadPrograms() {
     this.program.getPrograms().subscribe((res) => {
