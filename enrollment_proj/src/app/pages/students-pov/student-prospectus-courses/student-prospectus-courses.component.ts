@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectorRef,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewEncapsulation } from '@angular/core';
 import { ProspectusService } from 'src/app/services/prospectus.service';
 
 @Component({
@@ -19,7 +14,7 @@ export class StudentProspectusCoursesComponent implements OnInit {
   program: any;
 
   constructor(
-    private prospectus_get: ProspectusService,
+    private prospectusService: ProspectusService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -28,7 +23,7 @@ export class StudentProspectusCoursesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.prospectus_get.student_all_prospectus().subscribe({
+    this.prospectusService.student_all_prospectus().subscribe({
       next: (res) => {
         this.data = res;
         this.prospectus = this.data[0];

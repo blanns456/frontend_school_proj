@@ -4,13 +4,11 @@
       <ng-container *ngFor="let sem of semester">
         <p-panel
           [header]="sem.semester + ' ' + sem.active_year"
-          [toggleable]="true"
-        >
+          [toggleable]="true">
           <p-table
             [value]="enrollments"
             styleClass="p-datatable-striped"
-            [tableStyle]="{ 'min-width': '50rem' }"
-          >
+            [tableStyle]="{ 'min-width': '50rem' }">
             <ng-template pTemplate="header">
               <tr>
                 <th>Course Code</th>
@@ -19,14 +17,12 @@
                 <th>Remarks</th>
               </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-course>
+            <ng-template
+              pTemplate="body"
+              let-course>
               <tr>
-                <ng-container
-                  *ngIf="
-                    course.acadyr === sem.active_year &&
-                    course.semester === sem.semester
-                  "
-                >
+                <ng-container *ngIf="course.acadyr === sem.active_year &&
+                    course.semester === sem.semester">
                   <td>{{ course.code }}</td>
                   <td>{{ course.description }}</td>
                   <td>{{ course.units }}</td>

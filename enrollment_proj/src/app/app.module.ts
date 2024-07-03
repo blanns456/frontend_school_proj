@@ -60,6 +60,9 @@ import { MenuModule } from 'primeng/menu';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { PaginatorModule } from 'primeng/paginator';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { KeyFilterModule } from 'primeng/keyfilter';
 // import { AccordionModule } from 'primeng/accordion';
 // import { StepperModule } from 'primeng/stepper';
 // import { PanelModule } from 'primeng/panel';
@@ -149,7 +152,7 @@ import { DeptElementaryComponent } from './pages/home-tab/dept-elementary/dept-e
 import { DeptJhsComponent } from './pages/home-tab/dept-jhs/dept-jhs.component';
 import { DeptTvetComponent } from './pages/home-tab/dept-tvet/dept-tvet.component';
 import { ItemModalsComponent } from './pages/accounting-pov/accounting-item-management/item-modals/item-modals.component';
-import { UpdateInfoComponent } from './pages/students-pov/update-info/update-info.component';
+import { UpdateInfoComponent } from './pages/students-pov/update-info/UpdateInfoComponent';
 import { DeanMainComponent } from './pages/deans-pov/dean-main/dean-main.component';
 import { NewComponent } from './pages/graduate-studies/new/new.component';
 import { GraduateMainComponent } from './pages/graduate-studies/graduate-main/graduate-main.component';
@@ -175,6 +178,7 @@ import { ViewStudentledgerComponent } from './pages/accounting-pov/accounting-re
 
 import { RegistrarPovComponent } from './pages/registrar-pov/registrar-pov.component';
 import { RegistrarMainComponent } from './pages/registrar-pov/registrar-main/registrar-main.component';
+import { PreviewStudentComponent } from './pages/accounting-pov/preview-student/preview-student.component';
 
 @NgModule({
   declarations: [
@@ -313,6 +317,7 @@ import { RegistrarMainComponent } from './pages/registrar-pov/registrar-main/reg
     ViewStudentledgerComponent,
     RegistrarPovComponent,
     RegistrarMainComponent,
+    PreviewStudentComponent,
   ],
   imports: [
     BrowserModule,
@@ -358,11 +363,14 @@ import { RegistrarMainComponent } from './pages/registrar-pov/registrar-main/reg
     MenuModule,
     IconFieldModule,
     InputIconModule,
-    PaginatorModule
+    PaginatorModule,
     // TabMenuModule
     // AccordionModule,
     // StepperModule,
     // PanelModule,
+    ScrollPanelModule,
+    ProgressSpinnerModule,
+    KeyFilterModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -370,4 +378,4 @@ import { RegistrarMainComponent } from './pages/registrar-pov/registrar-main/reg
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

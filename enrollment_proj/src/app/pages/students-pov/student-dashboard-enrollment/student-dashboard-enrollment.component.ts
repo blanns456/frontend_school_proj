@@ -9,24 +9,19 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./student-dashboard-enrollment.component.css'],
 })
 export class StudentDashboardEnrollmentComponent implements OnInit {
-  data: any;
-  enrollments: any;
-  studentdata: any;
-  studname: string | undefined;
-  semester: any;
+  enrollments: any[] = [];
+  semester: any[] = [];
 
-  constructor(
-    private enrollment: EnrollmentService,
-  ) { }
+  constructor(private enrollmentService: EnrollmentService) { }
 
   ngOnInit(): void {
-    this.enrollment.my_enrollment().subscribe({
-      next: (response) => {
-        // console.log(response);
-        this.data = response;
-        this.enrollments = this.data.data;
-        this.semester = this.data.semester;
-        // console.log(this.data.semester);
+    this.enrollmentService.my_enrollment().subscribe({
+      next: (response: any) => {
+        this.enrollments = response.data; // Assuming response.data contains enrollment data array
+        this.semester = response.semester; // Assuming response.semester contains semester data array
+      },
+      error: (error) => {
+        console.error('Error fetching enrollment data:', error);
       }
     });
   }

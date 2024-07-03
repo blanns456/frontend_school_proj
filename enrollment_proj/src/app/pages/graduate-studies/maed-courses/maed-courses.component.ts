@@ -10,7 +10,7 @@ import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-maed-courses',
   templateUrl: './maed-courses.component.html',
-  styleUrls: ['./maed-courses.component.css']
+  styleUrls: ['./maed-courses.component.css'],
 })
 export class MaedCoursesComponent implements OnInit {
   data: any;
@@ -29,36 +29,35 @@ export class MaedCoursesComponent implements OnInit {
   alreadysubmitted: boolean | undefined;
   showToastNotification: boolean = false;
 
-
   constructor(
     private prospectus: ProspectusService,
     private router: Router,
     private student: UpdateStudentServiceService,
-    private enrollment: EnrollmentService,
-  ) { }
+    private enrollment: EnrollmentService
+  ) {}
 
   ngOnInit(): void {
-    this.prospectus.student_academics().subscribe({
-      next: (response) => {
-        // console.log(response);
-        this.prospectusData = response;
-      }
-    });
+    // this.prospectus.student_academics().subscribe({
+    //   next: (response) => {
+    //     // console.log(response);
+    //     this.prospectusData = response;
+    //   }
+    // });
 
     this.prospectus.student_current_prospectus().subscribe({
       next: (response) => {
         // console.log(responsse);
         this.data = response;
         this.prospectusData = this.data[0];
-      }
+      },
     });
 
     this.student.student_information().subscribe({
       next: (response) => {
         // console.log(response);
-        this.data = response
+        this.data = response;
         this.infomation = this.data[0];
-      }
+      },
     });
 
     this.prospectus.submitted_already().subscribe({
@@ -66,12 +65,14 @@ export class MaedCoursesComponent implements OnInit {
         this.data = res;
         this.is_already_submitted = this.data.message;
         // console.log(this.data.message);
-      }
+      },
     });
   }
 
   selectAll(event: any) {
-    const checkboxes = document.querySelectorAll<HTMLInputElement>('input[name="subjects"]');
+    const checkboxes = document.querySelectorAll<HTMLInputElement>(
+      'input[name="subjects"]'
+    );
     const allChecked = event.target.checked;
 
     checkboxes.forEach((checkbox) => {
@@ -79,7 +80,6 @@ export class MaedCoursesComponent implements OnInit {
         checkbox.checked = allChecked;
       }
     });
-
 
     checkboxes.forEach((checkbox) => {
       if (checkbox !== event.target) {
@@ -125,7 +125,9 @@ export class MaedCoursesComponent implements OnInit {
   }
 
   onsubmit() {
-    const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
+    const checkboxes = document.querySelectorAll<HTMLInputElement>(
+      'input[type="checkbox"]'
+    );
     const subjectids = Array.from(checkboxes)
       .filter((checkbox) => checkbox.checked && checkbox.name === 'subjects')
       .map((checkbox) => checkbox.value.split(',')[0]);
@@ -133,7 +135,7 @@ export class MaedCoursesComponent implements OnInit {
     this.student.student_information().subscribe({
       next: (response) => {
         console.log(response);
-        this.data = response
+        this.data = response;
         this.infomation = this.data[0];
         if (this.infomation.has_finished === 'false') {
           this.router.navigate(['student/information']);
@@ -147,13 +149,17 @@ export class MaedCoursesComponent implements OnInit {
               this.transacnotif = res;
               if (this.transacnotif['message'] === 'success') {
                 this.router.navigate(['student/enrollment']);
-                Swal.fire('Information', "Courses Pending Dean's Approval.", 'info');
+                Swal.fire(
+                  'Information',
+                  "Courses Pending Dean's Approval.",
+                  'info'
+                );
               } else {
                 Swal.fire('Error', this.transacnotif['message'], 'error');
               }
             });
         }
-      }
+      },
     });
   }
 }

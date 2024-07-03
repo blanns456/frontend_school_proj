@@ -1,169 +1,159 @@
 <p-toast></p-toast>
-<div
-  class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column text-capitalize"
->
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center flex-column text-capitalize">
   <!-- <div class="divider mb-4"></div> -->
-  <div *ngIf="studentData" class="contentab bg-white rounded">
-    <div
-      class="text-header shadow w-100 py-2 ps-3 d-flex justify-content-between"
-    >
-      <div class="row w-100">
-        <div class="col">
-          <h3 class="text-white fw-bold fs-3">
-            {{ studentData.studname }}
-          </h3>
-        </div>
-        <div class="col d-flex justify-content-end align-items-end">
-          <p-button
-            *ngIf="showbtn"
-            class="mx-2"
-            (click)="viewstudmatri(studentData)"
-            label="View Matriculation"
-          ></p-button>
-          <!-- <p-button icon="pi pi-pen" (click)="showmodal(studentData.acadid)">
-          </p-button> -->
-        </div>
-      </div>
-    </div>
-    <form class="m-4 px-2">
-      <h1 class="fw-bold fs-4">Section Remarks</h1>
-      <div class="divider"></div>
-      <div
-        class="inputGroup row d-flex justify-content-start align-items-center my-3"
-      >
-        <div class="col-3">
-          <label for="semester">Semester</label>
-          <input
-            type="text"
-            class="inputs"
-            name="semester"
-            id="semester"
-            readonly
-          />
-        </div>
-        <div class="col-6">
-          <label for="course">Course</label>
-          <input
-            class="inputs"
-            type="text"
-            id="course"
-            name="course"
-            value="{{ studentData.course }}"
-            readonly
-          />
-        </div>
-        <div class="col-3 my-3">
-          <label for="yrlvl">Year Level:</label>
-          <input
-            class="inputs"
-            type="text"
-            id="yrlvl"
-            name="yrlvl"
-            value="{{ getYearLevelString(studentData.student_yr_lvl) }}"
-            readonly
-          />
-        </div>
-      </div>
-      <h1 class="fw-bold fs-4">Student Information</h1>
-      <div class="divider"></div>
-      <div
-        class="inputGroup row d-flex justify-content-center align-items-center my-3"
-      >
-        <div class="col-4">
-          <label for="ledger">Student ID</label>
-          <input
-            class="inputs"
-            type="text"
-            id="status"
-            name="status"
-            value="{{ studentData.uid }}"
-            readonly
-          />
-        </div>
-        <div class="col-4 my-4">
-          <label for="status">Status</label>
-          <input
-            class="inputs"
-            type="text"
-            id="status"
-            name="status"
-            value="Continuing"
-            readonly
-          />
-        </div>
-        <div class="col-4">
-          <label for="gender">Gender:</label>
-          <input
-            class="inputs text-capitalize"
-            type="text"
-            id="gender"
-            name="gender"
-            value="{{ studentData.gender }}"
-            readonly
-          />
-        </div>
-        <div class="col-4">
-          <label for="totalunits">Total Units:</label>
-          <input
-            class="inputs"
-            type="text"
-            id="totalunits"
-            name="totalunits"
-            value="{{ totalamount }}"
-            readonly
-          />
-        </div>
-        <div class="col-4 my-4">
-          <label for="department">Department:</label>
-          <input
-            class="inputs"
-            type="text"
-            id="department"
-            name="department"
-            value="{{ studentData.departments }}"
-            readonly
-          />
-        </div>
-      </div>
-    </form>
-    <p-divider />
-    <div class="container">
-      <p-table
-        #dt
-        [rowHover]="true"
-        [value]="subjectmatri"
-        styleClass="p-datatable-striped"
-        [tableStyle]="{ 'min-width': '50rem' }"
-        [rows]="10"
-        [showCurrentPageReport]="true"
-      >
-        <ng-template pTemplate="header">
-          <tr>
-            <th pSortableColumn="subjectName">Particulars</th>
-            <th>Units</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-subjectmatri>
-          <tr>
-            <td>({{ subjectmatri.code }}) {{ subjectmatri.subjectName }}</td>
-            <td>{{ subjectmatri.units }}</td>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="footer">
-          <tr>
-            <td colspan="1">Total:</td>
-            <td>{{ totalamount }} units</td>
-          </tr>
-        </ng-template>
-      </p-table>
-      <div class="d-flex justify-content-end">
+  <div
+    *ngIf="studentData"
+    class="contentab bg-white rounded">
+    <p-card [header]="studentData.studname">
+      <div class="col d-flex justify-content-end align-items-end">
         <p-button
-          class="p-3"
-          (click)="approveData()"
-          label="Approve"
-        ></p-button>
+          *ngIf="showbtn"
+          class="mx-2"
+          (click)="viewstudmatri(studentData)"
+          label="View Matriculation"></p-button>
+        <!-- <p-button icon="pi pi-pen" (click)="showmodal(studentData.acadid)">
+          </p-button> -->
       </div>
-    </div>
+      <form class="m-4 px-2">
+        <h1 class="fw-bold fs-4">Section Remarks</h1>
+        <div class="divider"></div>
+        <div class="inputGroup row d-flex justify-content-start align-items-center my-3">
+          <div class="col-3">
+            <label for="semester">Trimester</label>
+            <input
+              pInputText
+              type="text"
+              class="inputs"
+              name="semester"
+              value="{{ studentData.semester }}"
+              id="semester"
+              readonly>
+          </div>
+          <div class="col-6">
+            <label for="course">Course</label>
+            <input
+              pInputText
+              class="inputs"
+              type="text"
+              id="course"
+              name="course"
+              value="{{ studentData.course }}"
+              readonly>
+          </div>
+          <div class="col-3 my-3">
+            <label for="yrlvl">Year Level:</label>
+            <input
+              pInputText
+              class="inputs"
+              type="text"
+              id="yrlvl"
+              name="yrlvl"
+              value="{{ getYearLevelString(studentData.student_yr_lvl) }}"
+              readonly>
+          </div>
+        </div>
+        <h1 class="fw-bold fs-4">Student Information</h1>
+        <div class="divider"></div>
+        <div class="inputGroup row d-flex justify-content-center align-items-center my-3">
+          <div class="col-4">
+            <label for="ledger">Student ID</label>
+            <input
+              pInputText
+              class="inputs"
+              type="text"
+              id="status"
+              name="status"
+              value="{{ studentData.uid }}"
+              readonly>
+          </div>
+          <div class="col-4 my-4">
+            <label for="status">Status</label>
+            <input
+              pInputText
+              class="inputs"
+              type="text"
+              id="status"
+              name="status"
+              name="semester"
+              value="{{ studentData.student_status }}"
+              readonly>
+          </div>
+          <div class="col-4">
+            <label for="gender">Gender:</label>
+            <input
+              pInputText
+              class="inputs text-capitalize"
+              type="text"
+              id="gender"
+              name="gender"
+              value="{{ studentData.gender }}"
+              readonly>
+          </div>
+          <div class="col-4">
+            <label for="totalunits">Total Units:</label>
+            <input
+              pInputText
+              class="inputs"
+              type="text"
+              id="totalunits"
+              name="totalunits"
+              value="{{ totalamount }}"
+              readonly>
+          </div>
+          <div class="col-4 my-4">
+            <label for="department">Department:</label>
+            <input
+              pInputText
+              class="inputs"
+              type="text"
+              id="department"
+              name="department"
+              value="{{ studentData.departments }}"
+              readonly>
+          </div>
+        </div>
+      </form>
+      <p-divider></p-divider>
+      <div class="container">
+        <p-table
+          #dt
+          [rowHover]="true"
+          [value]="subjectmatri"
+          styleClass="p-datatable-striped"
+          [tableStyle]="{ 'min-width': '50rem' }"
+          [rows]="10"
+          [showCurrentPageReport]="true">
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="subjectName">Particulars</th>
+              <th>Units</th>
+            </tr>
+          </ng-template>
+          <ng-template
+            pTemplate="body"
+            let-subjectmatri>
+            <tr>
+              <td>
+                ({{ subjectmatri.code }}) {{ subjectmatri.subjectName }}
+              </td>
+              <td>{{ subjectmatri.units }}</td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="footer">
+            <tr>
+              <td colspan="1">Total:</td>
+              <td>{{ totalamount }} units</td>
+            </tr>
+          </ng-template>
+        </p-table>
+        <div class="d-flex justify-content-end">
+          <p-button
+            class="p-3"
+            (click)="approveData()"
+            label="Approve"></p-button>
+        </div>
+      </div>
+    </p-card>
   </div>
 </div>
 
@@ -174,16 +164,14 @@
   appendTo="body"
   [(visible)]="approvedialog"
   [style]="{ width: '75vw' }"
-  [contentStyle]="{ height: '500px' }"
->
+  [contentStyle]="{ height: '500px' }">
   <p-table
     [scrollable]="true"
     scrollHeight="flex"
     selectionMode="multiple"
     [(selection)]="selectedSubs"
     [value]="acadlist"
-    [tableStyle]="{ 'min-width': '50rem' }"
-  >
+    [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
         <th style="width: 4rem">
@@ -194,7 +182,9 @@
         <th>Remarks</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-datas>
+    <ng-template
+      pTemplate="body"
+      let-datas>
       <tr>
         <td>
           <p-tableCheckbox [value]="datas"></p-tableCheckbox>
@@ -210,8 +200,7 @@
     <p-button
       class="mx-2"
       label="Approve"
-      (click)="approveSubs($event)"
-    ></p-button>
+      (click)="approveSubs($event)"></p-button>
   </div>
 </p-dialog>
 
@@ -221,7 +210,6 @@
   [maximizable]="true"
   appendTo="body"
   [(visible)]="regisformDialog"
-  [style]="{ width: '450px' }"
->
-  <form action="">.</form>
+  [style]="{ width: '450px' }">
+  <form action>.</form>
 </p-dialog>

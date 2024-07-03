@@ -1,451 +1,123 @@
 <app-headnavagation></app-headnavagation>
 <div class="fixed-login"></div>
-<div *ngIf="loading" class="loading-overlay">
-  <app-loading-page></app-loading-page>
-</div>
-<div
-  class="banner d-flex justify-content-center align-items-center flex-column"
->
-  <h1
-    class="text-center text-white fw-bolder mt-lg-5 mt-md-5 mt-5 text-uppercase"
-  >
+<div class="banner d-flex justify-content-center align-items-center flex-column">
+  <h1 class="text-center text-white fw-bolder mt-lg-5 mt-md-5 mt-5 text-uppercase">
     College
   </h1>
   <p
     [textContent]="enrollmentData?.academic_year"
-    class="text-center m-0 pt-2 text-white"
-  ></p>
+    class="text-center m-0 pt-2 text-white"></p>
 </div>
 <div class="container-fluid">
   <div class="row">
-    <div
-      class="col-12 formContain bg-white shadow-lg mx-lg-auto mx-md-auto m-0 my-lg-5 my-md-3 my-0 p-3 login-bg"
-    >
+    <div class="col-12 formContain bg-white shadow-lg mx-lg-auto mx-md-auto m-0 my-lg-5 my-md-3 my-0 p-3 login-bg">
       <div class="asclogo mx-auto"></div>
 
       <div class="text-center pb-4">
         <h2 class="formTitle text-center">CREATE AN ACCOUNT</h2>
-        <small class="text-center fs-6 fst-italic"
-          ><strong>Note:&nbsp;&nbsp;</strong>All Input marked with
-          <span class="text-danger fs-5">&ast;</span> are required! Please read
-          the labels carefully to avoid mixing up your credentials!</small
-        >
+        <small class="text-center fs-6 fst-italic">
+          <strong>Note:  </strong>
+          All Input with asterisks
+          <span class="text-danger fs-5"></span>
+          are required!
+        </small>
       </div>
       <div class="formBody border border-5 pt-3 m-lg-3 m-md-2 m-0 rounded-5">
         <div *ngIf="!otp">
-          <form [formGroup]="signUpForm" (ngSubmit)="signUp()" novalidate>
+          <form
+            [formGroup]="signUpForm"
+            (ngSubmit)="signUp()"
+            novalidate>
             <div class="row pt-4 pb-3 px-3">
               <div class="col-lg-3 col-md-6 col-12">
                 <div class="mb-lg-0 mb-md-3 mb-3">
-                  <label for="firstname" class="form-label">
-                    First Name <span class="text-danger">*</span>
+                  <label
+                    for="firstname"
+                    class="form-label">
+                    First Name
+                    <span class="text-danger">*</span>
                   </label>
                   <input
                     type="text"
                     pInputText
                     pAutoFocus
                     [autofocus]="true"
-                    class="border p-inputtext-md px-3"
+                    class="border p-inputtext-md px-3 text-uppercase"
                     autocomplete="off"
                     formControlName="first_name"
                     id="firstname"
-                    [style]="{ width: '100%' }"
-                  />
+                    [style]="{ width: '100%' }">
                 </div>
               </div>
               <div class="col-lg-3 col-md-6">
                 <div>
                   <div class="mb-lg-0 mb-md-3 mb-3">
-                    <label for="lastname" class="form-label">
-                      Last Name <span class="text-danger">*</span> <br />
+                    <label
+                      for="lastname"
+                      class="form-label">
+                      Last Name
+                      <span class="text-danger">*</span>
+                      <br>
                     </label>
                     <input
                       type="text"
                       pInputText
-                      class="p-inputtext-md border"
+                      class="p-inputtext-md border text-uppercase"
                       autocomplete="off"
                       formControlName="last_name"
                       id="lastname"
-                      [style]="{ width: '100%' }"
-                    />
+                      [style]="{ width: '100%' }">
                   </div>
                 </div>
               </div>
               <div class="col-lg-3 col-md-6">
                 <div class="mb-lg-0 mb-md-3 mb-3">
-                  <label for="middlename" class="form-label">
+                  <label
+                    for="middlename"
+                    class="form-label">
                     Middle Name
-                    <small class="fw-normal fst-italic">(check if none)</small
-                    >&nbsp;&nbsp;<p-checkbox
+                    <small class="fw-normal fst-italic">(check if none)</small>  
+                    <p-checkbox
                       [ariaChecked]="noMiddleName"
                       (click)="toggleMiddleName()"
                       [binary]="true"
-                      inputId="binary"
-                    ></p-checkbox>
-                    <br />
+                      class="text-uppercase"
+                      inputId="binary"></p-checkbox>
+                    <br>
                   </label>
                   <input
                     pInputText
                     [readonly]="noMiddleName"
                     formControlName="middle_name"
                     type="text"
-                    class="p-inputtext-md border"
+                    class="p-inputtext-md border text-uppercase"
                     id="middlename"
-                    [style]="{ width: '100%' }"
-                  />
+                    [style]="{ width: '100%' }">
                 </div>
               </div>
               <div class="col-lg-3 col-md-6">
                 <div>
                   <div class="mb-lg-0 mb-md-3 mb-3">
-                    <label for="suffix" class="form-label"> Extension: </label>
-                    <input
-                      placeholder="&lpar;e.g&colon; Jr. Sr. III&rpar;"
+                    <label
+                      for="suffix"
+                      class="form-label">
+                      Extension:
+                    </label>
+                    <"
                       pInputText
                       type="text"
                       class="p-inputtext-md border"
                       autocomplete="off"
                       formControlName="suffix"
                       id="suffix"
-                      [style]="{ width: '100%' }"
-                    />
+                      [style]="
                   </div>
                 </div>
               </div>
             </div>
-            <div class="row px-3">
-              <div class="col-lg-3 col-md-6 col-12">
-                <div class="mb-3">
-                  <label for="gender" class="form-label">
-                    Gender<span class="text-danger me-lg-0 me-md-0 me-3"
-                      >*</span
-                    >
-                  </label>
-                  <p-dropdown
-                    formControlName="gender"
-                    [options]="gender"
-                    optionLabel="name"
-                    optionValue="value"
-                    placeholder="Select a Gender"
-                    [editable]="true"
-                    [showClear]="true"
-                  ></p-dropdown>
-                  <!-- <select
-                  name="gender"
-                  id="gender"
-                  formControlName="gender"
-                  class="form-select shadow-xl"
-                >
-                  <option [selected]="true" hidden>Please Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select> -->
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-12">
-                <div class="mb-3">
-                  <label for="civil_status" class="form-label">
-                    Civil Status<span class="text-danger">*</span>
-                  </label>
-                  <p-dropdown
-                    formControlName="civil_status"
-                    [options]="civilstatus"
-                    optionLabel="name"
-                    optionValue="value"
-                    placeholder="Select Civil Status"
-                    [showClear]="true"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-12">
-                <div class="mb-3">
-                  <label for="email" class="form-label">
-                    Email Address<span class="text-danger">*</span>
-                  </label>
-                  <input
-                    pInputText
-                    type="email"
-                    class="p-inputtext-md border"
-                    formControlName="email_address"
-                    name="email"
-                    id="email"
-                    required
-                    [style]="{ width: '100%' }"
-                  />
-                </div>
-              </div>
-              <div class="col-lg-3 col-md-6 col-12">
-                <div class="mb-3">
-                  <label for="contact_number" class="form-label">
-                    Contact Number<span class="text-danger">*</span>
-                  </label>
-                  <p-inputMask
-                    mask="99999999999"
-                    formControlName="contact_number"
-                    placeholder="0912xxxxxxx"
-                    [style]="{ width: '100%' }"
-                  ></p-inputMask>
-
-                  <!-- <input
-                  (input)="inputMask($event)"
-                  type="text"
-                  pattern="[0-9]{11}"
-                  class="form-control py-2 border"
-                  formControlName="contact_number"
-                  maxlength="11"
-                  name="contact_number"
-                  id="contact_number"
-                /> -->
-                </div>
-              </div>
-            </div>
-            <div class="row px-3">
-              <div class="col-lg-4 col-md-5 col-12">
-                <div class="mb-3">
-                  <label for="birth_date" class="form-label">
-                    Birth Date<span class="text-danger">*</span>
-                  </label>
-                  <p-calendar
-                    placeholder="mm/dd/yyyy"
-                    [showIcon]="true"
-                    type="date"
-                    class="py-2 border"
-                    formControlName="birthdate"
-                    name="birth_date"
-                    id="birth_date"
-                    [style]="{ width: '100%' }"
-                    [touchUI]="true"
-                  >
-                  </p-calendar>
-                </div>
-              </div>
-              <div class="col-lg-8 col-md-7 col-12">
-                <div class="mb-3">
-                  <label for="birth_place" class="form-label">
-                    Birth Place<span class="text-danger">*</span>
-                  </label>
-                  <input
-                    pInputText
-                    type="text"
-                    class="p-inputtext-md border"
-                    formControlName="birth_place"
-                    name="birth_place"
-                    id="birth_place"
-                    required
-                    [style]="{ width: '100%' }"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="row px-3">
-              <div class="col-lg-4 col-md-4 col-12">
-                <div class="mb-3">
-                  <label for="citizenship" class="form-label">
-                    Citizenship<span class="text-danger">*</span>
-                  </label>
-                  <p-dropdown
-                    formControlName="citizenship"
-                    [options]="nationalitiesList"
-                    placeholder="Select Citizenship"
-                    [showClear]="true"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                  <!-- <select
-                  id="citizenship"
-                  class="form-select shadow-xl"
-                  formControlName="citizenship"
-                >
-                  <option value disabled selected>
-                    Please Select Citizenship
-                  </option>
-                  <ng-container *ngFor="let nationality of nationalitiesList">
-                    <option [ngValue]="nationality">{{ nationality }}</option>
-                  </ng-container>
-                </select> -->
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-12">
-                <div class="mb-3">
-                  <label for="religion" class="form-label">
-                    Religion<span class="text-danger">*</span>
-                  </label>
-                  <p-dropdown
-                    formControlName="religion"
-                    [options]="religionList"
-                    placeholder="Select Religion"
-                    [showClear]="true"
-                    [editable]="true"
-                    filterBy="name"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                  <!-- <input
-                  type="text"
-                  class="form-control py-2 border"
-                  formControlName="religion"
-                  name="religion"
-                  id="religion"
-                  list="religionL"
-                  required
-                />
-                <datalist id="religionL">
-                  <ng-container *ngFor="let religion of religionList">
-                    <option [ngValue]="religion">{{ religion }}</option>
-                  </ng-container>
-                </datalist> -->
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div class="row px-3">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="mb-3">
-                  <label for="enrollIn" class="form-label">
-                    Interested to Enroll In:<span class="text-danger">*</span>
-                  </label>
-                  <input
-                    id="disabled-input"
-                    type="text"
-                    class="p-inputtext-md border"
-                    pInputText
-                    [readonly]="true"
-                    value="College"
-                    [style]="{ width: '100%' }"
-                  />
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="mb-3 input-holder">
-                  <label for="program" class="form-label">
-                    Program<span class="text-danger">*</span>
-                  </label>
-                  <p-dropdown
-                    formControlName="program"
-                    [options]="courses"
-                    optionLabel="name"
-                    optionValue="courses_id"
-                    placeholder="Please select courses"
-                    [showClear]="true"
-                    [filter]="true"
-                    filterBy="name"
-                    [style]="{ width: '100%' }"
-                    [virtualScroll]="true"
-                    [virtualScrollItemSize]="55"
-                  >
-                    ></p-dropdown
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="row px-3">
-              <div class="col-lg-4 col-md-4 col-12">
-                <div class="mb-3 input-holder">
-                  <label for="semester" class="form-label">
-                    Trimester
-                    <span class="text-danger">*</span>
-                  </label>
-                  <input
-                    id="disabled-input"
-                    type="text"
-                    class="p-inputtext-md border"
-                    pInputText
-                    [readonly]="true"
-                    [value]="enrollmentData?.trimester"
-                    [style]="{ width: '100%' }"
-                  />
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-12">
-                <div class="mb-3 input-holder">
-                  <label for="student_yr_level" class="form-label">
-                    Year Level
-                    <span class="text-danger">*</span>
-                  </label>
-                  <p-dropdown
-                    formControlName="student_yr_level"
-                    [options]="yearlvl"
-                    optionLabel="name"
-                    optionValue="value"
-                    placeholder="Please select"
-                    [showClear]="true"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-12">
-                <div class="mb-3 input-holder">
-                  <label for="student_status" class="form-label">
-                    Student Status
-                    <span class="text-danger">*</span>
-                  </label>
-                  <p-dropdown
-                    formControlName="student_status"
-                    [options]="studstatus"
-                    optionLabel="name"
-                    optionValue="value"
-                    placeholder="Please select"
-                    [showClear]="true"
-                    [style]="{ width: '100%' }"
-                  ></p-dropdown>
-                </div>
-              </div>
-            </div>
-            <div class="py-3 text-center">
-              <p-button
-                type="submit"
-                *ngIf="!loadbar"
-                [disabled]="signUpForm.invalid"
-                [disabled]="!signUpForm.valid"
-                class="p-2 w-25 login-button w-auto"
-              >
-                Create Account
-              </p-button>
-            </div>
           </form>
-          <div class="py-3 mx-3" *ngIf="loadbar">
-            <p-progressBar
-              mode="indeterminate"
-              [style]="{ height: '6px', }"
-            ></p-progressBar>
-          </div>
-        </div>
-        <p-toast></p-toast>
-        <div *ngIf="otp" class="py-3">
-          <div class="text-center mx-auto my-3">
-            <h2 class="fw-bold">Enter OTP Code</h2>
-            <p class="fst-italic mx-auto py-3 w-75">
-              An Otp Verification Code has been sent to your email. Please input
-              the correct code to verify your account.. Thank you
-            </p>
-          </div>
-          <div
-            class="d-flex justify-content-center align-items-center flex-column"
-          >
-            <div class="otp-inputs d-flex gap-3">
-              <p-toast></p-toast>
-              <p-inputOtp
-                pAutoFocus
-                [autofocus]="true"
-                [length]="6"
-                (input)="inputMask($event)"
-                class="mx-auto my-3"
-                [(ngModel)]="enteredOTP"
-              ></p-inputOtp>
-            </div>
-            <br />
-            <button
-              pButton
-              pRipple
-              (click)="verifyOTP()"
-              class="btn btn-success"
-            >
-              Verify OTP
-            </button>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<app-footernavigation></app-footernavigation>

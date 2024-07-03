@@ -6,15 +6,13 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from './services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard {
-  constructor(private router: Router) {}
-
-  token: any;
-  userRole: string | null = null;
+  constructor(private router: Router, private authService: AuthService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -24,57 +22,19 @@ export class AuthGuard {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    this.token = localStorage.getItem('token');
-    this.userRole = localStorage.getItem('role');
+    const token = this.authService.getToken();
+    const userRole = this.authService.getUserRole();
 
-    if (this.token) {
+    if (token) {
       const allowedRoles = route.data['allowedRoles'] || [];
 
-      if (allowedRoles.length === 0 || allowedRoles.includes(this.userRole)) {
+      if (allowedRoles.length === 0 || allowedRoles.includes(userRole)) {
         return true;
       } else {
-        // Redirect to an error page or any other appropriate route
         return this.router.createUrlTree(['/access-denied']);
       }
     } else {
       return this.router.createUrlTree(['/login']);
     }
   }
-
-  isStudent(): boolean {
-    return this.userRole === 'College';
-  }
-
-  isGraduateStudies(): boolean {
-    return this.userRole === 'Graduate Studies';
-  }
-
-  isRegistrar(): boolean {
-    return this.userRole === 'registrar';
-  }
-
-  isTellering(): boolean {
-    return this.userRole === 'tellering';
-  }
-
-  isDean(): boolean {
-    return this.userRole === 'dean';
-  }
-
-  isTeacher(): boolean {
-    return this.userRole === 'teacher';
-  }
 }
-
-export const authGuard = (router: Router, authGuard: AuthGuard) => {
-  return (
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree => {
-    return authGuard.canActivate(route, state);
-  };
-};

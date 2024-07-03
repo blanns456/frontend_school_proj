@@ -4,8 +4,9 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class UpdateStudentServiceService {
+export class OtpService {
   constructor(private http: HttpClient) {}
+  // constructor(private http: HttpClient) { }
 
   readonly Root_URL = 'http://127.0.0.1:8000/api/v1/';
   token = localStorage.getItem('token');
@@ -13,16 +14,11 @@ export class UpdateStudentServiceService {
     Authorization: `Bearer ${this.token}`,
   });
 
-  student_information() {
-    return this.http.get(this.Root_URL + 'showstudentdetails', {
-      headers: this.headers,
-    });
+  send_otp(info: { value: string }) {
+    return this.http.post(this.Root_URL + 'register/otp', info);
   }
 
-  updateStudent(data: FormData) {
-    console.log(data);
-    return this.http.post(this.Root_URL + 'update-information', data, {
-      headers: this.headers,
-    });
+  verifyotp(otp: { otp: string }) {
+    return this.http.post(this.Root_URL + 'register/verify', otp);
   }
 }

@@ -1,20 +1,17 @@
 <div
   class="d-lg-flex d-none flex-column flex-shrink-0 p-3 vh-100 position-fixed border-4 sidebar-content"
-  style="width: 20%;"
->
+  style="width: 20%;">
   <div class="d-flex justify-content-between">
     <img
       class="profile img-fluid"
       src="../../../../assets/misc/defaultasdas.jpg"
-      alt="User Profile"
-    />
+      alt="User Profile">
     <div class="dropstart">
       <a
         class="text-dark"
         type="button"
         data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
+        aria-expanded="false">
         <i class="pi pi-cog fs-5"></i>
       </a>
       <ul class="dropdown-menu">
@@ -22,42 +19,43 @@
           <a
             class="dropdown-item"
             routerLink="/update-information"
-            routerLinkActive="active"
-            ><i class="pi pe-2 pi-user-edit"></i>Update Information</a
-          >
+            routerLinkActive="active"><i class="pi pe-2 pi-user-edit"></i>
+            Update Information
+          </a>
         </li>
         <li>
-          <a class="dropdown-item" href="#"
-            ><i class="pi pi-cog pe-2"></i>Settings</a
-          >
+          <a
+            class="dropdown-item"
+            href="#"><i class="pi pi-cog pe-2"></i>
+            Settings
+          </a>
         </li>
         <li>
-          <hr class="dropdown-divider" />
+          <hr class="dropdown-divider">
         </li>
         <li>
-          <a class="dropdown-item" (click)="onLogout()"
-            ><i class="pi pi-sign-out pe-2"></i>Sign out</a
-          >
+          <a
+            class="dropdown-item"
+            (click)="onLogout()"><i class="pi pi-sign-out pe-2"></i>
+            Sign out
+          </a>
         </li>
       </ul>
     </div>
   </div>
   <div class="pt-2 px-2">
-    <!-- no backend; hardcoded names, change the format if you must-->
+    <!-- no backend; hardcoded names, change the format if you must -->
     <p>
-      <span class="fw-bold profileName">Student&apos;s Name...</span
-      ><br />Program and Yr lvl
+      <span class="fw-bold profileName">Student's Name...</span><br>Program and Yr lvl
     </p>
-    <hr />
+    <hr>
   </div>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
       <a
         class="nav-link mb-3"
         routerLink="/student/home"
-        routerLinkActive="active"
-      >
-        <i class="pi pi-home mx-2 pi-user-edit"></i>
+        routerLinkActive="active"><i class="pi pi-home mx-2 pi-user-edit"></i>
         <!-- <i class=" fa-solid fa-house"></i> -->
         Home
       </a>
@@ -67,9 +65,7 @@
         href="#"
         class="nav-link mb-3"
         routerLink="/student/information"
-        routerLinkActive="active"
-      >
-        <i class="pi mx-2 pi-user"></i>
+        routerLinkActive="active"><i class="pi mx-2 pi-user"></i>
         Profile
       </a>
     </li>
@@ -78,9 +74,7 @@
         href="#"
         class="nav-link mb-3"
         routerLink="/student/academic-record"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 pi pi-id-card"></i>
+        routerLinkActive="active"><i class="mx-2 pi pi-id-card"></i>
         My Grades
       </a>
     </li>
@@ -89,9 +83,7 @@
         href="#"
         class="nav-link mb-3"
         routerLink="/student/courses"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 pi pi-book"></i>
+        routerLinkActive="active"><i class="mx-2 pi pi-book"></i>
         My Courses
       </a>
     </li>
@@ -100,9 +92,7 @@
         href="#"
         class="nav-link mb-3 disabled text-danger"
         routerLink="/student/financial"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 pi pi-dollar"></i>
+        routerLinkActive="active"><i class="mx-2 pi pi-dollar"></i>
         Financial Record
       </a>
     </li>
@@ -112,9 +102,7 @@
         href="#"
         class="nav-link mb-3"
         routerLink="/student/prospectus"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 pi pi-bookmark"></i>
+        routerLinkActive="active"><i class="mx-2 pi pi-bookmark"></i>
         Prospectus
       </a>
     </li>
@@ -124,100 +112,107 @@
         href="#"
         class="nav-link mb-3"
         routerLink="/student/enrollment"
-        routerLinkActive="active"
-      >
-        <i class="mx-2 pi pi-file"></i>
+        routerLinkActive="active"><i class="mx-2 pi pi-file"></i>
         Enrollment
       </a>
-    </li>
+      </li>
   </ul>
-  <hr />
-  <!-- <div class="dropdown">
+  <hr>
+  <div class="dropdown">
     <a
       href="#"
       class="d-flex align-items-center text-decoration-none dropdown-toggle"
       id="dropdownUser2"
       data-bs-toggle="dropdown"
-      aria-expanded="false"
-    >
+      aria-expanded="false">
       <img
         src="../../../../assets/misc/defaultasdas.jpg"
-        alt=""
+        alt
         width="32"
         height="32"
-        class="rounded-circle me-2"
-      />
+        class="rounded-circle me-2">
       <strong>...NAME...</strong>
     </a>
-    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+    <ul
+      class="dropdown-menu text-small shadow"
+      aria-labelledby="dropdownUser2">
       <li>
-        <a
+      <a
           class="dropdown-item"
           routerLink="/update-information"
-          routerLinkActive="active"
-          ><i class="pi pe-2 pi-user-edit"></i>Update Information</a
-        >
-      </li>
+          routerLinkActive="active">
+          Update Information
+        </a>
+    </li>
+      <li><a
+          class="dropdown-item"
+          href="#">
+          Settings
+        </a></li>
       <li>
-        <a class="dropdown-item" href="#"
-          ><i class="fa fa-cog pe-2"></i>Settings</a
-        >
-      </li>
-      <li>
-        <hr class="dropdown-divider" />
-      </li>
-      <li>
-        <a class="dropdown-item" (click)="onLogout()"
-          ><i class="fa fa-sign-out pe-2"></i>Sign out</a
-        >
-      </li>
+      <hr class="dropdown-divider">
+    </li>
+      <li><button
+          class="dropdown-item"
+          (click)="onLogout()">
+          Sign out
+        </button></li>
     </ul>
-  </div> -->
+
+  </div>
 </div>
 <!-- responsive -->
 <div
   class="respo-md d-lg-none d-md-flex d-none flex-column flex-shrink-0 mt-5 vh-100 position-fixed sidebar-content"
-  style="width: 10.5%;"
->
+  style="width: 10.5%;">
   <ul class="nav flex-column text-center">
     <li class="nav-item">
-      <a class="nav-link mb-3" routerLink="/student/home">
-        <i class="pi pi-home mx-2"></i>
+      <a
+        class="nav-link mb-3"
+        routerLink="/student/home"><i class="pi pi-home mx-2"></i>
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link mb-3" routerLink="/student/information">
-        <i class="pi mx-2 pi-user"></i>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/information"><i class="pi mx-2 pi-user"></i>
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link mb-3" routerLink="/student/academic-record">
-        <i class="mx-2 pi pi-id-card"></i>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/academic-record"><i class="mx-2 pi pi-id-card"></i>
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link mb-3" routerLink="/student/courses">
-        <i class="mx-2 pi pi-book"></i>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/courses"><i class="mx-2 pi pi-book"></i>
       </a>
     </li>
     <li>
       <a
         href="#"
         class="nav-link mb-3 disabled text-danger"
-        routerLink="/student/financial"
-      >
-        <i class="mx-2 pi pi-dollar"></i>
+        routerLink="/student/financial"><i class="mx-2 pi pi-dollar"></i>
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link mb-3" routerLink="/student/prospectus">
-        <i class="mx-2 pi pi-bookmark"></i>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/prospectus"><i class="mx-2 pi pi-bookmark"></i>
       </a>
     </li>
 
     <li>
-      <a href="#" class="nav-link mb-3" routerLink="/student/enrollment">
-        <i class="mx-2 pi pi-file"></i>
+      <a
+        href="#"
+        class="nav-link mb-3"
+        routerLink="/student/enrollment"><i class="mx-2 pi pi-file"></i>
       </a>
     </li>
   </ul>

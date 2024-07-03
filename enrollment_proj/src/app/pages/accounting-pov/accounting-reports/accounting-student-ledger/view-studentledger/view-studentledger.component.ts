@@ -135,7 +135,8 @@ export class ViewStudentledgerComponent implements OnInit {
         // console.log(this.subjectmatri);
       },
       error: (error: HttpErrorResponse) => {
-        console.log(error.message);
+        // console.log(error.message);
+        this.router.navigate(['/accounting/student ledger']);
       },
     });
   }
@@ -143,6 +144,11 @@ export class ViewStudentledgerComponent implements OnInit {
   ngOnInit(): void {
     this.studid = this.studentData['studid'];
     this.showSubjectmatri(this.studid);
+    // if (this.studentData === 'undefined') {
+    //   this.router.navigate(
+    //   ['/accounting/student ledger']
+    // );
+    // }
   }
 
   getYearLevelString(yearLevel: number): string {

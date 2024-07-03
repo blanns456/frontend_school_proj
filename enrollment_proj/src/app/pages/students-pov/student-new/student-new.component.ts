@@ -1,8 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CollegeEnrollmentController } from 'src/app/controllers/colleger_enrollment_controller.component';
-import { SemesterController } from 'src/app/controllers/semester_controller.component';
 import Swal from 'sweetalert2';
 import nationalities from '../../../../assets/json/nationalities.json';
 import religions from '../../../../assets/json/religions.json';
@@ -11,7 +9,14 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { TrimesterService } from 'src/app/services/trimester.service';
+import { ProgramService } from 'src/app/services/program.service';
+import { OtpService } from 'src/app/services/otp.service';
+import { CollegeService } from 'src/app/services/college.service';
 
+interface VerifyOTPResponse {
+  message?: string;
+  error?: string;
+}
 
 @Component({
   selector: 'app-student-new',
@@ -42,10 +47,11 @@ export class StudentNewComponent implements OnInit {
   loadbar: boolean = false;
   enteredOTP: string | undefined;
   enrollmentData: any;
+  trimester: any;
 
   gender = [
-    { name: 'Male', value: 'male' },
-    { name: 'Female', value: 'female' },
+    { name: 'Male', value: 'Male' },
+    { name: 'Female', value: 'Female' },
   ];
 
   civilstatus = [
@@ -63,20 +69,21 @@ export class StudentNewComponent implements OnInit {
   ];
 
   studstatus = [
-    { name: 'Regular Student', value: 'regular' },
-    { name: 'Irregular Student', value: 'irregular' },
+    { name: 'New Student', value: 'New Student' },
+    { name: 'Transferee', value: 'Transferee' },
   ];
 
   constructor(
     private messageService: MessageService,
-    private http: HttpClient,
-    private collegecontroller: CollegeEnrollmentController,
-    private semester_controller: SemesterController,
     private router: Router,
-    private enrollment: TrimesterService
+    private enrollment: TrimesterService,
+    private program: ProgramService,
+    private otPassword: OtpService,
+    private college: CollegeService
   ) {
     this.pipe = new DatePipe('en-PH');
     this.sem = new FormControl();
+
     this.signUpForm = new FormGroup({
       last_name: new FormControl(null, [Validators.required]),
       first_name: new FormControl(null, [Validators.required]),
@@ -90,17 +97,28 @@ export class StudentNewComponent implements OnInit {
       suffix: new FormControl(null),
       gender: new FormControl(null, [Validators.required]),
       civil_status: new FormControl(null, [Validators.required]),
-      birthdate: new FormControl(null, [Validators.required]),
+      birth_date: new FormControl(null, [Validators.required]),
       birth_place: new FormControl(null, [Validators.required]),
-      email_address: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required]),
       contact_number: new FormControl(null, [Validators.required]),
       citizenship: new FormControl(null, [Validators.required]),
       religion: new FormControl(null, [Validators.required]),
-      enrollIn: new FormControl('College', [Validators.required]),
+      enrolled_in: new FormControl('College', [Validators.required]),
       program: new FormControl(null, [Validators.required]),
-      semester: this.sem,
-      student_yr_level: new FormControl(null, [Validators.required]),
+      trimester: new FormControl(null, [Validators.required]),
+      year_level: new FormControl(null, [Validators.required]),
       student_status: new FormControl(null, [Validators.required]),
+    });
+  }
+
+  enrollmentActive() {
+    this.enrollment.enrollment().subscribe({
+      next: (res) => {
+        this.data = res;
+        this.enrollmentData = this.data;
+        this.signUpForm.patchValue({ trimester: this.enrollmentData.id });
+      },
+      error: () => {},
     });
   }
 
@@ -118,18 +136,18 @@ export class StudentNewComponent implements OnInit {
 
   signUp() {
     this.loadbar = true;
-    console.log(this.signUpForm.value);
-    this.collegecontroller.sentotp(this.signUpForm.value).subscribe({
+
+    this.otPassword.send_otp(this.signUpForm.value).subscribe({
       next: () => {
         this.loadbar = false;
         this.otp = true;
       },
       error: (error: HttpErrorResponse) => {
-        if (error.error.errors.email_address) {
+        if (error.error.errors.email) {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
-            detail: error.error.errors.email_address[0],
+            detail: error.error.errors.email[0],
           });
         } else if (error.error.errors.contact_number) {
           this.messageService.add({
@@ -144,75 +162,93 @@ export class StudentNewComponent implements OnInit {
             detail: error.error.errors.message,
           });
         }
-        console.log(error);
-        // this.loadbar = false;
+        this.loadbar = false;
       },
     });
   }
 
-  verifyOTP() {
-    this.collegecontroller.verifyotp({ otp: this.enteredOTP || '' }).subscribe({
-      next: (response) => {
-        this.info = response;
-        const d = Date();
-        const myFormattedDate = this.pipe.transform(d, 'Y-MM-dd HH:mm:ss');
-        if (this.info[0][0]['expire'] <= myFormattedDate) {
-          Swal.fire({
-            title: 'Code Expired',
-            text: 'Tap to resend again.',
-            icon: 'error',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Resend Code',
-          }).then((result) => {
-            if (result.isConfirmed) {
-              this.collegecontroller
-                .sentotp(this.signUpForm.value)
-                .subscribe((res) => {
+verifyOTP() {
+    this.otPassword.verifyotp({ otp: this.enteredOTP || '' }).subscribe({
+        next: (response: VerifyOTPResponse) => {
+            if (response.message === 'OTP verified successfully') {
+                this.loading = true;
+                this.college.createStudent(this.signUpForm.value).subscribe({
+                    next: (res) => {
+                        this.info = res;
+                        Swal.fire(
+                            'SUCCESS',
+                            'Check Email For Account Information',
+                            'success'
+                        );
+                        this.router.navigate(['login']);
+                    },
+                    error: () => {
+                        this.loading = false;
+                        this.messageService.add({
+                            severity: 'error',
+                            summary: 'Error',
+                            detail: 'Failed to create student account. Please try again later.',
+                        });
+                    },
+                    complete: () => {
+                        this.loading = false;
+                    }
                 });
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'A new code has been sent to your email.',
-              });
             }
-            this.enteredOTP = '';
-          });
-        } else {
-          this.loading = true;
-          this.collegecontroller
-            .createstudent(this.signUpForm.value)
-            .subscribe({
-              next: (res) => {
-                this.info = res;
-                if (this.info[0] && this.info[0]['message'] === 'Success') {
-                  Swal.fire(
-                    'SUCCESS',
-                    'Check Email For Account Information',
-                    'success'
-                  );
-                  this.router.navigate(['login']);
-                  this.loading = false;
-                }
-              },
-              error: () => {
-              },
-            });
-        }
-      },
-      error: (error: HttpErrorResponse) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Invalid OTP Code',
-          detail: error.statusText,
-        });
-        this.otp = true;
-        this.enteredOTP = '';
-      },
+        },
+        error: (error: HttpErrorResponse) => {
+            if (error.error && error.error.error === 'OTP expired') {
+                Swal.fire({
+                    title: 'Code Expired',
+                    text: 'Tap to resend again.',
+                    icon: 'error',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Resend Code',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.otPassword.send_otp(this.signUpForm.value).subscribe({
+                            next: (res) => {
+                                this.messageService.add({
+                                    severity: 'success',
+                                    summary: 'Success',
+                                    detail: 'A new code has been sent to your email.',
+                                });
+                            },
+                            error: (error: HttpErrorResponse) => {
+                                if (error.error && error.error.message ===
+                                    'OTP already sent. Please wait for it to expire before requesting a new one.') {
+                                    this.messageService.add({
+                                        severity: 'error',
+                                        summary: 'Error',
+                                        detail: 'OTP already sent. Please wait for it to expire before requesting a new one.',
+                                    });
+                                } else {
+                                    this.messageService.add({
+                                        severity: 'error',
+                                        summary: 'Error',
+                                        detail: 'Failed to resend the OTP. Please try again later.',
+                                    });
+                                }
+                            },
+                        });
+                        this.enteredOTP = '';
+                    }
+                });
+            } else {
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'Invalid OTP Code',
+                });
+                this.otp = true;
+                this.enteredOTP = '';
+            }
+        },
     });
-  }
+}
 
-  loadcourses() {
-    this.collegecontroller.getcourses().subscribe((res) => {
+
+  loadPrograms() {
+    this.program.getPrograms().subscribe((res) => {
       this.data = res;
       this.courses = this.data[0];
     });
@@ -221,31 +257,8 @@ export class StudentNewComponent implements OnInit {
   ngOnInit(): void {
     this.nationalitiesList = nationalities;
     this.religionList = religions;
-    this.loadcourses();
-
-    this.enrollment.enrollment().subscribe({
-      next: (res) => {
-        this.data = res;
-        this.enrollmentData = this.data;
-      }, error: (err) => {
-        // setTimeout(() => {
-        //   this.messageService.add({
-        //     severity: 'error',
-        //     summary: 'Notice',
-        //     detail: 'Enrollment is no longer available!',
-        //   });
-        // }, 1000);
-        // this.router.navigate(['home']);
-      }
-    });
-
-    this.semester_controller.getactivenrollsem().subscribe((res) => {
-      this.semesterinfo = res;
-      if (this.semesterinfo[0]) {
-        this.semester = this.semesterinfo[0][0]['semester'];
-        this.sem.setValue(this.semester);
-      }
-    });
+    this.loadPrograms();
+    this.enrollmentActive();
   }
 
   inputMask(event: Event) {
@@ -257,7 +270,6 @@ export class StudentNewComponent implements OnInit {
       var sanitizedValue = numberValue.replace(/[^0-9]/g, '');
 
       (event.target as HTMLSelectElement).value = sanitizedValue;
-
     }
   }
 }
