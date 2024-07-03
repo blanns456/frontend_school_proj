@@ -6,6 +6,7 @@ import { UpdateStudentServiceService } from 'src/app/services/update-student-ser
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { CollegeService } from 'src/app/services/college.service';
 
 @Component({
   selector: 'app-prospectus-students',
@@ -29,49 +30,52 @@ export class ProspectusStudentsComponent implements OnInit {
   alreadysubmitted: boolean | undefined;
   showToastNotification: boolean = false;
 
-
   constructor(
     private prospectus: ProspectusService,
     private router: Router,
     private student: UpdateStudentServiceService,
     private enrollment: EnrollmentService,
-  ) { }
+    private college: CollegeService,
+    private messages: MessageService
+  ) {}
 
-  ngOnInit(): void {
-    this.prospectus.student_academics().subscribe({
-      next: (response) => {
-        // console.log(response);
-        this.prospectusData = response;
+  async ngOnInit(): Promise<void> {
+    try {
+      const res = await this.college.information();
+      this.data = res;
+
+      if (this.data.has_finished === 'false') {
+        this.router.navigate(['/update-information']);
+        setTimeout(() => {
+          this.messages.add({
+            severity: 'info',
+            summary: 'Update your Information First.',
+          });
+        }, 1000);
+      } else {
+        this.loadCourseOfferings();
       }
-    });
+    } catch (error) {
+      console.error('Error fetching college information:', error);
+    }
+  }
 
-    this.prospectus.student_current_prospectus().subscribe({
+  private loadCourseOfferings(): void {
+    this.prospectus.course_offered().subscribe({
       next: (response) => {
-        // console.log(responsse);
         this.data = response;
-        this.prospectusData = this.data[0];
-      }
-    });
-
-    this.student.student_information().subscribe({
-      next: (response) => {
-        // console.log(response);
-        this.data = response
-        this.infomation = this.data[0];
-      }
-    });
-
-    this.prospectus.submitted_already().subscribe({
-      next: (res) => {
-        this.data = res;
-        this.is_already_submitted = this.data.message;
-        // console.log(this.data.message);
-      }
+        this.prospectusData = this.data;
+      },
+      error: (error) => {
+        console.error('Error fetching course offerings:', error);
+      },
     });
   }
 
   selectAll(event: any) {
-    const checkboxes = document.querySelectorAll<HTMLInputElement>('input[name="subjects"]');
+    const checkboxes = document.querySelectorAll<HTMLInputElement>(
+      'input[name="subjects"]'
+    );
     const allChecked = event.target.checked;
 
     checkboxes.forEach((checkbox) => {
@@ -79,7 +83,6 @@ export class ProspectusStudentsComponent implements OnInit {
         checkbox.checked = allChecked;
       }
     });
-
 
     checkboxes.forEach((checkbox) => {
       if (checkbox !== event.target) {
@@ -125,21 +128,13 @@ export class ProspectusStudentsComponent implements OnInit {
   }
 
   onsubmit() {
-    const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
+    const checkboxes = document.querySelectorAll<HTMLInputElement>(
+      'input[type="checkbox"]'
+    );
     const subjectids = Array.from(checkboxes)
       .filter((checkbox) => checkbox.checked && checkbox.name === 'subjects')
       .map((checkbox) => checkbox.value.split(',')[0]);
-
-    this.student.student_information().subscribe({
-      next: (response) => {
-        console.log(response);
-        this.data = response
-        this.infomation = this.data[0];
-        if (this.infomation.has_finished === 'false') {
-          this.router.navigate(['student/information']);
-          Swal.fire('Information!', 'Update Information First', 'info');
-        } else {
-          this.enrollment
+              this.enrollment
             .college_enrollment({
               subjects: JSON.stringify(subjectids),
             })
@@ -147,14 +142,28 @@ export class ProspectusStudentsComponent implements OnInit {
               this.transacnotif = res;
               if (this.transacnotif['message'] === 'success') {
                 this.router.navigate(['student/enrollment']);
-                Swal.fire('Information', "Courses Pending Dean's Approval.", 'info');
+                Swal.fire(
+                  'Information',
+                  "Courses Pending Dean's Approval.",
+                  'info'
+                );
               } else {
                 Swal.fire('Error', this.transacnotif['message'], 'error');
               }
             });
-        }
-      }
-    });
-  }
 
+    // this.student.student_information().subscribe({
+    //   next: (response) => {
+    //     console.log(response);
+    //     this.data = response;
+    //     this.infomation = this.data[0];
+    //     if (this.infomation.has_finished === 'false') {
+    //       this.router.navigate(['student/information']);
+    //       Swal.fire('Information!', 'Update Information First', 'info');
+    //     } else {
+
+    //     }
+    //   },
+    // });
+  }
 }

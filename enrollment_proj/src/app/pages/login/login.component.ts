@@ -64,17 +64,29 @@ export class LoginComponent implements OnInit {
   private redirectBasedOnRole(): void {
     this.authService.getUserRoles().subscribe((roles) => {
       if (roles.includes('college')) {
-        this.router.navigate(['/student']);
+        this.router.navigate(['/student']).then(() => {
+          location.reload();
+        });
       } else if (roles.includes('dean')) {
-        this.router.navigate(['/dean']);
+        this.router.navigate(['/dean']).then(() => {
+          location.reload();
+        });
       } else if (roles.includes('registrar')) {
-        this.router.navigate(['/registrar']);
+        this.router.navigate(['/registrar']).then(() => {
+          location.reload();
+        });
       } else if (roles.includes('teacher')) {
-        this.router.navigate(['/teacher']);
+        this.router.navigate(['/teacher']).then(() => {
+          location.reload();
+        });
       } else if (roles.includes('teller')) {
-        this.router.navigate(['/accounting']);
+        this.router.navigate(['/accounting']).then(() => {
+          location.reload();
+        });
       } else {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home']).then(() => {
+          location.reload();
+        });
       }
     });
   }

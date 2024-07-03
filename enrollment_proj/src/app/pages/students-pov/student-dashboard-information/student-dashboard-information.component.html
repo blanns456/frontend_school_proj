@@ -23,7 +23,7 @@
           <img
             *ngIf="!data?.signature"
             class="img-thumbnail"
-            [src]="'assets/misc/homepage/default.png'"
+            [src]="'/../../../../../assets/misc/genesys-default-pfp.png'"
             alt=""
           />
           <img
@@ -44,7 +44,7 @@
           <img
             *ngIf="!data?.signature"
             class="img-thumbnail"
-            [src]="'assets/misc/homepage/default.png'"
+            [src]="'/../../../../../assets/misc/genesys-default-pfp.png'"
             alt=""
           />
         </div>
@@ -345,7 +345,7 @@
                     pInputText
                     id="f_name"
                     class="text-capitalize"
-                    [value]="data.student_parent?.father_name"
+                    [value]="data?.student_parent?.father_name"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -358,7 +358,7 @@
                     pInputText
                     id="employed_where"
                     class="text-capitalize"
-                    [value]="data.student_parent?.father_employed"
+                    [value]="data?.student_parent?.father_employed"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -371,7 +371,7 @@
                     pInputText
                     id="occupation"
                     class="text-capitalize"
-                    [value]="data.student_parent?.father_occupation"
+                    [value]="data?.student_parent?.father_occupation"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -384,7 +384,7 @@
                     pInputText
                     id="f_number"
                     class="text-capitalize"
-                    [value]="data.student_parent?.father_contact"
+                    [value]="data?.student_parent?.father_contact"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -403,7 +403,7 @@
                     pInputText
                     id="m_name"
                     class="text-capitalize"
-                    [value]="data.student_parent?.mother_name"
+                    [value]="data?.student_parent?.mother_name"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -416,7 +416,7 @@
                     pInputText
                     id="m_employed_where"
                     class="text-capitalize"
-                    [value]="data.student_parent?.mother_employed"
+                    [value]="data?.student_parent?.mother_employed"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -429,7 +429,7 @@
                     pInputText
                     id="m_occupation"
                     class="text-capitalize"
-                    [value]="data.student_parent?.mother_occupation"
+                    [value]="data?.student_parent?.mother_occupation"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -442,7 +442,7 @@
                     pInputText
                     id="m_number"
                     class="text-capitalize"
-                    [value]="data.student_parent?.mother_contact"
+                    [value]="data?.student_parent?.mother_contact"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -461,7 +461,7 @@
                     pInputText
                     id="g_name"
                     class="text-capitalize"
-                    [value]="data.student_parent?.guardian_contact"
+                    [value]="data?.student_parent?.guardian_contact"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -474,7 +474,7 @@
                     pInputText
                     id="g_employed_where"
                     class="text-capitalize"
-                    [value]="data.student_parent?.guardian_employed"
+                    [value]="data?.student_parent?.guardian_employed"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -487,7 +487,7 @@
                     pInputText
                     id="g_occupation"
                     class="text-capitalize"
-                    [value]="data.student_parent?.guardian_occupation"
+                    [value]="data?.student_parent?.guardian_occupation"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />
@@ -500,7 +500,7 @@
                     pInputText
                     id="g_number"
                     class="text-capitalize"
-                    [value]="data.student_parent?.guardian_contact"
+                    [value]="data?.student_parent?.guardian_contact"
                     [style]="{ width: '100%' }"
                     [readOnly]="true"
                   />

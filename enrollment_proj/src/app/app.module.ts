@@ -62,6 +62,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { PaginatorModule } from 'primeng/paginator';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { KeyFilterModule } from 'primeng/keyfilter';
 // import { AccordionModule } from 'primeng/accordion';
 // import { StepperModule } from 'primeng/stepper';
 // import { PanelModule } from 'primeng/panel';
@@ -369,6 +370,7 @@ import { PreviewStudentComponent } from './pages/accounting-pov/preview-student/
     // PanelModule,
     ScrollPanelModule,
     ProgressSpinnerModule,
+    KeyFilterModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

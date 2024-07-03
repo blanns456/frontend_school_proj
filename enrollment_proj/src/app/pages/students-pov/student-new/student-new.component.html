@@ -168,12 +168,20 @@
                   <label for="contact_number" class="form-label">
                     Contact Number<span class="text-danger">*</span>
                   </label>
-                  <p-inputMask
+                  <input
+                    pInputText
+                    pKeyFilter="num"
+                    [style]="{ width: '100%' }"
+                    formControlName="contact_number"
+                    maxlength="11"
+                    placeholder="09xxxxxxxxx"
+                  />
+                  <!-- <p-inputMask
                     mask="99999999999"
                     formControlName="contact_number"
                     placeholder="0912xxxxxxx"
                     [style]="{ width: '100%' }"
-                  ></p-inputMask>
+                  ></p-inputMask> -->
 
                   <!-- <input
                   (input)="inputMask($event)"

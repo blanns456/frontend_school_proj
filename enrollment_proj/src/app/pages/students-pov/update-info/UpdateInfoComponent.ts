@@ -250,6 +250,16 @@ export class UpdateInfoComponent {
     }
   }
 
+  parseYearRange(value: string): [Date, Date] | null {
+    if (!value) return null;
+
+    const [startYear, endYear] = value.split(' - ');
+    const startDate = new Date(parseInt(startYear), 0, 1);
+    const endDate = new Date(parseInt(endYear), 0, 1);
+
+    return [startDate, endDate];
+  }
+
   async ngOnInit(): Promise<void> {
     this.nationalitiesList = nationalities;
     this.religionList = religions;
@@ -257,7 +267,7 @@ export class UpdateInfoComponent {
     try {
       const res = await this.college.information();
       this.data = res;
-      this.date = new Date(this.data.birth_date);
+      // this.date = new Date(this.data.birth_date);
 
       if (this.data) {
         this.update_student.patchValue({
@@ -266,20 +276,20 @@ export class UpdateInfoComponent {
           middle_name: this.data.middle_name,
           gender: this.data.gender,
           email: this.data.user.email,
-          birth_date: this.date,
+          birth_date: this.data.birth_date,
           citizenship: this.data.citizenship,
           religion: this.data.religion,
           contact_number: this.data.contact_number,
           civil_status: this.data.civil_status,
           birth_place: this.data.birth_place,
           elem_school: this.data.elem_school,
-          elem_year: this.data.elem_year,
+          elem_year: this.parseYearRange(this.data.elem_year),
           jhs_school: this.data.jhs_school,
-          jhs_year: this.data.jhs_year,
+          jhs_year: this.parseYearRange(this.data.jhs_year),
           shs_school: this.data.shs_school,
-          shs_year: this.data.shs_year,
+          shs_year: this.parseYearRange(this.data.shs_year),
           last_school: this.data.last_school,
-          last_school_year: this.data.last_school_year,
+          last_school_year: this.parseYearRange(this.data.last_school_year),
           father_name: this.data.student_parent?.father_name || '',
           father_employed: this.data.student_parent?.father_employed || '',
           father_occupation: this.data.student_parent?.father_occupation || '',
@@ -296,7 +306,7 @@ export class UpdateInfoComponent {
         });
       }
     } catch (error) {
-      console.error('Error fetching information', error);
+      // console.error('Error fetching information', error);
     }
   }
 
@@ -463,31 +473,58 @@ export class UpdateInfoComponent {
       'elem_school',
       this.update_student.controls['elem_school'].value
     );
-    formData.append(
-      'elem_year',
-      this.update_student.controls['elem_year'].value
-    );
+    if (this.update_student.controls['elem_year'].value) {
+      formData.append(
+        'elem_year',
+        this.update_student.controls['elem_year'].value[0] ?? ''
+      );
+      formData.append(
+        'elem_year_end',
+        this.update_student.controls['elem_year'].value[1] ?? ''
+      );
+    }
     formData.append(
       'jhs_school',
-      this.update_student.controls['jhs_school'].value
+      this.update_student.controls['jhs_school'].value ?? ''
     );
-    formData.append('jhs_year', this.update_student.controls['jhs_year'].value);
+    if (this.update_student.controls['jhs_year'].value) {
+      formData.append(
+        'jhs_year',
+        this.update_student.controls['jhs_year'].value[0] ?? ''
+      );
+      formData.append(
+        'jhs_year_end',
+        this.update_student.controls['jhs_year'].value[1] ?? ''
+      );
+    }
     formData.append(
       'shs_school',
-      this.update_student.controls['shs_school'].value
+      this.update_student.controls['shs_school'].value ?? ''
     );
-    formData.append(
-      'shs_year',
-      this.update_student.controls['shs_year'].value ?? ''
-    );
+    if (this.update_student.controls['shs_year'].value) {
+      formData.append(
+        'shs_year',
+        this.update_student.controls['shs_year'].value[0] ?? ''
+      );
+      formData.append(
+        'shs_year_end',
+        this.update_student.controls['shs_year'].value[1] ?? ''
+      );
+    }
     formData.append(
       'last_school',
       this.update_student.controls['last_school'].value ?? ''
     );
-    formData.append(
-      'last_school_year',
-      this.update_student.controls['last_school_year'].value ?? ''
-    );
+    if (this.update_student.controls['last_school_year'].value) {
+      formData.append(
+        'last_school_year',
+        this.update_student.controls['last_school_year'].value[0] ?? ''
+      );
+      formData.append(
+        'last_school_year_end',
+        this.update_student.controls['last_school_year'].value[1] ?? ''
+      );
+    }
     formData.append(
       'father_name',
       this.update_student.controls['father_name'].value ?? ''
@@ -544,10 +581,10 @@ export class UpdateInfoComponent {
       'signature',
       this.update_student.controls['signature'].value ?? ''
     );
-    console.log('FormData Entries:');
-    formData.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
-    });
+    // console.log('FormData Entries:');
+    // formData.forEach((value, key) => {
+    //   console.log(`${key}: ${value}`);
+    // });
 
     if (
       this.update_student.controls['first_name'].invalid ||
@@ -578,6 +615,11 @@ export class UpdateInfoComponent {
       this.update_student.controls['last_school_year'].invalid ||
       this.update_student.controls['profile'].invalid ||
       this.update_student.controls['signature'].invalid
+      // !formData.get('elem_year') ||
+      // !formData.get('elem_year_end') ||
+      // !formData.get('jhs_year_end') ||
+      // !formData.get('shs_year_end') ||
+      // !formData.get('last_school_year_end')
     ) {
       this.messageService.add({
         severity: 'error',
@@ -595,9 +637,11 @@ export class UpdateInfoComponent {
             summary: 'Updated',
             detail: 'Successfully!',
           });
+          window.location.reload();
         }, 1000);
 
         this.router.navigate(['/student/information']);
+
       },
       error: () => {},
     });

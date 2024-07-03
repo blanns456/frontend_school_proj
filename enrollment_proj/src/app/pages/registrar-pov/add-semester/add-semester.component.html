@@ -1,13 +1,8 @@
 <div class="container-fluid vh-100 enrolled">
   <p-card header="Semester and Trimester">
-    <ul
-      class="nav nav-tabs"
-      id="myTab"
-      role="tablist">
-      <li
-        class="nav-item"
-        role="presentation">
-				<button
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button
           class="nav-link active"
           id="home-tab"
           data-bs-toggle="tab"
@@ -15,14 +10,13 @@
           type="button"
           role="tab"
           aria-controls="home-tab-pane"
-          aria-selected="true">
+          aria-selected="true"
+        >
           College Trimester
         </button>
-			</li>
-      <li
-        class="nav-item"
-        role="presentation">
-				<button
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
           class="nav-link"
           id="profile-tab"
           data-bs-toggle="tab"
@@ -30,24 +24,25 @@
           type="button"
           role="tab"
           aria-controls="profile-tab-pane"
-          aria-selected="false">
+          aria-selected="false"
+        >
           Graduate Studies Semester
         </button>
-			</li>
+      </li>
     </ul>
-    <div
-      class="tab-content"
-      id="myTabContent">
+    <div class="tab-content" id="myTabContent">
       <div
         class="tab-pane fade show active"
         id="home-tab-pane"
         role="tabpanel"
         aria-labelledby="home-tab"
-        tabindex="0">
+        tabindex="0"
+      >
         <form
           [formGroup]="add_trimester"
           (ngSubmit)="submit_trimester()"
-          class="p-3">
+          class="p-3"
+        >
           <div class="row">
             <div class="col-3">
               <label for="trimester">Trimester</label>
@@ -58,7 +53,8 @@
                 formControlName="trimester"
                 optionLabel="name"
                 placeholder="Select a Trimester"
-                [style]="{ width: '100%' }"></p-dropdown>
+                [style]="{ width: '100%' }"
+              ></p-dropdown>
             </div>
             <div class="col-3">
               <label for="range_of_trimester">Range of Trimester</label>
@@ -72,7 +68,8 @@
                 [numberOfMonths]="2"
                 [required]="true"
                 [showIcon]="true"
-                [touchUI]="true"></p-calendar>
+                [touchUI]="true"
+              ></p-calendar>
             </div>
             <div class="col-3">
               <label for="academic_year">Academic Year</label>
@@ -84,7 +81,8 @@
                 dateFormat="yy"
                 [required]="true"
                 [style]="{ width: '100%' }"
-                [showIcon]="true"></p-calendar>
+                [showIcon]="true"
+              ></p-calendar>
             </div>
             <div class="col-3">
               <label for="enrollment">Range of Enrollment</label>
@@ -98,7 +96,8 @@
                 [required]="true"
                 [numberOfMonths]="2"
                 [showIcon]="true"
-                [touchUI]="true"></p-calendar>
+                [touchUI]="true"
+              ></p-calendar>
             </div>
             <p-button type="submit">Create Trimester</p-button>
           </div>
@@ -109,7 +108,8 @@
         id="profile-tab-pane"
         role="tabpanel"
         aria-labelledby="profile-tab"
-        tabindex="0">
+        tabindex="0"
+      >
         ...
       </div>
     </div>
