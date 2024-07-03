@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { ProspectusService } from 'src/app/services/prospectus.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
   private readonly Root_URL = 'http://127.0.0.1:8000/api/v1/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private prospectusService: ProspectusService) {}
 
   login(email: string, password: string): Observable<{ token: string }> {
     return this.http.post<{ token: string }>(`${this.Root_URL}login`, { email, password }).pipe(
@@ -47,6 +48,7 @@ export class AuthService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
+    this.prospectusService.clearCache();
     return this.http.post(`${this.Root_URL}logout`, {}, { headers });
   }
 }

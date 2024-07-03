@@ -637,9 +637,11 @@ export class UpdateInfoComponent {
             summary: 'Updated',
             detail: 'Successfully!',
           });
+          window.location.reload();
         }, 1000);
 
         this.router.navigate(['/student/information']);
+
       },
       error: () => {},
     });

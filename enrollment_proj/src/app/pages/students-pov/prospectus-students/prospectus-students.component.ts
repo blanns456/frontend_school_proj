@@ -134,17 +134,7 @@ export class ProspectusStudentsComponent implements OnInit {
     const subjectids = Array.from(checkboxes)
       .filter((checkbox) => checkbox.checked && checkbox.name === 'subjects')
       .map((checkbox) => checkbox.value.split(',')[0]);
-
-    this.student.student_information().subscribe({
-      next: (response) => {
-        console.log(response);
-        this.data = response;
-        this.infomation = this.data[0];
-        if (this.infomation.has_finished === 'false') {
-          this.router.navigate(['student/information']);
-          Swal.fire('Information!', 'Update Information First', 'info');
-        } else {
-          this.enrollment
+              this.enrollment
             .college_enrollment({
               subjects: JSON.stringify(subjectids),
             })
@@ -161,8 +151,19 @@ export class ProspectusStudentsComponent implements OnInit {
                 Swal.fire('Error', this.transacnotif['message'], 'error');
               }
             });
-        }
-      },
-    });
+
+    // this.student.student_information().subscribe({
+    //   next: (response) => {
+    //     console.log(response);
+    //     this.data = response;
+    //     this.infomation = this.data[0];
+    //     if (this.infomation.has_finished === 'false') {
+    //       this.router.navigate(['student/information']);
+    //       Swal.fire('Information!', 'Update Information First', 'info');
+    //     } else {
+
+    //     }
+    //   },
+    // });
   }
 }
