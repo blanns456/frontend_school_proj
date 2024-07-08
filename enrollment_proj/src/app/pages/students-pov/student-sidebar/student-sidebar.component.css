@@ -6,6 +6,26 @@
   padding-top: 45px;
 }
 
+.profileCard {
+  font-size: 15px;
+  color: #333333;
+}
+
+.setting i {
+  cursor: pointer;
+  color: #333333;
+  transition: 0.2s ease-in-out;
+}
+
+.setting i:hover {
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+
+.disabled {
+  color: red !important;
+}
+
 @media only screen and (min-width: 769px) {
   .nav-link {
     color: black;
